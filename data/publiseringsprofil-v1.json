@@ -1,0 +1,381 @@
+{
+  "artifact": "publiseringsprofil-v1",
+  "created": "2026-09-20",
+  "revised": "2026-09-20 (etter uavhengig personvernaudit; distribusjonsport satt til BLOCKED)",
+  "purpose": "Positiv godkjenningsprofil for generell utgave av NAVigator-referansebasen (maal C). Privat profil er separat og faar aldri status som generell rettskilde. Oppforing her er en forutsetning for publisering, ikke et krav om at alt innhold er ferdig kontrollert.",
+  "authority": {
+    "goal_decision": "Eierbeslutning 2026-09-20: maal C; personverngrense for generell utgave.",
+    "plan_reference": "NAVigator-tilstand-og-veikart-2026-09-20.md, G03/Fase 3",
+    "repo_commit_verified_against": "ed156f1b1ecd03d8946b9fe676f44190578c4177"
+  },
+  "distribution_gate": {
+    "status": "BLOCKED",
+    "reason": "Personvernaudit (uavhengig agent, 20.09) fant navngitte personseksjoner og kryssreferanser til private/avledede filer i filer som starer paa allowlisten. Generell eksport er ikke tillatt foer scrub-oppgavene i pre_export_scrub er utfoert og re-audited.",
+    "blockers": [
+      "Navngitte Mari-seksjoner med avledede saksfakta: 63-overgangsstonad-endringsloven-og-kapittel-15.md seksjon 9 (linje 90-93), 64-overgangsstonad-nye-regler-i-dybden.md seksjon 10 (linje 85-90), 65-saerlig-tilsyn-dokumentasjon-aktorer.md seksjon 6 (linje 51), 66-barnetilsyn-og-samspill-andre-ytelser.md seksjon 6 (linje 71-75), 00-BESLUTNINGSTRE.md linje 56, 69-kunnskapshullregister.md linje 85.",
+      "Kryssreferanser til private/avledede filer i allowlistede filer (dangle + lekker filnavn naar de private filene er ekskludert): 48:6 (til 52), 51:6 (til 22-personlig-journal), 63:5 (til 52/61/62), 64:5 (til 52), 65:5 (til 52), 68:5 (til 67), 69:5 (til 67), 00:56 (til 67), 70-lokalt/trondheim/README.md:24 (til 08-mari-case).",
+      "data/legal-index.json inneholder referanser til 52/67 i filer-lister (linje 114, 463).",
+      "Repo-metadata (README, INNHOLD, QA_REPORT, qa-log) og styringsdokumenter (profil, manifest, docs/, runtime/README) nevner Mari og er ikke del av innholdsutgaven."
+    ],
+    "unblock_condition": "Alle oppforte scrubs utfoert i separat eiergodkjent oppgave + re-grep (case-insensitiv, ordgrense) gir 0 treff utenfor tillatte kontekster + kryssreferanseintegritet bekreftet (ingen lenker til ekskluderte filer)."
+  },
+  "general_profile": {
+    "principle": "Positiv allowlist: en fil er med i generell utgave KUN hvis den er oppfort her. pre_export_condition 'none' betyr ingen kjent personvernendring nodvendig; alle andre betingelser Mjà oppfylles foer eksport. Innholdskontroll (faglig attest) er en separat akse og gaar fram av status-feltet.",
+    "sections": [
+      {
+        "scope": "Akutt- og beslutningsinnganger (kjerne)",
+        "files": [
+          {
+            "path": "00-BESLUTNINGSTRE.md",
+            "status": "rettet_20_09",
+            "pre_export_condition": "name_scrub",
+            "scrub_detail": "linje 56: Mari-caset + lenke til fil 67 ma gjores generisk."
+          },
+          {
+            "path": "26-beslutningsstotte-hvor-henvende-seg.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "42-vold-trusler-og-sikkerhet.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "45-beslutningstre-hvem-ringer-jeg.md",
+            "status": "rettet_20_09",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "57-nodhjelp-og-akutte-situasjoner.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          }
+        ],
+        "status": "innhold_godkjent_saklig"
+      },
+      {
+        "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+        "files": [
+          {
+            "path": "33-familievern-i-dybden.md",
+            "status": "kontrollert_29_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "34-mekling-og-foreldresamarbeidsavtale.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "35-foreldreansvar-bosted-samvar.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "36-barnets-mening-og-barnets-beste.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "37-foreldretvist-og-domstol.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "38-barnevernet-hjelp-ikke-bare-inngrep.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "39-frivillige-hjelpetiltak.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "40-bekymringsmelding-og-undersokelse.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "41-samtykke-pa-tvers-av-tjenester.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "48-barnebidrag-i-dybden.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "crossref_scrub",
+            "scrub_detail": "linje 6 kryssrefererer til 52-mari-okonomisk-vurdering.md."
+          },
+          {
+            "path": "49-samvaersfradrag-og-reisekostnader.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "50-bidragsforskudd-og-innkreving.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "51-familieokonomi-etter-samlivsbrudd.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "crossref_scrub",
+            "scrub_detail": "linje 6 kryssrefererer til 22-personlig-journal-mari.md."
+          },
+          {
+            "path": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+            "status": "kontrollert_29_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "section_scrub",
+            "scrub_detail": "seksjon 9 (linje 90-93) er navngitt personseksjon; linje 5 kryssrefererer til 52/61/62."
+          },
+          {
+            "path": "64-overgangsstonad-nye-regler-i-dybden.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "section_scrub",
+            "scrub_detail": "seksjon 10 (linje 85-90) er navngitt personseksjon; linje 5 kryssrefererer til 52."
+          },
+          {
+            "path": "65-saerlig-tilsyn-dokumentasjon-aktorer.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "section_scrub",
+            "scrub_detail": "seksjon 6 (linje 51) er navngitt personseksjon; linje 5 kryssrefererer til 52."
+          },
+          {
+            "path": "66-barnetilsyn-og-samspill-andre-ytelser.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "section_scrub",
+            "scrub_detail": "seksjon 6 (linje 71-75) er navngitt personseksjon."
+          },
+          {
+            "path": "68-overgangsforskriften-i-dybden.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "crossref_scrub",
+            "scrub_detail": "linje 5 kryssrefererer til 67."
+          },
+          {
+            "path": "69-kunnskapshullregister.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "name_scrub",
+            "scrub_detail": "linje 85 nevner Mari-caset; linje 5 kryssrefererer til 67."
+          }
+        ],
+        "status": "innhold_godkjent_saklig"
+      },
+      {
+        "scope": "Strukturdata",
+        "files": [
+          {
+            "path": "data/rules-v1.json",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "data/legal-index.json",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "crossref_scrub",
+            "scrub_detail": "filer-lister (linje 114, 463) refererer til 52/67."
+          },
+          {
+            "path": "data/safety-triage-rules-v2.json",
+            "status": "kontrollert",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "data/verifikasjonsregister-v1.json",
+            "status": "ny_20_09",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "data/18-23-korrigeringsprotokoll-v1.json",
+            "status": "ny_20_09",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "data/publiseringsprofil-v1.json",
+            "status": "ny_20_09",
+            "pre_export_condition": "repo_metadata",
+            "scrub_detail": "Styringsdokument; folger ikke innholdsutgaven (nevner private filnavn i ekskluderingsbegrunnelser)."
+          }
+        ],
+        "status": "innhold_godkjent_saklig"
+      },
+      {
+        "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+        "files": [
+          {
+            "path": "70-lokalt/trondheim/01-barn-og-familie.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "70-lokalt/trondheim/02-psykisk-helse.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "70-lokalt/trondheim/03-skole-ppt.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "70-lokalt/trondheim/04-bup-habu.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "70-lokalt/trondheim/05-familievern-barnevern.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "70-lokalt/trondheim/06-nav-okonomi-bolig.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "name_scrub",
+            "scrub_detail": "linje 73 peker til 61-mari-bolig-okonomi-scenarioer."
+          },
+          {
+            "path": "70-lokalt/trondheim/07-akutt-og-sikkerhet.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          },
+          {
+            "path": "70-lokalt/trondheim/README.md",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "name_scrub",
+            "scrub_detail": "linje 24 henviser til 08-mari-case.md."
+          },
+          {
+            "path": "data/local-services-trondheim.json",
+            "status": "kontrollert_30_08",
+            "pre_export_condition": "none"
+          }
+        ],
+        "status": "innhold_godkjent_saklig",
+        "note": "Trondheim-filene er kontrollert 30.08 og er generelle tjenestefakta; 08-mari-case er bevisst IKKE oppfort her."
+      }
+    ],
+    "excluded_from_general": [
+      {
+        "paths": [
+          "22-personlig-journal-mari.md"
+        ],
+        "reason": "Originaljournal. Bevares uendret for eier; skal aldri ut i generell distribusjon."
+      },
+      {
+        "paths": [
+          "70-lokalt/trondheim/08-mari-case.md",
+          "44-mari-vurdering-samlivsbrudd.md",
+          "52-mari-okonomisk-vurdering.md",
+          "61-mari-bolig-okonomi-scenarioer.md",
+          "67-mari-overgangsstonad-vurdering.md",
+          "23-analyse-dokumentasjon-og-rekkefolge.md"
+        ],
+        "reason": "Avledede Mari-vurderinger/case. Inneholder personopplysninger/avledede premisser. Kan inn i generell utgave kun som anonymisert mal etter separat eiervedtak; i denne utgaven utelatt."
+      },
+      {
+        "paths": [
+          "24-kildedokumentasjon-bup-og-habu.md",
+          "62-kildedokumentasjon-bostotte-okonomi-bolig.md"
+        ],
+        "reason": "Kildedokumentasjon med Mari-referanser i metodenotater; utelatt fra generell utgave."
+      },
+      {
+        "paths": [
+          "47-scenarioregresjon.md"
+        ],
+        "reason": "Regresjonsrapport med Mari-henvisninger (linje 56, 67); historisk rapport, folger ikke innholdsutgaven som faglig attest."
+      },
+      {
+        "paths": [
+          "QA_REPORT.md",
+          "README.md",
+          "INNHOLD.md",
+          "data/qa-log.md",
+          "docs/status-og-laser.md",
+          "docs/maal-og-avgrensning.md",
+          "data/release-manifest-v1.json",
+          "runtime/README.md",
+          "evaluation/README.md"
+        ],
+        "reason": "Repo-metadata/styringsdokumenter; folger ikke innholdsutgaven. Flere nevner Mari (qa-log, README, INNHOLD, QA_REPORT, status-og-laser, runtime/README)."
+      },
+      {
+        "paths": [
+          "evaluation/"
+        ],
+        "reason": "Malearbeid, prediksjonsrader, semantisk-judge-resultater. Inneholder Mari i case-/prediksjonsfiler. Historisk forskning; folger ikke referanseutgaven."
+      },
+      {
+        "paths": [
+          "runtime/",
+          "scripts/"
+        ],
+        "reason": "Kode. Ikke del av dokumentutgaven."
+      }
+    ]
+  },
+  "pre_export_scrub": {
+    "principle": "Separat, eiergodkjent oppgave. Ingen scrub er utfoert i denne etappen; frosne filer endres ikke her.",
+    "name_scrub_files": [
+      "00-BESLUTNINGSTRE.md",
+      "69-kunnskapshullregister.md",
+      "70-lokalt/trondheim/06-nav-okonomi-bolig.md",
+      "70-lokalt/trondheim/README.md"
+    ],
+    "section_scrub_files": [
+      "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+      "64-overgangsstonad-nye-regler-i-dybden.md",
+      "65-saerlig-tilsyn-dokumentasjon-aktorer.md",
+      "66-barnetilsyn-og-samspill-andre-ytelser.md"
+    ],
+    "crossref_scrub_files": [
+      "48-barnebidrag-i-dybden.md",
+      "51-familieokonomi-etter-samlivsbrudd.md",
+      "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+      "64-overgangsstonad-nye-regler-i-dybden.md",
+      "65-saerlig-tilsyn-dokumentasjon-aktorer.md",
+      "68-overgangsforskriften-i-dybden.md",
+      "69-kunnskapshullregister.md",
+      "data/legal-index.json"
+    ],
+    "verification_after_scrub": "grep -rniw 'mari' over *.md/*.json utenfor evaluation/ skal gi 0 treff i eksporterte filer; ingen eksportert fil lenker til en ekskludert fil."
+  },
+  "derived_copy_audit": {
+    "method": "grep -rliw 'Mari' over *.md, *.json, *.py, *.sh i arbeidskopi (20.09.2026, etter at styringsfilene var opprettet). Ordgrense-grep unngar falskt positivt 'Maritim'; case-insensitiv fanger filnavnreferanser som 08-mari-case.md.",
+    "total_files_matching": 170,
+    "files_outside_evaluation": 24,
+    "files_in_evaluation": 146,
+    "earlier_count_note": "Forste audit samme dag rapporterte 167/21 fordi den ble kjort foer data/publiseringsprofil-v1.json, data/release-manifest-v1.json og runtime/README.md eksisterte; disse nevner Mari i styringskontekst. Uavhengig re-audit (agent, 20.09) bekreftet 170/24/146.",
+    "interpretation": "24 filer utenfor evaluation/ nevner Mari: journalen (1), avledede case-/vurderingsfiler (5), kildedokumentasjon med metodenotater (2), kjernefiler med navngitte seksjoner eller henvisninger (00, 47, 63, 64, 65, 66, 69, 48, 51, 68, trondheim/06, trondheim/README), QA/README/INNHOLD/qa-log (metadata), styringsdokumenter (profil, manifest, status-og-laser, maal-og-avgrensning, runtime/README). Generell utgave maar enten ekskludere disse filene eller scrubbe navnene.",
+    "disposition": "Journalen og de avledede filene holdes utenfor generell utgave. Kjernefilene med navn/kryssreferanser skal scrubbes i separat oppgave; ingen slik endring er gjort her fordi frosne filer ikke endres uten eiervedtak.",
+    "general_export_rule": "En generell eksport er IKKE et arkiv av hele repoet. Den bygger bare fra godkjent_sections etter at distribution_gate er aapnet, og skal inspiseres med samme grep foer deling."
+  },
+  "private_profile": {
+    "principle": "Eksplisitt valgt filsett for eiers privat bruk. Ingen automatisk arv fra generell profil. Faar aldri status som generell rettskilde.",
+    "files": [
+      "22-personlig-journal-mari.md",
+      "44-mari-vurdering-samlivsbrudd.md",
+      "52-mari-okonomisk-vurdering.md",
+      "61-mari-bolig-okonomi-scenarioer.md",
+      "67-mari-overgangsstonad-vurdering.md",
+      "70-lokalt/trondheim/08-mari-case.md",
+      "23-analyse-dokumentasjon-og-rekkefolge.md",
+      "24-kildedokumentasjon-bup-og-habu.md",
+      "62-kildedokumentasjon-bostotte-okonomi-bolig.md"
+    ],
+    "access": "Eier; ingen generell deling."
+  },
+  "non_claims": [
+    "Ingen publisering er gjort; profilen foreslar kun innholdsgrensen, og porten er BLOCKED.",
+    "Scrub-oppgavene er ikke utfoert; alle nevnte linjenumre gjelder arbeidskopien 20.09.2026.",
+    "'kontrollert'-statusene gjelder de lagrede etappekontrollene 29.-30.08; ingen ny faglig resertifisering er utfort 20.09.",
+    "Personvernauditen er en struktur-/referanseaudit; den er ikke en faglig gjennomgang av innholdet."
+  ]
+}

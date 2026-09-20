@@ -1,0 +1,143 @@
+{
+  "artifact": "verifikasjonsregister-v1",
+  "created": "2026-09-20",
+  "purpose": "Register for handlingsbaerende paastand i faglig kjerne (maal C). Hver paastand som far staa i godkjent beslutningsstotte har kilde, versjon/dato, anvendelsesomrade, kontrollor og neste kontroll. Kjernen er familie/barn-unge/tilknyttede helse-skole-okonomi-innganger.",
+  "authority": {
+    "goal_decision": "Eierbeslutning 2026-09-20: maal C (avgrenset referansebase).",
+    "plan_reference": "NAVigator-tilstand-og-veikart-2026-09-20.md, G08/Fase 3",
+    "repo_commit_verified_against": "ed156f1b1ecd03d8946b9fe676f44190578c4177"
+  },
+  "rules": {
+    "scope": "Kun handlingsbaerende paastand i kjerneinngangene. Bakgrunnstekst og orientering registreres ikke her.",
+    "control_chain": "Paastand -> lagret evidens i repo (rules-v1.json / legal-index.json / KB-fil med anker) -> kilde. Ny nasjonal rettskildekontroll utover lagret evidens krever eksplisitt unntak fra gjeldende laas.",
+    "stale_rule": "Ved kildeendring eller utlopt recheck-dato uten ny kontroll merkes paastanden IKKE_AKTUELL og handlingsradet trekkes tilbake fra godkjent utgave; historikk beholdes.",
+    "non_claims": "Ingen paastand i registeret er generelt resertifisert utover den lagrede kontrollen. Registeret er ikke ny rettskildedatabase."
+  },
+  "claims": [
+    {
+      "claim_id": "V-001",
+      "claim": "Akutt fare for liv inkludert selvmordsfare: ring 113. Haster men ikke livsfare: legevakt 116 117. Samtalestotte psykisk helse: 116 123.",
+      "files": [
+        "00-BESLUTNINGSTRE.md",
+        "45-beslutningstre-hvem-ringer-jeg.md"
+      ],
+      "authority_type": "NATIONAL_GUIDANCE",
+      "source": "helsenorge.no legevakt/nodnummer; KB 57-nodhjelp-og-akutte-situasjoner.md; KB 26-beslutningsstotte-hvor-henvende-seg.md",
+      "rules_anchor": "data/rules-v1.json R-EMERGENCY-113-116X",
+      "version_date": "2026-08-30 (lagret verifisering), krysskontrollert 2026-09-20",
+      "scope": "Nasjonal",
+      "controller": "Codex implementering 20.09 (samstemming mot lagret regel); kildekontroll 30.08",
+      "recheck": "Ved kjent endring i nodnumre; aarlig minimum (neste senest 2027-08-30)"
+    },
+    {
+      "claim_id": "V-002",
+      "claim": "Barnevernvakt 116 111 gjelder naar barnet er uten trygg omsorgsperson; krisesenter 116 006.",
+      "files": [
+        "00-BESLUTNINGSTRE.md",
+        "45-beslutningstre-hvem-ringer-jeg.md"
+      ],
+      "authority_type": "NATIONAL_GUIDANCE",
+      "source": "helsenorge.no / bufdir; KB 57; KB 42-vold-trusler-og-sikkerhet.md",
+      "rules_anchor": "data/rules-v1.json R-EMERGENCY-113-116X",
+      "version_date": "2026-08-30; krysskontrollert 2026-09-20",
+      "scope": "Nasjonal",
+      "controller": "Codex implementering 20.09",
+      "recheck": "Aarlig minimum (neste senest 2027-08-30)"
+    },
+    {
+      "claim_id": "V-003",
+      "claim": "Politi ved umiddelbar fare: 112.",
+      "files": [
+        "00-BESLUTNINGSTRE.md",
+        "45-beslutningstre-hvem-ringer-jeg.md"
+      ],
+      "authority_type": "NATIONAL_GUIDANCE",
+      "source": "politi.no / helsenorge.no; KB 57",
+      "rules_anchor": "data/rules-v1.json R-EMERGENCY-113-116X",
+      "version_date": "2026-08-30; krysskontrollert 2026-09-20",
+      "scope": "Nasjonal",
+      "controller": "Codex implementering 20.09",
+      "recheck": "Aarlig minimum (neste senest 2027-08-30)"
+    },
+    {
+      "claim_id": "V-004",
+      "claim": "Meklingsattest er krevet for aa faa rettslig gyldig avtale om samvar/bosted; samboere med felles barn under 16 ar skal mote til mekling ved samlivsbrudd.",
+      "files": [
+        "34-mekling-og-foreldresamarbeidsavtale.md",
+        "26-beslutningsstotte-hvor-henvende-seg.md"
+      ],
+      "authority_type": "STATUTE",
+      "source": "Barneloven (LOV-1981-04-08-7) par. 51, 54-55; Lovdata",
+      "legal_anchor": "data/legal-index.json law bnl notater",
+      "version_date": "Lovtekst verifisert 29.08.2026",
+      "scope": "Nasjonal; gjeldende rett per kontrolldato",
+      "controller": "Etappekontroll 29.08 (barnebidrag-etappen)",
+      "recheck": "Ved kjent lovendring; aarlig minimum"
+    },
+    {
+      "claim_id": "V-005",
+      "claim": "Ny sokere med aleneomsorg for barn under 14 maneder: hovedperioden for overgangsstonad loeper til utlopet av maneden barnet fyller 14 maneder; forlengelse inntil 24 maneder ved forbigaende sykdom; saerlig tilsyn til 18 ar krever legedokumentasjon.",
+      "files": [
+        "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+        "64-overgangsstonad-nye-regler-i-dybden.md",
+        "65-saerlig-tilsyn-dokumentasjon-aktorer.md"
+      ],
+      "authority_type": "STATUTE",
+      "source": "Folketrygdloven kap. 15 (LOV-1997-02-28-19) par. 15-5/15-7/15-10, endret ved LOV-2026-06-12-27, ikraft 01.07.2026; Lovdata",
+      "legal_anchor": "data/legal-index.json law ftl15 notater",
+      "version_date": "Verifisert 30.08.2026",
+      "scope": "Nasjonal; gamle regler videreføres for dagens mottakere (FOR-2026-06-25-1361)",
+      "controller": "Etappekontroll 30.08 (overgangsstonad-etappen)",
+      "recheck": "Ved ikrafttredelse av LOV-2025-06-20-40 eller annen endring; aarlig minimum"
+    },
+    {
+      "claim_id": "V-006",
+      "claim": "Overgangsstonad hovedperioden er 2,25 G per ar; frihel i inntekt under 0,5 G og 45 prosent reduksjon utover; nytt barnetilsyn dekker 64 prosent av dokumenterte utgifter med inntektsgrense 6 G.",
+      "files": [
+        "64-overgangsstonad-nye-regler-i-dybden.md",
+        "66-barnetilsyn-og-samspill-andre-ytelser.md"
+      ],
+      "authority_type": "STATUTE",
+      "source": "Folketrygdloven par. 15-7/15-9/15-10; NAV satssider",
+      "legal_anchor": "data/legal-index.json law ftl15 notater",
+      "version_date": "Verifisert 30.08.2026",
+      "scope": "Nasjonal, ny-soker-regelverk fra 01.07.2026",
+      "controller": "Etappekontroll 30.08",
+      "recheck": "Ved satsendring (typisk aarlig); aarlig minimum"
+    },
+    {
+      "claim_id": "V-007",
+      "claim": "Henvisning kreves ikke for lavterskel kommunale tilbud i utvalget der self_referral er 'direkte'; lege/henvisning kreves for BUP-poliklinikk med mindre annet er opplyst lokalt.",
+      "files": [
+        "26-beslutningsstotte-hvor-henvende-seg.md",
+        "data/municipal-mental-health-sample-v1.json"
+      ],
+      "authority_type": "LOCAL_SERVICE_FACT",
+      "source": "data/municipal-mental-health-sample-v1.json (frosset 2026-09-08, kilde-URL per tjeneste); KB 26",
+      "rules_anchor": "frosset utvalg, felt self_referral / referral_required",
+      "version_date": "Innsamlet 2026-09-08",
+      "scope": "12 kommuner i 18-23-oppgaven (gjeldende koder i data/18-23-korrigeringsprotokoll-v1.json)",
+      "controller": "Kildekontroll 08.09; identitetskontroll 20.09 (protokoll)",
+      "recheck": "Ved bruk av en lokal rute i godkjent utgave: sjekk tjenesteside pa nytt; ellers aarlig"
+    },
+    {
+      "claim_id": "V-008",
+      "claim": "Rask psykisk helsehjelp i Trondheim er 18+ (kommunal organisering); nasjonal terminologi bruker 16+/-variasjoner.",
+      "files": [
+        "70-lokalt/trondheim/02-psykisk-helse.md"
+      ],
+      "authority_type": "LOCAL_SERVICE_FACT",
+      "source": "trondheim.kommune.no; KB 02; konflikt notert i data/qa-log.md (30.08)",
+      "rules_anchor": "data/local-services-trondheim.json",
+      "version_date": "Verifisert 30.08.2026",
+      "scope": "Trondheim",
+      "controller": "Trondheim-etappe 30.08",
+      "recheck": "Aarlig minimum (neste senest 2027-08-30)"
+    }
+  ],
+  "non_claims": [
+    "Registeret omfatter ikke alle juridiske paastand i repoet, bare handlingsbaerende paastand i valgt kjerne.",
+    "Kontrollerdatoene gjelder den lagrede etappekontrollen; ingen paastand er resertifisert ved denne implementeringen.",
+    "Lokale tjenestefakta er sa langt som mulig registrert via frosset utvalg; ny lokal innhenting er ikke gjort."
+  ]
+}

@@ -1,13 +1,13 @@
 # Overordnet beslutningstre: hvor henvender jeg meg?
 
-Datostempel: 30.08.2026 (utvidet med bolig/okonomi-matrise og overgangsstonad-regelverksmotor etter oppdrag punkt 3, 27)
-Status: Inngangsport til beslutningsstotte. Detaljerte traer ligger i fil 45 (samlivsbrudd/familie/barnevern) og fil 26 (helse/skole/NAV-matrise). Akutt fare: 112. Krisesenterlinjen: 116 006. Mental Helse-hjelpelinjen: 116 123.
+Datostempel: 30.08.2026 (utvidet med bolig/okonomi-matrise og overgangsstonad-regelverksmotor etter oppdrag punkt 3, 27); akuttruter korrigert 20.09.2026 (se data/18-23-korrigeringsprotokoll-v1.json)
+Status: Inngangsport til beslutningsstotte. Detaljerte traer ligger i fil 45 (samlivsbrudd/familie/barnevern) og fil 26 (helse/skole/NAV-matrise). Akutt fare for liv/helse (inkl. akutt selvmordsfare): 113; haster uten livsfare: legevakt 116 117. Politi ved umiddelbar fare: 112. Krisesenterlinjen: 116 006. Mental Helse-hjelpelinjen: 116 123 (samtalestøtte). Barnevernvakt: 116 111.
 
 [Kategori: beslutningstre, beslutningsstotte]
 
 ## 1. Tre sporsmal som sorterer det meste
 
-1. **Er noen i umiddelbar fare?** Politi 112, eller krisesenter 116 006 / hjelpelinjen 116 123. Fil 42, 45.
+1. **Er noen i umiddelbar fare?** 113 ved akutt fare for liv/helse (inkl. akutt selvmordsfare); legevakt 116 117 når det haster uten å være livstruende; politi 112 ved umiddelbar fare; krisesenter 116 006; barnevernvakt 116 111 når ingen trygg voksen kan overta omsorgen for barnet. Fil 42, 45, 57.
 2. **Er hovedproblemet konflikt mellom voksne (foreldreansvar, bosted, samvar, okonomi)?** Familievernkontor (gratis, ingen henvisning), deretter meklingsattest, advokat/foreldretvist eller foreldresamarbeidsavtale. Fil 33, 34, 35, 37.
 3. **Er hovedproblemet barnets eller foreldres helse/fungering?** Lavterskel forst: skolehelse (fra 12 ar selv), fastlege, kommunalt psykisk helsetilbud; PPT ved larings-/utviklingsspor; BUP/HABU ved behov for spesialistutredning. Fil 25, 26, 28, 31, 32.
 
@@ -15,7 +15,7 @@ Status: Inngangsport til beslutningsstotte. Detaljerte traer ligger i fil 45 (sa
 
 | Situasjon | Forste kontakt | Deretter | Fil |
 |---|---|---|---|
-| Akutt vold, trusler, selvmordsfare | 112 / 116 006 / 116 123 | Politi, krisesenter, akutt barnevern | 42, 45 |
+| Akutt vold, trusler, selvmordsfare | 113 ved akutt fare for liv (inkl. selvmordsfare); ellers legevakt 116 117; politi 112 ved umiddelbar fare; krisesenter 116 006 | Politi, krisesenter, akutt barnevern (116 111) | 42, 45, 57 |
 | Samlivsbrudd med barn | Familievernkontor | Mekling, avtale, folkeregistrering | 33, 34, 43 |
 | Uenighet om barnets helsebehandling | Fastlege | PBL § 4-4 ved skadefare; BUP kan vurdere uavhengig av begge foreldres enighet | 41 |
 | Skolevegring/fravar | Kontaktlarer + skolehelse | Oppfolgingsplikt § 10-6; 4-nivas modell; Statsforvalteren ved skolemiljoarsak | 29, 30, 32 |

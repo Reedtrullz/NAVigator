@@ -224,3 +224,12 @@ Register over feil funnet og korrigert under juridisk QA av kunnskapssenteret. A
 - Fikset i suite underveis: HARD_LEGAL-liste ble aldri kompilert (.search paa liste), walrus-bug i positive loop, __main__-guard manglet, subgroup-metrikk filtrerte feil klasse (safety-subgruppe viste kun mutasjoner), MUT004 single-digit-deteksjon, hyphen-normalisering i regler (4-4 -> 4 4, 3-manedsregelen -> 3 manedsregelen), NEG032 skjerpet til faktisk testbar paastand.
 - JSON validert: controls/mutations/expected-results/results/metrics/subsuite + expected-routing/scenarios. scripts/qa_check.sh: OK. KB-regresjon gjenkjort etter scorer-justeringer: 48/48 BESTATT (baseline-results.json + final-results.json).
 - Dato: 30.08.2026.
+
+## Akuttveiledning-samstemming (20.09.2026)
+
+- Funn: fil 00 og fil 45 ga utydig/avvikende akuttveiledning (113 vs 116 117 vs 112; manglende barnevernvakt/krisesenter/samtalestotte-ronder) sammenlignet med data/rules-v1.json R-EMERGENCY-113-116X.
+- Retting: fil 00 og fil 45 akuttrader samstemt mot R-EMERGENCY-113-116X: 113 ved akutt fare for liv inkludert selvmordsfare; 116 117 legevakt ved haster men ikke livsfare; 112 ved umiddelbar fare politiet; 116 111 barnevernvakt uten trygg omsorgsperson; 116 006 krisesenter; 116 123 samtalestotte psykisk helse.
+- Fil 42 og fil 57 var allerede konsistente og ble ikke endret. Fil 47 faar datert revurdering (seksjon 3b) i stedet for historikk-omskriving.
+- Basis: data/rules-v1.json R-EMERGENCY-113-116X (NATIONAL_GUIDANCE, helsenorge.no verifisert 30.08.2026); numre krysskontrollert mot helsenorge.no 20.09.2026.
+- Frosne filer og laaser ikke endret. Korrigeringsprotokoll for 18-23-identiteter/baseline: data/18-23-korrigeringsprotokoll-v1.json.
+- Dato: 20.09.2026.

@@ -1,0 +1,396 @@
+{
+  "artifact": "release-manifest-v1",
+  "created": "2026-09-20",
+  "revised": "2026-09-20 (gjenoppbygd etter personvernaudit; distribusjonsport BLOCKED)",
+  "purpose": "Manifest for den avgrensede referansepakken (maal C): filer, sha256-hasher, dekningsprofil, kontrolltidspunkter og kjente hull. Pakken er ikke automatisk offentlig; eier velger mottakere og deling separat.",
+  "authority": {
+    "goal_decision": "Eierbeslutning 2026-09-20 (maal C)",
+    "plan_reference": "Fase 4 / G13",
+    "repo_commit_verified_against": "ed156f1b1ecd03d8946b9fe676f44190578c4177"
+  },
+  "hash_algorithm": "sha256",
+  "distribution_status": "BLOCKED",
+  "distribution_block_reason": "Personvernaudit 20.09 fant navngitte personseksjoner og private kryssreferanser i filer paa innholdslisten. Se data/publiseringsprofil-v1.json distribution_gate og pre_export_scrub. Generell eksport forbyr foer scrub + re-audit.",
+  "files_requiring_scrub_before_export": [
+    "00-BESLUTNINGSTRE.md",
+    "48-barnebidrag-i-dybden.md",
+    "51-familieokonomi-etter-samlivsbrudd.md",
+    "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+    "64-overgangsstonad-nye-regler-i-dybden.md",
+    "65-saerlig-tilsyn-dokumentasjon-aktorer.md",
+    "66-barnetilsyn-og-samspill-andre-ytelser.md",
+    "68-overgangsforskriften-i-dybden.md",
+    "69-kunnskapshullregister.md",
+    "70-lokalt/trondheim/06-nav-okonomi-bolig.md",
+    "70-lokalt/trondheim/README.md",
+    "data/legal-index.json"
+  ],
+  "coverage_profile": {
+    "definition": "kontrollert = innholdet har lagret etappekontroll for dette formaalet; delvis = kun deler av innholdet er kontrollert; historisk = datert bakgrunn uten aktuell kontroll; ikke_dekket = utenfor godkjent utgave.",
+    "core_theme": "familie/barn-unge + tilknyttede helse-skole-okonomi-innganger",
+    "local_scope": "12 kommuner i 18-23-oppgaven (korrigerede koder i data/18-23-korrigeringsprotokoll-v1.json); Trondheim er kontrollert 30.08, ovrig lokal dekning er ikke_dekket inntil fase 3-lokalruter er passert",
+    "labels_used": {
+      "kontrollert_29_30_08": "kontrollert",
+      "rettet_20_09": "kontrollert",
+      "ny_20_09": "delvis (strukturkontrollert, ikke faglig attestert)"
+    },
+    "coverage_note": "Alle filer i listen er enten kontrollert for kjerneaaget eller strukturkontrollerte styrings-/protokollfiler. Innholdsgodkjenning er en separat akse fra personvernskrubb; begge ma vaere gronn foer eksport."
+  },
+  "control_timestamps": {
+    "juridisk_innhold": "29.-30.08.2026 (lagret etappekontroll, data/legal-index.json metadata.verified_against)",
+    "akuttinnganger": "30.08.2026 lagret; samstemt og krysskontrollert 20.09.2026",
+    "kommuneidentiteter": "20.09.2026 (SSB KLASS 131, live)",
+    "baseline": "20.09.2026 (programmatisk avstemming, protokoll)",
+    "lokal_trondheim": "30.08.2026",
+    "personvernaudit": "20.09.2026 (uavhengig agent; port BLOCKED)"
+  },
+  "known_gaps": [
+    "Distribusjon BLOCKED: navngitte Mari-seksjoner (63/64/65/66) og kryssreferanser til private filer i kjernefiler; scrub-liste i manifestet og i profilen.",
+    "Lokale ruter for 11 av 12 kommuner har ikke passert fase 2-godkjenning; Trondheim er kontrollert men folger egen etappe.",
+    "Runtime-defektene G05/G08/G09 er urettet og blokkerer et brukerprodukt; ikke del av denne pakken.",
+    "Ingen paastand er faglig resertifisert utover lagrede kontroller; verifikasjonsregisteret angir recheck-datoer.",
+    "Fil 72 seksjon 3 gjengir ikke det frosne utvalget for 8/24 celler; protokollen dokumenterer avviket, fil 72 er uendret.",
+    "Sentralitetsklasser er ikke re-verifisert; identitetskorrigeringen omfatter kun kommunenumre.",
+    "Ikraftresolusjon for LOV-2025-06-20-40 er ikke funnet; status VEDTATT IKKE I KRAFT per 30.08."
+  ],
+  "missing_files_at_build": [],
+  "files": [
+    {
+      "path": "00-BESLUTNINGSTRE.md",
+      "status": "rettet_20_09",
+      "scope": "Akutt- og beslutningsinnganger (kjerne)",
+      "pre_export_condition": "name_scrub",
+      "sha256": "9d1d418770c12176f67e486d7f01f6f84f776a7cc5b3e6a4d962697978cae92a",
+      "bytes": 7661
+    },
+    {
+      "path": "26-beslutningsstotte-hvor-henvende-seg.md",
+      "status": "kontrollert_30_08",
+      "scope": "Akutt- og beslutningsinnganger (kjerne)",
+      "pre_export_condition": "none",
+      "sha256": "be4e159ba322df9cea9d489c39c22cca8732e812aafe1f26cfeebfe330b6ba5b",
+      "bytes": 16992
+    },
+    {
+      "path": "42-vold-trusler-og-sikkerhet.md",
+      "status": "kontrollert_30_08",
+      "scope": "Akutt- og beslutningsinnganger (kjerne)",
+      "pre_export_condition": "none",
+      "sha256": "6bc44960c0f2bf61e2c30cc26126a62f3678edf3e57b47dd6cd1fde14ad977ee",
+      "bytes": 6496
+    },
+    {
+      "path": "45-beslutningstre-hvem-ringer-jeg.md",
+      "status": "rettet_20_09",
+      "scope": "Akutt- og beslutningsinnganger (kjerne)",
+      "pre_export_condition": "none",
+      "sha256": "ca9048f0cac5ffdf2eb9337e6137601839845537cfd64bc1e2a80b583e5a3e09",
+      "bytes": 4356
+    },
+    {
+      "path": "57-nodhjelp-og-akutte-situasjoner.md",
+      "status": "kontrollert_30_08",
+      "scope": "Akutt- og beslutningsinnganger (kjerne)",
+      "pre_export_condition": "none",
+      "sha256": "cbbfc047a390cbe091294f841ed7240f08faaddd6ac618a83d720014f96038c8",
+      "bytes": 8136
+    },
+    {
+      "path": "33-familievern-i-dybden.md",
+      "status": "kontrollert_29_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "9d6ce99fa5fece5eeef0b65a03c6a431bb82264103148566f12fed5efb1fdcb6",
+      "bytes": 7551
+    },
+    {
+      "path": "34-mekling-og-foreldresamarbeidsavtale.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "9c5ebe39e0314c9bf5dbf43d7e5d62b34d79ccd0dcd23ecd7183e5aa318d8544",
+      "bytes": 6036
+    },
+    {
+      "path": "35-foreldreansvar-bosted-samvar.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "21cde8bbac6b700e884fab17903049bfcd739ec72f6b98396b008db19ddad1f6",
+      "bytes": 6230
+    },
+    {
+      "path": "36-barnets-mening-og-barnets-beste.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "779e6ede2c6090c0519d9f2a0317969d896b354dbbc0ce29b29d6bc609639db9",
+      "bytes": 4007
+    },
+    {
+      "path": "37-foreldretvist-og-domstol.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "49cc0abbcc4715af79c929e22543ed767f88e46e04689e051581ad3d49b8df12",
+      "bytes": 6355
+    },
+    {
+      "path": "38-barnevernet-hjelp-ikke-bare-inngrep.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "84edd41c8a9e45a61e378834e59ba24eeeec8eb6cb5b014e7c3094eccd4d34a3",
+      "bytes": 5272
+    },
+    {
+      "path": "39-frivillige-hjelpetiltak.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "b4b3fb8f5bc48677f977bcfbdb4640fe06403a3d5a850343ebc86baca82d163e",
+      "bytes": 6201
+    },
+    {
+      "path": "40-bekymringsmelding-og-undersokelse.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "a8aa2a869db187472f8eac26fd9f54f5531a888f6690027545f15cc45296f0ec",
+      "bytes": 4679
+    },
+    {
+      "path": "41-samtykke-pa-tvers-av-tjenester.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "48b430bec4ffb7df4b10a5eb4b7070ad0764123ce71c9cd743be371bcec3251a",
+      "bytes": 5401
+    },
+    {
+      "path": "48-barnebidrag-i-dybden.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "crossref_scrub",
+      "sha256": "251d631b52ee46d4904901296479252ac97f1222a67863676d0f970d5703a785",
+      "bytes": 24436
+    },
+    {
+      "path": "49-samvaersfradrag-og-reisekostnader.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "1ad9831aed80ee9150a252e9f1a07ff7cd3663521e21160c589cf2b9e6639132",
+      "bytes": 9149
+    },
+    {
+      "path": "50-bidragsforskudd-og-innkreving.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "1809de1a080bc208d920274d9c6c056f3a888f1bf49bcd139f91f204b4a27c74",
+      "bytes": 10199
+    },
+    {
+      "path": "51-familieokonomi-etter-samlivsbrudd.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "crossref_scrub",
+      "sha256": "6b32e5ec2bd3699763535809b0b3ae4fd80ed87e2e28d20a177406de3726711b",
+      "bytes": 9045
+    },
+    {
+      "path": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+      "status": "kontrollert_29_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "none",
+      "sha256": "860c3c82dcbf9b1f39dfbe9c913acf0994c3ed3530a5bf7f8233cdc505595451",
+      "bytes": 3548
+    },
+    {
+      "path": "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+      "status": "kontrollert_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "section_scrub",
+      "sha256": "ae26ad1c8ec22fed1b19ed5d9dedf23f8fcdbd4f5ee689dfc4d32444461826e2",
+      "bytes": 12261
+    },
+    {
+      "path": "64-overgangsstonad-nye-regler-i-dybden.md",
+      "status": "kontrollert_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "section_scrub",
+      "sha256": "e0d5f0ac9df27c7bd470414e8d40461a0a69d0eb3b37fc95b1b31baf7298c77c",
+      "bytes": 9030
+    },
+    {
+      "path": "65-saerlig-tilsyn-dokumentasjon-aktorer.md",
+      "status": "kontrollert_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "section_scrub",
+      "sha256": "ba13012587e484707800daff72058ff0ccc35b64b997f7be2d9bf80edc37531a",
+      "bytes": 7004
+    },
+    {
+      "path": "66-barnetilsyn-og-samspill-andre-ytelser.md",
+      "status": "kontrollert_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "section_scrub",
+      "sha256": "eff6ba5a306cbd178161c9a71c050a2bd5a41f4905a5582bfb89c01b7db60ca0",
+      "bytes": 9250
+    },
+    {
+      "path": "68-overgangsforskriften-i-dybden.md",
+      "status": "kontrollert_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "crossref_scrub",
+      "sha256": "268ef386fd41fb3b5c83b7efa9925dd08029a06ceb76b741bb80c6d1eca55308",
+      "bytes": 12349
+    },
+    {
+      "path": "69-kunnskapshullregister.md",
+      "status": "kontrollert_30_08",
+      "scope": "Juridiske faktafiler i kjerne (familie/barn/unge/helse/skole/okonomi)",
+      "pre_export_condition": "name_scrub",
+      "sha256": "7c7863ab6931e788b7a508598025dcae5f6a917e53cfbdd52eb36fb7ade18a85",
+      "bytes": 9812
+    },
+    {
+      "path": "data/rules-v1.json",
+      "status": "kontrollert_30_08",
+      "scope": "Strukturdata",
+      "pre_export_condition": "none",
+      "sha256": "2a9ea7ecc1a3b01c3893abb5b4da150d7fb39ac3305c55ece46271ba2792adbc",
+      "bytes": 2984
+    },
+    {
+      "path": "data/legal-index.json",
+      "status": "kontrollert_30_08",
+      "scope": "Strukturdata",
+      "pre_export_condition": "crossref_scrub",
+      "sha256": "45e88608df8603544d890bee2381df1db4add57ee286b04044e9e5accb06dc79",
+      "bytes": 18531
+    },
+    {
+      "path": "data/safety-triage-rules-v2.json",
+      "status": "kontrollert",
+      "scope": "Strukturdata",
+      "pre_export_condition": "none",
+      "sha256": "c997ce4fdcaf2648161459d4d3a344a6e12bfcbaff965192db56c6d3cee23b6a",
+      "bytes": 6448
+    },
+    {
+      "path": "data/verifikasjonsregister-v1.json",
+      "status": "ny_20_09",
+      "scope": "Strukturdata",
+      "pre_export_condition": "none",
+      "sha256": "520567ffe6bd77fa3b1d152e059d9f2670626ea24db5bea1c23f299ca971ca12",
+      "bytes": 7925
+    },
+    {
+      "path": "data/18-23-korrigeringsprotokoll-v1.json",
+      "status": "ny_20_09",
+      "scope": "Strukturdata",
+      "pre_export_condition": "none",
+      "sha256": "330db5c638a0d432edb95e764daaa651f29f5c2eaadd25f35f336e6592e0aa20",
+      "bytes": 6044
+    },
+    {
+      "path": "data/publiseringsprofil-v1.json",
+      "status": "ny_20_09",
+      "scope": "Strukturdata",
+      "pre_export_condition": "repo_metadata",
+      "sha256": "db7ae70bacb72adde791c5ebe435ab0c368adc4cc643f2294f919bca8d760da1",
+      "bytes": 17540
+    },
+    {
+      "path": "70-lokalt/trondheim/01-barn-og-familie.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "5758161f4e8abdddacbc599b9d2e44b1ed8a3d26ef4da5e45b836e4208ce29b3",
+      "bytes": 3879
+    },
+    {
+      "path": "70-lokalt/trondheim/02-psykisk-helse.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "124a0f28557febe443aac6cc9104561dfaa47cb8b7632c0c79466682b8e553c0",
+      "bytes": 3896
+    },
+    {
+      "path": "70-lokalt/trondheim/03-skole-ppt.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "844b0529802ffb760c4cda6577e65b7a93e69821893e064fc58d1fc56e4daac9",
+      "bytes": 3538
+    },
+    {
+      "path": "70-lokalt/trondheim/04-bup-habu.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "a8fd91f2f5a90678995102533fb3c0bbff5feaa3ba11e4258b733167255a9d24",
+      "bytes": 3711
+    },
+    {
+      "path": "70-lokalt/trondheim/05-familievern-barnevern.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "1c94a7d8dd8f111b1f496ce1e1c778fc38d7da8aec1db64ffcc7c62100099d19",
+      "bytes": 4554
+    },
+    {
+      "path": "70-lokalt/trondheim/06-nav-okonomi-bolig.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "name_scrub",
+      "sha256": "2bcbed973288ec1bef0213641736b75009663597cf75ecd02f49c90c1a2bb012",
+      "bytes": 4767
+    },
+    {
+      "path": "70-lokalt/trondheim/07-akutt-og-sikkerhet.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "7e8a1299683c4a49a8c8272bca92d6fddbc7fa771d9c6ef5e9c21cc95503cf08",
+      "bytes": 3465
+    },
+    {
+      "path": "70-lokalt/trondheim/README.md",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "name_scrub",
+      "sha256": "d487f8ee37e6d6aa93eaba86e53311e13918b6881f1f588b380c12f13ebd9301",
+      "bytes": 2371
+    },
+    {
+      "path": "data/local-services-trondheim.json",
+      "status": "kontrollert_30_08",
+      "scope": "Lokale tjenestefakta (Trondheim, historisk kontroll)",
+      "pre_export_condition": "none",
+      "sha256": "8c35c1a36c047c10e04476ad6909badcd0a24c7ef9f5246ea4b26933d2ce10bc",
+      "bytes": 17294
+    },
+    {
+      "path": "docs/maal-og-avgrensning.md",
+      "status": "ny_20_09",
+      "scope": "styringsdokument",
+      "pre_export_condition": "repo_metadata",
+      "sha256": "5cf4e228cdd3904f54c40e186dfb451f78238e4949151dd4f9de5af9fbc90b4f",
+      "bytes": 3437
+    },
+    {
+      "path": "docs/status-og-laser.md",
+      "status": "ny_20_09",
+      "scope": "styringsdokument",
+      "pre_export_condition": "repo_metadata",
+      "sha256": "49c1d008c74bea4123ae39b6838109e29c4c472b285fd2152aad0c37a6ab3b2e",
+      "bytes": 4298
+    }
+  ],
+  "distribution_rule": "Generell distribusjon starter IKKE foer distribution_status er aapnet etter scrub + re-audit. Eieren velger mottakere; eksport bygger bare fra innholdsfilene (pre_export_condition 'none' + scrubbede), aldri som arkiv av hele repoet."
+}

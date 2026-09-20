@@ -1,6 +1,6 @@
 # Scenarioregresjon: 25 situasjoner mot beslutningstre og fagfiler
 
-Datostempel: 29.08.2026
+Datostempel: 29.08.2026; ny vurdering 20.09.2026 (se nedenfor)
 Metode: Hvert scenario er lapt mot 00-BESLUTNINGSTRE, fil 26 (matrise), fil 45 (detailed tre) og fagfilene. Regresjonen sjekker dokumentkonsistens (samme anbefalt rute i alle filer), ikke klinisk korrekthet. Lovstoff referert fra verifiserte filer.
 Status: 25/25 konsistente etter korreksjoner i fil 30-32 og 37-43. Ikke funnet: motstridende ruter mellom fil 00, 26, 45 og fagfilene.
 
@@ -54,6 +54,10 @@ Status: 25/25 konsistente etter korreksjoner i fil 30-32 og 37-43. Ikke funnet: 
 - Scenario 7 og 15 er avhengige av alvorlighetsvurdering i henvisningen (prioriteringsforskriften); dette er angitt i fil 16-livssituasjoner/04 og 24.
 - Scenario 17 (taushet for 12+) krever konkret vurdering av helsepersonell; fil 31 har riktig balanse mellom § 3-4 og avvergingsplikt.
 - Mari-spesifikk regresjon: fil 44 er konsistent med fil 22 (50 % stilling, datter 7 ar, utredning startet, meklingsattest til NAV-soknader) og med fil 34 (1 obligatorisk mote, 6 maneder gyldighet, BNL §§ 51-54).
+
+## 3b. Ny vurdering 20.09.2026 (akuttruter)
+
+Statuslinjen over og tabellen gjenspeiler kontrollen per 29.08.2026 og bevares som historikk. Ved kontroll 20.09.2026 ble det funnet at scenario 9 ("Selvmordsfare: 113/legevakt") ikke var konsistent med da-gjeldende akuttruter i fil 00 og fil 45 (som pekte politi 112 forst ved akutt vold/trusler/selvmordsfare). Akuttrutene i fil 00, 45 og 47 er naa samstemt: 113 ved akutt fare for liv/helse inkl. akutt selvmordsfare; legevakt 116 117 nar det haster uten a vaere livstruende; politi 112 ved umiddelbar fare; 116 111 barnevernvakt; 116 006 krisesenter; 116 123 samtalestotte. Grunnlag: data/rules-v1.json regel R-EMERGENCY-113-116X (verifisert 30.08.2026) og Helsenorge (kontrollert 20.09.2026). Detaljer: data/18-23-korrigeringsprotokoll-v1.json og data/qa-log.md.
 
 ## 4. Kryssreferanser
 

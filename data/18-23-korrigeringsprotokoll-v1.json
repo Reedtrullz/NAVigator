@@ -1,0 +1,68 @@
+{
+  "artifact": "18-23-korrigeringsprotokoll-v1",
+  "created": "2026-09-20",
+  "purpose": "Korrigeringsprotokoll for identitets- og baselinekonflikter i 18-23 lokal rutingsleveransen (plan-G04). Binder hver korreksjon til opprinnelig rad, kilde og dato. Frosne originaler endres ikke; korreksjoner trer i kraft via pekere fra denne filen.",
+  "authority": {
+    "goal_decision": "Maal C (avgrenset, verifiserbar referansebase) valgt av eier 2026-09-20; implementeringsstart autorisert samme dag.",
+    "plan_reference": "~/Downloads/NAVigator-tilstand-og-veikart-2026-09-20.md, Del 4 Fase 2, gap G04",
+    "repo_commit_verified_against": "ed156f1b1ecd03d8946b9fe676f44190578c4177"
+  },
+  "ssb_classification": {
+    "source": "SSB KLASS klassifikasjon 131 (Standard for kommuneinndeling), kodetabell gyldig fra 2026-01-01",
+    "endpoint": "https://data.ssb.no/api/klass/v1/classifications/131/codes?from=2026-01-01",
+    "checked_date": "2026-09-20",
+    "method": "Live API-henting; alle 12 kommunenavn slaatt opp mot kodetabellen.",
+    "limitation": "Sentralitetsklasse er ikke del av denne tabellen og er ikke re-verifisert her; frosne ssb_sentralitetsklasse-verdier forblir uendret og uverifisert av denne protokollen."
+  },
+  "identity_corrections": [
+    {"kommune": "Alta", "frozen_code": "2021", "ssb_code_2026": "5601", "fylke": "Finnmark"},
+    {"kommune": "Steinkjer", "frozen_code": "5421", "ssb_code_2026": "5006", "fylke": "Trondelag", "note": "5421 er Lierne i SSB 2026; frosset nummer og navn peker paa ulike kommuner."},
+    {"kommune": "Farsund", "frozen_code": "4208", "ssb_code_2026": "4206", "fylke": "Agder"},
+    {"kommune": "Ulstein", "frozen_code": "1573", "ssb_code_2026": "1516", "fylke": "More og Romsdal"},
+    {"kommune": "Sor-Varanger", "frozen_code": "5620", "ssb_code_2026": "5605", "fylke": "Finnmark", "note": "Navn i frosset utvalg skrevet 'Sor-Varanger' (ASCII); SSB: 'Sor-Varanger' med bokmal-tegn."},
+    {"kommune": "Sauda", "frozen_code": "3867", "ssb_code_2026": "1135", "fylke": "Rogaland"},
+    {"kommune": "Tynset", "frozen_code": "3421", "ssb_code_2026": "3427", "fylke": "Innlandet"},
+    {"kommune": "Orland", "frozen_code": "5042", "ssb_code_2026": "5057", "fylke": "Trondelag", "note": "Navn i frosset utvalg skrevet 'Orland' (ASCII); SSB: 'Orland' med bokmal-tegn."},
+    {"kommune": "Osen", "frozen_code": "5610", "ssb_code_2026": "5020", "fylke": "Trondelag"},
+    {"kommune": "Askvoll", "frozen_code": "1432", "ssb_code_2026": "4645", "fylke": "Vestland"},
+    {"kommune": "Bykle", "frozen_code": "4232", "ssb_code_2026": "4222", "fylke": "Agder"},
+    {"kommune": "Hasvik", "frozen_code": "5614", "ssb_code_2026": "5616", "fylke": "Finnmark"}
+  ],
+  "identity_corrections_summary": "Alle 12 frosne kommunenumre avviker fra SSB 2026-kodetabellen og er pre-2020-sammenslutningsnummer. Alle 12 navn stemmer med SSB 2026. Kommuneidentitet (navn) er uendret; numrene korrigeres her.",
+  "parent_dataset_reference_correction": {
+    "task_lock_value": "data/municipality-sample.json",
+    "actual_dataset": "data/municipal-mental-health-sample-v1.json",
+    "evidence": "data/municipality-sample.json finnes ikke i repo (404 ved commit ed156f1). data/municipal-mental-health-sample-v1.json finnes og oppgir selv artifact-id NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1, som TASK-LOCK-18-23-ROUTING-GAP.json siterer som parent_sample-navn.",
+    "disposition": "TASK-LOCK filen endres ikke; referanseavviket dokumenteres her og i docs/status-og-laser.md."
+  },
+  "baseline_label_reconciliation": {
+    "method": "Programmatisk sammenligning (python, 2026-09-20) av data/18-23-routing-target-sample.json mot tabellen i fil 72 seksjon 3 (regex-parse av markdown-tabellen), per scenario C og D for alle 12 kommuner.",
+    "cells_total": 24,
+    "cells_matching": 16,
+    "cells_mismatching": 8,
+    "mismatches": [
+      {"kommune": "Steinkjer", "scenario": "C", "frozen_sample": "NO_MATCHING_LOCAL_SERVICE_FOUND", "fil_72": "LOCAL_ROUTING_UNCLEAR"},
+      {"kommune": "Ulstein", "scenario": "D", "frozen_sample": "NO_MATCHING_LOCAL_SERVICE_FOUND", "fil_72": "LOCAL_ROUTING_UNCLEAR"},
+      {"kommune": "Sor-Varanger", "scenario": "C", "frozen_sample": "LOCAL_ROUTING_UNCLEAR", "fil_72": "NO_MATCHING_LOCAL_SERVICE_FOUND"},
+      {"kommune": "Sauda", "scenario": "C", "frozen_sample": "LOCAL_ROUTING_UNCLEAR", "fil_72": "NO_MATCHING_LOCAL_SERVICE_FOUND"},
+      {"kommune": "Orland", "scenario": "C", "frozen_sample": "MULTIPLE_VALID_ROUTES", "fil_72": "CLEAR_LOCAL_ROUTE", "note": "Kontrollkommune"},
+      {"kommune": "Orland", "scenario": "D", "frozen_sample": "MULTIPLE_VALID_ROUTES", "fil_72": "CLEAR_LOCAL_ROUTE", "note": "Kontrollkommune"},
+      {"kommune": "Askvoll", "scenario": "C", "frozen_sample": "LOCAL_ROUTING_UNCLEAR", "fil_72": "NO_MATCHING_LOCAL_SERVICE_FOUND"},
+      {"kommune": "Askvoll", "scenario": "D", "frozen_sample": "LOCAL_ROUTING_UNCLEAR", "fil_72": "NO_MATCHING_LOCAL_SERVICE_FOUND"}
+    ],
+    "assessment": "Fil 72 seksjon 3 omtaler tabellen som det frosne utvalget, men 8 av 24 celler avviker fra den faktiske frosne filen. Under begge etikettsettene er antall problemsceller 20 (10 C + 10 D) og Ulstein C og D er de eneste cellene som ikke recoveres; fil 72s hovedtall 18/20 (90 prosent) er dermed robust, men cellekomposisjonen i seksjon 3 gjengir ikke det frosne utvalget noyaktig.",
+    "disposition": "Frosset utvalg forblir autoritativ V1-baseline. Fil 72 endres ikke; avviket dokumenteres her. Fil 72s dyp-research-utfall og slutt-klassifisering berorikes ikke."
+  },
+  "downstream_pointers": [
+    "docs/status-og-laser.md",
+    "docs/maal-og-avgrensning.md",
+    "data/qa-log.md (tillegg 2026-09-20)",
+    "release manifest v1"
+  ],
+  "non_claims": [
+    "Ingen frosne filer er endret av denne protokollen.",
+    "Sentralitetsklasser er ikke re-verifisert.",
+    "Ingen nye kommuner er lagt til og ingen kommuner er kontaktet.",
+    "Fil 72s 90 prosent recovery er ikke en ny maaling; tallet besta som robust under begge baseline-etikettsettene."
+  ]
+}
