@@ -1,0 +1,26 @@
+{
+  "suite": "runtime/sut unit suites (phase1 + phase2 + phase3) and phase3 runner suite",
+  "runner": "python3 -m unittest discover",
+  "result": "OK",
+  "total": 134,
+  "failures": 0,
+  "errors": 0,
+  "runtime_counts": {
+    "phase1_context_pipeline_schemas_separation": 37,
+    "phase2_aggregate_decompose_discovery_knowledge_routes_safety": 75,
+    "phase3_planner_render_finalize": 22
+  },
+  "phase3_runner_suite": {
+    "anchored": "repo root (PYTHONPATH=evaluation/full-sut-implementation-phase3:runtime:..)",
+    "result": "OK",
+    "tests": 7
+  },
+  "phase1_runner_suite": {
+    "anchored": "repo root",
+    "invocation": "PYTHONPATH=evaluation/full-sut-implementation:runtime python3 -m unittest discover -s evaluation/full-sut-implementation/sut_runner",
+    "result": "OK",
+    "tests": 15,
+    "note": "All 15 tests pass when invoked from repo root with the package parent on PYTHONPATH. An earlier session note describing a Python 3.14 namespace-package limitation was an invocation-path artifact, not a runtime or environment defect; the suite is green under homebrew Python 3.14."
+  },
+  "note": "134 = 37 phase1 + 75 phase2 + 22 phase3 runtime unit tests. Runner suites (15 phase1 + 7 phase3) run separately and also pass."
+}

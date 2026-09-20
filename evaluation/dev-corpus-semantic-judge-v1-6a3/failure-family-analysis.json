@@ -1,0 +1,80 @@
+{
+  "artifact": "failure-family-analysis.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A3-AMBIGUITY-ABSTENTION-HARDENING",
+  "source": "V1_6A2_OFFICIAL_80 (BURNED_BOUNDARY_DIAGNOSTIC_DATA)",
+  "source_sha256": "feaab60c6823218ba7a969a24a351f25413828356aa3336754b5bf08044f89d2",
+  "method": "abstract structural families from all 11 false deterministics; fixture IDs recorded for provenance only, never used as rule concepts",
+  "false_deterministic_n": 11,
+  "families": [
+    {
+      "family": "QUOTE_SCOPE_AMBIGUITY",
+      "cases": ["OFF-SCOPE-01", "OFF-SCOPE-02", "OFF-SCOPE-08", "OFF-SCOPE-16"],
+      "mechanism": "quote/attribution spans coexist with out-of-quote commitment signals (disagreement clause, hypothetical framing) or cover the entire output; endorsement cannot be adjudicated mechanically",
+      "adjudication": "B for OFF-SCOPE-01/OFF-SCOPE-02 (quote + competing out-of-quote commitment signal -> ABSTAIN); C for OFF-SCOPE-08 and OFF-SCOPE-16 (gold disputes: QUOTED_ONLY vs ABSTAIN is a contract boundary, no engine rule)"
+    },
+    {
+      "family": "PARENTHETICAL_SCOPE_AMBIGUITY",
+      "cases": ["OFF-SCOPE-04"],
+      "mechanism": "route proposition and operator exist only inside parentheses; commitment scope is non-standard and cannot borrow licensing through the parenthetical boundary",
+      "adjudication": "B (route noun/operators only inside parentheses -> ABSTAIN)"
+    },
+    {
+      "family": "MIXED_POLARITY_SINGLE_PROPOSITION",
+      "cases": ["OFF-SCOPE-05", "OFF-SCOPE-17"],
+      "mechanism": "one route candidate receives competing polarity labels from different clauses (assertion + negated hedge qualifier; negation clause + hypothetical clause); existing mixed guard requires 2+ candidates so single-candidate conflicts collapse to highest priority",
+      "adjudication": "B (single candidate with 2+ distinct polar labels from {ASSERTED, NEGATED, HYPOTHETICAL_ONLY} and no retraction resolution -> ABSTAIN; retraction keeps resolving to SELF_RETRACTED per burned VR-R/CMT-R binding)"
+    },
+    {
+      "family": "COMPETING_COMMITMENT_OPERATORS",
+      "cases": ["OFF-ADV-12"],
+      "mechanism": "negation scoped inside conditional antecedent (dersom ... ikke ...) fires NEGATED over a route that only appears in the consequent; polarity of the antecedent is not polarity of the route proposition",
+      "adjudication": "A (deterministic: NEGATED does not fire from a negation preceded by a conditional marker in the same clause; HYPOTHETICAL_ONLY stands)"
+    },
+    {
+      "family": "COMPETING_HEDGES",
+      "cases": ["OFF-SCOPE-19"],
+      "mechanism": "two hedged clauses each carrying a different route candidate present alternative framing; operator-to-target pairing is not uniquely determinable",
+      "adjudication": "B (2+ candidates with hedge markers bound to different candidates -> ABSTAIN; also covers MULTIPLE_ROUTE_CANDIDATES_AMBIGUOUS for hedged alternation)"
+    },
+    {
+      "family": "MULTIPLE_ROUTE_CANDIDATES_AMBIGUOUS",
+      "cases": [],
+      "mechanism": "already deterministically guarded in V1.6A.2 (BC_ROUTE_AMBIGUOUS_02 same-clause competition; BC_ROUTE_MIXED_POLARITY_03 multi-candidate polarity); no fresh official failure landed here without also being hedge competition",
+      "adjudication": "existing guards confirmed; no new rule needed"
+    },
+    {
+      "family": "RETRACTION_SCOPE_AMBIGUITY",
+      "cases": ["OFF-SAME-17"],
+      "mechanism": "non-endorsement construction (kan ikke staa inne for) without a prior assertion to retract; whether this is NEGATED or SELF_RETRACTED is a contract boundary, not a mechanical defect",
+      "adjudication": "C (gold dispute; no engine rule in this task)"
+    },
+    {
+      "family": "CONDITIONAL_QUALIFIER_SCOPE",
+      "cases": ["OFF-SCOPE-09"],
+      "mechanism": "assertion followed by trailing conditional qualifier (dersom ...); whether trailing condition demotes ASSERTED to HYPOTHETICAL_ONLY is a contract boundary",
+      "adjudication": "C (gold dispute; no engine rule in this task)"
+    },
+    {
+      "family": "OTHER",
+      "cases": [],
+      "mechanism": "no unclassifiable failures remained",
+      "adjudication": "n/a"
+    }
+  ],
+  "adjudication_summary": {
+    "A_DETERMINISTICALLY_RESOLVABLE": ["COMPETING_COMMITMENT_OPERATORS"],
+    "B_STRUCTURALLY_AMBIGUOUS_ABSTAIN": [
+      "QUOTE_SCOPE_AMBIGUITY (non-dispute cases)",
+      "PARENTHETICAL_SCOPE_AMBIGUITY",
+      "MIXED_POLARITY_SINGLE_PROPOSITION",
+      "COMPETING_HEDGES"
+    ],
+    "C_GOLD_OR_CONTRACT_BOUNDARY": [
+      "RETRACTION_SCOPE_AMBIGUITY (OFF-SAME-17)",
+      "CONDITIONAL_QUALIFIER_SCOPE (OFF-SCOPE-09)",
+      "QUOTE_SCOPE_AMBIGUITY (OFF-SCOPE-08, OFF-SCOPE-16)"
+    ]
+  },
+  "default_on_doubt": "B applied per contract section 10",
+  "case_specific_rules_used": false
+}

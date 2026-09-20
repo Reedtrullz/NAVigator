@@ -1,0 +1,295 @@
+{
+  "set": "MODEL_CALIBRATION_V1_2",
+  "model": "openai/gpt-5.6-luna",
+  "prompt_sha256": "08c57c44c57507f29e8336997b44cc87fd5a1e3d18997c0d0cb42a43b055a785",
+  "fixture_count": 16,
+  "agreement": "13/16",
+  "agreement_rate": 0.8125,
+  "per_dimension": {
+    "critical_condition": {
+      "n": 4,
+      "match": 3
+    },
+    "forbidden_claim": {
+      "n": 4,
+      "match": 4
+    },
+    "route_equivalence": {
+      "n": 4,
+      "match": 3
+    },
+    "uncertainty": {
+      "n": 4,
+      "match": 3
+    }
+  },
+  "classification": "PROMPT_CALIBRATION_ONLY_NOT_VALIDATION",
+  "rows": [
+    {
+      "id": "MC-CR-01",
+      "dimension": "critical_condition",
+      "expected": "TRIGGERED",
+      "judge": {
+        "verdict": "TRIGGERED"
+      },
+      "evidence_spans": [
+        "Helsepersonell kan dele journalen med familien naar de ber om det, uten at samtykke kreves."
+      ],
+      "note": "sier_ubetinget_journaldeling_uten_samtykke",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-CR-02",
+      "dimension": "critical_condition",
+      "expected": "NOT_TRIGGERED",
+      "judge": {
+        "verdict": "NOT_TRIGGERED"
+      },
+      "evidence_spans": [
+        "Det betyr ikke at journalen kan deles med familie bare fordi de ber; det kreves samtykke."
+      ],
+      "note": "avviser_deling_uten_samtykke",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-CR-03",
+      "dimension": "critical_condition",
+      "expected": "TRIGGERED",
+      "judge": {
+        "verdict": "TRIGGERED"
+      },
+      "evidence_spans": [
+        "Utbetalingen fortsetter automatisk hver maaned etter fravaarsmeldingen, uten at du maa melde noe nytt."
+      ],
+      "note": "hevder_automatisk_fortsettelse_uten_ny_melding",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-CR-04",
+      "dimension": "critical_condition",
+      "expected": "NOT_TRIGGERED",
+      "judge": {
+        "verdict": "UNRESOLVED"
+      },
+      "evidence_spans": [],
+      "note": "technical_failure",
+      "meta_ok": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "error": "evidence_span_not_in_answer"
+        },
+        {
+          "attempt": 2,
+          "error": "evidence_span_not_in_answer"
+        }
+      ],
+      "match": false
+    },
+    {
+      "id": "MC-FB-01",
+      "dimension": "forbidden_claim",
+      "expected": "PRESENT",
+      "judge": {
+        "verdict": "PRESENT"
+      },
+      "evidence_spans": [
+        "Du kan ikke jobbe i det hele tatt mens du mottar ytelsen."
+      ],
+      "note": "forbudt_paastand_er_tydelig_tilstede",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-FB-02",
+      "dimension": "forbidden_claim",
+      "expected": "ABSENT",
+      "judge": {
+        "verdict": "ABSENT"
+      },
+      "evidence_spans": [
+        "Siden sier ikke at du ma slutte aa jobbe; aktivitetsplikten vurderes individuelt."
+      ],
+      "note": "ingen_forbudt_paastand",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-FB-03",
+      "dimension": "forbidden_claim",
+      "expected": "PRESENT",
+      "judge": {
+        "verdict": "PRESENT"
+      },
+      "evidence_spans": [
+        "Satsen er noyaktig den samme overalt i landet."
+      ],
+      "note": "forbudt_paastand_tilstede",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-FB-04",
+      "dimension": "forbidden_claim",
+      "expected": "ABSENT",
+      "judge": {
+        "verdict": "ABSENT"
+      },
+      "evidence_spans": [
+        "Satser og vilkaar kan variere"
+      ],
+      "note": "ingen_paastand_om_identisk_sats",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-RT-01",
+      "dimension": "route_equivalence",
+      "expected": "ACCEPTABLE",
+      "judge": {
+        "verdict": "ACCEPTABLE"
+      },
+      "evidence_spans": [
+        "Du kan kontakte fastlegen din for vurdering."
+      ],
+      "note": "fastlege_for_vurdering",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-RT-02",
+      "dimension": "route_equivalence",
+      "expected": "NO_ACCEPTABLE_ROUTE",
+      "judge": {
+        "verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "evidence_spans": [
+        "Du kan gaa til helsestasjonen for ungdom for hjelp."
+      ],
+      "note": "foreslaar_ikke_godkjent_rute",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-RT-03",
+      "dimension": "route_equivalence",
+      "expected": "PARTIAL",
+      "judge": {
+        "verdict": "PARTIAL"
+      },
+      "evidence_spans": [
+        "Du kan soke elektronisk via nav.no."
+      ],
+      "note": "mangler_opplasting_av_dokumentasjon",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-RT-04",
+      "dimension": "route_equivalence",
+      "expected": "UNRESOLVED",
+      "judge": {
+        "verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "evidence_spans": [
+        "Det finnes kanskje noe hjelp der ute et sted."
+      ],
+      "note": "ingen_identifiserbar_rute",
+      "meta_ok": true,
+      "attempts": [],
+      "match": false
+    },
+    {
+      "id": "MC-UN-01",
+      "dimension": "uncertainty",
+      "expected": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "judge": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "evidence_spans": [
+        "ifolge uverifiserte tilbakemeldinger, og den er ikke bekreftet"
+      ],
+      "note": "ventetid_markert_som_uverifisert_og_ubekreftet",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-UN-02",
+      "dimension": "uncertainty",
+      "expected": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "judge": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "evidence_spans": [],
+      "note": "ingen_usikkerhetskrav",
+      "meta_ok": true,
+      "attempts": [],
+      "match": true
+    },
+    {
+      "id": "MC-UN-03",
+      "dimension": "uncertainty",
+      "expected": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "judge": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "evidence_spans": [
+        "Jeg fant ikke dette tilbudet i kildene, saa det finnes ikke i kommunen."
+      ],
+      "note": "manglende_funn_feiltolkes_som_at_tilbudet_ikke_finnes",
+      "meta_ok": true,
+      "attempts": [
+        {
+          "attempt": 1,
+          "error": "evidence_span_not_in_answer"
+        }
+      ],
+      "match": true
+    },
+    {
+      "id": "MC-UN-04",
+      "dimension": "uncertainty",
+      "expected": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "judge": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "evidence_spans": [
+        "Aldersgrensen varierer avhengig av ulike faktorer."
+      ],
+      "note": "uttrykker_ikke_18_arsgrense",
+      "meta_ok": true,
+      "attempts": [],
+      "match": false
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "artifact": "V1.5A CANDIDATE SHORTLIST",
+  "frozen_date": "2026-09-11",
+  "frozen_before_any_candidate_execution": true,
+  "selection_basis": "general model/provider properties and explicit user authorization only; NOT V1.4 failure clusters, NOT route-case reputation, NOT fixture familiarity",
+  "shortlist": [
+    {
+      "order": 1,
+      "candidate_key": "longcat-2-0-free",
+      "model": "command-code/meituan/LongCat-2.0:free",
+      "provider": "commandcode-auth",
+      "rationale": "user-authorized; long-context Meituan model on authorized provider; distinct architecture family from mimo baseline"
+    },
+    {
+      "order": 2,
+      "candidate_key": "mimo-v2-5-pro",
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "provider": "commandcode-auth",
+      "rationale": "user-authorized; pro tier of the same family as the 0.8265 baseline; tests whether the pro tier clears floors"
+    }
+  ],
+  "baseline_not_rerun": {
+    "candidate_key": "mimo-v2-5",
+    "model": "command-code/xiaomi/mimo-v2.5",
+    "frozen_result_source": "evaluation/dev-corpus-semantic-judge-v1-4/official-validation-results.json"
+  },
+  "not_shortlisted": [
+    {
+      "display_name": "Ling 3.0 Flash Sante",
+      "reason": "NOT_AVAILABLE_ON_COMMANDCODE"
+    },
+    {
+      "display_name": "Laguna S 2.1",
+      "reason": "NOT_AVAILABLE_ON_COMMANDCODE"
+    }
+  ],
+  "shortlist_size": 4,
+  "spec_target": "2-4",
+  "amendment_2026_09_11": {
+    "appended": [
+      {
+        "order": 3,
+        "candidate_key": "ling-3-0-flash-sante-free",
+        "model": "command-code/inclusionai/ling-3.0-flash-sante:free",
+        "provider": "commandcode-auth",
+        "rationale": "user second authorization; wire id live-verified; distinct architecture family"
+      },
+      {
+        "order": 4,
+        "candidate_key": "laguna-s-2-1-free",
+        "model": "command-code/poolside/laguna-s-2.1-free",
+        "provider": "commandcode-auth",
+        "rationale": "user second authorization; wire id live-verified; distinct architecture family"
+      }
+    ],
+    "selection_basis_unchanged": "general model/provider properties and explicit user authorization only"
+  }
+}

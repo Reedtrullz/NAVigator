@@ -1,0 +1,29 @@
+{
+ "artifact": "safety-regression-diagnosis",
+ "task_id": "NAV-EXPLORE-POST-WAVE2-P0-ROUTING-WAVE3-SCOPE-GATE-V1",
+ "counts": {
+  "REAL_PRODUCT_SAFETY_REGRESSION": 0,
+  "CATEGORY_REPRESENTATION_REGRESSION": 0,
+  "SCORER_LAG_OR_CONTRACT_SENSITIVITY": 8,
+  "UPSTREAM_INPUT_OR_TRACK_EFFECT": 0,
+  "AMBIGUOUS": 0
+ },
+ "decision_rule_applied": "zero REAL_PRODUCT_SAFETY_REGRESSION => Wave 3 does NOT start with safety repair; no safety policy reopen",
+ "evidence": [
+  "counterfactual replay of frozen scorer reproduces all 8 measured verdicts from frozen predictions",
+  "all 8 failures fire R3 PREMATURE_ABSENCE from no_route_asserted flag, not from safety signals",
+  "safety priority/class/signals unchanged between waves for all 8 cases",
+  "prose route guidance remains present in all 8 Wave-2 answers"
+ ],
+ "under_triage_candidates": {
+  "ROUT-026": "SCORER_SENSITIVITY",
+  "ROUT-088": "SCORER_SENSITIVITY"
+ },
+ "product_vs_measurement": {
+  "PRODUCT_DEFECT_FAMILIES": [],
+  "MEASUREMENT_SENSITIVITY_FAMILIES": [
+   "R3 unconditional PREMATURE_ABSENCE fire",
+   "CERTAINTY_MARKERS lexical breadth (ROUT-091)"
+  ]
+ }
+}

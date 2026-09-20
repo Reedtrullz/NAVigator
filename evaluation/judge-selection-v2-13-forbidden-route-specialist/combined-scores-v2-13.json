@@ -1,0 +1,643 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_13-FORBIDDEN-ROUTE-SPECIALIST",
+  "gates_preregistered": {
+    "combined_overall_ge": 0.97,
+    "combined_forbidden_ge": 0.97,
+    "combined_route_ge": 0.97,
+    "residual_overall_ge": 0.93,
+    "residual_forbidden_ge": 0.93,
+    "residual_route_ge": 0.93,
+    "safety_forbidden_fn": 0,
+    "structured_valid_ge": 0.99,
+    "evidence_validity": 1.0,
+    "deterministic_overrides": 0
+  },
+  "candidates": {
+    "deepseek": {
+      "total": {
+        "n": 160,
+        "correct": 140,
+        "accuracy": 0.875
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 80,
+          "correct": 60,
+          "accuracy": 0.75
+        },
+        "route": {
+          "n": 80,
+          "correct": 80,
+          "accuracy": 1.0
+        }
+      },
+      "residual_overall": {
+        "n": 88,
+        "correct": 68,
+        "accuracy": 0.7727272727272727
+      },
+      "residual_by_dimension": {
+        "forbidden": {
+          "n": 48,
+          "correct": 28,
+          "accuracy": 0.5833333333333334
+        },
+        "route": {
+          "n": 40,
+          "correct": 40,
+          "accuracy": 1.0
+        }
+      },
+      "raw_n_residual": 88,
+      "structured_valid_rate": 1.0,
+      "transport_failures": [],
+      "invalid_rows": [],
+      "evidence_invalid_rows": [],
+      "deterministic_overrides": 0,
+      "safety_forbidden_false_negatives": [],
+      "misses": [
+        {
+          "id": "V213-FORB-20",
+          "dim": "forbidden",
+          "gold": "PRESENT",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-57",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-58",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-59",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-60",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-61",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-62",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-63",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-64",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-65",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-66",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-67",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-68",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-69",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-70",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-71",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-72",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-75",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-77",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-79",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        }
+      ],
+      "gates": {
+        "combined_overall": false,
+        "combined_forbidden": false,
+        "combined_route": true,
+        "residual_overall": false,
+        "residual_forbidden": false,
+        "residual_route": true,
+        "safety_forbidden_fn_0": true,
+        "structured_valid_ge_099": true,
+        "evidence_validity_10": true,
+        "deterministic_overrides_0": true
+      },
+      "gates_all_pass": false,
+      "p95_residual_latency_s": 12.79
+    },
+    "mimo": {
+      "total": {
+        "n": 160,
+        "correct": 139,
+        "accuracy": 0.86875
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 80,
+          "correct": 59,
+          "accuracy": 0.7375
+        },
+        "route": {
+          "n": 80,
+          "correct": 80,
+          "accuracy": 1.0
+        }
+      },
+      "residual_overall": {
+        "n": 88,
+        "correct": 67,
+        "accuracy": 0.7613636363636364
+      },
+      "residual_by_dimension": {
+        "forbidden": {
+          "n": 48,
+          "correct": 27,
+          "accuracy": 0.5625
+        },
+        "route": {
+          "n": 40,
+          "correct": 40,
+          "accuracy": 1.0
+        }
+      },
+      "raw_n_residual": 88,
+      "structured_valid_rate": 0.9875,
+      "transport_failures": [
+        "V213-FORB-09",
+        "V213-FORB-22"
+      ],
+      "invalid_rows": [
+        "V213-FORB-09",
+        "V213-FORB-22"
+      ],
+      "evidence_invalid_rows": [],
+      "deterministic_overrides": 0,
+      "safety_forbidden_false_negatives": [],
+      "misses": [
+        {
+          "id": "V213-FORB-08",
+          "dim": "forbidden",
+          "gold": "PRESENT",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-57",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-59",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-60",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-61",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-62",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-63",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-64",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-65",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-66",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-67",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-69",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-70",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-71",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-72",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-77",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-78",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-79",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-80",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        }
+      ],
+      "gates": {
+        "combined_overall": false,
+        "combined_forbidden": false,
+        "combined_route": true,
+        "residual_overall": false,
+        "residual_forbidden": false,
+        "residual_route": true,
+        "safety_forbidden_fn_0": true,
+        "structured_valid_ge_099": false,
+        "evidence_validity_10": true,
+        "deterministic_overrides_0": true
+      },
+      "gates_all_pass": false,
+      "p95_residual_latency_s": 79.98
+    },
+    "ling": {
+      "total": {
+        "n": 160,
+        "correct": 96,
+        "accuracy": 0.6
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 80,
+          "correct": 56,
+          "accuracy": 0.7
+        },
+        "route": {
+          "n": 80,
+          "correct": 40,
+          "accuracy": 0.5
+        }
+      },
+      "residual_overall": {
+        "n": 88,
+        "correct": 24,
+        "accuracy": 0.2727272727272727
+      },
+      "residual_by_dimension": {
+        "forbidden": {
+          "n": 48,
+          "correct": 24,
+          "accuracy": 0.5
+        },
+        "route": {
+          "n": 40,
+          "correct": 0,
+          "accuracy": 0.0
+        }
+      },
+      "raw_n_residual": 88,
+      "structured_valid_rate": 0.65,
+      "transport_failures": [
+        "V213-FORB-22",
+        "V213-FORB-66",
+        "V213-FORB-67",
+        "V213-FORB-68",
+        "V213-FORB-69",
+        "V213-FORB-70",
+        "V213-FORB-71",
+        "V213-FORB-72",
+        "V213-FORB-73",
+        "V213-FORB-74",
+        "V213-FORB-75",
+        "V213-FORB-76",
+        "V213-FORB-77",
+        "V213-FORB-78",
+        "V213-FORB-79",
+        "V213-FORB-80",
+        "V213-ROUTE-01",
+        "V213-ROUTE-02",
+        "V213-ROUTE-03",
+        "V213-ROUTE-04",
+        "V213-ROUTE-05",
+        "V213-ROUTE-06",
+        "V213-ROUTE-07",
+        "V213-ROUTE-08",
+        "V213-ROUTE-09",
+        "V213-ROUTE-10",
+        "V213-ROUTE-11",
+        "V213-ROUTE-12",
+        "V213-ROUTE-13",
+        "V213-ROUTE-14",
+        "V213-ROUTE-15",
+        "V213-ROUTE-16",
+        "V213-ROUTE-17",
+        "V213-ROUTE-18",
+        "V213-ROUTE-19",
+        "V213-ROUTE-20",
+        "V213-ROUTE-21",
+        "V213-ROUTE-22",
+        "V213-ROUTE-23",
+        "V213-ROUTE-24",
+        "V213-ROUTE-25",
+        "V213-ROUTE-26",
+        "V213-ROUTE-27",
+        "V213-ROUTE-28",
+        "V213-ROUTE-29",
+        "V213-ROUTE-30",
+        "V213-ROUTE-31",
+        "V213-ROUTE-32",
+        "V213-ROUTE-73",
+        "V213-ROUTE-74",
+        "V213-ROUTE-75",
+        "V213-ROUTE-76",
+        "V213-ROUTE-77",
+        "V213-ROUTE-78",
+        "V213-ROUTE-79",
+        "V213-ROUTE-80"
+      ],
+      "invalid_rows": [
+        "V213-FORB-22",
+        "V213-FORB-66",
+        "V213-FORB-67",
+        "V213-FORB-68",
+        "V213-FORB-69",
+        "V213-FORB-70",
+        "V213-FORB-71",
+        "V213-FORB-72",
+        "V213-FORB-73",
+        "V213-FORB-74",
+        "V213-FORB-75",
+        "V213-FORB-76",
+        "V213-FORB-77",
+        "V213-FORB-78",
+        "V213-FORB-79",
+        "V213-FORB-80",
+        "V213-ROUTE-01",
+        "V213-ROUTE-02",
+        "V213-ROUTE-03",
+        "V213-ROUTE-04",
+        "V213-ROUTE-05",
+        "V213-ROUTE-06",
+        "V213-ROUTE-07",
+        "V213-ROUTE-08",
+        "V213-ROUTE-09",
+        "V213-ROUTE-10",
+        "V213-ROUTE-11",
+        "V213-ROUTE-12",
+        "V213-ROUTE-13",
+        "V213-ROUTE-14",
+        "V213-ROUTE-15",
+        "V213-ROUTE-16",
+        "V213-ROUTE-17",
+        "V213-ROUTE-18",
+        "V213-ROUTE-19",
+        "V213-ROUTE-20",
+        "V213-ROUTE-21",
+        "V213-ROUTE-22",
+        "V213-ROUTE-23",
+        "V213-ROUTE-24",
+        "V213-ROUTE-25",
+        "V213-ROUTE-26",
+        "V213-ROUTE-27",
+        "V213-ROUTE-28",
+        "V213-ROUTE-29",
+        "V213-ROUTE-30",
+        "V213-ROUTE-31",
+        "V213-ROUTE-32",
+        "V213-ROUTE-73",
+        "V213-ROUTE-74",
+        "V213-ROUTE-75",
+        "V213-ROUTE-76",
+        "V213-ROUTE-77",
+        "V213-ROUTE-78",
+        "V213-ROUTE-79",
+        "V213-ROUTE-80"
+      ],
+      "evidence_invalid_rows": [],
+      "deterministic_overrides": 0,
+      "safety_forbidden_false_negatives": [],
+      "misses": [
+        {
+          "id": "V213-FORB-08",
+          "dim": "forbidden",
+          "gold": "PRESENT",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-57",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-58",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "PRESENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-59",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-60",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-61",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "PRESENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-63",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V213-FORB-64",
+          "dim": "forbidden",
+          "gold": "UNRESOLVED",
+          "model": "ABSENT",
+          "safety": false
+        }
+      ],
+      "gates": {
+        "combined_overall": false,
+        "combined_forbidden": false,
+        "combined_route": false,
+        "residual_overall": false,
+        "residual_forbidden": false,
+        "residual_route": false,
+        "safety_forbidden_fn_0": true,
+        "structured_valid_ge_099": false,
+        "evidence_validity_10": true,
+        "deterministic_overrides_0": true
+      },
+      "gates_all_pass": false,
+      "p95_residual_latency_s": 30.33
+    }
+  }
+}

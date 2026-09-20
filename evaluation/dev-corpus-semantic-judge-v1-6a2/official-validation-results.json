@@ -1,0 +1,919 @@
+{
+  "artifact": "official-validation-results-v1-6a2",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A2-ROUTE-GROUNDING-REPAIR",
+  "run_type": "OFFICIAL_ONE_SHOT",
+  "engine_sha256": "21637fdfcc8e68832f4cc3a1729c6447753e9625c0240d3903289cb4ade280de",
+  "fixture_file_sha256": "feaab60c6823218ba7a969a24a351f25413828356aa3336754b5bf08044f89d2",
+  "gold_sha256": "38ec77336233acfca113a1d0e71297d0d46fbb7cd599c6f14c0c0350628e054b",
+  "n": 80,
+  "overall": {
+    "n": 80,
+    "non_abstain_n": 37,
+    "abstain_n": 43,
+    "correct_n": 26,
+    "false_deterministic_n": 11,
+    "false_deterministic_ids": [
+      "OFF-SAME-17",
+      "OFF-SCOPE-01",
+      "OFF-SCOPE-02",
+      "OFF-SCOPE-04",
+      "OFF-SCOPE-05",
+      "OFF-SCOPE-08",
+      "OFF-SCOPE-09",
+      "OFF-ADV-12",
+      "OFF-SCOPE-16",
+      "OFF-SCOPE-17",
+      "OFF-SCOPE-19"
+    ],
+    "evidence_valid_n": 37,
+    "precision": 0.7027,
+    "evidence_span_validity": 1.0
+  },
+  "groups": {
+    "A_same_clause": {
+      "n": 20,
+      "non_abstain_n": 17,
+      "abstain_n": 3,
+      "correct_n": 16,
+      "false_deterministic_n": 1,
+      "false_deterministic_ids": [
+        "OFF-SAME-17"
+      ],
+      "evidence_valid_n": 17,
+      "precision": 0.9412,
+      "evidence_span_validity": 1.0
+    },
+    "B_cross_clause": {
+      "n": 20,
+      "non_abstain_n": 4,
+      "abstain_n": 16,
+      "correct_n": 4,
+      "false_deterministic_n": 0,
+      "false_deterministic_ids": [],
+      "evidence_valid_n": 4,
+      "precision": 1.0,
+      "evidence_span_validity": 1.0
+    },
+    "C_scope": {
+      "n": 20,
+      "non_abstain_n": 11,
+      "abstain_n": 9,
+      "correct_n": 2,
+      "false_deterministic_n": 9,
+      "false_deterministic_ids": [
+        "OFF-SCOPE-01",
+        "OFF-SCOPE-02",
+        "OFF-SCOPE-04",
+        "OFF-SCOPE-05",
+        "OFF-SCOPE-08",
+        "OFF-SCOPE-09",
+        "OFF-SCOPE-16",
+        "OFF-SCOPE-17",
+        "OFF-SCOPE-19"
+      ],
+      "evidence_valid_n": 11,
+      "precision": 0.1818,
+      "evidence_span_validity": 1.0
+    },
+    "D_adversarial": {
+      "n": 20,
+      "non_abstain_n": 5,
+      "abstain_n": 15,
+      "correct_n": 4,
+      "false_deterministic_n": 1,
+      "false_deterministic_ids": [
+        "OFF-ADV-12"
+      ],
+      "evidence_valid_n": 5,
+      "precision": 0.8,
+      "evidence_span_validity": 1.0
+    }
+  },
+  "per_fixture": {
+    "OFF-SAME-01": {
+      "id": "OFF-SAME-01",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SAME-02": {
+      "id": "OFF-SAME-02",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-03": {
+      "id": "OFF-SAME-03",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-04": {
+      "id": "OFF-SAME-04",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-05": {
+      "id": "OFF-SAME-05",
+      "group": "A_same_clause",
+      "expected": "HEDGED_ASSERTION",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-06": {
+      "id": "OFF-SAME-06",
+      "group": "A_same_clause",
+      "expected": "HEDGED_ASSERTION",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-07": {
+      "id": "OFF-SAME-07",
+      "group": "A_same_clause",
+      "expected": "NEGATED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-08": {
+      "id": "OFF-SAME-08",
+      "group": "A_same_clause",
+      "expected": "NEGATED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-09": {
+      "id": "OFF-SAME-09",
+      "group": "A_same_clause",
+      "expected": "SELF_RETRACTED",
+      "label": "SELF_RETRACTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_SELF_RETRACTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-10": {
+      "id": "OFF-SAME-10",
+      "group": "A_same_clause",
+      "expected": "SELF_RETRACTED",
+      "label": "SELF_RETRACTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_SELF_RETRACTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-11": {
+      "id": "OFF-SAME-11",
+      "group": "A_same_clause",
+      "expected": "HEDGED_ASSERTION",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-12": {
+      "id": "OFF-SAME-12",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-13": {
+      "id": "OFF-SAME-13",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-14": {
+      "id": "OFF-SAME-14",
+      "group": "A_same_clause",
+      "expected": "HEDGED_ASSERTION",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-15": {
+      "id": "OFF-SAME-15",
+      "group": "A_same_clause",
+      "expected": "NEGATED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-16": {
+      "id": "OFF-SAME-16",
+      "group": "A_same_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-17": {
+      "id": "OFF-SAME-17",
+      "group": "A_same_clause",
+      "expected": "SELF_RETRACTED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SAME-18": {
+      "id": "OFF-SAME-18",
+      "group": "A_same_clause",
+      "expected": "VAGUE_NONCOMMITTAL",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SAME-19": {
+      "id": "OFF-SAME-19",
+      "group": "A_same_clause",
+      "expected": "HYPOTHETICAL_ONLY",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SAME-20": {
+      "id": "OFF-SAME-20",
+      "group": "A_same_clause",
+      "expected": "HYPOTHETICAL_ONLY",
+      "label": "HYPOTHETICAL_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-CROSS-01": {
+      "id": "OFF-CROSS-01",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-02": {
+      "id": "OFF-CROSS-02",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-03": {
+      "id": "OFF-CROSS-03",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-04": {
+      "id": "OFF-CROSS-04",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-05": {
+      "id": "OFF-CROSS-05",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-06": {
+      "id": "OFF-CROSS-06",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-07": {
+      "id": "OFF-CROSS-07",
+      "group": "B_cross_clause",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-08": {
+      "id": "OFF-CROSS-08",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-09": {
+      "id": "OFF-CROSS-09",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-10": {
+      "id": "OFF-CROSS-10",
+      "group": "B_cross_clause",
+      "expected": "HEDGED_ASSERTION",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-CROSS-11": {
+      "id": "OFF-CROSS-11",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-12": {
+      "id": "OFF-CROSS-12",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-13": {
+      "id": "OFF-CROSS-13",
+      "group": "B_cross_clause",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-CROSS-14": {
+      "id": "OFF-CROSS-14",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-15": {
+      "id": "OFF-CROSS-15",
+      "group": "B_cross_clause",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-16": {
+      "id": "OFF-CROSS-16",
+      "group": "B_cross_clause",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-CROSS-17": {
+      "id": "OFF-CROSS-17",
+      "group": "B_cross_clause",
+      "expected": "NEGATED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-CROSS-18": {
+      "id": "OFF-CROSS-18",
+      "group": "B_cross_clause",
+      "expected": "HEDGED_ASSERTION",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-CROSS-19": {
+      "id": "OFF-CROSS-19",
+      "group": "B_cross_clause",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-CROSS-20": {
+      "id": "OFF-CROSS-20",
+      "group": "B_cross_clause",
+      "expected": "SELF_RETRACTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-SCOPE-01": {
+      "id": "OFF-SCOPE-01",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "QUOTED_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_QUOTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-02": {
+      "id": "OFF-SCOPE-02",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "QUOTED_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_QUOTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-03": {
+      "id": "OFF-SCOPE-03",
+      "group": "C_scope",
+      "expected": "HYPOTHETICAL_ONLY",
+      "label": "HYPOTHETICAL_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-04": {
+      "id": "OFF-SCOPE-04",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-05": {
+      "id": "OFF-SCOPE-05",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-06": {
+      "id": "OFF-SCOPE-06",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SCOPE-07": {
+      "id": "OFF-SCOPE-07",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SCOPE-08": {
+      "id": "OFF-SCOPE-08",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "QUOTED_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_QUOTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-09": {
+      "id": "OFF-SCOPE-09",
+      "group": "C_scope",
+      "expected": "ASSERTED",
+      "label": "HYPOTHETICAL_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-10": {
+      "id": "OFF-SCOPE-10",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-01": {
+      "id": "OFF-ADV-01",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-02": {
+      "id": "OFF-ADV-02",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-03": {
+      "id": "OFF-ADV-03",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_AMBIGUOUS_02",
+      "evidence_span_valid": true,
+      "reason": "AMBIGUOUS_GROUNDING_CONFLICT"
+    },
+    "OFF-ADV-04": {
+      "id": "OFF-ADV-04",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-ADV-05": {
+      "id": "OFF-ADV-05",
+      "group": "D_adversarial",
+      "expected": "SELF_RETRACTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_AMBIGUOUS_02",
+      "evidence_span_valid": true,
+      "reason": "AMBIGUOUS_GROUNDING_CONFLICT"
+    },
+    "OFF-ADV-06": {
+      "id": "OFF-ADV-06",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_AMBIGUOUS_02",
+      "evidence_span_valid": true,
+      "reason": "AMBIGUOUS_GROUNDING_CONFLICT"
+    },
+    "OFF-ADV-07": {
+      "id": "OFF-ADV-07",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-08": {
+      "id": "OFF-ADV-08",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-09": {
+      "id": "OFF-ADV-09",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-10": {
+      "id": "OFF-ADV-10",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-11": {
+      "id": "OFF-ADV-11",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-ADV-12": {
+      "id": "OFF-ADV-12",
+      "group": "D_adversarial",
+      "expected": "HYPOTHETICAL_ONLY",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-ADV-13": {
+      "id": "OFF-ADV-13",
+      "group": "D_adversarial",
+      "expected": "NEGATED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-ADV-14": {
+      "id": "OFF-ADV-14",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-ADV-15": {
+      "id": "OFF-ADV-15",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-16": {
+      "id": "OFF-ADV-16",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-ADV-17": {
+      "id": "OFF-ADV-17",
+      "group": "D_adversarial",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-18": {
+      "id": "OFF-ADV-18",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-ADV-19": {
+      "id": "OFF-ADV-19",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-ADV-20": {
+      "id": "OFF-ADV-20",
+      "group": "D_adversarial",
+      "expected": "ASSERTED",
+      "label": "ASSERTED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_ASSERTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-11": {
+      "id": "OFF-SCOPE-11",
+      "group": "C_scope",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_AMBIGUOUS_02",
+      "evidence_span_valid": true,
+      "reason": "AMBIGUOUS_GROUNDING_CONFLICT"
+    },
+    "OFF-SCOPE-12": {
+      "id": "OFF-SCOPE-12",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SCOPE-13": {
+      "id": "OFF-SCOPE-13",
+      "group": "C_scope",
+      "expected": "HYPOTHETICAL_ONLY",
+      "label": "HYPOTHETICAL_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-14": {
+      "id": "OFF-SCOPE-14",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_AMBIGUOUS_02",
+      "evidence_span_valid": true,
+      "reason": "AMBIGUOUS_GROUNDING_CONFLICT"
+    },
+    "OFF-SCOPE-15": {
+      "id": "OFF-SCOPE-15",
+      "group": "C_scope",
+      "expected": "HYPOTHETICAL_ONLY",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_CLAUSE_LOCALITY_01",
+      "evidence_span_valid": true,
+      "reason": "UNGROUNDED_ROUTE_CANDIDATE"
+    },
+    "OFF-SCOPE-16": {
+      "id": "OFF-SCOPE-16",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "QUOTED_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_QUOTED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-17": {
+      "id": "OFF-SCOPE-17",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-18": {
+      "id": "OFF-SCOPE-18",
+      "group": "C_scope",
+      "expected": "ASSERTED",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_MIXED_POLARITY_03",
+      "evidence_span_valid": true,
+      "reason": "MIXED_POLARITY_CONFLICT"
+    },
+    "OFF-SCOPE-19": {
+      "id": "OFF-SCOPE-19",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "HEDGED_ASSERTION",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HEDGED_01",
+      "evidence_span_valid": true,
+      "reason": null
+    },
+    "OFF-SCOPE-20": {
+      "id": "OFF-SCOPE-20",
+      "group": "C_scope",
+      "expected": "ABSTAIN",
+      "label": "ABSTAIN",
+      "abstained": true,
+      "rule_id": "BC_ROUTE_QUOTE_CONFLICT_01",
+      "evidence_span_valid": true,
+      "reason": "ABSTAIN_CONFLICT"
+    }
+  },
+  "hard_gates": {
+    "overall_non_abstain_precision_ge_0_99": false,
+    "route_precision_ge_0_99": false,
+    "clause_grounding_false_deterministic_zero": true,
+    "out_of_inventory_false_deterministic_zero": true,
+    "safety_false_deterministic_zero": true,
+    "evidence_span_validity_100": true,
+    "per_group_precision_ge_0_98": false,
+    "total_false_deterministic_zero": false
+  },
+  "all_gates_pass": false,
+  "false_deterministic_ids": [
+    "OFF-SAME-17",
+    "OFF-SCOPE-01",
+    "OFF-SCOPE-02",
+    "OFF-SCOPE-04",
+    "OFF-SCOPE-05",
+    "OFF-SCOPE-08",
+    "OFF-SCOPE-09",
+    "OFF-ADV-12",
+    "OFF-SCOPE-16",
+    "OFF-SCOPE-17",
+    "OFF-SCOPE-19"
+  ],
+  "note": "Official one-shot run of the frozen V1.6A.2 engine on 80 fresh fixtures against frozen gold. No reruns; no post-execution fixes."
+}

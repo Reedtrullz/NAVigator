@@ -1,0 +1,73 @@
+{
+ "artifact": "wave3-repair-candidates",
+ "task_id": "NAV-EXPLORE-POST-WAVE2-P0-ROUTING-WAVE3-SCOPE-GATE-V1",
+ "note": "Product-side candidates only. Measurement repairs are listed separately and require their own owner authorization. No case IDs or corpus strings appear in repair logic descriptions (anti-overfit rule).",
+ "candidates": [
+  {
+   "id": "W3-RC-A",
+   "title": "Structured route-proposition construction with evidence binding",
+   "priority": 1,
+   "addresses_funnel_stages": [
+    "R0_NO_STRUCTURED_ROUTE",
+    "R1_INVALID_ROUTE_OBJECT"
+   ],
+   "expected_criteria_affected": 108,
+   "expected_cases_affected": 108,
+   "description": "Planner/route-construction stage must emit each candidate route as a structured proposition: {target service family, access path, conditions[], evidence_ids[]}, bound to its supporting evidence entries via a shared key. Fragments (headings, URLs, status phrases) must never be emitted as route labels; when no actionable proposition can be constructed from in-track evidence, the case must explicitly emit no_route_asserted with a reason code instead of silent absence.",
+   "deterministic": true,
+   "introduces_new_model_authority": false,
+   "failure_families_addressed": [
+    "routing/access",
+    "no_route_asserted + presented_as_complete divergence"
+   ],
+   "regression_risk": "Medium: changes route output shape; R3 scorer interplay will shift verdicts (structured routes present removes unconditional PREMATURE_ABSENCE fire, which is the correct product direction, not tuning)",
+   "minimum_tests": [
+    "route-proposition schema validation (every route has target+access_path, evidence_ids resolve to existing evidence entries)",
+    "fragment-label negative tests (headings/URLs must be rejected as labels)",
+    "no_route_asserted reason-code contract test",
+    "Tier-1 regression incl. safety canaries",
+    "quote-aligner/operator regression suite"
+   ],
+   "overfit_risk": "NONE"
+  },
+  {
+   "id": "W3-RC-B",
+   "title": "Renderer source-block deduplication (RC-06-lite)",
+   "priority": 2,
+   "addresses_funnel_stages": [],
+   "dependent_on": "W3-RC-A sequencing preference, not data dependency",
+   "expected_criteria_affected": "none directly; reduces forbidden-claim text surface (contamination-shaped)",
+   "description": "Collapse repeated national-information blocks to one canonical block per source topic; do not alter route/critical/uncertainty logic.",
+   "deterministic": true,
+   "introduces_new_model_authority": false,
+   "failure_families_addressed": [
+    "duplicated/irrelevant national-information blocks",
+    "contamination-shaped forbidden text surface"
+   ],
+   "regression_risk": "Low",
+   "minimum_tests": [
+    "block-count regression (2+ national blocks per case)",
+    "forbidden-lane regression",
+    "rendering snapshot tests"
+   ],
+   "overfit_risk": "NONE"
+  }
+ ],
+ "deferred": [
+  {
+   "id": "W3-DEF-C",
+   "title": "Uncertainty-depth grading (RC-04 residual)",
+   "reason": "Requires semantic grading beyond frozen stub = new model authority decision; sequence after route semantics stabilize product shape"
+  },
+  {
+   "id": "W3-DEF-D",
+   "title": "Measurement V3 repair: R3 condition-awareness + CERTAINTY_MARKERS redesign (M-SENS-1/2)",
+   "reason": "Measurement change, not SUT; separate owner authorization and separate versioning required; do not tune toward observed cases"
+  },
+  {
+   "id": "W3-DEF-E",
+   "title": "Route paraphrase equivalence (M-SENS-3)",
+   "reason": "Requires semantic judge capability decision; after route propositions exist, re-assess"
+  }
+ ]
+}

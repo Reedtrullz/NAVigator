@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "fc03_negative_existence_guard": {
+    "scope": "SUT-authored sections only (non-INFO blocks); verbatim INFO-quoted national records are exempt per rendering-contract.md",
+    "phrases": ["har ikke tilbud", "mangler tilbud", "finnes ikke"],
+    "sut_authored_violations_in_120": 0,
+    "info_quote_phrase_hits": 10,
+    "info_quote_adjudication": "all 10 phrase occurrences are inside 'Nasjonal informasjon: ...' verbatim record quotes (e.g. rules against negative-existence wording, documented PPT journal-structure facts); none are SUT-authored conclusions",
+    "mechanism": "NO_ROUTE_FOUND != NO_SERVICE_EXISTS mechanically enforced"
+  },
+  "fc05_terminal_gate": "gate trips only on failures with state==TERMINAL (9 such cases in 120; recoverable failures do not suppress the answer)",
+  "fail_closed_path": "any planner/renderer/finalizer/schema failure produces EXECUTION_FAILED output via Phase 2 helper",
+  "fail_closed_correctness": "100% (all 9 terminal inputs produced explicit TERMINAL failure states; 0 unhandled crashes)"
+}

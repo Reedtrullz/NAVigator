@@ -1,0 +1,1555 @@
+{
+ "meta": {
+  "set": "locality",
+  "judge": "A",
+  "model": "gpt-5.5",
+  "version": "semantic-judge-v0.4",
+  "decompose_prompt_sha256": "fc1d77f0363d5a22e8f47f68fe7276e1fb7aee7246a070f5b5f890008476876f",
+  "relation_prompt_sha256": "3163cf8f7477d299724c98b402c922e897f4f1c1ae82b4720be2af65a6333a9f",
+  "generated": "2026-08-31T14:10:05.411475+00:00"
+ },
+ "results": [
+  {
+   "id": "LOC-01",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Trondheim er for voksne.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at Rask psykisk helsehjelp i Trondheim gjelder voksne, som støtter at RPH i Trondheim er for voksne.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Rask psykisk helsehjelp i Trondheim gjelder voksne 18 år og over.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.4,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-02",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "local to national",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH er nasjonalt for voksne.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler Rask psykisk helsehjelp i Trondheim for voksne 18 år og over, men etablerer ikke at ordningen er nasjonal.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.3,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-03",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "other locality",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Oslo er gratis.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at Rask psykisk helsehjelp i Trondheim er gratis, men påstanden gjelder Oslo. Ulik lokalitet gir ikke støtte eller motstrid.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.1,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-04",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": null,
+   "focus": "price vs free same locality",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Trondheim koster 300 kroner.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "300 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": true,
+     "reason": "Kilden sier eksplisitt at RPH i Trondheim er gratis, som er uforenlig med at det koster 300 kroner.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Rask psykisk helsehjelp i Trondheim er gratis"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.7,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-05",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsestasjon for ungdom finnes i Trondheim.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at Trondheim har helsestasjon for ungdom.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Trondheim har helsestasjon for ungdom med drop-in.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.6,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-06",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner har helsestasjon for ungdom.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier bare at Trondheim har helsestasjon for ungdom, ikke at alle kommuner har det.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SPECIFIC_TO_UNIVERSAL",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "stronger",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SPECIFIC_TO_UNIVERSAL",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.8,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-07",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality address",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret i Trondheim ligger i Carl Johans gate 3.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "3"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.78,
+     "near_miss": false,
+     "reason": "Kilden oppgir adressen i Trondheim, men sier ikke at den tilhorer Familievernkontoret i Trondheim.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "ACTOR_NOT_MENTIONED",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "ACTOR_NOT_MENTIONED",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.78,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 21.1,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-08",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "other locality address",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret i Oslo ligger i Carl Johans gate 3.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "3"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.88,
+     "near_miss": false,
+     "reason": "Kilden oppgir samme gatenummer, men plasserer adressen i Trondheim og nevner ikke Familievernkontoret i Oslo; geografien og aktøren matcher ikke.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 33.6,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-09",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "national rule local instance",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolehelsetjenesten er gratis i Trondheim.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden sier at skolehelsetjenesten er gratis for alle elever, som etablerer at tjenesten er gratis også for elever i Trondheim.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "ALWAYS",
+      "source_modality": "ALWAYS",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Skolehelsetjenesten er gratis for alle elever.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.92,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.2,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-10",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "local variation",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolehelsetjenesten koster i enkelte kommuner.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.96,
+     "near_miss": false,
+     "reason": "Kilden sier at skolehelsetjenesten er gratis for alle elever, som er uforenlig med at den koster i enkelte kommuner.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "ALWAYS",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Skolehelsetjenesten er gratis for alle elever"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.96,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.7,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-11",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "national option",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommuner kan ha egne lavterskeltilbud.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at kommunene kan tilby lavterskeltjenester, som støtter at kommuner kan ha egne lavterskeltilbud.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Kommunene kan selv tilby lavterskeltjenester innen psykisk helse.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.4,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-12",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "option vs mandate",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner må ha lavterskeltilbud.",
+     "role": "core",
+     "modality": "må",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at kommunene kan tilby lavterskeltjenester innen psykisk helse, men etablerer ikke at alle kommuner må ha lavterskeltilbud.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "claim_modality": "MUST",
+      "source_modality": "MAY",
+      "modality_relation": "weaker",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.7,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-13",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality deadline",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP Trondheim har oppstart innen 65 virkedager.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "65"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at BUP i Trondheim har oppstart innen 65 virkedager, som samsvarer med atomets tall og tjeneste.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "BUP i Trondheim: oppstart innen 65 virkedager ved innvilgelse",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.95,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.5,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-14",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "local to national",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP nasjonalt har oppstart innen 65 virkedager.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "65"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden gjelder BUP i Trondheim, mens påstanden gjelder BUP nasjonalt. Lokal regel/praksis etablerer ikke nasjonal regel.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "MUST",
+      "source_modality": "MUST",
+      "modality_relation": "same",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.2,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-15",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "comparison",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ventetiden i Oslo er kortere enn i Trondheim.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden oppgir bare ventetid/oppstart for BUP i Trondheim og sier ingenting om Oslo eller en sammenligning mellom Oslo og Trondheim.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.5,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-16",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "local instance",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog finnes i Trondheim.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden etablerer at Trondheim kommune har psykolog i kommunen, som støtter at kommunepsykolog finnes i Trondheim.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Trondheim kommune har psykolog i kommunen.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.95,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.9,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-17",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog finnes i alle kommuner.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier bare at Trondheim kommune har psykolog i kommunen; den etablerer ikke at dette finnes i alle kommuner.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "stronger",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 15.6,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-18",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "uniformity",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog er et nasjonalt, likt tilbud.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Påstanden sier at kommunepsykolog er et nasjonalt, likt tilbud, mens kilden sier at tilbudet varierer mellom kommunene.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "varierer mellom kommunene"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 20.1,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-19",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp finnes i alle kommuner.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier at tilbudet er etablert i en del kommuner, noe som er uforenlig med at det finnes i alle kommuner.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "etablert i en del kommuner"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.4,
+   "status": "ok"
+  },
+  {
+   "id": "LOC-20",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "mandate",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH er en lovpålagt plikt for kommunene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden sier at kommunene kan etablere RPH, altså en adgang/skjønnsmulighet, mens påstanden sier at det er en lovpålagt plikt.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_DISCRETION_CONFLICT",
+      "claim_modality": "REQUIRED",
+      "source_modality": "MAY",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "kommunene kan etablere"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_DISCRETION_CONFLICT",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.6,
+   "status": "ok"
+  }
+ ]
+}

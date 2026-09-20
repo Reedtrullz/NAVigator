@@ -1,0 +1,71 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_13-FORBIDDEN-ROUTE-SPECIALIST",
+  "frozen_at": "2026-09-14",
+  "smoke": [
+    {
+      "candidate": "deepseek",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 1.91,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "mimo",
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 31.35,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "ling",
+      "model": "command-code/inclusionai-ling-3.0-flash-sante:free",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 1.94,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "laguna",
+      "model": "command-code/poolside-laguna-s-2.1-free",
+      "auth": "FAIL",
+      "http_status": null,
+      "schema_valid": false,
+      "evidence_span_transport": "FAIL",
+      "verdict": null,
+      "latency_s": 30.81,
+      "retries": 1,
+      "error": "HTTP 502"
+    }
+  ],
+  "official_screening": {},
+  "selection": null,
+  "terminal_status": "V2_13_NO_FORBIDDEN_ROUTE_JUDGE_QUALIFIES",
+  "artifact_sha256": {
+    "screening-fixtures.json": "718221d50c9a8796c9d5645d9c7101ffc8eb62de46e6f93409971284d71a03fd",
+    "screening-gold-v2-13.json": "79aebf0bd43e40827453785327712dfcaf2c5eb393f6c2f6daebd9a64563acb3",
+    "deterministic-prepass-results-v2-13.json": "ed43d44022249d0e8eba75359c52c9617174412947d1b711bcb9d3a46c1c2181",
+    "collision-audit-v2-13.json": "7c68632ed00469c82e04a30b378b8aefbb8497e6ec11c86e45b186d21b3e1612",
+    "combined-scores-v2-13.json": "ee7cd3022aae29502059ae9f7bf361e00c0d5e1478629a7871b50b7be256bf91",
+    "judge_core_v2_13.py": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "eval_gates_v2_13.py": "6797df20e287bc9caf094d175856ea1db6ff6ae613dad6c7325e14bef91b5339",
+    "v2_13_runner.py": "6c033d61b830c0177bc169ed59d2db7cbd2a1f83f63756f16c641c53c3c7532c",
+    "TASK-LOCK.json": "d2461c620b3f29934c6779165a6f502ad1a1bdfe23d2175c3e7f5d5fd04ca8c5",
+    "gen_fixtures_v2_13.py": "7c6468f2de1326c91caf7b5da82440fde85954d886124fc92f47003ded80c7e2",
+    "stability-sample-v2-13.json": null,
+    "comparison-freeze-v2-13.json": "88628f7cbd0c0a518e65db5a1c3e378efda128233f1369fb874b04868d39d5b1"
+  }
+}

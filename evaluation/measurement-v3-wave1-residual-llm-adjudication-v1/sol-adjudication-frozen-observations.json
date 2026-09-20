@@ -1,0 +1,137 @@
+{
+  "artifact": "sol-adjudication-frozen-observations",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "created_utc": "2026-09-16",
+  "freeze_order": "observations frozen BEFORE derivation",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "LOW",
+  "availability": {
+    "probe_artifact": "sol-presence-probe.json",
+    "status": "AVAILABLE"
+  },
+  "blind_inputs": {
+    "artifact": "sol-blind-inputs.json",
+    "packets": 4,
+    "leakage_audit": "PASS",
+    "sha_binding": "all 4 packet_sha256 bind original frozen packet bodies (residual bodies are exact field-subsets; dropped metadata: created_utc, lane_version)"
+  },
+  "execution": {
+    "calls": 8,
+    "passes": [
+      "SOL-A",
+      "SOL-B"
+    ],
+    "transport_retries": 0,
+    "statuses": "8x OK"
+  },
+  "per_packet_validation": {
+    "status_ok": 8,
+    "sha_binding_ok": 8,
+    "evidence_spans_valid": 8,
+    "note": "every record independently validated: JSON parse, enum fields present, spans verbatim in SUT output, span-presence conditional rule respected"
+  },
+  "consensus_outcome": {
+    "rule": "A==B on entire result object (frozen TASK-LOCK scope)",
+    "adjudicated_dual_pass": 0,
+    "pending": 4,
+    "disagreement_analysis": {
+      "criterion_semantic_match_agreement": "4/4 identical across A/B",
+      "speaker_commitment_agreement": "4/4 identical across A/B",
+      "differing_fields": "rationale free-text only; evidence-span lists rephrased",
+      "interpretation": "routing-relevant primitives fully agree; whole-object equality is stricter than primitive-level agreement"
+    },
+    "per_packet_results": {
+      "PKT-ESC-DIS-118": {
+        "pass_a": {
+          "criterion_semantic_match": "MATCH",
+          "speaker_commitment": "ASSERTED",
+          "evidence_spans": [
+            "Tjenester til gravide, barn og unge 0-24 ar og deres familier, gitt i brukerens bydel."
+          ],
+          "rationale": "Svaret tolker uttrykket «unge» som en eksplisitt aldersgruppe på 0–24 år og inkluderer dermed en 22-åring uten forbehold."
+        },
+        "pass_b": {
+          "criterion_semantic_match": "MATCH",
+          "speaker_commitment": "ASSERTED",
+          "evidence_spans": [
+            "Tjenester til gravide, barn og unge 0-24 ar og deres familier, gitt i brukerens bydel."
+          ],
+          "rationale": "Svaret tolker uttrykkelig «unge» som aldersgruppen 0–24 år og inkluderer dermed en 22-åring uten forbehold."
+        }
+      },
+      "PKT-ESC-ROUT-026-F01": {
+        "pass_a": {
+          "criterion_semantic_match": "MATCH",
+          "speaker_commitment": "NEGATED",
+          "evidence_spans": [
+            "1. Du kan kontakte PPT selv for raad og veiledning, uten henvisning."
+          ],
+          "rationale": "Svaret sier at den unge kan kontakte PPT selv, og avkrefter dermed at foreldres tilgang alltid kreves uavhengig av alder."
+        },
+        "pass_b": {
+          "criterion_semantic_match": "MATCH",
+          "speaker_commitment": "NEGATED",
+          "evidence_spans": [
+            "1. Du kan kontakte PPT selv for raad og veiledning, uten henvisning."
+          ],
+          "rationale": "Svaret sier at brukeren kan kontakte PPT selv, og avkrefter dermed at foreldres tilgang alltid kreves uavhengig av alder."
+        }
+      },
+      "PKT-ESC-ROUT-031-F01": {
+        "pass_a": {
+          "criterion_semantic_match": "NO_MATCH",
+          "speaker_commitment": "UNRESOLVED",
+          "evidence_spans": [],
+          "rationale": "PPT nevnes ikke, og svaret hevder ikke at PPT er primær behandling."
+        },
+        "pass_b": {
+          "criterion_semantic_match": "NO_MATCH",
+          "speaker_commitment": "UNRESOLVED",
+          "evidence_spans": [],
+          "rationale": "SUT omtaler fastlege, skolehelse og generelle tjenestevalg, men nevner ikke PPT eller at PPT bør være primær behandling."
+        }
+      },
+      "PKT-ESC-ROUT-037": {
+        "pass_a": {
+          "criterion_semantic_match": "NO_MATCH",
+          "speaker_commitment": "UNRESOLVED",
+          "evidence_spans": [],
+          "rationale": "Svaret omtaler flere mulige tjenester og ruter, blant annet HABU, fastlege og kommunale tilbud; det hevder ikke at BUP er eneste rute."
+        },
+        "pass_b": {
+          "criterion_semantic_match": "NO_MATCH",
+          "speaker_commitment": "UNRESOLVED",
+          "evidence_spans": [],
+          "rationale": "Svaret omtaler flere mulige tjenester og ruter, inkludert HABU, fastlege, skolehelsetjeneste og kommunale tilbud; det fremsetter ikke at BUP er eneste rute."
+        }
+      }
+    }
+  },
+  "constraint_compliance": {
+    "ASTRA_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "SOL_MEDIUM_CALLS": 0,
+    "SOL_HIGH_CALLS": 0,
+    "SOL_MAX_CALLS": 0,
+    "THIRD_PASS": false,
+    "MAJORITY_VOTE": false,
+    "SUT_RERUN": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "PACKETS_CHANGED": false,
+    "HUMAN_REVIEWED_RESULTS": 0
+  },
+  "artifact_hashes_at_freeze": {
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/TASK-LOCK.json": "6115c94f3db5dd7b3df6c161edac7d8d18976b6adfa183ca8825d0deb6dab4f0",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/accounting-audit.json": "9b50f23f1adaa1cd6cfb70e477820519e9d90e8b8e34ff73d9aed5c0f8855e00",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-presence-probe.json": "c4c172d481189fcd6a3d8995d07fe97b35b16e85e8348c07ea5e32fb4ba256c6",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-blind-inputs.json": "851e80069366322a47e4f137490402b9a41f2f5ac541de54938d561fced2f533",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-blind-inputs-leakage-audit.json": "d51285fefe968bef6dd533480fa374c5b8c0e8f1a53e3bf359c84d5335ea5740",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-config.json": "7c851ed9fa19c6bbfabce28e92504341c71e47b462ef8b59921544c37cc2b314",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/run_sol_adjudication.py": "cd1cc4ee25212160ee403d5754303d944d1c92382ec1c22a524131e105fb37fc",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-pass-a.jsonl": "46e9855d4848ecdb5ca85bcb6b9aa495b4b036d3ce2e29c4686e410765524cb3",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-pass-b.jsonl": "45547f0c0bf3448396fbd8cea97d159ad23a7c34464f60adc5d2a59c8bd0890e",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-transport-log.json": "d26d31256740846f07b55ca154ee8cf193e8e533a04ffceb69a96365c9fd3982",
+    "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-adjudication-consensus.json": "3f60213370e4cffaca0fd0ab856572a210dbfe87ad9f5a62c6ef2ddc22c1cd9b"
+  }
+}

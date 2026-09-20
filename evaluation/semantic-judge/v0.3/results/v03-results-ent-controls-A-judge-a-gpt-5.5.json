@@ -1,0 +1,258 @@
+{
+ "meta": {
+  "set": "ent-controls",
+  "judge": "A",
+  "model": "gpt-5.5",
+  "version": "semantic-judge-v0.3",
+  "aggregator": "aggregate-v0.3",
+  "decompose_prompt_sha256": "c8b405e360ee34f3db73666b89507fb7dc988a644bc6354261ebda9f73ed172d",
+  "atom_prompt_sha256": "51abb3a8dcbd6d3899edcd424ee13a14a01fc707c433be5df91741a04dac1ab6",
+  "generated": "2026-08-31T03:47:31.883553+00:00",
+  "config": {
+   "proxy": "http://127.0.0.1:10100/v1",
+   "temperature": "0 (provider-supported)",
+   "timeout_s": 180,
+   "arbitrate": false,
+   "consensus": false
+  }
+ },
+ "results": [
+  {
+   "id": "ENT-A",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T03:47:31.885427+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Sterk angst etter samlivsbrudd er en vanlig reaksjon",
+     "role": "core",
+     "modality": "vanlig",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "foreldresamtale og lavterskel støtte først",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier hvor barn med sterk angst/depresjon etter samlivsbrudd bør henvende seg, men sier ikke at sterk angst er en vanlig reaksjon.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.82,
+     "near_miss": true,
+     "reason": "Kilden sier at fastlege eller kommunalt lavterskeltilbud er først, men nevner ikke foreldresamtale som første tiltak.",
+     "supporting_excerpt_or_fact": "kommunalt lavterskeltilbud ... først",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.82,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 2,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "26": "Beslutningsstøtte: hvor skal familien henvende seg?",
+    "16-livssituasjoner/04-barns-psykiske-helse.md": "Barns psykiske helse og mental hjelp for familier"
+   },
+   "elapsed_s": 36.7,
+   "status": "ok"
+  },
+  {
+   "id": "ENT-B",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T03:48:08.631481+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlege er riktig inngang",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "henvisning ved behov",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier bare at skolehelsetjenesten ikke er et behandlingstilbud for psykiske lidelser og ikke yter psykisk helsebehandling. Den sier ikke at fastlege er riktig inngang.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier bare at skolehelsetjenesten ikke er et behandlingstilbud for psykiske lidelser og ikke yter psykisk helsebehandling. Den sier ingenting om henvisning ved behov.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 2,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "31": "Skolehelsetjenesten i dybden"
+   },
+   "elapsed_s": 31.8,
+   "status": "ok"
+  },
+  {
+   "id": "ENT-C",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T03:48:40.462534+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan stille ADHD-diagnose.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden fordeler rollen slik at PPT kartlegger pedagogiske behov og gir sakkyndige vurderinger, mens BUP utreder psykiske lidelser/nevroutviklingsforstyrrelser. ADHD faller under dette, så påstanden gir PPT en rolle kilden legger til BUP.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "PPT kartlegger pedagogiske behov og gir sakkyndige vurderinger. BUP utreder psykiske lidelser/nevroutviklingsforstyrrelser."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "28": "Pedagogisk-psykologisk tjeneste (PPT) i dybden"
+   },
+   "elapsed_s": 23.5,
+   "status": "ok"
+  },
+  {
+   "id": "ENT-D",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T03:49:03.920501+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "ADHD-diagnose kan stilles av helsesykepleier på skolen.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at helsesykepleier på skolen kan stille ADHD-diagnose, mens kilden sier at skolehelsetjenesten ikke stiller diagnoser.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Skolehelsetjenesten ... stiller ikke diagnoser."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "31": "Skolehelsetjenesten i dybden"
+   },
+   "elapsed_s": 16.4,
+   "status": "ok"
+  }
+ ]
+}

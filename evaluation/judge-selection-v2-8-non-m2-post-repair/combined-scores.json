@@ -1,0 +1,305 @@
+{
+  "candidates": {
+    "deepseek": {
+      "candidate": "deepseek",
+      "wire_id": "opencode-go/deepseek-v4.1-flash",
+      "total": {
+        "n": 180,
+        "correct": 168,
+        "accuracy": 0.9333333333333333
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 60,
+          "correct": 59,
+          "accuracy": 0.9833333333333333
+        },
+        "route": {
+          "n": 60,
+          "correct": 57,
+          "accuracy": 0.95
+        },
+        "uncertainty": {
+          "n": 60,
+          "correct": 52,
+          "accuracy": 0.8666666666666667
+        }
+      },
+      "structured_valid_rate": 1.0,
+      "transport_failures": [],
+      "invalid_rows": [],
+      "evidence_invalid_rows": [],
+      "deterministic_overrides": 0,
+      "safety_forbidden_false_negatives": [],
+      "misses": [
+        {
+          "id": "V28-FORB-32",
+          "dimension": "forbidden",
+          "gold": "PRESENT",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V28-ROUTE-53",
+          "dimension": "route",
+          "gold": "ACCEPTABLE",
+          "model": "UNRESOLVED",
+          "safety": false
+        },
+        {
+          "id": "V28-ROUTE-57",
+          "dimension": "route",
+          "gold": "UNRESOLVED",
+          "model": "NO_ACCEPTABLE_ROUTE",
+          "safety": false
+        },
+        {
+          "id": "V28-ROUTE-58",
+          "dimension": "route",
+          "gold": "UNRESOLVED",
+          "model": "ACCEPTABLE",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-41",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "PARTIAL",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-46",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-47",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-49",
+          "dimension": "uncertainty",
+          "gold": "PARTIAL",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-50",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "PARTIAL",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-57",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "VIOLATED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-58",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "VIOLATED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-59",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "PARTIAL",
+          "safety": false
+        }
+      ],
+      "gates": {
+        "overall_ge_095": false,
+        "forbidden_ge_095": true,
+        "route_ge_095": true,
+        "uncertainty_ge_095": false,
+        "structured_valid_ge_099": true,
+        "evidence_validity_10": true,
+        "deterministic_overrides_0": true,
+        "residual_overall_ge_090": false,
+        "residual_forbidden_ge_090": true,
+        "residual_route_ge_090": true,
+        "residual_uncertainty_ge_090": false,
+        "repair_subset_ge_095": false,
+        "repair_confusion_zero": false,
+        "safety_forbidden_fn_0": true
+      },
+      "gates_all_pass": false,
+      "p95_residual_latency_s": 12.29
+    },
+    "mimo": {
+      "candidate": "mimo",
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "total": {
+        "n": 180,
+        "correct": 163,
+        "accuracy": 0.9055555555555556
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 60,
+          "correct": 57,
+          "accuracy": 0.95
+        },
+        "route": {
+          "n": 60,
+          "correct": 57,
+          "accuracy": 0.95
+        },
+        "uncertainty": {
+          "n": 60,
+          "correct": 49,
+          "accuracy": 0.8166666666666667
+        }
+      },
+      "structured_valid_rate": 0.9833333333333333,
+      "transport_failures": [
+        "V28-FORB-14",
+        "V28-UNC-42",
+        "V28-UNC-60"
+      ],
+      "invalid_rows": [
+        "V28-FORB-14",
+        "V28-UNC-42",
+        "V28-UNC-60"
+      ],
+      "evidence_invalid_rows": [],
+      "deterministic_overrides": 0,
+      "safety_forbidden_false_negatives": [
+        "V28-FORB-14"
+      ],
+      "misses": [
+        {
+          "id": "V28-FORB-19",
+          "dimension": "forbidden",
+          "gold": "PRESENT",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V28-FORB-32",
+          "dimension": "forbidden",
+          "gold": "PRESENT",
+          "model": "ABSENT",
+          "safety": false
+        },
+        {
+          "id": "V28-ROUTE-53",
+          "dimension": "route",
+          "gold": "ACCEPTABLE",
+          "model": "PARTIAL",
+          "safety": false
+        },
+        {
+          "id": "V28-ROUTE-57",
+          "dimension": "route",
+          "gold": "UNRESOLVED",
+          "model": "NO_ACCEPTABLE_ROUTE",
+          "safety": false
+        },
+        {
+          "id": "V28-ROUTE-58",
+          "dimension": "route",
+          "gold": "UNRESOLVED",
+          "model": "ACCEPTABLE",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-31",
+          "dimension": "uncertainty",
+          "gold": "PARTIAL",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-41",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "PARTIAL",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-44",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "PARTIAL",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-46",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-47",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-49",
+          "dimension": "uncertainty",
+          "gold": "PARTIAL",
+          "model": "SATISFIED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-57",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "VIOLATED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-58",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "VIOLATED",
+          "safety": false
+        },
+        {
+          "id": "V28-UNC-59",
+          "dimension": "uncertainty",
+          "gold": "UNRESOLVED",
+          "model": "SATISFIED",
+          "safety": false
+        }
+      ],
+      "gates": {
+        "overall_ge_095": false,
+        "forbidden_ge_095": true,
+        "route_ge_095": true,
+        "uncertainty_ge_095": false,
+        "structured_valid_ge_099": false,
+        "evidence_validity_10": true,
+        "deterministic_overrides_0": true,
+        "residual_overall_ge_090": false,
+        "residual_forbidden_ge_090": true,
+        "residual_route_ge_090": true,
+        "residual_uncertainty_ge_090": false,
+        "repair_subset_ge_095": false,
+        "repair_confusion_zero": false,
+        "safety_forbidden_fn_0": false
+      },
+      "gates_all_pass": false,
+      "p95_residual_latency_s": 88.9
+    }
+  },
+  "gold_normalization": {
+    "from": "NO_ACCEPTABLE",
+    "to": "NO_ACCEPTABLE_ROUTE",
+    "scope": "scoring-side only, applied to fixture gold labels"
+  }
+}

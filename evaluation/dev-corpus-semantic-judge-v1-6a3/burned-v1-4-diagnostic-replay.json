@@ -1,0 +1,1359 @@
+{
+  "artifact": "burned-v1-4-diagnostic-replay.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A3-AMBIGUITY-ABSTENTION-HARDENING",
+  "run_type": "BURNED_DIAGNOSTIC_REPLAY",
+  "diagnostic_only": true,
+  "certification_claim": false,
+  "engine_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+  "v1_4_inputs": {
+    "fixtures_sha256": "9e60aca6a38d84ff48aa5985f7f0b258cb7934aedf9701de8d4e415582cbdf1c",
+    "results_sha256": "e03381fc76a68f69c3b593f6302d28cfd0b35edfc0030e8479767d0ff4699d11",
+    "gold_sha256": "c859a851e84957a5a30a296315080ef88ba4f8e39c60a8c5e83669760f7194dc"
+  },
+  "n": 100,
+  "deterministic_resolution": {
+    "full_all_three_dims": 0,
+    "share": 0.0,
+    "route_dim_non_abstain": 6,
+    "uncertainty_dim_non_abstain": 97,
+    "scope_dim_non_abstain": 6
+  },
+  "remaining_judge_required": {
+    "n": 100,
+    "share": 1.0,
+    "definition": ">=1 pre-classifier dimension ABSTAIN (conservative)"
+  },
+  "historical_model_misses": {
+    "n": 19,
+    "captured_by_abstain": 19,
+    "captured_ids": [
+      "C-01",
+      "C-03",
+      "C-09",
+      "C-15",
+      "C-20",
+      "F-10",
+      "F-20",
+      "R-04",
+      "R-10",
+      "R-12",
+      "R-16",
+      "R-18",
+      "R-24",
+      "U-10",
+      "U-13",
+      "U-16",
+      "U-20",
+      "U-22",
+      "U-24"
+    ],
+    "route_deterministic_on_miss": 3,
+    "note": "Captured = model-miss rows where the pre-classifier abstains on >=1 dimension, flagging the row for stricter adjudication rather than mechanical resolution."
+  },
+  "false_deterministics": {
+    "narrow_definition_n": 0,
+    "narrow_definition_ids": [],
+    "definition": "Positive route commitment label on a route_correctness row where frozen gold and historical model agree the route criterion is TRIGGERED",
+    "route_deterministic_on_model_miss_n": 3,
+    "route_deterministic_on_model_miss_ids": [
+      "R-12",
+      "R-16",
+      "R-18"
+    ],
+    "amendment_note": "AMENDMENT after first write: the narrow definition is non-falsifiable by construction (it requires model-correct AND route-TRIGGERED-agreement, yielding 0 by definition on non-route rows). The operationally meaningful diagnostic is route_deterministic_on_model_miss: model-miss rows where the pre-classifier resolved route deterministically and mechanical resolution would have shipped the wrong verdict without an abstention flag. Gold was NOT re-adjudicated (contract forbids); these 3 rows remain unresolved diagnostic risk, not adjudicated false deterministics."
+  },
+  "per_row": {
+    "C-01": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": false,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "C-02": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-03": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "C-04": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "NEGATED",
+      "abstain_dims": [
+        "route_commitment"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-05": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-06": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-07": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-08": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-09": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "C-10": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-11": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-12": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-13": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-14": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-15": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "ABSTAIN",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "uncertainty_behavior",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "C-16": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-17": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-18": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-19": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "NEGATED",
+      "abstain_dims": [
+        "route_commitment"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-20": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": false,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "C-21": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-22": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-23": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-24": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "C-25": {
+      "dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-01": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-02": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-03": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-04": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-05": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-06": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-07": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-08": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "NEGATED",
+      "abstain_dims": [
+        "route_commitment"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-09": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-10": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "F-11": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-12": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-13": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-14": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-15": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-16": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-17": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-18": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-19": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-20": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "F-21": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-22": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-23": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-24": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "F-25": {
+      "dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-01": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-02": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-03": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-04": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "R-05": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-06": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "RETRACTED",
+      "abstain_dims": [
+        "route_commitment"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-07": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-08": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-09": {
+      "dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-10": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "R-11": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-12": {
+      "dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "R-13": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-14": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-15": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "ABSTAIN",
+      "scope_label": "HYPOTHETICAL",
+      "abstain_dims": [
+        "route_commitment",
+        "uncertainty_behavior"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-16": {
+      "dimension": "route_correctness",
+      "route_label": "HYPOTHETICAL_ONLY",
+      "uncertainty_label": "ABSTAIN",
+      "scope_label": "HYPOTHETICAL",
+      "abstain_dims": [
+        "uncertainty_behavior"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "R-17": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "HEDGE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-18": {
+      "dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "R-19": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-20": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-21": {
+      "dimension": "route_correctness",
+      "route_label": "ASSERTED",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-22": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-23": {
+      "dimension": "route_correctness",
+      "route_label": "ASSERTED",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "R-24": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "R-25": {
+      "dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-01": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-02": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-03": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-04": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-05": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-06": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-07": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-08": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-09": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-10": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "U-11": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-12": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-13": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "HEDGE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "U-14": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-15": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-16": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "U-17": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-18": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-19": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "HEDGE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-20": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "U-21": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-22": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "HEDGE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "U-23": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    },
+    "U-24": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": true,
+      "false_deterministic_narrow": false
+    },
+    "U-25": {
+      "dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "uncertainty_label": "NONE",
+      "scope_label": "ABSTAIN",
+      "abstain_dims": [
+        "route_commitment",
+        "assertion_scope"
+      ],
+      "model_ok": true,
+      "model_miss": false,
+      "false_deterministic_narrow": false
+    }
+  },
+  "note": "Diagnostic replay of the frozen V1.6A.3 pre-classifier over the burned V1.4 official benchmark SUT answers. No gold changes, no scoring changes, no semantic judge calls."
+}

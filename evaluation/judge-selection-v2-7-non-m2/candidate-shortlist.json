@@ -1,0 +1,22 @@
+{
+  "artifact": "candidate-shortlist",
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_7-NON-M2-SCREENING",
+  "frozen_before_execution": true,
+  "candidates": [
+    {
+      "priority": 1,
+      "candidate": "deepseek-v4-1-flash",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "provider": "opencode-go via commandcode local proxy",
+      "source_artifact": "judge-selection-v2-3-stronger-model-screen/candidate-comparison.json"
+    },
+    {
+      "priority": 2,
+      "candidate": "mimo-v2-5-pro",
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "provider": "commandcode-auth local proxy",
+      "source_artifact": "judge-contract-v2-2-two-mechanism/judge_core_v2_2.py (frozen reference model)"
+    }
+  ],
+  "execution_order": ["deepseek-v4-1-flash", "mimo-v2-5-pro"]
+}

@@ -1,0 +1,45 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-FINAL-AUTHORITY-PROVENANCE-REPAIR-V1",
+  "status": "CLOSED",
+  "created_utc": "2026-09-16",
+  "owner_authorization": "explicit owner authorization (final authority provenance repair v1, 2026-09-16)",
+  "upstream_lineage": "evaluation/measurement-v3-residual-human-adjudication-v1/",
+  "upstream_terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE",
+  "scope": [
+    "verify frozen terminal baseline state",
+    "correct authority provenance for ROUT-025::forbidden:01 and ROUT-066::forbidden:01 from HUMAN_REVIEWED/OWNER-01 to LLM_ADJUDICATED (ChatGPT single review residual)",
+    "preserve historical trace of misclassification via repair record",
+    "recompute only authority-dependent aggregates",
+    "freeze repaired terminal baseline"
+  ],
+  "hard_constraints": {
+    "SEMANTIC_OBSERVATIONS_CHANGED": false,
+    "DERIVED_VERDICTS_CHANGED": false,
+    "AGGREGATE_RESULT_VALUES_CHANGED": false,
+    "LLM_SEMANTIC_REVIEW_CALLS": 0,
+    "HUMAN_REVIEW_CALLS": 0,
+    "SUT_RERUN": false,
+    "SCORING_RERUN": false,
+    "GOLD_CHANGED": false,
+    "PACKETS_CHANGED": false,
+    "MEASUREMENT_CONTRACT_CHANGED": false,
+    "OLD_LINEAGE_MUTATION": false,
+    "gpt_5_5_allowed": false
+  },
+  "pending_criteria": [
+    "ROUT-025::forbidden:01",
+    "ROUT-066::forbidden:01"
+  ],
+  "expected_final_authority_mix": {
+    "DETERMINISTIC": 526,
+    "LLM_REVIEWED": 64,
+    "LLM_ADJUDICATED": 10,
+    "HUMAN_REVIEWED": 0,
+    "PENDING": 0,
+    "TOTAL": 600
+  },
+  "schema_fallback_status": "NOT_TRIGGERED - existing canonical fields expressed the correction",
+  "terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE_PROVENANCE_CORRECTED",
+  "closed_utc": "2026-09-16",
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY"
+}

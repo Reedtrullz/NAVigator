@@ -1,0 +1,96 @@
+{
+  "artifact": "final-freeze-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-RESIDUAL-HUMAN-ADJUDICATION-V1",
+  "frozen_utc": "2026-09-16",
+  "terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE",
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY",
+  "freeze_chain": {
+    "stage_1_freeze": "pre-closure freeze (11 pins); superseded when TASK-LOCK closed and final-report/README added",
+    "stage_2_freeze_terminal": "post-closure re-freeze over closed TASK-LOCK; authoritative terminal freeze",
+    "stage_1_hashes_txt_sha256": "e408ebf6a4149c1fb4b1b15756d3a20ca2c6e3bf810b6aaf7e7f33f56bd624ae",
+    "self_reference_policy": "manifest and hashes.txt do not pin themselves; their terminal SHAs are recorded in closure-log.json"
+  },
+  "upstream_immutable_artifacts": [
+    {
+      "path": "evaluation/measurement-v3-astra-integration-residual-v1/combined-measurement-results.json",
+      "sha256": "45d078d6c8ee4e962e987381670d3ea412df5a6fbf326df0f728119137aed18d"
+    },
+    {
+      "path": "evaluation/measurement-v3-astra-integration-residual-v1/human-residual-adjudication-packets.json",
+      "sha256": "932d07e1c8e6bfe7223986c1e9d49c7254af7c63135b2a4705a61e2dce8f53c4"
+    }
+  ],
+  "derivation_kernel": {
+    "path": "evaluation/judge-selection-v2-13-forbidden-route-specialist/judge_core_v2_13.py",
+    "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "llm_calls_in_derivation": 0
+  },
+  "integration_proof": {
+    "rows_changed_from_upstream": [
+      "ROUT-025::forbidden:01",
+      "ROUT-066::forbidden:01"
+    ],
+    "total_criteria": 600,
+    "authoritative_total": 600,
+    "authority_mix": {
+      "DETERMINISTIC": 526,
+      "LLM_REVIEWED": 64,
+      "LLM_ADJUDICATED": 8,
+      "HUMAN_REVIEWED": 2
+    }
+  },
+  "frozen_artifacts": [
+    {
+      "path": "TASK-LOCK.json",
+      "sha256": "c9358164f009dbc1a3f337805cc498543a82a6742fdc325438741a2204d08f0c"
+    },
+    {
+      "path": "present-ROUT-025.md",
+      "sha256": "734c19f1a081f870042eb18fcc7f9e811f8c65f6f82536486aa7acda422f984d"
+    },
+    {
+      "path": "present-ROUT-066.md",
+      "sha256": "3e34b6ccb741600e676cecd6b566bd69e0fd042dd24f735c10a46230d4573196"
+    },
+    {
+      "path": "adjudication-ROUT-025-raw-observation.json",
+      "sha256": "422b2c6a0bd82308e461e274dcb88f72aac83a08e3cb59a554f7c61012358108"
+    },
+    {
+      "path": "adjudication-ROUT-066-raw-observation.json",
+      "sha256": "adc54ba4949937f42409bfdc5f66595963b4c17388468ec01a5b90adc129ed7e"
+    },
+    {
+      "path": "human-adjudications.jsonl",
+      "sha256": "a76e2d7bdd1b4aa75885088af71cf5349f341f35ce37ec30de7b27353a1c22d6"
+    },
+    {
+      "path": "human-adjudication-validation.json",
+      "sha256": "155a7e68bfa909e5392cf5331114166ff314d238c721220760f215ca524f0ec3"
+    },
+    {
+      "path": "human-adjudication-freeze-manifest.json",
+      "sha256": "0eb01485615aaf18d6df1ae618eb230d72113bc0bc202d23a1be06f72e96206c"
+    },
+    {
+      "path": "derived-residual-results.json",
+      "sha256": "c47fa200cf5458e29d149fbacfbbd343314b6ea72661af7b128533c64ab1d505"
+    },
+    {
+      "path": "combined-measurement-results-complete.json",
+      "sha256": "5c87bf07b59e58af3d78222500b94153d6db8b72892f978d1a0d585c4893fc12"
+    },
+    {
+      "path": "combined-aggregate-metrics-complete.json",
+      "sha256": "46ff5ee83e12f6462e5e3ca2c5c37c1d69afa9017842dccd6991ee748e276c82"
+    },
+    {
+      "path": "final-report.md",
+      "sha256": "4a8d4f95ce229a060e2c9bb25fbd4015615a09bee7aef688886324b94e3aa232"
+    },
+    {
+      "path": "README.md",
+      "sha256": "03254aa433f9db0fc1d88a312750fd9a32be8abb38e900e23058a7f25140e852"
+    }
+  ]
+}

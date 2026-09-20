@@ -1,0 +1,40 @@
+{
+  "artifact": "judge-call-reduction-estimate",
+  "diagnostic_marking": "BURNED_DIAGNOSTIC_ONLY",
+  "status_note": "retrospective workload diagnostics computed despite the failed targeted-confirmation gate; not readiness evidence",
+  "basis": "burned-v1-4-counterfactual.json (V1.6A.1 engine, 100 burned V1.4 fixtures)",
+  "engine_sha256": "40d85f3173839c3fe6a727aaf17e38a536734fd92007c1043dafa356c7de768d",
+  "v1_6a_comparison": {
+    "v1_6a_boundary_resolved_no_judge_call": 35,
+    "v1_6a_reduction_pct_all_v1_4_fixtures": 35.0
+  },
+  "boundary_dimension_fixtures": 50,
+  "deterministically_resolved_no_judge_call": 36,
+  "still_judge_required": 14,
+  "reduction_pct_boundary_fixtures": 72.0,
+  "reduction_pct_all_v1_4_fixtures": 36.0,
+  "per_family": {
+    "route_correctness": {
+      "n": 25,
+      "resolved": 11,
+      "coverage": 0.44
+    },
+    "required_uncertainty": {
+      "n": 25,
+      "resolved": 25,
+      "coverage": 1.0,
+      "integration_note": "with structured criteria, NONE classifications become OVERCONFIDENT_ASSERTION; still deterministic"
+    },
+    "critical_condition": {
+      "n": 25,
+      "resolved": 0,
+      "note": "no preclassifier dimension; judge-required"
+    },
+    "forbidden_claim": {
+      "n": 25,
+      "resolved": 0,
+      "note": "no preclassifier dimension; judge-required"
+    }
+  },
+  "caveat": "BURNED_COUNTERFACTUAL_DIAGNOSTIC; not certification evidence and not measured on fresh data; targeted confirmation failed so no candidate freeze occurred"
+}

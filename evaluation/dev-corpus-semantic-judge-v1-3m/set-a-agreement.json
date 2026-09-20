@@ -1,0 +1,628 @@
+{
+  "set": "SEMANTIC_JUDGE_V1_3_BOUNDARY_CALIBRATION_A",
+  "protocol": "dual blind V1.3 boundary annotation (frozen decision trees, two phrasings)",
+  "n": 32,
+  "overall_agreement_rate": 0.0,
+  "route_subset": {
+    "n": 16,
+    "overall": 0.0,
+    "route_commitment": 0.8125,
+    "route_verdict": 0.8125
+  },
+  "uncertainty_subset": {
+    "n": 16,
+    "overall": 0.0,
+    "mode": 0.8125,
+    "verdict": 0.6875
+  },
+  "zero_gates": {
+    "self_retracted_no_acceptable": 0,
+    "vague_no_acceptable": 0,
+    "non_assertion_not_required": 0
+  },
+  "schema_failures": 3,
+  "rows": [
+    {
+      "id": "BRT-01",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "fastlege_anbefalt_som_inngang"
+      },
+      "pass2": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "direct_recommendation_of_general_practitioner"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      }
+    },
+    {
+      "id": "BRT-02",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE",
+        "note": "skattekontoret_not_in_criterion"
+      },
+      "pass2": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE",
+        "note": "skattekontoret_er_ikke_kriteriets_rute"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      }
+    },
+    {
+      "id": "BRT-03",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "hedged_offer_of_youth_health_station"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "hedged_positive_recommendation"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      }
+    },
+    {
+      "id": "BRT-04",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE",
+        "note": "hedged_service_not_matching_required_criteria"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE",
+        "note": "hedged_recommendation_not_matching_criterion"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      }
+    },
+    {
+      "id": "BRT-05",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "helsestasjonen_negated_no_alternative"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "route_negated"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-06",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "bup_negated"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "BUP eksplisitt_nestet_som_veiledning"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-07",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "skolehelsetjenesten_negated"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "retracted_recommendation"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "SELF_RETRACTED",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-08",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "negative_explicit_retraction"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED",
+        "note": "positive_then_explicitly_retracted"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "SELF_RETRACTED",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-09",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED",
+        "note": "reference_to_website_no_self_recommendation"
+      },
+      "pass2": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED",
+        "note": "quoted_reference_no_recommendation"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-10",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED",
+        "note": "fastlegen_som_henvisningsinngang_kun_i_referanse_til_kommunen"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "fastlegen_as_referral_to_BUP_hedged_but_identified"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-11",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED",
+        "note": "hypothetical_suggestion"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "PARTIAL",
+        "note": "helsestasjonen_for_ungdom_hedged_with_kunne_tenkes"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-12",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED",
+        "note": "hypothetical_suggestion_ppt"
+      },
+      "pass2": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED",
+        "note": "hypothetical_suggestion"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-13",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED",
+        "note": "vague_ref_to_school_or_elsewhere"
+      },
+      "pass2": {
+        "error": "'NoneType' object has no attribute 'strip'"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-14",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED",
+        "note": "vague_instans_mentioned"
+      },
+      "pass2": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED",
+        "note": "vague_relevant_instans"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-15",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "ruten_identifisert_med_usikkerhet_om_anbefaling"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "helsestasjonen_nevnt_med_hedging"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "AMBIGUOUS_COMMITMENT",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BRT-16",
+      "dimension": "route_commitment_calibration",
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "familievernkontoret_mentioned_with_uncertainty"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE",
+        "note": "hedged_counseling_offer"
+      },
+      "agree": false,
+      "designer_intent": {
+        "route_commitment": "AMBIGUOUS_COMMITMENT",
+        "route_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BUN-01",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_verdict": "NOT_REQUIRED",
+        "note": "criterion_requires_mention_only"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "full_coverage_explicit"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_verdict": "NOT_REQUIRED"
+      }
+    },
+    {
+      "id": "BUN-02",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "both_items_mentioned"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "all_required_elements_mentioned"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_verdict": "NOT_REQUIRED"
+      }
+    },
+    {
+      "id": "BUN-03",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "explicit_limitation_satisfied"
+      },
+      "pass2": {
+        "error": "'NoneType' object has no attribute 'strip'"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED"
+      }
+    },
+    {
+      "id": "BUN-04",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "kandidatsvar_uten_usikkerhetskvalifisering"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "answer_states_waiting_time_without_uncertainty_qualifier"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "VIOLATED"
+      }
+    },
+    {
+      "id": "BUN-05",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "no_forbidden_conclusion_drawn"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "forbudt_konklusjon_ikke_frem_satt"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      }
+    },
+    {
+      "id": "BUN-06",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "non_assertion_satisfied"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "candidate_avoids_forbidden_statement"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      }
+    },
+    {
+      "id": "BUN-07",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "asserts_forbidden_conclusion"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "svaret_konkluderer_med_mangel_paa_tilbud"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      }
+    },
+    {
+      "id": "BUN-08",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "forbidden_negative_asserted"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "forbudt_konklusjon_eksplisitt_uttalt"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      }
+    },
+    {
+      "id": "BUN-09",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "UNRESOLVED",
+        "note": "hedged_observation_with_uncertainty"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "answer_concludes_lack_of_services"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BUN-10",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "svaret_unngår_å_si_at_kommunen_mangler_familieteam"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "UNRESOLVED"
+      }
+    },
+    {
+      "id": "BUN-11",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "all_requirements_met"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "both_requirements_met"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      }
+    },
+    {
+      "id": "BUN-12",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "both_parts_covered"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED",
+        "note": "both_conditions_fulfilled"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      }
+    },
+    {
+      "id": "BUN-13",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "PARTIAL",
+        "note": "expression_limitation_met_but_non_assertion_constraint_violated"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "first_requirement_met_second_breached"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "PARTIAL"
+      }
+    },
+    {
+      "id": "BUN-14",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "assertion_met_non_assertion_breached"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "expression_met_but_assertion_violated"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "PARTIAL"
+      }
+    },
+    {
+      "id": "BUN-15",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "violates_expression_requirement_and_non_assertion_constraint"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "violates_constraint_and_omits_statement"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      }
+    },
+    {
+      "id": "BUN-16",
+      "dimension": "uncertainty_mode_calibration",
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "both_requirements_violated"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED",
+        "note": "svaret_bryter_begge_ledd_ekspisitt"
+      },
+      "agree": false,
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      }
+    }
+  ]
+}

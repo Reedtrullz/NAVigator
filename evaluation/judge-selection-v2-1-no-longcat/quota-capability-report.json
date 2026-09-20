@@ -1,0 +1,29 @@
+{
+  "artifact": "V2.1 QUOTA CAPABILITY REPORT (PRE-EXECUTION)",
+  "benchmark_cost_per_candidate": {
+    "rows": 72,
+    "a3_derived": 3,
+    "judge_calls": 69,
+    "stability_if_qualifier": {
+      "fixtures": 24,
+      "runs": 5,
+      "calls": 120
+    }
+  },
+  "known_observations": {
+    "longcat_2_0_free": {
+      "daily_cap": 100,
+      "observed_429": "persistent daily exhaustion",
+      "withdrawn": true
+    },
+    "mimo_v2_5_pro": {
+      "cap": "unverified; 72-call run completed in one window on 2026-09-12"
+    }
+  },
+  "policy": {
+    "transient_429": "preregistered technical retry (1x, 30s)",
+    "persistent_quota_429": "candidate = SCREENING_INCOMPLETE_QUOTA; does not qualify; no next-day resume within task",
+    "unknown_transport_429": "recorded as transport failure; counted in transport gate"
+  },
+  "window_assessment": "each shortlisted candidate requires 69 calls for one-shot; feasible within a single daily window if cap >= 100 and unused; stability (120 calls) only for a one-shot qualifier and subject to same 429 policy"
+}

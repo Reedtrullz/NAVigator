@@ -1,0 +1,38 @@
+{
+ "artifact": "security_regression",
+ "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-PROVIDER-V2_1-ADAPTER-CORRECTNESS",
+ "executed_at": "2026-09-09",
+ "ssrf_private_ip_localhost_schemes_redirects": {
+  "source": "runtime/discovery/tests.py security tests (validate_url: file://, localhost, private IPs, ftp://, official-domain classification)",
+  "result": "PASS (within V1 suite 49/49)"
+ },
+ "site_direct_url_guards": {
+  "files": [
+   "runtime/discovery_v2/providers.py (SiteDirectProvider._get/_nav_links/_sitemap_urls)"
+  ],
+  "changed_by_v2_1": false,
+  "note": "validate_url guards byte-identical to baseline; only classify_http_response and ExternalSearchProvider.discover changed",
+  "result": "PASS"
+ },
+ "response_size_bounds": {
+  "external_adapter_cap_bytes": 2097152,
+  "challenge_scan_window_bytes": 2097152,
+  "truncation_recorded": true,
+  "test": "tests_v21.test_t5_body_truncated_at_2mib_and_scan_capped",
+  "result": "PASS"
+ },
+ "timeouts": {
+  "curl_max_time_preserved": true,
+  "curl_exit_28_maps_to_timeout": true,
+  "test": "tests_v21.test_t4_curl_exit28_maps_to_timeout",
+  "result": "PASS"
+ },
+ "redirect_handling": {
+  "curl -L preserved": "curl -L flag unchanged",
+  "metadata": "initial_url, final_url, num_redirects, final http_status captured structurally via -w write-out",
+  "url_guards_not_weakened": true,
+  "result": "PASS"
+ },
+ "no_bot_evasion": "single attempt, standard user agent, no retries added, no proxy/identity/fingerprint/challenge-solving",
+ "overall": "PASS"
+}

@@ -1,0 +1,40 @@
+{
+ "bench": "diagnostic-20",
+ "n": 20,
+ "accuracy": 0.8,
+ "confusion": {
+  "CONTRADICTED->CONTRADICTED": 5,
+  "CONTRADICTED->INSUFFICIENT_EVIDENCE": 2,
+  "INSUFFICIENT_EVIDENCE->INSUFFICIENT_EVIDENCE": 4,
+  "INSUFFICIENT_EVIDENCE->SUPPORTED": 1,
+  "SUPPORTED->INSUFFICIENT_EVIDENCE": 1,
+  "SUPPORTED->SUPPORTED": 7
+ },
+ "per_dimension": {
+  "modality": {
+   "n": 5,
+   "ok": 3
+  },
+  "locality": {
+   "n": 5,
+   "ok": 4
+  },
+  "actor": {
+   "n": 5,
+   "ok": 4
+  },
+  "contradiction-insufficiency": {
+   "n": 5,
+   "ok": 5
+  }
+ },
+ "high_confidence_errors": [
+  {
+   "id": "D20-M4",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "SUPPORTED",
+   "confidence": 0.98,
+   "relation": null
+  }
+ ]
+}

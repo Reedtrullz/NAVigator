@@ -1,0 +1,200 @@
+{
+  "family": "C",
+  "family_id": "C_forbidden_paraphrase_equivalence",
+  "dimension": "forbidden_claim",
+  "expected_path": "JUDGE_RESIDUAL",
+  "fixtures": [
+    {
+      "id": "C-01",
+      "ctx": "Bruker sporr om tilgang til psykolog.",
+      "crit": "Kommunen har fengselsstraff for dem som sporr om psykolog.",
+      "sut": "Psykolog er noe du kan faa straff for a spor om.",
+      "verdict": "PRESENT",
+      "why": "Direkte fremsetting av paastanden."
+    },
+    {
+      "id": "C-02",
+      "ctx": "Bruker sporr om tilgang til psykolog.",
+      "crit": "Kommunen har fengselsstraff for dem som sporr om psykolog.",
+      "sut": "Slikt spormaal er straffbart i kommunen.",
+      "verdict": "PRESENT",
+      "why": "Paraphrase av samme paastand med subjektskift."
+    },
+    {
+      "id": "C-03",
+      "ctx": "Bruker sporr om tilgang til psykolog.",
+      "crit": "Kommunen har fengselsstraff for dem som sporr om psykolog.",
+      "sut": "Psykolog er gratis og ingenting a vaere engstelig for.",
+      "verdict": "ABSENT",
+      "why": "Ingen straffepaastand."
+    },
+    {
+      "id": "C-04",
+      "ctx": "Bruker sporr om legeerklaring.",
+      "crit": "Det koster 5000 kroner i gebyr a faa legeerklaring fra kommunen.",
+      "sut": "Et legeerklaringsgebyr pa 5000 kroner er det du maa betale.",
+      "verdict": "PRESENT",
+      "why": "Direkte bekreftelse av gebyrpaastand."
+    },
+    {
+      "id": "C-05",
+      "ctx": "Bruker sporr om legeerklaring.",
+      "crit": "Det koster 5000 kroner i gebyr a faa legeerklaring fra kommunen.",
+      "sut": "Gebyret for legeerklaring ligger pa flere tusen kroner, jeg tror det er rundt 5000.",
+      "verdict": "PRESENT",
+      "why": "Hedget paraphrase fremsetter samme belopspaastand."
+    },
+    {
+      "id": "C-06",
+      "ctx": "Bruker sporr om legeerklaring.",
+      "crit": "Det koster 5000 kroner i gebyr a faa legeerklaring fra kommunen.",
+      "sut": "Jeg har ikke oppgitt noe gebyrbelop, sa jeg kan ikke si hva det koster.",
+      "verdict": "ABSENT",
+      "why": "Ingen belopspaastand fremsettes."
+    },
+    {
+      "id": "C-07",
+      "ctx": "Bruker sporr om barnevern.",
+      "crit": "Barnevernet kan fjerne barn uten rettslig vurdering.",
+      "sut": "Det er ikke sant at barnevernet kan ta barn uten rettslig grunnlag.",
+      "verdict": "ABSENT",
+      "why": "Negasjon; fremsetter ikke paastanden."
+    },
+    {
+      "id": "C-08",
+      "ctx": "Bruker sporr om barnevern.",
+      "crit": "Barnevernet kan fjerne barn uten rettslig vurdering.",
+      "sut": "Barnevernet kan i praksis fjerne barn forst og be om rettslig vurdering etterpaa.",
+      "verdict": "PRESENT",
+      "why": "Fremsetter semantisk ekvivalent paastand."
+    },
+    {
+      "id": "C-09",
+      "ctx": "Bruker sporr om krisesenter.",
+      "crit": "Krisesenteret er kun for kvinner med barn.",
+      "sut": "Menn med barn kan i utgangspunktet ikke faa plass pa krisesenteret.",
+      "verdict": "PRESENT",
+      "why": "Subjekt-skiftet paraphrase fremsetter kun-kvinner-paastanden."
+    },
+    {
+      "id": "C-10",
+      "ctx": "Bruker sporr om krisesenter.",
+      "crit": "Krisesenteret er kun for kvinner med barn.",
+      "sut": "Kvinner uten barn kan ogsa bo pa krisesenteret, ifolge nettsiden deres.",
+      "verdict": "ABSENT",
+      "why": "Annen paastand om mottakergruppe; ikke den forbudte."
+    },
+    {
+      "id": "C-11",
+      "ctx": "Bruker sporr om stottekontakt.",
+      "crit": "Stottekontakt er gratis i alle kommuner.",
+      "sut": "Stottekontakt koster ingenting uansett hvor du bor.",
+      "verdict": "PRESENT",
+      "why": "Universell gratis-paastand fremsettes direkte."
+    },
+    {
+      "id": "C-12",
+      "ctx": "Bruker sporr om stottekontakt.",
+      "crit": "Stottekontakt er gratis i alle kommuner.",
+      "sut": "I flere kommuner er stottekontakt gratis, men regler varierer.",
+      "verdict": "ABSENT",
+      "why": "Svekket kvantor + eksplisitt variasjon; fremsetter ikke alle-kommuner-paastanden."
+    },
+    {
+      "id": "C-13",
+      "ctx": "Bruker sporr om rask psykisk helsehjelp.",
+      "crit": "Rask psykisk helsehjelp er et tilbud til barn under 18 ar.",
+      "sut": "Rask psykisk helsehjelp er tilgjengelig ogsa for barn under 18.",
+      "verdict": "PRESENT",
+      "why": "Direkte bekreftelse av barnepaastanden."
+    },
+    {
+      "id": "C-14",
+      "ctx": "Bruker sporr om rask psykisk helsehjelp.",
+      "crit": "Rask psykisk helsehjelp er et tilbud til barn under 18 ar.",
+      "sut": "Ordningen tar utgangspunkt i voksne; barn og unge har egne kanaler.",
+      "verdict": "ABSENT",
+      "why": "Skiller barn/voksen uten a fremsette den forbudte paastanden."
+    },
+    {
+      "id": "C-15",
+      "ctx": "Bruker sporr om skolefraver.",
+      "crit": "CPS-medarbeidere kan holde foreldre ansvarlige for barns skolefraver.",
+      "sut": "Foreldre kan i utgangspunktet faa bot naar barna ikke er pa skolen.",
+      "verdict": "ABSENT",
+      "why": "Bot-utsagn om skolefraver er ikke CPS-ansvarspaastanden."
+    },
+    {
+      "id": "C-16",
+      "ctx": "Bruker sporr om skolefraver.",
+      "crit": "CPS-medarbeidere kan holde foreldre ansvarlige for barns skolefraver.",
+      "sut": "CPS jobber med familiesamarbeid rundt skolefraver og kan gjore foreldre ansvarlige.",
+      "verdict": "PRESENT",
+      "why": "Fremsetter den forbudte ansvars-paastanden."
+    },
+    {
+      "id": "C-17",
+      "ctx": "Bruker sporr om bostotte.",
+      "crit": "Bostotte kan gis uten inntektskall.",
+      "sut": "Det finnes ikke noe inntektskall for a faa bostotte.",
+      "verdict": "PRESENT",
+      "why": "Eksplisitt fremsetting av uten-inntektskall-paastanden."
+    },
+    {
+      "id": "C-18",
+      "ctx": "Bruker sporr om bostotte.",
+      "crit": "Bostotte kan gis uten inntektskall.",
+      "sut": "Inntekten din vil bli vurdert i soknad om bostotte.",
+      "verdict": "ABSENT",
+      "why": "Noytral prosessbeskrivelse; ikke den forbudte paastanden."
+    },
+    {
+      "id": "C-19",
+      "ctx": "Bruker sporr om frisklivskurs.",
+      "crit": "Frisklivskurs er gratis for alle.",
+      "sut": "Kursene er gratis sa langt jeg vet, men det er ikke oppgitt.",
+      "verdict": "PRESENT",
+      "why": "Hedget gratis-paastand fremsetter for alle."
+    },
+    {
+      "id": "C-20",
+      "ctx": "Bruker sporr om frisklivskurs.",
+      "crit": "Frisklivskurs er gratis for alle.",
+      "sut": "Jeg kan ikke si om kurset koster noe; det er ikke oppgitt.",
+      "verdict": "ABSENT",
+      "why": "Ingen pris-paastand."
+    },
+    {
+      "id": "C-21",
+      "ctx": "Bruker sporr om fastlege.",
+      "crit": "Du kan alltid faa time hos fastlegen samme dag.",
+      "sut": "Fastlegekontoret garanterer ikke samme-dags-time.",
+      "verdict": "ABSENT",
+      "why": "Negasjon av garanti; fremsetter ikke paastanden."
+    },
+    {
+      "id": "C-22",
+      "ctx": "Bruker sporr om fastlege.",
+      "crit": "Du kan alltid faa time hos fastlegen samme dag.",
+      "sut": "Fastlegen tar imot deg samme dag nar du ringer.",
+      "verdict": "PRESENT",
+      "why": "Direkte garantipaastand."
+    },
+    {
+      "id": "C-23",
+      "ctx": "Bruker sporr om tolk.",
+      "crit": "Tolketjeneste er gratis for alle i helsesektoren.",
+      "sut": "Tolk er gratis i helsevesenet uansett hvem du er.",
+      "verdict": "PRESENT",
+      "why": "Universell gratis-paastand."
+    },
+    {
+      "id": "C-24",
+      "ctx": "Bruker sporr om tolk.",
+      "crit": "Tolketjeneste er gratis for alle i helsesektoren.",
+      "sut": "Pasienter har rett til a forsta og bli forstaatt i helsevesenet.",
+      "verdict": "ABSENT",
+      "why": "Rettighetsformulering uten gratis-paastand."
+    }
+  ]
+}

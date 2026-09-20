@@ -1,0 +1,199 @@
+{
+  "artifact": "p0-regression-diagnosis",
+  "task_id": "NAV-EXPLORE-POST-WAVE3-P0-RC04-BINDING-WAVE4-SCOPE-GATE-V1",
+  "created": "2026-09-17",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "method": "mechanical reconstruction from frozen Wave-2/Wave-3 predictions, combined measurement results, transition matrix, regression inventory, scorer source, and dev-corpus gold; zero LLM calls",
+  "p0_regressions_total": 5,
+  "counts": {
+    "REAL_PRODUCT_SAFETY_REGRESSION": 0,
+    "AUTHORITY_TRANSITION_CONFOUND": 4,
+    "SCORER_LAG_OR_CONTRACT_SENSITIVITY": 0,
+    "PRODUCT_REPRESENTATION_CHANGE": 1,
+    "UPSTREAM_ROUTE_EFFECT": 0,
+    "AMBIGUOUS": 0,
+    "NOT_A_REGRESSION": 1
+  },
+  "primary_classification_counts_note": "NOT_A_REGRESSION counts ROUT-030 (lateral flag, not in the 5-regression inventory); it is excluded from P0 total.",
+  "cases": [
+    {
+      "case_id": "ROUT-022",
+      "criterion_id": "ROUT-022::critical_condition",
+      "dimension": "critical_condition",
+      "wave2": {
+        "verdict": "UNRESOLVED",
+        "state": "UNRESOLVED",
+        "authority": "LLM_REVIEWED",
+        "observation_source": "ASTRA_WAVE2_DUAL_PASS_CONSENSUS",
+        "derivation_basis": "M2:INSUFFICIENT_TO_DECIDE"
+      },
+      "wave3": {
+        "verdict": "CRITICAL_ERROR",
+        "state": "FAIL",
+        "authority": "DETERMINISTIC",
+        "evidence": [
+          "PREMATURE_ABSENCE"
+        ]
+      },
+      "product_change": {
+        "wave2_routes": [
+          "Hensikt"
+        ],
+        "wave2_no_route_asserted": false,
+        "wave3_routes": [],
+        "wave3_no_route_asserted": true
+      },
+      "mechanism": "W2 emitted pseudo-route 'Hensikt' from leaked markdown heading token; W3 RC-07 heading-suppression removed it. W2 semantic lane could not adjudicate condition 'BUP routed for pure learning difficulties' against junk pseudo-route and returned M2:INSUFFICIENT_TO_DECIDE (UNRESOLVED). W3 honest no_route_asserted=true fires generic scorer rule R3 (PREMATURE_ABSENCE) before condition mapping; condition is free text and unmapped in CRITICAL_CONDITION_MAP.",
+      "primary_category": "AUTHORITY_TRANSITION_CONFOUND",
+      "rationale": "Different frozen observation mechanisms produce non-comparable states; W3 product output is materially more honest (junk route removed), not less safe. Generic R3 and semantic lane would both be UNRESOLVED-equivalent observations of the same underlying truth: no route asserted, no route exists yet.",
+      "counterfactual_note": "Diagnosis-only counterfactual: under the W2 owner, W3 output (routes=[], no_route_asserted=true, uncertainty no_route_found) would again be M2-insufficient on free-text condition, i.e. UNRESOLVED, not CRITICAL_ERROR."
+    },
+    {
+      "case_id": "ROUT-031",
+      "criterion_id": "ROUT-031::critical_condition",
+      "dimension": "critical_condition",
+      "wave2": {
+        "verdict": "UNRESOLVED",
+        "state": "UNRESOLVED",
+        "authority": "LLM_REVIEWED",
+        "observation_source": "ASTRA_WAVE2_DUAL_PASS_CONSENSUS",
+        "derivation_basis": "M2:INSUFFICIENT_TO_DECIDE"
+      },
+      "wave3": {
+        "verdict": "CRITICAL_ERROR",
+        "state": "FAIL",
+        "authority": "DETERMINISTIC",
+        "evidence": [
+          "PREMATURE_ABSENCE"
+        ]
+      },
+      "product_change": {
+        "wave2_routes": [
+          "Hensikt"
+        ],
+        "wave3_routes": [],
+        "wave3_no_route_asserted": true
+      },
+      "mechanism": "Same pseudo-route removal; condition 'somatisk follow-up dropped' is free text, unmapped; generic R3 fires deterministically.",
+      "primary_category": "AUTHORITY_TRANSITION_CONFOUND",
+      "rationale": "W2 semantic lane insufficient-to-decide vs W3 deterministic R3; product semantics did not worsen."
+    },
+    {
+      "case_id": "ROUT-033",
+      "criterion_id": "ROUT-033::critical_condition",
+      "dimension": "critical_condition",
+      "wave2": {
+        "verdict": "NOT_TRIGGERED",
+        "state": "PASS",
+        "authority": "LLM_REVIEWED",
+        "observation_source": "ASTRA_WAVE2_DUAL_PASS_CONSENSUS",
+        "derivation_basis": "M2:CLEAR_NON_TRIGGER_SUPPORT"
+      },
+      "wave3": {
+        "verdict": "CRITICAL_ERROR",
+        "state": "FAIL",
+        "authority": "DETERMINISTIC",
+        "evidence": [
+          "PREMATURE_ABSENCE"
+        ]
+      },
+      "product_change": {
+        "wave2_routes": [
+          "Status"
+        ],
+        "wave3_routes": [],
+        "wave3_no_route_asserted": true
+      },
+      "mechanism": "W2 'Status' pseudo-route from heading token. W2 semantic lane found clear non-trigger support for 'direct family referral presented as standard'. W3 removes pseudo-route; no_route_asserted=true fires generic R3 before free-text condition can be evaluated.",
+      "primary_category": "AUTHORITY_TRANSITION_CONFOUND",
+      "rationale": "Owner change flips a semantic non-trigger judgment into a deterministic generic-rule firing; the product did not start presenting direct family referral as standard. The underlying proposition was never asserted in either wave.",
+      "counterfactual_note": "Diagnosis-only: W3 output under W2 owner would be M2-evaluable on condition text alone; the case answer contains family-vernet references in national-information blocks, so the semantic lane would most plausibly reproduce a non-trigger/insufficient decision, not CRITICAL_ERROR."
+    },
+    {
+      "case_id": "ROUT-047",
+      "criterion_id": "ROUT-047::critical_condition",
+      "dimension": "critical_condition",
+      "wave2": {
+        "verdict": "NOT_TRIGGERED",
+        "state": "PASS",
+        "authority": "LLM_REVIEWED",
+        "observation_source": "ASTRA_WAVE2_DUAL_PASS_CONSENSUS",
+        "derivation_basis": "M2:CLEAR_NON_TRIGGER_SUPPORT"
+      },
+      "wave3": {
+        "verdict": "CRITICAL_ERROR",
+        "state": "FAIL",
+        "authority": "DETERMINISTIC",
+        "evidence": [
+          "PREMATURE_ABSENCE"
+        ]
+      },
+      "product_change": {
+        "wave2_routes": [
+          "Hensikt"
+        ],
+        "wave3_routes": [],
+        "wave3_no_route_asserted": true
+      },
+      "mechanism": "Same as ROUT-033 pattern with condition 'mellomnivaa omitted' (free text, unmapped).",
+      "primary_category": "AUTHORITY_TRANSITION_CONFOUND"
+    },
+    {
+      "case_id": "ROUT-069",
+      "criterion_id": "ROUT-069::critical_condition",
+      "dimension": "critical_condition",
+      "wave2": {
+        "verdict": "NO_CRITICAL_ERROR",
+        "state": "UNRESOLVED",
+        "authority": "DETERMINISTIC"
+      },
+      "wave3": {
+        "verdict": "CRITICAL_ERROR",
+        "state": "FAIL",
+        "authority": "DETERMINISTIC",
+        "evidence": [
+          "PREMATURE_ABSENCE"
+        ]
+      },
+      "product_change": {
+        "wave2_routes": [
+          "Hensikt"
+        ],
+        "wave3_routes": [],
+        "wave3_no_route_asserted": true
+      },
+      "mechanism": "Owner DETERMINISTIC in both waves. W2 critical_error_if=None yielded NO_CRITICAL_ERROR only because the junk pseudo-route suppressed the generic R3 branch. W3 honest no_route_asserted=true triggers R3. See rout-069-analysis.md.",
+      "primary_category": "PRODUCT_REPRESENTATION_CHANGE"
+    }
+  ],
+  "lateral_flag_case": {
+    "case_id": "ROUT-030",
+    "criterion_id": "ROUT-030::critical_condition",
+    "wave2": {
+      "verdict": "TRIGGERED",
+      "state": "FAIL",
+      "authority": "LLM_REVIEWED",
+      "derivation_basis": "M2:CLEAR_TRIGGER_SUPPORT"
+    },
+    "wave3": {
+      "verdict": "CRITICAL_ERROR",
+      "state": "FAIL",
+      "authority": "DETERMINISTIC",
+      "evidence": [
+        "PREMATURE_ABSENCE"
+      ]
+    },
+    "classification": "NOT_A_REGRESSION",
+    "rationale": "FAIL -> FAIL state transition; verdicts differ (TRIGGERED vs CRITICAL_ERROR) but both map to state FAIL under frozen semantics. Apparent change is observation mechanism, not state severity. See rout-030-analysis.md."
+  },
+  "wave4_rule": {
+    "real_product_safety_regressions": 0,
+    "consequence": "No isolated safety-preservation repair/gate is required to open Wave 4; do not reopen broad safety logic."
+  },
+  "hard_invariants": {
+    "SOURCE_CHANGED": false,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false
+  }
+}

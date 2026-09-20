@@ -1,0 +1,138 @@
+{
+  "policy_id": "RC3G-SCORING-POLICY-V1",
+  "task_id": "NAV-EXPLORE-RC3-GENERALIZATION-G1_5-SCORING-FREEZE",
+  "phase": "SCORING_POLICY_BEFORE_KEY",
+  "status": "FROZEN_BEFORE_KEY",
+  "prediction_sha256": "6923c66c8abafde0bd0e3e58a282e2b40a3da4adefd3a364b25cddcd3a88a361",
+  "overall_denominator": 159,
+  "prediction_fields": {
+    "semantic": "predictions[].semantic_verdict",
+    "proof_safe": "predictions[].proof_safe_verdict",
+    "product": "predictions[].product_action",
+    "route": "predictions[].route",
+    "proof_object": "predictions[].proof_object.atom_proofs[]",
+    "atom_predictions": "predictions[].atom_results[]",
+    "evidence_sufficiency_state": "predictions[].atom_results[].proof_state",
+    "runtime_status": "predictions[].runtime_status",
+    "atom_routes": "predictions[].atom_routes[]"
+  },
+  "normalization": {
+    "semantic": {
+      "aliases": {"PARTIAL": "PARTIALLY_SUPPORTED", "INSUFFICIENT": "INSUFFICIENT_EVIDENCE"},
+      "review_required_is_distinct": true,
+      "abstain_insufficient_is_not_a_semantic_truth_alias": true
+    },
+    "proof_safe": {
+      "aliases": {"PARTIAL": "PARTIALLY_SUPPORTED", "INSUFFICIENT": "INSUFFICIENT_EVIDENCE"},
+      "classes": ["SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "REVIEW_REQUIRED"]
+    },
+    "product": {
+      "exact": true,
+      "classes": ["AUTO_SUPPORTED", "AUTO_CONTRADICTED", "REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT"]
+    }
+  },
+  "auto": {
+    "actions": ["AUTO_SUPPORTED", "AUTO_CONTRADICTED"],
+    "coverage": "count(predictions[].product_action in AUTO_SUPPORTED,AUTO_CONTRADICTED) / 159",
+    "prediction_only_count": 24,
+    "prediction_only_fraction": "24/159",
+    "predetermined_gate_flag": "AUTO_COVERAGE_GATE_PREDETERMINED_FROM_FROZEN_PREDICTIONS",
+    "overall_readiness_issued": false
+  },
+  "proof": {
+    "layers": [
+      "STRUCTURAL_PROOF_VALIDITY",
+      "EVIDENCE_GROUNDEDNESS",
+      "SEMANTIC_PROOF_SOUNDNESS",
+      "PROOF_SAFE_AUTO_CORRECTNESS"
+    ],
+    "accepted_proof_definition": "An atom_results entry with proof_state ENGINE_PROOF_ACCEPTED, a matching atom_routes route of AUTO_SUPPORTED or AUTO_CONTRADICTED, and a non-null proof object. This is the authoritative final auto route for that atom; compound aggregation may still make the case-level product_action REVIEW_REQUIRED or PARTIALLY_SUPPORTED.",
+    "proof_objects_emitted": 137,
+    "structurally_valid_proof_objects": 64,
+    "accepted_auto_proofs": 64,
+    "accepted_proofs_in_final_auto_product_cases": 32,
+    "final_auto_product_cases": 24,
+    "non_auto_or_intermediate_emitted_proof_objects": 73,
+    "intermediate_accepted_atom_proofs": 32,
+    "structural_validity": "Accepted proof object is a registered concrete runtime proof type mapped to SUPPORT, CONTRADICTION, or DETERMINISTIC_COMPARATOR; span proofs have a non-empty source_span present verbatim in public case source, and comparator proofs use a registered frozen comparator rule.",
+    "groundedness": "Every proof source_span, premise, quote, and span id must be present in the authorized public evidence packet; no out-of-packet premise is allowed.",
+    "semantic_soundness": "At atom granularity, the accepted auto polarity must be allowed by the sealed expected proof-safe target for that atom, independent of structural validity and groundedness.",
+    "proof_safe_auto": "At case granularity, AUTO_SUPPORTED requires expected proof-safe SUPPORTED and AUTO_CONTRADICTED requires expected proof-safe CONTRADICTED; REVIEW_REQUIRED, INSUFFICIENT_EVIDENCE, and the opposite polarity are unsound autos.",
+    "auto_precision": "Auto correctness is M4 proof-safe polarity agreement, separately by auto polarity and combined; structural validity never substitutes for correctness."
+  },
+  "review_abstain": {
+    "necessary_review": "Expected product_action exactly REVIEW_REQUIRED; predicted product_action REVIEW_REQUIRED is a true positive.",
+    "unnecessary_review": "Numerator is predicted REVIEW_REQUIRED with expected product_action not REVIEW_REQUIRED; denominator is all predicted REVIEW_REQUIRED.",
+    "abstain_recall": "Predicted ABSTAIN_INSUFFICIENT among expected product_action ABSTAIN_INSUFFICIENT; denominator is all expected abstain cases.",
+    "macro_f1_membership": ["REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT"],
+    "macro_f1_auto_treatment": "All 159 cases remain in the binary one-vs-rest counts; AUTO_* and PARTIALLY_SUPPORTED are negative for both classes.",
+    "zero_denominator": "Undefined class precision, recall, or F1 is 0."
+  },
+  "compound": {
+    "membership_source": "Public generalization-cases.json compound=true metadata; not prediction fields.",
+    "case_count": 52,
+    "expected_atom_denominator": 119,
+    "predicted_atoms": 224,
+    "atom_prediction_field": "predictions[].atom_results[].frozen_verdict",
+    "atom_id_field": "predictions[].atom_results[].atom_id",
+    "atom_text_field": "predictions[].atom_results[].claim",
+    "alignment": "Exact compatible atom_id within case first; then deterministic normalized text fallback using Unicode NFKC, casefold, trim, and collapsed whitespace. No fuzzy matching.",
+    "missing_atoms": "Each missing expected atom is incorrect.",
+    "extra_atoms": "Each extra predicted atom is a decomposition error and cannot be correct.",
+    "denominator_rule": "All compound atom metrics use 119 expected canonical atoms; case-level atom-count exact and product metrics use 52 compound cases.",
+    "metrics": ["atom_count_exact", "atom_semantic_exact", "missing_atom_rate", "extra_atom_rate", "top_level_aggregation_correctness", "compound_product_exact"]
+  },
+  "subgroups": {
+    "critical_case_count": 25,
+    "membership_source": "Preregistered public/sealed holdout metadata; frozen before key and never selected from prediction errors.",
+    "other_subgroups": "Use only preregistered public/sealed metadata membership; no post-hoc subgroup creation."
+  },
+  "confusion": {
+    "semantic_label_order": ["SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT", "PARTIALLY_SUPPORTED", "AUTO_SUPPORTED", "AUTO_CONTRADICTED"],
+    "proof_safe_label_order": ["SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT", "PARTIALLY_SUPPORTED", "AUTO_SUPPORTED", "AUTO_CONTRADICTED"],
+    "product_label_order": ["AUTO_SUPPORTED", "AUTO_CONTRADICTED", "PARTIALLY_SUPPORTED", "REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT"],
+    "route_buckets_are_not_dropped": true
+  },
+  "statistics": {
+    "wilson_confidence": 0.95,
+    "wilson_z": 1.96,
+    "authoritative_values": "Raw integer counts and exact fractions",
+    "display_rounding": "Percentages and Wilson bounds to 2 decimals; gate comparisons use exact fractions."
+  },
+  "hard_gates": {
+    "semantic": {"operator": ">=", "threshold": 0.9},
+    "proof_safe": {"operator": ">=", "threshold": 0.95},
+    "product": {"operator": ">=", "threshold": 0.95},
+    "auto_precision": {"operator": ">=", "threshold": 0.99},
+    "auto_coverage": {"operator": ">=", "threshold": 0.2},
+    "necessary_review_recall": {"operator": ">=", "threshold": 0.95},
+    "unnecessary_review_rate": {"operator": "<=", "threshold": 0.15},
+    "abstain_recall": {"operator": ">=", "threshold": 0.9},
+    "review_vs_abstain_macro_f1": {"operator": ">=", "threshold": 0.9},
+    "structural_invalid_accepted_proofs": {"operator": "==", "threshold": 0},
+    "ungrounded_accepted_proofs": {"operator": "==", "threshold": 0},
+    "semantically_unsound_accepted_proofs": {"operator": "==", "threshold": 0},
+    "proof_safe_unsound_autos": {"operator": "==", "threshold": 0},
+    "compound_atom_semantic": {"operator": ">=", "threshold": 0.9},
+    "compound_product": {"operator": ">=", "threshold": 0.9},
+    "runtime_exceptions": {"operator": "==", "threshold": 0}
+  },
+  "readiness": {
+    "pass": "All preregistered hard gates pass.",
+    "fail": "At least one preregistered hard gate fails.",
+    "invalid": "Integrity, blindness, or scoring compromise.",
+    "scope": "Development-generalization readiness, not production certification.",
+    "pre_key_verdict": false
+  },
+  "frozen_input_hashes": {
+    "snapshot_manifest_sha256": "34a9d20d778968d21929f26760980a48563df5859b34b8697dbe520c7cae8a00",
+    "generalization_cases_sha256": "3f22c19b9f48e748ed5b5aadd0f715430e914225fc2923edd0e953cf09e720d4",
+    "holdout_manifest_sha256": "dcd5e2787c95eebea5339de33765c2c28d649e66cfb8ea065a4d9df6cc550862",
+    "evaluation_metrics_sha256": "aa66b001607009ffb15328f3c2157d82f361ed1424db599b4d013900cdd33a64",
+    "proof_soundness_contract_sha256": "ae0071664f238920eb7ddd2b426b0ccdb1f9b6d17286ca4f1a45a038bf1545b8"
+  },
+  "answer_key_accessed": false,
+  "key_available": false,
+  "scoring_performed": false,
+  "frozen_at": "2026-09-04T19:46:06Z"
+}

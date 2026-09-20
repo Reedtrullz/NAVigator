@@ -1,0 +1,1239 @@
+{
+ "analysis_plan": "V3_PRECOMMIT_MANIFEST.json (frozen before label reveal)",
+ "primary_T": 0.7,
+ "no_tuning_rule": "enforced; single analysis pass, no reruns",
+ "run1": {
+  "tag": "fresh-run1",
+  "n": 235,
+  "errors": 0,
+  "models": [
+   "jev-1.13.0"
+  ],
+  "critical": {
+   "n": 67,
+   "exact": 40,
+   "exact_rate": 0.5970149253731343,
+   "confusion": {
+    "CLEAR_TRIGGER_SUPPORT": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "CLEAR_NON_TRIGGER_SUPPORT": {
+     "CLEAR_TRIGGER_SUPPORT": 13,
+     "CLEAR_NON_TRIGGER_SUPPORT": 37
+    },
+    "AMBIGUOUS_OR_CONFLICTING": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2
+    },
+    "INSUFFICIENT_TO_DECIDE": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 7,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "UNRESOLVED": {}
+   },
+   "false_trigger_dangerous_direction": 13,
+   "false_trigger_high_conf_catastrophic": 1
+  },
+  "forbidden": {
+   "n": 168,
+   "pair_exact": 140,
+   "pair_accuracy": 0.8333333333333334,
+   "match_exact": 140,
+   "match_accuracy": 0.8333333333333334,
+   "match_confusion": {
+    "MATCH": {
+     "MATCH": 7,
+     "NO_MATCH": 9
+    },
+    "NO_MATCH": {
+     "NO_MATCH": 133,
+     "MATCH": 19
+    },
+    "UNRESOLVED": {}
+   },
+   "commitment_cells_gold_to_pred": {
+    "NO_MATCH/UNRESOLVED/UNRESOLVED": 68,
+    "NO_MATCH/UNRESOLVED/ASSERTED": 12,
+    "NO_MATCH/UNRESOLVED/NEGATED": 72,
+    "MATCH/NEGATED/NEGATED": 14,
+    "MATCH/NEGATED/UNRESOLVED": 1,
+    "MATCH/NEGATED/ASSERTED": 1
+   }
+  },
+  "confidence_distributions": {
+   "evidence_state": {
+    "min": 0.24,
+    "median": 0.58,
+    "max": 0.92
+   },
+   "criterion_semantic_match": {
+    "min": 0.24,
+    "median": 0.73,
+    "max": 0.99
+   },
+   "speaker_commitment": {
+    "min": 0.03,
+    "median": 0.58,
+    "max": 0.98
+   }
+  },
+  "latency": {
+   "median": 0.726,
+   "p95": 0.834,
+   "max": 1.186
+  },
+  "input_tokens": 818499,
+  "routing": {
+   "T=0.7": {
+    "T": 0.7,
+    "n": 235,
+    "AUTO_ACCEPT": 101,
+    "AUTO_REJECT": 5,
+    "ESCALATE": 129,
+    "ERROR": 0,
+    "decidable": 223,
+    "auto_on_decidable": 105,
+    "auto_correct_on_decidable": 98,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 5,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 3,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.97,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.92,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-029",
+      "packet_id": "PKT-ESC-ROUT-029",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": false,
+      "top_prob": 0.77,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-029",
+      "packet_id": "PKT-ESC-ROUT-029",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": false,
+      "top_prob": 0.78,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-043",
+      "packet_id": "PKT-ESC-ROUT-043",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.81,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.47085201793721976,
+    "safe_auto_coverage_correct": 0.43946188340807174,
+    "escalation_rate": 0.548936170212766,
+    "accuracy_among_auto_decided": 0.9339622641509434
+   },
+   "T=0.8": {
+    "T": 0.8,
+    "n": 235,
+    "AUTO_ACCEPT": 71,
+    "AUTO_REJECT": 2,
+    "ESCALATE": 162,
+    "ERROR": 0,
+    "decidable": 223,
+    "auto_on_decidable": 73,
+    "auto_correct_on_decidable": 69,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 2,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 2,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.97,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.92,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.3273542600896861,
+    "safe_auto_coverage_correct": 0.3094170403587444,
+    "escalation_rate": 0.6893617021276596,
+    "accuracy_among_auto_decided": 0.9452054794520548
+   },
+   "T=0.9": {
+    "T": 0.9,
+    "n": 235,
+    "AUTO_ACCEPT": 31,
+    "AUTO_REJECT": 1,
+    "ESCALATE": 203,
+    "ERROR": 0,
+    "decidable": 223,
+    "auto_on_decidable": 32,
+    "auto_correct_on_decidable": 29,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 1,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 1,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.92,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.14349775784753363,
+    "safe_auto_coverage_correct": 0.13004484304932734,
+    "escalation_rate": 0.8638297872340426,
+    "accuracy_among_auto_decided": 0.90625
+   }
+  }
+ },
+ "run2": {
+  "tag": "fresh-run2",
+  "n": 235,
+  "errors": 0,
+  "models": [
+   "jev-1.13.0"
+  ],
+  "critical": {
+   "n": 67,
+   "exact": 38,
+   "exact_rate": 0.5671641791044776,
+   "confusion": {
+    "CLEAR_TRIGGER_SUPPORT": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "CLEAR_NON_TRIGGER_SUPPORT": {
+     "CLEAR_TRIGGER_SUPPORT": 15,
+     "CLEAR_NON_TRIGGER_SUPPORT": 35
+    },
+    "AMBIGUOUS_OR_CONFLICTING": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2
+    },
+    "INSUFFICIENT_TO_DECIDE": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 7,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "UNRESOLVED": {}
+   },
+   "false_trigger_dangerous_direction": 15,
+   "false_trigger_high_conf_catastrophic": 1
+  },
+  "forbidden": {
+   "n": 168,
+   "pair_exact": 140,
+   "pair_accuracy": 0.8333333333333334,
+   "match_exact": 140,
+   "match_accuracy": 0.8333333333333334,
+   "match_confusion": {
+    "MATCH": {
+     "MATCH": 8,
+     "NO_MATCH": 8
+    },
+    "NO_MATCH": {
+     "NO_MATCH": 132,
+     "MATCH": 20
+    },
+    "UNRESOLVED": {}
+   },
+   "commitment_cells_gold_to_pred": {
+    "NO_MATCH/UNRESOLVED/NEGATED": 78,
+    "NO_MATCH/UNRESOLVED/UNRESOLVED": 63,
+    "NO_MATCH/UNRESOLVED/ASSERTED": 11,
+    "MATCH/NEGATED/NEGATED": 15,
+    "MATCH/NEGATED/UNRESOLVED": 1
+   }
+  },
+  "confidence_distributions": {
+   "evidence_state": {
+    "min": 0.21,
+    "median": 0.58,
+    "max": 0.93
+   },
+   "criterion_semantic_match": {
+    "min": 0.25,
+    "median": 0.72,
+    "max": 0.99
+   },
+   "speaker_commitment": {
+    "min": 0.06,
+    "median": 0.57,
+    "max": 0.98
+   }
+  },
+  "latency": {
+   "median": 0.708,
+   "p95": 0.78,
+   "max": 0.837
+  },
+  "input_tokens": 818499,
+  "routing": {
+   "T=0.7": {
+    "T": 0.7,
+    "n": 235,
+    "AUTO_ACCEPT": 98,
+    "AUTO_REJECT": 4,
+    "ESCALATE": 133,
+    "ERROR": 0,
+    "decidable": 223,
+    "auto_on_decidable": 102,
+    "auto_correct_on_decidable": 97,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 3,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 3,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.95,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-029",
+      "packet_id": "PKT-ESC-ROUT-029",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.83,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.45739910313901344,
+    "safe_auto_coverage_correct": 0.4349775784753363,
+    "escalation_rate": 0.5659574468085107,
+    "accuracy_among_auto_decided": 0.9509803921568627
+   },
+   "T=0.8": {
+    "T": 0.8,
+    "n": 235,
+    "AUTO_ACCEPT": 69,
+    "AUTO_REJECT": 2,
+    "ESCALATE": 164,
+    "ERROR": 0,
+    "decidable": 223,
+    "auto_on_decidable": 71,
+    "auto_correct_on_decidable": 67,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 2,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 2,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.95,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.3183856502242152,
+    "safe_auto_coverage_correct": 0.3004484304932735,
+    "escalation_rate": 0.6978723404255319,
+    "accuracy_among_auto_decided": 0.9436619718309859
+   },
+   "T=0.9": {
+    "T": 0.9,
+    "n": 235,
+    "AUTO_ACCEPT": 34,
+    "AUTO_REJECT": 2,
+    "ESCALATE": 199,
+    "ERROR": 0,
+    "decidable": 223,
+    "auto_on_decidable": 36,
+    "auto_correct_on_decidable": 32,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 2,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 2,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.95,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.16143497757847533,
+    "safe_auto_coverage_correct": 0.14349775784753363,
+    "escalation_rate": 0.8468085106382979,
+    "accuracy_among_auto_decided": 0.8888888888888888
+   }
+  }
+ },
+ "run3": {
+  "tag": "fresh-run3",
+  "n": 235,
+  "errors": 1,
+  "models": [
+   "jev-1.13.0",
+   "jev-latest"
+  ],
+  "critical": {
+   "n": 67,
+   "exact": 38,
+   "exact_rate": 0.5671641791044776,
+   "confusion": {
+    "CLEAR_TRIGGER_SUPPORT": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "CLEAR_NON_TRIGGER_SUPPORT": {
+     "CLEAR_TRIGGER_SUPPORT": 15,
+     "CLEAR_NON_TRIGGER_SUPPORT": 35
+    },
+    "AMBIGUOUS_OR_CONFLICTING": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2
+    },
+    "INSUFFICIENT_TO_DECIDE": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 7,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "UNRESOLVED": {}
+   },
+   "false_trigger_dangerous_direction": 15,
+   "false_trigger_high_conf_catastrophic": 1
+  },
+  "forbidden": {
+   "n": 167,
+   "pair_exact": 138,
+   "pair_accuracy": 0.8263473053892215,
+   "match_exact": 138,
+   "match_accuracy": 0.8263473053892215,
+   "match_confusion": {
+    "MATCH": {
+     "MATCH": 7,
+     "NO_MATCH": 9
+    },
+    "NO_MATCH": {
+     "NO_MATCH": 131,
+     "MATCH": 20
+    },
+    "UNRESOLVED": {}
+   },
+   "commitment_cells_gold_to_pred": {
+    "NO_MATCH/UNRESOLVED/NEGATED": 73,
+    "NO_MATCH/UNRESOLVED/UNRESOLVED": 68,
+    "NO_MATCH/UNRESOLVED/ASSERTED": 10,
+    "MATCH/NEGATED/NEGATED": 15,
+    "MATCH/NEGATED/UNRESOLVED": 1
+   }
+  },
+  "confidence_distributions": {
+   "evidence_state": {
+    "min": 0.24,
+    "median": 0.59,
+    "max": 0.92
+   },
+   "criterion_semantic_match": {
+    "min": 0.24,
+    "median": 0.73,
+    "max": 1.0
+   },
+   "speaker_commitment": {
+    "min": 0.06,
+    "median": 0.59,
+    "max": 0.99
+   }
+  },
+  "latency": {
+   "median": 0.701,
+   "p95": 0.787,
+   "max": 0.881
+  },
+  "input_tokens": 814934,
+  "routing": {
+   "T=0.7": {
+    "T": 0.7,
+    "n": 235,
+    "AUTO_ACCEPT": 96,
+    "AUTO_REJECT": 6,
+    "ESCALATE": 132,
+    "ERROR": 1,
+    "decidable": 222,
+    "auto_on_decidable": 102,
+    "auto_correct_on_decidable": 95,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 5,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 3,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.97,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.93,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-029",
+      "packet_id": "PKT-ESC-ROUT-029",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": false,
+      "top_prob": 0.78,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-029",
+      "packet_id": "PKT-ESC-ROUT-029",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": false,
+      "top_prob": 0.79,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-043",
+      "packet_id": "PKT-ESC-ROUT-043",
+      "lane": "critical_condition",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.8,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.4594594594594595,
+    "safe_auto_coverage_correct": 0.42792792792792794,
+    "escalation_rate": 0.5617021276595745,
+    "accuracy_among_auto_decided": 0.9313725490196079
+   },
+   "T=0.8": {
+    "T": 0.8,
+    "n": 235,
+    "AUTO_ACCEPT": 70,
+    "AUTO_REJECT": 2,
+    "ESCALATE": 162,
+    "ERROR": 1,
+    "decidable": 222,
+    "auto_on_decidable": 72,
+    "auto_correct_on_decidable": 68,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 2,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 2,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.97,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.93,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.32432432432432434,
+    "safe_auto_coverage_correct": 0.3063063063063063,
+    "escalation_rate": 0.6893617021276596,
+    "accuracy_among_auto_decided": 0.9444444444444444
+   },
+   "T=0.9": {
+    "T": 0.9,
+    "n": 235,
+    "AUTO_ACCEPT": 32,
+    "AUTO_REJECT": 2,
+    "ESCALATE": 200,
+    "ERROR": 1,
+    "decidable": 222,
+    "auto_on_decidable": 34,
+    "auto_correct_on_decidable": 30,
+    "FALSE_PASS": 2,
+    "FALSE_FAIL": 2,
+    "safety_critical_FP": 2,
+    "high_conf_FP": 2,
+    "high_conf_FF": 2,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093",
+      "packet_id": "PKT-ESC-ROUT-093",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.96,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-093-F01",
+      "packet_id": "PKT-ESC-ROUT-093-F01",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.97,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "NO_MATCH",
+       "speaker_commitment": "UNRESOLVED"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.93,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     },
+     {
+      "kind": "FALSE_PASS",
+      "case_id": "ESC-ROUT-050",
+      "packet_id": "PKT-ESC-ROUT-050",
+      "lane": "critical_condition",
+      "safety_critical": true,
+      "high_conf": true,
+      "top_prob": 0.94,
+      "expected": {
+       "lane": "critical_condition",
+       "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.15315315315315314,
+    "safe_auto_coverage_correct": 0.13513513513513514,
+    "escalation_rate": 0.851063829787234,
+    "accuracy_among_auto_decided": 0.8823529411764706
+   }
+  }
+ },
+ "stability": {
+  "n": 235,
+  "routing_modal_all3_identical": 0.9106382978723404,
+  "threshold_crossing_flips": 30,
+  "evidence_state_choice_all3_agreement": 0.9872340425531915,
+  "evidence_state_prob_L1_drift_mean": 0.0737313432835821,
+  "evidence_state_prob_L1_drift_max": 0.25999999999999995,
+  "criterion_semantic_match_choice_all3_agreement": 0.9531914893617022,
+  "criterion_semantic_match_prob_L1_drift_mean": 0.05449101796407186,
+  "criterion_semantic_match_prob_L1_drift_max": 0.34,
+  "speaker_commitment_choice_all3_agreement": 0.9404255319148936,
+  "speaker_commitment_prob_L1_drift_mean": 0.0748502994011976,
+  "speaker_commitment_prob_L1_drift_max": 0.41999999999999993
+ },
+ "v2_comparison_run1": {
+  "tag": "v2-run1",
+  "n": 57,
+  "errors": 0,
+  "models": [
+   "jev-1.13.0"
+  ],
+  "critical": {
+   "n": 35,
+   "exact": 13,
+   "exact_rate": 0.37142857142857144,
+   "confusion": {
+    "CLEAR_TRIGGER_SUPPORT": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 2,
+     "CLEAR_TRIGGER_SUPPORT": 3
+    },
+    "CLEAR_NON_TRIGGER_SUPPORT": {
+     "CLEAR_NON_TRIGGER_SUPPORT": 8,
+     "CLEAR_TRIGGER_SUPPORT": 2
+    },
+    "AMBIGUOUS_OR_CONFLICTING": {
+     "CLEAR_TRIGGER_SUPPORT": 8
+    },
+    "INSUFFICIENT_TO_DECIDE": {
+     "CLEAR_TRIGGER_SUPPORT": 6,
+     "CLEAR_NON_TRIGGER_SUPPORT": 4,
+     "INSUFFICIENT_TO_DECIDE": 2
+    },
+    "UNRESOLVED": {}
+   },
+   "false_trigger_dangerous_direction": 2,
+   "false_trigger_high_conf_catastrophic": 0
+  },
+  "forbidden": {
+   "n": 22,
+   "pair_exact": 16,
+   "pair_accuracy": 0.7272727272727273,
+   "match_exact": 20,
+   "match_accuracy": 0.9090909090909091,
+   "match_confusion": {
+    "MATCH": {
+     "MATCH": 10,
+     "NO_MATCH": 2
+    },
+    "NO_MATCH": {
+     "NO_MATCH": 10
+    },
+    "UNRESOLVED": {}
+   },
+   "commitment_cells_gold_to_pred": {
+    "NO_MATCH/UNRESOLVED/UNRESOLVED": 7,
+    "NO_MATCH/UNRESOLVED/NEGATED": 3,
+    "MATCH/ASSERTED/ASSERTED": 5,
+    "MATCH/NEGATED/NEGATED": 3,
+    "MATCH/NEGATED/ASSERTED": 3,
+    "MATCH/ASSERTED/NEGATED": 1
+   }
+  },
+  "confidence_distributions": {
+   "evidence_state": {
+    "min": 0.21,
+    "median": 0.46,
+    "max": 0.98
+   },
+   "criterion_semantic_match": {
+    "min": 0.27,
+    "median": 0.74,
+    "max": 0.98
+   },
+   "speaker_commitment": {
+    "min": 0.16,
+    "median": 0.71,
+    "max": 1.0
+   }
+  },
+  "latency": {
+   "median": 0.708,
+   "p95": 0.797,
+   "max": 0.829
+  },
+  "input_tokens": 191592,
+  "routing": {
+   "T=0.7": {
+    "T": 0.7,
+    "n": 57,
+    "AUTO_ACCEPT": 16,
+    "AUTO_REJECT": 1,
+    "ESCALATE": 40,
+    "ERROR": 0,
+    "decidable": 37,
+    "auto_on_decidable": 17,
+    "auto_correct_on_decidable": 16,
+    "FALSE_PASS": 0,
+    "FALSE_FAIL": 1,
+    "safety_critical_FP": 0,
+    "high_conf_FP": 0,
+    "high_conf_FF": 1,
+    "events": [
+     {
+      "kind": "FALSE_FAIL",
+      "case_id": "ESC-ROUT-027",
+      "packet_id": "PKT-ESC-ROUT-027",
+      "lane": "forbidden_claim",
+      "safety_critical": false,
+      "high_conf": true,
+      "top_prob": 0.84,
+      "expected": {
+       "lane": "forbidden_claim",
+       "criterion_semantic_match": "MATCH",
+       "speaker_commitment": "NEGATED"
+      }
+     }
+    ],
+    "safe_auto_coverage": 0.4594594594594595,
+    "safe_auto_coverage_correct": 0.43243243243243246,
+    "escalation_rate": 0.7017543859649122,
+    "accuracy_among_auto_decided": 0.9411764705882353
+   },
+   "T=0.8": {
+    "T": 0.8,
+    "n": 57,
+    "AUTO_ACCEPT": 13,
+    "AUTO_REJECT": 0,
+    "ESCALATE": 44,
+    "ERROR": 0,
+    "decidable": 37,
+    "auto_on_decidable": 13,
+    "auto_correct_on_decidable": 13,
+    "FALSE_PASS": 0,
+    "FALSE_FAIL": 0,
+    "safety_critical_FP": 0,
+    "high_conf_FP": 0,
+    "high_conf_FF": 0,
+    "events": [],
+    "safe_auto_coverage": 0.35135135135135137,
+    "safe_auto_coverage_correct": 0.35135135135135137,
+    "escalation_rate": 0.7719298245614035,
+    "accuracy_among_auto_decided": 1.0
+   },
+   "T=0.9": {
+    "T": 0.9,
+    "n": 57,
+    "AUTO_ACCEPT": 10,
+    "AUTO_REJECT": 0,
+    "ESCALATE": 47,
+    "ERROR": 0,
+    "decidable": 37,
+    "auto_on_decidable": 10,
+    "auto_correct_on_decidable": 10,
+    "FALSE_PASS": 0,
+    "FALSE_FAIL": 0,
+    "safety_critical_FP": 0,
+    "high_conf_FP": 0,
+    "high_conf_FF": 0,
+    "events": [],
+    "safe_auto_coverage": 0.2702702702702703,
+    "safe_auto_coverage_correct": 0.2702702702702703,
+    "escalation_rate": 0.8245614035087719,
+    "accuracy_among_auto_decided": 1.0
+   }
+  }
+ },
+ "v2_stability": {
+  "n": 57,
+  "routing_modal_all3_identical": 0.9824561403508771,
+  "threshold_crossing_flips": 7,
+  "evidence_state_choice_all3_agreement": 0.9824561403508771,
+  "evidence_state_prob_L1_drift_mean": 0.061142857142857145,
+  "evidence_state_prob_L1_drift_max": 0.28,
+  "criterion_semantic_match_choice_all3_agreement": 1.0,
+  "criterion_semantic_match_prob_L1_drift_mean": 0.05696969696969697,
+  "criterion_semantic_match_prob_L1_drift_max": 0.24,
+  "speaker_commitment_choice_all3_agreement": 0.9649122807017544,
+  "speaker_commitment_prob_L1_drift_mean": 0.06060606060606061,
+  "speaker_commitment_prob_L1_drift_max": 0.2
+ },
+ "statistics": {
+  "false_pass_primary_T": {
+   "count": 2,
+   "auto_decided_n": 106,
+   "wilson_95": [
+    0.005189500019088127,
+    0.0662005744153702
+   ],
+   "cp_upper_bound_if_zero": null
+  },
+  "non_claim": "0 observed false PASSes over N auto-decided cases does not prove zero underlying false-PASS probability."
+ },
+ "esc_021_026_family_test": {
+  "note": "fresh pool has 0 gold match-UNRESOLVED rows; assessed via gold commitment-UNRESOLVED rows only (partial)",
+  "gold_commitment_UNRESOLVED_n": 152,
+  "gold_UNRESOLVED_to_pred_NEGATED": 72,
+  "gold_UNRESOLVED_to_pred_UNRESOLVED": 68,
+  "gold_UNRESOLVED_to_pred_ASSERTED": 12,
+  "reproduction_status": "partially assessable"
+ },
+ "cost": {
+  "api_calls": 705,
+  "total_input_tokens": 2451932,
+  "input_price_per_1m_usd": 0.042,
+  "observed_cost_usd": 0.102981144,
+  "cost_per_case_usd": 0.00014607254468085106,
+  "cost_per_1000_usd": 0.14607254468085107,
+  "latency_median": 0.71,
+  "latency_p95": 0.805,
+  "rate_limit_hits": 0,
+  "transport_errors": 1
+ }
+}

@@ -1,0 +1,74 @@
+{
+  "artifact": "burned-120-regression",
+  "run_type": "BURNED_REGRESSION_ONLY",
+  "basis": "120 burned V1.6A validation fixtures (BURNED_PRECLASSIFIER_DEVELOPMENT_DATA); not fresh validation",
+  "engine_sha256": "40d85f3173839c3fe6a727aaf17e38a536734fd92007c1043dafa356c7de768d",
+  "fixtures": 120,
+  "families": {
+    "route_commitment": {
+      "n": 50,
+      "non_abstain_n": 44,
+      "abstain_n": 6,
+      "coverage": 0.88,
+      "precision": 1.0,
+      "abstain_rate": 0.12,
+      "false_deterministic_n": 0,
+      "false_deterministic_ids": [],
+      "evidence_span_validity": 1.0
+    },
+    "uncertainty_behavior": {
+      "n": 40,
+      "non_abstain_n": 36,
+      "abstain_n": 4,
+      "coverage": 0.9,
+      "precision": 1.0,
+      "abstain_rate": 0.1,
+      "false_deterministic_n": 0,
+      "false_deterministic_ids": [],
+      "evidence_span_validity": 1.0
+    },
+    "assertion_scope": {
+      "n": 30,
+      "non_abstain_n": 28,
+      "abstain_n": 2,
+      "coverage": 0.9333,
+      "precision": 1.0,
+      "abstain_rate": 0.0667,
+      "false_deterministic_n": 0,
+      "false_deterministic_ids": [],
+      "evidence_span_validity": 1.0
+    }
+  },
+  "overall": {
+    "non_abstain_n": 108,
+    "coverage": 0.9,
+    "precision": 1.0,
+    "false_deterministic_n": 0,
+    "evidence_span_validity": 1.0
+  },
+  "vr_h_08": {
+    "label": "ABSTAIN",
+    "abstained": true,
+    "rule_id": "BC_ROUTE_UNKNOWN_SERVICE_01",
+    "reason": "ABSTAIN_CONFLICT",
+    "requirement": "ABSTAIN",
+    "pass": true
+  },
+  "vr_ab_04": {
+    "label": "ABSTAIN",
+    "abstained": true,
+    "rule_id": "BC_ROUTE_UNKNOWN_SERVICE_01",
+    "reason": "ABSTAIN_CONFLICT",
+    "note": "expected ABSTAIN; label unchanged vs V1.6A, abstain reason changed to ABSTAIN_CONFLICT"
+  },
+  "hard_gates": {
+    "overall_precision_ge_0_99": true,
+    "route_precision_ge_0_98": true,
+    "every_family_precision_ge_0_98": true,
+    "safety_false_deterministic_zero": true,
+    "total_false_deterministic_zero": true,
+    "vr_h_08_abstains": true,
+    "evidence_span_validity_100": true
+  },
+  "all_gates_pass": true
+}

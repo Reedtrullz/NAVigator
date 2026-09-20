@@ -1,0 +1,119 @@
+{
+ "schema": "inference-operators-v1",
+ "note": "Generated from validate_proof.py. Exhaustiveness requires an explicit marker; absence of evidence never yields contradiction (probe spec 7-8).",
+ "operators": [
+  {
+   "id": "DIRECT_ASSERTION",
+   "safety": "high",
+   "preconditions": [
+    "paraphrase-level overlap between claim and premises"
+   ]
+  },
+  {
+   "id": "EXPLICIT_NEGATION",
+   "safety": "high",
+   "preconditions": [
+    "premise contains explicit negation token"
+   ]
+  },
+  {
+   "id": "NUMERIC_CONFLICT",
+   "safety": "high",
+   "preconditions": [
+    "premise contains a number on the claim axis",
+    "values differ"
+   ]
+  },
+  {
+   "id": "TEMPORAL_CONFLICT",
+   "safety": "high",
+   "preconditions": [
+    "premise contains a date/duration anchor",
+    "anchors conflict"
+   ]
+  },
+  {
+   "id": "MODALITY_CONFLICT",
+   "safety": "medium",
+   "preconditions": [
+    "modality tokens present on both sides"
+   ]
+  },
+  {
+   "id": "SAME_PREDICATE_OPPOSITE_POLARITY",
+   "safety": "medium",
+   "preconditions": [
+    "shared predicate",
+    "opposite polarity"
+   ]
+  },
+  {
+   "id": "RULE_PLUS_CONDITION",
+   "safety": "medium",
+   "preconditions": [
+    "rule and condition co-present (two premises or condition-marked span)"
+   ]
+  },
+  {
+   "id": "RULE_PLUS_EXCEPTION",
+   "safety": "medium",
+   "preconditions": [
+    "rule span plus explicit exception marker"
+   ]
+  },
+  {
+   "id": "DEFINITION_PLUS_INSTANCE",
+   "safety": "medium",
+   "preconditions": [
+    "class term shared between claim and premise"
+   ]
+  },
+  {
+   "id": "EXHAUSTIVE_SET_EXCLUSION",
+   "safety": "high-if-marked",
+   "preconditions": [
+    "premise marks the list exhaustive (kun/bare/eneste/alle/...)"
+   ]
+  },
+  {
+   "id": "ACTOR_MEMBERSHIP",
+   "safety": "medium",
+   "preconditions": [
+    "actor term shared between claim and premise"
+   ]
+  },
+  {
+   "id": "LOCAL_RULE_OVERRIDES_GENERAL",
+   "safety": "medium",
+   "preconditions": [
+    "locality term present in the premise span"
+   ]
+  },
+  {
+   "id": "MULTI_SPAN_CONJUNCTION",
+   "safety": "medium",
+   "preconditions": [
+    "at least two distinct premise spans"
+   ]
+  },
+  {
+   "id": "SIMPLE_ARITHMETIC",
+   "safety": "high",
+   "preconditions": [
+    "numbers in premises",
+    "arithmetic relation in derived_fact"
+   ]
+  },
+  {
+   "id": "TRANSITIVE_EQUIVALENCE",
+   "safety": "medium",
+   "preconditions": [
+    "each equivalence step is a small paraphrase"
+   ]
+  }
+ ],
+ "no_operator": {
+  "id": "NO_OPERATOR",
+  "meaning": "no valid derivation; verdict must be INSUFFICIENT"
+ }
+}

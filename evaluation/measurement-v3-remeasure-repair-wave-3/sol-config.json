@@ -1,0 +1,27 @@
+{
+  "artifact": "sol-residual-review-config",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-3",
+  "lane": "residual_adjudication",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "LOW",
+  "reasoning_effort_enforcement": "hard; MEDIUM/HIGH/MAX forbidden",
+  "transport": "local proxy http://127.0.0.1:10100/v1/chat/completions (existing authorized stack only)",
+  "auth": "bearer token from existing auth store; never printed, logged, or persisted in artifacts",
+  "passes": [
+    "SOL-A",
+    "SOL-B"
+  ],
+  "blindness": "SOL-B must not see SOL-A; neither pass may see Astra outputs, primary results, gold, Wave-1 and Wave-2 results, or prior model results",
+  "response_format": {
+    "type": "json_object"
+  },
+  "retry_policy": "ONE technical transport retry only; schema-invalid or semantically disagreeing output is NOT retried",
+  "consensus_rule": "both passes valid AND authoritative semantic fields identical => LLM_ADJUDICATED/GPT_5_6_SOL_DUAL_PASS_RESIDUAL; otherwise PENDING_LLM_ADJUDICATION; no third pass, no majority vote",
+  "no_web": true,
+  "input_source": "residual-inputs.json (frozen packet bodies only)",
+  "provider_availability_probe": {
+    "transport_only": true,
+    "content": "fixed availability message; no packet content",
+    "result": "OK"
+  }
+}

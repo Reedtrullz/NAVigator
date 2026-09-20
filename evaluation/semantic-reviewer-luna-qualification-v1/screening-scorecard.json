@@ -1,0 +1,71 @@
+{
+  "scoring_rule": "frozen V1 contract screening gates; reference = frozen authoritative semantic reference, not human ground truth; schema_valid_rate counts parseable rows (V1 semantics)",
+  "configs": {
+    "LUNA-HIGH": {
+      "forbidden_claim": {
+        "rows": 53,
+        "ok": 53,
+        "transport_errors": 0,
+        "invalid_json": 0,
+        "invalid_model_reviews": 0,
+        "schema_valid_rate": 1.0,
+        "reference_agreement_among_ok": 0.8868,
+        "conservative_escape_count": 2,
+        "conservative_escape_hashes": [
+          "36621f15578e7af629535880c0b22a39a92a9e514bcfb6c4ef0603ee4fdf1585",
+          "ccabc5e85174c534164de920909e41f83b41888387691ed6e3a5ec2fa753bb03"
+        ],
+        "catastrophic_escape_max": 10,
+        "screen_pass": true
+      },
+      "critical_condition": {
+        "rows": 37,
+        "ok": 18,
+        "transport_errors": 0,
+        "invalid_json": 0,
+        "invalid_model_reviews": 19,
+        "schema_valid_rate": 1.0,
+        "reference_agreement_among_ok": 0.7222,
+        "conservative_escape_count": 1,
+        "conservative_escape_hashes": [
+          "9bf568c87368cec04f2616ad9fc937fc3f8db63286ae1af88234ad69be08e27d"
+        ],
+        "catastrophic_escape_max": 7,
+        "screen_pass": true
+      }
+    },
+    "LUNA-MAX": {
+      "forbidden_claim": {
+        "rows": 53,
+        "ok": 51,
+        "transport_errors": 0,
+        "invalid_json": 0,
+        "invalid_model_reviews": 2,
+        "schema_valid_rate": 1.0,
+        "reference_agreement_among_ok": 0.8824,
+        "conservative_escape_count": 0,
+        "conservative_escape_hashes": [],
+        "catastrophic_escape_max": 10,
+        "screen_pass": true
+      },
+      "critical_condition": {
+        "rows": 37,
+        "ok": 16,
+        "transport_errors": 0,
+        "invalid_json": 0,
+        "invalid_model_reviews": 21,
+        "schema_valid_rate": 1.0,
+        "reference_agreement_among_ok": 0.5,
+        "conservative_escape_count": 4,
+        "conservative_escape_hashes": [
+          "68ce6870408126f06c8a174390acbf47f266c3c44b8156f17900b84862c53370",
+          "96ef9850c46e4b9e4dd3b1ed2785aaa4c16d8a03e299a644dfe68b1e8da35c43",
+          "aea987ccc0cd9d0709f963400a1153685c43c9bb2af6f48a88652a52b08b6f12",
+          "eb9aebe2cee45f1ddd929aa154e77222a2fe988960c468c0fc1e2fa1069887e4"
+        ],
+        "catastrophic_escape_max": 7,
+        "screen_pass": true
+      }
+    }
+  }
+}

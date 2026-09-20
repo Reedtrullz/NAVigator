@@ -1,0 +1,59 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_7_NON_M2_SCREENING",
+  "scope": "residual-judge rows only (86 semantic calls per candidate); raw N mandatory",
+  "gold_normalization": "scoring-side only: NO_ACCEPTABLE -> NO_ACCEPTABLE_ROUTE on fixture gold",
+  "candidates": {
+    "deepseek": {
+      "wire_id": "opencode-go/deepseek-v4.1-flash",
+      "residual_n": 86,
+      "overall": {
+        "n": 86,
+        "correct": 75,
+        "accuracy": 0.8721
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 27,
+          "correct": 25,
+          "accuracy": 0.9259
+        },
+        "route": {
+          "n": 31,
+          "correct": 28,
+          "accuracy": 0.9032
+        },
+        "uncertainty": {
+          "n": 28,
+          "correct": 22,
+          "accuracy": 0.7857
+        }
+      }
+    },
+    "mimo": {
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "residual_n": 86,
+      "overall": {
+        "n": 86,
+        "correct": 68,
+        "accuracy": 0.7907
+      },
+      "by_dimension": {
+        "forbidden": {
+          "n": 27,
+          "correct": 22,
+          "accuracy": 0.8148
+        },
+        "route": {
+          "n": 31,
+          "correct": 23,
+          "accuracy": 0.7419
+        },
+        "uncertainty": {
+          "n": 28,
+          "correct": 23,
+          "accuracy": 0.8214
+        }
+      }
+    }
+  }
+}

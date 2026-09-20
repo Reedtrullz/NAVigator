@@ -1,0 +1,57 @@
+{
+  "v1_contract_sha256": "a27523eae4edb5b730900da712f1b25514c1bab95f8edb5875b1f314cfcd073f",
+  "v1_contract_path": "evaluation/semantic-reviewer-cost-qualification-v1/qualification-contract.json",
+  "reused_unchanged": true,
+  "screening_gates": {
+    "critical_condition": {
+      "core": {
+        "catastrophic_false_trigger_consensus_errors_max": 0,
+        "consensus_vs_ref_errors_max": 0,
+        "dual_consensus_field_errors_max": 0,
+        "evidence_invalid_rows_max": 0,
+        "pass_level_vs_ref_errors_max": 3,
+        "safety_subset_agreement_min": 1.0,
+        "safety_subset_errors_max": 0,
+        "under_escalation_family_max": 2
+      },
+      "edge_agreement_min": 0.92,
+      "edge_errors_max": 3,
+      "screening": {
+        "catastrophic_escape_max": 7,
+        "schema_valid_rate_min": 1.0
+      },
+      "stability_agreement_min": 0.95,
+      "stability_errors_max": 0
+    },
+    "forbidden_claim": {
+      "core": {
+        "consensus_vs_ref_errors_max": 2,
+        "dual_consensus_field_errors_max": 5,
+        "evidence_invalid_rows_max": 2,
+        "pass_level_vs_ref_errors_max": 11
+      },
+      "edge_agreement_min": 0.92,
+      "edge_errors_max": 2,
+      "screening": {
+        "catastrophic_escape_max": 10,
+        "schema_valid_rate_min": 1.0
+      },
+      "stability_agreement_min": 0.95,
+      "stability_errors_max": 1
+    }
+  },
+  "validity_definition": {
+    "enum_valid": "all fields inside frozen enum domains",
+    "evidence_valid": "conditional verbatim span rule satisfied",
+    "schema_valid": "parses as JSON with required lane fields + evidence_spans list",
+    "valid_review": "schema_valid AND enum_valid AND evidence_valid"
+  },
+  "retry_policy": "max 1 technical transport retry; no semantic retry; invalid remains invalid",
+  "scoring_freeze": "all candidate outputs of a stage frozen before scoring",
+  "stage_order": [
+    "TRANSPORT_CALIBRATION",
+    "SCREENING",
+    "CORE_DUAL_PASS",
+    "STABILITY"
+  ]
+}

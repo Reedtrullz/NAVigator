@@ -1,0 +1,50 @@
+{
+ "bench": "contra-insuff",
+ "n": 69,
+ "accuracy": 0.8116,
+ "confusion": {
+  "CONTRADICTED->CONTRADICTED": 25,
+  "CONTRADICTED->INSUFFICIENT_EVIDENCE": 12,
+  "INSUFFICIENT_EVIDENCE->CONTRADICTED": 1,
+  "INSUFFICIENT_EVIDENCE->INSUFFICIENT_EVIDENCE": 31
+ },
+ "per_dimension": {
+  "negation": {
+   "n": 10,
+   "ok": 7
+  },
+  "numeric": {
+   "n": 10,
+   "ok": 8
+  },
+  "temporal": {
+   "n": 8,
+   "ok": 6
+  },
+  "actor": {
+   "n": 19,
+   "ok": 16
+  },
+  "modality": {
+   "n": 13,
+   "ok": 10
+  },
+  "locality": {
+   "n": 3,
+   "ok": 3
+  },
+  "scope": {
+   "n": 6,
+   "ok": 6
+  }
+ },
+ "high_confidence_errors": [
+  {
+   "id": "CI-041",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "relation": "EXPLICIT_NEGATION"
+  }
+ ]
+}

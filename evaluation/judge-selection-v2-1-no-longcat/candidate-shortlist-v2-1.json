@@ -1,0 +1,30 @@
+{
+  "artifact": "V2.1 CANDIDATE SHORTLIST (FROZEN BEFORE FIRST BENCHMARK CALL)",
+  "frozen": "2026-09-12, before any V2.1 model call",
+  "shortlist": [
+    {
+      "priority": 1,
+      "key": "mimo-v2-5",
+      "model": "command-code/xiaomi/mimo-v2.5",
+      "rationale": "strong prior structured-JSON/instruction-following evidence on this frozen pipeline architecture (V1.6B judge lineage); same provider transport"
+    },
+    {
+      "priority": 2,
+      "key": "ling-3-0-flash-sante-free",
+      "model": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "rationale": "policy-authorized; unknown semantic quality; testable"
+    },
+    {
+      "priority": 3,
+      "key": "poolside-laguna-s-2-1-free",
+      "model": "command-code/poolside/laguna-s-2.1-free",
+      "rationale": "policy-authorized; unknown semantic quality; testable"
+    }
+  ],
+  "rules": {
+    "no_additions_after_results": true,
+    "removal_allowed_only_if": "transport smoke shows candidate technically unusable",
+    "post_hoc_replacement_requires": "new explicit owner amendment",
+    "tie_break": "priority order above, first eligible one-shot passer that also passes stability"
+  }
+}

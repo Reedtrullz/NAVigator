@@ -1,0 +1,123 @@
+{
+  "artifact": "gate-extraction-deepseek-v4-1-flash.json",
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_3-STRONGER-MODEL-SCREEN",
+  "candidate": "deepseek-v4-1-flash",
+  "gates": {
+    "overall_accuracy": {
+      "value": 0.8333,
+      "min": 0.95,
+      "pass": false
+    },
+    "valid_structured_rate": {
+      "value": 1.0,
+      "min": 0.99,
+      "pass": true
+    },
+    "evidence_span_validity": {
+      "value": 1.0,
+      "span_rejections": 0,
+      "required": 1.0,
+      "pass": true
+    },
+    "derivation_consistency": {
+      "value": 1.0,
+      "required": 1.0,
+      "pass": true
+    },
+    "m1_final": {
+      "value": 0.925,
+      "min": 0.95,
+      "pass": false
+    },
+    "m1_hedged_false_absent": {
+      "value": 0,
+      "max": 0,
+      "pass": true
+    },
+    "m1_hedged_false_unresolved": {
+      "value": 0,
+      "max": 0,
+      "pass": true
+    },
+    "m2_gold_unresolved_correct": {
+      "n": 14,
+      "correct": 3,
+      "value": 0.2143,
+      "min": 0.95,
+      "pass": false
+    },
+    "m2_forced_triggered": {
+      "value": 1,
+      "max": 0,
+      "pass": false
+    },
+    "m2_forced_not_triggered": {
+      "value": 6,
+      "max": 0,
+      "pass": false
+    },
+    "m2_clear_critical": {
+      "value": 1.0,
+      "min": 0.95,
+      "pass": true
+    },
+    "critical_false_negatives": {
+      "value": 0,
+      "max": 0,
+      "pass": true
+    },
+    "controls_accuracy": {
+      "value": 0.85,
+      "min": 0.93,
+      "pass": false
+    },
+    "no_safety_regression": {
+      "violations": [],
+      "max": 0,
+      "pass": true
+    },
+    "all_pass": false
+  },
+  "report_only": {
+    "intermediate_state_accuracy": {
+      "m1_semantic_match": {
+        "correct": 42,
+        "n": 46,
+        "accuracy": 0.913
+      },
+      "m1_commitment": {
+        "correct": 37,
+        "n": 46,
+        "accuracy": 0.8043
+      },
+      "m2_evidence_state": {
+        "correct": 32,
+        "n": 43,
+        "accuracy": 0.7442
+      }
+    },
+    "token_latency": {
+      "n_valid": 120,
+      "latency_seconds": {
+        "median": 2.73,
+        "p95": 11.63,
+        "max": 29.52
+      },
+      "prompt_tokens": {
+        "median": 1171.5,
+        "max": 1425
+      },
+      "completion_tokens": {
+        "median": 332.0,
+        "max": 6262
+      },
+      "reasoning_tokens_total": 72933,
+      "finish_reasons": {
+        "stop": 120
+      },
+      "schema_failures": 0
+    },
+    "transport_failures": 0,
+    "runs_completed": 120
+  }
+}

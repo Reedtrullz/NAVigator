@@ -1,0 +1,66 @@
+{
+  "artifact": "m2-decomposition-contract-v2-5",
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_5-M2-EVIDENCE-STATE-DECOMPOSITION",
+  "status": "FROZEN",
+  "frozen_utc_date": "2026-09-13",
+  "scope": "M2 (critical_condition) evidence-state decomposition into four independent intermediate sub-fields with deterministic derivation; final five-state M2 semantics unchanged per frozen-semantics-trace.",
+  "intermediate_fields": {
+    "trigger_support": ["PRESENT", "ABSENT", "UNRESOLVED"],
+    "non_trigger_support": ["PRESENT", "ABSENT", "UNRESOLVED"],
+    "evidence_conflict": ["YES", "NO", "UNRESOLVED"],
+    "evidence_sufficiency": ["SUFFICIENT", "INSUFFICIENT", "UNRESOLVED"],
+    "auxiliary": ["evidence_spans", "note"]
+  },
+  "field_semantics_source": "intermediate-field-contract.md",
+  "field_semantics_sha256": "17a89b4d7d0b1f3d319dd2ed1c67683d9f430427074ce6aee8bee5b35142d56a",
+  "schema_sha256": "ed6ba663df7a4656c08f469e88b7bc8bed2fa7ae407363004b3cf38adaa3c114",
+  "derivation_table_sha256": "0349f2bde30045b808c39beef8a8a3bb0693783ddac3669d4b667f8f70565435",
+  "frozen_semantics_trace_sha256": "89b67c0be7b484a492cee2079d57ecbb1a19e04a768f5e693cbff8c3457eb794",
+  "key_semantic_rules": [
+    "CLEAR trigger requires non_trigger explicitly ABSENT (not merely not-PRESENT); UNRESOLVED counterpart blocks CLEAR.",
+    "Trivial absence (ABSENT/ABSENT + conflict NO + SUFFICIENT) derives CLEAR_NON_TRIGGER_SUPPORT per frozen L69 disjunct 1.",
+    "INSUFFICIENT (conflict != YES) derives INSUFFICIENT_TO_DECIDE; unknown combinations map to UNRESOLVED conservatively.",
+    "Hedged-but-committed assertion = trigger PRESENT (frozen L73); quotation without own endorsement never triggers.",
+    "non_trigger_support PRESENT requires a span that textually excludes/negates the condition itself; meta-refusals to endorse are not exclusions.",
+    "evidence_spans required (>=1) exactly when trigger_support=PRESENT or non_trigger_support=PRESENT; spans must be verbatim SUT substrings; absence is never evidenced by an invented span."
+  ],
+  "human_boundary_calibration": {
+    "fixture_set": "m2-fixtures-v2-5.json",
+    "fixture_set_sha256": "6a56d12213efabeca37bd249290105e6954e1f2618a7bd4cd9f5cce121b1e560",
+    "n_fixtures": 60,
+    "category_distribution": {
+      "clear_trigger": 6, "clear_non_trigger": 6, "ambiguous": 6, "conflicting": 6,
+      "hedged": 6, "quoted": 6, "hypothetical": 6, "insufficient": 6,
+      "negative_evidence": 6, "absence_of_evidence": 6
+    },
+    "collision_audit_sha256": "f1c5bf0dd73de7df0b3548e4c582a2127479f702060d6e5ab0d8c13abc91ac86",
+    "collision_audit_result": "PASS (0 substring hits, 0 8-gram hits vs 180 burned fixtures)",
+    "pass1_sha256": "bee48547c995a114a7865a19d4cbf0fb562223fc911caf6fe71eb2ac1b24581b",
+    "pass1_provenance": "CONSTRUCTION_PHASE_GOLD (codex_single_annotator_session)",
+    "pass2_sha256": "d583fb6673d94391fcf76cda73fa93037c6067b927ced962ff7c7a7e3ea93228",
+    "pass2_provenance": "INTRA_ANNOTATOR_REPEATABILITY (fresh contract-ordered re-annotation)",
+    "agreement_sha256": "9ef68d16b5c1a554a388dbb5d4d499502feddc7d6f205286645a57fd6bdc9be0",
+    "gates": {
+      "overall_agreement": 1.0,
+      "overall_agreement_gate": ">= 0.95",
+      "per_field_agreement": { "trigger_support": 1.0, "non_trigger_support": 1.0, "evidence_conflict": 1.0, "evidence_sufficiency": 1.0 },
+      "per_field_gate": ">= 0.95",
+      "mechanically_derived_final_agreement": 1.0,
+      "derived_final_gate": ">= 0.98",
+      "disputed_fixtures_retained": 0
+    },
+    "derived_state_distribution": {
+      "CLEAR_TRIGGER_SUPPORT": 12, "CLEAR_NON_TRIGGER_SUPPORT": 24,
+      "AMBIGUOUS_OR_CONFLICTING": 12, "INSUFFICIENT_TO_DECIDE": 12, "UNRESOLVED": 0
+    },
+    "pre_freeze_correction_note": "Fixture V25-HUM-M2-039 corrected pre-annotation (typo 'vurderet'->'vurdere') and re-golded (meta-refusal is not textual exclusion of the condition; non_trigger_support PRESENT->ABSENT). No candidate model calls occurred before this freeze."
+  },
+  "task_anchors": {
+    "TASK-LOCK.json": "5fb3e04a7bcf40ceff7a77850d084854fabad8b88700658624a15558d22b3c95",
+    "baseline-integrity.json": "80faaf4aceffb7e6e4dd423534722d9c05f1aac48d68f973d33b35203a25f24a",
+    "burned-data-registry.json": "a4fb6f5a17131289746e74d092b3b3d2c8da71074b0ad8bd617d999226a11cfe",
+    "m2-current-state-analysis.md": "7558be9d35a9313d6eb9be3690b963323382b370334f1126efb4992ed5a0c8a3",
+    "decomposition-hypothesis.md": "081c3dc18913e2fe3008c906bcb05a1d53c3cfbb24a5b2e8f8498cf14082f9d4"
+  },
+  "freeze_statement": "All anchors above SHA-verified on 2026-09-13. Downstream stages (model calibration, official validation) must reference this contract SHA and must not modify any frozen artifact."
+}

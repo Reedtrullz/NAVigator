@@ -1,0 +1,94 @@
+{
+  "schema": "tier2-case-mapping-v1",
+  "task_id": "SEMANTIC-JUDGE-REVIEW-ANNOTATION-TIER2-ASSESSMENT",
+  "operator_catalog": "evaluation-contract/operator-classification.json (9 SAFE_WITH_PRECONDITIONS)",
+  "mapped_cases": [
+    {
+      "case_id": "CAL015",
+      "operator_id": "RULE_PLUS_CONDITION",
+      "required_premises": [
+        "marked rule span",
+        "condition co-present in same span or paired span"
+      ],
+      "available_premises": [
+        "S1 marks rule and condition explicitly: 'for barn 12-16 ar skal barnets uttalelse gis stor vekt'"
+      ],
+      "missing_premises": [],
+      "preconditions": [
+        "rule+condition in single marked span",
+        "no hedge tokens",
+        "claim is near-verbatim restatement",
+        "condition atoms identical on both sides"
+      ],
+      "expected_auto_verdict": "AUTO_SUPPORTED",
+      "risk": "LOW",
+      "notes": "Highest-confidence Tier-2 candidate. Span is near-verbatim; operator is classified SAFE_WITH_PRECONDITIONS. Not implemented in this task (spec 25)."
+    },
+    {
+      "case_id": "CAL025",
+      "operator_id": "SAME_PREDICATE_OPPOSITE_POLARITY",
+      "required_premises": [
+        "shared predicate on claim axis",
+        "opposite polarity",
+        "all claim atoms addressed (compound-atom coverage)"
+      ],
+      "available_premises": [
+        "S1: 'Aktivitetsplikt gjelder bare etter tidligere regelverk' + 'opphevet for nye saker'",
+        "claim: viderefort + 50 prosent"
+      ],
+      "missing_premises": [
+        "source is silent on the '50 prosent' atom; compound-atom coverage doctrine must be formalized"
+      ],
+      "preconditions": [
+        "contradicted conjunct falsifies conjunction",
+        "rule-level polarity (not surface tokens)",
+        "no unaddressed atom may be polarity-resolvable by silence"
+      ],
+      "expected_auto_verdict": "AUTO_CONTRADICTED",
+      "risk": "MEDIUM",
+      "notes": "'50 prosent' atom unaddressed: auto-CONTRADICTED requires a machine-checkable compound-atom coverage precondition. Excluded from realistic headroom."
+    },
+    {
+      "case_id": "D20-A5",
+      "operator_id": "ACTOR_MEMBERSHIP",
+      "required_premises": [
+        "shared actor term",
+        "explicit enumeration or marked disjunction of members"
+      ],
+      "available_premises": [
+        "S1: 'lege, psykolog eller barnevernsleder'",
+        "claim: 'Barnevernsleder kan underskrive alene'"
+      ],
+      "missing_premises": [
+        "disjunction semantics ('any one member satisfies') not modeled by ACTOR_MEMBERSHIP"
+      ],
+      "preconditions": [
+        "explicit 'eller' with enumerated actors",
+        "no co-signature requirement in source",
+        "member asserted in claim is verbatim in enumeration"
+      ],
+      "expected_auto_verdict": "AUTO_SUPPORTED",
+      "risk": "MEDIUM",
+      "notes": "Pass-1 flagged residual DISJUNCTIVE_GRANT need; ACTOR_MEMBERSHIP is the best catalog fit but stretches its membership semantics. Excluded from realistic headroom."
+    }
+  ],
+  "unmapped_operator_needs": [
+    {
+      "case_id": "CAL020",
+      "need": "TEMPORAL_BOUNDARY",
+      "note": "after-cutoff support from explicit boundary + explicit occasion; no classified operator covers temporal-boundary support (TEMPORAL_CONFLICT is conflict-only). Report-only (spec 11)."
+    },
+    {
+      "case_id": "CAL088",
+      "need": "INJECTION_POSTURE",
+      "note": "contaminated document must force review regardless of proof availability; already covered by reviewer posture (CAL089 precedent), not an operator gap. Report-only."
+    },
+    {
+      "case_id": "CI-062",
+      "need": "NEGATION_SCOPE_REASONING",
+      "note": "proof requires resolving 'ikke lovregulert' against a specific-duration rule; nested negation scope unsafe to automate. Report-only."
+    }
+  ],
+  "n_mapped": 3,
+  "n_unmapped_needs": 3
+}

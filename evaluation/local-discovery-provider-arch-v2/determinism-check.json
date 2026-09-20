@@ -1,0 +1,17 @@
+{
+  "artifact": "v2_determinism_check",
+  "executed_at": "2026-09-09",
+  "method": "two serialized replay runs, wall-clock executed_at excluded; deterministic control-flow fields compared byte-wise",
+  "byte_stable": true,
+  "decision_fields": [
+    "route_state",
+    "terminal_state",
+    "execution_status",
+    "services",
+    "selected_candidates",
+    "provider_chain"
+  ],
+  "nondeterministic_fields_excluded": [
+    "executed_at"
+  ]
+}

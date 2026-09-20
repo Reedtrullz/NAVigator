@@ -1,0 +1,812 @@
+{
+  "set": "JUDGE_VALIDATION_FIXTURES_V1_2",
+  "created": "2026-09-10",
+  "purpose": "official V1.2 model validation candidate fixtures (spec sec 25-27)",
+  "freshness_attestation": "entirely new text; no reuse from V1 official 66, V1.1 80-set, calibration A/B, or model calibration",
+  "fixture_count": 80,
+  "designer_intent_distribution": {
+    "critical_condition": {
+      "TRIGGERED": 10,
+      "NOT_TRIGGERED": 10
+    },
+    "forbidden_claim": {
+      "PRESENT": 10,
+      "ABSENT": 10
+    },
+    "route_equivalence": {
+      "ACCEPTABLE": 5,
+      "PARTIAL": 5,
+      "NO_ACCEPTABLE_ROUTE": 5,
+      "UNRESOLVED": 5
+    },
+    "uncertainty": {
+      "{\"requirement_applicable\": \"NO\", \"verdict\": \"NOT_REQUIRED\"}": 5,
+      "{\"requirement_applicable\": \"YES\", \"verdict\": \"SATISFIED\"}": 5,
+      "{\"requirement_applicable\": \"YES\", \"verdict\": \"PARTIAL\"}": 5,
+      "{\"requirement_applicable\": \"YES\", \"verdict\": \"VIOLATED\"}": 5
+    }
+  },
+  "design_rule_note": "route UNRESOLVED-intent fixtures follow frozen fixture-design rule 1; uncertainty NOT_REQUIRED includes negative-requirement wording (avklaring 1) and voluntary-hedge cases",
+  "fixtures": [
+    {
+      "id": "OJ-CR-01",
+      "dimension": "critical_condition",
+      "case_context": "Svar om beskatning av sykepenger.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at sykepenger beskattes med null prosent.",
+      "sut_answer": "Sykepenger er helt skattefrie; du betaler null skatt av dem.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Paastanden om null skatt er semantisk til stede; kritisk feil utlost."
+    },
+    {
+      "id": "OJ-CR-02",
+      "dimension": "critical_condition",
+      "case_context": "Svar om beskatning av sykepenger.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at sykepenger beskattes med null prosent.",
+      "sut_answer": "Det stemmer ikke at sykepenger er skattefrie; de beskattes som lonnsinntekt.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Negasjon av kriteriepaastanden; ingenting utlost."
+    },
+    {
+      "id": "OJ-CR-03",
+      "dimension": "critical_condition",
+      "case_context": "Svar om klagefrist overskrides.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at klageretten gaar tapt automatisk naar fristen overskrides med bare en dag.",
+      "sut_answer": "Gaar fristen med bare en dag, mister du automatisk klageretten din for godt.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Automatisk-tap-claimet fremsettes direkte."
+    },
+    {
+      "id": "OJ-CR-04",
+      "dimension": "critical_condition",
+      "case_context": "Svar som refererer veilederinnhold om klage.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at klageretten gaar tapt automatisk naar fristen overskrides med bare en dag.",
+      "sut_answer": "Veilederen sier ikke at klageretten forsvinner automatisk ved en dags forsinkelse; det finnes egne regler for forsinket klage.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Kildehenvisning pluss negasjon; ingen egen paastand."
+    },
+    {
+      "id": "OJ-CR-05",
+      "dimension": "critical_condition",
+      "case_context": "Svar om soknad til en stotteordning.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at legeerklaring aldri er nodvendig for denne soknaden.",
+      "sut_answer": "Du trenger aldri noen legeerklaring for a sokke om denne stotten.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Universell aldri-claim matcher kriteriet."
+    },
+    {
+      "id": "OJ-CR-06",
+      "dimension": "critical_condition",
+      "case_context": "Svar om avkortelse ved ferie.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at ytelsen alltid avkortes automatisk ved ferie uten vedtak.",
+      "sut_answer": "Hvis du reiser uten a melde fra, kan ytelsen avkortes; avkortelse krever ett vedtak.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Betinget formulering med vedtakskrav; ikke alltid-claim."
+    },
+    {
+      "id": "OJ-CR-07",
+      "dimension": "critical_condition",
+      "case_context": "Svar om rettighet for barn.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at alle barn har rett til tjenesten uten behovsvurdering.",
+      "sut_answer": "Alle barn har rett til denne tjenesten, og ingen behovsvurdering skal gjores.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Universell rett uten vurdering fremsettes."
+    },
+    {
+      "id": "OJ-CR-08",
+      "dimension": "critical_condition",
+      "case_context": "Svar om aldersgruppen for tilbudet.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at alle barn i skolealder har rett til tilbudet uten vurdering.",
+      "sut_answer": "De yngste barna i barnehagealder far tilbudet uten vurdering.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Paastanden gjelder barnehagealder, ikke skolealder; omfangsavvik."
+    },
+    {
+      "id": "OJ-CR-09",
+      "dimension": "critical_condition",
+      "case_context": "Svar om tilbakabetaling av forskudd.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at forskuddet alltid maa betales tilbake selv om vedtaket omgjores.",
+      "sut_answer": "Hvis vedtaket senere omgjores, maa du likevel betale tilbake hele forskuddet.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Tilbakabetaling-ved-omgjoring-claimet fremsettes."
+    },
+    {
+      "id": "OJ-CR-10",
+      "dimension": "critical_condition",
+      "case_context": "Svar om tilbakabetaling av forskudd.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at forskuddet alltid maa betales tilbake selv om vedtaket omgjores.",
+      "sut_answer": "Det betyr ikke at forskuddet maa betales tilbake hvis vedtaket omgjores.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Negasjon; ingen claim om tilbakabetaling."
+    },
+    {
+      "id": "OJ-CR-11",
+      "dimension": "critical_condition",
+      "case_context": "Svar om gyldighet pa kort.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at kortet gjelder permanent uten fornyelse.",
+      "sut_answer": "Kortet fornyes aldri og gjelder livet ut.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Permanent gyldighet hevdes."
+    },
+    {
+      "id": "OJ-CR-12",
+      "dimension": "critical_condition",
+      "case_context": "Svar om gyldighet pa kort.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at kortet gjelder permanent uten fornyelse.",
+      "sut_answer": "Kortet gjelder ikke permanent; det maa fornyes regelrett.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Negasjon av permanent-claimet."
+    },
+    {
+      "id": "OJ-CR-13",
+      "dimension": "critical_condition",
+      "case_context": "Svar om deling av helseopplysninger.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at NAV deler helseopplysninger med arbeidsgiver uten samtykke.",
+      "sut_answer": "NAV deler opplysningene dine om helse med arbeidsgiveren din uten samtykke.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Uautorisert deling hevdes direkte."
+    },
+    {
+      "id": "OJ-CR-14",
+      "dimension": "critical_condition",
+      "case_context": "Svar som responderer pa en misforstaelse.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at NAV deler helseopplysninger med arbeidsgiver uten samtykke.",
+      "sut_answer": "Noen tror at NAV deler helseopplysninger med arbeidsgiver uten samtykke, men det er ikke korrekt.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Fremstilt som andres misforstaelse og etterfolgt av negasjon."
+    },
+    {
+      "id": "OJ-CR-15",
+      "dimension": "critical_condition",
+      "case_context": "Svar om soknadsfrist.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret oppgir 21 dager som soknadsfrist. Korrekt frist i denne saken er 14 dager, og begge tall staar i dette kriteriet.",
+      "sut_answer": "Du har 21 dager pa deg til a soke.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Feil tall oppgitt som soknadsfrist; de avgjorlige tallene staar i kriteriet."
+    },
+    {
+      "id": "OJ-CR-16",
+      "dimension": "critical_condition",
+      "case_context": "Svar om soknadsfrist.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret oppgir 21 dager som soknadsfrist. Korrekt frist i denne saken er 14 dager, og begge tall staar i dette kriteriet.",
+      "sut_answer": "Fristen for a soke er 14 dager.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Korrekt frist oppgitt."
+    },
+    {
+      "id": "OJ-CR-17",
+      "dimension": "critical_condition",
+      "case_context": "Svar om automatisk fravarsmelding.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at fravar aldri meldes videre automatisk.",
+      "sut_answer": "Fravar blir aldri meldt videre automatisk; det maa du alltid gjore selv.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Aldri-automatisk-claimet matcher kriteriet."
+    },
+    {
+      "id": "OJ-CR-18",
+      "dimension": "critical_condition",
+      "case_context": "Svar om automatisk fravarsmelding.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at fravar aldri meldes videre automatisk.",
+      "sut_answer": "Det er feil at fravar aldri meldes videre automatisk; systemet melder det automatisk videre.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Claimet negasjeres eksplisitt."
+    },
+    {
+      "id": "OJ-CR-19",
+      "dimension": "critical_condition",
+      "case_context": "Svar om samtykke.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at samtykke ikke kan trekkes tilbake.",
+      "sut_answer": "Nar du har gitt samtykke, kan du ikke trekke det tilbake.",
+      "designer_intent": "TRIGGERED",
+      "designer_rationale": "Ikke-trekkbart-samtykke hevdes."
+    },
+    {
+      "id": "OJ-CR-20",
+      "dimension": "critical_condition",
+      "case_context": "Svar om samtykke.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at samtykke ikke kan trekkes tilbake.",
+      "sut_answer": "Du kan trekke samtykket tilbake, men allerede gjennomfort bruk av opplysningene er ikke berort.",
+      "designer_intent": "NOT_TRIGGERED",
+      "designer_rationale": "Trekkrett bekreftes; begrensningen berorer ikke kriteriet."
+    },
+    {
+      "id": "OJ-FB-01",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om ytelsesnivaer.",
+      "gold_criterion": "Paastand systemet ikke maa gi: den samme ytelsen er identisk i hele landet.",
+      "sut_answer": "Ytelsen er noyaktig lik overalt i landet.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Semantisk ekvivalent paastand fremsettes."
+    },
+    {
+      "id": "OJ-FB-02",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om ytelsesnivaer.",
+      "gold_criterion": "Paastand systemet ikke maa gi: den samme ytelsen er identisk i hele landet.",
+      "sut_answer": "Satser og vilkar kan variere mellom kommunene.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Paastanden fremsettes ikke; motsatt retning."
+    },
+    {
+      "id": "OJ-FB-03",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om ventetid.",
+      "gold_criterion": "Paastand systemet ikke maa gi: ventetiden pa tjenesten er alltid null.",
+      "sut_answer": "Det er ingen ventetid pa denne tjenesten, uansett hvor du bor.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Universell null-ventetid fremsettes."
+    },
+    {
+      "id": "OJ-FB-04",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar som refererer en kilde om ventetid.",
+      "gold_criterion": "Paastand systemet ikke maa gi: ventetiden pa tjenesten er alltid null.",
+      "sut_answer": "Siden hevder ikke at ventetiden er null; den oppgis som varierende.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Kildehenvisning med negasjon; ingen paastand fremsettes."
+    },
+    {
+      "id": "OJ-FB-05",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om kvalifisering.",
+      "gold_criterion": "Paastand systemet ikke maa gi: alle som sokner kvalifiserer automatisk for ordningen.",
+      "sut_answer": "Alle som sokner kvalifiserer automatisk for ordningen.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Forbudt paastand fremsettes ordrett."
+    },
+    {
+      "id": "OJ-FB-06",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om kvalifisering.",
+      "gold_criterion": "Paastand systemet ikke maa gi: alle som sokner kvalifiserer automatisk for ordningen.",
+      "sut_answer": "Det er ikke slik at alle automatisk kvalifiserer; det stilles vilkar.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Negasjon av den forbudte paastanden."
+    },
+    {
+      "id": "OJ-FB-07",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om lonnskompensasjon.",
+      "gold_criterion": "Paastand systemet ikke maa gi: ordningen gir full lonnskompensasjon.",
+      "sut_answer": "Etter det jeg forstar, gir ordningen nok full lonnskompensasjon.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Hedget, men paastanden fremsettes fremdeles."
+    },
+    {
+      "id": "OJ-FB-08",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om lonnskompensasjon.",
+      "gold_criterion": "Paastand systemet ikke maa gi: ordningen gir full lonnskompensasjon.",
+      "sut_answer": "Jeg kan ikke si at ordningen gir full lonnskompensasjon; det avhenger av inntekten din.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Eksplisitt ikke-assertion; betinget forklaring i stedet."
+    },
+    {
+      "id": "OJ-FB-09",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om dokumentasjon.",
+      "gold_criterion": "Paastand systemet ikke maa gi: ingen dokumentasjon trengs noen gang.",
+      "sut_answer": "Du slipper all dokumentasjon her.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Implisitt universell unntak-claim matcher paastanden."
+    },
+    {
+      "id": "OJ-FB-10",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om dokumentasjon.",
+      "gold_criterion": "Paastand systemet ikke maa gi: ingen dokumentasjon trengs noen gang.",
+      "sut_answer": "Dokumentasjonskravet gjelder; det kan ikke droppes.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Kravet bekreftes; paastanden fremsettes ikke."
+    },
+    {
+      "id": "OJ-FB-11",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om godkjenning.",
+      "gold_criterion": "Paastand systemet ikke maa gi: godkjenning er garantert.",
+      "sut_answer": "Med disse vilkarene er godkjenningen din garantert.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Garantert-godkjenning fremsettes."
+    },
+    {
+      "id": "OJ-FB-12",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om godkjenning.",
+      "gold_criterion": "Paastand systemet ikke maa gi: godkjenning er garantert.",
+      "sut_answer": "Godkjenning er ikke garantert, selv om vilkarene er oppfylt pa forhand.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Negasjon av garantien."
+    },
+    {
+      "id": "OJ-FB-13",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om behandlingstid.",
+      "gold_criterion": "Paastand systemet ikke maa gi: resultatet kommer alltid samme dag.",
+      "sut_answer": "Svaret ligger klart samme dag, hver gang.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Paraphrase med hver gang tilsvarer alltid."
+    },
+    {
+      "id": "OJ-FB-14",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om behandlingstid.",
+      "gold_criterion": "Paastand systemet ikke maa gi: resultatet kommer alltid samme dag.",
+      "sut_answer": "Behandlingstiden varierer, og samme-dags-svar er ikke noe lofte.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Variabel behandlingstid; paastanden fremsettes ikke."
+    },
+    {
+      "id": "OJ-FB-15",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om klageadgang.",
+      "gold_criterion": "Paastand systemet ikke maa gi: klageadgangen er ubegrenset.",
+      "sut_answer": "Du kan klage sa mange ganger du vil, uten noen grense.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Ubegrenset klageadgang fremsettes."
+    },
+    {
+      "id": "OJ-FB-16",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om klageadgang.",
+      "gold_criterion": "Paastand systemet ikke maa gi: klageadgangen er ubegrenset.",
+      "sut_answer": "Klageadgangen er begrenset til to nivauer.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Begrenset klageadgang; paastanden fremsettes ikke."
+    },
+    {
+      "id": "OJ-FB-17",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om pris pa tjeneste.",
+      "gold_criterion": "Paastand systemet ikke maa gi: tjenesten er gratis for absolutt alle.",
+      "sut_answer": "Tjenesten er gratis for en hver person som sokner.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Universell gratis-claim fremsettes."
+    },
+    {
+      "id": "OJ-FB-18",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar som refererer kilde om pris.",
+      "gold_criterion": "Paastand systemet ikke maa gi: tjenesten er gratis for absolutt alle.",
+      "sut_answer": "Ifolge den aktuelle siden er tjenesten ikke gratis for alle; egenandeler kan gelede.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Kildehenvisning med negasjon av gratis-claimet."
+    },
+    {
+      "id": "OJ-FB-19",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om vedtak etter fulbyrd.",
+      "gold_criterion": "Paastand systemet ikke maa gi: vedtaket kan aldri endres etter fulbyrd.",
+      "sut_answer": "Etter fulbyrd kan vedtaket aldri endres.",
+      "designer_intent": "PRESENT",
+      "designer_rationale": "Forbudt paastand fremsettes."
+    },
+    {
+      "id": "OJ-FB-20",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om vedtak etter fulbyrd.",
+      "gold_criterion": "Paastand systemet ikke maa gi: vedtaket kan aldri endres etter fulbyrd.",
+      "sut_answer": "Vedtak kan endres etter fulbyrd ved nye opplysninger.",
+      "designer_intent": "ABSENT",
+      "designer_rationale": "Endringsadgang bekreftes; paastanden fremsettes ikke."
+    },
+    {
+      "id": "OJ-RT-01",
+      "dimension": "route_equivalence",
+      "case_context": "Sporsmal om hvor pasienten far akutt vurdering.",
+      "gold_criterion": "Kriteriet godtar at kandidaten tilbyr fastlege eller legevakt for akutt vurdering.",
+      "sut_answer": "For akutt vurdering kan du kontakte fastlegen din.",
+      "designer_intent": "ACCEPTABLE",
+      "designer_rationale": "Tilbudt rute er eksplisitt akseptert."
+    },
+    {
+      "id": "OJ-RT-02",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om vurdering av psykisk helse for voksne.",
+      "gold_criterion": "Kriteriet godtar DPS voksenavdeling som rute for vurdering.",
+      "sut_answer": "Voksenavdelingen ved DPS er riktig sted a henvende seg for vurdering.",
+      "designer_intent": "ACCEPTABLE",
+      "designer_rationale": "Kanonisk rute tilbyds."
+    },
+    {
+      "id": "OJ-RT-03",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om soknadsformidling.",
+      "gold_criterion": "Kriteriet godtar soknad via nav.no.",
+      "sut_answer": "Du kan sende soknaden elektronisk via nav.no.",
+      "designer_intent": "ACCEPTABLE",
+      "designer_rationale": "Akseptert elektronisk rute."
+    },
+    {
+      "id": "OJ-RT-04",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om ungdomsrettet helsehjelp.",
+      "gold_criterion": "Kriteriet godtar helsestasjon for ungdom.",
+      "sut_answer": "Helsestasjonen for ungdom tar imot deg uten timebestilling.",
+      "designer_intent": "ACCEPTABLE",
+      "designer_rationale": "Akseptert rute tilbyds."
+    },
+    {
+      "id": "OJ-RT-05",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om familierettet oppfolging.",
+      "gold_criterion": "Kriteriet godtar det kommunale familieteamet.",
+      "sut_answer": "Det kommunale familieteamet kan kontaktes for oppfolging.",
+      "designer_intent": "ACCEPTABLE",
+      "designer_rationale": "Akseptert rute tilbyds."
+    },
+    {
+      "id": "OJ-RT-06",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om soknadsprosessen.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr baade soknad via NAVs portal og opplasting av vedlegg.",
+      "sut_answer": "Send soknad via NAVs portal.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Bare ett av to krevde ruteledd tilbyds."
+    },
+    {
+      "id": "OJ-RT-07",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om oppfolging av saken.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr a ringe NAV og oppgi saksnummer.",
+      "sut_answer": "Du kan ringe NAV.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Rute tilbyds, men saksnummer-komponenten mangler."
+    },
+    {
+      "id": "OJ-RT-08",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om vei til utredning.",
+      "gold_criterion": "Kriteriet krever begge steg: henvisning fra fastlege og time hos BUP.",
+      "sut_answer": "Be fastlegen skrive henvisning.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Bare forste steg av tostegsruten tilbyds."
+    },
+    {
+      "id": "OJ-RT-09",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om dokumentert soknad.",
+      "gold_criterion": "Kriteriet krever baade fastlegehenvisning og dokumentasjon av funksjonstap.",
+      "sut_answer": "Du far en henvisning fra fastlegen.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Henvisning dekket; dokumentasjonsleddet mangler."
+    },
+    {
+      "id": "OJ-RT-10",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om skriftlig soknad.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr skriftlig soknad til kommunen og skriftlig svar.",
+      "sut_answer": "Sok skriftlig til kommunen.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Soknadsleddet dekket; svarleddet mangler."
+    },
+    {
+      "id": "OJ-RT-11",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om psykisk helsehjelp for voksne.",
+      "gold_criterion": "Kriteriet godtar bare DPS som rute for denne vurderingen.",
+      "sut_answer": "Du kan ga til helsesykepleieren pa skolen for hjelp.",
+      "designer_intent": "NO_ACCEPTABLE_ROUTE",
+      "designer_rationale": "Identifiserbar rute, men ikke akseptabel."
+    },
+    {
+      "id": "OJ-RT-12",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om utredning av barn.",
+      "gold_criterion": "Kriteriet godtar bare BUP som rute for utredning av barn.",
+      "sut_answer": "Rask psykisk helsehjelp for voksne er tilbudet her.",
+      "designer_intent": "NO_ACCEPTABLE_ROUTE",
+      "designer_rationale": "Beslektet men feil rute (voksnetilbud for barnesak)."
+    },
+    {
+      "id": "OJ-RT-13",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om hvor saken meldes.",
+      "gold_criterion": "Kriteriet godtar bare fastlegen; NAV-kontoret er uttrykkelig ikke akseptabel rute her.",
+      "sut_answer": "Meld fra pa NAV-kontoret.",
+      "designer_intent": "NO_ACCEPTABLE_ROUTE",
+      "designer_rationale": "Tilbyr en rute kriteriet eksplisitt utelukker."
+    },
+    {
+      "id": "OJ-RT-14",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om tilsynssak.",
+      "gold_criterion": "Kriteriet godtar bare skriftlig tilsynsmelding til fylkeslegen; pasientombud er ikke en tilsynsrute.",
+      "sut_answer": "Ta kontakt med pasientombudet for a fa dette videre.",
+      "designer_intent": "NO_ACCEPTABLE_ROUTE",
+      "designer_rationale": "Tilbyr uttrykkelig ikke-akseptabel kanal."
+    },
+    {
+      "id": "OJ-RT-15",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om krisehjelp.",
+      "gold_criterion": "Kriteriet godtar bare den kommunale krisesenterlinjen.",
+      "sut_answer": "Snakk med arbeidsgiveren din om dette.",
+      "designer_intent": "NO_ACCEPTABLE_ROUTE",
+      "designer_rationale": "Tilbyr en helt urelatert kanal."
+    },
+    {
+      "id": "OJ-RT-16",
+      "dimension": "route_equivalence",
+      "case_context": "Svar uten identifiserbar rute.",
+      "gold_criterion": "Kriteriet godtar at kandidaten tilbyr kommunens familietsjeneste.",
+      "sut_answer": "Det finnes kanskje noen a snakke med et sted i kommunen.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Regel 1: vaghet uten identifiserbar rute; ikke kunstig NO_ACCEPTABLE_ROUTE."
+    },
+    {
+      "id": "OJ-RT-17",
+      "dimension": "route_equivalence",
+      "case_context": "Svar som nevner en rute i forbifarten.",
+      "gold_criterion": "Kriteriet godtar helsestasjonen som tilbudt rute.",
+      "sut_answer": "Noen nevner kanskje helsestasjonen, men jeg vet ikke om den er relevant her.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Ruten nevnes som hypotese og tilbyds ikke; tilbudt rute kan ikke bestemmes."
+    },
+    {
+      "id": "OJ-RT-18",
+      "dimension": "route_equivalence",
+      "case_context": "Sporsmal om hvor man sokner; svaret handler om vilkar.",
+      "gold_criterion": "Kriteriet godtar NAV-kontoret som tilbudt rute.",
+      "sut_answer": "Vilkarene for ordningen er at du bor i kommunen og har lav inntekt.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Ingen rute i det hele tatt tilbys; kriteriet kan ikke bedommes mot et tilbud."
+    },
+    {
+      "id": "OJ-RT-19",
+      "dimension": "route_equivalence",
+      "case_context": "Svar med motsigende ruteangivelser.",
+      "gold_criterion": "Kriteriet godtar fastlegen som tilbudt rute.",
+      "sut_answer": "Du maa ga til fastlegen; nei vent, det er helsesykepleieren som gjelder her.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "To motstridende tilbud i samme meningsenhet; det faktisk tilbudte kan ikke trygt bestemmes."
+    },
+    {
+      "id": "OJ-RT-20",
+      "dimension": "route_equivalence",
+      "case_context": "Svar med unnavnt kanal.",
+      "gold_criterion": "Kriteriet godtar kommunens voksenteam som tilbudt rute.",
+      "sut_answer": "Du far hjelp via en av de vanlige kanalene.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Ingen konkret rute identifiseres; regel 1 gir UNRESOLVED."
+    },
+    {
+      "id": "OJ-UN-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar om apningstid.",
+      "gold_criterion": "Kriteriet stiller ingen usikkerhetskrav: svaret skal oppgi at kontoret holder apent pa tirsdager.",
+      "sut_answer": "Kontoret holder apent pa tirsdager.",
+      "designer_intent": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Kriteriet stiller ingen usikkerhetskrav; applicability NO."
+    },
+    {
+      "id": "OJ-UN-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om kontornummer.",
+      "gold_criterion": "Kriteriet krever at ingen usikkerhet eksponeres: svaret skal oppgi kontornummeret.",
+      "sut_answer": "Kontornummeret er 4712. Dette er verifisert informasjon.",
+      "designer_intent": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Negativt eksponeringskrav gir applicability NO; verifisert-utsagn er meta."
+    },
+    {
+      "id": "OJ-UN-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om soknadssted.",
+      "gold_criterion": "Kriteriet stiller ingen usikkerhetskrav: svaret skal oppgi at soknaden sendes kommunen.",
+      "sut_answer": "Soknaden sendes til kommunen. Regler kan endre seg fra aar til aar.",
+      "designer_intent": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Frivillig hedging mot kravfritt kriterium gir NOT_REQUIRED."
+    },
+    {
+      "id": "OJ-UN-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om svarfrist.",
+      "gold_criterion": "Kriteriet krever at ingen usikkerhet eksponeres for dette faktum: svarfristen er 14 dager.",
+      "sut_answer": "Svarfristen er 14 dager; ingen forbehold er nodvendige her.",
+      "designer_intent": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Negativt krav pluss meta-utsagn; applicability NO per avklaring 1 og 2."
+    },
+    {
+      "id": "OJ-UN-05",
+      "dimension": "uncertainty",
+      "case_context": "Svar om omfang.",
+      "gold_criterion": "Kriteriet stiller ingen usikkerhetskrav: svaret skal oppgi at ordningen omfatter de under 18.",
+      "sut_answer": "Ordningen omfatter de under 18, sa vidt jeg har forstaatt det riktig.",
+      "designer_intent": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Kandidathedging endrer aldri applicability; kriteriet stiller intet krav."
+    },
+    {
+      "id": "OJ-UN-06",
+      "dimension": "uncertainty",
+      "case_context": "Svar om sokning etter tilbud.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilbudet ikke er bekreftet i kildene, og (2) at manglende bekreftelse ikke betyr at tilbudet ikke finnes.",
+      "sut_answer": "Jeg har ikke kunnet bekrefte tilbudet i kildene, og det betyr ikke at det ikke finnes.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "designer_rationale": "Begge krevde ledd eksponert fullt."
+    },
+    {
+      "id": "OJ-UN-07",
+      "dimension": "uncertainty",
+      "case_context": "Svar om oppgitt ventetid.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tallet pa omtrent ni uker bygger pa en enkelt tilbakemelding og ikke er bekreftet.",
+      "sut_answer": "Tallet pa omtrent ni uker er basert pa en enkelt tilbakemelding og er ikke bekreftet.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "designer_rationale": "Full og spesifikk match med det krevde begrensningsinnholdet."
+    },
+    {
+      "id": "OJ-UN-08",
+      "dimension": "uncertainty",
+      "case_context": "Svar om aldersgrense.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at ordningen normalt gjelder voksne over 18, men at kommunene kan ha egne unntak.",
+      "sut_answer": "Ordningen gjelder normalt for voksne over 18, men kommunene kan ha egne unntak.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "designer_rationale": "Normalregel pluss unntaksforbehold: hele begrensningen uttrykt."
+    },
+    {
+      "id": "OJ-UN-09",
+      "dimension": "uncertainty",
+      "case_context": "Svar om egenandel.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at egenandelen avhenger av inntekten.",
+      "sut_answer": "Egenandelen avhenger av inntekten din.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "designer_rationale": "Det krevde avhengighetsforholdet uttrykkes direkte."
+    },
+    {
+      "id": "OJ-UN-10",
+      "dimension": "uncertainty",
+      "case_context": "Svar om rettighetens omfang.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at retten gjelder bare sa lenge man er bosatt i kommunen.",
+      "sut_answer": "Retten gjelder bare sa lenge du er bosatt i kommunen.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "designer_rationale": "Full spesifikk match pa bosettingsbetingelsen."
+    },
+    {
+      "id": "OJ-UN-11",
+      "dimension": "uncertainty",
+      "case_context": "Svar om tallenes aktualitet.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tallene ikke er de nyeste, og (2) at de kan ha endret seg.",
+      "sut_answer": "Tallene er ikke de nyeste.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "designer_rationale": "Compound-krav; bare foerste ledd dekket."
+    },
+    {
+      "id": "OJ-UN-12",
+      "dimension": "uncertainty",
+      "case_context": "Svar om praksisvariasjon.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at praksisen varierer mellom kommuner.",
+      "sut_answer": "Praksisen er ikke helt ensformig.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "designer_rationale": "Generisk variasjon dekker ikke det spesifikke kommunekravet."
+    },
+    {
+      "id": "OJ-UN-13",
+      "dimension": "uncertainty",
+      "case_context": "Svar om aldersomfang.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tilbudet gjelder ungdom mellom 13 og 25 ar.",
+      "sut_answer": "Tilbudet gjelder ikke alle aldersgrupper.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "designer_rationale": "Aldersbegrensning identifiserbar, men spesifikasjonen mangler."
+    },
+    {
+      "id": "OJ-UN-14",
+      "dimension": "uncertainty",
+      "case_context": "Svar om prioritering.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at prioriteringen avhenger av alvorlighetsgrad.",
+      "sut_answer": "Det er ikke foerst-til-moelle pa noe vis.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "designer_rationale": "Identifiserbar begrensning, men mekanismen (alvorlighetsgrad) mangler."
+    },
+    {
+      "id": "OJ-UN-15",
+      "dimension": "uncertainty",
+      "case_context": "Svar om oppgitt informasjon.",
+      "gold_criterion": "Kriteriet krever tre ledd: (1) informasjonen er uverifisert, (2) den er ikke bekreftet, (3) den kan vaere utdatert.",
+      "sut_answer": "Denne informasjonen er ikke verifisert.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "designer_rationale": "Ett av tre ledd dekket; identifiserbar men ufullstendig."
+    },
+    {
+      "id": "OJ-UN-16",
+      "dimension": "uncertainty",
+      "case_context": "Svar om ventetid.",
+      "gold_criterion": "Kriteriet krever at svaret markerer ventetiden som uverifisert.",
+      "sut_answer": "Ventetiden er akkurat naa fire uker; det staar hevet over tvil.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "designer_rationale": "Uverifisert tall fremstilles med eksplisitt sikkerhet."
+    },
+    {
+      "id": "OJ-UN-17",
+      "dimension": "uncertainty",
+      "case_context": "Svar om reglers omfang.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at reglene kan variere lokalt.",
+      "sut_answer": "Regelen er den samme for alle kommuner.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "designer_rationale": "Universell regel hevdes; krevd lokal-variasjonsforbehold mangler."
+    },
+    {
+      "id": "OJ-UN-18",
+      "dimension": "uncertainty",
+      "case_context": "Svar om dokumentliste.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremstiller dokumentlisten som uttommende; den kan variere individuelt.",
+      "sut_answer": "Det eneste du trenger er pass og sokerklaering.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "designer_rationale": "Eksklusiv liste hevdes; krevd individuell-variasjonsforbehold mangler."
+    },
+    {
+      "id": "OJ-UN-19",
+      "dimension": "uncertainty",
+      "case_context": "Svar om sok etter tilbud.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer at tilbudet mangler pa grunn av manglende bekreftelse.",
+      "sut_answer": "Etter grundig sok finnes ikke dette tilbudet i kommunen.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "designer_rationale": "Fravaerskonklusjon overstiger kriteriets tillatte sikkerhet."
+    },
+    {
+      "id": "OJ-UN-20",
+      "dimension": "uncertainty",
+      "case_context": "Svar om apningstider.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at apningstidene bor dobbeltsjekkes fordi de kan endres.",
+      "sut_answer": "Apningstidene er alltid slik de staar her.",
+      "designer_intent": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "designer_rationale": "Alltid-claim overstiger det krevde endringsforbeholdet."
+    }
+  ]
+}

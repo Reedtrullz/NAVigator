@@ -1,0 +1,78 @@
+{
+ "task_id": "NAV-EXPLORE-POST-WAVE2-P0-ROUTING-WAVE3-SCOPE-GATE-V1",
+ "task_family": "post-wave2-diagnosis",
+ "status": "COMPLETED",
+ "created_utc": "2026-09-16T18:40:00Z",
+ "owner_authorization": "explicit owner authorization (NAV EXPLORE - WAVE 2 P0 + ROUTING DIAGNOSIS / WAVE 3 SCOPE GATE V1, 2026-09-16)",
+ "authoritative_wave2_measurement_state": "MEASUREMENT_V3_REMEASURE_WAVE_2_RESIDUAL_ADJUDICATION_REQUIRED",
+ "authoritative_wave2_measurement_lineage": "evaluation/measurement-v3-remeasure-repair-wave-2/",
+ "authoritative_wave2_sut_state": "FULL_SUT_REPAIR_WAVE_2_READY_FOR_REMEASUREMENT",
+ "authoritative_post_wave1_analysis": "FULL_SUT_POST_WAVE1_RESIDUAL_FAILURE_ANALYSIS_COMPLETE",
+ "task_type": "READ_ONLY_DIAGNOSIS_AND_WAVE3_SCOPE_SELECTION",
+ "scope": [
+  "inspect frozen Wave-2 predictions and frozen Measurement V3 results",
+  "diagnose 8 P0 Wave1->Wave2 critical regressions",
+  "diagnose ROUT-026 and ROUT-088 under-triage candidates",
+  "diagnose why route PASS remains 0/108 via R0-R10 stage classification",
+  "RC-08 / RC-10 / RC-04 / RC-06 postmortems",
+  "determine Wave-3 repair scope and dependency order"
+ ],
+ "hard_constraints": {
+  "SUT_CHANGED": false,
+  "MEASUREMENT_CHANGED": false,
+  "GOLD_CHANGED": false,
+  "PREDICTIONS_CHANGED": false,
+  "RESAMPLE_ROUT026": false,
+  "ASTRA_CALLS": 0,
+  "SOL_CALLS": 0,
+  "SEMANTIC_LLM_ADJUDICATION_CALLS": 0,
+  "IMPLEMENT_WAVE3": false,
+  "FRESH_HOLDOUT_ALLOWED": false,
+  "DEPLOY_ALLOWED": false,
+  "GPT_5_5_ALLOWED": false,
+  "MAX_SUBAGENTS": 2,
+  "CARRY_PENDING_AS": "PENDING_LLM_ADJUDICATION"
+ },
+ "upstream_pins": {
+  "wave2_measurement_freeze_manifest_sha256": "f5e0a0193d9ddb4da7046ba9719c0d52dafa2982eee1bcac6c11393d5391fc30",
+  "wave2_candidate_manifest_sha256": "8369e21309d7b53413bb6ab93ba7e0983769e707ca7680803237edc1a39ee22e",
+  "wave2_combined_measurement_results_sha256": "005eaebf901a3cf491d67a60738a28ca6ee30e531db47f4069bab2bb2e4b30e3",
+  "wave1_combined_measurement_results_sha256": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+  "original_baseline_results_sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+  "judge_core_v2_13_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+  "corpus_manifest_sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17"
+ },
+ "terminal_statuses": [
+  "POST_WAVE2_P0_ROUTING_WAVE3_SCOPE_GATE_COMPLETE",
+  "POST_WAVE2_P0_ROUTING_WAVE3_SCOPE_GATE_INVALID"
+ ],
+ "burned_label": "BURNED_DEV_BASELINE_ONLY",
+ "closed_utc": "2026-09-16T17:22:53Z",
+ "terminal_status": "POST_WAVE2_P0_ROUTING_WAVE3_SCOPE_GATE_COMPLETE",
+ "completion": {
+  "input_integrity": "7/7 pins OK",
+  "p0_regressions": 8,
+  "real_product_safety_regressions": 0,
+  "scorer_lag_or_contract_sensitivity": 8,
+  "route_pass": "0/108",
+  "route_funnel": {
+   "R0": 89,
+   "R1": 19,
+   "R2_R10": 0
+  },
+  "wave3_scope_recommendation": "WAVE3_ROUTE_SEMANTICS_FIRST",
+  "fresh_holdout": "NOT_READY_FOR_FRESH_HOLDOUT",
+  "constraints_respected": {
+   "SUT_CHANGED": false,
+   "MEASUREMENT_CHANGED": false,
+   "GOLD_CHANGED": false,
+   "PREDICTIONS_CHANGED": false,
+   "RESAMPLE_ROUT026": false,
+   "ASTRA_CALLS": 0,
+   "SOL_CALLS": 0,
+   "SEMANTIC_LLM_ADJUDICATION_CALLS": 0,
+   "FRESH_CASES_CONSUMED": 0
+  },
+  "deliverables": "22/22 files (section 22 spec)"
+ }
+}

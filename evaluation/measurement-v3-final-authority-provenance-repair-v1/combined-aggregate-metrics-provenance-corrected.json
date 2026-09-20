@@ -1,0 +1,103 @@
+{
+  "artifact": "combined-aggregate-metrics-provenance-corrected",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-FINAL-AUTHORITY-PROVENANCE-REPAIR-V1",
+  "created_utc": "2026-09-16",
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY",
+  "interpretation_boundary": "Dual-pass Astra agreement, adjudication consensus, and OWNER-01 human adjudication are measurement-system evidence for the burned dev baseline only; not certification, production readiness, or generalization evidence.",
+  "upstream_artifact_sha256": "45d078d6c8ee4e962e987381670d3ea412df5a6fbf326df0f728119137aed18d",
+  "criterion_level_coverage": {
+    "TOTAL_CRITERIA": 600,
+    "DETERMINISTIC": 526,
+    "LLM_REVIEWED": 64,
+    "LLM_ADJUDICATED": 10,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_HUMAN_ADJUDICATION": 0,
+    "AUTHORITATIVE_TOTAL": 600,
+    "AUTHORITATIVE_PCT": 100.0
+  },
+  "case_level_coverage": {
+    "total_cases": 120,
+    "fully_authoritative_cases": 120,
+    "cases_with_pending_criteria": 0,
+    "pending_case_ids": [],
+    "coverage_pct": 100.0
+  },
+  "authority_mix_honesty": "526 deterministic criteria, 64 LLM-reviewed, 10 LLM-adjudicated (8 dual-pass Astra residual + 2 ChatGPT single-review residual), 0 human-reviewed; no criterion in this baseline was decided by a human",
+  "per_dimension": {
+    "critical_condition": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "CRITICAL_ERROR": 110,
+        "NOT_TRIGGERED": 4,
+        "TRIGGERED": 1,
+        "UNRESOLVED": 5
+      }
+    },
+    "forbidden_claim": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "ABSENT": 61,
+        "CLAIM_ABSENT_TAKEN": 53,
+        "CLAIM_PRESENT": 3,
+        "PRESENT": 3
+      }
+    },
+    "route_correctness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NO_ACCEPTABLE_ROUTE": 108
+      }
+    },
+    "required_uncertainty": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 34,
+        "SATISFIED": 1,
+        "VIOLATED": 2
+      }
+    },
+    "evidence_completeness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "0.0": 38,
+        "1.0": 82
+      }
+    }
+  },
+  "pending_criteria": [],
+  "not_computable_until_human_review": [],
+  "residual_completion": {
+    "residual_packets_total": 10,
+    "human_reviewed": [
+      "PKT-ESC-ROUT-025",
+      "PKT-ESC-ROUT-066"
+    ],
+    "resolved_elsewhere_in_upstream_lineage": 8
+  },
+  "llm_adjudicated_subtype_breakdown": {
+    "DUAL_PASS_ASTRA_RESIDUAL": 8,
+    "CHATGPT_SINGLE_REVIEW_RESIDUAL": 2
+  },
+  "provenance_repair": {
+    "repair_task": "NAV-EXPLORE-MEASUREMENT-V3-FINAL-AUTHORITY-PROVENANCE-REPAIR-V1",
+    "rows_corrected": [
+      "ROUT-025::forbidden:01",
+      "ROUT-066::forbidden:01"
+    ],
+    "semantic_observations_changed": false,
+    "derived_verdicts_changed": false,
+    "derivation_kernel_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "source_artifact_sha256": "46ff5ee83e12f6462e5e3ca2c5c37c1d69afa9017842dccd6991ee748e276c82"
+  }
+}

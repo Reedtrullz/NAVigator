@@ -1,0 +1,168 @@
+{
+  "$id": "local-discovery-runtime-result-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "access_methods": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "discovered_urls": {
+      "items": {
+        "format": "uri",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "discovery_plan": {
+      "type": "array"
+    },
+    "errors": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "execution_status": {
+      "enum": [
+        "COMPLETE",
+        "DISCOVERY_INCOMPLETE"
+      ]
+    },
+    "input": {
+      "type": "object"
+    },
+    "mode": {
+      "enum": [
+        "replay",
+        "live"
+      ]
+    },
+    "pages_fetched": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "protocol_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provenance_graph": {
+      "type": "array"
+    },
+    "render_fallbacks": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "route_state": {
+      "enum": [
+        "ROUTE_FULLY_VERIFIED",
+        "ROUTE_ACCESS_PARTIAL",
+        "ROUTE_EXISTENCE_ONLY",
+        "ROUTE_UNVERIFIED"
+      ]
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "searches": {
+      "type": "array"
+    },
+    "self_referral": {
+      "enum": [
+        "YES",
+        "NO",
+        "CONDITIONAL",
+        "UNCLEAR"
+      ]
+    },
+    "services": {
+      "items": {
+        "properties": {
+          "access_methods": {
+            "type": "array"
+          },
+          "age_input_eligible": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "self_referral": {
+            "enum": [
+              "YES",
+              "NO",
+              "CONDITIONAL",
+              "UNCLEAR"
+            ]
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "SERVICE_VERIFIED"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "state",
+          "source_url",
+          "access_methods",
+          "self_referral"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "started_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "terminal_state": {
+      "enum": [
+        "ACCESS_VERIFIED",
+        "REFERRAL_VERIFIED",
+        "PUBLIC_DATA_EXHAUSTED"
+      ]
+    },
+    "uncertainty_output": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "mode",
+    "input",
+    "protocol_id",
+    "protocol_sha256",
+    "discovery_plan",
+    "searches",
+    "pages_fetched",
+    "render_fallbacks",
+    "discovered_urls",
+    "services",
+    "route_state",
+    "terminal_state",
+    "execution_status",
+    "access_methods",
+    "self_referral",
+    "uncertainty_output",
+    "evidence",
+    "provenance_graph",
+    "errors"
+  ],
+  "title": "NAV Explore Local Discovery Runtime Result V1",
+  "type": "object"
+}

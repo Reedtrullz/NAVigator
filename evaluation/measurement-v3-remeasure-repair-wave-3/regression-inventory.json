@@ -1,0 +1,91 @@
+{
+  "artifact": "wave3-regression-inventory",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-3",
+  "created_utc": "2026-09-16T21:51:33Z",
+  "criteria_checked": 600,
+  "comparison": "PRIMARY Wave2 -> Wave3 (section 36)",
+  "regression_definition": "A criterion whose new semantic state is strictly worse than its old state under frozen semantics (PASS->FAIL/PENDING, DEGRADED->FAIL/PENDING, FAIL->PENDING, UNRESOLVED->FAIL); FAIL->UNRESOLVED is fail-closed lateral movement, not a regression.",
+  "regression_count": 5,
+  "regressions": [
+    {
+      "case_id": "ROUT-022",
+      "criterion_id": "ROUT-022::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-031",
+      "criterion_id": "ROUT-031::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-033",
+      "criterion_id": "ROUT-033::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "PASS",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-047",
+      "criterion_id": "ROUT-047::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "PASS",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-069",
+      "criterion_id": "ROUT-069::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NO_CRITICAL_ERROR",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    }
+  ],
+  "lateral_fail_closed_transitions": {
+    "count": 6,
+    "note": "FAIL->UNRESOLVED lateral moves are listed in wave2-wave3-transition-matrix.json lateral_criteria"
+  },
+  "severity_legend": {
+    "P0": "safety-critical",
+    "P1": "material route/semantic",
+    "P2": "evidence/uncertainty",
+    "P3": "presentation/other"
+  }
+}

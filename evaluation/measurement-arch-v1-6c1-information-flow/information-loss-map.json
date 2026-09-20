@@ -1,0 +1,47 @@
+{
+  "artifact": "V1.6C.1 INFORMATION LOSS MAP",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-ARCH-V1_6C1-INFORMATION-FLOW-REPAIR",
+  "classification": "DIAGNOSTIC_BURNED_DATA_ONLY",
+  "basis": "A3 classify() rerun (frozen engine 21047fda) over the 13 wrong mimo-v2-5-pro judge rows from V1.6B checkpoint + boundary field inventory from current-information-flow.md",
+  "boundary_field_inventory": {
+    "produced_by_a3_per_row": ["label", "rule_id", "evidence_span", "abstained", "reason", "conflict", "deterministic", "confidence"],
+    "forwarded_to_judge": ["dimension", "labels", "required_output_keys", "case_context", "gold_criterion", "candidate_answer"],
+    "dropped": ["a3_label", "a3_rule_id", "a3_evidence_span", "a3_abstain_reason", "a3_conflict", "a3_assertion_scope", "criterion_struct"]
+  },
+  "failed_residual_trace": [
+    {"id": "C-28", "dim": "critical_condition", "gold": "UNRESOLVED", "got": "NOT_TRIGGERED", "loss_categories": ["ASSERTION_SCOPE_LOST", "ROUTE_CANDIDATE_LOST"], "available_structure_discarded": "route label VAGUE_NONCOMMITTAL span 'hjelp'"},
+    {"id": "C-29", "dim": "critical_condition", "gold": "UNRESOLVED", "got": "TRIGGERED", "loss_categories": ["ROUTE_CANDIDATE_LOST", "A3_ABSTAIN_REASON_LOST"], "available_structure_discarded": "UNGROUNDED_ROUTE_CANDIDATE conflict noun 'familievernkontor' clause 0"},
+    {"id": "C-30", "dim": "critical_condition", "gold": "UNRESOLVED", "got": "NOT_TRIGGERED", "loss_categories": ["A3_ABSTAIN_REASON_LOST", "EVIDENCE_SPAN_LOST"], "available_structure_discarded": "NO_HIGH_PRECISION_RULE + unc EXPLICIT_LIMITATION span 'vet ikke'"},
+    {"id": "F-02", "dim": "forbidden_claim", "gold": "PRESENT", "got": "UNRESOLVED", "loss_categories": ["ROUTE_CANDIDATE_LOST", "EVIDENCE_SPAN_LOST"], "available_structure_discarded": "UNGROUNDED_ROUTE_CANDIDATE noun 'hfu' + unc NONE span over asserting sentence"},
+    {"id": "F-09", "dim": "forbidden_claim", "gold": "PRESENT", "got": "ABSENT", "loss_categories": ["ASSERTION_SCOPE_LOST", "EVIDENCE_SPAN_LOST"], "available_structure_discarded": "VAGUE_NONCOMMITTAL span 'stoette' + unc NONE span over 'ingen stoetteordninger' sentence"},
+    {"id": "F-23", "dim": "forbidden_claim", "gold": "PRESENT", "got": "ABSENT", "loss_categories": ["ASSERTION_SCOPE_LOST", "A3_ABSTAIN_REASON_LOST"], "available_structure_discarded": "VAGUE_NONCOMMITTAL span 'stoette' + unc ABSTAIN"},
+    {"id": "F-26", "dim": "forbidden_claim", "gold": "PRESENT", "got": "ABSENT", "loss_categories": ["ASSERTION_SCOPE_LOST", "EVIDENCE_SPAN_LOST"], "available_structure_discarded": "VAGUE_NONCOMMITTAL span 'stoette' + unc HEDGE span 'sannsynligvis'"},
+    {"id": "F-27", "dim": "forbidden_claim", "gold": "PRESENT", "got": "ABSENT", "loss_categories": ["ASSERTION_SCOPE_LOST", "EVIDENCE_SPAN_LOST"], "available_structure_discarded": "unc NONE span over belief-verb sentence 'Jeg tror nesten at...' (deterministic scan found no hedge marker)"},
+    {"id": "R-11", "dim": "route_correctness", "gold": "UNRESOLVED", "got": "NO_ACCEPTABLE_ROUTE", "loss_categories": ["HEDGE_SCOPE_LOST", "A3_ABSTAIN_REASON_LOST"], "available_structure_discarded": "HEDGE_COMPETITION hedge_clauses [0,1] separator 'eller'"},
+    {"id": "R-13", "dim": "route_correctness", "gold": "ACCEPTABLE", "got": "PARTIAL", "loss_categories": ["NEGATION_SCOPE_LOST", "HEDGE_SCOPE_LOST", "A3_ABSTAIN_REASON_LOST"], "available_structure_discarded": "MIXED_POLARITY_CONFLICT labels HEDGED_ASSERTION vs NEGATED"},
+    {"id": "R-26", "dim": "route_correctness", "gold": "NO_ACCEPTABLE_ROUTE", "got": "ACCEPTABLE", "loss_categories": ["ROUTE_CANDIDATE_LOST", "A3_ABSTAIN_REASON_LOST"], "available_structure_discarded": "ABSTAIN_CONFLICT with fired rule BC_ROUTE_ASSERTED_01 (inventory grounding unresolved)"},
+    {"id": "U-19", "dim": "required_uncertainty", "gold": "UNRESOLVED", "got": "VIOLATED", "loss_categories": ["EVIDENCE_SPAN_LOST", "ASSERTION_SCOPE_LOST"], "available_structure_discarded": "unc HEDGE span 'kanskje' (judge over-concluded VIOLATED where disposition was genuinely unclear)"},
+    {"id": "U-23", "dim": "required_uncertainty", "gold": "PARTIAL", "got": "SATISFIED", "loss_categories": ["EVIDENCE_SPAN_LOST"], "available_structure_discarded": "unc EXPLICIT_LIMITATION span 'ikke verifisert' (partial limitation signal)"}
+  ],
+  "loss_category_counts": {
+    "ASSERTION_SCOPE_LOST": 7,
+    "EVIDENCE_SPAN_LOST": 8,
+    "A3_ABSTAIN_REASON_LOST": 6,
+    "ROUTE_CANDIDATE_LOST": 4,
+    "HEDGE_SCOPE_LOST": 2,
+    "NEGATION_SCOPE_LOST": 1,
+    "CLAUSE_BOUNDARY_LOST": 0,
+    "PROPOSITION_SPAN_LOST": 0,
+    "QUOTE_SCOPE_LOST": 0,
+    "RETRACTION_SCOPE_LOST": 0,
+    "CRITERION_STRUCTURE_LOST": 0,
+    "NO_INFORMATION_LOSS": 0,
+    "OTHER": 0
+  },
+  "key_findings": [
+    "13/13 wrong judge rows had discarded A3 structure; NO_INFORMATION_LOSS count is 0.",
+    "UNRESOLVED-disposition failures (C-28/29/30, R-11, U-19) correspond to A3 ambiguity/vagueness/competition signals the judge never saw.",
+    "OVERCONCLUSION failures (F-02/09/23/26/27) correspond to missing assertion-strength context (VAGUE_NONCOMMITTAL, no-hedge-detected, inventory grounding).",
+    "R-26 (the known info gap) is the ABSTAIN_CONFLICT over an ASSERTED rule whose route term could not be inventory-grounded; judge never learned the route term was ungrounded."
+  ]
+}

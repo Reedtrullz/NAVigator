@@ -1,0 +1,129 @@
+{
+  "task_id": "NAV-EXPLORE-REVIEWER-MINIMUM-TIER-FRESH-BATCH-V1",
+  "stage": "PREPARATION - PLANNING ONLY, ZERO CALLS EXECUTED",
+  "row_count": 350,
+  "scenario_group_count": 100,
+  "planning_cap_primary_calls": 2450,
+  "cap_derivation": "350 rows x 7 tier cells (worst case, no early stop)",
+  "ladder": {
+    "order": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "stop_rule": "stop at first TIER with >=1 SUFFICIENT model cell; cheaper tiers must be definitively FAILED before minimum tier assignment",
+    "tier_cells": [
+      {
+        "tier": "T1",
+        "cell_order": 1,
+        "logical_id": "mimo-v2.5-pro",
+        "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "dev-corpus-semantic-judge-v1-5a/model-configs/mimo-v2-5-pro.json",
+        "temperature": 0,
+        "max_tokens": 32768,
+        "pricing": "free/local-proxy"
+      },
+      {
+        "tier": "T1",
+        "cell_order": 2,
+        "logical_id": "laguna-s-2.1",
+        "wire_id": "command-code/poolside/laguna-s-2.1-free",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "dev-corpus-semantic-judge-v1-5a/model-configs/laguna-s-2-1-free.json",
+        "temperature": 0,
+        "max_tokens": 32768,
+        "pricing": "free/local-proxy"
+      },
+      {
+        "tier": "T1",
+        "cell_order": 3,
+        "logical_id": "ling-3.0-flash-sante",
+        "wire_id": "command-code/inclusionai/ling-3.0-flash-sante:free",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "dev-corpus-semantic-judge-v1-5a/model-configs/ling-3-0-flash-sante-free.json",
+        "temperature": 0,
+        "max_tokens": 32768,
+        "pricing": "free/local-proxy"
+      },
+      {
+        "tier": "T2",
+        "cell_order": 4,
+        "logical_id": "deepseek-v4-flash",
+        "wire_id": "B.AI/deepseek-v4-flash-vision-exp",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "semantic-reviewer-bai-qualification-v3/provider-route-selection.json",
+        "temperature": 0,
+        "pricing": "free/local-proxy"
+      },
+      {
+        "tier": "T2",
+        "cell_order": 5,
+        "logical_id": "nex-n2.5-pro",
+        "wire_id": "openrouter/nex-agi/nex-n2.5-pro:free",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "semantic-reviewer-cost-qualification-v1/candidate-configs.json",
+        "temperature": 0,
+        "pricing": "free (openrouter :free pool)"
+      },
+      {
+        "tier": "T3",
+        "cell_order": 6,
+        "logical_id": "luna-high",
+        "wire_id": "gpt-5.6-luna",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "semantic-reviewer-luna-qualification-v1/luna-high-config.json",
+        "reasoning_effort": "HIGH",
+        "max_tokens": null,
+        "pricing": "PAID - price unknown, cost unknown"
+      },
+      {
+        "tier": "T3",
+        "cell_order": 7,
+        "logical_id": "luna-max",
+        "wire_id": "gpt-5.6-luna",
+        "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+        "config_source": "semantic-reviewer-luna-qualification-v1/luna-max-config.json",
+        "reasoning_effort": "MAX",
+        "max_tokens": null,
+        "pricing": "PAID - price unknown, cost unknown"
+      }
+    ],
+    "t4_astra": {
+      "allowed": false,
+      "calls": 0,
+      "note": "ASTRA_CALLS=0 absolute per TASK-SPEC-V1.1 R4"
+    }
+  },
+  "retry_policy": {
+    "schema_invalid_retry_max": 1,
+    "http_429_5xx_retry": "single technical retry after 30s, same max_tokens",
+    "finish_reason_length": "TRANSPORT_CAPACITY_FAILURE, no semantic score",
+    "substantive_retry": "FORBIDDEN"
+  },
+  "lane_c_consensus": {
+    "purpose": "costed-not-called in this task; dual-pass consensus gold for rows where needed",
+    "method": "dual-pass, accepted only when both passes valid AND authoritative fields equal",
+    "model_identity": "TO BE AUTHORIZED AT RUN TIME - not decided in preparation",
+    "overlap_flags": [
+      "luna-high/luna-max overlap T3: if chosen for Lane C, consensus authority overlaps tier ladder; must be flagged in final gold provenance"
+    ],
+    "calls_budgeted": "not counted in 2450 planning cap; separate authorization required"
+  },
+  "quota_stops": {
+    "rule": "on repeated 429/5xx across all remaining cells, stop tier execution and record EVIDENCE_GAP_NO_TIER_CORRECT for untested rows; NO provider switching beyond frozen wire_ids",
+    "openrouter_free_pool": "~20 req/min; plan around daily request quota",
+    "command_code": "rolling usage window; treat live errors as authoritative"
+  },
+  "result_register": {
+    "format": "append-only JSONL",
+    "key": "canonical_hash + wire_id",
+    "resume": "content-hash resume; skip pairs already present with valid result",
+    "artifact": "tier-run-results.jsonl (created at run stage, not preparation)"
+  },
+  "cost_summary": {
+    "estimated_primary_calls_worst_case": 2450,
+    "estimated_primary_calls_realistic": "T1 SUFFICIENT expected to terminate ladder early for most rows; exact count unknowable before run",
+    "money": "0 expected unless T3 reached; Luna price unknown => cost unknown, flagged"
+  }
+}

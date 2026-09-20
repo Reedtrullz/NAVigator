@@ -1,0 +1,127 @@
+{
+ "snapshot_name": "NAV-EXPLORE-RC3-GEN-SNAPSHOT-A",
+ "status": "FROZEN_FOR_GENERALIZATION_HOLDOUT_ONLY",
+ "not_release_candidate": true,
+ "frozen_at": "2026-09-04T18:21:49+02:00",
+ "frozen_before": "holdout case authoring",
+ "source_state": "RC3_NOT_READY (NAV-EXPLORE-RC3-ARCHITECTURE-REPAIR outcome)",
+ "runtime_changes_after_freeze": "forbidden; if runtime changes later, this holdout must not evaluate that change in the same cycle",
+ "execution_on_holdout": "forbidden in this construction task (G1/G2 separate phase)",
+ "architecture_versions": {
+  "decomposition": "DECOMPOSITION_V1",
+  "proof_engine": "PROOF_ENGINE_RC3",
+  "reviewer": "REVIEWER_V2",
+  "arbitration": "ARBITRATION_V2",
+  "routing": "PRODUCT_ROUTING_V2",
+  "rc2_base": "polarity_engine v0.1 + v0.2 wrapper (RC2 freeze, unmodified)"
+ },
+ "prompt_hash_note": "REVIEWER_V2 prompt and output schema are embedded in reviewer_v2.py; the file hash covers them",
+ "frozen_routing_table": {
+  "ENGINE_PROOF_ACCEPTED+SUPPORTED": "AUTO_SUPPORTED",
+  "ENGINE_PROOF_ACCEPTED+CONTRADICTED": "AUTO_CONTRADICTED",
+  "ENGINE_UNSAFE": "REVIEW_REQUIRED",
+  "ENGINE_CONFLICT": "REVIEW_REQUIRED",
+  "ENGINE_NO_PROOF": "sufficiency classifier -> ABSTAIN_INSUFFICIENT or REVIEW_REQUIRED"
+ },
+ "thresholds_note": "no confidence thresholds in routing (proof-bounded); routing-calibration.json hashed as frozen config",
+ "components": [
+  {
+   "component": "rc3_engine/engine_rc3.py",
+   "version": "PROOF_ENGINE_RC3",
+   "role": "engine wrapper + clause-context guard",
+   "sha256": "040787552baf038ee137e5e1a9f57f828b42f0ed971942932e10156728f58e37",
+   "bytes": 12715
+  },
+  {
+   "component": "rc3_engine/decomposition.py",
+   "version": "DECOMPOSITION_V1",
+   "role": "canonical decomposition",
+   "sha256": "a650700dc70abab50e7a8fd495e97807fc0ccd6094fb4c505b1182f4d9abe49c",
+   "bytes": 4462
+  },
+  {
+   "component": "rc3_engine/routing.py",
+   "version": "PRODUCT_ROUTING_V2",
+   "role": "routing table + sufficiency classifier + aggregation",
+   "sha256": "81478956af047f80c2c21c53bb988483e85df5ac5900a2b71602c8235eb02994",
+   "bytes": 3997
+  },
+  {
+   "component": "rc3_engine/arbitration.py",
+   "version": "ARBITRATION_V2",
+   "role": "proof arbitration",
+   "sha256": "ea016e61231d85b10ec785fc62a64d8462e64b1c5f086be68bb62ff43350d685",
+   "bytes": 4445
+  },
+  {
+   "component": "rc3_engine/reviewer_v2.py",
+   "version": "REVIEWER_V2",
+   "role": "reviewer schema/validator (embedded prompt)",
+   "sha256": "d04f5286be0890bdc98eb12191c29e8d0b914bc242686f737b6089d006066721",
+   "bytes": 3366
+  },
+  {
+   "component": "rc3_engine/reviewer_bridge.py",
+   "version": "REVIEWER_V2_BRIDGE",
+   "role": "reviewer transport bridge",
+   "sha256": "8b9d75f9b740b2557820b8f4a3f071875fe2890e55e7d1edc986211cf2dfe54d",
+   "bytes": 3781
+  },
+  {
+   "component": "rc2-development/engine/polarity_engine.py",
+   "version": "FROZEN_RC2_BASE_V0_1",
+   "role": "frozen base engine",
+   "sha256": "fa0aa37f5665602228f48705be8bd0637ce05275d457472cac03bffa419f2e9f",
+   "bytes": 55806
+  },
+  {
+   "component": "rc2-development/engine/polarity_engine_v02.py",
+   "version": "FROZEN_RC2_BASE_V0_2",
+   "role": "frozen v0.2 wrapper",
+   "sha256": "d1268983d018de6644baafc52db03498e3e0a63ba375e353fc9f57d392470adb",
+   "bytes": 41954
+  },
+  {
+   "component": "rc2-development/engine/quote_aligner.py",
+   "version": "QUOTE_ALIGNER_FROZEN",
+   "role": "quote aligner",
+   "sha256": "f1d34bf1b57b42da0b33711388e74acb639c9725fbcfed0e457f299b791f72ea",
+   "bytes": 14528
+  },
+  {
+   "component": "rc2-development/engine/modality.py",
+   "version": "MODALITY_FROZEN",
+   "role": "deontic modality helpers",
+   "sha256": "1da41613cbcf74ae9e20b1478b5054f487123a9aa6f66062af270380908e8a0a",
+   "bytes": 6034
+  },
+  {
+   "component": "rc2-development/engine/domain-lexicon.json",
+   "version": "DOMAIN_LEXICON",
+   "role": "lexicon data",
+   "sha256": "4d2b24081e359e7d715088dd714587218d7cdc967ce6ac4dcff37e5c030a9802",
+   "bytes": 10447
+  },
+  {
+   "component": "rc2-development/engine/predicate-map.json",
+   "version": "PREDICATE_MAP",
+   "role": "predicate data",
+   "sha256": "39f379e8d021c2fc138eea392dec5306ef389c89d7bc10988dbd0dd52b952eff",
+   "bytes": 1914
+  },
+  {
+   "component": "routing-calibration.json",
+   "version": "ROUTING_CALIBRATION",
+   "role": "frozen routing calibration config",
+   "sha256": "75e0c2176ac448d8372c037b4f94ef6031bc852f58660c9c309f00ac3eca12a7",
+   "bytes": 1660
+  },
+  {
+   "component": "review_cache.py",
+   "version": "REVIEWER_TRANSPORT",
+   "role": "frozen reviewer transport harness",
+   "sha256": "f2a7c3f934abddbc311cbe9930628b7ff281777a9cc4b1d9a9d169aaaa55a911",
+   "bytes": 1548
+  }
+ ]
+}

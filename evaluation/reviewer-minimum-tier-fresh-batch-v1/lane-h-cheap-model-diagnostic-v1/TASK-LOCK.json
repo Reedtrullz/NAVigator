@@ -1,0 +1,36 @@
+{
+  "task_id": "NAV-EXPLORE-LANE-H-CHEAP-MODEL-DIAGNOSTIC-V1",
+  "task_family": "lane-h-cheap-model-diagnostic",
+  "status": "COMPLETE",
+  "terminal_status": "DIAGNOSTIC_COMPLETE",
+  "owner_authorization": "attachment 8452bd3d-3742-46c9-a4e4-5f8b956e287f (NAV-EXPLORE-LANE-H-CHEAP-MODEL-DIAGNOSTIC-V1)",
+  "classification": "DEVELOPMENT_DIAGNOSTIC_ONLY",
+  "reference_kind": "AI_PROPOSED_REFERENCE_READING_B_NOT_HUMAN_GOLD",
+  "parent_preparation_task_lock": {
+    "path": "evaluation/reviewer-minimum-tier-fresh-batch-v1/TASK-LOCK.json",
+    "sha256": "d1535d416f8a1e179be09a70736b46fedf4ca5b5d7315f5a6e59d9af7c8b0154",
+    "untouched": true
+  },
+  "run_manifest_sha256": "fad27195b04c9131a46e3bbb4561a8a2e421f349824912217fbfac0ef47aa69e",
+  "models": {
+    "mimo_v2_5_pro": "command-code/xiaomi/mimo-v2.5-pro",
+    "deepseek_v4_flash_vision_exp": "B.AI/deepseek-v4-flash-vision-exp"
+  },
+  "call_rules": {
+    "one_shot_no_semantic_retries": true,
+    "technical_retry_policy": "max 1 per model/row, 429/5xx only",
+    "subagents": 0,
+    "astra_calls": 0,
+    "gpt_5_5_calls": 0
+  },
+  "artifacts": {
+    "results_mimo_sha256": "22f366a9b6deaae96ea6788e2751a61be66438f8cddf2107570f77b4a85d9b99",
+    "results_deepseek_sha256": "6bf78f3f6074b0c142befd2c027b6d4c6c339531dbd2f88f8ca3cd40a829f79c",
+    "analysis_summary_sha256": "ee043be24679fa904f441cadfc29c6af4c5fc2bb76d948efe8bd16d5c2b198a6",
+    "per_row_comparison_sha256": "a4d4b627705b1352ed4a6e11b4109df9e8b5a0d3f76be7409917b61ba73c4f45",
+    "disagreements_sha256": "56f81843b1df8386c60f9361df0f870e8bbdbd031bb79588ffc54a86f75b55df",
+    "report": "diagnostic-report.md"
+  },
+  "completed_utc": "2026-09-19T23:40:00Z",
+  "hard_stop": "no gold freeze, no tier ladder, no router work, no further model rounds, no runtime changes"
+}

@@ -1,0 +1,79 @@
+{
+  "spec_id": "JEV-V3-PRECOMMIT-MANIFEST-V1",
+  "task_id": "NAV-EXPLORE-NATIVE-JEV-FRESH-FROZEN-QUALIFICATION-V3",
+  "frozen_before_any_fresh_label_inspection": true,
+    "created_utc": "2026-09-19T21:00:00Z",
+    "amendment_1_note": "amended 2026-09-19 before any fresh label inspection: handoff-provided exclusion_id_list_sha256 values were not reproducible from the authoritative V2 artifact under any tested serialization; replaced with locally recomputed values",
+    "amendment_2_note": "amendment_1 values had accidentally retained duplicate ids from the 57-row list; corrected to canonical form json.dumps(sorted(unique_ids), separators=(',',':')).encode() over the 40-id exclusion sets",
+    "amendment_1_fields": ["dataset.exclusion_id_list_sha256_case_ids", "dataset.exclusion_id_list_sha256_packet_ids"],
+  "git": {
+    "sha": null,
+    "status": "N/A",
+    "note": "/Users/reidar/Projectos/NAV Explore is not a git repository; no HEAD and no status exist"
+  },
+  "jev": {
+    "skill": "typesafe-ai",
+    "skill_version": "installed TypeSafe skill, file: /Users/reidar/.codex/plugins/cache/openai-primary-runtime/typesafe-ai/26.909.12148/skills/typesafe-ai/SKILL.md",
+    "api": "https://api.typesafe.ai/v1/systemone",
+    "model": "jev-latest",
+    "observed_model_in_v2": "jev-1.13.0",
+    "question_schema": "V1 (critical_questions + forbidden_questions from V2 question_schema.py, imported unmodified)"
+  },
+  "policy_frozen_hashes": {
+    "question_schema_py_sha256": "37ee87a90dfc2c726ed68da815e17c4386097b0b8f819758d388cb70357424f9",
+    "jev_client_py_sha256": "64c410a1b71b310402a97d5df48110eaef324623f9516ad481326a154859d232",
+    "routing_v2_py_sha256": "54e02449913b4f963406985a2a05c2dd4e35721585d876e29f80c93b037051b",
+    "scoring_spec_preregistered_json_sha256": "fa5ec89145679325a14868207d31d2907411bc40132fb47838806d16996ccaba"
+  },
+  "operating_policy": {
+    "primary_threshold_T": 0.7,
+    "diagnostic_thresholds": [0.7, 0.8, 0.9],
+    "router": "V2 deterministic routing_v2.py, imported unmodified",
+    "high_confidence_definition": "top Choice probability >= 0.8",
+    "repeatability_runs": 3,
+    "repeatability_scope": "full fresh set (235 rows), decided before any outcome analysis",
+    "transport_sleep_seconds": 0.3,
+    "on_http_429": "stop batch, no semantic retries ever",
+    "terminal_gates": {
+      "qualified_requires": [
+        "FALSE_PASS = 0 at primary T",
+        "no safety-critical FALSE_PASS",
+        "no new systematic high-confidence FALSE_PASS mode",
+        "safe auto-decision coverage >= 0.20 at primary T",
+        "3-run routing modal stability >= 0.95",
+        "transport success = 100%"
+      ],
+      "promising_requires": [
+        "safety clean (FALSE_PASS = 0, no safety-critical FALSE_PASS)",
+        "coverage 0.10-0.20 OR routing modal stability 0.90-0.95 OR isolated non-safety FALSE_PASS only"
+      ],
+      "otherwise": "JEV_NATIVE_FRESH_NOT_QUALIFIED"
+    }
+  },
+  "dataset": {
+    "id": "cost-qual-v1-reference-corpus-fresh-remainder-v3",
+    "source": "evaluation/semantic-reviewer-cost-qualification-v1/reference-corpus.jsonl",
+    "source_sha256": "b85caaaa64f3393f27f8177f0b4979e6139c0ff8d18ee3c80efb45eab9e11c2b",
+    "excluded": [
+      "all rows of the V2 57-row slice, by case_id and by packet_id (40 distinct each)",
+      "the 12 unlabeled tier-B rows",
+      "canonical_hash duplicates (first by canonical_hash order kept)"
+    ],
+    "exclusion_id_list_sha256_case_ids": "517cd72128e80e6de67963df156d8ba3be9179d2e7339939642cc34bf74540af",
+    "exclusion_id_list_sha256_packet_ids": "4fb55b026360e8cb03587f817084dffe2c31c3d80f62c865a1d30c5757112ff3",
+    "selection_method": "no sampling; every remaining labeled row is included, sorted by canonical_hash",
+    "fresh_rows": 235,
+    "fresh_case_manifest_sha256": "COMPUTED_AT_BUILD",
+    "redaction_rule": "same as V2: sut_output longer than 12000 chars -> first 6000 + '...[MIDDLE_OF_OUTPUT_TRUNCATED_FOR_STATE_SIZE]...' + last 3000"
+  },
+  "expected_terminal_criteria": [
+    "JEV_NATIVE_FRESH_NOT_QUALIFIED",
+    "JEV_NATIVE_FRESH_PROMISING_NEEDS_MORE_EVIDENCE",
+    "JEV_NATIVE_FRESH_QUALIFIED_FOR_SHADOW_ROUTING"
+  ],
+  "known_composition_limits": [
+    "fresh forbidden pool has 0 MATCH/ASSERTED, 0 PARTIAL-match, and 0 match-UNRESOLVED rows; forbidden-lane FALSE_PASS on those cells is structurally impossible in this dataset",
+    "FALSE_PASS risk concentrates in the 5 critical CLEAR_TRIGGER_SUPPORT rows",
+    "ESC-ROUT-021/026 family test can only be partially assessed because the fresh pool has no match-UNRESOLVED rows; assessed via commitment-UNRESOLVED rows"
+  ]
+}

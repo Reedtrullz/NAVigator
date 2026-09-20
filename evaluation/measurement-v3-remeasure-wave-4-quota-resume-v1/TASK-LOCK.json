@@ -1,0 +1,54 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-WAVE-4-QUOTA-RESUME-V1",
+  "status": "CLOSED",
+  "created_utc": "2026-09-18T00:00:00Z",
+  "source_lineage": "evaluation/measurement-v3-remeasure-repair-wave-4-quota-safe-v1",
+  "source_terminal_state": "MEASUREMENT_V3_REMEASURE_WAVE_4_QUOTA_DEFERRED",
+  "owner_authorization": "OWNER-2026-09-18-WAVE4-QUOTA-RESUME-V1",
+  "scope": [
+    "complete 110 frozen quota-resume semantic packets via gpt-6-astra LOW dual pass",
+    "sol dual-pass residual adjudication only on astra residuals",
+    "mechanical derivation of pending rows",
+    "merge into frozen 490/600 partial wave-4 measurement",
+    "freeze complete wave-4 measurement and run deferred comparisons"
+  ],
+  "model_policy": {
+    "primary_reviewer": "gpt-6-astra",
+    "reasoning_effort": "LOW",
+    "residual_adjudicator": "gpt-5.6-sol",
+    "gpt_5_5_allowed": false,
+    "fallback_models_allowed": false,
+    "astra_medium_high_max_calls": 0
+  },
+  "hard_rules": {
+    "packet_regeneration": false,
+    "packet_editing": false,
+    "unnecessary_semantic_reruns": 0,
+    "third_astra_pass": false,
+    "consensus_hunting": false,
+    "human_review": false,
+    "product_changes": false,
+    "gold_changes": false,
+    "measurement_contract_changes": false,
+    "fresh_cases_consumed": 0
+  },
+  "expected_workload": {
+    "pending_packets": 110,
+    "astra_calls_minimum": 220,
+    "transport_retries_max_per_call": 1
+  },
+  "terminal_status": "MEASUREMENT_V3_REMEASURE_WAVE_4_COMPLETE",
+  "closed_utc": "2026-09-18T13:48:02Z",
+  "completion": {
+    "authoritative_criteria": 600,
+    "total_criteria": 600,
+    "pending_remaining": 0,
+    "freeze_manifest": "completed-wave4-measurement-freeze-manifest.json",
+    "freeze_manifest_sha256": "30abe921d5d79a49e2827aa6da8c80cb1d5214646062434d376928d279a54fab",
+    "hashes_file": "hashes.txt",
+    "previously_authoritative_rows_changed": 0,
+    "fresh_cases_consumed": 0,
+    "final_report": "final-report.md",
+    "fresh_holdout_readiness": "NOT_READY_FOR_FRESH_HOLDOUT"
+  }
+}

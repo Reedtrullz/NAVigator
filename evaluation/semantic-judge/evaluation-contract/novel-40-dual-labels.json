@@ -1,0 +1,814 @@
+{
+ "schema": "evaluation-contract-dual-labels-v1",
+ "task_id": "SEMANTIC-JUDGE-EVALUATION-CONTRACT-REDESIGN",
+ "provenance": "novel-development-set.json labels + hybrid/results/hybrid-eval.json engine finals + curated bounded-inference reading; 8 oracle-overlap ids imported from oracle-46-dual-labels.json",
+ "label_definitions_note": "semantic_truth: bounded-inference reading (spec 3). proof_safe: actual production-layer verdict from hybrid Iteration B (engine final, review-gated verdicts kept as REVIEW_REQUIRED).",
+ "cases": [
+  {
+   "case_id": "N-S1",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Helsesykepleier kan gi råd om helse.",
+   "source_text": "Helsesykepleeren gir veiledning og råd om helse.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-S2",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Fastlegen kan henvise pasienter videre.",
+   "source_text": "Fastlegen skriver henvisning til spesialisthelsetjenesten.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (operator attribution corrected; verdict unchanged)"
+  },
+  {
+   "case_id": "N-S3",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Det er gratis å delta i kursene.",
+   "source_text": "Kursene er kostnadsfrie for deltakerne.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)"
+  },
+  {
+   "case_id": "N-S4",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "BUP undersøker barnets vansker.",
+   "source_text": "BUP utreder psykiske lidelser hos barn og unge.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)"
+  },
+  {
+   "case_id": "N-S5",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DEFINITION_PLUS_INSTANCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Tjenesten er åpen for ungdom.",
+   "source_text": "Helsestasjonen for ungdom er for ungdom mellom 13 og 20 år.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (operator attribution corrected; verdict unchanged)",
+   "engine_iteration_b_final": "REVIEW_REQUIRED"
+  },
+  {
+   "case_id": "N-S6",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "PPT gir veiledning til foresatte.",
+   "source_text": "PPT gir råd og veiledning til foreldre og barnehager.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)"
+  },
+  {
+   "case_id": "N-S7",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Kommunen driver lavterskeltilbud.",
+   "source_text": "Kommunen har lavterskel psykisk helsehjelp.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)"
+  },
+  {
+   "case_id": "N-S8",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Barnevernet hjelper familier med utfordringer.",
+   "source_text": "Barnevernet gir hjelp til barn og familier i vanskelige situasjoner.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-S9",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Søknad om støtte sendes NAV.",
+   "source_text": "Søknader om bostøtte sendes til NAV.",
+   "mismatch_taxonomy": "SEMANTIC_LABEL_ERROR",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)"
+  },
+  {
+   "case_id": "N-S10",
+   "set": "novel-development-40",
+   "dimension": "synonym",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Skolehelsetjenesten tilbyr helsesamtaler.",
+   "source_text": "Skolehelsetjenesten gir helsesamtaler og vaksinering.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-A1",
+   "set": "novel-development-40",
+   "dimension": "antonymy",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "PPT stiller diagnoser.",
+   "source_text": "PPT stiller ikke diagnoser.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-A2",
+   "set": "novel-development-40",
+   "dimension": "antonymy",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Tjenesten koster penger.",
+   "source_text": "Tjenesten er gratis.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)",
+   "engine_iteration_b_final": "CONTRADICTED"
+  },
+  {
+   "case_id": "N-A3",
+   "set": "novel-development-40",
+   "dimension": "antonymy",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Skolehelsetjenesten gir behandling.",
+   "source_text": "Skolehelsetjenesten yter ikke psykisk helsebehandling.",
+   "mismatch_taxonomy": "SEMANTIC_LABEL_ERROR",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)"
+  },
+  {
+   "case_id": "N-A4",
+   "set": "novel-development-40",
+   "dimension": "antonymy",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Henvendelse krever henvisning.",
+   "source_text": "Du kan kontakte helsestasjonen uten henvisning.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)",
+   "engine_iteration_b_final": "CONTRADICTED"
+  },
+  {
+   "case_id": "N-A5",
+   "set": "novel-development-40",
+   "dimension": "antonymy",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Barnevernet arbeider bare med tvangssaker.",
+   "source_text": "Barnevernet arbeider også med frivillig hjelp i hjemmet.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)",
+   "engine_iteration_b_final": "CONTRADICTED"
+  },
+  {
+   "case_id": "N-A6",
+   "set": "novel-development-40",
+   "dimension": "antonymy",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "PPT-utredning koster noe for foreldrene.",
+   "source_text": "PPT-utredning er gratis for foreldrene.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)",
+   "engine_iteration_b_final": "CONTRADICTED"
+  },
+  {
+   "case_id": "N-L1",
+   "set": "novel-development-40",
+   "dimension": "legal",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Retten til nødvendig helsehjelp gjelder også barn.",
+   "source_text": "Barn har rett til nødvendig helsehjelp.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-L2",
+   "set": "novel-development-40",
+   "dimension": "legal",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "RULE_PLUS_CONDITION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Samtykke fra foresatte kreves for barn under 16.",
+   "source_text": "Foreldre samtykker på vegne av barn under 16 år.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)",
+   "engine_iteration_b_final": "REVIEW_REQUIRED"
+  },
+  {
+   "case_id": "N-L3",
+   "set": "novel-development-40",
+   "dimension": "legal",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "ACTOR_MEMBERSHIP"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Helsesykepleier har taushetsplikt.",
+   "source_text": "Helsepersonell har taushetsplikt.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)",
+   "engine_iteration_b_final": "REVIEW_REQUIRED"
+  },
+  {
+   "case_id": "N-L4",
+   "set": "novel-development-40",
+   "dimension": "legal",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Frivillig hjelp fra barnevernet krever samtykke.",
+   "source_text": "Frivillig hjelp forutsetter samtykke fra foreldre.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)",
+   "engine_iteration_b_final": "INSUFFICIENT_EVIDENCE"
+  },
+  {
+   "case_id": "N-L5",
+   "set": "novel-development-40",
+   "dimension": "legal",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Barn over 16 kan selv samtykke til helsehjelp.",
+   "source_text": "Barn over 16 år samtykker selv til helsehjelp.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-L6",
+   "set": "novel-development-40",
+   "dimension": "legal",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "RULE_PLUS_CONDITION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Kravet om henvisning gjelder ikke ved akutt hjelp.",
+   "source_text": "Ved akutt hjelp er henvisning ikke nødvendig.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)",
+   "engine_iteration_b_final": "SUPPORTED"
+  },
+  {
+   "case_id": "N-C1",
+   "set": "novel-development-40",
+   "dimension": "condition",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "BUP utreder ADHD.",
+   "source_text": "BUP utreder ADHD ved mistanke om nevroutviklingsforstyrrelse.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-C2",
+   "set": "novel-development-40",
+   "dimension": "condition",
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "PPT utreder alltid ADHD.",
+   "source_text": "PPT kartlegger pedagogiske behov.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)"
+  },
+  {
+   "case_id": "N-C3",
+   "set": "novel-development-40",
+   "dimension": "condition",
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Helsesykepleier gir akutt prevensjonsrådgivning.",
+   "source_text": "Helsestasjonen for ungdom gir rådgivning om prevensjon.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)",
+   "engine_iteration_b_final": "REVIEW_REQUIRED"
+  },
+  {
+   "case_id": "N-C4",
+   "set": "novel-development-40",
+   "dimension": "condition",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Fastlegen henviser til BUP ved alvorlige symptomer.",
+   "source_text": "Fastlege kan henvise til BUP ved alvorlige vansker.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)"
+  },
+  {
+   "case_id": "N-C5",
+   "set": "novel-development-40",
+   "dimension": "condition",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Foreldre kan kontakte PPT direkte uten henvisning.",
+   "source_text": "Foreldre kan kontakte PPT direkte.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)"
+  },
+  {
+   "case_id": "N-C6",
+   "set": "novel-development-40",
+   "dimension": "condition",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Barn under 18 får gratis tannbehandling.",
+   "source_text": "Barn og unge under 18 år har gratis tannbehandling.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-R1",
+   "set": "novel-development-40",
+   "dimension": "actor",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "ACTOR_MEMBERSHIP"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "actor membership not established in evidence; ACTOR_MEMBERSHIP precondition (shared actor term) unmet"
+   },
+   "claim": "Helsesykepleier stiller ADHD-diagnose.",
+   "source_text": "Skolehelsetjenesten stiller ikke diagnoser.",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "RESOLVED_NEW_LABEL (pass 2 adjudicated correct: CONTRADICTED -> INSUFFICIENT; engine auto-CONTRADICTED exposed as over-fire)"
+  },
+  {
+   "case_id": "N-R2",
+   "set": "novel-development-40",
+   "dimension": "actor",
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "BUP gir sakkyndige vurderinger.",
+   "source_text": "PPT gir sakkyndige vurderinger i skolen.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)"
+  },
+  {
+   "case_id": "N-R3",
+   "set": "novel-development-40",
+   "dimension": "actor",
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "NAV administrerer bostøtte.",
+   "source_text": "Bostøtte administreres av Husbanken.",
+   "mismatch_taxonomy": "SEMANTIC_LABEL_ERROR",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)",
+   "engine_iteration_b_final": "CONTRADICTED"
+  },
+  {
+   "case_id": "N-R4",
+   "set": "novel-development-40",
+   "dimension": "actor",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Kommunepsykologen er ansatt i kommunen.",
+   "source_text": "Kommunepsykologer er ansatt i kommunen.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-R5",
+   "set": "novel-development-40",
+   "dimension": "actor",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Barnevernet kan henvise til BUP.",
+   "source_text": "Barnevernet henviser til BUP ved behov.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-R6",
+   "set": "novel-development-40",
+   "dimension": "actor",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Husbanken innvilger søknader.",
+   "source_text": "Husbanken innvilger søknader om bostøtte.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-O1",
+   "set": "novel-development-40",
+   "dimension": "locality",
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Tilbudet finnes i alle kommuner.",
+   "source_text": "Tilbudet finnes i Trondheim.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-O2",
+   "set": "novel-development-40",
+   "dimension": "locality",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Kommunalt lavterskeltilbud finnes i Oslo.",
+   "source_text": "Oslo har kommunalt lavterskeltilbud.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-O3",
+   "set": "novel-development-40",
+   "dimension": "locality",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine-derived: Tier-1 operator -> semantic label; otherwise INSUFFICIENT (no valid proof path under frozen doctrine)"
+   },
+   "claim": "Tjenesten gjelder bare i Trondheim.",
+   "source_text": "Tilbudet gjelder i hele fylket.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS1_CONFIRMED (pass 2 agreed on verdict; operator attribution per adjudication)",
+   "engine_iteration_b_final": "REVIEW_REQUIRED"
+  },
+  {
+   "case_id": "N-O4",
+   "set": "novel-development-40",
+   "dimension": "locality",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "I Bergen kreves henvisning.",
+   "source_text": "I Bergen kreves henvisning til tjenesten.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  },
+  {
+   "case_id": "N-O5",
+   "set": "novel-development-40",
+   "dimension": "locality",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Ventetiden er kort i alle kommuner.",
+   "source_text": "Ventetiden varierer mellom kommunene.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "imported from oracle-46-dual-labels.json (two-pass annotated)"
+  },
+  {
+   "case_id": "N-O6",
+   "set": "novel-development-40",
+   "dimension": "locality",
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "engine final verdict under current doctrine"
+   },
+   "claim": "Helsestasjonen finnes i hver bydel.",
+   "source_text": "Helsestasjonen finnes i flere bydeler.",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "note": "curated first-hand span reading; source is a bounded paraphrase/no-closed-world judgment",
+   "second_pass": "PASS2_CONFIRMED (exact agreement)"
+  }
+ ],
+ "second_pass_note": "Independent pass 2 (gpt-5.6-luna) on 32 curated labels: semantic agreement 31/32; N-R1 adjudicated to INSUFFICIENT (actor-membership precondition unmet); operator agreement 21/32 after applying adjudicated attributions (11 attribution divergences, all verdict-equivalent); 0 unresolved disputes.",
+ "proof_key_note": "proof_safe keys are doctrine-derived (not engine-derived): Tier-1 operator -> semantic label; otherwise INSUFFICIENT. Engine Iteration-B finals preserved per case as engine_iteration_b_final where they differed."
+}

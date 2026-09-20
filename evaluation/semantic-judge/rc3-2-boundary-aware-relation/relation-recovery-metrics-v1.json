@@ -1,0 +1,44 @@
+{
+  "version": "relation-recovery-metrics-v1",
+  "frozen": true,
+  "primary_relation_metrics": {
+    "atom_relation_accuracy": "share of atom decisions where relation equals expected",
+    "macro_f1": "macro average F1 over ENTAILS, CONTRADICTS, PARTIAL, RELATED_BUT_INSUFFICIENT, AMBIGUOUS, UNRELATED",
+    "entails_precision": "precision of ENTAILS",
+    "contradicts_precision": "precision of CONTRADICTS",
+    "insufficient_recall": "recall of RELATED_BUT_INSUFFICIENT",
+    "critical_false_entails": "count (gate: 0)",
+    "critical_false_contradicts": "count (gate: 0)"
+  },
+  "primary_gates": {
+    "atom_relation_accuracy": 0.95,
+    "macro_f1": 0.93,
+    "entails_precision": 0.99,
+    "contradicts_precision": 0.99,
+    "insufficient_recall": 0.90,
+    "critical_false_entails": 0,
+    "critical_false_contradicts": 0
+  },
+  "dimension_gates": {
+    "modality": 0.95,
+    "condition": 0.95,
+    "exception": 0.95,
+    "actor_scope": 0.95,
+    "polarity": 0.95,
+    "numeric_temporal_locality": 0.90
+  },
+  "boundary_gates_frozen_suite": {
+    "false_auto_support": 0,
+    "support_precision_min": 0.99,
+    "entailed_support_recall_min": 0.85,
+    "unsound_eligible_support": 0
+  },
+  "diagnostic_metrics": {
+    "BOUNDARY_INFORMATION_COLLAPSE_RATE": "share of relation errors where the final boundary 3-state alone does not separate two or more semantically distinct dimension patterns; measured by grouping errors by (boundary overall, blocking_dimensions) and counting groups containing >=2 distinct expected dimension patterns / total errors",
+    "role": "diagnostic only, not a gate"
+  },
+  "annotation_gates": {
+    "relation_agreement_min": 0.90,
+    "dimension_agreement_min": 0.90
+  }
+}

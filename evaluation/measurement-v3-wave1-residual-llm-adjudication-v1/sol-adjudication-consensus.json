@@ -1,0 +1,121 @@
+{
+  "artifact": "sol-adjudication-consensus",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "LOW",
+  "rule": "A==B on all fields -> LLM_ADJUDICATED (GPT_5_6_SOL_DUAL_PASS_RESIDUAL); any disagreement or invalidity -> PENDING_HUMAN_ADJUDICATION; no third pass, no majority vote",
+  "packets": [
+    {
+      "packet_id": "PKT-ESC-DIS-118",
+      "status_a": "OK",
+      "status_b": "OK",
+      "sha_binding_a": true,
+      "sha_binding_b": true,
+      "spans_valid_a": true,
+      "spans_valid_b": true,
+      "effort_a": "low",
+      "effort_b": "low",
+      "result_a": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "ASSERTED",
+        "evidence_spans": [
+          "Tjenester til gravide, barn og unge 0-24 ar og deres familier, gitt i brukerens bydel."
+        ],
+        "rationale": "Svaret tolker uttrykket «unge» som en eksplisitt aldersgruppe på 0–24 år og inkluderer dermed en 22-åring uten forbehold."
+      },
+      "result_b": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "ASSERTED",
+        "evidence_spans": [
+          "Tjenester til gravide, barn og unge 0-24 ar og deres familier, gitt i brukerens bydel."
+        ],
+        "rationale": "Svaret tolker uttrykkelig «unge» som aldersgruppen 0–24 år og inkluderer dermed en 22-åring uten forbehold."
+      },
+      "results_equal": false,
+      "consensus": "PENDING_HUMAN_ADJUDICATION"
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-026-F01",
+      "status_a": "OK",
+      "status_b": "OK",
+      "sha_binding_a": true,
+      "sha_binding_b": true,
+      "spans_valid_a": true,
+      "spans_valid_b": true,
+      "effort_a": "low",
+      "effort_b": "low",
+      "result_a": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "NEGATED",
+        "evidence_spans": [
+          "1. Du kan kontakte PPT selv for raad og veiledning, uten henvisning."
+        ],
+        "rationale": "Svaret sier at den unge kan kontakte PPT selv, og avkrefter dermed at foreldres tilgang alltid kreves uavhengig av alder."
+      },
+      "result_b": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "NEGATED",
+        "evidence_spans": [
+          "1. Du kan kontakte PPT selv for raad og veiledning, uten henvisning."
+        ],
+        "rationale": "Svaret sier at brukeren kan kontakte PPT selv, og avkrefter dermed at foreldres tilgang alltid kreves uavhengig av alder."
+      },
+      "results_equal": false,
+      "consensus": "PENDING_HUMAN_ADJUDICATION"
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-031-F01",
+      "status_a": "OK",
+      "status_b": "OK",
+      "sha_binding_a": true,
+      "sha_binding_b": true,
+      "spans_valid_a": true,
+      "spans_valid_b": true,
+      "effort_a": "low",
+      "effort_b": "low",
+      "result_a": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "UNRESOLVED",
+        "evidence_spans": [],
+        "rationale": "PPT nevnes ikke, og svaret hevder ikke at PPT er primær behandling."
+      },
+      "result_b": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "UNRESOLVED",
+        "evidence_spans": [],
+        "rationale": "SUT omtaler fastlege, skolehelse og generelle tjenestevalg, men nevner ikke PPT eller at PPT bør være primær behandling."
+      },
+      "results_equal": false,
+      "consensus": "PENDING_HUMAN_ADJUDICATION"
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-037",
+      "status_a": "OK",
+      "status_b": "OK",
+      "sha_binding_a": true,
+      "sha_binding_b": true,
+      "spans_valid_a": true,
+      "spans_valid_b": true,
+      "effort_a": "low",
+      "effort_b": "low",
+      "result_a": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "UNRESOLVED",
+        "evidence_spans": [],
+        "rationale": "Svaret omtaler flere mulige tjenester og ruter, blant annet HABU, fastlege og kommunale tilbud; det hevder ikke at BUP er eneste rute."
+      },
+      "result_b": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "UNRESOLVED",
+        "evidence_spans": [],
+        "rationale": "Svaret omtaler flere mulige tjenester og ruter, inkludert HABU, fastlege, skolehelsetjeneste og kommunale tilbud; det fremsetter ikke at BUP er eneste rute."
+      },
+      "results_equal": false,
+      "consensus": "PENDING_HUMAN_ADJUDICATION"
+    }
+  ],
+  "summary": {
+    "adjudicated": 0,
+    "pending": 4
+  }
+}

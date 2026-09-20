@@ -1,0 +1,28 @@
+{
+  "artifact": "comparator-repair-record",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "classification": "CONSENSUS_COMPARATOR_IMPLEMENTATION_DEFECT",
+  "branch": "A",
+  "summary": "The Wave-1 Sol residual comparator applied a task-local whole-object A==B rule that was stricter than the measurement contract's primitive-level consensus semantic. Under the contract semantic, all four Sol residual packets reached semantic consensus; the four PENDING_HUMAN_ADJUDICATION rows were implementation artifacts of the stricter comparator, not semantic disagreement.",
+  "new_llm_calls": 0,
+  "new_dual_pass": false,
+  "observations_changed": false,
+  "metadata_rewrites": 0,
+  "upstream_artifacts_modified": 0,
+  "contract_amendment_created": false,
+  "measurement_contract_changed": false,
+  "old_rule_verbatim": "A==B on all fields -> LLM_ADJUDICATED (GPT_5_6_SOL_DUAL_PASS_RESIDUAL); any disagreement or invalidity -> PENDING_HUMAN_ADJUDICATION; no third pass, no majority vote",
+  "corrected_rule": "Two valid independent reviews achieve semantic consensus iff all AUTHORITATIVE_SEMANTIC fields are identical and required evidence independently validates for both passes.",
+  "replay_results": {
+    "packets": 4,
+    "old_rule_consensus": 0,
+    "corrected_rule_consensus": 4,
+    "derived_verdicts": {
+      "PKT-ESC-DIS-118": "PRESENT",
+      "PKT-ESC-ROUT-026-F01": "ABSENT",
+      "PKT-ESC-ROUT-031-F01": "ABSENT",
+      "PKT-ESC-ROUT-037": "ABSENT"
+    }
+  },
+  "history_preserved": "All three upstream Wave-1 lineage artifacts remain byte-identical; the old rule strings are quoted verbatim in consensus-rule-provenance.json and are not rewritten."
+}

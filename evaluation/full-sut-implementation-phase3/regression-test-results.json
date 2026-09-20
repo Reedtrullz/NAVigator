@@ -1,0 +1,17 @@
+{
+  "phase1_runner_suite": {
+    "result": "OK",
+    "tests": 15,
+    "invocation": "repo-root PYTHONPATH=evaluation/full-sut-implementation:runtime; see unit-test-results.json note"
+  },
+  "phase1_runtime_units": {"result": "OK", "tests": 37},
+  "phase2_regression_suite": {
+    "result": "OK",
+    "tests": 22,
+    "invocation": "cd evaluation/full-sut-implementation-phase2 && PYTHONPATH=.:../../runtime:.. python3 -m unittest discover -s ."
+  },
+  "phase2_runtime_units": {"result": "OK", "included_in_134_total"},
+  "phase1_regressions": 0,
+  "phase2_regressions": 0,
+  "note": "No expected test was changed for Phase 3. The two Phase 3 finalizer fixes (FC-05 terminal-only trip; FC-03 non-INFO scope) are behavior additions validated by new phase3 tests, not edits to historical expectations."
+}

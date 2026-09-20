@@ -1,0 +1,602 @@
+{
+  "artifact": "deterministic-derivation-table.json",
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_5-M2-EVIDENCE-STATE-DECOMPOSITION",
+  "created_utc": "2026-09-13",
+  "derivation_version": "M2_DECOMPOSITION_V1",
+  "frozen_semantics_trace": "frozen-semantics-trace.md",
+  "frozen_derivation_anchor_sha256": "ad0f60af34e28df8741f42240dc3ce0317b927f002e8b9ee09640ec649dd1c85",
+  "final_labels_unchanged": true,
+  "derivation_order": [
+    "1. conflict YES -> AMBIGUOUS_OR_CONFLICTING",
+    "2. CLEAR_TRIGGER: trigger PRESENT, non_trigger ABSENT, conflict NO, sufficiency SUFFICIENT",
+    "3. CLEAR_NON_TRIGGER: non_trigger PRESENT, trigger ABSENT, conflict NO, sufficiency SUFFICIENT",
+    "3b. CLEAR_NON_TRIGGER (trivial absence): trigger ABSENT, non_trigger ABSENT, conflict NO, sufficiency SUFFICIENT (frozen L69 disjunct 1)",
+    "4. sufficiency INSUFFICIENT (conflict not YES) -> INSUFFICIENT_TO_DECIDE",
+    "5. all other combinations -> UNRESOLVED (conservative; unknown combinations never best-guessed)"
+  ],
+  "conservative_default": "UNRESOLVED",
+  "equivalence_asserts": {
+    "clear_requires_conflict_no_and_sufficient": true,
+    "conflict_yes_never_clear": true,
+    "insufficient_never_clear": true,
+    "unresolved_subfield_never_clear": true,
+    "frozen_mapping_for_old_reachable_states": "Any V2.2-conformant output maps to the same final verdict under V2.5 derivation (see frozen-semantics-trace.md equivalence obligation)."
+  },
+  "row_count": 81,
+  "derived_state_distribution": {
+    "AMBIGUOUS_OR_CONFLICTING": 27,
+    "UNRESOLVED": 33,
+    "INSUFFICIENT_TO_DECIDE": 18,
+    "CLEAR_TRIGGER_SUPPORT": 1,
+    "CLEAR_NON_TRIGGER_SUPPORT": 2
+  },
+  "rows": [
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "CLEAR_TRIGGER_SUPPORT"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "PRESENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "CLEAR_NON_TRIGGER_SUPPORT"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "CLEAR_NON_TRIGGER_SUPPORT"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "ABSENT",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "PRESENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "ABSENT",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "YES",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "AMBIGUOUS_OR_CONFLICTING"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "NO",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "SUFFICIENT",
+      "derived_state": "UNRESOLVED"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "derived_state": "INSUFFICIENT_TO_DECIDE"
+    },
+    {
+      "trigger_support": "UNRESOLVED",
+      "non_trigger_support": "UNRESOLVED",
+      "evidence_conflict": "UNRESOLVED",
+      "evidence_sufficiency": "UNRESOLVED",
+      "derived_state": "UNRESOLVED"
+    }
+  ]
+}

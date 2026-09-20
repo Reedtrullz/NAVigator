@@ -1,0 +1,99 @@
+{
+  "artifact": "V2.2 BURNED DATA REGISTRY",
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_2-TWO-MECHANISM-OPERATIONALIZATION",
+  "registered": "2026-09-12",
+  "burned_sets": [
+    {
+      "name": "V2 screening fixtures + gold (72 rows, families A/B/C)",
+      "status": "BURNED_CONTRACT_DIAGNOSTIC_DATA",
+      "reason": "V2.1 residual failures derive from these rows; V2.2 mechanisms were reverse-engineered from them.",
+      "paths": [
+        "judge-selection-v2-subskill/family-a-fixtures.json",
+        "judge-selection-v2-subskill/family-b-fixtures.json",
+        "judge-selection-v2-subskill/family-c-fixtures.json",
+        "judge-selection-v2-subskill/judge-selection-gold.json"
+      ],
+      "allowed_use": [
+        "mechanism understanding",
+        "contract tracing",
+        "burned retrospective after official score freeze"
+      ],
+      "forbidden_use": [
+        "V2.2 official validation",
+        "V2.2 calibration",
+        "text reuse or near-copy in any V2.2 fixture"
+      ]
+    },
+    {
+      "name": "V2.1 candidate checkpoints (mimo-v2-5, ling-3-0-flash-sante-free)",
+      "status": "BURNED_CONTRACT_DIAGNOSTIC_DATA",
+      "reason": "Model behavior evidence for the seven shared misses.",
+      "paths": [
+        "judge-selection-v2-1-no-longcat/checkpoint-mimo-v2-5.json",
+        "judge-selection-v2-1-no-longcat/checkpoint-ling-3-0-flash-sante-free.json"
+      ],
+      "shared_miss_rows": [
+        "A-07",
+        "A-13",
+        "A-14",
+        "A-18",
+        "A-21",
+        "A-23",
+        "C-19"
+      ]
+    },
+    {
+      "name": "Earlier lineage contract/calibration data (V1 through V1.6B, V2 draft screening)",
+      "status": "BURNED_OR_HISTORICAL_FROZEN",
+      "forbidden_use": [
+        "text reuse in V2.2 fixtures",
+        "tuning target"
+      ]
+    },
+    {
+      "name": "V2.2 official pass-1 disputed fixtures V22-M2-01 + V22-C-02",
+      "status": "BURNED_DISPUTED_FIXTURES",
+      "reason": "Pass-1 authoring defects: tag did not match authored text (V22-M2-01 tagged clear_trigger but text is non-trigger; V22-C-02 tagged wrong_route but text matches acceptable-route criterion). Replaced per spec section 31.",
+      "paths": [
+        "judge-contract-v2-2-two-mechanism/official-validation-fixtures.json (entries removed at curation)"
+      ],
+      "allowed_use": [
+        "audit trail only"
+      ],
+      "forbidden_use": [
+        "V2.2 official validation",
+        "text reuse or near-copy in any V2.2 fixture"
+      ]
+    },
+    {
+      "name": "V2.2 official fixture V22-C-07 (near-copy of burned V1.6a boundary text)",
+      "status": "BURNED_DISPUTED_FIXTURES",
+      "reason": "Section 29 collision audit found token-Jaccard 0.667 against burned dev-corpus-semantic-judge-v1-6a boundary fixture \"Fastlegen er ikke riktig inngang her.\" Core clause reused. Replaced by V22-C-42 with fresh text.",
+      "paths": [
+        "judge-contract-v2-2-two-mechanism/official-validation-fixtures.json (entry removed)"
+      ],
+      "allowed_use": [
+        "audit trail only"
+      ],
+      "forbidden_use": [
+        "V2.2 official validation",
+        "text reuse or near-copy in any V2.2 fixture"
+      ]
+    }
+  ],
+  "seven_rows_classification": {
+    "M1_hedged_assertion": [
+      "C-19"
+    ],
+    "M2_forced_binary_critical": [
+      "A-07",
+      "A-13",
+      "A-14",
+      "A-18",
+      "A-21",
+      "A-23"
+    ],
+    "note": "Classification is diagnostic documentation only; runtime code must contain no case IDs (spec 43)."
+  },
+  "retrospective_rule": "The seven rows may be re-run mechanically ONLY after the fresh V2.2 official score is frozen (spec 43), labeled BURNED_DIAGNOSTIC_RETROSPECTIVE, non-scoring."
+}

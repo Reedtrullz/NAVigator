@@ -1,0 +1,327 @@
+{
+ "meta": {
+  "set": "minimal-pairs-supplement",
+  "judge": "C",
+  "model": "gpt-5.6-luna",
+  "version": "semantic-judge-v0.4",
+  "aggregator": "aggregate-v0.3-compatible",
+  "decompose_prompt_sha256": "fc1d77f0363d5a22e8f47f68fe7276e1fb7aee7246a070f5b5f890008476876f",
+  "relation_prompt_sha256": "3163cf8f7477d299724c98b402c922e897f4f1c1ae82b4720be2af65a6333a9f",
+  "generated": "2026-08-31T18:55:34.398089+00:00",
+  "config": {
+   "proxy": "http://127.0.0.1:10100/v1",
+   "temperature": "0 (provider-supported)",
+   "timeout_s": 180
+  }
+ },
+ "results": [
+  {
+   "id": "MP-014A",
+   "run": 1,
+   "judge": "C",
+   "model": "gpt-5.6-luna",
+   "ts": "2026-08-31T18:55:34.399925+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er ikke skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden fastslår samme påstand ordrett.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Barnetrygd er ikke skattepliktig.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 35.1,
+   "status": "ok"
+  },
+  {
+   "id": "MP-014B",
+   "run": 1,
+   "judge": "C",
+   "model": "gpt-5.6-luna",
+   "ts": "2026-08-31T18:56:09.532803+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at barnetrygd ikke er skattepliktig, i direkte konflikt med påstanden.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Barnetrygd er ikke skattepliktig."
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 1.0,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-015A",
+   "run": 1,
+   "judge": "C",
+   "model": "gpt-5.6-luna",
+   "ts": "2026-08-31T18:56:34.105162+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Soknad om overgangsstonad sendt 15.06.2026 folger de gamle reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "15.06.2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden fastsetter bare at nye regler gjelder soknader sendt etter 01.07.2026, men sier ikke uttrykkelig at soknader sendt 15.06.2026 folger gamle regler.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "TEMPORAL_SCOPE_UNRESOLVED",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "MUST",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": false,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "TEMPORAL_SCOPE_UNRESOLVED",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": true,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 30.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-015B",
+   "run": 1,
+   "judge": "C",
+   "model": "gpt-5.6-luna",
+   "ts": "2026-08-31T18:57:04.779928+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Soknad om overgangsstonad sendt 15.07.2026 folger de gamle reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "15.07.2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": true,
+     "reason": "Søknaden er sendt 15.07.2026, altså etter 01.07.2026, og kilden sier at nye regler gjelder for slike søknader.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "MUST",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026."
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": true,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 32.4,
+   "status": "ok"
+  }
+ ]
+}

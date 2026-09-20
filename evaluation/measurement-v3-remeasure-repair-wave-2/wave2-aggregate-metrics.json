@@ -1,0 +1,82 @@
+{
+  "artifact": "wave2-aggregate-metrics",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-2",
+  "created_utc": "2026-09-16T15:45:01Z",
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY",
+  "interpretation_boundary": "Wave-2 dual-pass Astra consensus plus bounded Sol residual adjudication is measurement-system evidence for the burned dev baseline only; not certification, production readiness, or generalization evidence.",
+  "coverage": {
+    "TOTAL_CRITERIA": 600,
+    "DETERMINISTIC": 506,
+    "LLM_REVIEWED": 90,
+    "LLM_ADJUDICATED": 3,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_LLM_ADJUDICATION": 1,
+    "AUTHORITATIVE_TOTAL": 599,
+    "AUTHORITATIVE_PCT": 99.83
+  },
+  "per_dimension": {
+    "critical_condition": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "CRITICAL_ERROR": 81,
+        "UNRESOLVED": 12,
+        "NOT_TRIGGERED": 21,
+        "TRIGGERED": 2,
+        "NO_CRITICAL_ERROR": 4
+      }
+    },
+    "forbidden_claim": {
+      "total_criteria": 120,
+      "authoritative": 119,
+      "pending": 1,
+      "verdict_distribution": {
+        "ABSENT": 57,
+        "CLAIM_ABSENT_TAKEN": 59,
+        "PRESENT": 1,
+        "CLAIM_PRESENT": 2
+      }
+    },
+    "route_correctness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NO_ACCEPTABLE_ROUTE": 108
+      }
+    },
+    "required_uncertainty": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 36,
+        "VIOLATED": 1
+      }
+    },
+    "evidence_completeness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "0.0": 23,
+        "1.0": 97
+      }
+    }
+  },
+  "pending_criteria": [
+    "ROUT-026::forbidden:01"
+  ],
+  "case_level_coverage": {
+    "total_cases": 120,
+    "fully_authoritative_cases": 119,
+    "cases_with_pending_criteria": 1,
+    "pending_case_ids": [
+      "ROUT-026"
+    ]
+  },
+  "authority_mix_honesty": "506 deterministic criteria, 90 LLM-reviewed (dual-pass Astra LOW consensus), 3 LLM-adjudicated (dual-pass Sol LOW residual consensus), 1 pending LLM adjudication, 0 human-reviewed; no criterion in this remeasurement was decided by a human.",
+  "review_freeze_manifest_sha256": "ca0b710653b4f73c38e6a90cb90b4775d1aaf6e054986a678be3866218ef8ab2"
+}

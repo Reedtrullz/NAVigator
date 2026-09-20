@@ -1,0 +1,67 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_5-M2-EVIDENCE-STATE-DECOMPOSITION",
+  "spec_section": "35",
+  "iteration_0": {
+    "total_misses": 18,
+    "attribution": {
+      "evidence_conflict": [
+        "V24-CAL-M2A-02",
+        "V24-CAL-M2A-03",
+        "V24-CAL-M2A-04",
+        "V24-CAL-M2A-05",
+        "V24-CAL-M2A-08",
+        "V24-CAL-M2A-09",
+        "V24-CAL-M2A-10",
+        "V24-CAL-M2A-13",
+        "V24-CAL-M2A-15",
+        "V24-CAL-M2A-16",
+        "V24-CAL-M2A-18"
+      ],
+      "evidence_sufficiency": [
+        "V24-CAL-M2I-01",
+        "V24-CAL-M2I-02",
+        "V24-CAL-M2I-03",
+        "V24-CAL-M2I-04",
+        "V24-CAL-M2I-05",
+        "V24-CAL-M2I-06"
+      ],
+      "trigger_support": [
+        "V24-CAL-M2N-01"
+      ],
+      "non_trigger_support": [
+        "V24-CAL-M2N-01"
+      ],
+      "derivation_bug": [],
+      "schema_or_transport": []
+    },
+    "pattern": "model refuses uncertain observations: conflict=NO on competing-reading texts (11x); sufficiency=SUFFICIENT on on-topic-stanceless texts (6x); one negation-scope over-read (M2N-01 requirement-statement read as condition assertion, missed explicit exclusion)"
+  },
+  "iteration_1": {
+    "total_misses_valid": 5,
+    "schema_invalid": [
+      "V24-CAL-M2A-02"
+    ],
+    "attribution": {
+      "evidence_conflict": [
+        "V24-CAL-M2A-03",
+        "V24-CAL-M2A-05",
+        "V24-CAL-M2A-09",
+        "V24-CAL-M2A-10"
+      ],
+      "evidence_sufficiency": [
+        "V24-CAL-M2N-01"
+      ],
+      "non_trigger_support": [
+        "V24-CAL-M2N-01"
+      ],
+      "trigger_support": [],
+      "derivation_bug": [],
+      "schema_or_transport": [
+        "V24-CAL-M2A-02 (HTTP 200; validator rejected non-verbatim evidence span; no label produced; transport observation only)"
+      ]
+    },
+    "pattern": "targeted clarifications fixed sufficiency (0/6 -> 6/6) and improved conflict (7/18 -> 13/17); residual conflict misses are mixed-signal texts the model still reads as clear exclusions; M2N-01 flipped from over-read PRESENT to overcorrection (INSUFFICIENT, missed explicit negation); M2A-02 span-validity failure",
+    "critical_fn": 1,
+    "critical_fn_case": "V24-CAL-M2N-01 (gold CLEAR_NON_TRIGGER_SUPPORT, derived INSUFFICIENT_TO_DECIDE)"
+  }
+}

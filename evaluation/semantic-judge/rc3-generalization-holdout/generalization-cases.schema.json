@@ -1,0 +1,75 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "RC3 generalization holdout cases",
+ "type": "object",
+ "required": [
+  "set_id",
+  "cases"
+ ],
+ "properties": {
+  "set_id": {
+   "const": "RC3G-HOLDOUT-V1"
+  },
+  "case_count": {
+   "type": "integer"
+  },
+  "cases": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "case_id",
+     "claim",
+     "track",
+     "sources",
+     "evidence"
+    ],
+    "properties": {
+     "case_id": {
+      "pattern": "^RC3G-[0-9]{4}$"
+     },
+     "claim": {
+      "type": "string",
+      "minLength": 10
+     },
+     "track": {
+      "enum": [
+       "A",
+       "B"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "kb_ref",
+        "lines",
+        "text"
+       ]
+      }
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "span_id",
+        "text"
+       ]
+      }
+     },
+     "compound": {
+      "type": "boolean"
+     },
+     "public_flags": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  }
+ }
+}

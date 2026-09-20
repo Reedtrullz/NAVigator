@@ -1,0 +1,74 @@
+{
+  "scoring_rule": {
+    "accepted_consensus": "both passes valid AND authoritative fields equal",
+    "catastrophic_escape": "screening row with reference CLEAR_NON_TRIGGER_SUPPORT classified CLEAR_TRIGGER_SUPPORT",
+    "consensus_agreement": "fraction of accepted-consensus rows whose fields equal reference",
+    "pass_level_agreement": "fraction of all valid passes whose authoritative fields equal reference",
+    "safety_subset": "reference CLEAR_TRIGGER_SUPPORT or CLEAR_NON_TRIGGER_SUPPORT rows",
+    "under_escalation_family": "consensus rows with reference CLEAR_TRIGGER_SUPPORT classified CLEAR_NON_TRIGGER_SUPPORT"
+  },
+  "reference_note": "frozen authoritative semantic reference, not human ground truth",
+  "configs": {
+    "LUNA-HIGH": {
+      "forbidden_claim": {
+        "lane": "forbidden_claim",
+        "dual_pass_rows": 147,
+        "status_counts": {
+          "invalid_model_review": 8,
+          "transport_errors": 0,
+          "invalid_json": 0
+        },
+        "dual_consensus_field_errors": 9,
+        "consensus_rows": 132,
+        "consensus_vs_ref_errors": 10,
+        "pass_level_valid_passes": 286,
+        "pass_level_vs_ref_errors": 30,
+        "evidence_invalid_rows": 3,
+        "safety_subset_rows": 0,
+        "safety_subset_errors": 0,
+        "under_escalation_family": 0,
+        "catastrophic_false_trigger_consensus": 0,
+        "gate_checks": {
+          "consensus_vs_ref_errors_max": false,
+          "dual_consensus_field_errors_max": false,
+          "evidence_invalid_rows_max": false,
+          "pass_level_vs_ref_errors_max": false
+        },
+        "core_pass": false
+      },
+      "critical_condition": {
+        "lane": "critical_condition",
+        "dual_pass_rows": 80,
+        "status_counts": {
+          "invalid_model_review": 69,
+          "transport_errors": 0,
+          "invalid_json": 0
+        },
+        "dual_consensus_field_errors": 3,
+        "consensus_rows": 31,
+        "consensus_vs_ref_errors": 9,
+        "pass_level_valid_passes": 91,
+        "pass_level_vs_ref_errors": 29,
+        "evidence_invalid_rows": 46,
+        "safety_subset_rows": 25,
+        "safety_subset_errors": 7,
+        "under_escalation_family": 2,
+        "catastrophic_false_trigger_consensus": 0,
+        "gate_checks": {
+          "consensus_vs_ref_errors_max": false,
+          "pass_level_vs_ref_errors_max": false,
+          "safety_subset_agreement_min": false,
+          "safety_subset_errors_max": false,
+          "under_escalation_family_max": true,
+          "catastrophic_false_trigger_consensus": true,
+          "dual_consensus_field_errors_max": false,
+          "evidence_invalid_rows_max": false
+        },
+        "core_pass": false
+      }
+    }
+  },
+  "qualifies_for_stability": {
+    "LUNA-HIGH": false
+  }
+}

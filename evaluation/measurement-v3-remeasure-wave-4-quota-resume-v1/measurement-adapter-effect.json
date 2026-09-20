@@ -1,0 +1,133 @@
+{
+  "old_side": {
+    "label": "HISTORICAL_WAVE3",
+    "path": "/Users/reidar/Projectos/NAV Explore/evaluation/measurement-v3-remeasure-repair-wave-3/wave3-combined-measurement-results.json",
+    "sha256": "bdede50d90b1ddc40ba30b3d617ebd2d2d0f35ef576e5a5861d6015095ee9a2e",
+    "is_primary": false
+  },
+  "new_side": {
+    "label": "WAVE3_COMPAT_BRIDGE",
+    "path": "/Users/reidar/Projectos/NAV Explore/evaluation/measurement-v3-remeasure-repair-wave-4-quota-safe-v1/wave3-compat-bridge-results.json",
+    "sha256": "823c485bc63f844508f0c555747a45960f8b3ba90bc339e139c42c35bc781e8b",
+    "is_primary": true
+  },
+  "verdict_transitions": {
+    "CRITICAL_ERROR -> CRITICAL_ERROR": 77,
+    "ABSENT -> ABSENT": 58,
+    "None -> None": 12,
+    "NOT_REQUIRED -> NOT_REQUIRED": 83,
+    "0.0 -> 0.0": 23,
+    "NO_ACCEPTABLE_ROUTE -> NO_ACCEPTABLE_ROUTE": 106,
+    "1.0 -> 1.0": 97,
+    "CLAIM_ABSENT_TAKEN -> CLAIM_ABSENT_TAKEN": 59,
+    "PRESENT -> PRESENT": 1,
+    "UNRESOLVED -> UNRESOLVED": 12,
+    "NOT_TRIGGERED -> NOT_TRIGGERED": 23,
+    "CLAIM_PRESENT -> CLAIM_PRESENT": 2,
+    "PARTIAL -> PARTIAL": 38,
+    "TRIGGERED -> TRIGGERED": 2,
+    "NO_CRITICAL_ERROR -> NO_CRITICAL_ERROR": 6,
+    "VIOLATED -> VIOLATED": 1
+  },
+  "semantic_state_transitions": {
+    "FAIL -> FAIL": 214,
+    "PASS -> PASS": 320,
+    "ABSENT_OR_NOT_APPLICABLE -> ABSENT_OR_NOT_APPLICABLE": 12,
+    "UNRESOLVED -> UNRESOLVED": 18,
+    "DEGRADED -> DEGRADED": 36
+  },
+  "per_dimension_transitions_note": "collapsed per-dimension delta below; transition lists carry criterion detail",
+  "delta_report": {
+    "old_states": {
+      "FAIL": 214,
+      "PASS": 320,
+      "UNRESOLVED": 18,
+      "DEGRADED": 36
+    },
+    "new_states": {
+      "FAIL": 214,
+      "PASS": 320,
+      "UNRESOLVED": 18,
+      "DEGRADED": 36
+    },
+    "old_failure_rate": 0.4558,
+    "new_failure_rate": 0.4558,
+    "old_failing_cases": 118,
+    "new_failing_cases": 118
+  },
+  "per_dimension_verdicts_old_vs_new": {
+    "critical_condition": {
+      "old": {
+        "CRITICAL_ERROR": 77,
+        "UNRESOLVED": 12,
+        "NOT_TRIGGERED": 23,
+        "TRIGGERED": 2,
+        "NO_CRITICAL_ERROR": 6
+      },
+      "new": {
+        "CRITICAL_ERROR": 77,
+        "UNRESOLVED": 12,
+        "NOT_TRIGGERED": 23,
+        "TRIGGERED": 2,
+        "NO_CRITICAL_ERROR": 6
+      }
+    },
+    "forbidden_claim": {
+      "old": {
+        "ABSENT": 58,
+        "CLAIM_ABSENT_TAKEN": 59,
+        "PRESENT": 1,
+        "CLAIM_PRESENT": 2
+      },
+      "new": {
+        "ABSENT": 58,
+        "CLAIM_ABSENT_TAKEN": 59,
+        "PRESENT": 1,
+        "CLAIM_PRESENT": 2
+      }
+    },
+    "route_correctness": {
+      "old": {
+        "NOT_APPLICABLE": 12,
+        "NO_ACCEPTABLE_ROUTE": 106,
+        "PARTIAL": 2
+      },
+      "new": {
+        "NOT_APPLICABLE": 12,
+        "NO_ACCEPTABLE_ROUTE": 106,
+        "PARTIAL": 2
+      }
+    },
+    "required_uncertainty": {
+      "old": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 36,
+        "VIOLATED": 1
+      },
+      "new": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 36,
+        "VIOLATED": 1
+      }
+    },
+    "evidence_completeness": {
+      "old": {
+        "0.0": 23,
+        "1.0": 97
+      },
+      "new": {
+        "0.0": 23,
+        "1.0": 97
+      }
+    }
+  },
+  "improved_criteria": [],
+  "regressed_criteria": [],
+  "lateral_criteria": [],
+  "regression_count": 0,
+  "improvement_count": 0,
+  "lateral_count": 0,
+  "artifact": "measurement-adapter-effect",
+  "comparison": "historical Wave-3 measurement vs WAVE3_COMPAT_BRIDGE",
+  "role": "ADAPTER_ONLY_EFFECT; no product credit"
+}

@@ -1,0 +1,2239 @@
+{
+ "meta": {
+  "set": "actor-scope",
+  "judge": "C",
+  "model": "gpt-5.6-luna",
+  "version": "semantic-judge-v0.4.1",
+  "decompose_prompt_sha256": "072a24b107d99bc5e616201be72834c8a22327ff797e581e101aeb06395b2b64",
+  "relation_prompt_sha256": "242b811e4fd589c914752e6ee112b9c567feab4e291398ca02bc61d472ffab57",
+  "generated": "2026-09-01T03:23:50.441346+00:00"
+ },
+ "results": [
+  {
+   "id": "ACT-01",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member in exhaustive list",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En lege kan underskrive henvisningen.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden bekrefter at lege er blant de angitte aktørene, men uttrykker regelen som et krav snarere enn en ren mulighet.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "MUST",
+      "claim_modality": "MAY",
+      "modality_relation": "CLAIM_WEAKER",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "EXHAUSTIVE",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Henvisningen skal underskrives av lege, psykolog eller barnevernsleder.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 32.5,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-02",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": null,
+   "focus": "outside exhaustive list",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En sykepleier kan underskrive henvisningen.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": true,
+     "reason": "Kilden angir en uttømmende liste over profesjoner som kan underskrive, og sykepleier er ikke med.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXHAUSTIVE_SET_EXCLUSION",
+      "source_modality": "MUST",
+      "claim_modality": "MAY",
+      "modality_relation": "CLAIM_WEAKER",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "EXHAUSTIVE",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Henvisningen skal underskrives av lege, psykolog eller barnevernsleder."
+     },
+     "adjudication": {
+      "rule": "contradiction_with_evidence"
+     },
+     "review_reasons": [
+      "exhaustive_exclusion"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.7,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-03",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "list exhaustiveness unknown",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En ergoterapeut kan underskrive henvisningen.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler samme henvisning og underskrift, men bekrefter bare lege eller psykolog; ergoterapeut er verken bekreftet eller eksplisitt utelukket.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "MAY",
+      "modality_relation": "SAME",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.0,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-04",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "organization",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan utrede.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at PPT utfører utredning, som støtter at PPT kan utrede.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "PPT utfører pedagogisk psykologisk utredning.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.7,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-05",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "organization vs medical service",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan stille ADHD-diagnose.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden beskriver pedagogisk-psykologisk utredning, ikke retten eller adgangen til å stille ADHD-diagnose.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 27.5,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-06",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "role in list",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernsleder kan motta bekymringsmelding.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler barnevernstjenesten som mottaker, ikke barnevernsleder. Det er derfor ikke grunnlag for å bekrefte atomets aktør.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": false,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.5,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-07",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member of service",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsesykepleier kan gi rådgivning om seksualitet.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden bekrefter rådgivning om seksualitet, men avgrenser utsagnet til skolehelsetjenesten.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "BROADER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Helsesykepleier i skolehelsetjenesten gir rådgivning om seksualitet og prevensjon.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.0,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-08",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member of service",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Lege i skolehelsetjenesten kan foreta helseundersøkelse.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at lege i skolehelsetjenesten gir helseundersøkelser, som støtter påstanden om at legen kan foreta helseundersøkelse.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Skolehelsetjenesten har lege og helsesykepleier som gir helseundersøkelser.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.3,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-09",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "different profession",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Tannlege i skolehelsetjenesten gir helseundersøkelse.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden bekrefter at lege og helsesykepleier gir helseundersøkelser, men sier ikke at tannlege gjør det og gir ingen positiv motstrid.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.6,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-10",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "referral route",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlege er hovedhenviser til BUP.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden bekrefter at fastlege kan henvise til BUP, men fastlegen omtales ikke som hovedhenviser.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.1,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-11",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "non-listed actor, exhaustiveness unknown",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Lærer kan henvise til BUP.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden beskriver hvem som henviser til BUP, men bekrefter eller avkrefter ikke uttrykkelig at lærere kan gjøre det.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.5,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-12",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "direct contact",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Foreldre kan kontakte familievernkontoret direkte.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden bekrefter direkte kontakt for familier, som omfatter foreldre; modaliteten er forenlig.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "MAY",
+      "modality_relation": "SAME",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "NARROWER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "familier kan ta direkte kontakt",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.97,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 29.4,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-13",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "other actor group",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barn kan ta direkte kontakt med familievernkontoret.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden bekrefter direkte kontakt for par og familier, men nevner ikke barn uttrykkelig.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "MAY",
+      "modality_relation": "SAME",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "NARROWER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 29.7,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-14",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "procedural variant",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernet kan avslutte undersøkelse uten konklusjon.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler samme undersøkelse, men fastsetter bare en frist for konklusjon og bekrefter eller avkrefter ikke avslutning uten konklusjon.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MUST",
+      "claim_modality": "NOT_REQUIRED",
+      "modality_relation": "CONFLICT",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "contradiction_without_evidence"
+     },
+     "review_reasons": [
+      "modality_conflict"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 32.2,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-15",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "organizational actor",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen kan henvise til krisesenter.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden bekrefter at kommunen kan henvise til krisesenter.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "MAY",
+      "modality_relation": "SAME",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Kommunen eller lege kan henvise til krisesenter.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.2,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-16",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "unlisted actor",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Arbeidsgiver kan henvise til krisesenter.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler henvisning fra kommunen eller lege, men ikke arbeidsgiver.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "MAY",
+      "modality_relation": "SAME",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.5,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-17",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "NAV-local scope",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV lokal kan gi økonomisk sosialhjelp.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler hvor søknaden skal sendes, men bekrefter ikke at NAV kan gi økonomisk sosialhjelp.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "SAME",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 30.4,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-18",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "NAV-national vs local",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV sentralt innvilger økonomisk sosialhjelp.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler at søknaden sendes til NAV-kontoret i kommunen, men bekrefter ikke at NAV sentralt innvilger ytelsen.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "DIFFERENT",
+      "scope_relation": "BROADER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.4,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-19",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "organization",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Husbanken behandler bostøttesøknaden.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at søknaden sendes til Husbanken, men bekrefter ikke at Husbanken behandler den.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 28.8,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-20",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": null,
+   "focus": "wrong organization",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV behandler bostøttesøknaden.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at søknaden sendes til Husbanken, men fastslår ikke at NAV behandler den. Predikatene er ulike, og kilden gir verken støtte eller eksplisitt motsigelse.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.6,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-21",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "service",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Statped gir rådgivning til skoler.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden bekrefter at Statped gir rådgivning til skoler; påstanden er en snevrere del av kildens omfang.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "NARROWER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Statped gir rådgivning og støtte til skoler og barnehager.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.1,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-22",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "service scope",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Statped utreder enkeltbarn uten henvisning.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler Statped, men fastslår kun rådgivning og støtte til skoler og barnehager, ikke utredning av enkeltbarn uten henvisning.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "DIFFERENT",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.9,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-23",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "service",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnehuset utreder ved mistanke om overgrep.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Samme tjeneste og samme betingelse, men kilden sier at Barnehuset utfører rettsmedisinsk undersøkelse og samtale, ikke at det utreder.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 23.4,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-24",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "different decision-maker",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnehuset avgjør barnevernssaken.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler Barnehuset, men beskriver en annen handling enn å avgjøre barnevernssaken.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.1,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-25",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member of service",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Psykolog i BUP kan gi terapi.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler psykologer som gir behandling, men sier ikke uttrykkelig at psykolog kan gi terapi.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 35.1,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-26",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "unlisted profession",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ergoterapeut i BUP gir terapi.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden gjelder BUP og behandling, men bekrefter ikke at ergoterapeut gir terapi og utelukker det heller ikke.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.6,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-27",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "varies between municipalities",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog gir behandling i kommunen.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler at kommuner kan tilsette psykolog og at tilbudet varierer, men fastslår ikke at kommunepsykologen gir behandling.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "SAME",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.2,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-28",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner har kommunepsykolog.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at kommuner kan tilsette psykolog, men fastslår ikke at alle har kommunepsykolog. Den oppgir også at tilbudet varierer.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "SAME",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 31.0,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-29",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "local organization",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen kan organisere lavterskeltilbud selv.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden bekrefter at kommunen kan organisere lavterskeltilbud, men avgrenser dette til psykisk helse; påstanden er derfor bredere enn kilden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "MAY",
+      "modality_relation": "SAME",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "BROADER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Kommunen kan selv organisere lavterskeltilbud innen psykisk helse.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_primitives"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.5,
+   "status": "ok"
+  },
+  {
+   "id": "ACT-30",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "national mandate not established",
+   "note": null,
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsedirektoratet påbyr alle kommuner å ha psykolog.",
+     "role": "core",
+     "modality": "påbyr",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden gjelder kommunens organisering av lavterskeltilbud, ikke et påbud om å ha psykolog.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "MAY",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "DIFFERENT",
+      "scope_relation": "BROADER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 28.1,
+   "status": "ok"
+  }
+ ]
+}

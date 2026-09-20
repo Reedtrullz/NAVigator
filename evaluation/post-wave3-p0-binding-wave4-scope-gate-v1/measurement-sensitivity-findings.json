@@ -1,0 +1,80 @@
+{
+  "artifact": "post-wave3-measurement-sensitivity-findings",
+  "task_id": "NAV-EXPLORE-POST-WAVE3-P0-RC04-BINDING-WAVE4-SCOPE-GATE-V1",
+  "created": "2026-09-17",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "rule": "product semantics appear correct or materially equivalent under frozen evidence, but the frozen Measurement representation/scorer cannot recognize it; MEASUREMENT_SENSITIVITY never justifies product changes; nothing was modified",
+  "findings": [
+    {
+      "id": "MS-01",
+      "title": "Generic R3 PREMATURE_ABSENCE rule fires before condition mapping when routes=[]",
+      "mechanism": "scorer _score_critical applies the generic R3 absence rule before CRITICAL_CONDITION_MAP lookup; with no emitted routes the rule fires regardless of condition text",
+      "affected_cases": [
+        "ROUT-022",
+        "ROUT-031",
+        "ROUT-033",
+        "ROUT-047"
+      ],
+      "measurement_effect": "PARTIAL / absence observations after pseudo-route removal; principal driver of the 4 AUTHORITY_TRANSITION_CONFOUND P0s",
+      "classification": "MEASUREMENT_SENSITIVITY"
+    },
+    {
+      "id": "MS-02",
+      "title": "Free-text critical conditions absent from CRITICAL_CONDITION_MAP",
+      "mechanism": "the four P0 conditions are free-text and not present in the frozen condition map (scorer L33-41); deterministic lane cannot map them",
+      "affected_cases": [
+        "ROUT-022",
+        "ROUT-031",
+        "ROUT-033",
+        "ROUT-047"
+      ],
+      "measurement_effect": "condition-specific scoring unreachable; generic rule governs",
+      "classification": "MEASUREMENT_SENSITIVITY"
+    },
+    {
+      "id": "MS-03",
+      "title": "ROUT-069 null-condition representation handling",
+      "mechanism": "condition=null leads Wave-2 NO_CRITICAL_ERROR vs Wave-3 CRITICAL_ERROR under the same DETERMINISTIC owner; product semantics did not worsen (representation change)",
+      "affected_cases": [
+        "ROUT-069"
+      ],
+      "measurement_effect": "P0-flagged transition driven by scorer sensitivity to null condition field",
+      "classification": "MEASUREMENT_SENSITIVITY (product side classified PRODUCT_REPRESENTATION_CHANGE)"
+    },
+    {
+      "id": "MS-04",
+      "title": "ROUT-040 PARTIAL token-substring artifact",
+      "mechanism": "label/gold token overlap on NAV produces a PARTIAL route verdict without semantic route pass",
+      "affected_cases": [
+        "ROUT-040"
+      ],
+      "measurement_effect": "inflates apparent route progress; 1 of the only 2 non-FAIL route verdicts",
+      "classification": "MEASUREMENT_SENSITIVITY"
+    },
+    {
+      "id": "MS-05",
+      "title": "ROUT-061 PARTIAL token-substring artifact",
+      "mechanism": "Familievernkontoret substring match yields PARTIAL without semantic route pass",
+      "affected_cases": [
+        "ROUT-061"
+      ],
+      "measurement_effect": "second of the only 2 non-FAIL route verdicts",
+      "classification": "MEASUREMENT_SENSITIVITY"
+    },
+    {
+      "id": "MS-06",
+      "title": "Lexical label-vs-proposition matching in _score_routes",
+      "mechanism": "gold acceptable_routes are proposition sentences; scorer matches emitted labels lexically; SemanticJudgeStub.route_equivalent=false; across 39 entries: 0 exact matches, ~6 token-overlap cases",
+      "affected_cases": "all 28 emitting cases / 39 entries",
+      "measurement_effect": "route PASS 0/108 remains unreachable regardless of product route quality until structured route evaluation exists",
+      "classification": "MEASUREMENT_SENSITIVITY"
+    }
+  ],
+  "product_changes_justified": 0,
+  "hard_invariants": {
+    "SOURCE_CHANGED": false,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false
+  }
+}

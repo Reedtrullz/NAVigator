@@ -1,0 +1,41 @@
+{
+  "artifact": "structural-replay-results",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-1-V1",
+  "created_utc": "2026-09-16T03:05:00Z",
+  "replay_contract": "one full 120-case gold-blind structural replay per frozen candidate (spec sections 26 and 29)",
+  "attempts": [
+    {
+      "candidate_version": "v1",
+      "runs_dir": "runs/structural-120-replay/",
+      "official": false,
+      "predictions": 120,
+      "execution_status_counts": {"SUCCESS": 118, "EXECUTION_FAILED": 2},
+      "execution_failed_case_ids": ["SAF-007", "SAF-011"],
+      "failure_stage": "input_normalization",
+      "failure_mechanism": "scalar string profile.context rejected by strict post-normalization schema (RC-01 residual)",
+      "rc01_gate": "FAIL",
+      "disposition": "candidate superseded by v2 within lineage; replay runs preserved unchanged"
+    },
+    {
+      "candidate_version": "v2",
+      "runs_dir": "runs/structural-120-replay-v2/",
+      "official": true,
+      "predictions": 120,
+      "execution_status_counts": {"SUCCESS": 120},
+      "crashes": 0,
+      "input_hard_failures": 0,
+      "rc01_gate": "PASS",
+      "disposition": "official Wave-1 structural replay for the frozen v2 candidate"
+    }
+  ],
+  "gate_policy": "v2 replay is the official Wave-1 replay; v1 replay retained as failed-attempt evidence (candidate failure policy, spec section 29)",
+  "gold_exposed_to_product": false,
+  "measurement_v3_scoring_run": false,
+  "expected_verdicts_used": false,
+  "historical_phase3_predictions_mutated": false,
+  "predictions_manifest_sha256": {
+    "safety": "2f8fb5dbb392a8481024f6947f769737c4ed69fda2a85b2bf6f14f79706b5839",
+    "routing": "7a4939c35760c2c74727e700d37a4ff1cea75397157b23c6b72dcc42ffeed588",
+    "discovery_adversarial": "d8cc213c677d59e3de9487d133f96b108274d7aae49326be5c8ee42b086b42a3"
+  }
+}

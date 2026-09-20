@@ -1,0 +1,250 @@
+{
+ "meta": {
+  "version": "v0.3-adversarial-holdout",
+  "generated": "2026-08-30",
+  "n_claims": 20,
+  "note": "Dev/diagnostisk near-miss-sett hentet fra brent kalibreringssett. IKKE det blinde holdout-v2."
+ },
+ "claims": [
+  {
+   "id": "CAL021",
+   "claim": "Delt ordinær barnetrygd er 1 286 kroner per måned per forelder.",
+   "source": {
+    "kb": [
+     "54"
+    ],
+    "text": "Ordinær barnetrygd: full sats 2 012 kr/mnd, delt sats 1 006 kr/mnd. Utvidet barnetrygd: full sats 2 572 kr/mnd, delt sats 1 286 kr/mnd."
+   },
+   "near_miss_kind": "numeric-wrong-rate",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL022",
+   "claim": "Ved delt fast bosted deles ordinær barnetrygd likt: 1 060 kroner per forelder.",
+   "source": {
+    "kb": [
+     "54"
+    ],
+    "text": "Ordinær barnetrygd følger barnet. Ved delt fast bosted deles den likt: 2 012 / 2 = 1 006 kroner per forelder."
+   },
+   "near_miss_kind": "numeric-digit-swap",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL023",
+   "claim": "Delt utvidet barnetrygd er 2 572 kroner per måned.",
+   "source": {
+    "kb": [
+     "54"
+    ],
+    "text": "Utvidet barnetrygd: full sats 2 572 kr/mnd, delt sats 1 286 kr/mnd."
+   },
+   "near_miss_kind": "numeric-wrong-rate",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL024",
+   "claim": "Etter det nye regelverket får nye søkere overgangsstønad til barnet fyller 14 år.",
+   "source": {
+    "kb": [
+     "63-overgangsstonad-endringsloven-og-kapittel-15.md"
+    ],
+    "text": "For nye saker gjelder en ny og vesentlig kortere stønadsmodell: overgangsstønad til utløpet av måneden barnet fyller 14 måneder. Aldersgrense yngste barn: under 14 måneder (nytt regelverk), under 8 år (tidligere regelverk)."
+   },
+   "near_miss_kind": "unit-months-vs-years",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL031",
+   "claim": "Helsesykepleier på skolen kan stille ADHD-diagnose.",
+   "source": {
+    "kb": [
+     "31-skolehelsetjenesten-i-dybden.md"
+    ],
+    "text": "Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykoterapi, stiller normalt ikke diagnoser og skriver ikke ut legemidler."
+   },
+   "near_miss_kind": "wrong-actor-diagnosis",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL032",
+   "claim": "Skolehelsetjenesten yter psykoterapi til elever med angst.",
+   "source": {
+    "kb": [
+     "31-skolehelsetjenesten-i-dybden.md"
+    ],
+    "text": "Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykoterapi. Ved behov for utredning/behandling av angst videreføres eleven til fastlege, kommunalt psykisk helsetilbud eller BUP."
+   },
+   "near_miss_kind": "wrong-service-treatment",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL033",
+   "claim": "De nye overgangsstønadsreglene gjaldt allerede 15. juni 2026.",
+   "source": {
+    "kb": [
+     "63-overgangsstonad-endringsloven-og-kapittel-15.md"
+    ],
+    "text": "NAV skriver at endringene gjelder bare nye saker fra 1.7.2026 og at ingen som mottar i dag mister noe."
+   },
+   "near_miss_kind": "temporal-before-start",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL034",
+   "claim": "Det er ingen barnetilsynsstønad ved pensjonsgivende inntekt over 4 G.",
+   "source": {
+    "kb": [
+     "63-overgangsstonad-endringsloven-og-kapittel-15.md"
+    ],
+    "text": "Barnetilsyn (§ 15-10): 64 prosent av dokumenterte utgifter; ingen stønad ved pensjonsgivende inntekt over 6 G (819 294 kr per år)."
+   },
+   "near_miss_kind": "numeric-wrong-threshold",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL035",
+   "claim": "Kommunene må gi rask psykisk helsehjelp (RPH) til alle fra 16 år.",
+   "source": {
+    "kb": [
+     "25-kommunale-psykiske-tjenester-barn-unge.md"
+    ],
+    "text": "RPH er en kunnskapsbasert modell for behandling av innbyggere over 16 år med angst, mild til moderat depresjon mv. Praktisk konsekvens: RPH er ikke standardtilbudet for barn. Av kommunene som svarte i 2024, hadde 27 prosent eget RPH-tilbud og 59 prosent svarte at de ikke har RPH."
+   },
+   "near_miss_kind": "modality-kan-til-skal",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL037",
+   "claim": "RPH i Trondheim tar imot henvendelser på vegne av andre, for eksempel fra pårørende.",
+   "source": {
+    "kb": [
+     "70-lokalt/trondheim/02-psykisk-helse.md"
+    ],
+    "text": "Kontakt: timebestilling via HelsaMi (bestem selv ledig tid); vurderingssamtale på telefon. Krever aktiv deltakelse; tar ikke imot henvendelser på vegne av andre."
+   },
+   "near_miss_kind": "wrong-audience",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL040",
+   "claim": "Barnevernet trenger samtykke fra foreldrene før det kan gjennomføre undersøkelse.",
+   "source": {
+    "kb": [
+     "41-samtykke-pa-tvers-av-tjenester.md"
+    ],
+    "text": "Barnevern: ingen samtykke nødvendig for undersøkelse; frivillige tiltak krever samtykke. Foreldre med foreldreansvar er alltid parter, men samtykke er ikke en betingelse for undersøkelse."
+   },
+   "near_miss_kind": "missing-exception",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL050",
+   "claim": "Familievernkontoret er gratis og krever henvisning fra fastlege.",
+   "source": {
+    "kb": [
+     "33-familievern-i-dybden.md"
+    ],
+    "text": "Familier, par og enkelt kan henvende seg direkte; henvisning er valgfri. Ingen henvisning, ingen aldersgrense for foreldre, ingen kostnad."
+   },
+   "near_miss_kind": "wrong-referral-direction",
+   "expected": "PARTIALLY_SUPPORTED"
+  },
+  {
+   "id": "CAL053",
+   "claim": "Delt ordinær barnetrygd er 1 006 kroner per forelder, og delt utvidet barnetrygd er 1 006 kroner.",
+   "source": {
+    "kb": [
+     "54"
+    ],
+    "text": "Ordinær barnetrygd: delt sats 1 006 kr/mnd. Utvidet barnetrygd: delt sats 1 286 kr/mnd."
+   },
+   "near_miss_kind": "numeric-wrong-second-part",
+   "expected": "PARTIALLY_SUPPORTED"
+  },
+  {
+   "id": "CAL054",
+   "claim": "Barnets mening skal høres fra 7 år, og barn under 16 år kan selv gi samtykke til BUP-utredning.",
+   "source": {
+    "kb": [
+     "41-samtykke-pa-tvers-av-tjenester.md"
+    ],
+    "text": "Barnets mening skal høres fra 7 år (yngre med evne) og veie tungt fra 12 år. Foreldre med foreldreansvar samtykker for barn under 16 år i helse- og opplæringssaker."
+   },
+   "near_miss_kind": "scope-overreach",
+   "expected": "PARTIALLY_SUPPORTED"
+  },
+  {
+   "id": "CAL055",
+   "claim": "RPH i Trondheim er gratis for alle over 18 år, og 16-17-åringer kan bruke RPH i Trondheim.",
+   "source": {
+    "kb": [
+     "70-lokalt/trondheim/02-psykisk-helse.md"
+    ],
+    "text": "RPH: gratis for alle over 18 år som bor i Trondheim kommune. Kommunen tilbyr ikke RPH for barn/unge under 18."
+   },
+   "near_miss_kind": "wrong-age-scope",
+   "expected": "PARTIALLY_SUPPORTED"
+  },
+  {
+   "id": "CAL061",
+   "claim": "Kirkens SOS krisetelefon er døgnåpen, og den er bare for medlemmer av Den norske kirke.",
+   "source": {
+    "kb": [
+     "70-lokalt/trondheim/07-akutt-og-sikkerhet.md"
+    ],
+    "text": "Kirkens SOS krisetelefon 22 40 00 40, døgnåpen, nasjonal funksjon."
+   },
+   "near_miss_kind": "missing-negation-check",
+   "expected": "PARTIALLY_SUPPORTED"
+  },
+  {
+   "id": "CAL067",
+   "claim": "Helsesykepleieren kan love en 15-åring full taushet om selvmordstanker uansett hva som skjer.",
+   "source": {
+    "kb": [
+     "41-samtykke-pa-tvers-av-tjenester.md"
+    ],
+    "text": "Taushetsplikt kan kun brytes av lovfestet unntak, for eksempel hpl § 23, eller med samtykke. Barn 12-16 år kan be om at foreldre ikke informeres om bestemte forhold."
+   },
+   "near_miss_kind": "modality-unconditional",
+   "expected": "CONTRADICTED"
+  },
+  {
+   "id": "CAL072",
+   "claim": "HFU-tilbudet i min kommune gjelder opp til 25 år.",
+   "source": {
+    "kb": [
+     "25-kommunale-psykiske-tjenester-barn-unge.md"
+    ],
+    "text": "Alle kommuner skal ha et gratis HFU-tilbud for ungdom opptil 20 år. Noen kommuner har tilbud opp til 25 år, og enkelte HFU-er har egne tilleggstilbud til gutter."
+   },
+   "near_miss_kind": "scope-individual-unknown",
+   "expected": "INSUFFICIENT_EVIDENCE"
+  },
+  {
+   "id": "CAL075",
+   "claim": "Akuttvedtaket om omsorgsovertakelse gjelder i 9 uker.",
+   "source": {
+    "kb": [
+     "57-nodhjelp-og-akutte-situasjoner.md"
+    ],
+    "text": "Barnevernsloven § 4-2 akutt omsorgsovertakelse (ved vesentlig skadefare, begjæring til nemnda innen 6 uker)."
+   },
+   "near_miss_kind": "numeric-wrong-weeks",
+   "expected": "INSUFFICIENT_EVIDENCE"
+  },
+  {
+   "id": "CAL080",
+   "claim": "Barn på 12 år bestemmer selv om de skal delta i barnevernets undersøkelse.",
+   "source": {
+    "kb": [
+     "41-samtykke-pa-tvers-av-tjenester.md"
+    ],
+    "text": "Barnevern: ingen samtykke nødvendig for undersøkelse. Medvirkning (BVL § 1-4); part fra 15 år (§ 12-3). Foreldre med foreldreansvar er alltid parter (§ 12-2)."
+   },
+   "near_miss_kind": "age-wrong-consent",
+   "expected": "CONTRADICTED"
+  }
+ ]
+}

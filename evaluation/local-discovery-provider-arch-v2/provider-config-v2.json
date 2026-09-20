@@ -1,0 +1,65 @@
+{
+  "config_version": "PROVIDER_CONFIG_V2_FROZEN",
+  "frozen_at": "2026-09-09",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-PROVIDER-ARCH-V2",
+  "provider_order": [
+    "site_direct",
+    "brave_html_external_fallback"
+  ],
+  "site_direct": {
+    "default_root_pattern": "https://www.{slug}.kommune.no/",
+    "stage_a_roots": "burned gold-derived hosts (data-driven, per-run input)",
+    "discovery_chain": [
+      "root",
+      "NAVIGATION_LINK",
+      "sitemap.xml"
+    ],
+    "nav_keywords": [
+      "psykisk",
+      "helse",
+      "rus",
+      "mestring",
+      "ung",
+      "voksen"
+    ],
+    "max_results_per_query": 20,
+    "max_urls_per_municipality_budget": 8,
+    "sitemap_fetch": "bounded_fetch (2 MiB cap, 15s timeout, single attempt, SPA-shell -> empty)"
+  },
+  "external_fallback": {
+    "backend": "brave_html",
+    "trigger": "site_direct status != SUCCESS",
+    "max_queries_per_run": 3,
+    "min_interval_s": 10.0,
+    "evasion": "none (no retries beyond budget, no identity/proxy rotation, no captcha bypass)",
+    "note": "budget exhausted -> RATE_LIMITED (never NO_RESULTS); live burned test used 2 queries / 5s interval and external fallback was never triggered (13/13 site-direct)"
+  },
+  "retries": {
+    "policy": "single attempt per provider per query; no automatic retries"
+  },
+  "timeouts": {
+    "external_search_s": 15,
+    "site_fetch_s": 15,
+    "sitemap_fetch_s": 15
+  },
+  "result_limits": {
+    "max_candidates_per_query": 20,
+    "max_fetched_pages_per_municipality": 10
+  },
+  "render_behavior": "render_required detected (SPA shell) and logged; no headless renderer in V2",
+  "rate_limits": {
+    "site_urls_per_municipality": 8,
+    "external_queries_per_run": 3
+  },
+  "canonical_statuses": [
+    "SUCCESS",
+    "NO_RESULTS",
+    "RATE_LIMITED",
+    "BOT_BLOCKED",
+    "AUTH_REQUIRED",
+    "PROVIDER_UNAVAILABLE",
+    "TIMEOUT",
+    "INVALID_RESPONSE",
+    "INTERNAL_ERROR"
+  ]
+}

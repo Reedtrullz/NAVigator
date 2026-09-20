@@ -1,0 +1,3835 @@
+{
+ "meta": {
+  "set": "minimal-pairs",
+  "judge": "A",
+  "model": "gpt-5.5",
+  "version": "semantic-judge-v0.4",
+  "decompose_prompt_sha256": "fc1d77f0363d5a22e8f47f68fe7276e1fb7aee7246a070f5b5f890008476876f",
+  "relation_prompt_sha256": "3163cf8f7477d299724c98b402c922e897f4f1c1ae82b4720be2af65a6333a9f",
+  "generated": "2026-08-31T13:29:54.087386+00:00"
+ },
+ "results": [
+  {
+   "id": "MP-001A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "modality",
+   "focus": null,
+   "note": "option matches option",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV kan gi støtte til kurs.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at NAV kan gi støtte til kurs, som matcher påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "NAV kan gi støtte til kurs",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 27.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-001B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "modality",
+   "focus": null,
+   "note": "obligation not established by option",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV skal gi støtte til kurs.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at NAV kan gi støtte til kurs, men etablerer ikke at NAV skal gi slik støtte.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "claim_modality": "MUST",
+      "source_modality": "MAY",
+      "modality_relation": "weaker",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.9,
+   "status": "ok"
+  },
+  {
+   "id": "MP-002A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "polarity same",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er ikke skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier nøyaktig at barnetrygd ikke er skattepliktig.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "NEVER",
+      "source_modality": "NEVER",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Barnetrygd er ikke skattepliktig.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.9,
+   "status": "ok"
+  },
+  {
+   "id": "MP-002B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "explicit negation conflict",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden uttrykkelig nekter at barnetrygd er skattepliktig, mens påstanden sier at den er skattepliktig.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Barnetrygd er ikke skattepliktig."
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 21.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-003A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "same locality",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Trondheim er for voksne 18 år og over.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "18 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at Rask psykisk helsehjelp i Trondheim gjelder voksne 18 år og over, som matcher påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Rask psykisk helsehjelp i Trondheim gjelder voksne 18 år og over.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-003B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "scope",
+   "focus": null,
+   "note": "local generalization not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp er nasjonalt alltid for 18 år og over.",
+     "role": "core",
+     "modality": "alltid",
+     "numbers": [
+      "18 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden gjelder Rask psykisk helsehjelp i Trondheim, mens påstanden sier nasjonalt alltid; lokal kilde etablerer ikke nasjonal regel.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "stronger",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "LOCALITY_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 21.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-004A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "actor and action same",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Foreldre kan kontakte PPT for rådgivning.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at foreldre kan kontakte PPT for rådgivning; dette etablerer påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Foreldre kan kontakte PPT for rådgivning om egen child.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.9,
+   "status": "ok"
+  },
+  {
+   "id": "MP-004B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "actor",
+   "focus": null,
+   "note": "different action, source silent",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan stille diagnose.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier bare at foreldre kan kontakte PPT for rådgivning; den sier ikke at PPT kan stille diagnose.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 21.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-005A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "listed actor",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Henvisningen må underskrives av lege, psykolog eller barnevernsleder.",
+     "role": "core",
+     "modality": "må",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier samme normative krav til hvem som skal underskrive henvisningen.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "DIRECT_SUPPORT",
+      "claim_modality": "MUST",
+      "source_modality": "MUST",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "exhaustive",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Henvisningen skal underskrives av lege, psykolog eller barnevernsleder.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "DIRECT_SUPPORT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 30.8,
+   "status": "ok"
+  },
+  {
+   "id": "MP-005B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "exhaustive legal list excludes teacher",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En lærer kan alene underskrive henvisningen.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.95,
+     "near_miss": true,
+     "reason": "Kilden angir normativt hvem henvisningen skal underskrives av, og lærer er ikke blant de oppgitte rollene.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXHAUSTIVE_SET_EXCLUSION",
+      "claim_modality": "MAY",
+      "source_modality": "MUST",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "exhaustive",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Henvisningen skal underskrives av lege, psykolog eller barnevernsleder."
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXHAUSTIVE_SET_EXCLUSION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 23.5,
+   "status": "ok"
+  },
+  {
+   "id": "MP-006A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "verbatim",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Du kan blant annet få hjelp fra fastlege, skole og PPT.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden gjentar nøyaktig at man blant annet kan få hjelp fra fastlege, skole og PPT.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "non_exhaustive",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Du kan blant annet få hjelp fra fastlege, skole og PPT.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-006B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "actor",
+   "focus": null,
+   "note": "exclusivity not established by non-exhaustive list",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kun fastlege, skole og PPT kan gi hjelp.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "Kun"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at man blant annet kan få hjelp fra fastlege, skole og PPT, men listen er ikke uttømmende og etablerer ikke claimets 'kun'.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "NON_EXHAUSTIVE_ENUMERATION",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "non_exhaustive",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Du kan blant annet få hjelp fra fastlege, skole og PPT",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "NON_EXHAUSTIVE_ENUMERATION",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.3,
+   "status": "ok"
+  },
+  {
+   "id": "MP-007A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "numeric",
+   "focus": null,
+   "note": "hedge weaker than exact source, compatible",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnebidrag er normalt 4 652 kroner per måned.",
+     "role": "core",
+     "modality": "normalt",
+     "numbers": [
+      "4 652 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden oppgir samme beløp per måned for barnebidrag; claimens 'normalt' er svakere og forenlig med kildens formulering.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "USUALLY",
+      "source_modality": "ALWAYS",
+      "modality_relation": "same",
+      "numeric_relation": "same",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Barnebidrag er 4 652 kroner per måned",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.92,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.5,
+   "status": "ok"
+  },
+  {
+   "id": "MP-007B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "numeric",
+   "focus": null,
+   "note": "mutually exclusive values",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnebidrag er 4 200 kroner per måned.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "4 200 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": true,
+     "reason": "Kilden oppgir et annet månedsbeløp for samme ytelse og scope enn påstanden.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "MUTUALLY_EXCLUSIVE_VALUE",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "conflict",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Barnebidrag er 4 652 kroner per måned"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "MUTUALLY_EXCLUSIVE_VALUE",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-008A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "modality",
+   "focus": null,
+   "note": "discretion established",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Saken skal avgjøres etter individuell vurdering",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "det er ingen automatisk rett",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ingen"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at saken avgjøres etter individuell vurdering, som samsvarer med påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "DIRECT_SUPPORT",
+      "claim_modality": "MUST",
+      "source_modality": "MUST",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Saken avgjøres etter individuell vurdering",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "DIRECT_SUPPORT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at det ikke foreligger noen automatisk rett, som matcher påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "det foreligger ingen automatisk rett",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A2",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 38.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-008B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "modality",
+   "focus": null,
+   "note": "unconditional entitlement vs established discretion",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV skal alltid innvilge søknaden.",
+     "role": "core",
+     "modality": "skal alltid",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.88,
+     "near_miss": true,
+     "reason": "Kilden etablerer individuell vurdering og ingen automatisk rett for samme avgjørelse, som er uforenlig med at søknaden alltid skal innvilges. NAV er ikke eksplisitt nevnt.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_DISCRETION_CONFLICT",
+      "claim_modality": "ALWAYS",
+      "source_modality": "MAY_BE_ENTITLED",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "individuell vurdering, og det foreligger ingen automatisk rett"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_DISCRETION_CONFLICT",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 36.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-009A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "same validity start",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ordningen gjelder fra 1.7.2026.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "1.7.2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden oppgir samme ikrafttredelsesdato som atomets dato.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "same",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Regelen gjelder fra 1.7.2026.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": true,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.92,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.1,
+   "status": "ok"
+  },
+  {
+   "id": "MP-009B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "explicit validity start conflicts with earlier claim",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Regelen gjaldt allerede 15.6.2026.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "15.6.2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.96,
+     "near_miss": true,
+     "reason": "Kilden sier eksplisitt at regelen gjelder fra 1.7.2026, som er etter den påståtte datoen 15.6.2026.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "TEMPORAL_CONFLICT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Regelen gjelder fra 1.7.2026."
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "TEMPORAL_CONFLICT",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": true,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.96,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-010A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "modality",
+   "focus": null,
+   "note": "option matches option",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Opplæring i hjemmet kan være aktuelt ved langvarig sykdom.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at opplæring i hjemmet kan være aktuelt ved langvarig sykdom.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Ved langvarig sykdom kan opplæring i hjemmet være aktuelt.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.4,
+   "status": "ok"
+  },
+  {
+   "id": "MP-010B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "modality",
+   "focus": null,
+   "note": "obligation and different condition not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolen er pliktet til å arrangere opplæring i hjemmet ved angst.",
+     "role": "core",
+     "modality": "er pliktet til",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier bare at opplæring i hjemmet kan være aktuelt ved langvarig sykdom; den etablerer ikke plikt, skole som aktør eller angst spesielt.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "claim_modality": "MUST",
+      "source_modality": "MAY",
+      "modality_relation": "weaker",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.2,
+   "status": "ok"
+  },
+  {
+   "id": "MP-011A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "restatement",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Satsen aldersjusteres årlig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier nøyaktig det samme som påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "ALWAYS",
+      "source_modality": "ALWAYS",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Satsen aldersjusteres årlig.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-011B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "scope",
+   "focus": null,
+   "note": "second mechanism not established",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Satsen aldersjusteres årlig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "Satsen indeksreguleres årlig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden gjentar nøyaktig at satsen aldersjusteres årlig.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "ALWAYS",
+      "source_modality": "ALWAYS",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Satsen aldersjusteres årlig.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.84,
+     "near_miss": false,
+     "reason": "Kilden sier at satsen aldersjusteres årlig, men etablerer ikke at den indeksreguleres; dette er ikke en eksplisitt negasjon.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "ALWAYS",
+      "source_modality": "ALWAYS",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A2",
+     "status": "ok"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.84,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 33.8,
+   "status": "ok"
+  },
+  {
+   "id": "MP-012A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "same cohort",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Mottakere per 30. juni 2026 beholder de tidligere reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "30. juni 2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at mottakere i ordningen per 30. juni 2026 beholder de tidligere reglene.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Mottakere som står i ordningen per 30. juni 2026 beholder de tidligere reglene.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": true,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 20.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-012B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "permanent exemption not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle mottakere er permanent fritatt fra enhver ny vurdering.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier bare at mottakere i ordningen per 30. juni 2026 beholder tidligere regler; den sier ikke at alle mottakere er permanent fritatt fra enhver ny vurdering.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "GENERAL_TO_SPECIFIC",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "stronger",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": true,
+      "time_match": false,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "GENERAL_TO_SPECIFIC",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 20.8,
+   "status": "ok"
+  },
+  {
+   "id": "MP-013A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "verbatim",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Overgangsstønad reduserer ikke bostøtten direkte.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden gjentar nøyaktig påstanden om at overgangsstønad ikke reduserer bostøtten direkte.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Overgangsstønad reduserer ikke bostøtten direkte.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.3,
+   "status": "ok"
+  },
+  {
+   "id": "MP-013B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "different assertion, source states opposite for the income basis",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Overgangsstønad teller ikke i Husbankens inntektsgrunnlag.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier bare at overgangsstønad ikke reduserer bostøtten direkte, ikke om den teller i Husbankens inntektsgrunnlag.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "NEVER",
+      "source_modality": "NEVER",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 27.3,
+   "status": "ok"
+  },
+  {
+   "id": "MP-014A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "numeric",
+   "focus": null,
+   "note": "hedge vs exact, compatible",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Vanlig sats er 1 006 kroner per måned.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 006 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.82,
+     "near_miss": false,
+     "reason": "Kilden oppgir sats for delt ordinær barnetrygd per forelder, ikke vanlig sats generelt.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SCOPE_MISMATCH",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SCOPE_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.82,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 29.4,
+   "status": "ok"
+  },
+  {
+   "id": "MP-014B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "numeric",
+   "focus": null,
+   "note": "incompatible magnitude",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Vanlig sats er over 1 500 kroner per måned.",
+     "role": "core",
+     "modality": "Vanlig",
+     "numbers": [
+      "1 500 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.83,
+     "near_miss": false,
+     "reason": "Kilden oppgir sats for delt ordinær barnetrygd per forelder, mens påstanden gjelder vanlig sats generelt; samme scope er ikke etablert.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SCOPE_MISMATCH",
+      "claim_modality": "USUALLY",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SCOPE_MISMATCH",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.83,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 31.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-015A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "same deadline",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernsundersøkelsen skal konkluderes senest 3 måneder etter meldefristen.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "3 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.78,
+     "near_miss": false,
+     "reason": "Kilden angir 3 måneder etter 1-ukesfristen, men etablerer ikke at dette er samme tidspunkt som meldefristen i påstanden.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "TEMPORAL_SCOPE_UNRESOLVED",
+      "claim_modality": "MUST",
+      "source_modality": "MUST",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": false,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "TEMPORAL_SCOPE_UNRESOLVED",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.78,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 29.3,
+   "status": "ok"
+  },
+  {
+   "id": "MP-015B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "explicitly different max duration",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fristen kan forlenges til totalt 12 måneder.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "12 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": true,
+     "reason": "Kilden oppgir samme fristutvidelse til totalt 6 måneder, mens påstanden sier totalt 12 måneder.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "MUTUALLY_EXCLUSIVE_VALUE",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "conflict",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "kan utvides til totalt 6 måneder"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "MUTUALLY_EXCLUSIVE_VALUE",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-016A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "reduction compatible with source",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved nytt barn i husstanden reduseres bidraget.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at lav inntekt hos bidragspliktig kan redusere bidraget, men nevner ikke nytt barn i husstanden som grunnlag.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": false,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 32.2,
+   "status": "ok"
+  },
+  {
+   "id": "MP-016B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "scope",
+   "focus": null,
+   "note": "unconditional removal not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved nytt barn i husstanden fjernes barnebidraget alltid.",
+     "role": "core",
+     "modality": "alltid",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.88,
+     "near_miss": false,
+     "reason": "Kilden sier bare at lav inntekt kan redusere bidraget til 0, ikke at nytt barn i husstanden alltid fjerner barnebidraget.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "ALWAYS",
+      "source_modality": "MAY",
+      "modality_relation": "stronger",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 23.1,
+   "status": "ok"
+  },
+  {
+   "id": "MP-017A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "listed members",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlege eller spesialist kan henvise.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden etablerer at fastlege eller spesialist er lege/hovedhenviser, som støtter at de kan henvise.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MAY",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Lege er hovedhenviser: fastlege eller spesialist.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.86,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.2,
+   "status": "ok"
+  },
+  {
+   "id": "MP-017B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "explicit criteria exclude the alternative",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Psyke plager alene gir grunnlag for henvisning.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at psykiske plager alene ikke er nok; det kreves funksjonsnedsettelse eller utviklingsforstyrrelse.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "ENTITLED",
+      "source_modality": "REQUIRED",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "ikke bare psykiske plager"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.97,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.4,
+   "status": "ok"
+  },
+  {
+   "id": "MP-018A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "same service",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsesykepleier på skolen kan gi rådgivning.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.96,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at helsesykepleier på skolen gir rådgivning, som etablerer at dette kan skje.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MAY",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Helsesykepleier på skolen gir rådgivning",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.96,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 15.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-018B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "actor",
+   "focus": null,
+   "note": "diagnostic authority not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsesykepleier på skolen stiller ADHD-diagnose.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier bare at helsesykepleier på skolen gir rådgivning og veiledning, og nevner ikke ADHD-diagnostisering eller en uttømmende rolleavgrensning.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": false,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.9,
+   "status": "ok"
+  },
+  {
+   "id": "MP-019A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "same deadline, service inherited",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP vurderer rettigheter innen 10 virkedager.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "10 virkedager"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden sier at BUP har rettighetsvurdering innen 10 virkedager, som etablerer påstanden.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "MUST",
+      "source_modality": "MUST",
+      "modality_relation": "same",
+      "numeric_relation": "same",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "BUP: rettighetsvurdering innen 10 virkedager",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.97,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.1,
+   "status": "ok"
+  },
+  {
+   "id": "MP-019B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "actor",
+   "focus": null,
+   "note": "different decision type, source silent",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP gir vedtak innen 10 virkedager.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "10 virkedager"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier at BUP har rettighetsvurdering innen 10 virkedager, som etablerer kravet om vedtak/vurdering innen samme frist.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "same",
+      "numeric_relation": "same",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "BUP: rettighetsvurdering innen 10 virkedager",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.86,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-020A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "same criteria",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "HABU krever funksjonsnedsettelse for henvisning.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at henvisningskriteriene for HABU krever funksjonsnedsettelse, eventuelt utviklingsforstyrrelse.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "MUST",
+      "source_modality": "MUST",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Henvisningskriteriene for HABU krever funksjonsnedsettelse/utviklingsforstyrrelse",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.3,
+   "status": "ok"
+  },
+  {
+   "id": "MP-020B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "actor",
+   "focus": null,
+   "note": "criteria exclude the alternative",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "HABU tar imot alle med psykiske plager.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.94,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at psykiske plager alene ikke er nok for HABU; det strider mot at HABU tar imot alle med psykiske plager.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "ALWAYS",
+      "source_modality": "REQUIRED",
+      "modality_relation": "conflict",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "krever funksjonsnedsettelse/utviklingsforstyrrelse, ikke bare psykiske plager"
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.94,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.9,
+   "status": "ok"
+  },
+  {
+   "id": "MP-021A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "modality",
+   "focus": null,
+   "note": "verbatim",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Småbarnstillegg følger egne vilkår.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden gjengir påstanden ordrett og etablerer at småbarnstillegg følger egne vilkår.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Småbarnstillegg følger egne vilkår.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.1,
+   "status": "ok"
+  },
+  {
+   "id": "MP-021B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "modality",
+   "focus": null,
+   "note": "universal entitlement not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle med barn under 3 år får småbarnstillegg.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "3 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Kilden sier bare at småbarnstillegg følger egne vilkår, men oppgir ikke hvem som får det eller om alle med barn under 3 år omfattes.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "GENERAL_TO_SPECIFIC",
+      "claim_modality": "ALWAYS",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "stronger",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": false
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "GENERAL_TO_SPECIFIC",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": true,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-022A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "option matches",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen kan ha egne lavterskeltilbud.",
+     "role": "core",
+     "modality": "kan ha",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at kommunene kan ha egne lavterskeltilbud innen psykisk helse.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "MAY",
+      "source_modality": "MAY",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Kommunene kan ha egne lavterskeltilbud",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.7,
+   "status": "ok"
+  },
+  {
+   "id": "MP-022B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "scope",
+   "focus": null,
+   "note": "universal obligation not established",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner skal ha lavterskeltilbud.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at kommunene kan ha egne lavterskeltilbud, men etablerer ikke en plikt for alle kommuner.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "claim_modality": "MUST",
+      "source_modality": "MAY",
+      "modality_relation": "weaker",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "WEAKER_MODALITY",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.6,
+   "status": "ok"
+  },
+  {
+   "id": "MP-023A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "polarity same",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kontantstøtte er ikke skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier nøyaktig at kontantstøtte ikke er skattepliktig.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "ALWAYS",
+      "source_modality": "ALWAYS",
+      "modality_relation": "same",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Kontantstøtte er ikke skattepliktig.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 30.4,
+   "status": "ok"
+  },
+  {
+   "id": "MP-023B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "explicit negation conflict",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kontantstøtte er skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at kontantstøtte ikke er skattepliktig, som motsier påstanden.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Kontantstøtte er ikke skattepliktig."
+     },
+     "adjudication": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "has_contradiction_evidence": true,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "allowed_contradiction_with_evidence"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 1.0,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.0,
+   "status": "ok"
+  },
+  {
+   "id": "MP-024A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "scope",
+   "focus": null,
+   "note": "same property",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Krisesentrene er gratis.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at opphold på krisesenter er gratis, som etablerer at krisesentrene er gratis.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "claim_modality": "UNKNOWN",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Opphold på krisesenter er gratis.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "supports",
+      "relation_type": "OTHER_INSUFFICIENT",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "support_with_full_match"
+     },
+     "review_reasons": [
+      "unrecognized_support_relation_type"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.97,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.2,
+   "status": "ok"
+  },
+  {
+   "id": "MP-024B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": "scope",
+   "focus": null,
+   "note": "referral requirement not addressed by source",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Krisesentrene er gratis og krever ikke henvisning.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden støtter at opphold på krisesenter er gratis, men sier ingenting om henvisning ikke kreves.",
+     "relation": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "claim_modality": "NOT_REQUIRED",
+      "source_modality": "UNKNOWN",
+      "modality_relation": "n/a",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "enumeration": "unknown",
+      "subject_match": true,
+      "scope_match": true,
+      "time_match": true,
+      "actor_match": true
+     },
+     "evidence": {
+      "support": "Opphold på krisesenter er gratis.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "relation": "insufficient",
+      "relation_type": "SOURCE_SILENCE",
+      "has_contradiction_evidence": false,
+      "atom_has_numbers": false,
+      "atom_has_dates": false,
+      "rule": "insufficient_relation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.6,
+   "status": "ok"
+  }
+ ]
+}

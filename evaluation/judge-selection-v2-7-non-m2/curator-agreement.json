@@ -1,0 +1,33 @@
+{
+  "protocol": "INTRA_ANNOTATOR_REPEATABILITY",
+  "method": "Two independent rule-based derivations from fixture text. Stored verdict field excluded from derivation input. Rules apply frozen V2.2/V1.3 contract: route commitment states, uncertainty requirement modes, conjunctive-criterion PARTIAL semantics (V1.3 section 20), multi-route non-mixing (V1.3 section 21), and non-assertion FORB semantics (hypothetical/quoted/negated commit = ABSENT).",
+  "corrections_during_curation": [
+    "Initial derivation mis-encoded FORB HYPOTHETICAL_ONLY as UNRESOLVED; corrected to ABSENT per non-assertion doctrine.",
+    "Initial derivation ignored conjunctive-criterion semantics; corrected per V1.3 section 20 (subset commitment on conjunctive criterion = PARTIAL).",
+    "Initial derivation penalized extra non-acceptable route alongside acceptable committed route; corrected per V1.3 section 21 (no dimension mixing)."
+  ],
+  "fixture_count": 150,
+  "pass1_vs_pass2_agreement": 1.0,
+  "pass1_vs_stored_agreement": 1.0,
+  "pass2_vs_stored_agreement": 1.0,
+  "by_dimension": {
+    "forbidden": {
+      "p1p2_agreement": 1.0,
+      "p1_stored_agreement": 1.0,
+      "n": 50
+    },
+    "route": {
+      "p1p2_agreement": 1.0,
+      "p1_stored_agreement": 1.0,
+      "n": 50
+    },
+    "uncertainty": {
+      "p1p2_agreement": 1.0,
+      "p1_stored_agreement": 1.0,
+      "n": 50
+    }
+  },
+  "disputes": [],
+  "disputed_fixtures_retained": 0,
+  "gate_overall_ge_095": true
+}

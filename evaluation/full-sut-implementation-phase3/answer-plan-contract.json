@@ -1,0 +1,54 @@
+{
+  "contract_version": "1.0-phase3",
+  "planner": "sut.phase3.planner.plan",
+  "block_order_frozen": true,
+  "block_kinds": [
+    "SAFETY_INSTRUCTION",
+    "FAILURE_NOTICE",
+    "INFO",
+    "PRIMARY_ROUTE",
+    "SECONDARY_ROUTE",
+    "UNCERTAINTY",
+    "PROVENANCE_LIST"
+  ],
+  "block_fields": {
+    "order": "int, sequential from 1",
+    "kind": "canonical block kind",
+    "track_id": "track domain or null",
+    "route_label": "service_type or null",
+    "span_refs": "list of span-ref tokens"
+  },
+  "span_ref_vocabulary": {
+    "route:<route_id>": "route block reference",
+    "terminal:<stage>": "terminal failure reference",
+    "conflict:<subject>:<dimension>": "source conflict reference",
+    "discovery_incomplete": "S5 reported incomplete discovery",
+    "no_route_found": "zero evaluable routes, no discovery incompleteness",
+    "state_<route_id>": "route in ACCESS_PARTIAL or EXISTENCE_ONLY",
+    "top_state_<X>": "top-level epistemic state is not FULLY_VERIFIED",
+    "<evidence_id>": "INFO block knowledge record reference"
+  },
+  "route_ordering": {
+    "keys": [
+      "domain_priority",
+      "epistemic_strength",
+      "scenario_relevance",
+      "access_verified",
+      "service_name_length",
+      "input_order"
+    ],
+    "weighted_scores": false
+  },
+  "evaluable_states": [
+    "FULLY_VERIFIED",
+    "ACCESS_PARTIAL",
+    "EXISTENCE_ONLY"
+  ],
+  "presented_as_complete_conditions": [
+    "no terminal failure",
+    "no discovery incompleteness",
+    "no S3 skip",
+    "at least one discovery step",
+    "all per-track states evaluable"
+  ]
+}

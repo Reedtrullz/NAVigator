@@ -1,0 +1,59 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-EXTERNAL-BACKEND-SELECTION-V2_2-RESTART-2",
+  "artifact": "provider_config_v2_2",
+  "frozen_at": "2026-09-09T09:52",
+  "frozen_before": "official comparative benchmark run",
+  "status": "FROZEN_FOR_OFFICIAL_BENCHMARK",
+  "note": "selection remains pending gates; if gates fail this config is superseded, not rewritten",
+  "provider_ordering": [
+    "site_direct",
+    "external_search_fallback"
+  ],
+  "selected_external_backend_provisional": "tavily_api",
+  "endpoint_family": "https://api.tavily.com/search (POST, structured JSON)",
+  "normalized_result_limit": 10,
+  "norway_context": {
+    "country": "norway",
+    "search_language": "no"
+  },
+  "request_defaults": {
+    "search_depth": "basic",
+    "max_results": 10,
+    "include_answer": false,
+    "include_raw_content": false,
+    "country": "norway"
+  },
+  "timeout_s": 15,
+  "retry_policy": "none: single attempt per query, fail-closed canonical status",
+  "rate_limit_handling": "HTTP 429 maps to RATE_LIMITED status; no retries; no backoff storm",
+  "auth": "Bearer token from project .env.local (mode 0600); never printed, logged, or persisted",
+  "fallback_activation_rule": "composite: site-direct first; external only consulted when site-direct yields no SUCCESS with results; every switch logged",
+  "runtime_defaults": {
+    "max_queries_per_run": 3,
+    "min_interval_s": 0.5
+  },
+  "benchmark_run_parameters": {
+    "queries": 117,
+    "modes": [
+      "GENERAL",
+      "OFFICIAL_DOMAIN_CONSTRAINED"
+    ],
+    "constrained_include_domains_rule": "kommune.no domain pattern per municipality slug only; never gold-URL-derived; Stage-A known roots not injected",
+    "planned_calls": 234,
+    "min_interval_s": 0.5,
+    "budget_note": "one-off diagnostic benchmark; runtime budget defaults above still apply to production composition"
+  },
+  "gate_basis_preregistered": {
+    "gate_mode": "GENERAL",
+    "rationale": "CONSTRAINED uses known-domain knowledge unavailable in the failure scenarios the fallback exists for; it is reported as diagnostic and cannot rescue a GENERAL failure",
+    "constrained_role": "diagnostic only; cannot substitute for GENERAL gate result"
+  },
+  "hashes": {
+    "runtime/discovery_v2/tavily.py": "6db7babddb907f9a49253e22a828e0823b39b5cf6da51e7f75c291d900712826",
+    "runtime/discovery_v2/tests_v22.py": "c4afc7c41c1e4fbdfa9e1c40d9d767198b88f1f02a97d629f7811d5cf2090506",
+    "runtime/discovery_v2/providers.py": "54b38921b02736763d3baef25e7bb860f1bf1b9f8d3b0fb3ac58b0808083806a",
+    "runtime/discovery_v2/brave.py": "1da4ea9c8c01616de887a17bc92f49c3d0239ae3a551ef8b0a7477fcf42f4200",
+    "evaluation/local-discovery-external-backend-v2-2-restart-2/benchmark-freeze.json": "a88c46d1f40161b1b60f174765029056d0afe26d6b53cbfc563fa6b8ec167489"
+  },
+  "provenance_doctrine": "search output is discovery evidence only; final route provenance always from original public URL via FetchProvider"
+}

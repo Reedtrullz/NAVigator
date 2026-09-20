@@ -1,0 +1,70 @@
+{
+  "artifact": "input-integrity",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "created_utc": "2026-09-16T10:56:55Z",
+  "llm_calls": 0,
+  "checks": {
+    "upstream_lock_terminal": true,
+    "residual_packets_frozen": true,
+    "sol_observations_complete": true,
+    "sol_records_schema_valid": true,
+    "packet_sha_bindings_valid": true,
+    "required_evidence_valid_both_passes": true,
+    "derivation_kernel_loads": true,
+    "authoritative_596_rows": true,
+    "all_pins_match": true
+  },
+  "all_checks_pass": true,
+  "pins": {
+    "upstream/measurement-manifest.json": {
+      "sha256": "71a0b22441d69924226bf7835dc441df1b779e76dfbfff7fc867010c96c017fd",
+      "matches": true,
+      "label": "frozen Wave-1 residual lineage manifest (lock pin)"
+    },
+    "upstream/TASK-LOCK.json": {
+      "sha256": "3e5fd8b11ae7c118247ad3e6c16e9406bb9c2b1d728bcf5733a3af9df3cd2c7b",
+      "matches": true,
+      "label": "upstream terminal TASK-LOCK (file SHA)"
+    },
+    "upstream/wave1-remeasurement-complete-after-secondary-residual.json": {
+      "sha256": "25dca5775bf76f223247d05364cbba1479d887b3f26718b0ced085fc847dc7d8",
+      "matches": true,
+      "label": "upstream 600-row state with 4 pending rows"
+    },
+    "upstream/sol-blind-inputs.json": {
+      "sha256": "851e80069366322a47e4f137490402b9a41f2f5ac541de54938d561fced2f533",
+      "matches": true,
+      "label": "4 frozen residual packets"
+    },
+    "upstream/sol-pass-a.jsonl": {
+      "sha256": "46e9855d4848ecdb5ca85bcb6b9aa495b4b036d3ce2e29c4686e410765524cb3",
+      "matches": true,
+      "label": "Sol blind pass A observations"
+    },
+    "upstream/sol-pass-b.jsonl": {
+      "sha256": "45547f0c0bf3448396fbd8cea97d159ad23a7c34464f60adc5d2a59c8bd0890e",
+      "matches": true,
+      "label": "Sol blind pass B observations"
+    },
+    "upstream/sol-adjudication-frozen-observations.json": {
+      "sha256": "b2d1bf1ea1863d254a025882f52c881d37b9ebc96752241f2bac5148d714980b",
+      "matches": true,
+      "label": "frozen observation artifact"
+    },
+    "derivation/judge_core_v2_13.py": {
+      "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+      "matches": true,
+      "label": "frozen deterministic derivation kernel"
+    },
+    "pre-wave1-baseline/combined-measurement-results-complete-provenance-corrected.json": {
+      "sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+      "matches": true,
+      "label": "old burned baseline (provenance-corrected)"
+    },
+    "pre-wave1-baseline/build_baseline_comparison.py": {
+      "sha256": "635bb2acbfdfad109ce7c3e70db8e6a000151724474b68d29014a3c1ee4cc11c",
+      "matches": true,
+      "label": "frozen semantic_state definition source"
+    }
+  }
+}

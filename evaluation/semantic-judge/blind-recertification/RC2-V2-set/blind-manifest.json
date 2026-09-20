@@ -1,0 +1,166 @@
+{
+  "set_version": "NAV-EXPLORE-RC2-BLIND-V2",
+  "created": "2026-09-03",
+  "task_id": "NAV-EXPLORE-RC2-BLIND-V2-CONSTRUCTION",
+  "release_candidate": "NAV-EXPLORE-EVALUATOR-RC2",
+  "rc2_manifest_sha256": "1215f0d2978d80cf383f921155933f19f85f259279d04136ad00fd9f81d559cc",
+  "n_core": 160,
+  "n_reserve": 117,
+  "blind_cases_sha256": "0c62f093a71f1b0f719284f8b2d3d47f4155f2fbb700356a9b7865b4e8e0afbf",
+  "answer_key_sealed_sha256": "0232ce94afcf516957408f7bfea44775aa3eb266dcd3843105b5139fced87406",
+  "rc2_hash_verification": {
+    "before_construction": "ALL_OK",
+    "after_construction": "ALL_OK",
+    "rc2_executed_on_blind_set": false
+  },
+  "core_class_distributions": {
+    "semantic": {
+      "SUPPORTED": 94,
+      "CONTRADICTED": 41,
+      "PARTIALLY_SUPPORTED": 25,
+      "INSUFFICIENT_EVIDENCE": 0
+    },
+    "product_expected_action": {
+      "AUTO_SUPPORTED": 94,
+      "AUTO_CONTRADICTED": 41,
+      "REVIEW_REQUIRED": 25,
+      "ABSTAIN_INSUFFICIENT": 0
+    },
+    "proof_safe": {
+      "SUPPORTED": 94,
+      "REVIEW_REQUIRED": 25,
+      "CONTRADICTED": 41
+    },
+    "criticality": {
+      "high": 101,
+      "medium": 59
+    },
+    "structure": {
+      "atomic": 109,
+      "compound": 51,
+      "compound_atom_rows": 107,
+      "multi_source_packet": 18
+    }
+  },
+  "core_deviation_notes": {
+    "insufficient_evidence": "0 in CORE against the >=30 construction gate; 40 genuine INSUFFICIENT cases were authored and retained pool-wide (n=277), all selected into reserve by the firewall CORE selection.",
+    "multi_span": "18 CORE cases expose >=2 evidence spans in the public packet against the >=30 gate; the authoring design flags recorded 44 multi-span cases pool-wide. Documented rather than silently edited: post-seal label edits are forbidden (spec 48) and a strict-gate rebuild would be a V3."
+  },
+  "pool_aggregates_provenance": "construction-session DB snapshot (exec-9ba70a3c) of the pre-scrub pool, n=277; per-case meta was plaintext-scrubbed per spec 44 and is not reconstructible from sealed artifacts",
+  "pool_aggregates": {
+    "semantic": {
+      "SUPPORTED": 133,
+      "CONTRADICTED": 64,
+      "PARTIALLY_SUPPORTED": 40,
+      "INSUFFICIENT_EVIDENCE": 40
+    },
+    "product_expected_action": {
+      "AUTO_SUPPORTED": 132,
+      "AUTO_CONTRADICTED": 64,
+      "REVIEW_REQUIRED": 41,
+      "ABSTAIN_INSUFFICIENT": 40
+    },
+    "criticality": {
+      "high": 101,
+      "medium": 172,
+      "low": 4
+    },
+    "structure": {
+      "atomic": 226,
+      "compound": 51
+    },
+    "domains": {
+      "okonomi": 88,
+      "tjenester": 128,
+      "sikkerhet_og_rettigheter": 61
+    },
+    "locality": {
+      "national": 230,
+      "trondheim": 47
+    },
+    "quota_flags": {
+      "numeric": 128,
+      "temporal": 56,
+      "actor": 100,
+      "modality": 138,
+      "cond_exc_required": 41,
+      "multi_span": 44,
+      "age_legal": 42,
+      "safety": 20,
+      "legal": 109,
+      "locality_trondheim": 46,
+      "compound": 50,
+      "compound_cases_with_atoms": 50
+    }
+  },
+  "quota_verification": "ALL_QUOTAS_PASS (spec quota_check.py instrument, pool n=277, construction-time run re-derived from DB snapshot)",
+  "annotation_agreement": {
+    "n_pool": 276,
+    "raw_pre_adjudication_pool": {
+      "semantic_raw": 0.7645,
+      "proof_safe_raw": 0.6232,
+      "product_raw": 0.7645,
+      "all_three_joint": 0.7572
+    },
+    "raw_pre_adjudication_core": {
+      "n": 159,
+      "semantic_raw": 0.7799,
+      "proof_safe_raw": 0.7799,
+      "product_raw": 0.7799,
+      "kappa_semantic": 0.5929,
+      "kappa_proof_safe": 0.5903,
+      "kappa_product": 0.5955
+    },
+    "post_adjudication_pool_vs_pass2": {
+      "semantic": 0.7971,
+      "proof_safe": 0.663,
+      "product": 0.7935
+    },
+    "gate_target": ">= 0.90 raw on all three targets (spec 37)",
+    "gate_met": false,
+    "disputes_round1": 97,
+    "disputes_round2": 106,
+    "total_adjudicated": 203,
+    "outcomes": {
+      "PASS1_CONFIRMED": 136,
+      "PASS2_CONFIRMED": 52,
+      "RESOLVED_NEW": 15
+    },
+    "remaining_disputes": 0,
+    "note": "RC2B-0277 received a single annotation pass (added after pass 2 closed); agreement is computed on n=276. Per spec 37 the sub-90 result mandates an annotation-contract audit rather than blanket adjudication; the audit recommendation is recorded in final-report.md."
+  },
+  "candidate_pipeline": {
+    "candidates_generated": 277,
+    "wave_sizes": {
+      "a1": 32,
+      "a2": 34,
+      "b1": 40,
+      "c": 48,
+      "d": 65,
+      "e": 58
+    },
+    "exact_duplicates_rejected": 0,
+    "near_duplicates_rejected": 0,
+    "source_skeleton_duplicates_rejected": 0,
+    "other_rejects": 0,
+    "retained": 277,
+    "max_similarity_retained": 0.5385,
+    "novelty_thresholds": {
+      "jaccard_near": 0.55,
+      "char3_near": 0.8,
+      "skeleton_entity_overlap": 0.5,
+      "exact": 1.0
+    },
+    "fidelity_checks": 277,
+    "fidelity_failures": 0
+  },
+  "answer_key": {
+    "status": "SEALED",
+    "algorithm": "AES-256-GCM",
+    "associated_data": "SHA-256 of exact blind-cases.json bytes",
+    "covers": "160 CORE cases: triple labels, atoms, required_inference, criticality, source_spans, rationale, adjudication_outcome",
+    "roundtrip_verified_in_memory": true,
+    "plaintext_label_files_removed": true
+  },
+  "rc2_status": "NOT_RUN"
+}

@@ -1,0 +1,771 @@
+{
+ "set_id": "RC33M2-MICROVAL-V1",
+ "case_count": 30,
+ "cases": [
+  {
+   "case_id": "RC33M2-001",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2292 kroner i maneden fra NAV.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      14,
+      24
+     ],
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |\n| Utvidet barnetrygd | 2 572 kr/mnd | 1 286 kr/mnd |\n\nKilde: nav.no/barnetrygd (lest 30.08.2026) og nav.no/utvidet-barnetrygd\n(side modifiedTime 26.08.2026, hentet 30.08.2026).\n\n## Slik henger satsene sammen\n\n1. Ordinær barnetrygd følger barnet. Ved delt fast bosted deles den likt: 2 012 / 2 = 1 006 kroner per forelder.\n2. Utvidet barnetrygd er et tillegg for foreldre som bor alene med barn. NAV oppgir eksplisitt at delt utvidet barnetrygd er 1 286 kroner i måneden, og at denne kommer i tillegg til den ordinære delte barnetrygden.\n3. Eksempel: en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden fra NAV, hvis begge deler er innvilget. Den andre forelder med samme vilkår oppfylt får tilsvarende 2 292 kroner."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    },
+    {
+     "span_id": "S2",
+     "text": "3. Eksempel: en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden fra NAV, hvis begge deler er innvilget. Den andre forelder med samme vilkår oppfylt får tilsvarende 2 292 kroner."
+    }
+   ],
+   "compound": true,
+   "public_flags": [
+    "quantity-money",
+    "aggregate",
+    "comparator-eq"
+   ]
+  },
+  {
+   "case_id": "RC33M2-002",
+   "claim": "En forelder med delt ordinær barnetrygd men uten rett til utvidet barnetrygd faar bare 1006 kroner i maneden.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      25,
+      25
+     ],
+     "text": "4. En forelder med delt ordinær barnetrygd men uten rett til utvidet barnetrygd får bare 1 006 kroner i måneden."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "4. En forelder med delt ordinær barnetrygd men uten rett til utvidet barnetrygd får bare 1 006 kroner i måneden."
+    }
+   ],
+   "compound": true,
+   "public_flags": [
+    "quantity-money",
+    "comparator-eq"
+   ]
+  },
+  {
+   "case_id": "RC33M2-003",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2392 kroner i maneden fra NAV.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      14,
+      14
+     ],
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "compound": true,
+   "public_flags": [
+    "quantity-money",
+    "aggregate",
+    "comparator-ne"
+   ]
+  },
+  {
+   "case_id": "RC33M2-004",
+   "claim": "Full sats for utvidet barnetrygd er 2572 kroner per maned denne uken.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      15,
+      15
+     ],
+     "text": "| Utvidet barnetrygd | 2 572 kr/mnd | 1 286 kr/mnd |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Utvidet barnetrygd | 2 572 kr/mnd | 1 286 kr/mnd |"
+    }
+   ],
+   "compound": true,
+   "public_flags": [
+    "quantity-money",
+    "temporal-hedge"
+   ]
+  },
+  {
+   "case_id": "RC33M2-005",
+   "claim": "En forelder med delt ordinær barnetrygd faar 1184 kroner i maneden fra NAV.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      14,
+      14
+     ],
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "compound": true,
+   "public_flags": [
+    "quantity-money",
+    "comparator-ne"
+   ]
+  },
+  {
+   "case_id": "RC33M2-006",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2292 kroner i maneden, som er mer enn 2200 kroner per maned.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      14,
+      24
+     ],
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |\n| Utvidet barnetrygd | 2 572 kr/mnd | 1 286 kr/mnd |\n\nKilde: nav.no/barnetrygd (lest 30.08.2026) og nav.no/utvidet-barnetrygd\n(side modifiedTime 26.08.2026, hentet 30.08.2026).\n\n## Slik henger satsene sammen\n\n1. Ordinær barnetrygd følger barnet. Ved delt fast bosted deles den likt: 2 012 / 2 = 1 006 kroner per forelder.\n2. Utvidet barnetrygd er et tillegg for foreldre som bor alene med barn. NAV oppgir eksplisitt at delt utvidet barnetrygd er 1 286 kroner i måneden, og at denne kommer i tillegg til den ordinære delte barnetrygden.\n3. Eksempel: en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden fra NAV, hvis begge deler er innvilget. Den andre forelder med samme vilkår oppfylt får tilsvarende 2 292 kroner."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    },
+    {
+     "span_id": "S2",
+     "text": "3. Eksempel: en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden fra NAV, hvis begge deler er innvilget. Den andre forelder med samme vilkår oppfylt får tilsvarende 2 292 kroner."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-money",
+    "aggregate",
+    "comparator-gt"
+   ]
+  },
+  {
+   "case_id": "RC33M2-007",
+   "claim": "Delt ordinær barnetrygd er na 1006 kroner per forelder per maned.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      14,
+      14
+     ],
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-money",
+    "comparator-eq"
+   ]
+  },
+  {
+   "case_id": "RC33M2-008",
+   "claim": "Delt ordinær barnetrygd er na minst 1106 kroner per forelder per maned.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      14,
+      14
+     ],
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Ordinær barnetrygd | 2 012 kr/mnd | 1 006 kr/mnd |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-money",
+    "comparator-ge"
+   ]
+  },
+  {
+   "case_id": "RC33M2-009",
+   "claim": "Barnevernet skal gjennomgaa en innsendt bekymringsmelding senest innen 1 uke.",
+   "sources": [
+    {
+     "kb_ref": "kb/38-barnevernet-hjelp-ikke-bare-inngrep.md",
+     "lines": [
+      27,
+      27
+     ],
+     "text": "- **BVL § 2-1**: melding gjennomgas snarest og senest **1 uke**; skriftlig begrunnelse ved henleggelse."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **BVL § 2-1**: melding gjennomgas snarest og senest **1 uke**; skriftlig begrunnelse ved henleggelse."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-period"
+   ]
+  },
+  {
+   "case_id": "RC33M2-010",
+   "claim": "Barnevernet skal gjennomgaa en innsendt bekymringsmelding innen 14 dager.",
+   "sources": [
+    {
+     "kb_ref": "kb/38-barnevernet-hjelp-ikke-bare-inngrep.md",
+     "lines": [
+      27,
+      27
+     ],
+     "text": "- **BVL § 2-1**: melding gjennomgas snarest og senest **1 uke**; skriftlig begrunnelse ved henleggelse."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **BVL § 2-1**: melding gjennomgas snarest og senest **1 uke**; skriftlig begrunnelse ved henleggelse."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-period"
+   ]
+  },
+  {
+   "case_id": "RC33M2-011",
+   "claim": "Undersokelsen etter en bekymringsmelding skal vaere ferdig innen tre maneder.",
+   "sources": [
+    {
+     "kb_ref": "kb/38-barnevernet-hjelp-ikke-bare-inngrep.md",
+     "lines": [
+      28,
+      28
+     ],
+     "text": "- **BVL § 2-2**: undersokelse starter snarest og konkluderes senest **3 maneder** etter 1-ukesfristen; total utvidelse til **6 maneder**."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **BVL § 2-2**: undersokelse starter snarest og konkluderes senest **3 maneder** etter 1-ukesfristen; total utvidelse til **6 maneder**."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-period"
+   ]
+  },
+  {
+   "case_id": "RC33M2-012",
+   "claim": "Undersokelsessaken hos barnevernet kan under ingen omstendigheter utvides utover 3 maneder totalt.",
+   "sources": [
+    {
+     "kb_ref": "kb/38-barnevernet-hjelp-ikke-bare-inngrep.md",
+     "lines": [
+      28,
+      28
+     ],
+     "text": "- **BVL § 2-2**: undersokelse starter snarest og konkluderes senest **3 maneder** etter 1-ukesfristen; total utvidelse til **6 maneder**."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **BVL § 2-2**: undersokelse starter snarest og konkluderes senest **3 maneder** etter 1-ukesfristen; total utvidelse til **6 maneder**."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-period",
+    "negation-exception"
+   ]
+  },
+  {
+   "case_id": "RC33M2-013",
+   "claim": "Gyldigheten til en meklingsattest varer i seks maneder etter at meklingen er gjennomfort.",
+   "sources": [
+    {
+     "kb_ref": "kb/34-mekling-og-foreldresamarbeidsavtale.md",
+     "lines": [
+      32,
+      32
+     ],
+     "text": "- **Meklingsattest** utfaerdes nar meklingen er gjennomfort; attesten er **gyldig i 6 maneder**."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **Meklingsattest** utfaerdes nar meklingen er gjennomfort; attesten er **gyldig i 6 maneder**."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-period"
+   ]
+  },
+  {
+   "case_id": "RC33M2-014",
+   "claim": "En forelder uten delt fast bosted kan faa utvidet barnetrygd pa 1286 kroner i maneden hvis vilkarene er oppfylt.",
+   "sources": [
+    {
+     "kb_ref": "kb/54-delt-barnetrygd-ordinar-og-utvidet.md",
+     "lines": [
+      23,
+      23
+     ],
+     "text": "2. Utvidet barnetrygd er et tillegg for foreldre som bor alene med barn. NAV oppgir eksplisitt at delt utvidet barnetrygd er 1 286 kroner i måneden, og at denne kommer i tillegg til den ordinære delte barnetrygden."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "2. Utvidet barnetrygd er et tillegg for foreldre som bor alene med barn. NAV oppgir eksplisitt at delt utvidet barnetrygd er 1 286 kroner i måneden, og at denne kommer i tillegg til den ordinære delte barnetrygden."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "quantity-money",
+    "condition"
+   ]
+  },
+  {
+   "case_id": "RC33M2-015",
+   "claim": "Den obligatoriske meklingen gjelder ogsa ektefeller uten felles barn.",
+   "sources": [
+    {
+     "kb_ref": "kb/34-mekling-og-foreldresamarbeidsavtale.md",
+     "lines": [
+      11,
+      11
+     ],
+     "text": "- **Ektefeller med felles barn under 16 ar**: obligatorisk mekling ved separasjon eller skilsmisse (ekteskapsloven § 26). Malet er avtale om foreldreansvar, fast bosted og samvar; barnelova §§ 52-54 gjelder tilsvarende."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **Ektefeller med felles barn under 16 ar**: obligatorisk mekling ved separasjon eller skilsmisse (ekteskapsloven § 26). Malet er avtale om foreldreansvar, fast bosted og samvar; barnelova §§ 52-54 gjelder tilsvarende."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "actor",
+    "condition"
+   ]
+  },
+  {
+   "case_id": "RC33M2-016",
+   "claim": "Mekleren foerer ikke journal etter mekling.",
+   "sources": [
+    {
+     "kb_ref": "kb/34-mekling-og-foreldresamarbeidsavtale.md",
+     "lines": [
+      33,
+      33
+     ],
+     "text": "- Bufdir: attesten sendes til foreldrenes digitale postkasse, og mekleren foerer ikke journal."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- Bufdir: attesten sendes til foreldrenes digitale postkasse, og mekleren foerer ikke journal."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "negation"
+   ]
+  },
+  {
+   "case_id": "RC33M2-017",
+   "claim": "Mekleren har en plikt til a foere journal etter mekling.",
+   "sources": [
+    {
+     "kb_ref": "kb/34-mekling-og-foreldresamarbeidsavtale.md",
+     "lines": [
+      33,
+      38
+     ],
+     "text": "- Bufdir: attesten sendes til foreldrenes digitale postkasse, og mekleren foerer ikke journal.\n\n## 4. Hva mekleren kan og ikke kan\n\n- Kan: strukturere forhandlingen, gi juridisk opplysning, snakke med barnet (forutsetninger under), foresla rammer, utfaerde meklingsattest.\n- Ikke kan: bestemme foreldreansvar, bosted eller samvar; tvinge fram avtale; videreformidle partenes opplysninger uten samtykke; foere journal."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- Bufdir: attesten sendes til foreldrenes digitale postkasse, og mekleren foerer ikke journal."
+    },
+    {
+     "span_id": "S2",
+     "text": "- Ikke kan: bestemme foreldreansvar, bosted eller samvar; tvinge fram avtale; videreformidle partenes opplysninger uten samtykke; foere journal."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "negation",
+    "modality-skal"
+   ]
+  },
+  {
+   "case_id": "RC33M2-018",
+   "claim": "En samvarsforelder kan gi samtykke til helsehjelp for barn under 16 ar i kraft av samvaret.",
+   "sources": [
+    {
+     "kb_ref": "kb/41-samtykke-pa-tvers-av-tjenester.md",
+     "lines": [
+      11,
+      11
+     ],
+     "text": "- **Foreldreansvar bestemmer samtykke**: det er foreldrene **med foreldreansvar** (ikke samvarsforelder som slik) som samtykker for barn under 16 ar i helse- og opplaringssaker (BNL §§ 30-39; PRL § 4-3)."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **Foreldreansvar bestemmer samtykke**: det er foreldrene **med foreldreansvar** (ikke samvarsforelder som slik) som samtykker for barn under 16 ar i helse- og opplaringssaker (BNL §§ 30-39; PRL § 4-3)."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "negation",
+    "actor"
+   ]
+  },
+  {
+   "case_id": "RC33M2-019",
+   "claim": "Barn under 12 ar kan selv gi samtykke til helsehjelp for forhold foreldrene ikke er informert om.",
+   "sources": [
+    {
+     "kb_ref": "kb/41-samtykke-pa-tvers-av-tjenester.md",
+     "lines": [
+      13,
+      13
+     ],
+     "text": "- **PRL § 4-3**: barn over 16 ar (til og med 17) kan normalt selv gi samtykke til helsehjelp; barn 12-16 ar kan samtykke for forhold foreldrene ikke er informert om; 18+ er fullt myndige."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **PRL § 4-3**: barn over 16 ar (til og med 17) kan normalt selv gi samtykke til helsehjelp; barn 12-16 ar kan samtykke for forhold foreldrene ikke er informert om; 18+ er fullt myndige."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "actor",
+    "condition",
+    "negation"
+   ]
+  },
+  {
+   "case_id": "RC33M2-020",
+   "claim": "Meninger fra barn 12 ar og eldre skal vege tungt i saker om fast bosted eller samvar.",
+   "sources": [
+    {
+     "kb_ref": "kb/36-barnets-mening-og-barnets-beste.md",
+     "lines": [
+      11,
+      11
+     ],
+     "text": "- **BNL § 31 (barnets medvirkning)**: Barnet skal sa langt praktisk mulig ha med i sporsmal foreldrene skal lose. Barn **7 ar og eldre** skal fa si sin mening for vedtak om fast bosted eller samvar. Yngre barn skal ogsa hores **dersom de kan danne seg en egen oppfatning**. Meninger fra barn **12 ar og eldre skal vege tungt**; yngre barns mening vektes etter alder og modenhet."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **BNL § 31 (barnets medvirkning)**: Barnet skal sa langt praktisk mulig ha med i sporsmal foreldrene skal lose. Barn **7 ar og eldre** skal fa si sin mening for vedtak om fast bosted eller samvar. Yngre barn skal ogsa hores **dersom de kan danne seg en egen oppfatning**. Meninger fra barn **12 ar og eldre skal vege tungt**; yngre barns mening vektes etter alder og modenhet."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "actor",
+    "modality-skal"
+   ]
+  },
+  {
+   "case_id": "RC33M2-021",
+   "claim": "Fra 15 ar er barnet part i barnevernssaker.",
+   "sources": [
+    {
+     "kb_ref": "kb/36-barnets-mening-og-barnets-beste.md",
+     "lines": [
+      26,
+      26
+     ],
+     "text": "| Barnevern | Barnet skal medvirke etter alder og modenhet; partsrettigheter kommer ved 15 ar | BVL § 1-4 og § 12-3 |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| Barnevern | Barnet skal medvirke etter alder og modenhet; partsrettigheter kommer ved 15 ar | BVL § 1-4 og § 12-3 |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "actor"
+   ]
+  },
+  {
+   "case_id": "RC33M2-022",
+   "claim": "Skolehelsetjenesten har henvisningsrett til BUP.",
+   "sources": [
+    {
+     "kb_ref": "kb/31-skolehelsetjenesten-i-dybden.md",
+     "lines": [
+      64,
+      64
+     ],
+     "text": "- **BUP**: skolehelse har ikke henvisningsrett til BUP (fastlege, psykolog i kommunen og barnevernsleder har henvisningsrett; fil 25), men kan medvirke til henvisning via fastlegen og forberede eleven."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "- **BUP**: skolehelse har ikke henvisningsrett til BUP (fastlege, psykolog i kommunen og barnevernsleder har henvisningsrett; fil 25), men kan medvirke til henvisning via fastlegen og forberede eleven."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "actor",
+    "modality-kan"
+   ]
+  },
+  {
+   "case_id": "RC33M2-023",
+   "claim": "Skolehelsetjenesten kan i noen kommuner skrive ut legemidler.",
+   "sources": [
+    {
+     "kb_ref": "kb/31-skolehelsetjenesten-i-dybden.md",
+     "lines": [
+      14,
+      14
+     ],
+     "text": "  - § 3: kommunen skal tilby helsestasjons- og skolehelsetjeneste til barn og ungdom **0-20 år**; tverrfaglig tilbud; kommunen dekker alle utgifter (gratis for brukerne); interkommunalt samarbeid tillatt."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "  - § 3: kommunen skal tilby helsestasjons- og skolehelsetjeneste til barn og ungdom **0-20 år**; tverrfaglig tilbud; kommunen dekker alle utgifter (gratis for brukerne); interkommunalt samarbeid tillatt."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "modality-kan",
+    "exception"
+   ]
+  },
+  {
+   "case_id": "RC33M2-024",
+   "claim": "Overgangsforskriften FOR-2026-06-25-1361 trer i kraft 01.07.2026.",
+   "sources": [
+    {
+     "kb_ref": "kb/68-overgangsforskriften-i-dybden.md",
+     "lines": [
+      4,
+      4
+     ],
+     "text": "**Status**: Fulltekst verifisert fra Lovdata 30.08.2026 (https://lovdata.no/dokument/SF/forskrift/2026-06-25-1361). Fastsatt av Arbeids- og inkluderingsdepartementet 25.06.2026 med hjemmel i lov 12. juni 2026 nr. 27 del II, kunngjort 26.06.2026, ikraft 01.07.2026, endret ved FOR-2026-08-17-1633. Ingen del er tilpasset konkrete vedtak."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "**Status**: Fulltekst verifisert fra Lovdata 30.08.2026 (https://lovdata.no/dokument/SF/forskrift/2026-06-25-1361). Fastsatt av Arbeids- og inkluderingsdepartementet 25.06.2026 med hjemmel i lov 12. juni 2026 nr. 27 del II, kunngjort 26.06.2026, ikraft 01.07.2026, endret ved FOR-2026-08-17-1633. Ingen del er tilpasset konkrete vedtak."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "temporal-ikraft",
+    "law-ref"
+   ]
+  },
+  {
+   "case_id": "RC33M2-025",
+   "claim": "Overgangsforskriften FOR-2026-06-25-1361 var i kraft allerede 01.02.2026.",
+   "sources": [
+    {
+     "kb_ref": "kb/68-overgangsforskriften-i-dybden.md",
+     "lines": [
+      4,
+      4
+     ],
+     "text": "**Status**: Fulltekst verifisert fra Lovdata 30.08.2026 (https://lovdata.no/dokument/SF/forskrift/2026-06-25-1361). Fastsatt av Arbeids- og inkluderingsdepartementet 25.06.2026 med hjemmel i lov 12. juni 2026 nr. 27 del II, kunngjort 26.06.2026, ikraft 01.07.2026, endret ved FOR-2026-08-17-1633. Ingen del er tilpasset konkrete vedtak."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "**Status**: Fulltekst verifisert fra Lovdata 30.08.2026 (https://lovdata.no/dokument/SF/forskrift/2026-06-25-1361). Fastsatt av Arbeids- og inkluderingsdepartementet 25.06.2026 med hjemmel i lov 12. juni 2026 nr. 27 del II, kunngjort 26.06.2026, ikraft 01.07.2026, endret ved FOR-2026-08-17-1633. Ingen del er tilpasset konkrete vedtak."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "temporal-ikraft",
+    "law-ref",
+    "date-trap"
+   ]
+  },
+  {
+   "case_id": "RC33M2-026",
+   "claim": "Endringen av overgangsforskriften ved FOR-2026-08-17-1633 trer i kraft 01.09.2026.",
+   "sources": [
+    {
+     "kb_ref": "kb/68-overgangsforskriften-i-dybden.md",
+     "lines": [
+      4,
+      16
+     ],
+     "text": "**Status**: Fulltekst verifisert fra Lovdata 30.08.2026 (https://lovdata.no/dokument/SF/forskrift/2026-06-25-1361). Fastsatt av Arbeids- og inkluderingsdepartementet 25.06.2026 med hjemmel i lov 12. juni 2026 nr. 27 del II, kunngjort 26.06.2026, ikraft 01.07.2026, endret ved FOR-2026-08-17-1633. Ingen del er tilpasset konkrete vedtak.\n**Kryssreferanser**: [63-overgangsstonad-endringsloven-og-kapittel-15](63-overgangsstonad-endringsloven-og-kapittel-15.md), [64-overgangsstonad-nye-regler-i-dybden](64-overgangsstonad-nye-regler-i-dybden.md), [65-saerlig-tilsyn-dokumentasjon-aktorer](65-saerlig-tilsyn-dokumentasjon-aktorer.md), [66-barnetilsyn-og-samspill-andre-ytelser](66-barnetilsyn-og-samspill-andre-ytelser.md), [67-mari-overgangsstonad-vurdering](67-mari-overgangsstonad-vurdering.md), [69-kunnskapshullregister](69-kunnskapshullregister.md) (sentralt hullregister).\n\n## 1. Metadata og struktur\n\n| Element | Verdi |\n|---|---|\n| Lovdata-ID | FOR-2026-06-25-1361 |\n| Tittel | Forskrift om overgangsregler i forbindelse med endringer i folketrygdloven kapittel 15 Stønad til enslig mor eller far fra 1. juli 2026 |\n| Fastsatt | 25.06.2026 av Arbeids- og inkluderingsdepartementet (hjemmel: lov 12.06.2026 nr. 27 del II) |\n| Kunngjort | 26.06.2026 kl. 15.30 |\n| Ikraft | 01.07.2026; forskriften opphører å gjelde 01.07.2031 (§ 14) |\n| Endret | FOR-2026-08-17-1633: § 5 endret; ny § 12 (midlertidig bortfall); gamle § 12 og § 13 ble § 13 og § 14 |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "**Status**: Fulltekst verifisert fra Lovdata 30.08.2026 (https://lovdata.no/dokument/SF/forskrift/2026-06-25-1361). Fastsatt av Arbeids- og inkluderingsdepartementet 25.06.2026 med hjemmel i lov 12. juni 2026 nr. 27 del II, kunngjort 26.06.2026, ikraft 01.07.2026, endret ved FOR-2026-08-17-1633. Ingen del er tilpasset konkrete vedtak."
+    },
+    {
+     "span_id": "S2",
+     "text": "| Endret | FOR-2026-08-17-1633: § 5 endret; ny § 12 (midlertidig bortfall); gamle § 12 og § 13 ble § 13 og § 14 |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "law-ref",
+    "temporal-superseded"
+   ]
+  },
+  {
+   "case_id": "RC33M2-027",
+   "claim": "En soknad sendt 15.06.2026 behandles etter de gamle reglene.",
+   "sources": [
+    {
+     "kb_ref": "kb/68-overgangsforskriften-i-dybden.md",
+     "lines": [
+      48,
+      48
+     ],
+     "text": "| § 13 | Stønadsperioder etter forskriften løper ikke ut over 30.06.2031 |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| § 13 | Stønadsperioder etter forskriften løper ikke ut over 30.06.2031 |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "law-ref",
+    "transition-rule"
+   ]
+  },
+  {
+   "case_id": "RC33M2-028",
+   "claim": "Overgangsforskriften opphorer a gjelde 30.06.2031.",
+   "sources": [
+    {
+     "kb_ref": "kb/68-overgangsforskriften-i-dybden.md",
+     "lines": [
+      49,
+      49
+     ],
+     "text": "| § 14 | Forskriften trer i kraft 1.7.2026 og opphører å gjelde 1.7.2031 |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| § 14 | Forskriften trer i kraft 1.7.2026 og opphører å gjelde 1.7.2031 |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "temporal-superseded",
+    "law-ref"
+   ]
+  },
+  {
+   "case_id": "RC33M2-029",
+   "claim": "Midlertidig bortfall kan gjelde ved medlemmets sykdom.",
+   "sources": [
+    {
+     "kb_ref": "kb/68-overgangsforskriften-i-dybden.md",
+     "lines": [
+      47,
+      47
+     ],
+     "text": "| § 12 | Midlertidig bortfall 1 måned ved oppsigelse uten rimelig grunn, nektet arbeid/tiltak, uunngått møtefravær hos NAV m.m.; bortfallsperioden trekkes fra stønadsperioden (tilføyd ved nr. 1633) |"
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "| § 12 | Midlertidig bortfall 1 måned ved oppsigelse uten rimelig grunn, nektet arbeid/tiltak, uunngått møtefravær hos NAV m.m.; bortfallsperioden trekkes fra stønadsperioden (tilføyd ved nr. 1633) |"
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "law-ref",
+    "condition"
+   ]
+  },
+  {
+   "case_id": "RC33M2-030",
+   "claim": "Skolehelsetjenesten er et behandlingstilbud for psykiske lidelser.",
+   "sources": [
+    {
+     "kb_ref": "kb/31-skolehelsetjenesten-i-dybden.md",
+     "lines": [
+      24,
+      24
+     ],
+     "text": "**Kan ikke (ikke en behandlingstjeneste)**: Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykoterapi, stiller normalt ikke diagnoser og skriver ikke ut legemidler (skolelegen kan i noen kommuner evaluere foreskrevne legemidler, lokal praksis). Ved behov for utredning/behandling av angst, depresjon, spiseforstyrrelser, selvskading eller nevro-utviklingsvilkår videreføres eleven til fastlege, kommunalt psykisk helsetilbud eller BUP. Fast tilbud av skolelege og skolepsykolog er ikke lovfestet som individrettigheter; de fins der kommunene organiserer det (lokal variasjon)."
+    }
+   ],
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "**Kan ikke (ikke en behandlingstjeneste)**: Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykoterapi, stiller normalt ikke diagnoser og skriver ikke ut legemidler (skolelegen kan i noen kommuner evaluere foreskrevne legemidler, lokal praksis). Ved behov for utredning/behandling av angst, depresjon, spiseforstyrrelser, selvskading eller nevro-utviklingsvilkår videreføres eleven til fastlege, kommunalt psykisk helsetilbud eller BUP. Fast tilbud av skolelege og skolepsykolog er ikke lovfestet som individrettigheter; de fins der kommunene organiserer det (lokal variasjon)."
+    }
+   ],
+   "compound": false,
+   "public_flags": [
+    "negation",
+    "scope"
+   ]
+  }
+ ]
+}

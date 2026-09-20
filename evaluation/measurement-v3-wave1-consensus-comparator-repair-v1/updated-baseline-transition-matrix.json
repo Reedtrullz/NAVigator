@@ -1,0 +1,167 @@
+{
+  "artifact": "updated-baseline-transition-matrix",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "created_utc": "2026-09-16T10:55:09Z",
+  "comparison_order": "WAVE1_COMPARATOR_REPAIR_FROZEN_BEFORE_COMPARISON",
+  "old_baseline": {
+    "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json",
+    "sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+    "status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE_PROVENANCE_CORRECTED"
+  },
+  "new_results": "complete-wave1-measurement-results.json",
+  "repair_row_diff_vs_upstream": {
+    "changed_rows": [
+      "DIS-118::forbidden:01",
+      "ROUT-026::forbidden:01",
+      "ROUT-031::forbidden:01",
+      "ROUT-037::forbidden:01"
+    ],
+    "changed_count": 4,
+    "all_other_rows_byte_identical": true
+  },
+  "verdict_delta_vs_upstream": {
+    "PRESENT": 1,
+    "ABSENT": 3,
+    "NONE": -4
+  },
+  "repaired_rows_verdicts_equal_old_baseline": true,
+  "repaired_row_authority_transitions": {
+    "LLM_REVIEWED -> LLM_ADJUDICATED": 3
+  },
+  "verdict_transitions": {
+    "0.0 -> 0.0": 38,
+    "1.0 -> 1.0": 82,
+    "ABSENT -> ABSENT": 61,
+    "CLAIM_ABSENT_TAKEN -> ABSENT": 5,
+    "CLAIM_ABSENT_TAKEN -> CLAIM_ABSENT_TAKEN": 48,
+    "CLAIM_PRESENT -> CLAIM_PRESENT": 3,
+    "CRITICAL_ERROR -> CRITICAL_ERROR": 91,
+    "CRITICAL_ERROR -> NOT_TRIGGERED": 6,
+    "CRITICAL_ERROR -> NO_CRITICAL_ERROR": 6,
+    "CRITICAL_ERROR -> UNRESOLVED": 7,
+    "NONE -> NONE": 12,
+    "NOT_REQUIRED -> NOT_REQUIRED": 83,
+    "NOT_TRIGGERED -> NOT_TRIGGERED": 4,
+    "NO_ACCEPTABLE_ROUTE -> NO_ACCEPTABLE_ROUTE": 108,
+    "PARTIAL -> PARTIAL": 34,
+    "PRESENT -> PRESENT": 3,
+    "SATISFIED -> SATISFIED": 1,
+    "TRIGGERED -> TRIGGERED": 1,
+    "UNRESOLVED -> UNRESOLVED": 5,
+    "VIOLATED -> PARTIAL": 2
+  },
+  "semantic_state_transitions": {
+    "ABSENT_OR_NOT_APPLICABLE -> ABSENT_OR_NOT_APPLICABLE": 12,
+    "DEGRADED -> DEGRADED": 34,
+    "FAIL -> DEGRADED": 2,
+    "FAIL -> FAIL": 244,
+    "FAIL -> PASS": 6,
+    "FAIL -> UNRESOLVED": 13,
+    "PASS -> PASS": 284,
+    "UNRESOLVED -> UNRESOLVED": 5
+  },
+  "per_dimension_transitions": {
+    "critical_condition": {
+      "CRITICAL_ERROR -> CRITICAL_ERROR": 91,
+      "CRITICAL_ERROR -> NOT_TRIGGERED": 6,
+      "CRITICAL_ERROR -> NO_CRITICAL_ERROR": 6,
+      "CRITICAL_ERROR -> UNRESOLVED": 7,
+      "NOT_TRIGGERED -> NOT_TRIGGERED": 4,
+      "TRIGGERED -> TRIGGERED": 1,
+      "UNRESOLVED -> UNRESOLVED": 5
+    },
+    "evidence_completeness": {
+      "0.0 -> 0.0": 38,
+      "1.0 -> 1.0": 82
+    },
+    "forbidden_claim": {
+      "ABSENT -> ABSENT": 61,
+      "CLAIM_ABSENT_TAKEN -> ABSENT": 5,
+      "CLAIM_ABSENT_TAKEN -> CLAIM_ABSENT_TAKEN": 48,
+      "CLAIM_PRESENT -> CLAIM_PRESENT": 3,
+      "PRESENT -> PRESENT": 3
+    },
+    "required_uncertainty": {
+      "NOT_REQUIRED -> NOT_REQUIRED": 83,
+      "PARTIAL -> PARTIAL": 34,
+      "SATISFIED -> SATISFIED": 1,
+      "VIOLATED -> PARTIAL": 2
+    },
+    "route_correctness": {
+      "NONE -> NONE": 12,
+      "NO_ACCEPTABLE_ROUTE -> NO_ACCEPTABLE_ROUTE": 108
+    }
+  },
+  "authority_transitions": {
+    "DETERMINISTIC -> LLM_REVIEWED": 18,
+    "LLM_ADJUDICATED -> LLM_REVIEWED": 9,
+    "LLM_REVIEWED -> LLM_ADJUDICATED": 3
+  },
+  "changed_verdict_rows": [
+    "DIS-106::critical_condition",
+    "ROUT-022::critical_condition",
+    "ROUT-026::critical_condition",
+    "ROUT-031::critical_condition",
+    "ROUT-032::critical_condition",
+    "ROUT-039::critical_condition",
+    "ROUT-047::critical_condition",
+    "ROUT-049::critical_condition",
+    "ROUT-052::critical_condition",
+    "ROUT-057::critical_condition",
+    "ROUT-063::critical_condition",
+    "ROUT-065::critical_condition",
+    "ROUT-066::critical_condition",
+    "ROUT-068::critical_condition",
+    "ROUT-069::critical_condition",
+    "ROUT-070::critical_condition",
+    "ROUT-072::critical_condition",
+    "ROUT-073::critical_condition",
+    "ROUT-078::forbidden:01",
+    "ROUT-087::forbidden:01",
+    "ROUT-088::critical_condition",
+    "ROUT-088::forbidden:01",
+    "SAF-009::forbidden:01",
+    "SAF-009::required_uncertainty",
+    "SAF-019::forbidden:01",
+    "SAF-019::required_uncertainty"
+  ],
+  "improved_criteria": [
+    "ROUT-022::critical_condition",
+    "ROUT-026::critical_condition",
+    "ROUT-047::critical_condition",
+    "ROUT-052::critical_condition",
+    "ROUT-068::critical_condition",
+    "ROUT-088::critical_condition",
+    "SAF-009::required_uncertainty",
+    "SAF-019::required_uncertainty"
+  ],
+  "regressed_criteria": [],
+  "improvement_count": 8,
+  "regression_count": 0,
+  "repair_wave_effects": {
+    "RC-01_wave1_remeasure": {
+      "rows_verdict_changed_in_this_repair": 0,
+      "rows_bound_to_repaired_comparator": 3,
+      "criteria": [
+        "ROUT-026::forbidden:01",
+        "ROUT-031::forbidden:01",
+        "ROUT-037::forbidden:01"
+      ],
+      "note": "RC-01 remeasure rows previously ABSENT; corrected-rule consensus confirms ABSENT, authority becomes LLM_ADJUDICATED"
+    },
+    "RC-02_residual_adjudication": {
+      "rows_verdict_changed_in_this_repair": 0,
+      "rows_bound_to_repaired_comparator": 1,
+      "criteria": [
+        "DIS-118::forbidden:01"
+      ],
+      "note": "old row already LLM_ADJUDICATED PRESENT; corrected-rule Sol consensus re-derives PRESENT via frozen kernel"
+    },
+    "RC-03_structural": {
+      "summary": "prior remeasure showed structural emission improved with 0 verdict-level route changes; unchanged here"
+    },
+    "RC-03_semantic_routing": {
+      "summary": "prior remeasure showed 0 semantic routing verdict changes (108/108 NO_ACCEPTABLE_ROUTE); unchanged here"
+    }
+  }
+}

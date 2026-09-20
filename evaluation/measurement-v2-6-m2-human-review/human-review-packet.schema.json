@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "human-review-packet-v2-6",
+  "title": "M2 human review packet",
+  "type": "object",
+  "required": ["packet_id", "case_id", "contract_version", "criterion", "case_context", "sut_output", "created_utc"],
+  "additionalProperties": false,
+  "properties": {
+    "packet_id": {"type": "string"},
+    "case_id": {"type": "string"},
+    "contract_version": {"const": "m2-decomposition-v2-5"},
+    "criterion": {"type": "string", "minLength": 1},
+    "case_context": {"type": "string"},
+    "sut_output": {"type": "string"},
+    "source_evidence_spans": {"type": "array", "items": {"type": "string"}},
+    "created_utc": {"type": "string"},
+    "packet_sha256": {"type": "string"}
+  },
+  "leakage_forbidden_fields": {
+    "final_gold": "NEVER present in packet",
+    "automated_model_verdict": "NEVER present in packet",
+    "prior_reviewer_verdicts": "NEVER present in packet",
+    "historical_model_failures": "NEVER present in packet",
+    "fixture_id_semantics": "NEVER present in packet"
+  }
+}

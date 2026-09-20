@@ -1,0 +1,173 @@
+{
+ "set": "calibration",
+ "judge": "judge-a-gpt-5.5",
+ "n": 84,
+ "accuracy": 0.9167,
+ "confusion": {
+  "SUPPORTED": {
+   "SUPPORTED": 22
+  },
+  "CONTRADICTED": {
+   "CONTRADICTED": 25,
+   "INSUFFICIENT_EVIDENCE": 1,
+   "PARTIALLY_SUPPORTED": 1
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 16,
+   "CONTRADICTED": 4
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "INSUFFICIENT_EVIDENCE": 14,
+   "CONTRADICTED": 1
+  }
+ },
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "support": 22
+  },
+  "CONTRADICTED": {
+   "precision": 0.833,
+   "recall": 0.926,
+   "f1": 0.877,
+   "support": 27
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 0.941,
+   "recall": 0.8,
+   "f1": 0.865,
+   "support": 20
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 0.933,
+   "recall": 0.933,
+   "f1": 0.933,
+   "support": 15
+  }
+ },
+ "group_stats": {
+  "numeric": {
+   "n": 19,
+   "correct": 16,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "legal": {
+   "n": 32,
+   "correct": 30,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "temporal": {
+   "n": 8,
+   "correct": 7,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "local": {
+   "n": 17,
+   "correct": 16,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "safety": {
+   "n": 4,
+   "correct": 4,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "injection": {
+   "n": 4,
+   "correct": 4,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "confidence_buckets": {
+  "0.95-1.0": {
+   "n": 65,
+   "accuracy": 0.908
+  },
+  "0.85-0.94": {
+   "n": 19,
+   "accuracy": 0.947
+  }
+ },
+ "consistency": {
+  "claims_with_multiple_runs": 0,
+  "identical_all_runs": 0,
+  "claims": {}
+ },
+ "misses": [
+  {
+   "id": "CAL030",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.95,
+   "group": "legal",
+   "claim": "PPT kan stille ADHD-diagnose.",
+   "judge_reason": "Kilden beskriver PPTs oppgaver med støtte, veiledning og sakkyndige vurderinger, men sier ikke at PPT kan stille ADHD-diagnose."
+  },
+  {
+   "id": "CAL038",
+   "expected": "CONTRADICTED",
+   "got": "PARTIALLY_SUPPORTED",
+   "confidence": 0.96,
+   "group": "legal",
+   "claim": "Klagefristen på tvangsbehandling/medisinering i psykisk helsevern er 3 uker til Kontrollkommisjonen.",
+   "judge_reason": "Kilden støtter fristen på 3 uker, men sier at klageinstansen for tvangsbehandling/medisinering er Statsforvalteren, ikke Kontrollkommisjonen."
+  },
+  {
+   "id": "CAL047",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "numeric",
+   "claim": "Bostøtte søkes elektronisk via Husbankens eSøknad, og utbetalingen skjer den 25. i måneden.",
+   "judge_reason": "Kilden støtter elektronisk søknad via eSøknad, men motsier utbetalingsdatoen: den sier 20., ikke 25."
+  },
+  {
+   "id": "CAL053",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "numeric",
+   "claim": "Delt ordinær barnetrygd er 1 006 kroner per forelder, og delt utvidet barnetrygd er 1 006 kroner.",
+   "judge_reason": "Kravet oppgir feil delt sats for utvidet barnetrygd; kilden sier 1 286 kr/mnd, ikke 1 006 kroner."
+  },
+  {
+   "id": "CAL055",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.95,
+   "group": "local",
+   "claim": "RPH i Trondheim er gratis for alle over 18 år, og 16-17-åringer kan bruke RPH i Trondheim.",
+   "judge_reason": "Kilden sier at RPH ikke tilbys barn/unge under 18, som motsier påstanden om 16-17-åringer."
+  },
+  {
+   "id": "CAL056",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "group": "numeric",
+   "claim": "Barnetilsynsstønad dekker 64 prosent av dokumenterte utgifter, og det er inntektsgrense 4 G.",
+   "judge_reason": "Prosentsatsen støttes, men inntektsgrensen er feil kritisk tall: kilden sier 6 G, ikke 4 G."
+  },
+  {
+   "id": "CAL075",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.92,
+   "group": "temporal",
+   "claim": "Akuttvedtaket om omsorgsovertakelse gjelder i 9 uker.",
+   "judge_reason": "Kilden oppgir en frist på 6 uker, ikke 9 uker."
+  }
+ ],
+ "binary": {
+  "unsupported_total": 62,
+  "unsupported_to_supported_fp": 0,
+  "fp_rate": 0.0
+ }
+}

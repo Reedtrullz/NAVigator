@@ -1,0 +1,53 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V2_15-SEMANTIC-HUMAN-REVIEW-FALLBACK",
+  "task_family": "measurement-architecture",
+  "campaign": "NAV-EXPLORE-AFK-MEASUREMENT-SYSTEM-CAMPAIGN",
+  "campaign_stage": "2F",
+  "status": "SEMANTIC_HUMAN_REVIEW_FALLBACK_READY",
+  "created": "2026-09-14",
+  "authorization": "Pre-authorized autonomous progression per frozen AFK campaign contract; Stage 2F entered from terminal status V2_13_NO_FORBIDDEN_ROUTE_JUDGE_QUALIFIES",
+  "scope": [
+    "generic_human_review_envelope_for_all_semantic_dimensions",
+    "critical_condition",
+    "forbidden_claim",
+    "route_correctness",
+    "required_uncertainty"
+  ],
+  "hard_rules": {
+    "new_semantic_meaning_design_allowed": false,
+    "frozen_contract_reuse_required": true,
+    "automated_semantic_verdicts_before_human_review": 0,
+    "model_calls_required": 0,
+    "longcat_allowed": false,
+    "gpt_5_5_allowed": false,
+    "new_judge_model_screening_allowed": false,
+    "product_runtime_changes_allowed": false,
+    "historical_lineage_writes_allowed": false,
+    "gate_lowering_allowed": false,
+    "fresh_product_holdout_allowed": false,
+    "full_sut_allowed": false
+  },
+  "frozen_contracts_reused": {
+    "critical_condition": "semantic-judge-contract-v1-4",
+    "forbidden_claim": "semantic-judge-contract-v1-4",
+    "route_correctness": "semantic-judge-contract-v1-4",
+    "required_uncertainty": "semantic-judge-contract-v2-7e"
+  },
+  "terminal_statuses": [
+    "SEMANTIC_HUMAN_REVIEW_FALLBACK_READY",
+    "SEMANTIC_HUMAN_REVIEW_FALLBACK_FAILED"
+  ],
+  "predecessor_pins": {
+    "judge-selection-v2-13-forbidden-route-specialist/TASK-LOCK.json": "7ff91cf5ae9ce175ab576783db98d86935ba6d14a9e48d645a238b3d1628e2f9",
+    "judge-selection-v2-13-forbidden-route-specialist/comparison-freeze-v2-13.json": "98a657b3264911cfb7ecd6986e8261dcd07ad64082c5da4444290cee6ea6789c",
+    "judge-selection-v2-13-forbidden-route-specialist/judge_core_v2_13.py": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "measurement-v2-12-uncertainty-human-review/TASK-LOCK.json": "ab609a21124fec59e7667256b1e2c04fb1ac09430348cde9fd203cb289e96637",
+    "measurement-v2-12-uncertainty-human-review/review_lane_uncertainty_v2_12.py": "1ddfd23c108f3abaea068f2647fd6dad0ff86219249559025e6e5b0f23f80de1",
+    "judge-contract-v2-7e-uncertainty-repair/semantic-judge-contract-v2-7e.json": "7648039ea5706c279127c8ab72f459277a6e1adde7a7fa6724cc3a07f468a5c6",
+    "judge-contract-v2-7e-uncertainty-repair/uncertainty_derivation_v2_7e.py": "5d5ee2ae00b9f32db3c4f1a90e3d3a7d2aee3ce27833a706406ac730da82147f"
+  },
+  "stop_conditions": "campaign-contract list only; no candidate/transport semantics in this task (zero model calls)",
+  "closed_utc": "2026-09-14",
+  "manifest": "v2-15-manifest.json",
+  "manifest_sha256": "edf03d8d6ffb8b4fe5549e287c5acff40f5c93286be7a395646dcbfd07920450"
+}

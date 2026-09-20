@@ -1,0 +1,44 @@
+{
+  "artifact": "adapter_correctness_test_plan",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-PROVIDER-V2_1-ADAPTER-CORRECTNESS",
+  "frozen_before_implementation": true,
+  "frozen_at": "2026-09-09",
+  "test_file": "runtime/discovery_v2/tests_v21.py",
+  "existing_suites_untouched": [
+    "runtime/discovery/tests.py (V1, baseline 49/49)",
+    "runtime/discovery_v2/tests.py (V2, baseline 27/27)"
+  ],
+  "cases": [
+    {"id": "A", "desc": "curl exit 0 + HTTP 200 + legitimate parsed results", "expect": "SUCCESS", "never": ["NO_RESULTS"]},
+    {"id": "B", "desc": "curl exit 0 + HTTP 200 + legitimate empty valid HTML search page", "expect": "NO_RESULTS"},
+    {"id": "C", "desc": "curl exit 0 + HTTP 429 (any body, incl. challenge body)", "expect": "RATE_LIMITED", "never": ["NO_RESULTS", "SUCCESS"]},
+    {"id": "D", "desc": "curl exit 0 + HTTP 403 + challenge body", "expect": "BOT_BLOCKED", "never": ["NO_RESULTS"]},
+    {"id": "E", "desc": "curl exit != 0 with no valid HTTP response", "expect": "PROVIDER_UNAVAILABLE", "never": ["NO_RESULTS"]},
+    {"id": "F", "desc": "HTTP 200 + challenge marker after char 5000", "expect": "BOT_BLOCKED", "never": ["NO_RESULTS"]},
+    {"id": "G", "desc": "HTTP 200 + ordinary long HTML (>5000 chars, no markers)", "expect": "NO_RESULTS", "never": ["BOT_BLOCKED"]},
+    {"id": "H", "desc": "HTTP 200 + malformed/non-HTML provider body", "expect": "INVALID_RESPONSE", "never": ["NO_RESULTS"]}
+  ],
+  "fixture_cases": [
+    {
+      "id": "FIXTURE-001",
+      "fixture": "fixtures/brave-429-challenge-001.html",
+      "desc": "Real archived Brave challenge: curl exit 0, HTTP 429, 73731 bytes, markers first at pos 17276",
+      "expect_via_classify": "RATE_LIMITED",
+      "expect_via_provider_discover": "RATE_LIMITED",
+      "never": ["NO_RESULTS", "SUCCESS"]
+    }
+  ],
+  "transport_contract_cases": [
+    {"id": "T1", "desc": "dict-shaped fetch_fn transport result with http_status 429 drives classification; legacy (status, body) tuple still supported"},
+    {"id": "T2", "desc": "transport metadata (curl_exit, http_status, initial_url, final_url, num_redirects, body_truncated) attached to provider response attempts observability"},
+    {"id": "T3", "desc": "brave_fetch_fn parses structurally captured curl -w metadata (sentinel split); curl exit 0 + http_code 429 never becomes HTTP 200"},
+    {"id": "T4", "desc": "curl exit 28 -> TimeoutError -> TIMEOUT classification"},
+    {"id": "T5", "desc": "body truncated at 2 MiB with body_truncated flag; challenge scan capped at 2 MiB (response-size protection preserved)"}
+  ],
+  "invariant_cases": [
+    {"id": "INV1", "desc": "BOT_BLOCKED/RATE_LIMITED/PROVIDER_UNAVAILABLE/TIMEOUT/INVALID_RESPONSE are never folded into NO_RESULTS by classify_http_response"},
+    {"id": "INV2", "desc": "composite with only failing providers preserves failure status and DISCOVERY_INCOMPLETE execution (no NO_LOCAL_MATCH-as-complete-search)"}
+  ],
+  "regression_red_expectation": "Cases C, D, E, F, H, FIXTURE-001, T1-T5 fail against pre-fix implementation (exit-code-as-HTTP-status + 5000-char marker head)",
+  "implementation_pass_budget": "1 bounded implementation pass + max 1 general mechanical bugfix pass"
+}

@@ -1,0 +1,32 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_9-NON-M2-POST-DIAGNOSTIC-SCREENING",
+  "registry_status": "FROZEN",
+  "burned_sets": [
+    {
+      "name": "V2.9 calibration fixtures + results (iter1 + iter2)",
+      "reason": "Prompt iteration 2 was frozen using these 25 fixtures; burned model-development data.",
+      "files": ["calibration-fixtures-v2-9.json", "calibration-results-iter1.json", "calibration-results-iter2.json", "calibration-metrics-iter1.json", "calibration-metrics-iter2.json"]
+    },
+    {
+      "name": "V2.9 official 180-fixture screening set + gold",
+      "reason": "Official one-shot consumed; reusable only as regression fixtures, never as fresh screening evidence.",
+      "files": ["screening-fixtures.json", "screening-gold.json", "screening-results-deepseek.json", "screening-results-mimo.json"]
+    },
+    {
+      "name": "V2.8 burned benchmark",
+      "reason": "Consumed by V2.8 official run; V2.9 generated an entirely fresh 180-fixture set with 0 text collisions against 4340 historical texts.",
+      "reuse_in_v2_9": false
+    },
+    {
+      "name": "Semantic Judge V1.2 official 80-set",
+      "reason": "Burned contract-development data per V1.3 registry; no fixture or near-copy reused in V2.9.",
+      "reuse_in_v2_9": false
+    }
+  ],
+  "fresh_in_this_task": {
+    "official_fixture_count": 180,
+    "collision_checks": 358,
+    "collisions_vs_4340_historical_texts": 0,
+    "text_reuse_from_burned_sets": 0
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "artifact": "network_call_audit_v2_3_certification",
+  "certification_task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-V2_3-CANDIDATE-CERTIFICATION",
+  "external_search_calls": 0,
+  "definition": "External web search = third-party search engines (Brave/Tavily/Google/etc.). Certification probes fetched only burned authoritative hosts directly.",
+  "external_credential_required": false,
+  "credential_scrub": {
+    "presence_only": true,
+    "values_read": false,
+    "values_persisted": false,
+    "note": "scrub_credentials() ran on every certification process (replay, tests, live). .env.local was never opened by any certification process.",
+    "tavily_key_present_in_env_at_start": "not asserted (presence-only policy; not read)"
+  },
+  "probes_conducted": {
+    "dns": ["ralingen.bedreinnsats.no", "ralingen.bedinnsats.no", "www.raelingen.kommune.no", "raelingen.kommune.no", "www.ralingen.kommune.no"],
+    "http_direct": [
+      "https://ralingen.bedreinnsats.no/",
+      "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/frav%C3%A6rsveileder-revidert-2017.pdf",
+      "https://www.raelingen.kommune.no/",
+      "https://raelingen.kommune.no/",
+      "https://www.ralingen.kommune.no/",
+      "https://ralingen.bedinnsats.no/",
+      "https://www.raelingen.kommune.no/sitemap.xml",
+      "https://ralingen.bedreinnsats.no/sitemap.xml",
+      "https://ralingen.bedinnsats.no/sitemap.xml"
+    ],
+    "render": ["https://www.raelingen.kommune.no/", "https://ralingen.bedreinnsats.no/"],
+    "frozen_nav_links_read_only_execution": ["https://ralingen.bedreinnsats.no/"]
+  },
+  "prohibited_calls_check": {
+    "new_search_providers": 0,
+    "fresh_municipality_fetches": 0,
+    "hosts_probed_beyond_burned": 0,
+    "note": "All probed hosts are Raelingen burned-authoritative hosts; no other municipality or fresh domain was contacted."
+  },
+  "runtime_replay_and_live_audit": "The live re-certification run produces its own audited fetch list in live-burned-certification.json (runtime internal audit; external search hosts must be 0)."
+}

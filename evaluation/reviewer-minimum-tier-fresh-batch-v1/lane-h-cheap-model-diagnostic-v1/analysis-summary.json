@@ -1,0 +1,158 @@
+{
+  "artifact": "LANE-H-CHEAP-MODEL-DIAGNOSTIC-V1-COMPARISON",
+  "reference_kind": "AI_PROPOSED_REFERENCE (DEVELOPMENT_DIAGNOSTIC_ONLY)",
+  "views": {
+    "A": 109,
+    "B": 41,
+    "total": 150
+  },
+  "MIMO": {
+    "planned": 150,
+    "attempted": 150,
+    "status_counts": {
+      "OK": 115,
+      "INVALID_MODEL_REVIEW": 11,
+      "INVALID_JSON": 24
+    },
+    "completed_valid": 115,
+    "evidence_valid_mechanical": 115,
+    "views": {
+      "full": {
+        "planned": 150,
+        "completed_valid": 115,
+        "exact_label_match": 76,
+        "exact_label_match_over_planned": 0.5067,
+        "exact_label_match_over_completed": 0.6609
+      },
+      "A": {
+        "planned": 109,
+        "completed_valid": 81,
+        "exact_label_match": 62,
+        "exact_label_match_over_planned": 0.5688,
+        "exact_label_match_over_completed": 0.7654
+      },
+      "B": {
+        "planned": 41,
+        "completed_valid": 34,
+        "exact_label_match": 14,
+        "exact_label_match_over_planned": 0.3415,
+        "exact_label_match_over_completed": 0.4118
+      }
+    },
+    "confusion_reference_x_model": {
+      "CLEAR_TRIGGER_SUPPORT": {
+        "CLEAR_TRIGGER_SUPPORT": 27
+      },
+      "AMBIGUOUS_OR_CONFLICTING": {
+        "AMBIGUOUS_OR_CONFLICTING": 10,
+        "INSUFFICIENT_TO_DECIDE": 4,
+        "CLEAR_TRIGGER_SUPPORT": 12
+      },
+      "CLEAR_NON_TRIGGER_SUPPORT": {
+        "AMBIGUOUS_OR_CONFLICTING": 13,
+        "CLEAR_NON_TRIGGER_SUPPORT": 35,
+        "INSUFFICIENT_TO_DECIDE": 6
+      },
+      "INSUFFICIENT_TO_DECIDE": {
+        "CLEAR_NON_TRIGGER_SUPPORT": 4,
+        "INSUFFICIENT_TO_DECIDE": 4
+      }
+    },
+    "latency": {
+      "n": 115,
+      "median_s": 26.5,
+      "p95_s": 48.8,
+      "max_s": 60.4
+    },
+    "usage_totals_valid_rows": {
+      "prompt_tokens": 66821,
+      "completion_tokens": 188043,
+      "total_tokens": 254864
+    },
+    "cost_basis": "included local-proxy access; observed billing UNKNOWN (not $0)"
+  },
+  "DEEPSEEK": {
+    "planned": 150,
+    "attempted": 150,
+    "status_counts": {
+      "OK": 150
+    },
+    "completed_valid": 150,
+    "evidence_valid_mechanical": 150,
+    "views": {
+      "full": {
+        "planned": 150,
+        "completed_valid": 150,
+        "exact_label_match": 104,
+        "exact_label_match_over_planned": 0.6933,
+        "exact_label_match_over_completed": 0.6933
+      },
+      "A": {
+        "planned": 109,
+        "completed_valid": 109,
+        "exact_label_match": 99,
+        "exact_label_match_over_planned": 0.9083,
+        "exact_label_match_over_completed": 0.9083
+      },
+      "B": {
+        "planned": 41,
+        "completed_valid": 41,
+        "exact_label_match": 5,
+        "exact_label_match_over_planned": 0.122,
+        "exact_label_match_over_completed": 0.122
+      }
+    },
+    "confusion_reference_x_model": {
+      "CLEAR_TRIGGER_SUPPORT": {
+        "CLEAR_TRIGGER_SUPPORT": 28,
+        "INSUFFICIENT_TO_DECIDE": 2
+      },
+      "AMBIGUOUS_OR_CONFLICTING": {
+        "CLEAR_TRIGGER_SUPPORT": 26,
+        "AMBIGUOUS_OR_CONFLICTING": 3,
+        "CLEAR_NON_TRIGGER_SUPPORT": 1
+      },
+      "CLEAR_NON_TRIGGER_SUPPORT": {
+        "UNRESOLVED": 4,
+        "CLEAR_NON_TRIGGER_SUPPORT": 71,
+        "AMBIGUOUS_OR_CONFLICTING": 2,
+        "INSUFFICIENT_TO_DECIDE": 2
+      },
+      "INSUFFICIENT_TO_DECIDE": {
+        "CLEAR_NON_TRIGGER_SUPPORT": 9,
+        "INSUFFICIENT_TO_DECIDE": 2
+      }
+    },
+    "latency": {
+      "n": 150,
+      "median_s": 16.1,
+      "p95_s": 22.6,
+      "max_s": 54.9
+    },
+    "usage_totals_valid_rows": {
+      "prompt_tokens": 98104,
+      "completion_tokens": 108826,
+      "total_tokens": 206930
+    },
+    "cost_basis": "included local-proxy access; observed billing UNKNOWN (not $0)"
+  },
+  "paired": {
+    "both_eligible": 115,
+    "both_match_reference": 62,
+    "only_mimo_matches": 14,
+    "only_deepseek_matches": 16,
+    "both_deviate_same_label": 16,
+    "both_deviate_different_labels": 7,
+    "missing_or_invalid_any": 35
+  },
+  "view_B_paired_hits": {
+    "both_eligible": 34,
+    "mimo_proposed_hit": 14,
+    "mimo_alternative_hit": 16,
+    "mimo_other": 4,
+    "deepseek_proposed_hit": 4,
+    "deepseek_alternative_hit": 29,
+    "deepseek_other": 1,
+    "note": "alternative hit is reported separately and is not counted as extra correct"
+  }
+}

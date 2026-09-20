@@ -1,0 +1,35 @@
+{
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A-BOUNDARY-PRECLASSIFIER",
+  "status": "V1_6A_BOUNDARY_PRECLASSIFIER_NOT_READY",
+  "frozen_at_date": "2026-09-11",
+  "scope": "high_precision_abstaining_boundary_preclassifier",
+  "semantic_contract_changes_allowed": false,
+  "v1_4_gold_changes_allowed": false,
+  "historical_changes_allowed": false,
+  "judge_model_search_allowed": false,
+  "judge_model_calls_allowed": false,
+  "product_runtime_changes_allowed": false,
+  "full_sut_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "threshold_derivation_allowed": false,
+  "prior_terminal_status": "V1_5A_NO_MODEL_MEETS_SELECTION_FLOOR",
+  "model_search_status": "MODEL_SEARCH_PAUSED",
+  "data_policy": {
+    "v1_4_official_100": "BURNED_MODEL_SELECTION_DATA (diagnosis/boundary examples/replay only)",
+    "v1_5a_candidate_results": "BURNED_MODEL_SELECTION_DATA (same)",
+    "fresh_validation_use_of_burned_data": "FORBIDDEN"
+  },
+  "terminal_status_reason": "route_commitment family precision 0.9778 < 0.98 on official 120-fixture one-shot (single false deterministic VR-H-08); bounded bugfix budget spent pre-official; no rule edits permitted after official run start",
+  "terminal_at_date": "2026-09-11",
+  "gates_passed": [
+    "unit_suite_67_67",
+    "annotation_agreement_1_0_all_families",
+    "overall_precision_ge_0_99",
+    "safety_false_deterministic_zero",
+    "evidence_span_validity_100",
+    "coverage_ge_0_50_soft"
+  ],
+  "gates_failed": [
+    "route_commitment_family_precision_ge_0_98"
+  ]
+}

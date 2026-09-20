@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1",
+  "type": "object",
+  "required": ["task_id", "sample_source", "retrieved_date", "municipality_count", "municipalities"],
+  "properties": {
+    "task_id": { "const": "NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1" },
+    "sample_source": { "type": "string" },
+    "retrieved_date": { "const": "2026-09-08" },
+    "municipality_count": { "const": 24 },
+    "centralitetsklasse_distribution": {
+      "type": "object",
+      "required": ["1", "2", "3", "4", "5", "6"],
+      "additionalProperties": { "const": 4 }
+    },
+    "municipalities": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": { "$ref": "#/definitions/municipality" }
+    }
+  },
+  "definitions": {
+    "municipality": {
+      "type": "object",
+      "required": ["kommunenummer", "kommune", "ssb_sentralitetsklasse", "services", "rph", "psychologist", "scenarios"],
+      "properties": {
+        "kommunenummer": { "type": "string", "pattern": "^[0-9]{4}$" },
+        "kommune": { "type": "string" },
+        "fylke": { "type": "string" },
+        "region": { "type": "string" },
+        "ssb_sentralitetsklasse": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "previously_researched": { "type": "boolean" },
+        "services": { "type": "array", "items": { "$ref": "#/definitions/service" } },
+        "rph": {
+          "type": "object",
+          "required": ["classification"],
+          "properties": {
+            "classification": { "enum": ["OWN_RPH", "INTERMUNICIPAL_RPH", "OTHER_RPH_ACCESS", "NO_RPH_FOUND", "UNCLEAR"] },
+            "age_text": { "type": ["string", "null"] },
+            "details": { "type": "string" },
+            "source_url": { "type": ["string", "null"] }
+          }
+        },
+        "psychologist": {
+          "type": "object",
+          "required": ["delivery_model"],
+          "properties": {
+            "delivery_model": { "enum": ["direct_to_residents", "embedded_internal", "via_team_only", "intermunicipal", "purchased_service", "no_public_documentation_found"] },
+            "details": { "type": "string" },
+            "source_url": { "type": ["string", "null"] }
+          }
+        },
+        "scenarios": {
+          "type": "object",
+          "required": ["A", "B", "C", "D"],
+          "additionalProperties": { "$ref": "#/definitions/routability" }
+        },
+        "scenario_notes": { "type": "object" },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "const": "POTENTIAL_LOCAL_NATIONAL_CONFLICT" },
+              "quote": { "type": "string" },
+              "source_url": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "service": {
+      "type": "object",
+      "required": ["service_name", "service_category", "source_url", "source_title", "retrieved_date", "confidence", "self_referral", "cost", "diagnostic_service", "waiting_time_published"],
+      "properties": {
+        "service_name": { "type": "string" },
+        "service_category": { "enum": ["A", "B", "C", "D", "E", "F", "G", "H"] },
+        "target_age_min": { "type": ["integer", "null"] },
+        "target_age_max": { "type": ["integer", "null"] },
+        "target_age_text": { "type": ["string", "null"] },
+        "target_group": { "type": ["string", "null"] },
+        "problem_severity": { "type": ["string", "null"] },
+        "self_referral": { "enum": ["direkte", "skjema", "fastlege", "annen_fagperson", "unclear", "unknown"] },
+        "referral_required": { "enum": ["yes", "no", "unclear", "unknown"] },
+        "who_can_refer": { "type": ["string", "null"] },
+        "cost": { "enum": ["gratis", "egenandel", "ukjent", "unknown"] },
+        "contact_method": { "type": ["string", "null"] },
+        "phone": { "type": ["string", "null"] },
+        "digital_contact": { "type": ["string", "null"] },
+        "drop_in": { "enum": ["yes", "no", "unclear", "unknown"] },
+        "opening_hours": { "type": ["string", "null"] },
+        "physical_location": { "type": ["string", "null"] },
+        "requires_residency": { "enum": ["yes", "no", "unclear", "unknown"] },
+        "waiting_time_published": { "type": "boolean" },
+        "waiting_time_value": { "type": ["number", "string", "null"] },
+        "waiting_time_unit": { "type": ["string", "null"] },
+        "urgent_service": { "enum": ["yes", "no", "unclear", "unknown"] },
+        "diagnostic_service": { "enum": ["diagnoser", "ikke_diagnoser", "ikke_opplyst", "unknown"] },
+        "treatment_service": { "type": ["string", "null"] },
+        "guidance_service": { "type": ["string", "null"] },
+        "family_service": { "type": ["string", "null"] },
+        "source_url": { "type": "string" },
+        "source_title": { "type": "string" },
+        "source_published_date": { "type": ["string", "null"] },
+        "retrieved_date": { "const": "2026-09-08" },
+        "confidence": { "enum": ["high", "medium", "low"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "routability": { "enum": ["CLEAR_LOCAL_ROUTE", "MULTIPLE_VALID_ROUTES", "LOCAL_ROUTING_UNCLEAR", "NO_MATCHING_LOCAL_SERVICE_FOUND"] }
+  }
+}

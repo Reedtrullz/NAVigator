@@ -1,0 +1,417 @@
+{
+  "task_role": "audit_B",
+  "date": "2026-09-09",
+  "municipalities": [
+    {
+      "kommune": "Drammen",
+      "kommunenummer": "3301",
+      "queries_used": [
+        "Drammen kommune psykisk helse voksne Rask psykisk helsehjelp kommunepsykolog",
+        "Drammen kommune ungdom psykisk helse 18 23 hjelp",
+        "site:drammen.kommune.no \"Rask psykisk helsehjelp\"",
+        "site:drammen.kommune.no psykisk helse og rus voksne kontakt",
+        "\"Drammen kommune\" \"Rask psykisk helsehjelp\" \"948 17 041\"",
+        "\"Drammen\" \"Ungdomstorget\" \"13 og 25\" kommune",
+        "\"Drammen\" \"Helsestasjon for ungdom\" \"13 og 24\"",
+        "\"Drammen kommune\" \"lavterskeltilbud\" psykisk helse over 18"
+      ],
+      "services_found": [
+        {
+          "name": "Rask psykisk helsehjelp",
+          "target_group": "Personer over 16 år med vanlige angst- og depresjonsplager eller utfordringer rundt stress, rus og søvn; tilbudet beskriver milde til moderate plager.",
+          "age_coverage": "Over 16 år",
+          "access_model": "Direkte selvkontakt; henvisning er ikke nødvendig",
+          "contact": "94 81 70 41; rph@drammen.kommune.no; telefontid tirsdag og torsdag 09.00-12.00; Wergelandsgate 10",
+          "evidence": {
+            "url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+            "verbatim_quote": "Rask psykisk helsehjelp er et gratis behandlingstilbud for personer over 16 år som opplever vanlige angst- og depresjonsplager eller utfordringer rundt stress, rus og søvn. ... Ved Rask psykisk helsehjelp tilbyr vi kurs, gruppebehandling, veiledet selvhjelp og et begrenset antall timer samtaleterapi til innbyggere som opplever milde til moderate plager som angst, nedstemthet, stress, bekymring eller søvnproblemer. ... Vi ønsker at innbyggeren selv tar kontakt med oss. Henvisning til Rask psykisk helse er ikke nødvending. ... Telefon: 94 81 70 41",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Helsestasjon for ungdom Drammen",
+          "target_group": "Ungdom som ønsker råd eller samtale om blant annet psykisk helse.",
+          "age_coverage": "Fra 13 år til fylte 25 år",
+          "access_model": "Drop-in uten timebestilling",
+          "contact": "40 82 34 82; Amtmand Bloms gate 1; drop-in mandag 15.00-19.00 og tirsdag-fredag 12.00-15.00",
+          "evidence": {
+            "url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/drammen/helsestasjon-for-ungdom-drammen/",
+            "verbatim_quote": "Helsestasjon for ungdom er et gratis tilbud til ungdom fra 13 år og fram til du fyller 25 år. Helsesykepleier er alltid tilstede og det er ingen timebestilling. ... Samtale om noe du synes er vanskelig å snakke om, som for eksempel: ... stress, sorg, angst, depresjon ... Drop in ... Mandag: 15.00 –19.00 ... Tirsdag–fredag: 12.00 – 15.00 ... Telefon 40 82 34 82",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Ungdomstorget",
+          "target_group": "Unge som bor i Drammen og trenger samtale, råd eller hjelp til å finne videre instans.",
+          "age_coverage": "13-25 år",
+          "access_model": "Drop-in eller avtale; ingen forhåndsbestilling nødvendig",
+          "contact": "40 91 70 30; ungdomstorget@drammen.kommune.no; Grønland 60, inngang Fabrikkgata",
+          "evidence": {
+            "url": "https://www.drammen.kommune.no/tjenester/sosiale-tjenester/ungdomstorget/",
+            "verbatim_quote": "Ungdomstorget kan hjelpe deg som er mellom 13 og 25 år, og som bor i Drammen. Har du behov for å snakke med noen eller trenger hjelp til noe, kan Ungdomstorget bistå. ... Du trenger ikke å bestille time på forhånd, og du vil bli møtt av en av oss som jobber på «torget» når du kommer til oss. ... Telefon 40 91 70 30",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ta direkte kontakt med Rask psykisk helsehjelp på telefon eller via kommunens påmelding/e-post, og be om introduksjonskurs og videre kortvarig oppfølging.",
+        "selected_service": "Rask psykisk helsehjelp",
+        "eligibility": "19 år er innenfor aldersgrensen over 16 år, og moderate angst-/depresjons-, stress-, bekymrings- eller søvnplager er uttrykkelig omtalt. Scenarioet er ikke akutt, i tråd med tjenestens avgrensning.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "94 81 70 41 tirsdag/torsdag 09.00-12.00; rph@drammen.kommune.no; Wergelandsgate 10",
+        "evidence_strength": "STRONG",
+        "fallback": "Helsestasjon for ungdom er et dokumentert alternativ for 19-åringen; fastlege/legevakt gjelder ved akutt behov eller hvis RPH ikke passer.",
+        "evidence": {
+          "url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+          "verbatim_quote": "Rask psykisk helsehjelp er et gratis behandlingstilbud for personer over 16 år ... Ved Rask psykisk helsehjelp tilbyr vi kurs, gruppebehandling, veiledet selvhjelp og et begrenset antall timer samtaleterapi til innbyggere som opplever milde til moderate plager ... Tjenesten er ikke et akuttilbud. Ved behov for akutt hjelp, ring fastlegen eller legevakta 116 117. ... Vi ønsker at innbyggeren selv tar kontakt med oss. Henvisning til Rask psykisk helse er ikke nødvending.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Kommunens side anbefaler skoleelever å starte hos helsesykepleier/HFU, men RPH-siden dokumenterer selvkontakt og alders-/symptommatch for dette scenarioet."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ta direkte kontakt med Rask psykisk helsehjelp; dette er kommunens eksplisitt dokumenterte lavterskel- og korttidsrute for ikke-akutte moderate plager.",
+        "selected_service": "Rask psykisk helsehjelp",
+        "eligibility": "22 år er innenfor aldersgrensen over 16 år. Tjenesten er laget for milde til moderate plager og krever ikke henvisning.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "94 81 70 41 tirsdag/torsdag 09.00-12.00; rph@drammen.kommune.no; Wergelandsgate 10",
+        "evidence_strength": "STRONG",
+        "fallback": "Ungdomstorget eller HFU kan gi lavterskel samtale/råd for aldersgruppen; fastlege/legevakt ved akutt behov.",
+        "evidence": {
+          "url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+          "verbatim_quote": "Rask psykisk helsehjelp er et gratis behandlingstilbud for personer over 16 år ... Tilbudet egner seg for deg som er motivert for å jobbe med endringsarbeid. Behandlingen er kortvarig og du kan selv ta kontakt. ... Telefon: 94 81 70 41",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "HFU og Ungdomstorget er bredere ungdomstjenester, men RPH har den tydeligste dokumentasjonen for rask, lavterskel psykisk helsehjelp til en 22-åring."
+      },
+      "missing_query_concepts": ["ventetid og faktisk kapasitet i RPH", "detaljert inntakskriterium for 22-åringer som ikke er studenter", "oppdatert drop-in-status for Ungdomstorget"],
+      "general_notes": "Drammens egne sider var tilgjengelige via oppdaterte URL-er etter at eldre søketreff ga foreldede stier. Ingen akutt rute er vurdert som hovedrute fordi begge scenariene er ikke-akutte."
+    },
+    {
+      "kommune": "Bamble",
+      "kommunenummer": "4012",
+      "queries_used": [
+        "Bamble kommune psykisk helse voksne Rask psykisk helsehjelp kommunepsykolog",
+        "Bamble kommune ungdom psykisk helse 18 23 hjelp",
+        "site:bamble.kommune.no \"psykisk helse\" voksne kontakt",
+        "site:bamble.kommune.no \"helsestasjon for ungdom\"",
+        "site:bamble.kommune.no \"Rask psykisk helsehjelp\" Bamblehjelpa",
+        "site:bamble.kommune.no \"milde til moderate\" psykisk Bamblehjelpa",
+        "site:bamble.kommune.no \"Bamblehjelpa\" \"direkte\" kontakt",
+        "site:bamble.kommune.no \"Bamblehjelpa\" telefon",
+        "site:bamble.kommune.no \"Helsestasjon for ungdom\" \"13\" \"23\"",
+        "site:bamble.kommune.no \"Helsestasjon for ungdom\" \"drop-in\" Bamble 2026",
+        "site:bamble.kommune.no \"samtaleterapeut\" \"Helsestasjon for ungdom\""
+      ],
+      "services_found": [
+        {
+          "name": "Bamblehjelpa",
+          "target_group": "Innbyggere i alle aldre som ønsker endring i livssituasjonen; tjenesten tilbyr blant annet individuelle samtaler.",
+          "age_coverage": "0-100 år",
+          "access_model": "Direkte selvkontakt",
+          "contact": "48 16 50 77; hverdager 10.00-14.00; Reidunsvei 37, Stathelle",
+          "evidence": {
+            "url": "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/hva-gjor-bamblehjelpa/",
+            "verbatim_quote": "Bamblehjelpa er en lavterskel helsetjeneste der du selv kan ta kontakt dersom du ønsker endring i din livssituasjon. Vi er en tjeneste fra 0-100 år ... Individuelle samtaler og samtaler med nettverket ditt ... Tilbudet er gratis.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Rask psykisk helsehjelp (RPH) i samarbeid med Frisk Bris og Bamblehjelpa",
+          "target_group": "Personer med psykiske plager som gjør det vanskelig å fungere i jobb eller hverdag.",
+          "age_coverage": "Ikke spesifisert på den aktuelle tjenestesiden",
+          "access_model": "Lavterskel; samarbeidet er koblet til Bamblehjelpa",
+          "contact": "Kontakt via Bamblehjelpa, 48 16 50 77",
+          "evidence": {
+            "url": "https://www.bamble.kommune.no/barn-unge-og-familie/folkehelse/frisk-bris/",
+            "verbatim_quote": "Rask psykisk helsehjelp (RPH) Dette er et gratis tilbud for en kort periode. Vi tilbyr kartlegging og behandling for personer med psykiske plager som gjør det vanskelig å fungere i jobb eller hverdag. Tilbudet er et samarbeid mellom Frisk Bris og Bamblehjelpa. Vi bruker ulike metoder: gruppetilbud, trening, veiledet selvhjelp og individuelle samtaler.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Helsestasjon for ungdom (HFU)",
+          "target_group": "Ungdom som ønsker samtale, råd eller veiledning om fysisk, psykisk eller seksuell helse.",
+          "age_coverage": "13-23 år",
+          "access_model": "Drop-in uten timebestilling",
+          "contact": "47 67 47 31 i åpningstiden; tirsdag 14.00-16.00 og torsdag 14.00-17.00; 2. etasje Bamble ungdomsskole",
+          "evidence": {
+            "url": "https://www.bamble.kommune.no/barn-unge-og-familie/helsetjenester-for-barn-unge-og-familier/helsestasjon-for-ungdom/",
+            "verbatim_quote": "Et lavterskel, drop-in-tilbud for deg mellom 13 og 23 år ... Du trenger ikke gå på skole for å komme på HFU ... Vi har ingen timebestilling og våre tjenester er gratis ... Samtale om psykisk helse ... Telefonnummer: 47 67 47 31 (besvares i åpningstiden)",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Bamblehjelpa drop-in samtale for voksne",
+          "target_group": "Alle som bor i Bamble og er 18 år eller eldre; én samtale med terapeut.",
+          "age_coverage": "18+",
+          "access_model": "Direkte selvkontakt, men time må bestilles på forhånd",
+          "contact": "48 16 50 77; onsdager; telefon eller oppmøte",
+          "evidence": {
+            "url": "https://www.bamble.kommune.no/aktuelt/drop-in-en-time-nar-du-trenger-det.3934.aspx",
+            "verbatim_quote": "Bamble kommune starter nå et nytt, gratis drop-in samtaletilbud for voksne. ... Selv om det kalles drop-in, er det viktig at du bestiller time på forhånd ... Timen kan gjennomføres enten på telefon eller ved oppmøte i våre lokaler ... Tilbudet er for alle som bor i Bamble og er 18 år eller eldre.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ta selv kontakt med Bamblehjelpa på teamtelefonen og be om individuell samtale; 19-åringen kan også bruke HFU som direkte drop-in-alternativ.",
+        "selected_service": "Bamblehjelpa",
+        "eligibility": "19 år er innenfor Bamblehjelpas oppgitte 0-100-årsgruppe og siden dokumenterer selvkontakt, individuell samtale og gratis tilbud. Den kommunale siden spesifiserer ikke en egen terskel for moderate plager.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "48 16 50 77, hverdager 10.00-14.00",
+        "evidence_strength": "MEDIUM",
+        "fallback": "HFU er et dokumentert 13-23-årstilbud med psykisk helsesamtale og drop-in; RPH kan kontaktes via samarbeidet med Bamblehjelpa.",
+        "evidence": {
+          "url": "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/hva-gjor-bamblehjelpa/",
+          "verbatim_quote": "Bamblehjelpa er en lavterskel helsetjeneste der du selv kan ta kontakt dersom du ønsker endring i din livssituasjon. Vi er en tjeneste fra 0-100 år ... Individuelle samtaler og samtaler med nettverket ditt ... Tilbudet er gratis.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "HFU har tydeligere alders- og drop-in-dokumentasjon, mens Bamblehjelpa har tydeligere dokumentasjon for individuell psykisk helseoppfølging."
+      },
+      "scenario_D": {
+        "best_documented_route": "Bestill én direkte samtale hos Bamblehjelpa drop-in på 48 16 50 77; tjenesten er for voksne 18+ og kan gjennomføres på telefon eller ved oppmøte.",
+        "selected_service": "Bamblehjelpa drop-in samtale for voksne",
+        "eligibility": "22 år og bosatt i Bamble oppfyller den uttrykkelige 18+- og bostedskriterien. Det er lavterskel selvkontakt, men siden sier at timen må bestilles på forhånd.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "48 16 50 77; onsdager; bestill på forhånd; telefon eller oppmøte",
+        "evidence_strength": "STRONG",
+        "fallback": "Bamblehjelpa/RPH for videre kortvarig kartlegging eller behandling dersom én samtale ikke er nok.",
+        "evidence": {
+          "url": "https://www.bamble.kommune.no/aktuelt/drop-in-en-time-nar-du-trenger-det.3934.aspx",
+          "verbatim_quote": "Tilbudet vil ha drop-in-timer hver onsdag fremover. ... Selv om det kalles drop-in, er det viktig at du bestiller time på forhånd ... Det blir et lavterskeltilbud – en samtale der du kan få støtte akkurat der du er nå. ... Tilbudet er for alle som bor i Bamble og er 18 år eller eldre.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Bamble kommunes side omtaler dette som et voksen-tilbud og viser til HFU som ungdomsalternativ; 22-åringen passer derfor direkte i voksenruten."
+      },
+      "missing_query_concepts": ["RPHs aktuelle alders- og bostedskriterier på selve tjenestesiden", "ventetid og kapasitet", "om onsdagstilbudet har ferieavvik eller andre begrensninger etter september 2026"],
+      "general_notes": "Bamble har både et bredt 0-100-årstilbud, et 13-23-års HFU og et eksplisitt 18+-samtaletilbud. Drop-in-navnet må ikke tolkes som at oppmøte uten booking er garantert; den aktuelle siden krever forhåndsbestilling."
+    },
+    {
+      "kommune": "Bjerkreim",
+      "kommunenummer": "1114",
+      "queries_used": [
+        "Bjerkreim kommune psykisk helse voksne Rask psykisk helsehjelp",
+        "Bjerkreim kommune ungdom psykisk helse helsestasjon for ungdom",
+        "site:bjerkreim.kommune.no psykisk helse kontakt voksne",
+        "site:bjerkreim.kommune.no \"helsestasjon for ungdom\"",
+        "site:bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/ \"unge voksne\"",
+        "site:bjerkreim.kommune.no \"ta direkte kontakt\" \"psykisk helsetjeneste\"",
+        "site:bjerkreim.kommune.no \"psykisk helsetjeneste\" \"404\"",
+        "site:bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/ \"Anita Driftland\"",
+        "site:bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/ \"psykisk helse\" \"Telefon\"",
+        "site:bjerkreim.kommune.no \"Avdeling mestring\" \"Nestleder psykisk helse\""
+      ],
+      "services_found": [
+        {
+          "name": "Psykisk helsetjeneste / Avdeling Mestring",
+          "target_group": "Innbyggere med psykiske helse- eller rusrelaterte utfordringer; siden beskriver lette, moderate og mer komplekse vansker.",
+          "age_coverage": "Unge fra 16 år og voksne; Avdeling Mestring-siden beskriver innbyggere generelt",
+          "access_model": "Direkte kontakt; søknad/henvisning er ikke angitt som krav på den målrettede barn/unge-siden",
+          "contact": "404 44 911; hverdager 08.00-15.00; Helsesenteret, Kodleberget 20",
+          "evidence": {
+            "url": "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+            "verbatim_quote": "Avdeling Mestring tilbyr tjenester til innbyggere i Bjerkreim kommune som opplever psykiske helseutfordringer og/eller rusrelaterte utfordringer. ... Vi gir hjelp både ved lette, moderate og mer komplekse vansker, og tilpasser oppfølgingen etter dine behov. ... Kontaktinformasjon ... Åpningstid: Hverdager kl. 08.00–15.00 ... Telefon: 404 44 911",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Helsestasjon for ungdom (HFU) i Bjerkreim",
+          "target_group": "Ungdom som ønsker hjelp med små eller store helseproblemer og utfordringer, blant annet angst/stress.",
+          "age_coverage": "13-20 år på den aktuelle HFU-siden",
+          "access_model": "Selvkontakt via telefon eller Helsenorge; tid avtales",
+          "contact": "Telefon eller Helsenorge; kontaktpersoner på siden inkluderer 40 44 49 19 og 51 20 11 57",
+          "evidence": {
+            "url": "https://www.bjerkreim.kommune.no/tjenester/barnevern-barnehage-helsestasjon-og-skule/helsestasjon/helsestasjon-for-ungdom/",
+            "verbatim_quote": "Helsestasjon for ungdom er et gratis tilbud for deg mellom 13 og 20 år. Tilbudet skal være enkelt å oppsøke, og en plass der du blir tatt på alvor med dine små og store helseproblemer og utfordringer. ... For å avtale tid, ta kontakt med en av oss på telefon eller Helsenorge. ... angst/stress",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ta direkte kontakt med Avdeling Mestring/Psykisk helsetjeneste på 404 44 911 og be om kartlegging og individuell oppfølging.",
+        "selected_service": "Psykisk helsetjeneste / Avdeling Mestring",
+        "eligibility": "Kommunens barn- og ungeside sier uttrykkelig at psykisk helsetjeneste er et gratis tilbud for voksne og unge fra 16 år, og at man kan ta direkte kontakt ved milde til moderate symptomer. Avdeling Mestrings aktuelle side dekker også moderate vansker.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "404 44 911, hverdager 08.00-15.00, Helsesenteret Kodleberget 20",
+        "evidence_strength": "STRONG",
+        "fallback": "HFU er et dokumentert 13-20-årsalternativ via telefon/Helsenorge; Avdeling Mestring oppgir at behov kan kartlegges og eventuelt henvises videre.",
+        "evidence": {
+          "url": "https://www.bjerkreim.kommune.no/tjenester/barnevern-barnehage-helsestasjon-og-skule/helsestasjon/barn-og-unges-helsetjeneste/",
+          "verbatim_quote": "Utfordringer knyttet til psykisk helse for barn og unge håndteres i hovedsak av helsestasjonen, mens unge voksne følges opp av psykisk helsetjeneste. Psykisk helsetjeneste i Bjerkreim er et gratis helsetilbud for voksne og unge fra 16 år. Du kan ta direkte kontakt dersom du opplever milde til moderate symptomer på angst eller depresjon, stress, belastninger, begynnende rusproblemer eller søvnvansker.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Det er en aldersforskjell mellom den eldre barn/unge-siden som omtaler HFU 16-19 og den nyere dedikerte HFU-siden som omtaler 13-20. Psykisk helsetjeneste har den tydeligste dokumentasjonen for 19-åringens moderate plager."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ta direkte kontakt med Avdeling Mestring/Psykisk helsetjeneste på 404 44 911; dette er den tydeligst dokumenterte lavterskelruten for en 22-åring.",
+        "selected_service": "Psykisk helsetjeneste / Avdeling Mestring",
+        "eligibility": "22 år er innenfor kommunens uttrykkelige dekning av voksne og unge fra 16 år. Siden beskriver direkte kontakt og moderat psykisk helse som målgruppe.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "404 44 911, hverdager 08.00-15.00, Helsesenteret Kodleberget 20",
+        "evidence_strength": "STRONG",
+        "fallback": "Avdeling Mestring oppgir kartlegging og eventuell videre henvisning dersom behovet går utover tilbudet.",
+        "evidence": {
+          "url": "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+          "verbatim_quote": "Vi gir hjelp både ved lette, moderate og mer komplekse vansker, og tilpasser oppfølgingen etter dine behov. ... Individuell oppfølging. Vi tilbyr samtaler og individuell oppfølging ... Kartlegging av behov og eventuell videre henvisning ... Åpningstid: Hverdager kl. 08.00–15.00 ... Telefon: 404 44 911",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Bjerkreim-siden dokumenterer både direkte kontakt og en egen voksen/unge-voksen-rute; ingen henvisning er oppgitt som forutsetning."
+      },
+      "missing_query_concepts": ["om direkte kontakt skjer via søknadsskjema eller telefon for alle nye voksne", "forventet svartid/ventetid", "om HFU kan brukes av personer som bor i Bjerkreim men ikke går på skole"],
+      "general_notes": "Bjerkreim har en oppdatert målrettet side for Avdeling Mestring med telefon og åpningstid, samt en nyere HFU-side som dokumenterer telefon/Helsenorge."
+    },
+    {
+      "kommune": "Etnedal",
+      "kommunenummer": "3450",
+      "queries_used": [
+        "Etnedal kommune psykisk helse voksne Rask psykisk helsehjelp",
+        "Etnedal kommune ungdom psykisk helse helsestasjon for ungdom",
+        "site:etnedal.kommune.no psykisk helse kontakt",
+        "site:etnedal.kommune.no \"helsestasjon for ungdom\""
+      ],
+      "services_found": [
+        {
+          "name": "Psykisk helsetjeneste / psykisk helsearbeid",
+          "target_group": "Alle, inkludert barn, ungdom, voksne og pårørende, som opplever psykiske utfordringer eller rusutfordringer.",
+          "age_coverage": "Alle aldre",
+          "access_model": "Direkte kontakt; ingen henvisning fra lege eller andre instanser",
+          "contact": "Ring eller SMS: Mona Bjørnstad Dagfinrud 932 40 782; Annhild Småladen Espelien 950 19 059; Andrea Hagen 957 33 214; Ragni Haug 990 91 344; Gro Elisabeth Bråten 948 74 326. Åpningstid mandag-fredag 08.00-16.00, 08.00-15.30 mai-september.",
+          "evidence": {
+            "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+            "verbatim_quote": "Vi i psykisk helsetjeneste tilbyr samtaler og oppfølging om man opplever psykiske utfordringer og/eller utfordringer i forhold til rus. ... Alle kan ta kontakt å få hjelp hos oss. Du trenger ikke henvisning fra lege eller andre instanser ... Tjenesten er gratis, tilbudet gis til alle – barn, ungdom, voksne og til alle pårørende. Du kan ta kontakt ved å ringe eller sende SMS. ... du vil få tilbud om samtale innen kort tid.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Helsestasjon for ungdom i Etnedal",
+          "target_group": "Ungdom som ønsker råd, veiledning eller videre hjelp; siden nevner blant annet vanskelige tanker, følelser og bekymringer.",
+          "age_coverage": "Opp til 20 år",
+          "access_model": "Henvendelse til helsesykepleier; ingen faste HFU-åpningstider",
+          "contact": "May Britt Småladen 979 61 991; Hege Lundstein 481 89 206; Etnedal helsestasjon",
+          "evidence": {
+            "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/helsestasjons-og-skulehelsetjenesten/",
+            "verbatim_quote": "Helsestasjon for ungdom er et gratis tilbud om helsehjelp til alle ungdommer opp til 20 år. Etnedal kommune har ingen helsestasjon for ungdom med faste åpningstider, men helsesjukepleier kan ta imot henvendelser og bistå med råd og veiledning, samt henvise videre til andre fagpersoner ved behov.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ring eller send SMS til Etnedal psykiske helsetjeneste og be om samtale; tjenesten oppgir at alle kan ta kontakt uten henvisning og får tilbud om samtale innen kort tid.",
+        "selected_service": "Psykisk helsetjeneste / psykisk helsearbeid",
+        "eligibility": "19 år er innenfor tjenestens oppgitte dekning av alle aldre. Direkte kontakt uten henvisning er uttrykkelig dokumentert, og samtaler/oppfølging dekker psykiske utfordringer.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Ring eller SMS til psykisk helsetjeneste; eksempelvis 950 19 059 eller 957 33 214; hverdager 08.00-16.00",
+        "evidence_strength": "STRONG",
+        "fallback": "HFU er et alternativ opp til 20 år, men har ingen faste åpningstider; kommunen oppgir legevakt 116 117 utenom psykisk helsetjenestes åpningstid.",
+        "evidence": {
+          "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+          "verbatim_quote": "Alle kan ta kontakt å få hjelp hos oss. Du trenger ikke henvisning fra lege eller andre instanser ... Tjenesten er gratis, tilbudet gis til alle – barn, ungdom, voksne og til alle pårørende. Du kan ta kontakt ved å ringe eller sende SMS. ... Vi svarer så raskt som mulig og du vil få tilbud om samtale innen kort tid.",
+          "retrieved_date": "2026-09-09"
+        },
+        "fallback_evidence": {
+          "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+          "verbatim_quote": "Vi har ikke døgntilbud, så skulle du ha behov for å prate med noen utenom arbeidstiden vår, ring et av numrene nedenfor: Legevakt: 116 117",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Etnedal har ikke fast HFU-drop-in, men den ordinære psykiske helsetjenesten er dokumentert som direkte, gratis og tilgjengelig for alle aldre."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ring eller send SMS til Etnedal psykiske helsetjeneste; dette er den klart dokumenterte direkte ruten for rask/lavterskel hjelp til en 22-åring.",
+        "selected_service": "Psykisk helsetjeneste / psykisk helsearbeid",
+        "eligibility": "22 år er innenfor alle-aldre-dekningen. Ingen henvisning kreves, og kommunen oppgir tilbud om samtale innen kort tid.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Ring eller SMS til psykisk helsetjeneste; eksempelvis 950 19 059 eller 957 33 214; hverdager 08.00-16.00",
+        "evidence_strength": "STRONG",
+        "fallback": "Kommunen oppgir legevakt 116 117 utenom psykisk helsetjenestes åpningstid ved behov for helsehjelp.",
+        "evidence": {
+          "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+          "verbatim_quote": "Vi i psykisk helsetjeneste tilbyr samtaler og oppfølging om man opplever psykiske utfordringer ... Alle kan ta kontakt å få hjelp hos oss. Du trenger ikke henvisning fra lege eller andre instanser ... Vi svarer så raskt som mulig og du vil få tilbud om samtale innen kort tid.",
+          "retrieved_date": "2026-09-09"
+        },
+        "fallback_evidence": {
+          "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+          "verbatim_quote": "Vi har ikke døgntilbud, så skulle du ha behov for å prate med noen utenom arbeidstiden vår, ring et av numrene nedenfor: Legevakt: 116 117",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Siden dokumenterer ikke konkret ventetid i dager, bare formuleringen «innen kort tid»; dette er derfor en dokumentert rute, ikke en garanti om rask time."
+      },
+      "missing_query_concepts": ["konkret antall dager til første samtale", "hvem som prioriteres ved kapasitetsmangel", "detaljert informasjon om Nord-Aurdal HFU som interkommunalt alternativ"],
+      "general_notes": "Etnedals egen psykiske helsetjeneste gir den beste dokumenterte dekningen for begge scenarier. HFU-siden er relevant for 19-åringen, men uten faste åpningstider."
+    },
+    {
+      "kommune": "Balsfjord",
+      "kommunenummer": "5532",
+      "queries_used": [
+        "Balsfjord kommune psykisk helse voksne Rask psykisk helsehjelp",
+        "Balsfjord kommune ungdom psykisk helse helsestasjon for ungdom",
+        "site:balsfjord.kommune.no psykisk helse kontakt voksne",
+        "site:balsfjord.kommune.no \"Rask psykisk\""
+      ],
+      "services_found": [
+        {
+          "name": "Barne-, ungdoms- og familieteamet",
+          "target_group": "Barn, ungdom og unge voksne med lette til moderate psykiske plager; teamet tilbyr kartlegging, støttesamtaler og behandling.",
+          "age_coverage": "0-25 år",
+          "access_model": "Ungdom kan selv ta kontakt; faginstanser kan også sende henvisningsskjema",
+          "contact": "404 48 737 eller 453 55 161; teamet holder til under Helse- og familieenheten",
+          "evidence": {
+            "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+            "verbatim_quote": "Barne-, ungdoms- og familieteamet er en del av lavterskeltilbudet for barn og unge i Balsfjord kommune. Teamets formål er å fremme god psykisk helse, og gi rask psykisk helsehjelp til barn og ungdom i alderen 0-25 år. ... Kartlegging av psykiske plager ... Støttesamtaler og behandling for lette til moderate psykiske plager ... Foresatte og ungdom kan selv ta kontakt via telefon (404 48 737 eller 453 55 161) ... Tilbudet er gratis og frivillig.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ta selv kontakt med Barne-, ungdoms- og familieteamet på 404 48 737 eller 453 55 161 og be om kartlegging/støttesamtale.",
+        "selected_service": "Barne-, ungdoms- og familieteamet",
+        "eligibility": "19 år er innenfor teamets uttrykkelige 0-25-årsdekning, moderate plager er uttrykkelig nevnt, og ungdom kan selv ta kontakt. Tilbudet er gratis og frivillig.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "404 48 737 eller 453 55 161",
+        "evidence_strength": "STRONG",
+        "fallback": "Ved akutt behov oppgir teamet fastlege eller legevakt 116 117; teamet kan ellers vurdere videre rute.",
+        "evidence": {
+          "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+          "verbatim_quote": "Teamets formål er å fremme god psykisk helse, og gi rask psykisk helsehjelp til barn og ungdom i alderen 0-25 år. ... Støttesamtaler og behandling for lette til moderate psykiske plager ... Foresatte og ungdom kan selv ta kontakt via telefon (404 48 737 eller 453 55 161) ... Tilbudet er gratis og frivillig.",
+          "retrieved_date": "2026-09-09"
+        },
+        "fallback_evidence": {
+          "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+          "verbatim_quote": "Ved behov for akutt psykisk helsehjelp, ta kontakt med din fastlege eller legevakt på telefon 116 117.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Den kommunale siden bruker betegnelsen barn og ungdom, men aldersgrensen er eksplisitt 0-25 år og dekker derfor 19-åringen."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ta selv kontakt med Barne-, ungdoms- og familieteamet på 404 48 737 eller 453 55 161; dette er kommunens dokumenterte lavterskelrute for unge voksne til og med 25 år.",
+        "selected_service": "Barne-, ungdoms- og familieteamet",
+        "eligibility": "22 år er innenfor 0-25-årsdekningen. Siden beskriver rask psykisk helsehjelp, selvkontakt, gratis/frivillig tilbud og støttesamtaler/behandling for lette til moderate plager.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "404 48 737 eller 453 55 161",
+        "evidence_strength": "STRONG",
+        "fallback": "Ved akutt psykisk helsehjelp oppgir kommunen fastlege eller legevakt 116 117.",
+        "evidence": {
+          "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+          "verbatim_quote": "Teamets formål er å fremme god psykisk helse, og gi rask psykisk helsehjelp til barn og ungdom i alderen 0-25 år. ... Foresatte og ungdom kan selv ta kontakt via telefon (404 48 737 eller 453 55 161) ... Tilbudet er gratis og frivillig.",
+          "retrieved_date": "2026-09-09"
+        },
+        "fallback_evidence": {
+          "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+          "verbatim_quote": "Ved behov for akutt psykisk helsehjelp, ta kontakt med din fastlege eller legevakt på telefon 116 117.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Balsfjord-siden dokumenterer aldersdekning til 25 år, men ikke en egen voksenetikett; aldersmatchen er likevel direkte og eksplisitt."
+      },
+      "missing_query_concepts": ["konkret svartid etter kontakt", "om 22-åringer håndteres av samme team uten skole-/familiekobling", "eventuelle åpningstider for telefonhenvendelser"],
+      "general_notes": "Balsfjord har en særlig tydelig 0-25-årsrute med selvkontakt og behandling av lette til moderate plager. Siden sier at teamet møtes annenhver uke for å fordele henvendelser, men gir ikke en konkret ventetid."
+    }
+  ]
+}

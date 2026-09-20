@@ -1,0 +1,64 @@
+{
+  "task_id": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-2",
+  "status": "TERMINAL",
+  "authorization": "EXPLICIT OWNER AUTHORIZATION - FULL SUT IMPLEMENTATION PHASE 2",
+  "source_baseline": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-1 (FULL_SUT_PHASE_1_READY)",
+  "phase1_task_lock": {
+    "path": "evaluation/full-sut-implementation/TASK-LOCK.json",
+    "status": "TERMINAL",
+    "terminal_status": "FULL_SUT_PHASE_1_READY",
+    "frozen": true
+  },
+  "phase1_freeze_manifest": {
+    "path": "evaluation/full-sut-implementation/phase1-freeze/hashes.txt",
+    "hashes_verified": 19,
+    "verified_at": "2026-09-14"
+  },
+  "measurement_v3_manifest_sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+  "product_llm_calls": 0,
+  "product_llm_calls_allowed": false,
+  "output_schema_changes_allowed": false,
+  "phase1_mutations_allowed": false,
+  "architecture_v1_mutations_allowed": false,
+  "measurement_v3_mutations_allowed": false,
+  "evaluator_lineage_mutations_allowed": false,
+  "official_prediction_mutations_allowed": false,
+  "gpt_5_5_allowed": false,
+  "longcat_allowed": false,
+  "subagents_max": 2,
+  "fresh_municipalities_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "phase3_allowed": false,
+  "llm_answer_generation_allowed": false,
+  "full_semantic_scoring_allowed": false,
+  "structural_burned_dev_run_allowed": true,
+  "structural_burned_dev_run": {
+    "corpus": "evaluation/dev-corpus-v1",
+    "case_total": 120,
+    "label": "STRUCTURAL_BURNED_DEV_RUN",
+    "semantic_scoring": false
+  },
+  "deliverables_dir": "evaluation/full-sut-implementation-phase2/",
+  "terminal_statuses": [
+    "FULL_SUT_PHASE_2_READY",
+    "FULL_SUT_PHASE_2_NOT_READY",
+    "PHASE_2_OUTPUT_SCHEMA_GAP_REQUIRES_OWNER_DECISION",
+    "FULL_SUT_PHASE_2_INVALID"
+  ],
+  "created": "2026-09-14"
+  ,
+  "terminal_status": "FULL_SUT_PHASE_2_READY",
+  "terminal_evidence": {
+    "final_report": "evaluation/full-sut-implementation-phase2/final-report.md",
+    "freeze_manifest": "evaluation/full-sut-implementation-phase2/phase2-freeze-manifest.json",
+    "freeze_manifest_sha256": "f47b997d90b82c6c2bd7ecd387fc91d2783109d6374afb8429d9ae77ebd59cff",
+    "gates": {
+      "unit": "112/112 OK",
+      "phase1_regressions": 0,
+      "integration": "22/22, 8/8 hard gates PASS",
+      "structural_120": "120/120, 0 crashes, 0 gold leakage",
+      "security": "PASS"
+    },
+    "closed_at": "2026-09-14"
+  }
+}

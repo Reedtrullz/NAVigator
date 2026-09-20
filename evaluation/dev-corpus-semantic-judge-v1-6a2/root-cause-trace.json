@@ -1,0 +1,138 @@
+{
+  "artifact": "root-cause-trace.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A2-ROUTE-GROUNDING-REPAIR",
+  "engine_under_trace": {
+    "lineage": "evaluation/dev-corpus-semantic-judge-v1-6a1",
+    "source": "boundary_preclassifier.py",
+    "sha256": "40d85f3173839c3fe6a727aaf17e38a536734fd92007c1043dafa356c7de768d",
+    "frozen": true
+  },
+  "diagnostic_fixture": {
+    "id": "ADV-11",
+    "source_lineage": "evaluation/dev-corpus-semantic-judge-v1-6a1/targeted-validation-fixtures.json",
+    "status": "BURNED_DIAGNOSTIC_ONLY (contract section 6)",
+    "full_input": "Fastlegen er riktig inngang. Ungdomssenteret kan hjelpe."
+  },
+  "clause_boundaries": [
+    {
+      "text": "Fastlegen er riktig inngang.",
+      "start": 0,
+      "end": 28
+    },
+    {
+      "text": "Ungdomssenteret kan hjelpe.",
+      "start": 28,
+      "end": 56
+    }
+  ],
+  "route_service_noun_candidates": {
+    "inventory_terms_found": [
+      {
+        "term": "fastlege",
+        "start": 0,
+        "end": 8,
+        "clause_index": 0,
+        "inventory_status": "IN_INVENTORY"
+      }
+    ],
+    "service_nouns_as_engine_computed": [
+      {
+        "noun": "ungdomssenteret",
+        "start": 29,
+        "end": 44,
+        "inventory_status": "NEVER_EVALUATED - engine guard 'unknown = [] if route else _unknown_service_nouns(...)' skips noun scan when any inventory term present"
+      }
+    ],
+    "service_nouns_ground_truth": [
+      {
+        "noun": "ungdomssenteret",
+        "start": 29,
+        "end": 44,
+        "inventory_status": "OUT_OF_INVENTORY - stem 'senter' not covered by any ROUTE_TERMS hit",
+        "clause_index": 1
+      }
+    ]
+  },
+  "operator_census": {
+    "assertion_markers": [
+      {
+        "marker": "riktig inngang",
+        "start": 13,
+        "end": 27,
+        "clause_index": 0
+      }
+    ],
+    "hedge_markers": [],
+    "negation_markers": [],
+    "retraction_markers": [],
+    "quote_markers": [],
+    "conditional_markers": [],
+    "vague_markers": [
+      {
+        "marker": "hjelp",
+        "start": 49,
+        "end": 54,
+        "clause_index": 1
+      },
+      {
+        "marker": "hjelpe",
+        "start": 49,
+        "end": 55,
+        "clause_index": 1
+      }
+    ]
+  },
+  "rule_evaluation_trace": {
+    "BC_ROUTE_UNKNOWN_SERVICE_01": {
+      "fired": false,
+      "why": "guard evaluates unknown nouns only when no inventory route term exists anywhere in output; inventory term 'fastlege' in clause 0 suppressed the scan for 'ungdomssenteret' in clause 1"
+    },
+    "BC_ROUTE_QUOTE_CONFLICT_01": {
+      "fired": false,
+      "why": "no quote markers"
+    },
+    "BC_ROUTE_QUOTED_01": {
+      "fired": false,
+      "why": "no quote markers"
+    },
+    "BC_ROUTE_SELF_RETRACTED_01": {
+      "fired": false,
+      "why": "no retraction markers"
+    },
+    "BC_ROUTE_NEGATED_01": {
+      "fired": false,
+      "why": "no negation markers"
+    },
+    "BC_ROUTE_HYPOTHETICAL_01": {
+      "fired": false,
+      "why": "no conditional markers"
+    },
+    "BC_ROUTE_HEDGED_01": {
+      "fired": false,
+      "why": "no hedge markers"
+    },
+    "BC_ROUTE_ASSERTED_01": {
+      "fired": true,
+      "why": "assertion marker 'riktig inngang' present at output level; no clause-locality check relates operator to a specific route proposition",
+      "evidence_span": "riktig inngang"
+    },
+    "BC_ROUTE_VAGUE_01": {
+      "fired": false,
+      "why": "vague markers require 'not route'; inventory term present so vague path disabled even though clause 1 contains 'hjelpe'"
+    }
+  },
+  "final_engine_output": {
+    "rule_id": "BC_ROUTE_ASSERTED_01",
+    "label": "ASSERTED",
+    "evidence_span": "riktig inngang",
+    "deterministic": true
+  },
+  "why_deterministic_instead_of_abstain": [
+    "1. Whole-output rule evaluation: all marker sets are computed over the full text; no clause/proposition scoping exists in the engine.",
+    "2. Operator-noun decoupling: BC_ROUTE_ASSERTED_01 fires on any assertion marker anywhere, licensing a deterministic label for the whole output regardless of which clause's route noun it grounds.",
+    "3. Suppressed unknown-noun guard: the out-of-inventory guard (V1.6A.1 fix) is bypassed whenever an unrelated inventory term appears in another clause, so 'ungdomssenteret' is never tested.",
+    "4. No competition check: two route propositions in one output are never compared for whether both can be grounded; clause 1 (inventory noun + assertion) silently absorbs clause 2 (unknown noun + vague capability wording)."
+  ],
+  "root_cause_class": "CROSS_CLAUSE_OPERATOR_LEAK",
+  "generalized_failure_condition": "A deterministic route label may be emitted when an operator in one clause licenses a route proposition while a different clause contains a service noun that cannot be grounded by any high-precision rule. The engine cannot see clause boundaries, so the ungrounded proposition is invisible."
+}

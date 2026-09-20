@@ -1,0 +1,25 @@
+{
+  "artifact": "route-funnel-gold-blind",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-3-V1",
+  "created_utc": "2026-09-16T18:55:34Z",
+  "scope": "gold-blind structural funnel; semantic stages (R3 wrong service family, R4 wrong access path) are not measurable without gold and are explicitly excluded",
+  "candidate_version": "v1",
+  "runs_dir": "runs/structural-120-replay-v1/",
+  "cases_total": 120,
+  "stages": {
+    "R0_NO_STRUCTURED_ROUTE": 92,
+    "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 28
+  },
+  "by_family": {
+    "routing": {"R0_NO_STRUCTURED_ROUTE": 52, "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 23},
+    "safety": {"R0_NO_STRUCTURED_ROUTE": 18, "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 2},
+    "discovery_adversarial": {"R0_NO_STRUCTURED_ROUTE": 22, "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 3}
+  },
+  "route_entries_total": 39,
+  "route_entries_with_track_binding_and_provenance": 39,
+  "distinct_route_labels": 24,
+  "fragment_like_route_labels": ["routing/ROUT-040", "routing/ROUT-072", "routing/ROUT-083", "safety/SAF-009"],
+  "junk_route_labels": [],
+  "semantic_stages_not_measurable_gold_blind": ["R3_WRONG_SERVICE_FAMILY", "R4_WRONG_ACCESS_PATH"],
+  "note": "R3PLUS_STRUCTURAL_PASS_CANDIDATE means a valid structured route with track binding and provenance rendered; family/access correctness remains semantic and is reserved for Measurement V3 in a separate owner-authorized task"
+}

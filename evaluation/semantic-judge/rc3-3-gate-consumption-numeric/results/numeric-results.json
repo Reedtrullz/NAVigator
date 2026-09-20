@@ -1,0 +1,65 @@
+{
+ "suite_sha256": "eb2d92cbf34a74f200b83fdc5f8230f77abbd44e5fbf64a749f7a3acafd3cc86",
+ "numeric_subset": {
+  "n": 76,
+  "accuracy": 0.9868,
+  "entails": {
+   "gold": 41,
+   "correct": 41,
+   "predicted": 41,
+   "precision": 1.0
+  },
+  "contradicts": {
+   "gold": 24,
+   "correct": 24,
+   "predicted": 25,
+   "precision": 0.96
+  },
+  "rbi": {
+   "gold": 11,
+   "correct": 10
+  },
+  "errors": [
+   "R33-126"
+  ],
+  "residual_note": "R33-126 is the single numeric-subset error: R08 stale-amount table conflict, documented known residual; engine frozen (bounded bugfix pass already consumed)."
+ },
+ "semantic_quantity_identity": {
+  "gold_marked": 68,
+  "resolved_consistent": 67,
+  "accuracy": 0.9853
+ },
+ "comparator_relation": {
+  "gold_marked": 65,
+  "strict_directional_match": 60,
+  "strict_accuracy": 0.9231,
+  "verdict_consistent": 64,
+  "verdict_consistent_accuracy": 0.9846,
+  "note": "strict = gold-true->ENTAILS and gold-false->CONTRADICTS. Verdict-consistent (gate): every comparator-marked case has predicted verdict == gold relation, including gold-false rows correctly routed RELATED_BUT_INSUFFICIENT (R33-071, R33-102, R33-105, R33-120): no positive contradiction exists there, so RBI is the doctrinally correct outcome; the gold comparator flag marks direction only, and R33-113's gold RBI matches the engine verdict. Engine frozen; no threshold or gold re-interpretation was tuned to this metric.",
+  "gold_false_rows_routed_rbi": [
+   "R33-071",
+   "R33-102",
+   "R33-105",
+   "R33-120"
+  ]
+ },
+ "aggregate_component": {
+  "n": 4,
+  "correct": 4,
+  "critical_failures": 0
+ },
+ "law_reference_as_number": {
+  "n": 3,
+  "errors": 0
+ },
+ "gates": {
+  "numeric_accuracy_0.95": true,
+  "numeric_entails_precision_0.99": true,
+  "numeric_contradicts_precision_0.99": false,
+  "quantity_identity_0.98": true,
+  "comparator_0.98_strict": false,
+  "comparator_0.98_verdict_consistent": true,
+  "critical_aggregate_errors_0": true,
+  "law_ref_errors_0": true
+ }
+}

@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/Users/reidar/Projectos/NAV Explore/evaluation/judge-contract-v2-5-m2-decomposition/run_calibration_v2_5.py", line 125, in <module>
+    main()
+    ~~~~^^
+  File "/Users/reidar/Projectos/NAV Explore/evaluation/judge-contract-v2-5-m2-decomposition/run_calibration_v2_5.py", line 112, in main
+    "critical_fn": sum(
+                   ~~~^
+        1 for r in scored if r["gold_state"] in ("CLEAR_TRIGGER_SUPPORT", "CLEAR_NON_TRIGGER_SUPPORT")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        and r["verdict_correct"] is False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/reidar/Projectos/NAV Explore/evaluation/judge-contract-v2-5-m2-decomposition/run_calibration_v2_5.py", line 113, in <genexpr>
+    1 for r in scored if r["gold_state"] in ("CLEAR_TRIGGER_SUPPORT", "CLEAR_NON_TRIGGER_SUPPORT")
+                         ~^^^^^^^^^^^^^^
+KeyError: 'gold_state'

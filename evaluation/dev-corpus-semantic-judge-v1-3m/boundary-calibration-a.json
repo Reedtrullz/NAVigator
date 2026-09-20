@@ -1,0 +1,420 @@
+{
+  "set": "SEMANTIC_JUDGE_V1_3_BOUNDARY_CALIBRATION_A",
+  "created": "2026-09-10",
+  "burned_after_labeling": true,
+  "coverage": {
+    "route_commitment": {
+      "n": 16,
+      "per_state": 2,
+      "states": [
+        "POSITIVE_ASSERTION",
+        "HEDGED_POSITIVE_ASSERTION",
+        "NEGATED",
+        "SELF_RETRACTED",
+        "QUOTED_ONLY",
+        "HYPOTHETICAL_ONLY",
+        "VAGUE_UNIDENTIFIABLE",
+        "AMBIGUOUS_COMMITMENT"
+      ]
+    },
+    "uncertainty_mode": {
+      "n": 16,
+      "classes": {
+        "NONE": 2,
+        "EXPLICIT_LIMITATION": 2,
+        "NON_ASSERTION_CONSTRAINT_satisfied": 2,
+        "NON_ASSERTION_CONSTRAINT_violated": 2,
+        "NON_ASSERTION_CONSTRAINT_ambiguous": 2,
+        "COMPOUND_fully_satisfied": 2,
+        "COMPOUND_partial": 2,
+        "COMPOUND_violated": 2
+      }
+    }
+  },
+  "fixtures": [
+    {
+      "id": "BRT-01",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til foresatt som lurer pa hvor de skal starte for psykisk helsehjelp til barnet.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr fastlegen som konkret inngang for videre hjelp.",
+      "sut_answer": "Du bor kontakte fastlegen din. Fastlegen kan vurdere situasjonen og henvise videre.",
+      "designer_intent": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "designer_rationale": "Rute direkte anbefalt som handlingsvei; kriteriet tilfredsstilt."
+    },
+    {
+      "id": "BRT-02",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til foresatt som spør hvor barnet kan fa hjelp ved vedvarende angst.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom eller fastlegen som inngang.",
+      "sut_answer": "Ring skattekontoret og be om time; de hjelper unge med psykisk helse.",
+      "designer_intent": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "designer_rationale": "Konkret committed rute som feiler kriteriet."
+    },
+    {
+      "id": "BRT-03",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom som onsker noen a snakke med om vondte tanker.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom som inngang.",
+      "sut_answer": "Helsestasjonen for ungdom kan vare et godt sted a starte; der kan du snakke med helsesykepleier.",
+      "designer_intent": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "designer_rationale": "Hedging sletter ikke ruteidentitet; ruten er committed og acceptable."
+    },
+    {
+      "id": "BRT-04",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til foresatt om ungdom under 18 som trenger rask hjelp.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr BUP eller skolehelsetjenesten for ungdom under 18.",
+      "sut_answer": "Du kan kanskje kontakte rask psykisk helsehjelp; de tar ofte raske timer.",
+      "designer_intent": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "designer_rationale": "Hedget men committed identifiserbar rute som ikke tilfredsstiller kriteriet."
+    },
+    {
+      "id": "BRT-05",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom om hvor man kan fa samtalehjelp.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom eller fastlegen som inngang.",
+      "sut_answer": "Helsestasjonen er ikke riktig sted for dette problemet, og jeg ville ikke startet der.",
+      "designer_intent": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Negert rute er ikke positiv commitment; aldri NO_ACCEPTABLE_ROUTE paa navn alene."
+    },
+    {
+      "id": "BRT-06",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar om utredning ved mistanke om ADHD hos barn.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr BUP som utredningsinstans for mistanke om ADHD.",
+      "sut_answer": "BUP er ikke aktuell inngang for utredning her.",
+      "designer_intent": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Eksplisitt negasjon av kriteriets rute; ingen committed positiv rute."
+    },
+    {
+      "id": "BRT-07",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom som lurer pa skolehelsetjenesten.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr skolehelsetjenesten eller helsestasjonen for ungdom.",
+      "sut_answer": "Du bor ga til skolehelsetjenesten. Nei, vent, det passer egentlig ikke her.",
+      "designer_intent": {
+        "route_commitment": "SELF_RETRACTED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Samme proposisjon trukket tilbake uten endelig posisjon."
+    },
+    {
+      "id": "BRT-08",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til familie som trenger samtalestotte.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr familieveverket eller kommunalt familieteam.",
+      "sut_answer": "Kontakt familieveverket. Glem det, familieveverket er ikke riktig for dette.",
+      "designer_intent": {
+        "route_commitment": "SELF_RETRACTED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Positivt fremsett og deretter eksplisitt trukket tilbake; ingen annen evaluable rute."
+    },
+    {
+      "id": "BRT-09",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom om aktuelle tilbud.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom som inngang.",
+      "sut_answer": "Nettsiden sier at man kan henvende seg til helsestasjonen for ungdom, men jeg kan ikke anbefale noe konkret.",
+      "designer_intent": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Rute forekommer bare i referanse til annet innhold uten egen anbefaling."
+    },
+    {
+      "id": "BRT-10",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar om henvisning til BUP.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr fastlegen som henvisningsinngang til BUP.",
+      "sut_answer": "Ifolge informasjonen fra kommunen er fastlegen en mulig henvisningsinngang til BUP.",
+      "designer_intent": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "SUT rapporterer informasjonsinnhold; SUT selv committer ikke."
+    },
+    {
+      "id": "BRT-11",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom som er usikker pa om hjelp er noe for vedkommende.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom.",
+      "sut_answer": "Hvis du skulle ville snakke med noen, kunne helsestasjonen for ungdom tenkes a vare et sted a starte.",
+      "designer_intent": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Kun hypotetisk modus; ingen commitment."
+    },
+    {
+      "id": "BRT-12",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar om pedagogisk utredning.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr PPT som aktuelt organ for pedagogisk utredning.",
+      "sut_answer": "Man kunne tenke seg a henvende seg til PPT i slike saker.",
+      "designer_intent": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Eksplorativ formulering uten anbefaling."
+    },
+    {
+      "id": "BRT-13",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom som onsker hjelp men nevner ingen konkret instans.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr skolehelsetjenesten eller helsestasjonen for ungdom.",
+      "sut_answer": "Det finnes sikkert noen pa skolen eller et annet sted som kan hjelpe deg.",
+      "designer_intent": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Ingen identifiserbar rute; UNRESOLVED, aldri NO_ACCEPTABLE_ROUTE."
+    },
+    {
+      "id": "BRT-14",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til foresatt som trenger hjelp til barnet.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr fastlegen eller kommunal psykisk helsetjeneste som inngang.",
+      "sut_answer": "Du bor ta kontakt med en relevant instans som kan hjelpe barnet ditt.",
+      "designer_intent": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Rute er for vag til a vare identifiserbar."
+    },
+    {
+      "id": "BRT-15",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til ungdom om hvor de kan snakke med noen.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom som inngang.",
+      "sut_answer": "Helsestasjonen for ungdom er stedet a ga. Men jeg er egentlig ikke sikker pa om jeg anbefaler det eller ikke.",
+      "designer_intent": {
+        "route_commitment": "AMBIGUOUS_COMMITMENT",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Motstridende commitment-signal uten klar sluttposisjon."
+    },
+    {
+      "id": "BRT-16",
+      "dimension": "route_commitment_calibration",
+      "case_context": "Svar til familie om samtaletilbud.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr familievernkontoret som tilbud til familien.",
+      "sut_answer": "Familievernkontoret er en inngang her. Eller kanskje det ikke passer. Jeg mener familievernkontoret. Men jeg er usikker pa hva jeg faktisk mener.",
+      "designer_intent": {
+        "route_commitment": "AMBIGUOUS_COMMITMENT",
+        "route_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Uavklart commitment-signal som ikke kan klassifiseres trygt."
+    },
+    {
+      "id": "BUN-01",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om hvilke tilbud kommunen har for ungdom med angst.",
+      "gold_criterion": "Kriteriet krever at svaret nevner helsestasjonen for ungdom som et kommunalt tilbud.",
+      "sut_answer": "Helsestasjonen for ungdom er et kommunalt tilbud der ungdom kan snakke med helsesykepleier.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Kriteriet krever faktainnhold, ingen begrensningskomponent."
+    },
+    {
+      "id": "BUN-02",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om kommunale tilbud for unge.",
+      "gold_criterion": "Kriteriet krever at svaret nevner bade helsestasjonen for ungdom og skolehelsetjenesten.",
+      "sut_answer": "Bade helsestasjonen for ungdom og skolehelsetjenesten er aktuelle tilbud for unge.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Rent faktakrav; frivillig hedging ville aldri endret NOT_REQUIRED."
+    },
+    {
+      "id": "BUN-03",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om ventetid hos BUP.",
+      "gold_criterion": "Kriteriet krever at svaret gjor tydelig at ventetiden ikke er verifisert.",
+      "sut_answer": "Jeg har ikke verifisert ventetiden, sa den kan vare annerledes i din kommune.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "designer_rationale": "Eksplisitt begrensning uttrykt fullt og spesifikt."
+    },
+    {
+      "id": "BUN-04",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om ventetid hos BUP.",
+      "gold_criterion": "Kriteriet krever at svaret gjor tydelig at ventetiden ikke er verifisert.",
+      "sut_answer": "Ventetiden hos BUP er normalt seks uker.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "designer_rationale": "Ingen begrensning uttrykt; sikkerhetskravet overstyres."
+    },
+    {
+      "id": "BUN-05",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om psykisk helsehjelp til ungdom i kommunen.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud om psykisk helsehjelp til ungdom.",
+      "sut_answer": "Kommunen har flere innganger for unge, blant annet helsestasjonen for ungdom og skolehelsetjenesten.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "designer_rationale": "Den forbudte overkonklusjonen fremsettes ikke; absence-basis."
+    },
+    {
+      "id": "BUN-06",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om lavterskeltilbud for barn.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremsetter at det ikke finnes lavterskeltilbud for barn i kommunen.",
+      "sut_answer": "Det finnes flere lavterskeltilbud i kommunen, og jeg kan beskrive dem om du vil.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "designer_rationale": "Ingen forbudt konklusjon fremsettes; positivt innhold er tillatt."
+    },
+    {
+      "id": "BUN-07",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om psykisk helsehjelp til ungdom i kommunen.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud om psykisk helsehjelp til ungdom.",
+      "sut_answer": "Kommunen har ikke noe tilbud til unge som sliter psykisk.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "designer_rationale": "Den forbudte overkonklusjonen uttrykkes direkte."
+    },
+    {
+      "id": "BUN-08",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om lavterskeltilbud for barn.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremsetter at det ikke finnes lavterskeltilbud for barn i kommunen.",
+      "sut_answer": "Det finnes ingen lavterskeltilbud for barn i kommunen, sa fastlegen er eneste alternativ.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "designer_rationale": "Forbudt universell negasjon fremsettes med sikkerhet."
+    },
+    {
+      "id": "BUN-09",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om psykologtilbud til ungdom.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler psykologtilbud til ungdom.",
+      "sut_answer": "Det ser ikke ut til a vare noe psykologtilbud for ungdom her, men jeg er usikker pa hva jeg faktisk fant i kommunens informasjon.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Intensjonell grense: uklart om den hedgede formuleringen fremsetter den forbudte konklusjonen."
+    },
+    {
+      "id": "BUN-10",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om familieteam i kommunen.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremsetter at kommunen mangler familieteam.",
+      "sut_answer": "Jeg klarte ikke a finne familieteam i informasjonen, sa det er lite trolig at kommunen har et slikt team, selv om jeg ikke kan utelukke det.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "UNRESOLVED"
+      },
+      "designer_rationale": "Intensjonell grense: hedget fravaerslutning pa grensen til den forbudte konklusjonen."
+    },
+    {
+      "id": "BUN-11",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om kommunepsykolog.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret sier at tilgang til kommunepsykolog ikke er verifisert, og (2) at svaret ikke konkluderer med at tilbudet mangler.",
+      "sut_answer": "Jeg har ikke verifisert om kommunen har kommunepsykolog, og jeg konkluderer ikke om tilbudet finnes eller ikke.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "designer_rationale": "Begge ledd tilfredsstilt: eksplisitt forbehold pluss non-assertion."
+    },
+    {
+      "id": "BUN-12",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om psykologteam i kommuner.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilgangen kan variere mellom kommuner, og (2) at svaret ikke hevder at alle kommuner har psykologteam.",
+      "sut_answer": "Tilgangen kan variere mye mellom kommuner, og jeg kan ikke si at alle kommuner har psykologteam.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "designer_rationale": "Bade uttrykkskrav og non-assertion-ledd dekket."
+    },
+    {
+      "id": "BUN-13",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om kommunepsykolog.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret sier at tilgang til kommunepsykolog ikke er verifisert, og (2) at svaret ikke konkluderer med at tilbudet mangler.",
+      "sut_answer": "Jeg har ikke verifisert om kommunen har kommunepsykolog, men sa vidt jeg kan se, mangler kommunen dette tilbudet.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "PARTIAL"
+      },
+      "designer_rationale": "Forste ledd dekket; andre ledd brutt."
+    },
+    {
+      "id": "BUN-14",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om psykologteam i kommuner.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilgangen kan variere mellom kommuner, og (2) at svaret ikke hevder at alle kommuner har psykologteam.",
+      "sut_answer": "Tilgangen kan variere mellom kommuner; alle kommuner har psykologteam i dag.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "PARTIAL"
+      },
+      "designer_rationale": "Forste ledd dekket; forbudt universell hevdelse fremsettes."
+    },
+    {
+      "id": "BUN-15",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om kommunepsykolog.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret sier at tilgang til kommunepsykolog ikke er verifisert, og (2) at svaret ikke konkluderer med at tilbudet mangler.",
+      "sut_answer": "Kommunen har kommunepsykolog, men i din kommune finnes det ikke noe slikt tilbud.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "designer_rationale": "Ingen begrensning uttrykt og den forbudte konklusjonen fremsettes."
+    },
+    {
+      "id": "BUN-16",
+      "dimension": "uncertainty_mode_calibration",
+      "case_context": "Svar om psykologteam i kommuner.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilgangen kan variere mellom kommuner, og (2) at svaret ikke hevder at alle kommuner har psykologteam.",
+      "sut_answer": "Alle kommuner har psykologteam; tilgangen er den samme overalt.",
+      "designer_intent": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "designer_rationale": "Universell hevdelse uten forbehold bryter begge ledd."
+    }
+  ]
+}

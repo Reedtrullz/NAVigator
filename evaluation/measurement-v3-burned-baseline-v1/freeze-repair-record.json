@@ -1,0 +1,78 @@
+{
+  "artifact": "freeze-repair-record",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-BURNED-BASELINE-V1",
+  "created_utc": "2026-09-14",
+  "first_freeze_attempt": {
+    "frozen_utc": "2026-09-14T13:06:48Z",
+    "status": "INVALIDATED_BEFORE_TERMINAL",
+    "manifest_sha256": "c07dee611edc94f5cd2fd72310074212ce31630fa01ce5838ee7fce8d84ac717",
+    "hashes_txt_sha256": "ad5c9ea7eca997cb65564dfd9c7e44bd66f58e0a8dc49dd401c5321bde79db30",
+    "contaminated_artifact": "security-audit.json",
+    "contaminated_artifact_sha256": "c8d9830c1375d970c695667a79d27df4123abf2ea6160916c0ed87c7fe6c1e60",
+    "invalidation_reason": "security audit scanned its own output artifact: the previous audit's hits list embedded the 10 pattern literals, and the rescan reintroduced them (self-referential loop). No real secret or credential present at any point."
+  },
+  "defect_chain": [
+    "stage-1 audit scanned run_baseline.py -> 10 hits, all runner's own pattern literals",
+    "patch 1: excluded run_baseline.py from scan scope",
+    "post-patch rerun: 15 files scanned, still 10 hits -> mechanical attribution shows all 10 live in security-audit.json itself (audit artifact self-reference)",
+    "patch 2: exclude security-audit.json from scan scope (same harness rationale); no other files or detection rules changed",
+    "patch 2 rerun attempt: freeze-repair-record.json itself triggered 1 hit (the word secret in its documentation text); assertion fired before any file was written, state unchanged",
+    "patch 3 (final): AUDIT_META_ARTIFACTS = (run_baseline.py, security-audit.json, freeze-repair-record.json); no other files or detection rules changed",
+    "final audit regenerated clean: 16 files scanned, credential_or_secret_hits = []"
+  ],
+  "pre_repair_pinned_artifact_shas": {
+    "automated-coverage-report.json": "4fe923de5f7fd2e2dd08b2510d19b7472659f7cf9d8e504ba16433146cc2cf71",
+    "baseline-integrity.json": "1a874d88b3b8249e10a2c7166115f07d278b7652c2e5b42694eaf09cfca6c200",
+    "case-prediction-alignment.json": "4fae46742723dab92ac85a3f8df41f2aa8db4671d81adf351674992b2a27312d",
+    "corpus-integrity.json": "455c93d03d1f6be44390cf9e279e342b490a93ac4cccdff73c4dced3ff829dd1",
+    "deterministic-scores.json": "a8ffdd210c54e545c2359088630fec7f5923760e4750a73049dc6241fb6e4ff2",
+    "human-review-batch-manifest.json": "4e7fc67946469f57a0e4729d92409b5b64f86cc67a914f7ebf43ae193c3ebd8a",
+    "human-review-packets.jsonl": "111ac642ea9ba6e4b7c4ebd6e6db18dfd075c164852fbed8576b8ddb56b80f8f",
+    "measurement-determinism.json": "8cd07aaa7a086c346e51f7b4e67d1f222cb95ca53737d2317ffd257e469655c9",
+    "measurement-routing-results.json": "f21b97cf36a3bc2268b64c7da065ec767f120ac32b178ec327023bce16b8e3f7",
+    "partial-aggregate-metrics.json": "646ce8ac11ea88764b295904606a685f8051c76bb9e90afa93586b5719c94c0a",
+    "prediction-integrity.json": "a9f030d2dfac619b338ebe4cbfeffdcc7d55e9b7c1058155d3deaea4ca7b9c85",
+    "product-diagnostics.json": "7712bdacfb65b3f1adda344a9d36c6c7e3e4ae2b4044c2c5e76e3739b2f743d7",
+    "review-packet-leakage-audit.json": "69bcab490e396cc00f94daa4a04284339e49ea5a1f9ae383acf98fdd982ac383",
+    "security-audit.json": "c8d9830c1375d970c695667a79d27df4123abf2ea6160916c0ed87c7fe6c1e60"
+  },
+  "hit_attribution": {
+    "all_hits_from": "security-audit.json",
+    "mechanically_verified": true,
+    "hit_count": 10
+  },
+  "repair_authorization": "owner-approved continuation: audit harness repair only; scoring and packets must remain SHA-identical",
+  "final_audit": {
+    "status": "CLEAN",
+    "files_scanned": 16,
+    "credential_or_secret_hits": 0,
+    "audit_meta_exclusions": 3,
+    "non_meta_artifacts_dropped_from_security_scan": 0,
+    "audit_meta_artifacts": [
+      "run_baseline.py",
+      "security-audit.json",
+      "freeze-repair-record.json"
+    ]
+  },
+  "integrity_verification": {
+    "compared_against": "pre_repair_pinned_artifact_shas",
+    "matched": 13,
+    "mismatched": [
+      "security-audit.json"
+    ],
+    "mismatch_explanation": "security-audit.json is the only regenerated artifact; its change is the audited repair itself",
+    "SCORING_RESULTS_CHANGED_DURING_AUDIT_REPAIR": false,
+    "REVIEW_PACKETS_CHANGED_DURING_AUDIT_REPAIR": false,
+    "verified_files_including": [
+      "deterministic-scores.json",
+      "measurement-routing-results.json",
+      "partial-aggregate-metrics.json",
+      "automated-coverage-report.json",
+      "human-review-packets.jsonl"
+    ]
+  },
+  "AUDIT_META_EXCLUSIONS": 3,
+  "NON_META_ARTIFACTS_DROPPED_FROM_SECURITY_SCAN": 0,
+  "REAL_CREDENTIAL_OR_SECRET_HITS": 0,
+  "final_freeze_note": "the next freeze after this record is the sole authoritative terminal freeze; first attempt remains INVALIDATED_BEFORE_TERMINAL"
+}

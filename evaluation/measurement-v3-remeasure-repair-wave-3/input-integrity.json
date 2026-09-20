@@ -1,0 +1,140 @@
+{
+  "artifact": "wave3-input-integrity",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-3",
+  "gate": "INPUT_INTEGRITY",
+  "verification_method": "sha256_recompute_from_disk",
+  "status": "PASS",
+  "pins": {
+    "wave3_repair_task_lock": {
+      "path": "evaluation/full-sut-repair-wave-3-v1/TASK-LOCK.json",
+      "sha256": "5fa29d34205b7276c59e576dfe2c69f53a15fa226c96e5fdf02c26dc0244d93c",
+      "expected_status": "FULL_SUT_REPAIR_WAVE_3_READY_FOR_REMEASUREMENT",
+      "observed_status": "FULL_SUT_REPAIR_WAVE_3_READY_FOR_REMEASUREMENT",
+      "match": true
+    },
+    "repaired_sut_manifest": {
+      "path": "evaluation/full-sut-repair-wave-3-v1/repaired-sut-manifest.json",
+      "sha256": "6c1f7d4b4b52eeabc16a13e0c34d9cdd332a6acd532cd33ddb796660fd2be14f",
+      "match": true
+    },
+    "replay_prediction_manifests": {
+      "safety": {
+        "path": "evaluation/full-sut-repair-wave-3-v1/runs/structural-120-replay-v1/safety/predictions-manifest.json",
+        "sha256": "b8b4c2a7a9c0bed84e6f6ffa4ba5e52e0ece024e9fde3acd0a5cf7118c15daa3",
+        "match": true
+      },
+      "routing": {
+        "path": "evaluation/full-sut-repair-wave-3-v1/runs/structural-120-replay-v1/routing/predictions-manifest.json",
+        "sha256": "4cbaa0da5b5cd0ae2c8dc81c67d5517048c8cc6a1ac5c29136e35b0bf10832bc",
+        "match": true
+      },
+      "discovery_adversarial": {
+        "path": "evaluation/full-sut-repair-wave-3-v1/runs/structural-120-replay-v1/discovery_adversarial/predictions-manifest.json",
+        "sha256": "7ea0c4a48f5880bf6d5749c4c3708d6044b58ca0be3e87e3259560507a9830fa",
+        "match": true
+      },
+      "note": "official W3-RC-A v1 structural replay set; manifest SHAs pinned in the Wave-3 repair TASK-LOCK and re-verified from disk"
+    },
+    "measurement": {
+      "combined_engine": {
+        "path": "evaluation/measurement-v3-combined-freeze/combined_measurement_v3.py",
+        "sha256": "ce7277aa365d4143563cfaa09dfd52712a89a0abd8515f075658b1d683964a29",
+        "match": true
+      },
+      "review_lane": {
+        "path": "evaluation/measurement-v2-15-semantic-human-review-fallback/review_lane_semantic_v2_15.py",
+        "sha256": "5ba5ad693a329054e59fc6bfd1d346fbd784e9d3bd7b79cdaf8e383914c86e7c",
+        "match": true
+      },
+      "judge_core": {
+        "path": "evaluation/judge-selection-v2-13-forbidden-route-specialist/judge_core_v2_13.py",
+        "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+        "match": true
+      }
+    },
+    "corpus": {
+      "manifest": {
+        "path": "evaluation/dev-corpus-v1-1-repair/manifest.json",
+        "sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17",
+        "match": true
+      }
+    },
+    "wave1_measurement": {
+      "results": {
+        "path": "evaluation/measurement-v3-wave1-consensus-comparator-repair-v1/complete-wave1-measurement-results.json",
+        "sha256": "1f4aac89aa90ef2e5b7e2da2455249633cf2d2c12c7856c64b202a5e45e5e7c1",
+        "match": true
+      },
+      "freeze_manifest": {
+        "path": "evaluation/measurement-v3-wave1-consensus-comparator-repair-v1/comparator-repair-freeze-manifest.json",
+        "sha256": "e3d651054fa473bcdf7168b57dc630fe61eb2f447e8228228a6b74d777b88479",
+        "match": true
+      },
+      "note": "Wave-1 authoritative freeze (consensus-comparator-repair lineage); results SHA verified from pinned disk state"
+    },
+    "wave2_measurement": {
+      "results": {
+        "path": "evaluation/measurement-v3-remeasure-repair-wave-2/wave2-combined-measurement-results.json",
+        "sha256": "005eaebf901a3cf491d67a60738a28ca6ee30e531db47f4069bab2bb2e4b30e3",
+        "match": true
+      },
+      "freeze_manifest": {
+        "path": "evaluation/measurement-v3-remeasure-repair-wave-2/wave2-measurement-freeze-manifest.json",
+        "sha256": "f5e0a0193d9ddb4da7046ba9719c0d52dafa2982eee1bcac6c11393d5391fc30",
+        "match": true
+      },
+      "note": "Wave-2 authoritative freeze; primary comparison baseline"
+    },
+    "original_baseline": {
+      "results": {
+        "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json",
+        "sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+        "match": true
+      },
+      "freeze_manifest": {
+        "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/final-freeze-manifest.json",
+        "sha256": "34d78dae25acb5c21a8b1e42be8a90be478be76f196b3271661718ff486e65c1",
+        "match": true
+      },
+      "hashes": {
+        "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/hashes.txt",
+        "sha256": "bfad37ca29b43f55edd5ebb3c6c06bbde8c93189be593ab7790db7f46bc842bd",
+        "match": true
+      }
+    }
+  },
+  "wave3_close_out_provenance": {
+    "terminal_report": "evaluation/full-sut-repair-wave-3-v1/final-report.md",
+    "task_lock_pin_sha256": "c9506c33be61b4a57246ea66134e677e12a5537f49cb31c9c8a5f0f4f79e0465",
+    "actual_sha256": "d05546190eed3d4a4301756b3ca6132802f118703256292a49440c01b0a3bdca",
+    "disposition": "documented close-out provenance: the Wave-3 repair TASK-LOCK recorded its report pin pre-close-out and the final report was completed afterward. Candidate integrity rests on the frozen manifest and component pins, not the report SHA."
+  },
+  "prior_wave_authority_mix": {
+    "wave1_at_freeze": {
+      "DETERMINISTIC": 508,
+      "LLM_REVIEWED": 88,
+      "LLM_ADJUDICATED": 0,
+      "HUMAN_REVIEWED": 0,
+      "PENDING_HUMAN_ADJUDICATION": 4
+    },
+    "wave2_at_freeze": {
+      "DETERMINISTIC": 506,
+      "LLM_REVIEWED": 90,
+      "LLM_ADJUDICATED": 3,
+      "HUMAN_REVIEWED": 0,
+      "PENDING_LLM_ADJUDICATION": 1
+    },
+    "note": "historical reference only; Wave-3 authority mix is recomputed from this task's own results, never assumed"
+  },
+  "hard_flags": {
+    "WAVE3_SOURCE_CHANGED": false,
+    "WAVE3_PREDICTIONS_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "CORPUS_CHANGED": false,
+    "WAVE1_MEASUREMENT_CHANGED": false,
+    "WAVE2_MEASUREMENT_CHANGED": false,
+    "ORIGINAL_BASELINE_CHANGED": false
+  },
+  "next_step": "residual-leakage-audit then Wave-3 freeze BEFORE comparisons"
+}

@@ -1,0 +1,532 @@
+{
+ "suite": "fresh-architecture-cases-v1",
+ "part": "C",
+ "frozen": false,
+ "note": "Part C: exception/condition/compound coverage top-up.",
+ "cases": [
+  {
+   "case_id": "BA-128",
+   "claim": "Bokollektiv gir aldri bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bokollektiv er som hovedregel nei, unntak for kollektiv av helsemessige eller sosiale grunner."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXCEPTION_CONFLICT",
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-129",
+   "claim": "Bokollektiv kan godkjennes av helsemessige grunner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bokollektiv er som hovedregel nei, unntak for kollektiv av helsemessige eller sosiale grunner."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-130",
+   "claim": "Elever og studenter folger de vanlige bostotte-reglene.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Studenter, elever og larlinger folger egne regler."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXCEPTION_CONFLICT",
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-131",
+   "claim": "Under 18 ar med barn kan fa bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Alder: over 18 ar og ikke i forstegangstjenesten, eller under 18 ar med barn."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-132",
+   "claim": "Alle boliger kvalifiserer for bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Boligen ma vare godkjent til boligformal og ha egen inngang, eget bad og toalett, kjokkenlosning og mulighet for hvile."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING"
+   }
+  },
+  {
+   "case_id": "BA-133",
+   "claim": "Ung ufor far gunstigere egenandel i bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Ung ufor far gunstigere egenandel; en overgangsordning gjelder ufore som mottok bostotte i desember 2014."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXACT_MATCH",
+    "temporal": "TEMPORAL_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-134",
+   "claim": "Overgangsordningen gjelder alle ufore.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "En overgangsordning gjelder ufore som mottok bostotte i desember 2014."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXCEPTION_CONFLICT",
+    "scope": "SCOPE_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-135",
+   "claim": "Oppvarmingstillegg gis alltid.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Det er 613 kroner i maneden til oppvarming hvis oppvarming ikke er dekket av leien."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING"
+   }
+  },
+  {
+   "case_id": "BA-136",
+   "claim": "Barnets formue holdes alltid utenfor bostottegrunnlaget.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Har du hoy formue fordi du skatter for barnets formue, kan du soke om at barnets formue holdes utenfor, hvis den er registrert i barnets navn."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING",
+    "modality": "SOURCE_WEAKER_THAN_CLAIM"
+   }
+  },
+  {
+   "case_id": "BA-137",
+   "claim": "Manglende flyttemelding er en vanlig avslagsarsak for bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Manglende flyttemelding til Folkeregisteret er en av Husbankens vanlige avslagsarsaker."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-138",
+   "claim": "Du far bostotte nar inntekten din er lav.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bostotte er en stotteordning for husholdninger med lave inntekter og hoye boutgifter."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "condition_topup",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING"
+   }
+  },
+  {
+   "case_id": "BA-139",
+   "claim": "Bostotte beregnes av faktiske boutgifter og inntekt i soknadsm aneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bostotte beregnes maned for maned ut fra faktiske boutgifter og husstandens inntekt i soknadsmaneden."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "condition_topup",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-140",
+   "claim": "Bokollektiv gir normalt ikke bostotte, og studenter folger egne regler.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bokollektiv er som hovedregel nei, unntak av helsemessige eller sosiale grunner."
+    },
+    {
+     "span_id": "S2",
+     "text": "Studenter, elever og larlinger folger egne regler."
+    }
+   ],
+   "compound": true,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING"
+   },
+   "expected_atoms": [
+    "RELATED_BUT_INSUFFICIENT",
+    "RELATED_BUT_INSUFFICIENT"
+   ]
+  },
+  {
+   "case_id": "BA-141",
+   "claim": "Full utvidet barnetrygd er 2 572 kroner, og delt utvidet er 1 286 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Full sats utvidet barnetrygd er 2 572 kroner i maneden."
+    },
+    {
+     "span_id": "S2",
+     "text": "Delt utvidet barnetrygd er 1 286 kroner i maneden."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-142",
+   "claim": "Full utvidet barnetrygd er 2 572 kroner, og delt utvidet er 2 572 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Full sats utvidet barnetrygd er 2 572 kroner i maneden."
+    },
+    {
+     "span_id": "S2",
+     "text": "Delt utvidet barnetrygd er 1 286 kroner i maneden."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-143",
+   "claim": "Ordinær barnetrygd folger barnet, og deles likt ved delt fast bosted.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Ordinær barnetrygd folger barnet."
+    },
+    {
+     "span_id": "S2",
+     "text": "Ved delt fast bosted deles den likt mellom foreldrene."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-144",
+   "claim": "Samvaersavtale gir delt barnetrygd, og delingen skjer automatisk.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Samvaersavtale gir ikke delt barnetrygd; det kreves delt fast bosted."
+    },
+    {
+     "span_id": "S2",
+     "text": "Begge foreldre ma sokke for at delingen skal skje."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   },
+   "expected_atoms": [
+    "CONTRADICTS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-145",
+   "claim": "Barn under 18 ar med barn kan fa bostotte, og forstegangstjenesten gir ikke fritak.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Alder: over 18 ar og ikke i forstegangstjenesten, eller under 18 ar med barn."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXCEPTION_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-146",
+   "claim": "Elever under 18 ar trenger ikke samtykke fra foreldre, og 12-16-aringer kan samtykke til helsehjelp foreldrene ikke er informert om.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Foreldre samtykker pa vegne av barn under 16 ar."
+    },
+    {
+     "span_id": "S2",
+     "text": "12-16 ar kan samtykke til helsehjelp i forhold foreldrene ikke er informert om."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR",
+    "polarity": "EXPLICIT_CONFLICT"
+   },
+   "expected_atoms": [
+    "CONTRADICTS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-147",
+   "claim": "Utbetalingen skjer den 20., og avslag viderefores i inntil tre maneder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utbetaling skjer den 20. i maneden etter soknadsmaneden."
+    },
+    {
+     "span_id": "S2",
+     "text": "Avslag viderefores automatisk i inntil tre maneder."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "TEMPORAL_COMPATIBLE"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-148",
+   "claim": "De to ytelsene kan kombineres, men bare hvis utvidet vilkar er oppfylt for akkurat den forelderen.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "De to ytelsene kan kombineres, men bare hvis utvidet vilkar er oppfylt for akkurat den forelderen."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXACT_MATCH",
+    "clause_coverage": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-149",
+   "claim": "En forelder med delt ordinær barnetrygd kan kombinere den med delt utvidet barnetrygd, men bare hvis utvidet vilkar er oppfylt for akkurat den andre forelderen.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "De to ytelsene kan kombineres, men bare hvis utvidet vilkar er oppfylt for akkurat den forelderen."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "actor": "ACTOR_UNRESOLVED",
+    "exception": "EXACT_MATCH",
+    "clause_coverage": "PARTIAL_OVERLAP"
+   }
+  },
+  {
+   "case_id": "BA-150",
+   "claim": "En ung person under 18 ar kan alltid fa bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Alder: over 18 ar og ikke i forstegangstjenesten, eller under 18 ar med barn."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING",
+    "exception": "EXCEPTION_CONFLICT",
+    "clause_coverage": "PARTIAL_OVERLAP"
+   }
+  },
+  {
+   "case_id": "BA-151",
+   "claim": "En person som bor i bokollektiv kan fa bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bokollektiv: som hovedregel nei, unntak for kollektiv av helsemessige eller sosiale grunner."
+    }
+   ],
+   "compound": false,
+   "rel": "PARTIAL",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "exception": "EXCEPTION_CONFLICT",
+    "clause_coverage": "PARTIAL_OVERLAP"
+   }
+  },
+  {
+   "case_id": "BA-152",
+   "claim": "Barn uten delt fast bosted kan foeres pa den andre forelderens bostottesoknad.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Barn uten delt fast bosted, bare samvar, kan ikke foeres pa den andre forelderens soknad."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "exception",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT",
+    "exception": "EXCEPTION_CONFLICT",
+    "clause_coverage": "PARTIAL_OVERLAP"
+   }
+  }
+ ]
+}

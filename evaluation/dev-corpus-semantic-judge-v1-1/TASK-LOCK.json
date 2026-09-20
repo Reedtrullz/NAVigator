@@ -1,0 +1,44 @@
+{
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_1-ROUTE-CONTRACT-REPAIR",
+  "status": "SEMANTIC_JUDGE_V1_1_CONTRACT_NOT_READY",
+  "created": "2026-09-10",
+  "scope": "route_label_contract_only",
+  "corpus_changes_allowed": false,
+  "gold_changes_allowed": false,
+  "scorer_v1_changes_allowed": false,
+  "semantic_judge_v1_changes_allowed": false,
+  "critical_contract_changes_allowed": false,
+  "forbidden_contract_changes_allowed": false,
+  "uncertainty_contract_changes_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "full_sut_run_allowed": false,
+  "threshold_derivation_allowed": false,
+  "gpt_5_5_allowed": false,
+  "judge_model": "GPT-5.6-Luna",
+  "prior_status": "DEV_CORPUS_SEMANTIC_JUDGE_V1_NOT_READY",
+  "prior_lineage": "evaluation/dev-corpus-semantic-judge-v1/",
+  "authoritative_scorer": "evaluation/dev-corpus-scorer-v1/",
+  "authoritative_corpus": "evaluation/dev-corpus-v1/",
+  "closed_at": "2026-09-10",
+  "terminal_reason": "AGREEMENT_GATE_FAILED: overall 93.75% < 95%, uncertainty 85% < 90%; official validation never started per preregistered protocol",
+  "gate_summary": {
+    "passed": [
+      "contract_freeze",
+      "burned_counterfactual",
+      "calibration_burned",
+      "fresh_80_fixtures",
+      "schema_failure_tests",
+      "baseline_integrity_10_of_10",
+      "historical_files_modified_0"
+    ],
+    "failed": [
+      "agreement_overall_93.75_lt_95",
+      "agreement_uncertainty_85_lt_90"
+    ],
+    "not_run": [
+      "official_validation",
+      "stability_suite",
+      "combined_scorer"
+    ]
+  }
+}

@@ -1,0 +1,1151 @@
+{
+ "artifact": "workflow-test-fixtures-v2-12",
+ "n_fixtures": 40,
+ "provenance": "Synthetic workflow unit fixtures; reviewer outputs are fixture data, no model calls.",
+ "fixtures": [
+  {
+   "fixture_id": "WF12-01",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-01",
+    "criterion": "Kriteriet stiller ingen usikkerhetskrav.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilbudet har apning hver tirsdag."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NONE",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "SINGLE_HUMAN_REVIEW",
+    "final_verdict": "NOT_REQUIRED"
+   }
+  },
+  {
+   "fixture_id": "WF12-02",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-02",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du ma ta kontakt; vi kan ikke love at tilgangen fungerer."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": [
+       "vi kan ikke love at tilgangen fungerer"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF12-03",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-03",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det er kanskje ikke tilgang for oeblikket."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": [
+       "kanskje ikke tilgang"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF12-04",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-04",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgangen er vaerifisert og fullt operativ."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "VIOLATED"
+   }
+  },
+  {
+   "fixture_id": "WF12-05",
+   "category": "derivation_unc_a1",
+   "case": {
+    "case_id": "WF12-05",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det er usikkert. Nei, det er helt sikkert. Kanskje."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "CONTRADICTORY_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF12-06",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-06",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg vet ikke om det finnes tilbud, saa jeg konkluderer ikke."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF12-07",
+   "category": "derivation_unc_a2",
+   "case": {
+    "case_id": "WF12-07",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Hmm... altsaa... typisk slikt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "UNCLEAR_PROSE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF12-08",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-08",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgangen er kanskje ok."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "HEDGE"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF12-09",
+   "category": "invalid_span",
+   "case": {
+    "case_id": "WF12-09",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": [
+       "ikke en del av teksten"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-10",
+   "category": "invalid_field",
+   "case": {
+    "case_id": "WF12-10",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-11",
+   "category": "invalid_mode_combo",
+   "case": {
+    "case_id": "WF12-11",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NONE",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-12",
+   "category": "invalid_compound_empty",
+   "case": {
+    "case_id": "WF12-12",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-13",
+   "category": "invalid_compound_kind",
+   "case": {
+    "case_id": "WF12-13",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "GUESS",
+        "HEDGE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-14",
+   "category": "invalid_contract_version",
+   "case": {
+    "case_id": "WF12-14",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "contract_version": "semantic-judge-contract-v1-4",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-15",
+   "category": "invalid_mode_value",
+   "case": {
+    "case_id": "WF12-15",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "PARTIAL",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-16",
+   "category": "invalid_behavior_value",
+   "case": {
+    "case_id": "WF12-16",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "TOTALLY_FINE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-17",
+   "category": "dual_agreement",
+   "case": {
+    "case_id": "WF12-17",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "DUAL_BLIND_REVIEW_AGREED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF12-18",
+   "category": "dual_disagreement",
+   "case": {
+    "case_id": "WF12-18",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-19",
+   "category": "adjudication",
+   "case": {
+    "case_id": "WF12-19",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT"
+   },
+   "adjudication": {
+    "case_id": "WF12-19",
+    "contract_version": "semantic-judge-contract-v2-7e",
+    "adjudicated": true,
+    "model_outputs_visible_to_adjudicator": false,
+    "final_judgment": {
+     "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+     "uncertainty_output_behavior": "HEDGE",
+     "evidence_spans": []
+    },
+    "adjudication_note": "hedge is the defensible reading"
+   },
+   "expect_after_adjudication": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "DUAL_BLIND_REVIEW_WITH_ADJUDICATION",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF12-20",
+   "category": "adjudication_invalid",
+   "case": {
+    "case_id": "WF12-20",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT",
+    "adjudication_error": true
+   },
+   "adjudication": {
+    "case_id": "WF12-20",
+    "contract_version": "semantic-judge-contract-v2-7e",
+    "adjudicated": true,
+    "model_outputs_visible_to_adjudicator": true,
+    "final_judgment": {
+     "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+     "uncertainty_output_behavior": "HEDGE",
+     "evidence_spans": []
+    },
+    "adjudication_note": "saw model output, forbidden"
+   },
+   "expect_after_adjudication": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT"
+   }
+  },
+  {
+   "fixture_id": "WF12-21",
+   "category": "duplicate_review",
+   "case": {
+    "case_id": "WF12-21",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "duplicate_rejected": true
+   }
+  },
+  {
+   "fixture_id": "WF12-22",
+   "category": "pending_fail_closed",
+   "case": {
+    "case_id": "WF12-22",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [],
+   "expect": {
+    "status": "HUMAN_REVIEW_PENDING",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-23",
+   "category": "packet_leakage",
+   "case": {
+    "case_id": "WF12-23",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass.",
+    "gold": "VIOLATED"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF12-24",
+   "category": "adjudication_wrong_state",
+   "case": {
+    "case_id": "WF12-24",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "adjudication_error": true
+   },
+   "adjudication": {
+    "case_id": "WF12-24",
+    "contract_version": "semantic-judge-contract-v2-7e",
+    "adjudicated": true,
+    "model_outputs_visible_to_adjudicator": false,
+    "final_judgment": {
+     "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+     "uncertainty_output_behavior": "HEDGE",
+     "evidence_spans": []
+    },
+    "adjudication_note": "no disagreement exists"
+   }
+  },
+  {
+   "fixture_id": "WF12-25",
+   "category": "routing_flag",
+   "case": {
+    "case_id": "WF12-25",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NONE",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "routed_automated_authoritative_false": true
+   }
+  },
+  {
+   "fixture_id": "WF12-26",
+   "category": "provenance_sequence",
+   "case": {
+    "case_id": "WF12-26",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "provenance_events": [
+     "PACKET_CREATED",
+     "ROUTED",
+     "STATUS",
+     "REVIEW_ACCEPTED",
+     "STATUS"
+    ]
+   }
+  },
+  {
+   "fixture_id": "WF12-27",
+   "category": "provenance_sha",
+   "case": {
+    "case_id": "WF12-27",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "provenance_has_packet_sha": true
+   }
+  },
+  {
+   "fixture_id": "WF12-28",
+   "category": "packet_clean",
+   "case": {
+    "case_id": "WF12-28",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NONE",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "packet_has_no_forbidden_keys": true
+   }
+  },
+  {
+   "fixture_id": "WF12-29",
+   "category": "compound_dual_agreement",
+   "case": {
+    "case_id": "WF12-29",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "EXPLICIT_LIMITATION"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "EXPLICIT_LIMITATION"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "DUAL_BLIND_REVIEW_AGREED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF12-30",
+   "category": "compound_dual_disagreement",
+   "case": {
+    "case_id": "WF12-30",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "EXPLICIT_LIMITATION"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "HEDGE"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF12-31",
+   "category": "invalid_then_valid",
+   "case": {
+    "case_id": "WF12-31",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "NOT_A_BEHAVIOR",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "SINGLE_HUMAN_REVIEW"
+   }
+  },
+  {
+   "fixture_id": "WF12-32",
+   "category": "buckets",
+   "case": {
+    "case_id": "WF12-32",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen, og det er ikke sikkert du far plass."
+   },
+   "reviews": [],
+   "expect": {
+    "status": "HUMAN_REVIEW_PENDING",
+    "bucket": "unresolved"
+   }
+  },
+  {
+   "fixture_id": "WF12-33",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-33",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Ved ausikkerhet anbefales nav-kontakt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "PARTIAL_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF12-34",
+   "category": "derivation_v14_rule",
+   "case": {
+    "case_id": "WF12-34",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgang kan ikke bekreftes."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "OVERCONFIDENT_ASSERTION"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF12-35",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-35",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Ting er usikre."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "UNCLEAR_PROSE"
+       ],
+       [
+        "NON_ASSERTION",
+        "UNCLEAR_PROSE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF12-36",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-36",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det er garantert ikke noe tilbud i kommunen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "CONTRADICTORY_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "VIOLATED"
+   }
+  },
+  {
+   "fixture_id": "WF12-37",
+   "category": "derivation_unc_a2",
+   "case": {
+    "case_id": "WF12-37",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "..."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "UNCLEAR_PROSE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF12-38",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-38",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det kan vaere begrenset tilgang naa."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": [
+       "kan vaere begrenset tilgang"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF12-39",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-39",
+    "criterion": "Kriteriet krever baade usikkerhetsekspresjon og fravaer av overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg har ikke verifisert tilgangen; kommunen kan ha tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": null,
+      "evidence_spans": [],
+      "compound_components": [
+       [
+        "EXPRESSION",
+        "EXPLICIT_LIMITATION"
+       ],
+       [
+        "NON_ASSERTION",
+        "NONE"
+       ]
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF12-40",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF12-40",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Saa langt kan det konkludererest at kommunen mangler tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "VIOLATED"
+   }
+  }
+ ]
+}

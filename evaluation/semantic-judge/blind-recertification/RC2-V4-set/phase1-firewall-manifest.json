@@ -1,0 +1,45 @@
+{
+ "set_version": "NAV-EXPLORE-RC2-BLIND-V4",
+ "created": "2026-09-04",
+ "phase1_allowed_files": {
+  "frozen_rc2_runtime": [
+   "evaluation/semantic-judge/release-candidate/RC2/* (RC2-manifest.json, hashes.txt, README.md) plus frozen components verified by hashes.txt: rc2-development/engine/quote_aligner.py, rc2-development/engine/polarity_engine.py, rc2-development/engine/polarity_engine_v02.py, rc2-development/engine/modality.py, rc2-development/engine/predicate-map.json, rc2-development/engine/domain-lexicon.json, rc2-development/fusion.py, hybrid/reviewer.py, hybrid/auto_gate.py, rc2-development/fusion-calibration.json"
+  ],
+  "v4_blind_cases": "RC2-V4-set/blind-cases.json",
+  "v4_schema": "RC2-V4-set/blind-cases.schema.json",
+  "v4_blind_manifest": "RC2-V4-set/blind-manifest.json",
+  "firewall_manifest": "RC2-V4-set/phase1-firewall-manifest.json"
+ },
+ "phase1_forbidden": {
+  "sealed": [
+   "RC2-V4-set/answer-key.sealed",
+   "RC2-V4-set/construction-audit.sealed"
+  ],
+  "directories": [
+   "RC2-V4-set/construction-v4/",
+   "RC2-V3-set/construction/",
+   "RC2-V3-set/pilot/"
+  ],
+  "deleted_plaintext": "all 16 V3 label-bearing files and 5 V4 construction artifacts deleted after roundtrip-verified seal",
+  "key": "V4 blind key: memory-only, never in prompt/env/shell/repo/Phase-1 context; V3 key RETIRED"
+ },
+ "leakage_scan": {
+  "rule": "case ID + label-vocabulary co-occurrence, full project",
+  "label_bearing_files_remaining": 8,
+  "classification": "all 8 incidental: RC2B-0277 appears only as a quota-count mention (no per-case verdict in any derivable window; structural JSON check found no ID-to-verdict mapping); annot-prompt.txt contains 5 gap-wave case IDs with claims and sources only, label tokens are the generic schema line",
+  "per_case_label_files_remaining": 0,
+  "inventory": "RC2-V4-set/label-leakage-inventory.json"
+ },
+ "rc2_hashes": {
+  "file": "release-candidate/RC2/hashes.txt",
+  "verified": "pre-seal ALL OK (10/10 entries); post-seal re-verified ALL OK (10/10 entries), 2026-09-04",
+  "sha256_of_hashes.txt": "034e2f91c8db78a379d3f4b4054a01907345fdc95a8a84b1b313daa556321294"
+ },
+ "rc2_manifest_sha256": "1215f0d2978d80cf383f921155933f19f85f259279d04136ad00fd9f81d559cc",
+ "v4_blind_cases_sha256": "ad4fc1008063e52fb004fcdf5a3e48c2ca0277c7cf6dd9251b04d43c3e29a36d",
+ "answer_key_sealed_sha256": "65f72b170cb200b804cf817c32aaf42e9166a20ed002777a5d9f5e71b99fd80d",
+ "construction_audit_sealed_sha256": "5be70e666493d3a6e000b89418a8064099f03ee797ece3365840acb7a7646ff3",
+ "key_unavailable_requirement": "Phase-1 runner must execute WITHOUT the V4 key: no key material in prompt, env, shell, repo, or conversation context; fresh isolated session required (spec 30-31)",
+ "fresh_session_required": true,
+ "v3_key_retired": true
+}

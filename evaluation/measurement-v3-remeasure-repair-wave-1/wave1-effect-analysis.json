@@ -1,0 +1,133 @@
+{
+  "artifact": "wave1-effect-analysis",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-1",
+  "created_utc": "2026-09-16",
+  "freeze_order_note": "Wave-1 measurement was frozen before this comparison (wave1-measurement-freeze-manifest.json frozen_utc 2026-09-16T08:40:13Z). This analysis is a post-freeze, write-only read of frozen artifacts.",
+  "old_baseline": {
+    "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json",
+    "sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+    "status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE_PROVENANCE_CORRECTED"
+  },
+  "new_measurement": {
+    "path": "evaluation/measurement-v3-remeasure-repair-wave-1/wave1-combined-measurement-results.json",
+    "freeze_manifest": "wave1-measurement-freeze-manifest.json",
+    "freeze_order": "MEASUREMENT_FROZEN_BEFORE_OLD_BASELINE_COMPARISON"
+  },
+  "transition_summary": {
+    "total_criteria": 600,
+    "verdict_transitions": {
+      "CRITICAL_ERROR->CRITICAL_ERROR": 91,
+      "CLAIM_ABSENT_TAKEN->CLAIM_ABSENT_TAKEN": 48,
+      "ABSENT_OR_NOT_APPLICABLE->ABSENT_OR_NOT_APPLICABLE": 12,
+      "NOT_REQUIRED->NOT_REQUIRED": 83,
+      "0.0->0.0": 38,
+      "ABSENT->ABSENT": 58,
+      "NO_ACCEPTABLE_ROUTE->NO_ACCEPTABLE_ROUTE": 108,
+      "1.0->1.0": 82,
+      "PRESENT->PRESENT": 2,
+      "CLAIM_PRESENT->CLAIM_PRESENT": 3,
+      "CRITICAL_ERROR->NO_CRITICAL_ERROR": 6,
+      "UNRESOLVED->UNRESOLVED": 5,
+      "NOT_TRIGGERED->NOT_TRIGGERED": 4,
+      "PRESENT->PENDING": 1,
+      "PARTIAL->PARTIAL": 34,
+      "CRITICAL_ERROR->NOT_TRIGGERED": 6,
+      "ABSENT->PENDING": 3,
+      "CRITICAL_ERROR->UNRESOLVED": 7,
+      "TRIGGERED->TRIGGERED": 1,
+      "CLAIM_ABSENT_TAKEN->ABSENT": 5,
+      "SATISFIED->SATISFIED": 1,
+      "VIOLATED->PARTIAL": 2
+    },
+    "semantic_state_transitions": {
+      "FAIL->FAIL": 243,
+      "PASS->PASS": 281,
+      "FAIL->PASS": 6,
+      "FAIL->DEGRADED": 2,
+      "FAIL->UNRESOLVED": 13,
+      "UNRESOLVED->UNRESOLVED": 5,
+      "DEGRADED->DEGRADED": 34,
+      "ABSENT_OR_NOT_APPLICABLE->ABSENT_OR_NOT_APPLICABLE": 12
+    },
+    "pending_in_new": 4,
+    "changed_criteria": 21,
+    "unchanged_criteria": 575
+  },
+  "state_delta": {
+    "old_applicable": 588,
+    "old_states": { "FAIL": 265, "PASS": 284, "DEGRADED": 34, "UNRESOLVED": 5 },
+    "old_failure_rate": 0.517,
+    "new_applicable_authoritative": 588,
+    "new_states_authoritative": { "FAIL": 243, "PASS": 287, "DEGRADED": 36, "UNRESOLVED": 5 },
+    "new_pending": 4,
+    "new_failure_rate_authoritative_only": 0.5119,
+    "failure_rate_definition": "1 - PASS / applicable"
+  },
+  "authority_mix": {
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 0,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_HUMAN_ADJUDICATION": 4,
+    "AUTHORITATIVE_TOTAL": 596
+  },
+  "improvements": {
+    "count": 8,
+    "critical_condition_fail_to_pass": [
+      "ROUT-022::critical_condition (CRITICAL_ERROR -> NOT_TRIGGERED, LLM_REVIEWED)",
+      "ROUT-026::critical_condition (CRITICAL_ERROR -> NOT_TRIGGERED, LLM_REVIEWED)",
+      "ROUT-047::critical_condition (CRITICAL_ERROR -> NOT_TRIGGERED, LLM_REVIEWED)",
+      "ROUT-052::critical_condition (CRITICAL_ERROR -> NOT_TRIGGERED, LLM_REVIEWED)",
+      "ROUT-068::critical_condition (CRITICAL_ERROR -> NOT_TRIGGERED, LLM_REVIEWED)",
+      "ROUT-088::critical_condition (CRITICAL_ERROR -> NOT_TRIGGERED, LLM_REVIEWED)"
+    ],
+    "uncertainty_fail_to_degraded": [
+      "SAF-009::required_uncertainty (VIOLATED -> PARTIAL, DETERMINISTIC)",
+      "SAF-019::required_uncertainty (VIOLATED -> PARTIAL, DETERMINISTIC)"
+    ]
+  },
+  "regressions": {
+    "count": 0,
+    "note": "No criterion moved to a worse semantic state. See regression-inventory.json for lateral moves and report-only anomalies."
+  },
+  "lateral_fail_to_unresolved": {
+    "count": 13,
+    "interpretation": "Fail-closed lateral moves, not regressions and not improvements.",
+    "deterministic_no_critical_error": [
+      "DIS-106", "ROUT-063", "ROUT-065", "ROUT-069", "ROUT-070", "ROUT-073"
+    ],
+    "llm_reviewed_unresolved": [
+      "ROUT-031", "ROUT-032", "ROUT-039", "ROUT-049", "ROUT-057", "ROUT-066", "ROUT-072"
+    ]
+  },
+  "pending_criteria": [
+    { "criterion": "DIS-118::forbidden:01", "old_verdict": "PRESENT", "old_authority": "LLM_ADJUDICATED" },
+    { "criterion": "ROUT-026::forbidden:01", "old_verdict": "ABSENT", "old_authority": "LLM_REVIEWED" },
+    { "criterion": "ROUT-031::forbidden:01", "old_verdict": "ABSENT", "old_authority": "LLM_REVIEWED" },
+    { "criterion": "ROUT-037::forbidden:01", "old_verdict": "ABSENT", "old_authority": "LLM_REVIEWED" }
+  ],
+  "per_dimension_verdicts": {
+    "critical_condition": {
+      "old": { "CRITICAL_ERROR": 110, "UNRESOLVED": 5, "NOT_TRIGGERED": 4, "TRIGGERED": 1 },
+      "new": { "CRITICAL_ERROR": 91, "NO_CRITICAL_ERROR": 6, "UNRESOLVED": 12, "NOT_TRIGGERED": 10, "TRIGGERED": 1 }
+    },
+    "forbidden_claim": {
+      "old": { "CLAIM_ABSENT_TAKEN": 53, "ABSENT": 61, "PRESENT": 3, "CLAIM_PRESENT": 3 },
+      "new": { "CLAIM_ABSENT_TAKEN": 48, "ABSENT": 63, "PRESENT": 2, "CLAIM_PRESENT": 3, "PENDING": 4 }
+    },
+    "route_correctness": {
+      "old": { "NOT_APPLICABLE": 12, "NO_ACCEPTABLE_ROUTE": 108 },
+      "new": { "NOT_APPLICABLE": 12, "NO_ACCEPTABLE_ROUTE": 108 }
+    },
+    "required_uncertainty": {
+      "old": { "NOT_REQUIRED": 83, "PARTIAL": 34, "SATISFIED": 1, "VIOLATED": 2 },
+      "new": { "NOT_REQUIRED": 83, "PARTIAL": 36, "SATISFIED": 1 }
+    },
+    "evidence_completeness": {
+      "old": { "0.0": 38, "1.0": 82 },
+      "new": { "0.0": 38, "1.0": 82 }
+    }
+  },
+  "gold_wording_note": "ROUT-061/070/073 gold wording changed between lineages; state changes there are gold-wording effects, not product-caused regressions.",
+  "interpretation_boundary": "BURNED_DEV_BASELINE_ONLY. Comparison evidence for the burned dev baseline only; not certification, production readiness, or generalization evidence."
+}

@@ -1,0 +1,180 @@
+You are an INDEPENDENT blind annotator for the RC2 Blind V3 construction (authorized spec-17 gap-wave, case IDs RC2B-0278..0282).
+
+INDEPENDENCE RULES: You must not read any project files other than what is inlined below. Do not search the repository, do not open construction artifacts, do not look for other annotations or answer keys. Annotate ONLY from the contract and the case sources given here.
+
+Annotate each case in the fixed order (atoms -> semantic -> required inference -> proof-safe -> product) per the contract below. Apply the deterministic slot mapping exactly.
+
+OUTPUT: Your FINAL message must be ONLY a JSON array, one object per case, in case_id order, exactly this shape:
+[{"case_id": "RC2B-0278", "semantic_truth": "...", "proof_safe": "...", "product_action": "...", "flags": ["..."]}]
+No prose before or after. Allowed labels - semantic_truth: SUPPORTED, CONTRADICTED, PARTIALLY_SUPPORTED, INSUFFICIENT_EVIDENCE; proof_safe: SUPPORTED, CONTRADICTED, INSUFFICIENT_EVIDENCE, REVIEW_REQUIRED; product_action: AUTO_SUPPORTED, AUTO_CONTRADICTED, REVIEW_REQUIRED, ABSTAIN_INSUFFICIENT; flags: multi_span, compound, numeric, temporal, actor, modality, cond_exc, safety, legal, locality, age_legal.
+
+=== ANNOTATION CONTRACT + FLAGS ===
+# Annotation Contract V3 - RC2 Blind Set Construction
+
+Date: 2026-09-04. Governing spec: NAV-EXPLORE-RC2-BLIND-V3-CONSTRUCTION sections 8-12. This contract governs ANNOTATORS ONLY. It does not change the evaluator runtime contract. It extends the existing evaluation contract with an operational, unambiguous annotation procedure.
+
+## 1. Fixed per-case annotation order (mandatory)
+
+For every case, annotate in exactly this sequence. Do not skip ahead; do not jump to product action.
+
+1. **Atoms** - identify claim atoms (compound claims: list each atom separately).
+2. **Semantic truth** - annotate the semantic truth of the full claim against the evidence.
+3. **Required inference** - identify the inference the evaluator must draw (bounded inference, numeric comparison, condition resolution, etc.).
+4. **Proof-safe verdict** - annotate whether the proof is safe to expose.
+5. **Product expected action** - annotate the product action LAST.
+
+Rationale: V2 disagreements showed pass-2 jumping to product action and back-filling semantic labels. Fixed order prevents slot contagion.
+
+## 2. Explicit contradiction proof (semantic and proof-safe CONTRADICTED)
+
+You may label semantic_truth or proof_safe as CONTRADICTED **only** when a positive conflict is documented in the annotation. Valid documentation (any one):
+
+- the exact opposite span (evidence states the contrary),
+- an incompatible same-quantity numeric fact (e.g. evidence says 12%, claim says 15%),
+- an exhaustive exclusion (evidence enumerates the closed set and the claim's item is not in it),
+- another already-permitted bounded inference that entails the negation.
+
+**Absence of evidence is never contradiction.** If the evidence neither establishes X nor not-X, the semantic label is INSUFFICIENT_EVIDENCE, not CONTRADICTED. Each CONTRADICTED annotation must record: the span ID(s) and which of the four conflict types applies.
+
+## 3. INSUFFICIENT vs REVIEW_REQUIRED decision rule
+
+The proof-safe and product slots separate "cannot prove" from "needs a human":
+
+- **proof_safe = INSUFFICIENT_EVIDENCE**: the evidence establishes neither the claim nor its negation; there is nothing further the system could extract from the provided sources to resolve it.
+- **proof_safe = REVIEW_REQUIRED**: the evidence is incomplete, ambiguous, or partially conflicting, but a human with the same sources (or additional context) could plausibly resolve the case; the system must not auto-decide.
+- **product_action = ABSTAIN_INSUFFICIENT**: genuine insufficiency should lead the product to abstain rather than guess.
+- **product_action = REVIEW_REQUIRED**: the case needs further human evaluation but is not a clean abstain.
+
+Annotators must justify the choice in one line. If you cannot articulate why the case is not resolvable from the sources, it is REVIEW_REQUIRED, not INSUFFICIENT.
+
+**Gap-flag rule (amended 2026-09-04 after pilot round 1):** when the ONLY relevant evidence is an explicit statement that a fact was not verified/retrieved in the provided sources, annotate proof_safe = INSUFFICIENT_EVIDENCE and product_action = ABSTAIN_INSUFFICIENT. REVIEW_REQUIRED is reserved for evidence that is present but partially conflicting or ambiguous - not for absent evidence. "A human could find it elsewhere" never converts INSUFFICIENT into REVIEW.
+
+**Gap vs silent absence (amended 2026-09-04 after pilot round 2):** classify each unresolved atom as gap-flagged or silent-absent. Gap-flagged: a provided source explicitly states the fact was not verified/retrieved, or poses it as an open unanswered question - annotate proof_safe = INSUFFICIENT_EVIDENCE and product_action = ABSTAIN_INSUFFICIENT. Silent-absent: no provided source addresses the atom at all - annotate proof_safe = REVIEW_REQUIRED and product_action = REVIEW_REQUIRED. In both cases, "a human could find it elsewhere" never changes the label.
+
+## 4. PARTIAL is compound aggregation only
+
+PARTIALLY_SUPPORTED is reserved for compound claims where the atoms split (some supported, some not). When using PARTIAL, show which atoms are supported and which are not.
+
+PARTIAL is **never** a general "unsure" label. If you are unsure, use the INSUFFICIENT/REVIEW rule above. A single-atom claim is either SUPPORTED, CONTRADICTED, or INSUFFICIENT_EVIDENCE - never PARTIAL.
+
+**Rider rule (amended 2026-09-04 after pilot round 1):** if a claim is one core assertion with an attached date/scope/quantity rider, annotate the atom outcomes separately. The claim-level semantic label is PARTIALLY_SUPPORTED iff the core is supported and the rider is not; it is CONTRADICTED only if the core itself is positively contradicted. An unsupported rider never upgrades or downgrades a contradicted core.
+
+**Temporal/label riders count as atoms (amended 2026-09-04 after pilot round 2):** a date, year, scheme-name, or rate-label qualifier asserted by the claim (e.g. "i 2026", "fra 1. juli 2026", "den statlige veiledende satsen") is an atom. If the sources support the core amount or rule but not the qualifier, semantic_truth = PARTIALLY_SUPPORTED, never SUPPORTED.
+
+**Main-rule hedge (amended 2026-09-04 after pilot round 2):** when a source states a rule with a hedge such as "som hovedregel", "normalt", or "vanligvis", and the claim asserts the same rule without the hedge, the implicit "unconditionally" atom is unsupported: semantic_truth = PARTIALLY_SUPPORTED. If the claim preserves the hedge, semantic_truth = SUPPORTED.
+
+**Deterministic slot mapping (amended 2026-09-04 after pilot round 2):** semantic_truth drives the other two slots. SUPPORTED -> proof_safe = SUPPORTED, product_action = AUTO_SUPPORTED. CONTRADICTED -> proof_safe = CONTRADICTED, product_action = AUTO_CONTRADICTED. INSUFFICIENT_EVIDENCE or PARTIALLY_SUPPORTED -> classify every unresolved atom by the gap-vs-silent rule above: if any unresolved atom is gap-flagged, proof_safe = INSUFFICIENT_EVIDENCE and product_action = ABSTAIN_INSUFFICIENT; otherwise (silent-absent or present-but-conflicting) proof_safe = REVIEW_REQUIRED and product_action = REVIEW_REQUIRED. This mapping is mandatory; do not deviate case by case.
+
+## 5. Fixed label vocabulary (no variants)
+
+Use exactly these strings, in exactly these slots:
+
+| Slot | Allowed labels |
+|---|---|
+| semantic_truth | SUPPORTED, CONTRADICTED, PARTIALLY_SUPPORTED, INSUFFICIENT_EVIDENCE |
+| proof_safe | SUPPORTED, CONTRADICTED, INSUFFICIENT_EVIDENCE, REVIEW_REQUIRED |
+| product_action | AUTO_SUPPORTED, AUTO_CONTRADICTED, REVIEW_REQUIRED, ABSTAIN_INSUFFICIENT |
+
+**Known V2 bug, do not repeat:** the V2 passes used two different proof-safe vocabularies (INSUFFICIENT vs INSUFFICIENT_EVIDENCE), producing 33 fake disagreements. Any label outside the table above is a contract violation and the case must be re-annotated.
+
+## 6. Pilot gate
+
+Before any full V3 selection: >= 30 varied candidates, two fully independent passes, agreement >= 0.90 on semantic, proof-safe, and product action measured BEFORE any adjudication. If any slot is below 0.90: STOP, status ANNOTATION_CONTRACT_NOT_READY, do not seal V3. Adjudication may not be used to raise the measured agreement.
+
+## 7. Disagreement handling
+
+Disputes are adjudicated only after agreement is measured. Adjudication follows the rules above; it may not invent new labels. CORE adjudication rate must stay <= 35% (target <= 25%).
+# Structural Flags V3 - RC2 Blind Set Construction
+
+Tag every case with ALL flags that apply. These feed hard CORE quotas; over-tagging is a violation, so tag only what the claim + provided sources actually exercise. Only these 11 strings are valid.
+
+| Flag | Tag when the case requires ... |
+|---|---|
+| multi_span | combining information from 2+ distinct source spans (2+ source entries, or non-adjacent parts of one source) to reach the verdict |
+| compound | the claim is a compound of 2+ assertions whose truth values can split (PARTIAL aggregation applies) |
+| numeric | comparing, mapping, or verifying a number: amount, percentage, rate, threshold, age, count |
+| temporal | a date, year, period, "fra/etter <dato>", or time-limit assertion matters to the verdict |
+| actor | identifying WHO may act / who the rule applies to (parent, municipality, NAV, school, doctor...) is required |
+| modality | obligation, right, prohibition, or permission ("skal", "kan", "ma", "har rett til") drives the verdict |
+| cond_exc | a condition or exception ("hvis", "med mindre", "unntak", "som hovedregel") decides the verdict |
+| safety | acute danger, self-harm/suicide risk, violence, or emergency procedure content |
+| legal | verdict depends on statute/regulation citation or a legal-institutional procedure (klage, meldeplikt, lovparagraf) |
+| locality | municipality-specific or geographically bounded provision (named place, local scheme) |
+| age_legal | age thresholds interacting with legal rights/obligations (custody, consent, aldergrense for rettigheter) |
+
+Notes: flags overlap freely. Age as a simple lookup in a rate table is numeric, not age_legal. "0-20 ar" service scope with no legal-rights interaction is numeric/temporal, not age_legal. When unsure between two flags, tag both ONLY if each genuinely applies; otherwise tag the one that decides the verdict.
+
+=== CASES TO ANNOTATE ===
+[
+ {
+  "case_id": "RC2B-0278",
+  "claim": "Trondheim kommune publiserer ventetid for kommunal bolig pa nett.",
+  "sources": [
+   {
+    "source_id": "RC2B-0278-s1",
+    "kb_ref": "70-lokalt/trondheim/06-nav-okonomi-bolig.md",
+    "lines": "37-38",
+    "text": "- Krav og prioritering: varig behov for botilbud, lav inntekt/formue; barnefamilier prioriteres (kommunens egne kriterier). Ventetid publiseres ikke i dette dokumentet (UKJENT)."
+   }
+  ],
+  "provenance": "V3_SPEC17_NEW",
+  "v2_batch": null
+ },
+ {
+  "case_id": "RC2B-0279",
+  "claim": "Trondheim har en verifisert kommunal depositumsgarantiordning for privat utleier.",
+  "sources": [
+   {
+    "source_id": "RC2B-0279-s1",
+    "kb_ref": "70-lokalt/trondheim/06-nav-okonomi-bolig.md",
+    "lines": "55-56",
+    "text": "NASJONAL: NAV kan innvilge oppmelding av depositumsgaranti som del av okonomisk sosialhjelp til utleier (brukes aktivt i Trondheim, LOKAL PRAKSIS). Ingen egen kommunal depositumsgarantiordning er verifisert i Trondheim (LOKALT KUNNSKAPSHULL). Alternativer: NAV-garanti, sperret depositumskonto, utleiers godkjente garanti."
+   }
+  ],
+  "provenance": "V3_SPEC17_NEW",
+  "v2_batch": null
+ },
+ {
+  "case_id": "RC2B-0280",
+  "claim": "PMTO er et verifisert lokaltilbud i Trondheim kommune.",
+  "sources": [
+   {
+    "source_id": "RC2B-0280-s1",
+    "kb_ref": "70-lokalt/trondheim/README.md",
+    "lines": "44-44",
+    "text": "- COS-P, PMTO og TIBIR er ikke verifisert som lokale Trondheim-tilbud; ICDP er verifisert (fil 01)."
+   }
+  ],
+  "provenance": "V3_SPEC17_NEW",
+  "v2_batch": null
+ },
+ {
+  "case_id": "RC2B-0281",
+  "claim": "Trygderettens praksis godkjenner saerlig tilsyn overgangsstonad uten legedokumentasjon nar barnet er under utredning uten diagnose.",
+  "sources": [
+   {
+    "source_id": "RC2B-0281-s1",
+    "kb_ref": "69-kunnskapshullregister.md",
+    "lines": "80-86",
+    "text": "### 2.8 Trygderettens praksis om særlig tilsyn — ÅPENT\\n\\n| | |\\n|---|---|\\n| Spørsmål | Hvordan vurderer Trygderetten kravet om særlig tilsyn (§ 15-5 fjerde ledd), inkludert barn under utredning uten diagnose? |\\n| Hvorfor viktig | Avgjør hvor streng praksisen er rundt legedokumentasjon og arbeidsforhindring; direkte betydning for Mari-caset og fila 65/67. |\\n| Kilder forsøkt | Lovdata (lover/forskrifter), NAV-brukerstoff; praksisdatabaser ikke hentet i denne etappen. |\\n| Siste forsøk | 30.08.2026 |"
+   }
+  ],
+  "provenance": "V3_SPEC17_NEW",
+  "v2_batch": null
+ },
+ {
+  "case_id": "RC2B-0282",
+  "claim": "En mottaker i overgangsgruppen som far nytt barn i 2027 far automatisk ny vurdering etter de gamle reglene.",
+  "sources": [
+   {
+    "source_id": "RC2B-0282-s1",
+    "kb_ref": "69-kunnskapshullregister.md",
+    "lines": "88-95",
+    "text": "### 2.9 Nytt barn for gammel mottaker (scenario G) — ÅPENT\\n\\n| | |\\n|---|---|\\n| Spørsmål | Hvilket regelverk og hvilke betingelser gjelder når en mottaker i overgangsgruppen får nytt barn (her: 2027) og søker på nytt? |\\n| Hvorfor viktig | Forskriften gir overgangsstatus, men tolkningen av ny vurdering/nytt barn i praksis er ikke verifisert; dette er det eneste scenarioet i fil 68s scenario-motor som ikke kan rutes helt. |\\n| Kilder forsøk | FOR-2026-06-25-1361 (fulltekst); NAVs brukerside gir ikke svaret. |\\n| Siste forsøk | 30.08.2026 |\\n| Anbefalt neste metode | NAV-rundskriv og samarbeidspartnersider om overgangsregler; eventuell skriftlig avklaring med NAV. |"
+   }
+  ],
+  "provenance": "V3_SPEC17_NEW",
+  "v2_batch": null
+ }
+]
+

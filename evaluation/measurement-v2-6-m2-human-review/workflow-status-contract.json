@@ -1,0 +1,55 @@
+{
+  "artifact": "workflow-status-contract-v2-6",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V2_6-M2-HUMAN-REVIEW-LANE",
+  "created_utc": "2026-09-13T10:58:11Z",
+  "workflow_states": [
+    {
+      "state": "HUMAN_REVIEW_REQUIRED",
+      "meaning": "Dimension routed to human lane by routing contract; packet not yet created.",
+      "terminal": false,
+      "fail_closed": true
+    },
+    {
+      "state": "HUMAN_REVIEW_PENDING",
+      "meaning": "Packet created; valid review not yet ingested. Criterion unadjudicated.",
+      "terminal": false,
+      "fail_closed": true,
+      "forbidden_interpretations": ["UNRESOLVED-as-answer", "NOT_TRIGGERED", "TRIGGERED", "automatic PASS", "assumed safe"]
+    },
+    {
+      "state": "HUMAN_REVIEW_INVALID",
+      "meaning": "Submitted review failed schema/evidence validation. Criterion remains unadjudicated; no coercion.",
+      "terminal": false,
+      "fail_closed": true
+    },
+    {
+      "state": "HUMAN_REVIEW_DISAGREEMENT",
+      "meaning": "Dual blind reviews disagree on >=1 intermediate field. Requires adjudication pass; no automatic final label.",
+      "terminal": false,
+      "fail_closed": true,
+      "forbidden": "majority vote"
+    },
+    {
+      "state": "HUMAN_REVIEW_RESOLVED",
+      "meaning": "Valid review or adjudication complete; final critical label derived mechanically via frozen derivation table.",
+      "terminal": true,
+      "fail_closed": false
+    }
+  ],
+  "transition_rules": [
+    "REQUIRED -> PENDING on valid packet creation (mechanical packet validation 100%).",
+    "PENDING -> RESOLVED only on valid review ingest + mechanical derivation.",
+    "PENDING -> INVALID on schema-invalid or evidence-invalid review; INVALID stays unadjudicated (may receive a corrected review).",
+    "PENDING -> DISAGREEMENT on dual reviews differing in any intermediate field; DISAGREEMENT resolves only via adjudication record.",
+    "No transition from any non-terminal state to a final critical label without human intermediate labels.",
+    "No automated M2 verdict anywhere in the workflow."
+  ],
+  "final_label_mapping": {
+    "CLEAR_TRIGGER_SUPPORT": "TRIGGERED",
+    "CLEAR_NON_TRIGGER_SUPPORT": "NOT_TRIGGERED",
+    "AMBIGUOUS_OR_CONFLICTING": "UNRESOLVED",
+    "INSUFFICIENT_TO_DECIDE": "UNRESOLVED",
+    "UNRESOLVED": "UNRESOLVED"
+  },
+  "final_label_mapping_source": "frozen-semantics-trace.md (V2.5) sha256 89b67c0be7b484a492cee2079d57ecbb1a19e04a768f5e693cbff8c3457eb794"
+}

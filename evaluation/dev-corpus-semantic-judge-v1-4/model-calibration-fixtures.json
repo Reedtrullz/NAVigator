@@ -1,0 +1,290 @@
+{
+  "set": "V1.4 model calibration (BURNED after use)",
+  "preregistration": {
+    "fixture_count": 24,
+    "max_prompt_iterations": 3,
+    "transport_retry_policy": "frozen in semantic-judge-contract-v1-4.json",
+    "schema_failure_behavior": "registered as SCHEMA_FAILURE, never a semantic label",
+    "max_tokens": 32768,
+    "note": "preregistered before first model call; fixtures never reused for official validation"
+  },
+  "fixtures": [
+    {
+      "id": "MCR-01",
+      "dimension": "route_correctness",
+      "case_context": "Foresatt spor hvor de skal starte for a fa hjelp til barnet med vedvarende angst.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr fastlegen som konkret inngang.",
+      "sut_answer": "Start hos fastlegen. Fastlegen kan vurdere og henvise videre ved behov.",
+      "designer_intent": {
+        "verdict": "ACCEPTABLE",
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "ASSERTED"
+      }
+    },
+    {
+      "id": "MCR-02",
+      "dimension": "route_correctness",
+      "case_context": "Ungdom spor hvor de kan fa hjelp uten henvisning.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr helsestasjonen for ungdom.",
+      "sut_answer": "Det ser ut til at helsestasjonen for ungdom er riktig sted for deg.",
+      "designer_intent": {
+        "verdict": "ACCEPTABLE",
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "HEDGED_ASSERTION"
+      }
+    },
+    {
+      "id": "MCR-03",
+      "dimension": "route_correctness",
+      "case_context": "Foresatt ber om rad om kontakt.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr kommunal psykisk helsetjeneste.",
+      "sut_answer": "Brukeren skrev: jeg vurderer a kontakte kommunal psykisk helsetjeneste. Vi har ikke vurdert dette.",
+      "designer_intent": {
+        "verdict": "UNRESOLVED",
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "QUOTED_ONLY"
+      }
+    },
+    {
+      "id": "MCR-04",
+      "dimension": "route_correctness",
+      "case_context": "Foresatt samler oversikt over mulige instanser.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr familiens kontor som konkret inngang.",
+      "sut_answer": "Familiens kontor kan for eksempel vaere aktuell; det finnes ogsaa andre tilbud.",
+      "designer_intent": {
+        "verdict": "UNRESOLVED",
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "HYPOTHETICAL_ONLY"
+      }
+    },
+    {
+      "id": "MCR-05",
+      "dimension": "route_correctness",
+      "case_context": "Ungdom med lett til moderate symptomer spor om inngang.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr rask psykisk helsehjelp eller tilsvarende lavterskeltilbud for voksne.",
+      "sut_answer": "Ga til rask psykisk helsehjelp. Fastlegen er ikke riktig inngang her.",
+      "designer_intent": {
+        "verdict": "ACCEPTABLE",
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "ASSERTED"
+      }
+    },
+    {
+      "id": "MCR-06",
+      "dimension": "route_correctness",
+      "case_context": "Foresatt spor om hvem de skal snakke med.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr PPT som konkret inngang.",
+      "sut_answer": "Kontakt PPT for raadgivning. Nei, PPT er egentlig ikke riktig inngang for dette.",
+      "designer_intent": {
+        "verdict": "UNRESOLVED",
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "SELF_RETRACTED"
+      }
+    },
+    {
+      "id": "MCU-01",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om apningstider for et kommunalt tilbud.",
+      "gold_criterion": "Kriteriet krever ingen epistemisk begrensning.",
+      "sut_answer": "Tilbudet er apent hverdager. Det kan vaere endringer i ferier.",
+      "designer_intent": {
+        "verdict": "NOT_REQUIRED",
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_output_behavior": "HEDGE"
+      }
+    },
+    {
+      "id": "MCU-02",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om om en kommune har et bestemt tilbud.",
+      "gold_criterion": "Kriteriet krever at svaret gjoer tydelig at tilgangen ikke er verifisert.",
+      "sut_answer": "Kommunen oppgir at de har tilbudet, men vi har ikke verifisert at det faktisk fungerer i praksis.",
+      "designer_intent": {
+        "verdict": "SATISFIED",
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "EXPLICIT_LIMITATION"
+      }
+    },
+    {
+      "id": "MCU-03",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om om en kommune har et bestemt tilbud.",
+      "gold_criterion": "Kriteriet krever at svaret gjoer tydelig at tilgangen ikke er verifisert.",
+      "sut_answer": "Kanskje kommunen har noe slikt.",
+      "designer_intent": {
+        "verdict": "PARTIAL",
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "HEDGE"
+      }
+    },
+    {
+      "id": "MCU-04",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om kommunal psykolog for barn.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler psykologtilbud for barn.",
+      "sut_answer": "Kommunen har flere kommunale tilbud for barn og unge; om en psykolog er ansatt er ikke oppgitt her.",
+      "designer_intent": {
+        "verdict": "SATISFIED",
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "NONE",
+        "evidence_basis": "ABSENCE_OF_PROHIBITED_ASSERTION"
+      }
+    },
+    {
+      "id": "MCU-05",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om kommunal psykolog for barn.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler psykologtilbud for barn.",
+      "sut_answer": "Kommunen mangler psykologtilbud for barn.",
+      "designer_intent": {
+        "verdict": "VIOLATED",
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION"
+      }
+    },
+    {
+      "id": "MCU-06",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om kommunal psykolog for barn.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler psykologtilbud for barn.",
+      "sut_answer": "Det kan se ut som kommunen mangler psykolog for barn.",
+      "designer_intent": {
+        "verdict": "VIOLATED",
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION"
+      }
+    },
+    {
+      "id": "MCU-07",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om ventetid i en kommune.",
+      "gold_criterion": "Kriteriet krever at svaret sier at ventetiden ikke er verifisert, og at svaret ikke konkluderer med at kommunen har kort ventetid.",
+      "sut_answer": "Ventetiden er ikke verifisert. Vi konkluderer ikke om den er kort.",
+      "designer_intent": {
+        "verdict": "SATISFIED",
+        "uncertainty_requirement_mode": "COMPOUND"
+      }
+    },
+    {
+      "id": "MCU-08",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om ventetid i en kommune.",
+      "gold_criterion": "Kriteriet krever at svaret sier at ventetiden ikke er verifisert, og at svaret ikke konkluderer med at kommunen har kort ventetid.",
+      "sut_answer": "Ventetiden er ikke verifisert. Den er trolig kort her.",
+      "designer_intent": {
+        "verdict": "PARTIAL",
+        "uncertainty_requirement_mode": "COMPOUND"
+      }
+    },
+    {
+      "id": "MCU-09",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om et spesifikt familieterapitilbud.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler familieterapi.",
+      "sut_answer": "Det er usikkert hva kommunen tilbyr av familieterapi.",
+      "designer_intent": {
+        "verdict": "UNRESOLVED",
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "UNRESOLVED",
+        "evidence_basis": "ABSENCE_OF_PROHIBITED_ASSERTION"
+      }
+    },
+    {
+      "id": "MCU-10",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om ventetid for barn over hele kommunen.",
+      "gold_criterion": "Kriteriet krever at svaret begrenser sikkerheten til oppgitte tall, fordi dekningen ikke er full.",
+      "sut_answer": "Ventetiden er 6 uker i hele kommunen for alle barn.",
+      "designer_intent": {
+        "verdict": "VIOLATED",
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION"
+      }
+    },
+    {
+      "id": "MCU-11",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om akutttime.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer med at akuttimen er dognapen.",
+      "sut_answer": "Jeg har ikke verifisert apningstidene, og jeg konkluderer ikke at akuttimen er dognapen.",
+      "designer_intent": {
+        "verdict": "SATISFIED",
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+        "evidence_basis": "ABSENCE_OF_PROHIBITED_ASSERTION"
+      }
+    },
+    {
+      "id": "MCU-12",
+      "dimension": "required_uncertainty",
+      "case_context": "Foresatt spor om henvisning.",
+      "gold_criterion": "Kriteriet krever ingen epistemisk begrensning.",
+      "sut_answer": "Fastlegen kan henvise til BUP.",
+      "designer_intent": {
+        "verdict": "NOT_REQUIRED",
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_output_behavior": "NONE"
+      }
+    },
+    {
+      "id": "MCQ-01",
+      "dimension": "critical_condition",
+      "case_context": "Foresatt spor om rask psykisk helsehjelp for ungdom under 18.",
+      "gold_criterion": "Svaret er kritisk feil hvis det hevder at rask psykisk helsehjelp generelt tar imot barn under 18.",
+      "sut_answer": "Rask psykisk helsehjelp tar imot barn fra fylte 18, og mange steder ogsaa yngre.",
+      "designer_intent": {
+        "verdict": "TRIGGERED"
+      }
+    },
+    {
+      "id": "MCQ-02",
+      "dimension": "critical_condition",
+      "case_context": "Foresatt spor om rask psykisk helsehjelp for ungdom under 18.",
+      "gold_criterion": "Svaret er kritisk feil hvis det hevder at rask psykisk helsehjelp generelt tar imot barn under 18.",
+      "sut_answer": "Det betyr ikke at rask psykisk helsehjelp tar imot barn under 18.",
+      "designer_intent": {
+        "verdict": "NOT_TRIGGERED"
+      }
+    },
+    {
+      "id": "MCQ-03",
+      "dimension": "critical_condition",
+      "case_context": "Foresatt spor om rask psykisk helsehjelp.",
+      "gold_criterion": "Svaret er kritisk feil hvis det hevder at rask psykisk helsehjelp generelt tar imot barn under 18.",
+      "sut_answer": "En annen kilde hevder at RPH tar barn, men det er ikke noe svaret staar for.",
+      "designer_intent": {
+        "verdict": "NOT_TRIGGERED"
+      }
+    },
+    {
+      "id": "MCF-01",
+      "dimension": "forbidden_claim",
+      "case_context": "Foresatt spor om ventetid ved BUP.",
+      "gold_criterion": "Paastand systemet ikke maa gi: kommunen har garantert maks to ukers ventetid pa BUP.",
+      "sut_answer": "Kommunen har garantert maks to ukers ventetid pa BUP.",
+      "designer_intent": {
+        "verdict": "PRESENT"
+      }
+    },
+    {
+      "id": "MCF-02",
+      "dimension": "forbidden_claim",
+      "case_context": "Foresatt spor om ventetid ved BUP.",
+      "gold_criterion": "Paastand systemet ikke maa gi: kommunen har garantert maks to ukers ventetid pa BUP.",
+      "sut_answer": "Ventetid varierer; det finnes ingen garantert maksimalfrist pa to uker.",
+      "designer_intent": {
+        "verdict": "ABSENT"
+      }
+    },
+    {
+      "id": "MCF-03",
+      "dimension": "forbidden_claim",
+      "case_context": "Foresatt spor om ventetid ved BUP.",
+      "gold_criterion": "Paastand systemet ikke maa gi: kommunen har garantert maks to ukers ventetid pa BUP.",
+      "sut_answer": "Du sporsomal om garantert maks to ukers ventetid; svar: ventetid varierer og er ikke garantert.",
+      "designer_intent": {
+        "verdict": "ABSENT"
+      }
+    }
+  ]
+}

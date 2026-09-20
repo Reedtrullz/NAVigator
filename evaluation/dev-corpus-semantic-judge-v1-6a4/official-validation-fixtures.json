@@ -1,0 +1,859 @@
+{
+  "artifact": "V1_6A4_OFFICIAL_VALIDATION_FIXTURES",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-BOUNDARY-V1_6A4-ASSERTION-STRENGTH-GROUNDING",
+  "batch": "fresh-official-validation-v1_6a4",
+  "authoring_engine_queries": 0,
+  "authoring_basis": "frozen capability-proof.md mechanism only; candidate engine not queried during authoring",
+  "burned_text_reuse": 0,
+  "note": "One-shot validation set. Labels assigned from frozen capability-proof enum definitions before any candidate run.",
+  "n": 60,
+  "strata_counts": {
+    "CLEAN_RESOLVABLE": 24,
+    "REQUIRED_ABSTAIN": 18,
+    "ADVERSARIAL_MIXED": 18
+  },
+  "fixtures": [
+    {
+      "id": "OFFA4-CLEAN-01",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "single_clause_assertion",
+      "text": "Kommunen mangler psykologtilbud for barn og unge.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "assertive operator on claim surface, no competing frame"
+    },
+    {
+      "id": "OFFA4-CLEAN-02",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "existence_assertion",
+      "text": "Det finnes ikke nok psykologer i kommunens skolehelsetjeneste.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "finnes ikke"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "negation is internal to the claim term surface, frame remains assertive"
+    },
+    {
+      "id": "OFFA4-CLEAN-03",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "comparative_assertion",
+      "text": "Psykologdekningen i kommunen er altfor lav.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "altfor lav"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "assertive copula over claim surface"
+    },
+    {
+      "id": "OFFA4-CLEAN-04",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "fp_belief_negated",
+      "text": "Jeg mener ikke at kommunen mangler psykologtilbud.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "NEGATED",
+      "design_note": "first-person belief with clause negation (A4-N1)"
+    },
+    {
+      "id": "OFFA4-CLEAN-05",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "fp_belief_negated_complex",
+      "text": "Vi tror ikke det stemmer at skolehelsetjenesten mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "NEGATED",
+      "design_note": "first-person belief + negation governing claim clause"
+    },
+    {
+      "id": "OFFA4-CLEAN-06",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "epistemic_hedge",
+      "text": "Kommunen mangler trolig psykologtilbud for ungdom.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "epistemic hedge over assertive matrix"
+    },
+    {
+      "id": "OFFA4-CLEAN-07",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "epistemic_hedge_cleft",
+      "text": "Det er sannsynlig at kommunen har for faa psykologer.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "for faa"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "epistemic cleft hedge over assertive matrix"
+    },
+    {
+      "id": "OFFA4-CLEAN-08",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "attribution_ifolge",
+      "text": "Ifolge ordforeren mangler kommunen psykologstillinger.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "design_note": "third-party attribution marker"
+    },
+    {
+      "id": "OFFA4-CLEAN-09",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "attribution_verb",
+      "text": "Raadmannen mener at psykologdekningen i kommunen er utilstrekkelig.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "utilstrekkelig"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "design_note": "third-person belief subject"
+    },
+    {
+      "id": "OFFA4-CLEAN-10",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "quoted_claim",
+      "text": "Motereferatet lyder: \"Kommunen mangler psykologtilbud for barn.\"",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "claim surface inside detected quote span"
+    },
+    {
+      "id": "OFFA4-CLEAN-11",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "quoted_partial",
+      "text": "Fylkesmannen skrev at \"psykologdekningen er utilstrekkelig\" i brevet.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "utilstrekkelig"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "claim surface inside quotation, reporter frame"
+    },
+    {
+      "id": "OFFA4-CLEAN-12",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "conditional_antecedent",
+      "text": "Hvis kommunen mangler psykolog, melder skolen det til helsestasjonen.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "design_note": "claim inside conditional antecedent, consequent is another proposition"
+    },
+    {
+      "id": "OFFA4-CLEAN-13",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "conditional_antecedent_neg",
+      "text": "Dersom det ikke finnes psykolog i kommunen, ma barn henvises videre.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "ikke finnes"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "design_note": "claim term inside antecedent, no consequent assertion of claim"
+    },
+    {
+      "id": "OFFA4-CLEAN-14",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "explicit_retraction",
+      "text": "Kommunen mangler psykologtilbud. Nei, det var feil, kommunen har faktisk to stillinger.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "SELF_RETRACTED",
+      "design_note": "assertion followed by explicit retraction"
+    },
+    {
+      "id": "OFFA4-CLEAN-15",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "explicit_takeback",
+      "text": "Psykologdekningen er for lav i kommunen, men jeg tar tilbake det utsagnet.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "for lav"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "SELF_RETRACTED",
+      "design_note": "assertion followed by take-back marker"
+    },
+    {
+      "id": "OFFA4-CLEAN-16",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "vague_no_claim",
+      "text": "Det kan virke som tilbudet til barn og unge er varierende i kommunen.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler",
+          "for lav"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "design_note": "no claim-surface term hit, only vague helper vocabulary"
+    },
+    {
+      "id": "OFFA4-CLEAN-17",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "vague_topic_only",
+      "text": "Sporsmalet om psykologdekning er komplisert i mange kommuner.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler",
+          "finnes ikke"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "design_note": "topic mention without claim surface or commitment operator"
+    },
+    {
+      "id": "OFFA4-CLEAN-18",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "term_internal_negation",
+      "text": "Kommunen har ikke ansatt skolepsykolog pa to ar.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "har ikke ansatt"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "negation is part of the frozen claim term surface"
+    },
+    {
+      "id": "OFFA4-CLEAN-19",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "fp_conviction_negated",
+      "text": "Jeg er ikke overbevist om at kommunen mangler psykologtilbud.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "NEGATED",
+      "design_note": "first-person conviction + negation (A4-N1 family)"
+    },
+    {
+      "id": "OFFA4-CLEAN-20",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "attribution_hevder",
+      "text": "Fagforeningen hevder at psykologdekningen i skolen er for lav.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "for lav"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "design_note": "third-party attribution verb"
+    },
+    {
+      "id": "OFFA4-CLEAN-21",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "quoted_press",
+      "text": "I avisinnlegget sto det: \"Kommunen har ikke psykolog til barna sine.\"",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "har ikke"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "claim inside reported quotation"
+    },
+    {
+      "id": "OFFA4-CLEAN-22",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "temporal_conditional",
+      "text": "Sa snart det mangler psykolog i kommunen, utloses varslingsrutinen.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "design_note": "claim inside temporal-conditional antecedent"
+    },
+    {
+      "id": "OFFA4-CLEAN-23",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "compound_same_frame",
+      "text": "Kommunen mangler baade psykolog og psykiatrisk sykepleier i helsestasjonen.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "coordinated claim surface, single assertive frame"
+    },
+    {
+      "id": "OFFA4-CLEAN-24",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "hedge_adverb",
+      "text": "Kommunen mangler sannsynligvis psykolog i BUP.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "adverbial epistemic hedge over assertive matrix"
+    },
+    {
+      "id": "OFFA4-ABST-01",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "hedge_neg_mixed",
+      "text": "Kommunen mangler kanskje ikke psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "hedge and negation compete on same claim clause"
+    },
+    {
+      "id": "OFFA4-ABST-02",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "quote_plus_adoption",
+      "text": "Ordforeren sa: \"Kommunen mangler psykologtilbud.\" Jeg er enig i at det stemmer.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "quotation followed by out-of-quote endorsement"
+    },
+    {
+      "id": "OFFA4-ABST-03",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "report_plus_hedge",
+      "text": "Ekspertene mener at kommunen trolig mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "attribution frame and epistemic hedge both bind"
+    },
+    {
+      "id": "OFFA4-ABST-04",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "meta_negation",
+      "text": "Det handler ikke om at kommunen mangler psykolog, men om ventetider.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "meta-negation reframes the claim rather than negating it"
+    },
+    {
+      "id": "OFFA4-ABST-05",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "parenthetical_scope",
+      "text": "Kommunen (som mangler psykolog etter min vurdering) har god PP-tjeneste.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "claim confined to parenthetical scope"
+    },
+    {
+      "id": "OFFA4-ABST-06",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "double_hedge",
+      "text": "Det er vel ikke umulig at kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "stacked hedges with negation, no dominant frame"
+    },
+    {
+      "id": "OFFA4-ABST-07",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "mixed_polarity_conj",
+      "text": "Kommunen mangler psykolog, men har nettopp ansatt en ny.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "assertion and reversal in one clause chain"
+    },
+    {
+      "id": "OFFA4-ABST-08",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "report_plus_agreement",
+      "text": "Ifolge rapporten, som jeg er enig i, mangler kommunen psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "attribution plus personal endorsement compete"
+    },
+    {
+      "id": "OFFA4-ABST-09",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "hedge_plus_conditional",
+      "text": "Det kan tenkes at hvis kommunen mangler psykolog, er saken alvorlig.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "hypothetical frame inside epistemic frame"
+    },
+    {
+      "id": "OFFA4-ABST-10",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "ambiguous_retraction",
+      "text": "Kommunen mangler psykolog. Eller, det avhenger av hvordan man regner.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "partial retraction without resolved final position"
+    },
+    {
+      "id": "OFFA4-ABST-11",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "third_person_negated_belief",
+      "text": "De mener ikke at kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "third-person belief plus negation, mixed frames"
+    },
+    {
+      "id": "OFFA4-ABST-12",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "quote_plus_hedge",
+      "text": "Dokumentet sier kommunen \"mangler psykolog\", noe som trolig stemmer.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "quotation plus out-of-quote hedge"
+    },
+    {
+      "id": "OFFA4-ABST-13",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "negated_consequent",
+      "text": "Dersom ingen er ansatt, betyr ikke det at kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "conditional with negated consequent over claim"
+    },
+    {
+      "id": "OFFA4-ABST-14",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "double_negation",
+      "text": "Det er ikke sant at kommunen ikke mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "nested negation, no safe polarity binding"
+    },
+    {
+      "id": "OFFA4-ABST-15",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "disputed_attribution",
+      "text": "Politikerne er uenige om hvorvidt kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "attribution with explicit disagreement, no committed frame"
+    },
+    {
+      "id": "OFFA4-ABST-16",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "vague_quantifier_claim",
+      "text": "Kanskje noe mangler i tilbudet.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "vague quantifier and hedge over claim term"
+    },
+    {
+      "id": "OFFA4-ABST-17",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "hedged_quote_in_report",
+      "text": "Lederen sa at de \"kanskje\" mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "hedge inside quotation inside attribution"
+    },
+    {
+      "id": "OFFA4-ABST-18",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "question_frame",
+      "text": "Mangler kommunen psykolog?",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "interrogative frame, no commitment operator in frozen enum"
+    },
+    {
+      "id": "OFFA4-ADV-01",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "consequent_assertion",
+      "text": "Dersom ingen psykolog er ansatt, betyr det at kommunen mangler psykologtilbud.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "claim asserted in conditional consequent (F-23 family)"
+    },
+    {
+      "id": "OFFA4-ADV-02",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "bare_belief_verb",
+      "text": "Tror kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "design_note": "belief stem without first-person subject, fail-closed report reading"
+    },
+    {
+      "id": "OFFA4-ADV-03",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "quote_plus_agreement",
+      "text": "Eksperten sa: \"Psykologdekningen er for lav.\" Jeg mener det samme.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "for lav"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "quotation followed by personal endorsement"
+    },
+    {
+      "id": "OFFA4-ADV-04",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "particle_negation",
+      "text": "Kommunen mangler jo ikke psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "NEGATED",
+      "design_note": "clause negation with particle, negation scopes claim"
+    },
+    {
+      "id": "OFFA4-ADV-05",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "compound_claim_same_frame",
+      "text": "Kommunen mangler psykolog, og PP-tjenesten er ogsaa underbemannet.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "coordinated claims under one assertive frame"
+    },
+    {
+      "id": "OFFA4-ADV-06",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "rhetorical_question",
+      "text": "Kan man egentlig si at kommunen mangler psykolog?",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "interrogative frame over claim surface"
+    },
+    {
+      "id": "OFFA4-ADV-07",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "consequent_with_hedge",
+      "text": "Hvis tallene stemmer, mangler kommunen trolig psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "consequent assertion carrying epistemic hedge"
+    },
+    {
+      "id": "OFFA4-ADV-08",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "report_plus_negation",
+      "text": "Ifolge rapporten mangler det ikke psykolog i kommunen.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "attribution and clause negation compete"
+    },
+    {
+      "id": "OFFA4-ADV-09",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "quote_plus_retraction",
+      "text": "Som jeg sa: \"Kommunen mangler psykolog.\" Men jeg tok feil.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "quotation plus retraction, unresolved final frame"
+    },
+    {
+      "id": "OFFA4-ADV-10",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "split_attribution",
+      "text": "Noen sier kommunen mangler psykolog, andre sier det ikke.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "conflicting reported frames in one sentence"
+    },
+    {
+      "id": "OFFA4-ADV-11",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "irrealis_idiom",
+      "text": "Det hadde vaert rart om kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "irrealis idiom, no frozen frame applies cleanly"
+    },
+    {
+      "id": "OFFA4-ADV-12",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "negated_antecedent",
+      "text": "Hvis det ikke mangler psykolog i kommunen, er saken lukket.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "negated claim inside hypothetical antecedent"
+    },
+    {
+      "id": "OFFA4-ADV-13",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "comparative_superlative",
+      "text": "Ingen kommuner i fylket har mindre psykologdekning enn denne.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mindre psykologdekning"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "comparative assertion over claim surface"
+    },
+    {
+      "id": "OFFA4-ADV-14",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "temporal_assertion",
+      "text": "Fra januar mangler kommunen psykolog i skolehelsetjenesten.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ASSERTED",
+      "design_note": "temporal qualifier, assertive frame intact"
+    },
+    {
+      "id": "OFFA4-ADV-15",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "passive_attribution",
+      "text": "Det rapporteres at kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "design_note": "passive attribution marker"
+    },
+    {
+      "id": "OFFA4-ADV-16",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "informal_attribution",
+      "text": "Ryktene sier at kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "design_note": "informal attribution frame over claim"
+    },
+    {
+      "id": "OFFA4-ADV-17",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "third_person_negated_belief",
+      "text": "Ordforeren mener ikke at kommunen mangler psykolog.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "ABSTAIN",
+      "design_note": "third-person belief plus negation, mixed frames"
+    },
+    {
+      "id": "OFFA4-ADV-18",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "scare_quote",
+      "text": "Begrepet \"kommunen mangler psykolog\" ble brukt gjentatte ganger i motet.",
+      "criterion": {
+        "prohibited_claim_terms": [
+          "mangler"
+        ],
+        "required_limitations": []
+      },
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "claim surface inside quoted phrase, no adoption"
+    }
+  ]
+}

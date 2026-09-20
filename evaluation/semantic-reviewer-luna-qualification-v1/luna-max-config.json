@@ -1,0 +1,19 @@
+{
+  "config_id": "LUNA-MAX",
+  "model": "gpt-5.6-luna",
+  "provider_route": "http://127.0.0.1:10100/v1/chat/completions",
+  "reasoning_effort": "MAX",
+  "reasoning_effort_payload_field": "reasoning_effort (top-level, lowercase on wire; frozen Astra runner convention)",
+  "response_format": {
+    "type": "json_object"
+  },
+  "max_tokens": null,
+  "temperature": null,
+  "note_max_tokens": "not set (provider default), matching frozen Astra runner; prevents reasoning-budget exhaustion",
+  "reviewer_prompt_source": "V1 qualification contract semantic_instructions (verbatim, unmodified)",
+  "output_schema_source": "V1 qualification contract semantic_instructions.schemas[lane]",
+  "retry_policy": "max 1 technical transport retry; no semantic retry; invalid remains invalid",
+  "parse_fix_class": "FENCE_STRIP transport-only (V2 precedent)",
+  "json_mode_fix_class": "disable json_object on HTTP 400/422 (V1/V2 precedent)",
+  "frozen_utc": "2026-09-18T22:51:01Z"
+}

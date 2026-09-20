@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "dev-corpus-scorer-v1 per-case result",
+  "type": "object",
+  "required": ["case_id", "corpus", "applicability", "execution_status", "critical_error", "forbidden_claims", "safety_priority", "acceptable_route", "uncertainty", "required_evidence", "evidence_completeness", "scorer_notes", "scorer_version"],
+  "properties": {
+    "case_id": {"type": ["string", "null"]},
+    "corpus": {"type": "string", "enum": ["safety_cases", "routing_cases", "discovery_adversarial_cases", "unknown"]},
+    "applicability": {"type": "string", "enum": ["APPLICABLE", "NOT_APPLICABLE_TO_SUT", "EXECUTION_FAILED", "SCORED"]},
+    "execution_status": {"type": "string", "enum": ["SUCCESS", "EXECUTION_FAILED", "NOT_APPLICABLE"]},
+    "critical_error": {"type": "string", "enum": ["CRITICAL_ERROR", "NO_CRITICAL_ERROR", "NOT_APPLICABLE", "UNRESOLVED"]},
+    "forbidden_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "status"],
+        "properties": {
+          "claim": {"type": "string"},
+          "status": {"type": "string", "enum": ["PRESENT", "PRESENT_JUDGE", "ABSENT_TAK"]}
+        }
+      }
+    },
+    "safety_priority": {"type": ["string", "null"]},
+    "acceptable_route": {"type": "string", "enum": ["CANONICAL_ACCEPTABLE", "EQUIVALENT_ACCEPTABLE", "PARTIAL", "NO_ACCEPTABLE_ROUTE", "UNRESOLVED", "NOT_APPLICABLE"]},
+    "uncertainty": {"type": "string", "enum": ["SATISFIED", "PARTIAL", "VIOLATED", "NOT_REQUIRED", "NOT_APPLICABLE"]},
+    "required_evidence": {"type": "object", "additionalProperties": {"type": "boolean"}},
+    "evidence_completeness": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "scorer_notes": {"type": "array", "items": {"type": "string"}},
+    "scorer_version": {"type": "string"}
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_10-BOUNDARY-EXTENSION-AND-RESCREEN",
+  "frozen_at": "2026-09-14",
+  "calibration_protocol": {
+    "fixtures": "calibration-fixtures-v2-10.json (25 burned, 12 traps)",
+    "fixture_sha256": "9416430f990678f60e94727b938e1c266756de697be7e8c48ccf1563c2d5ae5c",
+    "max_iterations": 2,
+    "iteration_gate": "strict improvement vs prior iteration AND overall >= 0.90 AND 0 trap overcommit"
+  },
+  "candidates": {
+    "deepseek-v4-1-flash": {
+      "wire_id": "opencode-go/deepseek-v4.1-flash",
+      "iteration_1": {"correct": 21, "n": 25, "accuracy": 0.84, "overcommit": 1},
+      "iteration_2": {"correct": 21, "n": 25, "accuracy": 0.84, "overcommit": 1},
+      "strict_improvement": false,
+      "note": "iteration-2 misses byte-identical to iteration-1: V210C-ROUTE-10, V210C-FORB-01, V210C-UNC-05, V210C-UNC-06. Bounded prompt clarifications produced zero behavioral change at temperature 0."
+    },
+    "mimo-v2-5-pro": {
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "iteration_1": {"correct": 21, "n": 25, "accuracy": 0.84, "overcommit": 0},
+      "iteration_2": {"correct": 21, "n": 25, "accuracy": 0.84, "overcommit": 1},
+      "strict_improvement": false,
+      "note": "iteration-2 fixed FORB-01 and FORB-04 (self-retraction clarification effective) but regressed V210C-UNC-05 (trap, UNRESOLVED to PARTIAL, overcommit introduced) and V210C-ROUTE-09 (PARTIAL to NO_ACCEPTABLE_ROUTE)."
+    }
+  },
+  "artifact_sha256": {
+    "calibration-results-iter1.json": "2083e35a4d6a45581f2ea6891ee88314375055945f34ffb6c68742abb81aabfa",
+    "calibration-metrics-iter1.json": "1c20da3117642f513e991538b8ad7c2a93f31accaded9054fb6af30493965b4d",
+    "calibration-results-iter2.json": "189f6866a2bc30b37503a8ab7153375d4729e7df50a4f07c098a0c64e5302874",
+    "calibration-metrics-iter2.json": "b8c610da7921aed19da4cf86fcf901ad3f601a0a63b0f1ad45c55b580fd6c001",
+    "judge_core_v2_10.py (iter-2 prompt)": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "screening-gold.json": "efac73c40ca63b55d426c9141796b4b83702fce87c04ab2bf30155e375748f5f",
+    "deterministic-prepass-results.json": "39bf8aa3a54be3b1058e2571d77a73fdaa99483a00a498d0fe7e56498e6582e6",
+    "screening-fixtures.json": "7afa5c9e751b840395eee72962545fb3a6a5c6795e8a8092ecd83af2db9dfa4c"
+  },
+  "selection": "NONE",
+  "terminal_status": "V2_10_NO_NON_M2_JUDGE_QUALIFIES"
+}

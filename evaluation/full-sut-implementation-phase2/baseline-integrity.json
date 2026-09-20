@@ -1,0 +1,41 @@
+{
+  "artifact": "phase2-baseline-integrity",
+  "verified_at": "2026-09-14",
+  "phase1": {
+    "task_lock_status": "TERMINAL (FULL_SUT_PHASE_1_READY)",
+    "freeze_hashes_file": "evaluation/full-sut-implementation/phase1-freeze/hashes.txt",
+    "hashes_checked": 19,
+    "hashes_ok": 19,
+    "hashes_failed": 0,
+    "drift": false
+  },
+  "measurement_v3": {
+    "path": "evaluation/measurement-v3-combined-freeze/v3-manifest.json",
+    "sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+    "matches_phase1_task_lock_pin": true,
+    "drift": false
+  },
+  "architecture_v1": {
+    "dir": "evaluation/full-sut-architecture-v1/",
+    "documents_used": [
+      "canonical-pipeline.md",
+      "epistemic-state-contract.md",
+      "fail-closed-contract.md",
+      "provenance-contract.md",
+      "knowledge-layer-interface.md",
+      "local-discovery-interface.md",
+      "implementation-phases.md"
+    ],
+    "mutations": 0
+  },
+  "phase1_source_snapshot": {
+    "dir": "evaluation/full-sut-implementation-phase2/phase1-source-snapshot/",
+    "file_count": 19,
+    "purpose": "immutability mechanism for Phase 1 runtime sources (no git repo)",
+    "hashes_file": "phase1-source-snapshot/hashes.txt",
+    "regression_policy": "Phase 1 tests must still pass when run against this snapshot layout (PHASE_1_REGRESSIONS = 0)"
+  },
+  "disk_free_gib": 66,
+  "disk_guardrail_gib": 30,
+  "drift_detected": false
+}

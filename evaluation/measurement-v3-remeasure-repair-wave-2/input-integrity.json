@@ -1,0 +1,130 @@
+{
+  "artifact": "wave2-input-integrity",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-2",
+  "gate": "INPUT_INTEGRITY",
+  "verification_method": "sha256_recompute_from_disk",
+  "status": "PASS",
+  "pins": {
+    "wave2_repair_task_lock": {
+      "path": "evaluation/full-sut-repair-wave-2-v1/TASK-LOCK.json",
+      "sha256": "e33b7e5207919a06ce87ddb21ee7567148924406c9144dc8d8ee0de5614c33a8",
+      "expected_status": "FULL_SUT_REPAIR_WAVE_2_READY_FOR_REMEASUREMENT",
+      "observed_status": "FULL_SUT_REPAIR_WAVE_2_READY_FOR_REMEASUREMENT",
+      "match": true
+    },
+    "repaired_sut_manifest": {
+      "path": "evaluation/full-sut-repair-wave-2-v1/repaired-sut-manifest.json",
+      "sha256": "8369e21309d7b53413bb6ab93ba7e0983769e707ca7680803237edc1a39ee22e",
+      "match": true
+    },
+    "replay_prediction_manifests": {
+      "safety": {
+        "path": "evaluation/full-sut-repair-wave-2-v1/runs/structural-120-replay-v2/safety/predictions-manifest.json",
+        "sha256": "71d65c5973aeda50530d8c256118ea6cb71d75b238eea393bbd842145052569d",
+        "match": true
+      },
+      "routing": {
+        "path": "evaluation/full-sut-repair-wave-2-v1/runs/structural-120-replay-v2/routing/predictions-manifest.json",
+        "sha256": "35be9666f47ff6ae1f85875185945957ec95401c8ffb4427a53f31eefd51cfd0",
+        "match": true
+      },
+      "discovery_adversarial": {
+        "path": "evaluation/full-sut-repair-wave-2-v1/runs/structural-120-replay-v2/discovery_adversarial/predictions-manifest.json",
+        "sha256": "099c4aa9da36d04c101cb7b0c44097a7d46c9c3526679db36aa6460605e6dc2e",
+        "match": true
+      },
+      "note": "official Candidate-2 structural replay set; determinism evidence recorded, handoff did not pin individual SHAs"
+    },
+    "measurement": {
+      "combined_engine": {
+        "path": "evaluation/measurement-v3-combined-freeze/combined_measurement_v3.py",
+        "sha256": "ce7277aa365d4143563cfaa09dfd52712a89a0abd8515f075658b1d683964a29",
+        "match": true
+      },
+      "review_lane": {
+        "path": "evaluation/measurement-v2-15-semantic-human-review-fallback/review_lane_semantic_v2_15.py",
+        "sha256": "5ba5ad693a329054e59fc6bfd1d346fbd784e9d3bd7b79cdaf8e383914c86e7c",
+        "match": true
+      },
+      "judge_core": {
+        "path": "evaluation/judge-selection-v2-13-forbidden-route-specialist/judge_core_v2_13.py",
+        "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+        "match": true
+      }
+    },
+    "corpus": {
+      "manifest": {
+        "path": "evaluation/dev-corpus-v1-1-repair/manifest.json",
+        "sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17",
+        "match": true
+      }
+    },
+    "wave1_measurement": {
+      "results": {
+        "path": "evaluation/measurement-v3-remeasure-repair-wave-1/wave1-combined-measurement-results.json",
+        "sha256": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+        "match": true
+      },
+      "freeze_manifest": {
+        "path": "evaluation/measurement-v3-remeasure-repair-wave-1/wave1-measurement-freeze-manifest.json",
+        "sha256": "e6d91a813dbf69fa647b15e683638a69a14bb9870e8ffbf7da801fd0615e2abb",
+        "match": true
+      },
+      "note": "Wave-1 authoritative freeze; results SHA verified against Wave-1 freeze manifest pin"
+    },
+    "original_baseline": {
+      "results": {
+        "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json",
+        "sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+        "match": true
+      },
+      "freeze_manifest": {
+        "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/final-freeze-manifest.json",
+        "sha256": "34d78dae25acb5c21a8b1e42be8a90be478be76f196b3271661718ff486e65c1",
+        "match": true
+      },
+      "hashes": {
+        "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/hashes.txt",
+        "sha256": "bfad37ca29b43f55edd5ebb3c6c06bbde8c93189be593ab7790db7f46bc842bd",
+        "match": true
+      }
+    }
+  },
+  "candidate_1_incident": {
+    "status": "SUPERSEDED_HISTORICAL_NOT_MEASURED",
+    "engineering_evidence_only": true,
+    "success": "99/120",
+    "execution_failed": 21,
+    "fail_closed_reason": "verified claim value missing from answer",
+    "proven_root_cause": [
+      "per-track evidence IDs restarted",
+      "duplicate evidence IDs across tracks",
+      "planner INFO dedup removed second-track blocks",
+      "finalizer correctly failed closed"
+    ],
+    "enters_scoring": false
+  },
+  "wave1_authority_mix_at_freeze": {
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 0,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_HUMAN_ADJUDICATION": 4
+  },
+  "wave2_ownership_transition": {
+    "DETERMINISTIC": "508 -> 506",
+    "LLM_REVIEWED": "88 -> 90",
+    "LLM_ADJUDICATED": "0 -> 3",
+    "PENDING": "4 -> 1"
+  },
+  "hard_flags": {
+    "WAVE2_SOURCE_CHANGED": false,
+    "WAVE2_PREDICTIONS_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "CORPUS_CHANGED": false,
+    "WAVE1_MEASUREMENT_CHANGED": false,
+    "ORIGINAL_BASELINE_CHANGED": false
+  },
+  "next_step": "residual-leakage-audit then Wave-2 freeze BEFORE comparisons"
+}

@@ -1,0 +1,225 @@
+{
+ "results_file": "results/v041-results-holdout-v2-C-judge-c-gpt-5.6-luna.json",
+ "n_rows": 80,
+ "n_graded": 80,
+ "n_run_errors": 0,
+ "run_error_ids": [],
+ "accuracy": 0.8875,
+ "macro_f1": 0.8905,
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.947,
+   "support": 20
+  },
+  "CONTRADICTED": {
+   "precision": 0.889,
+   "recall": 0.8,
+   "f1": 0.842,
+   "support": 20
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.947,
+   "support": 20
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 0.731,
+   "recall": 0.95,
+   "f1": 0.826,
+   "support": 20
+  }
+ },
+ "confusion": {
+  "CONTRADICTED": {
+   "CONTRADICTED": 16,
+   "INSUFFICIENT_EVIDENCE": 4
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "INSUFFICIENT_EVIDENCE": 19,
+   "CONTRADICTED": 1
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 18,
+   "CONTRADICTED": 1,
+   "INSUFFICIENT_EVIDENCE": 1
+  },
+  "SUPPORTED": {
+   "SUPPORTED": 18,
+   "INSUFFICIENT_EVIDENCE": 2
+  }
+ },
+ "group_stats": {
+  "none": {
+   "n": 80,
+   "correct": 71,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "binary": {
+  "unsupported_total": 60,
+  "fp": 0,
+  "fp_rate": 0.0
+ },
+ "high_conf_errors": [
+  {
+   "id": "HV2-044",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "group": null,
+   "high_conf": true,
+   "relation_types": [
+    "EXPLICIT_NEGATION"
+   ],
+   "relations": [
+    "contradicts"
+   ],
+   "reason": "Kilden avviser at ventetid kan angis generelt nasjonalt, og underbygger derfor ikke en landsdekkende grense på fire uker."
+  }
+ ],
+ "misses": [
+  {
+   "id": "HV2-006",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null
+   ],
+   "relations": [
+    null
+   ],
+   "reason": "Kilden sier at barnetrygden alltid deles likt, i direkte konflikt med fordeling etter overnattinger."
+  },
+  {
+   "id": "HV2-010",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null
+   ],
+   "relations": [
+    null
+   ],
+   "reason": "Kilden oppgir samme gebyrbeløp, men presiserer at beløpet gjelder per part, ikke nødvendigvis hele saken."
+  },
+  {
+   "id": "HV2-023",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null,
+    "MUTUALLY_EXCLUSIVE_VALUE"
+   ],
+   "relations": [
+    null,
+    "contradicts"
+   ],
+   "reason": "Kilden bekrefter tremånedersfristen, men åpner samtidig for total utvidelse til seks måneder."
+  },
+  {
+   "id": "HV2-031",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null,
+    null
+   ],
+   "relations": [
+    null,
+    null
+   ],
+   "reason": "Kilden sier uttrykkelig at overgangsstønad regnes med i inntektsgrunnlaget, i direkte motstrid til påstanden om at den ikke teller."
+  },
+  {
+   "id": "HV2-044",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "group": null,
+   "high_conf": true,
+   "relation_types": [
+    "EXPLICIT_NEGATION"
+   ],
+   "relations": [
+    "contradicts"
+   ],
+   "reason": "Kilden avviser at ventetid kan angis generelt nasjonalt, og underbygger derfor ikke en landsdekkende grense på fire uker."
+  },
+  {
+   "id": "HV2-046",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null
+   ],
+   "relations": [
+    null
+   ],
+   "reason": "Kilden omtaler samme tilstand uten funksjonsnedsettelse, men plasserer den hos BUP og bekrefter derfor ikke HABU."
+  },
+  {
+   "id": "HV2-049",
+   "expected": "SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null
+   ],
+   "relations": [
+    null
+   ],
+   "reason": "Kilden bekrefter samme adresse og sted, men nevner ikke uttrykkelig Familievernkontoret."
+  },
+  {
+   "id": "HV2-053",
+   "expected": "SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null
+   ],
+   "relations": [
+    null
+   ],
+   "reason": "Kilden avkrefter eksplisitt at mottatt barnebidrag er oppført som avkortingsgrunnlag, i tråd med atomets negasjon."
+  },
+  {
+   "id": "HV2-074",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    null
+   ],
+   "relations": [
+    null
+   ],
+   "reason": "Kilden bekrefter positivt at bekymringsmeldingen kan være anonym, i direkte motstrid med påstanden om at anonym melding ikke er mulig."
+  }
+ ]
+}

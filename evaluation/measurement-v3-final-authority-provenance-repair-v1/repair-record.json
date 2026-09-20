@@ -1,0 +1,56 @@
+{
+  "artifact": "authority-provenance-repair-record",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-FINAL-AUTHORITY-PROVENANCE-REPAIR-V1",
+  "repair_utc": "2026-09-16",
+  "finding": "ROUT-025::forbidden:01 and ROUT-066::forbidden:01 were classified HUMAN_REVIEWED/OWNER-01 in the terminal frozen baseline, but the semantic observations for both criteria originated from ChatGPT/LLM, not from the human owner.",
+  "original_terminal_freeze": {
+    "lineage": "evaluation/measurement-v3-residual-human-adjudication-v1/",
+    "terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE",
+    "misclassified_criteria": [
+      "ROUT-025::forbidden:01",
+      "ROUT-066::forbidden:01"
+    ],
+    "original_classification": "HUMAN_REVIEWED / OWNER-01",
+    "combined_results_complete_sha256": "5c87bf07b59e58af3d78222500b94153d6db8b72892f978d1a0d585c4893fc12"
+  },
+  "discovery": "post-freeze owner audit established that the semantic decisions for both criteria were LLM-origin: the adjudication payloads were produced by ChatGPT in the conversation, and the owner transcribed them rather than making the semantic calls",
+  "correction": {
+    "authority_before": "HUMAN_REVIEWED",
+    "authority_after": "LLM_ADJUDICATED",
+    "authority_subtype": "CHATGPT_SINGLE_REVIEW_RESIDUAL",
+    "reviewer_attribution": "ChatGPT/LLM (single review pass per criterion); OWNER-01 was the requester/owner, not the semantic reviewer"
+  },
+  "invariants": {
+    "SEMANTIC_OBSERVATIONS_CHANGED": false,
+    "DERIVED_VERDICTS_CHANGED": false,
+    "AGGREGATE_RESULT_VALUES_CHANGED": false,
+    "SUT_RERUN": false,
+    "GOLD_CHANGED": false,
+    "PACKETS_CHANGED": false,
+    "MEASUREMENT_CONTRACT_CHANGED": false,
+    "LLM_SEMANTIC_REVIEW_CALLS": 0,
+    "HUMAN_REVIEW_CALLS": 0
+  },
+  "semantic_observations_retained": {
+    "ROUT-025::forbidden:01": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "NEGATED"
+    },
+    "ROUT-066::forbidden:01": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "NEGATED"
+    }
+  },
+  "derived_verdicts_retained": "ABSENT (M1:NEGATED) for both criteria; kernel 66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+  "old_freeze_status": "SUPERSEDED_HISTORICAL_NOT_DELETED",
+  "old_lineage_integrity": "evaluation/measurement-v3-residual-human-adjudication-v1/hashes.txt 16/16 pins re-verified OK before correction; old lineage not mutated",
+  "final_authority_mix": {
+    "DETERMINISTIC": 526,
+    "LLM_REVIEWED": 64,
+    "LLM_ADJUDICATED": 10,
+    "HUMAN_REVIEWED": 0,
+    "PENDING": 0,
+    "TOTAL": 600
+  },
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY"
+}

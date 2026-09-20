@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RC3.3.2 annotation contract v3 per-case output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "semantic_relation",
+    "quantity_identity",
+    "quantity_type",
+    "quantity_value_claim",
+    "quantity_value_source",
+    "role",
+    "temporal_applicability",
+    "comparator_applicable",
+    "comparator_relation",
+    "arithmetic_duty",
+    "derived_quantity",
+    "rationale"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]*$"},
+    "semantic_relation": {
+      "enum": ["ENTAILS", "CONTRADICTS", "PARTIAL",
+               "RELATED_BUT_INSUFFICIENT", "AMBIGUOUS"]
+    },
+    "quantity_identity": {
+      "enum": ["SAME", "DIFFERENT", "UNRESOLVED", "NOT_APPLICABLE"]
+    },
+    "quantity_type": {
+      "enum": ["MONEY", "PERIOD", "AGE", "DATE", "PERCENTAGE",
+               "COUNT", "NOT_APPLICABLE"]
+    },
+    "quantity_value_claim": {"type": ["string", "null"],
+      "pattern": "^[0-9]+(\\.[0-9]+)? [A-Z]+$"},
+    "quantity_value_source": {"type": ["string", "null"],
+      "pattern": "^[0-9]+(\\.[0-9]+)? [A-Z]+$"},
+    "role": {
+      "enum": ["DIRECT", "AGGREGATE", "COMPONENT", "DERIVED",
+               "NOT_APPLICABLE"]
+    },
+    "temporal_applicability": {
+      "enum": ["APPLICABLE", "NOT_APPLICABLE", "HISTORICAL_ONLY",
+               "FUTURE_ONLY", "OVERLAPS", "NON_OVERLAPPING",
+               "UNRESOLVED"]
+    },
+    "comparator_applicable": {"type": "boolean"},
+    "comparator_relation": {
+      "enum": ["EQUIVALENT", "SOURCE_STRONGER", "SOURCE_WEAKER",
+               "INCOMPATIBLE", "UNRESOLVED", "NOT_APPLICABLE"]
+    },
+    "arithmetic_duty": {
+      "enum": ["REQUIRED", "PERMITTED", "FORBIDDEN", "NOT_APPLICABLE"]
+    },
+    "derived_quantity": {"type": ["object", "null"]},
+    "rationale": {"type": "string", "maxLength": 300}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"quantity_identity": {"const": "NOT_APPLICABLE"}}},
+      "then": {"properties": {"quantity_value_claim": {"const": null},
+                              "quantity_value_source": {"const": null}}}
+    },
+    {
+      "if": {"properties": {"comparator_applicable": {"const": false}}},
+      "then": {"properties": {"comparator_relation": {"const": "NOT_APPLICABLE"}}}
+    },
+    {
+      "if": {"properties": {"comparator_applicable": {"const": true}}},
+      "then": {"properties": {"comparator_relation": {"not": {"const": "NOT_APPLICABLE"}}}}
+    },
+    {
+      "if": {"properties": {"arithmetic_duty": {"const": "REQUIRED"}}},
+      "then": {"properties": {"derived_quantity": {"type": "object"}}}
+    },
+    {
+      "if": {"properties": {"comparator_applicable": {"const": true}}},
+      "then": {"properties": {"quantity_identity": {"const": "SAME"}}}
+    }
+  ]
+}

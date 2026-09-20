@@ -1,0 +1,95 @@
+{
+  "artifact": "semantic-review-freeze-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-1",
+  "frozen_utc": "2026-09-16T08:39:37Z",
+  "freeze_order": "SEMANTIC_OBSERVATIONS_FROZEN_BEFORE_GOLD_DERIVATION",
+  "purpose": "Section 20: prevent downstream gold/result knowledge from altering review observations",
+  "artifacts": [
+    {
+      "path": "astra-pass-a.jsonl",
+      "sha256": "e9e4b9055fb0b7b398e4042b285b40433f21c1c07c50992e8714273524806b91"
+    },
+    {
+      "path": "astra-pass-b.jsonl",
+      "sha256": "3ea69a367b1a83a122178d9ef56f067e39ea281a6f01e972d7baff2c6eec76d6"
+    },
+    {
+      "path": "primary-review-validation.json",
+      "sha256": "59fed03f0cdcee902e9ed1c3e8d262d6f008d1e7125f0a26cd8d5b1dea28f12a"
+    },
+    {
+      "path": "primary-consensus.json",
+      "sha256": "332f50903fe4f0fb2b88704b42fb745e574b153dfbf48d0bd4ba9e259faa0dde"
+    },
+    {
+      "path": "residual-inputs.json",
+      "sha256": "cad70f75c15aceed21457211ef97038a4e6ecc14418e6b09317e1ff7bad5a4f1"
+    },
+    {
+      "path": "adjudication-pass-a.jsonl",
+      "sha256": "5d723a934a4007822a104ab363e5730396fe09f04e3af3fb18e61c1cad9b4ca2"
+    },
+    {
+      "path": "adjudication-pass-b.jsonl",
+      "sha256": "3c94f976940bf168e3f6622d9e3b6476eaa85915cb5df8fd19059f8a74b5247e"
+    },
+    {
+      "path": "adjudication-validation.json",
+      "sha256": "8e9fdeb48c61098e2a6c2d2342281a3d74f2919ad310d88d6a621beb9ec2ad90"
+    },
+    {
+      "path": "residual-consensus.json",
+      "sha256": "710dab06def4ae9f6f41170d58fb89d550e293d0785707b29c34fba80d192113"
+    },
+    {
+      "path": "astra-config.json",
+      "sha256": "e89003b69b9ebf1f1a44976a08abee5d8473384b99160dc9fec38e2582fa9c00"
+    },
+    {
+      "path": "astra-transport-log.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "adjudication-transport-log.json",
+      "sha256": "f72ad9a5ef5eb2b346f1d45d5a5d5e85d3de08ad4c13946898d6f41547816414"
+    },
+    {
+      "path": "primary-review-freeze-manifest.json",
+      "sha256": "31834633003b0937fd9f9de02d1e9fc070df2bd4f98216b5c74231632842313a"
+    },
+    {
+      "path": "authority-map.json",
+      "sha256": "cf8379d9b81d0077228337f8f14922a847de38a43e8dd842fb52a64020907038"
+    }
+  ],
+  "accepted_primary_observations": 88,
+  "accepted_adjudication_observations": 0,
+  "pending_residual_list": [
+    "PKT-ESC-DIS-118",
+    "PKT-ESC-ROUT-026-F01",
+    "PKT-ESC-ROUT-031-F01",
+    "PKT-ESC-ROUT-037"
+  ],
+  "authority_distribution": {
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 0,
+    "PENDING_HUMAN_ADJUDICATION": 4
+  },
+  "transport_provenance": {
+    "primary_transport_failures": 0,
+    "adjudication_transport_failures": 0,
+    "model": "gpt-6-astra",
+    "reasoning_effort": "low"
+  },
+  "derivation_core": {
+    "module": "judge_core_v2_13.py",
+    "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "state": "FROZEN_UNMODIFIED"
+  },
+  "counts_at_freeze": {
+    "llm_reviewed": 88,
+    "llm_adjudicated": 0,
+    "pending": 4
+  }
+}

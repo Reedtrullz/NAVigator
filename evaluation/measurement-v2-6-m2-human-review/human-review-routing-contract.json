@@ -1,0 +1,38 @@
+{
+  "artifact": "human-review-routing-contract-v2-6",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V2_6-M2-HUMAN-REVIEW-LANE",
+  "created_utc": "2026-09-13T10:58:11Z",
+  "architecture": {
+    "m2_dimension": "critical_condition",
+    "automated_authoritative_m2_verdicts": false,
+    "m2_route": "HUMAN_REVIEW_REQUIRED",
+    "non_m2_semantic_dimensions": "automated semantic judge lane selected and validated separately, unchanged by this task",
+    "deterministic_scorer": "unchanged"
+  },
+  "routing_table": [
+    {
+      "dimension": "critical_condition",
+      "judgement_type": "semantic M2 critical-condition verdict",
+      "route": "HUMAN_REVIEW_REQUIRED",
+      "automated_authoritative": false,
+      "rationale": "V2.5 NO_M2_MODEL_LIMIT: human contract sound, no authorized model reached calibration gates. Owner decision 2026-09-13 makes human review the authoritative M2 architecture."
+    }
+  ],
+  "first_class_states": {
+    "HUMAN_REVIEW_REQUIRED": "This semantic criterion is intentionally outside the authoritative automated evaluator boundary; awaiting human review packet completion.",
+    "HUMAN_REVIEW_PENDING": "Human review has not yet been performed; criterion remains unadjudicated; fail-closed, never automatic pass.",
+    "HUMAN_REVIEW_INVALID": "Submitted review failed schema or evidence validation; criterion remains unadjudicated; no coercion.",
+    "HUMAN_REVIEW_DISAGREEMENT": "Dual reviews disagree on at least one intermediate field; routes to adjudication; no automatic final label.",
+    "HUMAN_REVIEW_RESOLVED": "Valid review (or adjudication) complete; final critical label derived mechanically from intermediate labels."
+  },
+  "invariants": [
+    "No automated M2 authoritative verdict is ever issued before or instead of human review.",
+    "HUMAN_REVIEW_PENDING is fail-closed: it is never mapped to TRIGGERED, NOT_TRIGGERED, UNRESOLVED-as-answer, or automatic PASS.",
+    "Human reviewer observes; code derives the final label via the frozen deterministic derivation table.",
+    "Reviewer is blind to final gold and to any automated model verdict.",
+    "M2 semantic meaning is frozen from V2.5; no label changes.",
+    "Product runtime and product safety behavior are untouched."
+  ],
+  "review_modes": ["SINGLE_HUMAN_REVIEW", "DUAL_BLIND_REVIEW_WITH_ADJUDICATION"],
+  "reporting_requirement": "Single-review mode must be labeled SINGLE_HUMAN_REVIEW explicitly; it must never be called consensus."
+}

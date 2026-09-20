@@ -1,0 +1,21 @@
+{
+  "contract": "comparator-metric-contract-v2",
+  "frozen": "2026-09-08",
+  "frozen_before_implementation": true,
+  "metrics": {
+    "NUMERIC_RELATION_ACCURACY": "final semantic relation correctness on all numeric cases (primary)",
+    "COMPARATOR_STATE_ACCURACY": "comparator relation correctness on gold comparator_applicable=true subset only; N/A elsewhere"
+  },
+  "comparator_applicable_rule": {
+    "requires_all": [
+      "claim and source express numeric constraints",
+      "same semantic quantity",
+      "compatible actor/object/scope",
+      "overlapping temporal applicability",
+      "comparator relation needed for the numeric decision"
+    ],
+    "else": "comparator_applicable=false, comparator state N/A"
+  },
+  "replaces": "RC3.3 strict vs verdict-consistent dual reading",
+  "no_post_hoc_metric_change": true
+}

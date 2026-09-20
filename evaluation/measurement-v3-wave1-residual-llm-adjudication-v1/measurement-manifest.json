@@ -1,0 +1,83 @@
+{
+  "artifact": "wave1-residual-adjudication-measurement-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "created_utc": "2026-09-16",
+  "completed_results_artifact": "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/wave1-remeasurement-complete-after-secondary-residual.json",
+  "completed_results_sha256": "25dca5775bf76f223247d05364cbba1479d887b3f26718b0ced085fc847dc7d8",
+  "lineage_hashes": {
+    "wave1-combined-measurement-results.json": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+    "residual-inputs.json": "cad70f75c15aceed21457211ef97038a4e6ecc14418e6b09317e1ff7bad5a4f1",
+    "residual-consensus.json": "710dab06def4ae9f6f41170d58fb89d550e293d0785707b29c34fba80d192113",
+    "derive_semantic_results.py": "98c2677ed973ea7987d94dda775dfa16f70e30f336b78fa7266b99c2ef3132c9",
+    "hashes.txt": "d6e79caa1a901b2aa9c51d8e341b3b336abbda7dc5703e34cf66b696736fe5d0",
+    "build_baseline_comparison.py": "635bb2acbfdfad109ce7c3e70db8e6a000151724474b68d29014a3c1ee4cc11c"
+  },
+  "task_artifacts": {
+    "accounting-audit.json": "9b50f23f1adaa1cd6cfb70e477820519e9d90e8b8e34ff73d9aed5c0f8855e00",
+    "run_sol_adjudication.py": "cd1cc4ee25212160ee403d5754303d944d1c92382ec1c22a524131e105fb37fc",
+    "sol-adjudication-consensus.json": "3f60213370e4cffaca0fd0ab856572a210dbfe87ad9f5a62c6ef2ddc22c1cd9b",
+    "sol-adjudication-frozen-observations.json": "b2d1bf1ea1863d254a025882f52c881d37b9ebc96752241f2bac5148d714980b",
+    "sol-blind-inputs-leakage-audit.json": "d51285fefe968bef6dd533480fa374c5b8c0e8f1a53e3bf359c84d5335ea5740",
+    "sol-blind-inputs.json": "851e80069366322a47e4f137490402b9a41f2f5ac541de54938d561fced2f533",
+    "sol-config.json": "7c851ed9fa19c6bbfabce28e92504341c71e47b462ef8b59921544c37cc2b314",
+    "sol-pass-a.jsonl": "46e9855d4848ecdb5ca85bcb6b9aa495b4b036d3ce2e29c4686e410765524cb3",
+    "sol-pass-b.jsonl": "45547f0c0bf3448396fbd8cea97d159ad23a7c34464f60adc5d2a59c8bd0890e",
+    "sol-presence-probe.json": "c4c172d481189fcd6a3d8995d07fe97b35b16e85e8348c07ea5e32fb4ba256c6",
+    "sol-transport-log.json": "d26d31256740846f07b55ca154ee8cf193e8e533a04ffceb69a96365c9fd3982",
+    "wave1-remeasurement-complete-after-secondary-residual.json": "25dca5775bf76f223247d05364cbba1479d887b3f26718b0ced085fc847dc7d8",
+    "final-report.md": "afe2ecfdc299c6a8c828a39b6a18d149292d7c2676af479f37480a87f38a5826",
+    "README.md": "156edb45a9a631e178cf1f81811efe1c662bb32984b5fa83783ad44936bb9d1e"
+  },
+  "section13_result_facts": {
+    "RC-01": {
+      "critical_condition_CRITICAL_ERROR": {
+        "old": 110,
+        "new": 91
+      },
+      "critical_condition_FAIL_state": {
+        "old": 111,
+        "new": 92
+      }
+    },
+    "RC-03": {
+      "structural_repair_mechanism": "gate consumption + numeric coverage repair made route verdicts render into structural output",
+      "route_case_count": 120,
+      "route_rows_with_verdicts": 120,
+      "pre_post_unchanged": true,
+      "boundary": "STRUCTURAL_MECHANISM_REPAIRED_NOT_SEMANTIC_PRODUCT_OUTCOME_IMPROVED",
+      "forbidden_premature_absence": {
+        "CLAIM_ABSENT_TAKEN": {
+          "old": 53,
+          "new": 48
+        }
+      },
+      "note": "no fresh product holdout authorized; no improvement claim beyond structural mechanism"
+    },
+    "RC-02": {
+      "uncertainty_VIOLATED": {
+        "old": 2,
+        "new": 0
+      },
+      "note": "2 SAF-009/019 VIOLATED->PARTIAL"
+    },
+    "safety": {
+      "forbidden_safety_block_PRESENT_CLAIM_PRESENT": {
+        "old": 6,
+        "new": 5
+      }
+    }
+  },
+  "aggregate_definition_note": "all aggregates recomputed from raw rows via frozen semantic_state mapping; PENDING excluded from authoritative denominators",
+  "authority_mix": {
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 0,
+    "HUMAN_REVIEWED": 0,
+    "PENDING": 4,
+    "TOTAL": 600
+  },
+  "excluded_from_manifest": {
+    "TASK-LOCK.json": "lock pins manifest sha; hashes.txt pins lock sha (bootstrap avoidance)"
+  },
+  "pin_scheme": "manifest pins artifacts; TASK-LOCK.terminal_manifest_sha256 pins this manifest; hashes.txt lists all artifact SHAs plus this manifest SHA"
+}

@@ -1,0 +1,1680 @@
+{
+ "meta": {
+  "set": "actor-scope",
+  "engine": "quote-aligner-deterministic-v0.2",
+  "generated": "2026-09-01T23:49:40.215153+00:00",
+  "deterministic": true
+ },
+ "results": [
+  {
+   "id": "ACT-01",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member in exhaustive list",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "CLAIM_WEAKER",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "En lege kan underskrive henvisningen.",
+      "source_span": "Henvisningen skal underskrives av lege, psykolog eller barnevernsleder.",
+      "span_start": 0,
+      "span_end": 71
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "En lege kan underskrive henvisningen."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En lege kan underskrive henvisningen.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-02",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": null,
+   "focus": "outside exhaustive list",
+   "note": null,
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "rule": "exhaustive_list_exclusion",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "CLAIM_WEAKER",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "SUBJECT_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "CONTRA",
+      "claim": "",
+      "source_span": "",
+      "span_start": -1,
+      "span_end": -1
+     },
+     "review": false,
+     "override": "exhaustive_list_exclusion",
+     "atom_id": "A1",
+     "atom_text": "En sykepleier kan underskrive henvisningen."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En sykepleier kan underskrive henvisningen.",
+     "verdict": "CONTRADICTED",
+     "rule": "exhaustive_list_exclusion"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-03",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "list exhaustiveness unknown",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "actor_role_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "SUBJECT_UNVERIFIED",
+       "ACTOR_ROLE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "En ergoterapeut kan underskrive henvisningen."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En ergoterapeut kan underskrive henvisningen.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "actor_role_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-04",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "organization",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "PPT kan utrede.",
+      "source_span": "PPT utfører pedagogisk psykologisk utredning.",
+      "span_start": 0,
+      "span_end": 45
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "PPT kan utrede."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan utrede.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-05",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "organization vs medical service",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "guard_division_same_predicate",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": "PPT utfører pedagogisk psykologisk utredning.",
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "FUNCTION_RESERVED_TO_OTHER_ACTOR",
+      "claim": "PPT kan stille ADHD-diagnose.",
+      "source_span": "PPT utfører pedagogisk psykologisk utredning.",
+      "span_start": 0,
+      "span_end": 45
+     },
+     "review": true,
+     "override": "guard_division_same_predicate",
+     "atom_id": "A1",
+     "atom_text": "PPT kan stille ADHD-diagnose."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan stille ADHD-diagnose.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "guard_division_same_predicate"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-06",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "role in list",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SUBJECT_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Barnevernsleder kan motta bekymringsmelding."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernsleder kan motta bekymringsmelding.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-07",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member of service",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Helsesykepleier kan gi rådgivning om seksualitet.",
+      "source_span": "Helsesykepleier i skolehelsetjenesten gir rådgivning om seksualitet og prevensjon.",
+      "span_start": 0,
+      "span_end": 82
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Helsesykepleier kan gi rådgivning om seksualitet."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsesykepleier kan gi rådgivning om seksualitet.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-08",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member of service",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Lege i skolehelsetjenesten kan foreta helseundersøkelse.",
+      "source_span": "Skolehelsetjenesten har lege og helsesykepleier som gir helseundersøkelser.",
+      "span_start": 0,
+      "span_end": 75
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Lege i skolehelsetjenesten kan foreta helseundersøkelse."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Lege i skolehelsetjenesten kan foreta helseundersøkelse.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-09",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "different profession",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "actor_role_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "SUBJECT_UNVERIFIED",
+       "ACTOR_ROLE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Tannlege i skolehelsetjenesten gir helseundersøkelse."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Tannlege i skolehelsetjenesten gir helseundersøkelse.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "actor_role_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-10",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "referral route",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Fastlege er hovedhenviser til BUP.",
+      "source_span": "Henvisning til BUP skjer fra lege, fastlege eller spesialist.",
+      "span_start": 0,
+      "span_end": 61
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Fastlege er hovedhenviser til BUP."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlege er hovedhenviser til BUP.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-11",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "non-listed actor, exhaustiveness unknown",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "actor_role_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SUBJECT_UNVERIFIED",
+       "ACTOR_ROLE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Lærer kan henvise til BUP."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Lærer kan henvise til BUP.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "actor_role_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-12",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "direct contact",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SUBJECT_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Foreldre kan kontakte familievernkontoret direkte.",
+      "source_span": "parr og familier kan ta direkte kontakt.",
+      "span_start": 44,
+      "span_end": 84
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Foreldre kan kontakte familievernkontoret direkte."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Foreldre kan kontakte familievernkontoret direkte.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-13",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "other actor group",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "scope_disjoint",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SUBJECT_UNVERIFIED"
+      ],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Barn kan ta direkte kontakt med familievernkontoret.",
+      "source_span": "parr og familier kan ta direkte kontakt.",
+      "span_start": 44,
+      "span_end": 84
+     },
+     "review": true,
+     "override": "scope_disjoint",
+     "atom_id": "A1",
+     "atom_text": "Barn kan ta direkte kontakt med familievernkontoret."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barn kan ta direkte kontakt med familievernkontoret.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "scope_disjoint"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-14",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "procedural variant",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "CONFLICT",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Barnevernet kan avslutte undersøkelse uten konklusjon."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernet kan avslutte undersøkelse uten konklusjon.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-15",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "organizational actor",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Kommunen kan henvise til krisesenter.",
+      "source_span": "Kommunen eller lege kan henvise til krisesenter.",
+      "span_start": 0,
+      "span_end": 48
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Kommunen kan henvise til krisesenter."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen kan henvise til krisesenter.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-16",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "unlisted actor",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "predicate_grounding_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SUBJECT_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Arbeidsgiver kan henvise til krisesenter."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Arbeidsgiver kan henvise til krisesenter.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "predicate_grounding_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-17",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "NAV-local scope",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "NAV lokal kan gi økonomisk sosialhjelp.",
+      "source_span": "Søknad om økonomisk sosialhjelp sendes NAV-kontoret i kommunen.",
+      "span_start": 0,
+      "span_end": 63
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "NAV lokal kan gi økonomisk sosialhjelp."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV lokal kan gi økonomisk sosialhjelp.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-18",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "NAV-national vs local",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "scope_inflation_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_INFLATION_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "NAV sentralt innvilger økonomisk sosialhjelp."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV sentralt innvilger økonomisk sosialhjelp.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "scope_inflation_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-19",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "organization",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Husbanken behandler bostøttesøknaden.",
+      "source_span": "Søknad om bostøtte sendes til Husbanken.",
+      "span_start": 0,
+      "span_end": 40
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Husbanken behandler bostøttesøknaden."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Husbanken behandler bostøttesøknaden.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-20",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": null,
+   "focus": "wrong organization",
+   "note": null,
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "rule": [
+      "disjoint_actor_contra",
+      "claim actor nav conflicts with source actor husbanken"
+     ],
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "CONTRA",
+      "claim": "",
+      "source_span": "",
+      "span_start": -1,
+      "span_end": -1
+     },
+     "review": false,
+     "override": [
+      "disjoint_actor_contra",
+      "claim actor nav conflicts with source actor husbanken"
+     ],
+     "atom_id": "A1",
+     "atom_text": "NAV behandler bostøttesøknaden."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "NAV behandler bostøttesøknaden.",
+     "verdict": "CONTRADICTED",
+     "rule": [
+      "disjoint_actor_contra",
+      "claim actor nav conflicts with source actor husbanken"
+     ]
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-21",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "service",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Statped gir rådgivning til skoler.",
+      "source_span": "Statped gir rådgivning og støtte til skoler og barnehager.",
+      "span_start": 0,
+      "span_end": 58
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Statped gir rådgivning til skoler."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Statped gir rådgivning til skoler.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-22",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "service scope",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Statped utreder enkeltbarn uten henvisning."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Statped utreder enkeltbarn uten henvisning.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-23",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "service",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Barnehuset utreder ved mistanke om overgrep.",
+      "source_span": "Barnehuset utfører rettsmedisinsk undersøkelse og samtale ved mistanke om overgrep.",
+      "span_start": 0,
+      "span_end": 83
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Barnehuset utreder ved mistanke om overgrep."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnehuset utreder ved mistanke om overgrep.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-24",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "different decision-maker",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Barnehuset avgjør barnevernssaken."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnehuset avgjør barnevernssaken.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-25",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "member of service",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Psykolog i BUP kan gi terapi.",
+      "source_span": "BUP har psykologer og leger som gir behandling.",
+      "span_start": 0,
+      "span_end": 47
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Psykolog i BUP kan gi terapi."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Psykolog i BUP kan gi terapi.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-26",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "unlisted profession",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "actor_role_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SUBJECT_UNVERIFIED",
+       "ACTOR_ROLE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Ergoterapeut i BUP gir terapi."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ergoterapeut i BUP gir terapi.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "actor_role_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-27",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "varies between municipalities",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "predicate_grounding_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PREDICATE_GROUNDING_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Kommunepsykolog gir behandling i kommunen."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog gir behandling i kommunen.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "predicate_grounding_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-28",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "partitive_vs_universal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "PARTITIVE_VS_UNIVERSAL",
+       "SCOPE_WORD_UNVERIFIED",
+       "PARTITIVE_VS_UNIVERSAL",
+       "SUBJECT_UNVERIFIED",
+       "PARTITIVE_VS_UNIVERSAL"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Alle kommuner har kommunepsykolog."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner har kommunepsykolog.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "partitive_vs_universal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-29",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "local organization",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": true,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": []
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Kommunen kan organisere lavterskeltilbud selv.",
+      "source_span": "Kommunen kan selv organisere lavterskeltilbud innen psykisk helse.",
+      "span_start": 0,
+      "span_end": 66
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Kommunen kan organisere lavterskeltilbud selv."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen kan organisere lavterskeltilbud selv.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ACT-30",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "national mandate not established",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Helsedirektoratet påbyr alle kommuner å ha psykolog."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsedirektoratet påbyr alle kommuner å ha psykolog.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  }
+ ]
+}

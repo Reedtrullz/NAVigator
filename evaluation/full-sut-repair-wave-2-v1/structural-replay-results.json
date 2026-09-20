@@ -1,0 +1,48 @@
+{
+  "artifact": "structural-replay-results",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-2-V1",
+  "created_utc": "2026-09-16T14:38:00Z",
+  "replay_contract": "one full 120-case gold-blind structural replay per frozen candidate (spec section 29); max 2 candidate attempts",
+  "attempts": [
+    {
+      "candidate_version": "v1",
+      "runs_dir": "runs/structural-120-replay-v1/",
+      "official": false,
+      "predictions": 120,
+      "execution_status_counts": {"SUCCESS": 99, "EXECUTION_FAILED": 21},
+      "execution_failed_case_ids": [
+        "DIS-120", "ROUT-021", "ROUT-025", "ROUT-029", "ROUT-035", "ROUT-036",
+        "ROUT-038", "ROUT-064", "ROUT-065", "ROUT-068", "ROUT-072", "ROUT-073",
+        "ROUT-075", "ROUT-077", "ROUT-079", "ROUT-083", "ROUT-085", "ROUT-086",
+        "ROUT-089", "ROUT-090", "ROUT-093"
+      ],
+      "failure_stage": "phase3_finalize_claim_verification",
+      "failure_mechanism": "cross-track evidence_id collision: per-track E-DNNN renumbering produced duplicate evidence_ids for multi-track queries; planner INFO dedup dropped second-track records; finalize answer-substring check for verified claims failed closed",
+      "rc08_gate": "FAIL (id-uniqueness invariant within RC-08 track-scoping scope)",
+      "disposition": "candidate superseded by v2 within lineage; replay preserved unchanged as failed-attempt evidence"
+    },
+    {
+      "candidate_version": "v2",
+      "runs_dir": "runs/structural-120-replay-v2/",
+      "official": true,
+      "predictions": 120,
+      "execution_status_counts": {"SUCCESS": 120},
+      "crashes": 0,
+      "input_hard_failures": 0,
+      "schema_valid_outputs": 120,
+      "determinism": "independent full rerun into runs/determinism-check-v2/; 120/120 prediction files byte-identical (SHA-256)",
+      "gates_overall": "PASS",
+      "disposition": "official Wave-2 structural replay for the frozen v2 candidate"
+    }
+  ],
+  "gate_policy": "v2 replay is the official Wave-2 replay; v1 replay retained as failed-attempt evidence (candidate failure policy, spec section 29); v2 was the final allowed attempt",
+  "gold_exposed_to_product": false,
+  "measurement_v3_scoring_run": false,
+  "expected_verdicts_used": false,
+  "historical_phase3_predictions_mutated": false,
+  "predictions_manifest_sha256": {
+    "routing": "35be9666f47ff6ae1f85875185945957ec95401c8ffb4427a53f31eefd51cfd0",
+    "safety": "71d65c5973aeda50530d8c256118ea6cb71d75b238eea393bbd842145052569d",
+    "discovery_adversarial": "099c4aa9da36d04c101cb7b0c44097a7d46c9c3526679db36aa6460605e6dc2e"
+  }
+}

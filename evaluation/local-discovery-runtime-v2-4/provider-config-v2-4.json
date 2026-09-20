@@ -1,0 +1,42 @@
+{
+  "runtime": "discovery_v2_4",
+  "external_search_required": false,
+  "providers": [
+    "site_direct"
+  ],
+  "site_direct": {
+    "root_rule": "canonical_roots_v24(municipality) via SiteDirectProviderV23 subclass; V2.3 candidate-resolution logic reused unchanged",
+    "root_candidates": [
+      "https://www.<slug>.kommune.no/",
+      "https://<slug>.kommune.no/",
+      "https://www.<slug-ae-compressed>.kommune.no/",
+      "https://<slug-ae-compressed>.kommune.no/",
+      "https://<slug-ae-compressed>.bedreinnsats.no/ (only after all kommune.no variants fail; V2.4 rewrites the frozen resolver's .bedinnsats.no output to .bedreinnsats.no for platform roots; kommune.no pass-through untouched)"
+    ],
+    "registry_corroboration": "Brreg Enhetsregisteret (canonical identity/homepage registry; not a service-URL lookup)",
+    "navigation_levels": [
+      1,
+      2
+    ],
+    "sitemap_level": 3,
+    "max_urls_per_municipality": 16,
+    "nav_keywords_frozen": true
+  },
+  "render_fallback": {
+    "enabled": true,
+    "engine": "headless chrome --headless=new --dump-dom",
+    "virtual_time_budget_ms": 12000,
+    "timeout_s": 45,
+    "max_renders_per_municipality": 4,
+    "spa_shell_contract": "(200, '') from bounded fetch",
+    "fail_closed": true
+  },
+  "fetch": {
+    "max_response_bytes": 2097152,
+    "timeout_s": 15,
+    "retries": 0
+  },
+  "external_backends": {},
+  "phantom_fallback": false,
+  "notes": "V2.4 lineage only. Difference vs V2.3 config: runtime identifier, root_rule/root_candidates now document canonical_roots_v24 and the bedreinnsats.no platform-root repair. Budgets, render bounds, fetch bounds, external_backends (empty), and registry corroboration are byte-equal to frozen V2.3 provider-config-v2-3.json."
+}

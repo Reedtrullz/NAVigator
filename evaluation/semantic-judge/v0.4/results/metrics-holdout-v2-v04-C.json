@@ -1,0 +1,177 @@
+{
+ "results_file": "results/v04-results-holdout-v2-C-judge-c-gpt-5.6-luna.json",
+ "n_rows": 80,
+ "n_graded": 80,
+ "n_run_errors": 0,
+ "run_error_ids": [],
+ "accuracy": 0.9125,
+ "macro_f1": 0.9137,
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.947,
+   "support": 20
+  },
+  "CONTRADICTED": {
+   "precision": 0.895,
+   "recall": 0.85,
+   "f1": 0.872,
+   "support": 20
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.947,
+   "support": 20
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 0.8,
+   "recall": 1.0,
+   "f1": 0.889,
+   "support": 20
+  }
+ },
+ "confusion": {
+  "CONTRADICTED": {
+   "CONTRADICTED": 17,
+   "INSUFFICIENT_EVIDENCE": 3
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "INSUFFICIENT_EVIDENCE": 20
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 18,
+   "CONTRADICTED": 2
+  },
+  "SUPPORTED": {
+   "SUPPORTED": 18,
+   "INSUFFICIENT_EVIDENCE": 2
+  }
+ },
+ "group_stats": {
+  "none": {
+   "n": 80,
+   "correct": 73,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "binary": {
+  "unsupported_total": 60,
+  "fp": 0,
+  "fp_rate": 0.0
+ },
+ "high_conf_errors": [],
+ "misses": [
+  {
+   "id": "HV2-011",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "GENERAL_TO_SPECIFIC",
+    "EXPLICIT_NEGATION"
+   ],
+   "relations": [
+    "insufficient",
+    "contradicts"
+   ],
+   "reason": "Kilden støtter 24 måneder og forbigående sykdom, men oppstiller også vilkåret at sykdommen hindrer medlemmet i å arbeide; dette vilkåret mangler i påstanden."
+  },
+  {
+   "id": "HV2-031",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "EXPLICIT_NEGATION",
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "contradicts",
+    "insufficient"
+   ],
+   "reason": "Kilden sier eksplisitt at overgangsstønad regnes med i inntektsgrunnlaget, i strid med påstanden om at den ikke teller med."
+  },
+  {
+   "id": "HV2-034",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden gjelder eleven eller foreldrene, mens «jeg» ikke identifiserer aktøren. Selv om kilden oppstiller rektorbehandling som vilkår, kan aktørmatchen ikke fastslås."
+  },
+  {
+   "id": "HV2-041",
+   "expected": "SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "GENERAL_TO_SPECIFIC"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden angir tidsfristen på 10 virkedager, men uttrykker ikke eksplisitt at BUP skal utføre vurderingen."
+  },
+  {
+   "id": "HV2-042",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "GENERAL_TO_SPECIFIC"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden omtaler behandling av innbyggere over 16 år, men fastslår ikke eksplisitt regelen for RPH eller at barn fra 12 år ikke omfattes."
+  },
+  {
+   "id": "HV2-049",
+   "expected": "SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "SOURCE_SILENCE"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden oppgir adressen, men knytter den ikke uttrykkelig til Familievernkontoret i Trondheim."
+  },
+  {
+   "id": "HV2-070",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden sier at mekleren ikke kan påby løsning, mens påstanden gjelder familievernkontoret; aktørene kan ikke likestilles uten uttrykkelig grunnlag."
+  }
+ ]
+}

@@ -1,0 +1,96 @@
+{
+  "protocol_id": "LOCAL-SERVICE-DISCOVERY-PROTOCOL-V1",
+  "task_id": "NAV-EXPLORE-LOCAL-ACCESS-DISCOVERY-PROTOCOL-V1",
+  "created_at": "2026-09-09",
+  "based_on": "Discovery strategy that recovered 18/20 problem cells in NAV-EXPLORE-18-23-LOCAL-ROUTING-GAP-V1",
+  "purpose": "Reproducible, auditable discovery of municipal/intermunicipal health-service access from public official sources. Product implementation is OUT OF SCOPE.",
+  "source_hierarchy": [
+    "municipal official pages (service catalogs, service pages, forms)",
+    "intermunicipal official operators (IKS, partner portals, host municipality pages)",
+    "official external entries (Helsenorge local info, health enterprise) only when municipality points there",
+    "private/SEO sources are discovery hints only and never final evidence"
+  ],
+  "levels": [
+    {"id": 0, "name": "KNOWN_SERVICE_URL", "definition": "Fetch the already-mapped service page and scan full text for access markers.", "queries": []},
+    {"id": 1, "name": "MUNICIPALITY_SERVICE_CATALOG", "definition": "Municipal service catalog / navigation path for: psykisk helse, psykisk helse og rus, helsehjelp, ungdom, voksne, mestring.", "satisfaction_note": "A known URL under the catalog path satisfies level 1 for target-scoped work."},
+    {"id": 2, "name": "SERVICE_DESCENDANTS", "definition": "Follow subpages and links: slik søker du, kontakt oss, for deg som trenger hjelp, team pages, forms.", "provenance": "Each followed link must be logged as an edge: SOURCE_PAGE -> link/search/sitemap -> DISCOVERED_PAGE."},
+    {"id": 3, "name": "STRUCTURED_MUNICIPALITY_SEARCH", "definition": "Sitemap, internal search engine, document index, service catalog search.", "note": "Empty or failing sitemap must be logged as rejected source."},
+    {"id": 4, "name": "INTERMUNICIPAL_DISCOVERY", "definition": "Host municipality, IKS, samarbeid, felles tjeneste, interkommunal, partnerkommune.", "provenance": "Requires intermunicipal_provenance block: resident_municipality, host_municipality, service_operator, eligibility_evidence, access_evidence. Never assume a host service covers a partner municipality without explicit membership evidence."},
+    {"id": 5, "name": "OFFICIAL_EXTERNAL_ENTRY", "definition": "Helsenorge local information, official intermunicipal portals, health enterprise pages explicitly pointed to by the municipality."}
+  ],
+  "query_family_templates": [
+    "<kommune> psykisk helse voksne",
+    "<kommune> psykisk helse søknad",
+    "<kommune> psykisk helse kontakt",
+    "<kommune> rask psykisk helsehjelp",
+    "<kommune> kommunepsykolog",
+    "<kommune> helsestasjon ungdom",
+    "<kommune> psykisk helse rus",
+    "<kommune> interkommunal psykisk helse",
+    "<kommune> mestringsteam"
+  ],
+  "query_family_note": "Templates, not engine-specific requirements. Any search implementation must log the query strings actually used.",
+  "access_evidence_rules": {
+    "ACCESS-E1": "access_clear=yes requires explicit public evidence of at least one: ta kontakt, du kan kontakte oss, application form, contact phone connected to intake, digital self-referral, drop-in, explicit referral requirement, explicit internal municipal entry.",
+    "ACCESS-E2": "A generic switchboard/footer phone or bottom-of-page contact block is NOT automatic evidence of direct access. It may only support access when the page connects it to the service (named service staff, service intake line, booking for the service).",
+    "ACCESS-E3": "self_referral is a separate field (YES/NO/CONDITIONAL/UNCLEAR) and must never be inferred from the existence of a phone number. Direct contact with later professional assessment = CONDITIONAL, not unconditional self-referral.",
+    "ACCESS-E4": "Distinguish 'can contact the service' from 'can receive treatment without further assessment'.",
+    "ACCESS-E5": "All quotes must be verbatim from the retained URL, with retrieved_date and, where published, page last-updated date."
+  },
+  "service_state_model": {
+    "SERVICE_VERIFIED": "The service exists per official source.",
+    "ELIGIBILITY_VERIFIED": "Age/target group coverage documented.",
+    "ACCESS_VERIFIED": "How a person actually enters is documented.",
+    "invariant": "A route is not complete because SERVICE_VERIFIED=true."
+  },
+  "route_confidence_model": {
+    "ROUTE_FULLY_VERIFIED": "Service + eligibility + access + contact documented.",
+    "ROUTE_ACCESS_PARTIAL": "Service + eligibility documented, access only partially documented.",
+    "ROUTE_EXISTENCE_ONLY": "Service exists but eligibility/access insufficient.",
+    "ROUTE_UNVERIFIED": "No verified route.",
+    "note": "No probabilistic confidence scores."
+  },
+  "stop_states": [
+    {"state": "ACCESS_VERIFIED", "meaning": "Access method documented with compliant evidence."},
+    {"state": "REFERRAL_VERIFIED", "meaning": "Explicit referral/application model documented (includes verified negative closures: service documented as system-directed, no patient intake)."},
+    {"state": "PUBLIC_DATA_EXHAUSTED", "meaning": "All preregistered levels checked without establishing access. No infinite search."}
+  ],
+  "discovery_techniques": [
+    "KNOWN_PAGE_CONTENT",
+    "NAVIGATION_LINK",
+    "SITE_SEARCH",
+    "SITEMAP",
+    "QUERY_SEARCH",
+    "INTERMUNICIPAL_CHAIN",
+    "OFFICIAL_EXTERNAL_PORTAL"
+  ],
+  "search_log_requirements": {
+    "per_target": ["level_0", "level_1", "level_2", "level_3", "level_4", "level_5", "terminal_state", "queries", "inspected_urls", "retained_evidence_url", "rejected_pages_with_reason", "retrieved_date", "edges"],
+    "edge_format": "SOURCE_PAGE -> link/search/sitemap -> DISCOVERED_PAGE"
+  },
+  "canonical_access_taxonomy": [
+    "DIRECT_PHONE",
+    "DIRECT_DIGITAL",
+    "DIRECT_EMAIL",
+    "DIRECT_DROPIN",
+    "APPLICATION_FORM",
+    "SELF_REFERRAL_OTHER",
+    "GP_REFERRAL",
+    "OTHER_PROFESSIONAL_REFERRAL",
+    "INTERNAL_MUNICIPAL_REFERRAL",
+    "INTERMUNICIPAL_GATEWAY",
+    "SPECIALIST_GATEWAY",
+    "UNCLEAR"
+  ],
+  "false_no_match_rule": {
+    "rule": "NAV Explore must never state 'the municipality has no offer' because an initial service lookup returned 0. NO_LOCAL_MATCH is allowed only after the discovery protocol has been executed to a terminal state.",
+    "evidence_basis": "18/20 V1 UNCLEAR/NO_MATCH problem cells recovered to documented routes in the parent task; 0 apparent service gaps found after the full protocol in the 12-municipality sample."
+  },
+  "uncertainty_outputs": {
+    "VERIFIED_ROUTE": "Jeg fant et kommunalt/interkommunalt tilbud som ser relevant ut. Du kan ...",
+    "SERVICE_FOUND_ACCESS_UNCLEAR": "Jeg finner et relevant tilbud, men den offentlige informasjonen gjør det ikke klart hvordan du kommer inn i tjenesten.",
+    "NO_VERIFIED_ROUTE_AFTER_PROTOCOL": "Jeg finner ikke et verifisert lokalt tilbud i de offentlige kildene jeg har kontrollert. Det betyr ikke nødvendigvis at tilbudet ikke finnes.",
+    "fallback_rule": "A documented fallback (e.g. fastlege) may be added only when the existing knowledge base supports it."
+  },
+  "out_of_scope": ["crawler/runtime implementation", "new municipalities", "municipality contact", "national legal research", "routing runtime changes"]
+}

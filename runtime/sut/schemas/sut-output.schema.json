@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sut-output-v1",
+  "title": "SUTOutput",
+  "description": "Canonical SUT output. The raw answer object consumed by dev-corpus-scorer-v1 is the subset: routes, claims, uncertainty_expressed, evidence, execution_status, safety_priority, no_route_asserted, presented_as_complete.",
+  "type": "object",
+  "required": [
+    "answer",
+    "safety",
+    "tracks",
+    "routes",
+    "claims",
+    "uncertainty_expressed",
+    "evidence",
+    "provenance",
+    "epistemic_state",
+    "failures",
+    "execution_status",
+    "no_route_asserted",
+    "presented_as_complete"
+  ],
+  "properties": {
+    "answer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "User-facing Norwegian text. Verbatim spans used by the measurement lanes must be substrings of this field."
+    },
+    "safety": {
+      "type": "object",
+      "required": ["priority", "signals", "suppressed_routing"],
+      "properties": {
+        "priority": {"enum": ["SYSTEM_SAFETY_PRECEDENCE", "ABUSE_DISCLOSURE_REPORTING", "ACUTE_RISK_NOW", "ACUTE_SOMATIC_MEDICAL", "ACUTE_RISK_HIGH", "ACUTE_RISK_HIGH_THIRD_PARTY", "URGENT_PSYCHOSIS_SUSPECT", "ACUTE_RISK_UNSURE_TRIAGE", "URGENT_CARE_CAPACITY", "SAFETY_CONCERN_NO_ACUTE_VIOLENCE", "SAFETY_CONCERN_REPORTING", "NON_ACUTE_ROUTINE", "URGENT_NOT_ACUTE", "NOT_ACUTE"]},
+        "safety_class": {
+          "type": ["string", "null"],
+          "enum": [null, "SYSTEM_SAFETY_PRECEDENCE", "ABUSE_DISCLOSURE_REPORTING", "ACUTE_RISK_NOW", "ACUTE_SOMATIC_MEDICAL", "ACUTE_RISK_HIGH", "ACUTE_RISK_HIGH_THIRD_PARTY", "URGENT_PSYCHOSIS_SUSPECT", "ACUTE_RISK_UNSURE_TRIAGE", "URGENT_CARE_CAPACITY", "SAFETY_CONCERN_NO_ACUTE_VIOLENCE", "SAFETY_CONCERN_REPORTING", "NON_ACUTE_ROUTINE"],
+          "description": "Fine-grained deterministic triage class; null on fail-closed fallback."
+        },
+        "signals": {"type": "array", "items": {"type": "string"}},
+        "suppressed_routing": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "safety_priority": {
+      "description": "Top-level mirror of safety.priority for scorer compatibility; carries the 12-class triage granularity after RC-02.",
+      "enum": ["SYSTEM_SAFETY_PRECEDENCE", "ABUSE_DISCLOSURE_REPORTING", "ACUTE_RISK_NOW", "ACUTE_SOMATIC_MEDICAL", "ACUTE_RISK_HIGH", "ACUTE_RISK_HIGH_THIRD_PARTY", "URGENT_PSYCHOSIS_SUSPECT", "ACUTE_RISK_UNSURE_TRIAGE", "URGENT_CARE_CAPACITY", "SAFETY_CONCERN_NO_ACUTE_VIOLENCE", "SAFETY_CONCERN_REPORTING", "NON_ACUTE_ROUTINE", "URGENT_NOT_ACUTE", "NOT_ACUTE"]
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["track_id", "domain", "status"],
+        "properties": {
+          "track_id": {"type": "string"},
+          "domain": {"type": "string"},
+          "status": {"enum": ["RESOLVED", "NO_ROUTE", "FAILED"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "routes": {
+      "type": "array",
+      "description": "Raw answer routes: ordered list of offered route labels (strings).",
+      "items": {"type": "string"}
+    },
+    "claims": {
+      "type": "array",
+      "description": "Raw answer claims: asserted factual/legal statements.",
+      "items": {"type": "string"}
+    },
+    "uncertainty_expressed": {
+      "type": "array",
+      "description": "Uncertainty dimensions the answer explicitly expresses.",
+      "items": {"type": "string"}
+    },
+    "evidence": {
+      "type": "object",
+      "description": "Raw answer evidence map: required-field vocabulary to value.",
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "source_type", "source_ref", "verified_at", "freshness_class"],
+        "properties": {
+          "id": {"type": "string"},
+          "source_type": {"type": "string"},
+          "source_ref": {"type": "string"},
+          "retrieved_at": {"type": ["string", "null"]},
+          "verified_at": {"type": "string"},
+          "claim_supported": {"type": "string"},
+          "evidence_span": {"type": ["string", "null"]},
+          "authority_level": {"type": "string"},
+          "freshness_class": {"type": "string"},
+          "conflicts_with": {"type": "array", "items": {"type": "string"}},
+          "chain_parent_id": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "epistemic_state": {
+      "enum": ["FULLY_VERIFIED", "ACCESS_PARTIAL", "EXISTENCE_ONLY", "UNVERIFIED"]
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stage", "state", "message"],
+        "properties": {
+          "stage": {"type": "string"},
+          "state": {"enum": ["SUCCESS", "PARTIAL", "RECOVERABLE", "TERMINAL"]},
+          "message": {"type": "string"},
+          "detail": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "execution_status": {
+      "enum": ["SUCCESS", "DISCOVERY_INCOMPLETE", "EXECUTION_FAILED"]
+    },
+    "no_route_asserted": {
+      "type": "boolean",
+      "description": "True when the SUT offers no concrete route. Never fabricated."
+    },
+    "presented_as_complete": {
+      "type": "boolean",
+      "description": "False whenever any failure affects the answer; prevents the scorer critical rule on failed-but-complete presentation."
+    }
+  },
+  "additionalProperties": false
+}

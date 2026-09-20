@@ -1,0 +1,77 @@
+{
+  "artifact": "complexity-accounting.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-BOUNDARY-V1_6A4-ASSERTION-STRENGTH-GROUNDING",
+  "purpose": "Auth constraint 15: before/after complexity of the deterministic boundary layer, to judge whether marginal evaluator gain requires disproportionate rule complexity. Diagnostic, not a performance gate.",
+  "measurement_notes": {
+    "loc": "wc -l equivalent (newline count); a4_boundary_preclassifier.py imports and wraps the frozen A3 engine, so combined production surface is A3 + A4.",
+    "production_rule_count": "distinct BC_/UNC_ rule_id strings emitted in source (A3 includes shared forbidden-dimension rules; A4 adds the BC_CLAIM_* assertion-strength rules).",
+    "branch_count": "if/elif statements at any indent level.",
+    "recognized_states": "distinct label literals plus dynamic abstain states reachable in each engine; the A4 assertion-strength enum itself is the 8 canonical forms plus NOT_PRESENT and abstain paths."
+  },
+  "before_after": {
+    "a3_baseline": {
+      "engine": "evaluation/dev-corpus-semantic-judge-v1-6a3/boundary_preclassifier.py",
+      "engine_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+      "loc": 498,
+      "lexicon_marker_lists": 20,
+      "compiled_regexes": 2,
+      "functions": 14,
+      "production_rule_count": 29,
+      "if_elif_branches": 68,
+      "return_statements": 35,
+      "recognized_states_including_abstain": 28
+    },
+    "a4_candidate": {
+      "engine": "a4_boundary_preclassifier.py",
+      "engine_sha256": "22a5f61c38b991611b636d24d9a6765f90aa25cf9cc616c5fa0964a770ac5cee",
+      "loc": 173,
+      "lexicon_marker_lists_added": 2,
+      "compiled_regexes_added": 1,
+      "functions": 3,
+      "production_rule_count": 8,
+      "if_elif_branches": 22,
+      "return_statements": 13,
+      "recognized_assertion_strength_states": 10
+    },
+    "combined_a3_plus_a4": {
+      "loc": 671,
+      "production_rule_count": 37,
+      "if_elif_branches": 90
+    },
+    "delta": {
+      "loc_added": 173,
+      "rules_added": 8,
+      "branches_added": 22,
+      "lexeme_constants_added": ["FIRST_PERSON_BELIEF_MARKERS", "BELIEF_STEM_RE", "CONSEQUENT_MARKERS", "META_NEG_NEXT", "CLAIM_PRIORITY"]
+    }
+  },
+  "development_evidence_before_fresh_validation": {
+    "tdd_fixtures": 30,
+    "tdd_red_a3_baseline": "5/30 passed",
+    "tdd_green_a4": "30/30 passed",
+    "burned_regressions": "A4 vs A3 byte-identical on all three legacy dimensions across burned-120, targeted-60, and official-V1.6A2-80; 0 mismatches",
+    "interpretation": "On development data the A4 layer looked strictly additive and cheap: +173 LOC, +8 rules."
+  },
+  "fresh_official_outcome": {
+    "fixtures": 60,
+    "non_abstain_n": 57,
+    "abstain_n": 3,
+    "abstain_rate": 0.05,
+    "correct_n": 21,
+    "false_deterministic_n": 36,
+    "precision": 0.3684,
+    "coverage": 0.95,
+    "correct_coverage": 0.35,
+    "evidence_invalid_n": 2,
+    "gates_passed": 0,
+    "gates_total": 6
+  },
+  "complexity_vs_yield_assessment": {
+    "observed_contrast": "30/30 on self-authored TDD fixtures and 0 regression drift on burned data, then 0.368 precision on fresh data.",
+    "failure_families_requiring_further_expansion": 9,
+    "families_needing_semantic_scope_composition": 5,
+    "families_needing_more_lexemes": 4,
+    "honest_cost_estimate": "Closing F1-F4/F8 by lexeme enumeration would plausibly add dozens of markers and still miss the next surface form; closing F4/F5/F6/F7/F9 correctly requires operator-scope composition and discourse state, i.e. a semantic layer, not more regex.",
+    "conclusion": "The marginal deterministic yield is inverted: the A4 abstraction (assertion strength) is real, but its surface realization in Norwegian is not enumerable at high precision with hand rules. Complexity per correct fresh classification rose sharply relative to the A1-A3 layers, which had narrower, genuinely lexical boundaries."
+  }
+}

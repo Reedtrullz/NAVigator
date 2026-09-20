@@ -1,0 +1,86 @@
+{
+  "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-BAI-QUALIFICATION-V3",
+  "task_family": "semantic-reviewer-evaluation",
+  "status": "TERMINAL",
+  "owner_authorization": {
+    "source": "attachment 80b72cd9-ec4d-4ce6-b194-483253ce4e18 (Pasted text.txt)",
+    "granted": true,
+    "scope": "test exactly two B.AI candidates (GLM-5.3-flash, B.AI DeepSeek) against frozen V1 qualification standard"
+  },
+  "predecessors": [
+    {
+      "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V1",
+      "terminal_status": "NO_LOW_COST_MODEL_QUALIFIES",
+      "lineage": "evaluation/semantic-reviewer-cost-qualification-v1"
+    },
+    {
+      "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V2",
+      "terminal_status": "NO_LOW_COST_MODEL_QUALIFIES_V2",
+      "lineage": "evaluation/semantic-reviewer-cost-qualification-v2"
+    },
+    {
+      "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-LUNA-QUALIFICATION-V1",
+      "terminal_status": "NO_LUNA_REVIEWER_CONFIG_QUALIFIES",
+      "lineage": "evaluation/semantic-reviewer-luna-qualification-v1"
+    }
+  ],
+  "candidates": [
+    {
+      "logical_id": "BAI-GLM",
+      "model": "glm-5.3-flash",
+      "wire_id": "B.AI/glm-5.3-flash",
+      "provider_route": "local proxy 127.0.0.1:10100"
+    },
+    {
+      "logical_id": "BAI-DEEPSEEK",
+      "model": "deepseek-v4-flash-vision-exp",
+      "wire_id": "B.AI/deepseek-v4-flash-vision-exp",
+      "provider_route": "local proxy 127.0.0.1:10100",
+      "note": "only B.AI DeepSeek in proxy catalog; experimental vision-exp variant, identity preserved, no substitution"
+    }
+  ],
+  "hard_rules": {
+    "REFERENCE_CORPUS_CHANGED": false,
+    "QUALIFICATION_GATES_CHANGED": false,
+    "SEMANTIC_CONTRACT_CHANGED": false,
+    "NEW_ASTRA_CALLS": 0,
+    "NEW_SOL_CALLS": 0,
+    "LUNA_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "OPENROUTER_FALLBACK_ALLOWED": false,
+    "OPENCODE_FALLBACK_ALLOWED": false,
+    "SILENT_MODEL_SUBSTITUTION_ALLOWED": false,
+    "ROUTER_ACTIVATION_ALLOWED": false,
+    "HISTORICAL_REVIEWS_CHANGED": false,
+    "HISTORICAL_MEASUREMENTS_CHANGED": false,
+    "SUT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "FRESH_CASES_CONSUMED": 0,
+    "NO_BEST_OF_BAD": true,
+    "PROVIDER_HOPPING_DURING_DUAL_PASS": false
+  },
+  "inherited_standard": "evaluation/semantic-reviewer-cost-qualification-v1/qualification-contract.json (frozen, wins over prompt on divergence)",
+  "reference_target": "AGREEMENT_WITH_FROZEN_AUTHORITATIVE_SEMANTIC_REFERENCE_NOT_HUMAN_GROUND_TRUTH",
+  "stage_order": [
+    "TRANSPORT_CALIBRATION",
+    "SCREENING",
+    "CORE_DUAL_PASS",
+    "STABILITY",
+    "COMPARISON_COST_CASCADE"
+  ],
+  "created_utc": "2026-09-19T00:00:00Z",
+  "terminal_status": "NO_BAI_LOW_COST_MODEL_QUALIFIES",
+  "terminal_at": "2026-09-19T12:55:00+02:00",
+  "terminal_basis": {
+    "BAI-GLM": {
+      "forbidden_claim": "SCREEN_FAIL schema_valid_rate 0.9434",
+      "critical_condition": "SCREEN_FAIL schema_valid_rate 0.8919"
+    },
+    "BAI-DEEPSEEK": {
+      "forbidden_claim": "SCREEN_FAIL schema_valid_rate 0.9057",
+      "critical_condition": "CORE_DUAL_PASS_FAIL: evidence_invalid_rows 29 (max 0); consensus_vs_ref_errors 9 (max 0); pass_level_vs_ref_errors 33 (max 3); dual_consensus_field_errors 5 (max 0); safety_subset 37/39 with 2 UNDER_ESCALATION (max 0); catastrophic 0"
+    },
+    "stability": "NOT_RUN_per_frozen_stage_order",
+    "no_best_of_bad": true
+  }
+}

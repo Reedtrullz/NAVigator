@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "semantic judge per-dimension verdict",
+  "type": "object",
+  "required": ["verdict", "evidence_spans"],
+  "additionalProperties": false,
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "TRIGGERED", "NOT_TRIGGERED", "UNRESOLVED",
+        "PRESENT", "ABSENT",
+        "CANONICAL_ACCEPTABLE", "EQUIVALENT_ACCEPTABLE", "PARTIAL", "NO_ACCEPTABLE_ROUTE",
+        "SATISFIED", "VIOLATED", "NOT_REQUIRED"
+      ]
+    },
+    "evidence_spans": {
+      "type": "array",
+      "items": {"type": "string", "maxLength": 300}
+    },
+    "note": {
+      "type": "string",
+      "maxLength": 120,
+      "pattern": "^[a-z0-9_]*$"
+    }
+  }
+}

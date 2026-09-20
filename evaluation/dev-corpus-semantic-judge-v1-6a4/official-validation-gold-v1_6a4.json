@@ -1,0 +1,428 @@
+{
+  "artifact": "V1_6A4_OFFICIAL_VALIDATION_GOLD",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-BOUNDARY-V1_6A4-ASSERTION-STRENGTH-GROUNDING",
+  "note": "Frozen gold. One-shot validation; no reruns, no adjudication after scoring.",
+  "n": 60,
+  "gold": [
+    {
+      "fixture_id": "OFFA4-CLEAN-01",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "single_clause_assertion",
+      "expected_label": "ASSERTED",
+      "rationale": "assertive operator on claim surface, no competing frame"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-02",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "existence_assertion",
+      "expected_label": "ASSERTED",
+      "rationale": "negation is internal to the claim term surface, frame remains assertive"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-03",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "comparative_assertion",
+      "expected_label": "ASSERTED",
+      "rationale": "assertive copula over claim surface"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-04",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "fp_belief_negated",
+      "expected_label": "NEGATED",
+      "rationale": "first-person belief with clause negation (A4-N1)"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-05",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "fp_belief_negated_complex",
+      "expected_label": "NEGATED",
+      "rationale": "first-person belief + negation governing claim clause"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-06",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "epistemic_hedge",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "epistemic hedge over assertive matrix"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-07",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "epistemic_hedge_cleft",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "epistemic cleft hedge over assertive matrix"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-08",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "attribution_ifolge",
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "rationale": "third-party attribution marker"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-09",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "attribution_verb",
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "rationale": "third-person belief subject"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-10",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "quoted_claim",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "claim surface inside detected quote span"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-11",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "quoted_partial",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "claim surface inside quotation, reporter frame"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-12",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "conditional_antecedent",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "claim inside conditional antecedent, consequent is another proposition"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-13",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "conditional_antecedent_neg",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "claim term inside antecedent, no consequent assertion of claim"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-14",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "explicit_retraction",
+      "expected_label": "SELF_RETRACTED",
+      "rationale": "assertion followed by explicit retraction"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-15",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "explicit_takeback",
+      "expected_label": "SELF_RETRACTED",
+      "rationale": "assertion followed by take-back marker"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-16",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "vague_no_claim",
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "rationale": "no claim-surface term hit, only vague helper vocabulary"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-17",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "vague_topic_only",
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "rationale": "topic mention without claim surface or commitment operator"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-18",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "term_internal_negation",
+      "expected_label": "ASSERTED",
+      "rationale": "negation is part of the frozen claim term surface"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-19",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "fp_conviction_negated",
+      "expected_label": "NEGATED",
+      "rationale": "first-person conviction + negation (A4-N1 family)"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-20",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "attribution_hevder",
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "rationale": "third-party attribution verb"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-21",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "quoted_press",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "claim inside reported quotation"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-22",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "temporal_conditional",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "claim inside temporal-conditional antecedent"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-23",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "compound_same_frame",
+      "expected_label": "ASSERTED",
+      "rationale": "coordinated claim surface, single assertive frame"
+    },
+    {
+      "fixture_id": "OFFA4-CLEAN-24",
+      "stratum": "CLEAN_RESOLVABLE",
+      "group": "hedge_adverb",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "adverbial epistemic hedge over assertive matrix"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-01",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "hedge_neg_mixed",
+      "expected_label": "ABSTAIN",
+      "rationale": "hedge and negation compete on same claim clause"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-02",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "quote_plus_adoption",
+      "expected_label": "ABSTAIN",
+      "rationale": "quotation followed by out-of-quote endorsement"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-03",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "report_plus_hedge",
+      "expected_label": "ABSTAIN",
+      "rationale": "attribution frame and epistemic hedge both bind"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-04",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "meta_negation",
+      "expected_label": "ABSTAIN",
+      "rationale": "meta-negation reframes the claim rather than negating it"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-05",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "parenthetical_scope",
+      "expected_label": "ABSTAIN",
+      "rationale": "claim confined to parenthetical scope"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-06",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "double_hedge",
+      "expected_label": "ABSTAIN",
+      "rationale": "stacked hedges with negation, no dominant frame"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-07",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "mixed_polarity_conj",
+      "expected_label": "ABSTAIN",
+      "rationale": "assertion and reversal in one clause chain"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-08",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "report_plus_agreement",
+      "expected_label": "ABSTAIN",
+      "rationale": "attribution plus personal endorsement compete"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-09",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "hedge_plus_conditional",
+      "expected_label": "ABSTAIN",
+      "rationale": "hypothetical frame inside epistemic frame"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-10",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "ambiguous_retraction",
+      "expected_label": "ABSTAIN",
+      "rationale": "partial retraction without resolved final position"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-11",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "third_person_negated_belief",
+      "expected_label": "ABSTAIN",
+      "rationale": "third-person belief plus negation, mixed frames"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-12",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "quote_plus_hedge",
+      "expected_label": "ABSTAIN",
+      "rationale": "quotation plus out-of-quote hedge"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-13",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "negated_consequent",
+      "expected_label": "ABSTAIN",
+      "rationale": "conditional with negated consequent over claim"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-14",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "double_negation",
+      "expected_label": "ABSTAIN",
+      "rationale": "nested negation, no safe polarity binding"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-15",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "disputed_attribution",
+      "expected_label": "ABSTAIN",
+      "rationale": "attribution with explicit disagreement, no committed frame"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-16",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "vague_quantifier_claim",
+      "expected_label": "ABSTAIN",
+      "rationale": "vague quantifier and hedge over claim term"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-17",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "hedged_quote_in_report",
+      "expected_label": "ABSTAIN",
+      "rationale": "hedge inside quotation inside attribution"
+    },
+    {
+      "fixture_id": "OFFA4-ABST-18",
+      "stratum": "REQUIRED_ABSTAIN",
+      "group": "question_frame",
+      "expected_label": "ABSTAIN",
+      "rationale": "interrogative frame, no commitment operator in frozen enum"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-01",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "consequent_assertion",
+      "expected_label": "ASSERTED",
+      "rationale": "claim asserted in conditional consequent (F-23 family)"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-02",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "bare_belief_verb",
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "rationale": "belief stem without first-person subject, fail-closed report reading"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-03",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "quote_plus_agreement",
+      "expected_label": "ABSTAIN",
+      "rationale": "quotation followed by personal endorsement"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-04",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "particle_negation",
+      "expected_label": "NEGATED",
+      "rationale": "clause negation with particle, negation scopes claim"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-05",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "compound_claim_same_frame",
+      "expected_label": "ASSERTED",
+      "rationale": "coordinated claims under one assertive frame"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-06",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "rhetorical_question",
+      "expected_label": "ABSTAIN",
+      "rationale": "interrogative frame over claim surface"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-07",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "consequent_with_hedge",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "consequent assertion carrying epistemic hedge"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-08",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "report_plus_negation",
+      "expected_label": "ABSTAIN",
+      "rationale": "attribution and clause negation compete"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-09",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "quote_plus_retraction",
+      "expected_label": "ABSTAIN",
+      "rationale": "quotation plus retraction, unresolved final frame"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-10",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "split_attribution",
+      "expected_label": "ABSTAIN",
+      "rationale": "conflicting reported frames in one sentence"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-11",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "irrealis_idiom",
+      "expected_label": "ABSTAIN",
+      "rationale": "irrealis idiom, no frozen frame applies cleanly"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-12",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "negated_antecedent",
+      "expected_label": "ABSTAIN",
+      "rationale": "negated claim inside hypothetical antecedent"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-13",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "comparative_superlative",
+      "expected_label": "ASSERTED",
+      "rationale": "comparative assertion over claim surface"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-14",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "temporal_assertion",
+      "expected_label": "ASSERTED",
+      "rationale": "temporal qualifier, assertive frame intact"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-15",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "passive_attribution",
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "rationale": "passive attribution marker"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-16",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "informal_attribution",
+      "expected_label": "REPORTED_ATTRIBUTED",
+      "rationale": "informal attribution frame over claim"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-17",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "third_person_negated_belief",
+      "expected_label": "ABSTAIN",
+      "rationale": "third-person belief plus negation, mixed frames"
+    },
+    {
+      "fixture_id": "OFFA4-ADV-18",
+      "stratum": "ADVERSARIAL_MIXED",
+      "group": "scare_quote",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "claim surface inside quoted phrase, no adoption"
+    }
+  ]
+}

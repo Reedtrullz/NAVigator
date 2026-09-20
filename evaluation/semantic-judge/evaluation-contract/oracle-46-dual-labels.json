@@ -1,0 +1,1591 @@
+{
+ "schema": "evaluation-contract-dual-labels-v1",
+ "task_id": "SEMANTIC-JUDGE-EVALUATION-CONTRACT-REDESIGN",
+ "provenance": "Reannotation built on hybrid/oracle-reasoning-probe/oracle-proof-ledger.json (frozen), oracle-packets.json spans, oracle-case-audit.md, and first-hand KB verification (16-livssituasjoner/04-barns-psykiske-helse.md, 26-beslutningsstotte-hvor-henvende-seg.md). Original benchmark labels preserved verbatim. No reviewer output used as answer key.",
+ "label_definitions_note": "semantic_truth: four classic labels under bounded-inference-permitting reading (spec 3). proof_safe: verdict derivable with an explicitly validatable proof under current v1.1 production doctrine; REVIEW_REQUIRED is the production posture when doctrine cannot prove.",
+ "cases": [
+  {
+   "case_id": "MP-007A",
+   "set": "minimal-pairs",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "S1 states the 4652 kr rate for ett bosted; claim's 'normalt' generalizes the default-case rate via a small paraphrase chain the current aligner cannot derive.",
+   "evidence_spans": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "case_id": "MP-009A",
+   "set": "minimal-pairs",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "ordningen ~ regelen is a single-step synonymy below the aligner's paraphrase threshold.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "MP-013B",
+   "set": "minimal-pairs",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "evidence_relation_absent"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Span negates direct reduction of bostotte, not inclusion in inntektsgrunnlag; distinct predicates, no bounded reading bridges them.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "MP-014A",
+   "set": "minimal-pairs",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "DEFINITION_PLUS_INSTANCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'vanlig sats' generalizes 'delt ordinaer sats ... per forelder' - identity-type definition+instance.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "MP-015A",
+   "set": "minimal-pairs",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "TEMPORAL_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "15.06.2026 < 01.07.2026, so 'nye regler etter 01.07.2026' excludes the claim's application; deterministic date comparison.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "MP-016A",
+   "set": "minimal-pairs",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "premise_absent"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "EVIDENCE_MISSING",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Claim trigger 'nytt barn i husstanden' has no premise; S2 conditions on 'lav inntekt'. Mapping one trigger to the other requires external legal knowledge.",
+   "evidence_spans": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "case_id": "CI-040",
+   "set": "contra-insuff",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "polarity_gate_conservative"
+   },
+   "oracle_category": "E_EXPECTED_LABEL_QUESTIONABLE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "DOCTRINE_INTENTIONALLY_CONSERVATIVE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'etter beslutning' entails placement requires a decision, contradicting 'uten beslutning'; production polarity rules are gated to review.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "CI-041",
+   "set": "contra-insuff",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "NUMERIC_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "E_EXPECTED_LABEL_QUESTIONABLE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Explicit upper bound 'til barnet er 15 aar' conflicts with 'uten aldersgrense'.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "CI-046",
+   "set": "contra-insuff",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "exhaustiveness_unmarked"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Referrer list not marked exhaustive; 'bare fra fastlege' is undecidable without a closed-world slide. Historical CONTRA was overreach.",
+   "evidence_spans": [
+    "S1"
+   ],
+   "dispute_resolution": "CONFIRMED by adjudication: pass-2 CONTRA required closed-world on unmarked referrer list; contract forbids. See tier1-proof/annotation-resolution.json."
+  },
+  {
+   "case_id": "CI-059",
+   "set": "contra-insuff",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "basis_list_unmarked"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'etter evne og behov' does not exclude 'inntekt alene' without an exhaustive-basis marker.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "CI-061",
+   "set": "contra-insuff",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "E_EXPECTED_LABEL_QUESTIONABLE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'vurderer i hver sak' conflicts with the universal 'fritatt fra enhver ny vurdering'.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "CI-065",
+   "set": "contra-insuff",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "polarity_gate_conservative"
+   },
+   "oracle_category": "E_EXPECTED_LABEL_QUESTIONABLE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "DOCTRINE_INTENTIONALLY_CONSERVATIVE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Aktivitetskrav and income-impact contradict 'fulltidsjobb uten reduksjon'; contradiction rides on the truncated span continuation; polarity gated to review.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "MOD-13",
+   "set": "modality",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "MEDIUM",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "premise_absent"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "EVIDENCE_MISSING",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'vedtatt behov' qualifier is absent from S1 ('har behov'); the vedtak chain is external to the packet.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "ACT-10",
+   "set": "actor-scope",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "priority_not_in_evidence"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Enumeration names fastlege as one referrer; 'hovedhenviser' asserts a priority the list cannot carry (no frequency data).",
+   "evidence_spans": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "case_id": "ACT-19",
+   "set": "actor-scope",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'sendes til Husbanken' -> 'Husbanken behandler': one-step role paraphrase.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "ACT-23",
+   "set": "actor-scope",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'rettsmedisinsk undersokelse og samtale ved mistanke om overgrep' -> 'utreder ved mistanke'.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "ACT-25",
+   "set": "actor-scope",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "ACTOR_MEMBERSHIP"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "psykologer are BUP-personell; terapi ~ behandling.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "LOC-10",
+   "set": "locality",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "E_EXPECTED_LABEL_QUESTIONABLE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Universal 'gratis for alle elever' conflicts with 'koster i enkelte kommuner'.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "LOC-20",
+   "set": "locality",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "direct_check"
+   },
+   "oracle_category": "A_DIRECTLY_PROVABLE",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'kan etablere' (permission) neither implies nor contradicts 'lovpaalagt plikt' (duty); reviewer INSUFFICIENT is correct on both targets.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "D20-L5",
+   "set": "diagnostic-20",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "MEDIUM",
+    "required_inference": "LOCAL_RULE_OVERRIDES_GENERAL"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "locality_link_absent"
+   },
+   "oracle_category": "D_EVIDENCE_INSUFFICIENT",
+   "operator_class": "REVIEW_ONLY",
+   "mismatch_taxonomy": "EVIDENCE_MISSING",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "S1 asserts gratis without scope; the Stavanger binding is absent from the packet; the ledger's bounded path requires exactly the missing premise.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "N-S4",
+   "set": "novel-40",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "MEDIUM",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "undersoker ~ utreder; 'barnets vansker' generalizes 'psykiske lidelser'.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-S9",
+   "set": "novel-40",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NONE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "premise_absent"
+   },
+   "oracle_category": "D_EVIDENCE_INSUFFICIENT",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "EVIDENCE_MISSING",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Claim generalizes 'stotte' from 'bostotte'; the broader routing premise is absent.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-A3",
+   "set": "novel-40",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "negation_scope_narrower"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Negation is scoped to 'psykisk helsebehandling'; the claim's bare 'behandling' is broader.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-L4",
+   "set": "novel-40",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "DIRECT_ASSERTION"
+   },
+   "proof_safe": {
+    "label": "SUPPORTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "F_REVIEWER_REASONING_FAILURE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "SUPPORTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "SUPPORTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'forutsetter' = 'krever' at paraphrase level; proof exists, historical reviewer miss only.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-C4",
+   "set": "novel-40",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'alvorlige symptomer' ~ 'alvorlige vansker'.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-C5",
+   "set": "novel-40",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "MEDIUM",
+    "required_inference": "TRANSITIVE_EQUIVALENCE"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "SUPPORTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'kontakte direkte' implies 'uten henvisning' - a small implication the aligner cannot derive.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-R3",
+   "set": "novel-40",
+   "original_benchmark_label": "INSUFFICIENT",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "exhaustiveness_unmarked"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Husbanken administration does not exclude NAV without an exhaustive marker. Historical CONTRA was overreach.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "N-O5",
+   "set": "novel-40",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "MEDIUM",
+    "required_inference": "SAME_PREDICATE_OPPOSITE_POLARITY"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "polarity_gate_conservative"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'varierer mellom kommunene' conflicts with uniform 'kort i alle kommuner' (distributional reading).",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "ENT-A",
+   "set": "ent",
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "RULE_PLUS_CONDITION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "premise_absent"
+   },
+   "oracle_category": "D_EVIDENCE_INSUFFICIENT",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "EVIDENCE_MISSING",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Conjunction atom 'foreldresamtale' is absent from the source (verified in KB file 26-beslutningsstotte); the routing atom alone is insufficient.",
+   "evidence_spans": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "case_id": "ENT-D",
+   "set": "ent",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "A_DIRECTLY_PROVABLE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Source explicitly negates diagnosing.",
+   "evidence_spans": [
+    "src"
+   ]
+  },
+  {
+   "case_id": "CAL029",
+   "set": "calibration",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "exhaustiveness_unmarked"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Referrer enumeration unmarked; foreldre exclusion needs a closed-world slide.",
+   "evidence_spans": [
+    "S1",
+    "S2",
+    "S3"
+   ]
+  },
+  {
+   "case_id": "CAL030",
+   "set": "calibration",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "exhaustiveness_unmarked"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Task enumeration lacks an exclusion marker; PPT diagnosis exclusion needs external knowledge.",
+   "evidence_spans": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "case_id": "CAL048",
+   "set": "calibration",
+   "original_benchmark_label": "PARTIAL",
+   "semantic_truth": {
+    "label": "PARTIAL",
+    "confidence": "HIGH",
+    "required_inference": "MULTI_SPAN_CONJUNCTION"
+   },
+   "proof_safe": {
+    "label": "PARTIAL",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "A_DIRECTLY_PROVABLE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "PARTIAL",
+     "proof": "PARTIAL",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "PARTIAL",
+     "proof": "PARTIAL",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Atom1 supported (dognapen), atom2 contradicted (ingen samtykke) -> aggregation PARTIAL.",
+   "evidence_spans": [
+    "S1",
+    "S4"
+   ]
+  },
+  {
+   "case_id": "CAL050",
+   "set": "calibration",
+   "original_benchmark_label": "PARTIAL",
+   "semantic_truth": {
+    "label": "PARTIAL",
+    "confidence": "HIGH",
+    "required_inference": "MULTI_SPAN_CONJUNCTION"
+   },
+   "proof_safe": {
+    "label": "PARTIAL",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "A_DIRECTLY_PROVABLE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "PARTIAL",
+     "proof": "PARTIAL",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "PARTIAL",
+     "proof": "PARTIAL",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Gratis supported; henvisning contradicted ('ingen henvisning', 'valgfri') -> PARTIAL.",
+   "evidence_spans": [
+    "S1",
+    "S3",
+    "S4"
+   ]
+  },
+  {
+   "case_id": "CAL064",
+   "set": "calibration",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "SIMPLE_ARITHMETIC"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Hovedperiode til 14 maaneder != 3 aar; the unconditional total claim is false.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "CAL086",
+   "set": "calibration",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "HIGH",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "non_assertion_claim"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "BENCHMARK_SCHEMA_PROBLEM",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "INSUFFICIENT",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "The claim is an instruction, not an evidence assertion; no truth-relation is derivable. Benchmark label encodes injection intent.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "CAL089",
+   "set": "calibration",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT",
+    "confidence": "MEDIUM",
+    "required_inference": "EXHAUSTIVE_SET_EXCLUSION"
+   },
+   "proof_safe": {
+    "label": "REVIEW_REQUIRED",
+    "reason": "injection_lock"
+   },
+   "oracle_category": "C_DOCTRINE_BLOCKED",
+   "operator_class": "NONE",
+   "mismatch_taxonomy": "BENCHMARK_SCHEMA_PROBLEM",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "INSUFFICIENT",
+     "proof": "REVIEW_REQUIRED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "UNRESOLVED(REVIEW_REQUIRED)",
+     "proof": "REVIEW_REQUIRED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Injected instruction contaminates the evidence; remaining evidence gives no CONTRA path; injection posture is REVIEW_REQUIRED. Semantic label for contaminated evidence is contract-gray - pass 2 leaned REVIEW_REQUIRED.",
+   "evidence_spans": [
+    "S1",
+    "S3"
+   ],
+   "dispute_resolution": "CONFIRMED by adjudication: semantic INSUFFICIENT on clean evidence; proof-safe REVIEW_REQUIRED by injection posture; pass-2 lean conflated the two. See tier1-proof/annotation-resolution.json."
+  },
+  {
+   "case_id": "HOL005",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "PARTIAL",
+   "semantic_truth": {
+    "label": "PARTIAL",
+    "confidence": "MEDIUM",
+    "required_inference": "RULE_PLUS_CONDITION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "PARTIAL",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "PARTIAL",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Over-16 atom: source names 'erklaering om samlivsbrudd' not 'samvaersavtale' (atom unsupported); meklingsattest-not-needed is supported by contrast -> PARTIAL.",
+   "evidence_spans": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "case_id": "HOL007",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "PARTIAL",
+   "semantic_truth": {
+    "label": "PARTIAL",
+    "confidence": "HIGH",
+    "required_inference": "TEMPORAL_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "PARTIAL",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "PARTIAL",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Atom1 date conflict (1.1 vs 1.7.2026); atom2 supported (mottakere beholder gamle regler) -> PARTIAL.",
+   "evidence_spans": [
+    "S1",
+    "S4",
+    "S5"
+   ]
+  },
+  {
+   "case_id": "HOL020",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "PARTIAL",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "NUMERIC_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "E_EXPECTED_LABEL_QUESTIONABLE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "AGGREGATION_DIFFERENCE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Both claim numbers are wrong (10 not 15 employer days; refund from day 11 not 16; 15 is the total quota) -> both atoms contradicted; benchmark PARTIAL credits the shared quota number.",
+   "evidence_spans": [
+    "S1",
+    "S3",
+    "S5"
+   ]
+  },
+  {
+   "case_id": "HOL022",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "F_REVIEWER_REASONING_FAILURE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Explicit 'kan ikke dele ... uten samtykke' contradicts the rektor-request scenario.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "HOL026",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "A_DIRECTLY_PROVABLE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "CONTRADICTED",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'Ikke diagnoser eller spesialistbehandling' negates the claim's core atom.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "HOL030",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "RULE_PLUS_EXCEPTION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_WITH_PRECONDITIONS",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "'men samtykkekompetansen folger foreldreansvaret' carves samtykke out of opplysningsrett.",
+   "evidence_spans": [
+    "S1",
+    "S4"
+   ]
+  },
+  {
+   "case_id": "HOL034",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "NUMERIC_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Party threshold is 15+, claim says 12.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "HOL037",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "required_inference": "NUMERIC_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "operator_not_in_production_layer"
+   },
+   "oracle_category": "B_PROVABLE_WITH_BOUNDED_INFERENCE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "BOUNDED_INFERENCE_NOT_IMPLEMENTED",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "CONTRADICTED",
+     "proof": "INSUFFICIENT",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Mekling threshold is under 16 aar, claim says under 18.",
+   "evidence_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "HOL040",
+   "set": "holdout-v2-burned",
+   "original_benchmark_label": "PARTIAL",
+   "semantic_truth": {
+    "label": "PARTIAL",
+    "confidence": "MEDIUM",
+    "required_inference": "NUMERIC_CONFLICT"
+   },
+   "proof_safe": {
+    "label": "PARTIAL",
+    "reason": "provable_under_current_doctrine"
+   },
+   "oracle_category": "A_DIRECTLY_PROVABLE",
+   "operator_class": "SAFE_FOR_AUTO_PROOF",
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "two_pass": {
+    "pass1": {
+     "semantic": "PARTIAL",
+     "proof": "PARTIAL",
+     "method": "curated from ledger + first-hand span reading + oracle-case-audit"
+    },
+    "pass2": {
+     "semantic": "PARTIAL",
+     "proof": "PARTIAL",
+     "method": "mechanical derivation from ledger ideal_verdict bounds + external-assumption rule"
+    }
+   },
+   "justification": "Ages {6,11,15} vs claimed {5,10,15}: one of three triggers correct -> PARTIAL (aggregation boundary noted).",
+   "evidence_spans": [
+    "S1"
+   ]
+  }
+ ]
+}

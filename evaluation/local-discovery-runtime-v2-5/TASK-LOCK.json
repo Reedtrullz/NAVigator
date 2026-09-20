@@ -1,0 +1,22 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_5-ENGINEERING",
+  "task_family": "local-discovery-runtime",
+  "source_candidate": "LOCAL_DISCOVERY_RUNTIME_V2_4",
+  "target_candidate": "LOCAL_DISCOVERY_RUNTIME_V2_5",
+  "status": "CLOSED_TERMINAL",
+  "created": "2026-09-09",
+  "v2_4_holdout_status": "FAIL_FROZEN_RC3_STYLE_NOT_PATCHED",
+  "new_fresh_holdout_allowed": false,
+  "fresh_municipalities_allowed": false,
+  "external_search_allowed": false,
+  "historical_files_writable": false,
+  "gpt_5_5_allowed": false,
+  "phases": {
+    "A_discovery_fallback": "sitemapindex-child-follow + empty-extraction render trigger",
+    "B_fv_provenance_tightening": "FV requires service-specific provenance (depth/slug rule)",
+    "C_validation_and_freeze": "burned-only regressions + candidate freeze, then STOP"
+  },
+  "stop_condition": "After frozen candidate + burned validation report. No fresh eval, no new blind set, no further tuning.",
+  "closed": "2026-09-10",
+  "closure": "Candidate frozen as LOCAL_DISCOVERY_RUNTIME_V2_5 after burned-only validation: Raelingen 9/9 SUCCESS, benchmark 117/117 SUCCESS, replay 22/22 MATCH, live 13/13 COMPLETE (0 runtime failures, 0 external search calls), access 7/9 with the two documented V2.3 source-drift pairs and 0 existence-safety regressions, network audit external_search_calls=0. All frozen suites and tests_v25 green. No fresh municipalities, no fresh eval, no Protocol V1 change."
+}

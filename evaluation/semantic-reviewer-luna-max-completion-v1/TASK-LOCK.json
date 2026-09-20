@@ -1,0 +1,70 @@
+{
+  "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-LUNA-MAX-COMPLETION-V1",
+  "task_family": "semantic-reviewer-evaluation",
+  "status": "NO_LUNA_REVIEWER_CONFIG_QUALIFIES_CONFIRMED",
+  "owner_authorization": {
+    "source": "attachment 7a9e16fa-ace4-40c2-b919-a68821c42784 (Pasted text.txt)",
+    "granted": true,
+    "scope": "complete ONLY the previously unexecuted LUNA-MAX full-qualification branch (Stage-2 dual pass, Stage-3 stability if passed) on inherited frozen everything; no HIGH rerun, no other models"
+  },
+  "predecessor": {
+    "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-LUNA-QUALIFICATION-V1",
+    "terminal_status": "NO_LUNA_REVIEWER_CONFIG_QUALIFIES",
+    "lineage": "evaluation/semantic-reviewer-luna-qualification-v1",
+    "historical_mutation_allowed": false
+  },
+  "candidate": {
+    "config_id": "LUNA-MAX",
+    "model": "gpt-5.6-luna",
+    "provider_route": "local proxy 127.0.0.1:10100 (gpt-5.6-luna)",
+    "reasoning_effort": "MAX",
+    "config_sha256": "89e12976b6f134daecb55d68f41536b1e5eee0b9b0dbe2242e067799f5bf754b"
+  },
+  "hard_rules": {
+    "LUNA_HIGH_NEW_CALLS": 0,
+    "ASTRA_CALLS": 0,
+    "SOL_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "OTHER_MODEL_CALLS": 0,
+    "REFERENCE_CORPUS_CHANGED": false,
+    "QUALIFICATION_GATES_CHANGED": false,
+    "SEMANTIC_PROMPT_CHANGED": false,
+    "MAX_CONFIG_CHANGED": false,
+    "HISTORICAL_MUTATION": false,
+    "FRESH_CASES_CONSUMED": 0,
+    "NO_BEST_OF_BAD": true,
+    "NO_THIRD_PASS": true,
+    "ROUTER_ACTIVATION_ALLOWED": false,
+    "GOLD_CHANGED": false,
+    "SUT_CHANGED": false
+  },
+  "frozen_inheritance": {
+    "qualification_contract_sha256": "a27523eae4edb5b730900da712f1b25514c1bab95f8edb5875b1f314cfcd073f",
+    "reference_corpus_sha256": "b85caaaa64f3393f27f8177f0b4979e6139c0ff8d18ee3c80efb45eab9e11c2b"
+  },
+  "created_utc": "2026-09-19T00:56:26Z"
+  ,"closed_utc": "2026-09-19T02:05:00Z"
+  ,"terminal_status": "NO_LUNA_REVIEWER_CONFIG_QUALIFIES_CONFIRMED"
+  ,"closure_summary": {
+    "transport_screening_baseline": "inherited frozen (MAX screening PASS both lanes; predecessor lineage)",
+    "stage2_dual_pass": "LUNA-MAX FAIL both lanes (forbidden: all 4 core gates + EDGE errors exceeded; critical: 70/80 INVALID_MODEL_REVIEW, 11 consensus errors, 8 safety-subset errors, 1 catastrophic escape)",
+    "stability": "NOT_RUN_NO_LANE_PASSED_STAGE_2 (protocol-correct absence)",
+    "qualified_lanes": [],
+    "luna_forbidden_decision": "NO_LUNA_CONFIG_QUALIFIES",
+    "luna_critical_decision": "NO_LUNA_CONFIG_QUALIFIES",
+    "router": "PRIMARY GPT_6_ASTRA_LOW both lanes; activation_authorized=false",
+    "luna_high_new_calls": 0,
+    "astra_calls": 0,
+    "sol_calls": 0,
+    "gpt_5_5_calls": 0,
+    "fresh_cases_consumed": 0,
+    "historical_mutation": false,
+    "gates_changed": false,
+    "prompt_changed": false,
+    "max_config_changed": false,
+    "hashes_verified": "22/22 artifacts pinned in hashes.txt (TASK-LOCK excluded per predecessor convention)",
+    "tokens_max_total_incl_screening": 2013177,
+    "tokens_high_frozen_predecessor": 2014991,
+    "relative_token_ratio_max_vs_high": 0.999
+  }
+}

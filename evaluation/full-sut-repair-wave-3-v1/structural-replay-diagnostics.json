@@ -1,0 +1,135 @@
+{
+  "artifact": "structural-replay-diagnostics",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-3-V1",
+  "created_utc": "2026-09-16T18:51:32Z",
+  "candidate_version": "v1",
+  "runs_dir": "runs/structural-120-replay-v1/",
+  "diagnostic_scope": "gold-blind structural diagnostics only (spec section 33); no route accuracy, expected safety accuracy, forbidden-claim score, or Measurement V3 accuracy computed",
+  "executions_attempted": 120,
+  "crashes": 0,
+  "execution_status_counts": {
+    "SUCCESS": 120
+  },
+  "schema_valid_outputs": 120,
+  "input_hard_failures": 0,
+  "terminal_failures": 0,
+  "recoverable_failures": 104,
+  "recoverable_failure_detail": {
+    "local_discovery:RECOVERABLE": 104
+  },
+  "safety_priority_distribution": {
+    "NON_ACUTE_ROUTINE": 101,
+    "ACUTE_RISK_NOW": 4,
+    "ACUTE_SOMATIC_MEDICAL": 4,
+    "ACUTE_RISK_HIGH_THIRD_PARTY": 1,
+    "SAFETY_CONCERN_NO_ACUTE_VIOLENCE": 1,
+    "URGENT_PSYCHOSIS_SUSPECT": 1,
+    "ABUSE_DISCLOSURE_REPORTING": 3,
+    "SAFETY_CONCERN_REPORTING": 1,
+    "ACUTE_RISK_HIGH": 1,
+    "ACUTE_RISK_UNSURE_TRIAGE": 1,
+    "URGENT_CARE_CAPACITY": 1,
+    "SYSTEM_SAFETY_PRECEDENCE": 1
+  },
+  "safety_class_distribution": {
+    "NON_ACUTE_ROUTINE": 101,
+    "ACUTE_RISK_NOW": 4,
+    "ACUTE_SOMATIC_MEDICAL": 4,
+    "ACUTE_RISK_HIGH_THIRD_PARTY": 1,
+    "SAFETY_CONCERN_NO_ACUTE_VIOLENCE": 1,
+    "URGENT_PSYCHOSIS_SUSPECT": 1,
+    "ABUSE_DISCLOSURE_REPORTING": 3,
+    "SAFETY_CONCERN_REPORTING": 1,
+    "ACUTE_RISK_HIGH": 1,
+    "ACUTE_RISK_UNSURE_TRIAGE": 1,
+    "URGENT_CARE_CAPACITY": 1,
+    "SYSTEM_SAFETY_PRECEDENCE": 1
+  },
+  "routes_empty_cases": 92,
+  "routes_nonempty_cases": 28,
+  "route_entries_total": 39,
+  "distinct_route_labels": 24,
+  "fragment_like_route_labels": [
+    "routing/ROUT-040",
+    "routing/ROUT-072",
+    "routing/ROUT-083",
+    "safety/SAF-009"
+  ],
+  "junk_route_labels": [],
+  "junk_route_rule": "RC-07 digit-free service-name rule; populated in Wave 3 (Wave-2 harness defined but never appended to this list)",
+  "fragment_like_rule": "len<4, no alnum, markdown/heading/table-cell remnants, or newline inside label",
+  "no_route_asserted_counts": {
+    "true": 92,
+    "false": 28
+  },
+  "no_route_asserted_vs_routes_mismatches": [],
+  "structured_no_route_flag_mismatches": [],
+  "route_evidence_entries_total": 39,
+  "route_evidence_valid_entries": 39,
+  "route_evidence_valid_rule": "R-* entry with both evidence_ids and provenance_ids",
+  "structured_render_divergence_cases": 0,
+  "route_funnel_gold_blind": {
+    "stages": {
+      "R0_NO_STRUCTURED_ROUTE": 92,
+      "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 28
+    },
+    "by_family": {
+      "discovery_adversarial": {
+        "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 3,
+        "R0_NO_STRUCTURED_ROUTE": 22
+      },
+      "routing": {
+        "R0_NO_STRUCTURED_ROUTE": 52,
+        "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 23
+      },
+      "safety": {
+        "R0_NO_STRUCTURED_ROUTE": 18,
+        "R3PLUS_STRUCTURAL_PASS_CANDIDATE": 2
+      }
+    },
+    "semantic_stages_not_measurable_gold_blind": [
+      "R3_WRONG_SERVICE_FAMILY",
+      "R4_WRONG_ACCESS_PATH"
+    ],
+    "note": "R3PLUS_STRUCTURAL_PASS_CANDIDATE means valid structured route rendered; family/access correctness remains semantic and is out of gold-blind scope"
+  },
+  "discovery_invoked_count": 92,
+  "discovery_stage_state_counts": {
+    "RECOVERABLE": 104
+  },
+  "presented_as_complete_counts": {
+    "True": 104,
+    "False": 16
+  },
+  "claim_evidence_claims": 703,
+  "claim_evidence_claims_with_provenance": 703,
+  "nasjonal_informasjon_blocks_total": 625,
+  "cases_with_multiple_info_blocks": 103,
+  "structured_route_count": 39,
+  "routes_with_provenance_cases": 28,
+  "cases_with_routes_but_no_provenance": 0,
+  "route_provenance_rule": "a routed case passes if route_evidence has at least one valid R-* entry with provenance_ids",
+  "structured_route_without_provenance": [],
+  "provenance_linkage_bad": [],
+  "provenance_ids_total_distinct": 15,
+  "determinism_predictions_identical": 120,
+  "determinism_differing": [],
+  "determinism_result": "PASS",
+  "determinism_method": "independent full rerun into runs/determinism-check-v1/; prediction files compared byte-wise by SHA-256",
+  "mechanism_gates": {
+    "INPUT_HARD_FAILURES": 0,
+    "INPUT_HARD_FAILURES_PASS": true,
+    "STRUCTURED_ROUTE_WITHOUT_PROVENANCE_CASES": 0,
+    "STRUCTURED_ROUTE_WITHOUT_PROVENANCE_PASS": true,
+    "JUNK_ROUTE_LABELS": 0,
+    "JUNK_ROUTE_PASS": true,
+    "FRAGMENT_LIKE_ROUTE_LABELS": 4,
+    "NO_ROUTE_CONSISTENCY_MISMATCHES": 0,
+    "NO_ROUTE_CONSISTENCY_PASS": true,
+    "STRUCTURED_NO_ROUTE_FLAG_MISMATCHES": 0,
+    "STRUCTURED_NO_ROUTE_FLAG_PASS": true,
+    "DETERMINISM_DIFFERING": 0,
+    "DETERMINISM_PASS": true
+  },
+  "gates_overall": "PASS"
+}

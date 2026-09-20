@@ -1,0 +1,76 @@
+{
+  "generated_utc": "2026-09-19T20:08:32Z",
+  "frozen_tier_mapping": {
+    "T1_BASIC": [
+      "mimo-v2.5-pro",
+      "laguna-s-2.1",
+      "ling-3.0-flash-sante"
+    ],
+    "T2_INTERMEDIATE": [
+      "bai-deepseek",
+      "nex-n2.5-pro"
+    ],
+    "T3_STRONG": [
+      "luna-high",
+      "luna-max"
+    ],
+    "T4_FRONTIER_RESERVE": []
+  },
+  "tier_order": [
+    "T1_BASIC",
+    "T2_INTERMEDIATE",
+    "T3_STRONG",
+    "T4_FRONTIER_RESERVE"
+  ],
+  "frozen_sufficiency_rule": {
+    "cell_state": "Stage 0 CORRECT = valid output + frozen-gold match + no contract violation, all runs",
+    "ladder": "cheapest SUFFICIENT tier with all cheaper tiers definitively FAILED; otherwise MINIMUM_UNKNOWN",
+    "tier_FAILED": "all tier models tested (INCORRECT/INVALID), zero correct",
+    "tier_UNRESOLVED": "no evaluable evidence, or tested failures with untested models remaining",
+    "existence_note": "tier sufficient if one route works; cascade must order in-tier routes accordingly",
+    "frontier": "T4 supervised only when T1-T3 all definitively FAILED (ladder exhaustion, not absence)"
+  },
+  "total_gold_rows": 375,
+  "label_distribution": {
+    "T1_BASIC": 64,
+    "MINIMUM_UNKNOWN": 205,
+    "EVIDENCE_GAP_NO_TIER_CORRECT": 59,
+    "NO_EVIDENCE_ANY_TIER": 39,
+    "T2_INTERMEDIATE": 8
+  },
+  "supervised_rows": 72,
+  "min_unknown_rows": 205,
+  "evidence_gap_rows": 59,
+  "evidence_strength_distribution": {
+    "CHEAPEST_TIER_CORRECT": 64,
+    "CHEAPER_TIER_UNRESOLVED": 205,
+    "ALL_TESTED_TIERS_FAILED": 59,
+    "NEVER_RUN_ON_ANY_TIER": 39,
+    "CHEAPER_TIERS_DEFINITIVELY_FAILED": 8
+  },
+  "safety_critical_rows": 13,
+  "safety_critical_supervised": 2,
+  "safety_critical_min_tier_distribution": {
+    "EVIDENCE_GAP_NO_TIER_CORRECT": 3,
+    "MINIMUM_UNKNOWN": 7,
+    "T2_INTERMEDIATE": 1,
+    "T1_BASIC": 1,
+    "NO_EVIDENCE_ANY_TIER": 1
+  },
+  "family_x_tier": {
+    "forbidden_claim": {
+      "T1_BASIC": 40,
+      "MINIMUM_UNKNOWN": 140,
+      "EVIDENCE_GAP_NO_TIER_CORRECT": 28,
+      "NO_EVIDENCE_ANY_TIER": 27,
+      "T2_INTERMEDIATE": 5
+    },
+    "critical_condition": {
+      "EVIDENCE_GAP_NO_TIER_CORRECT": 31,
+      "T1_BASIC": 24,
+      "MINIMUM_UNKNOWN": 65,
+      "NO_EVIDENCE_ANY_TIER": 12,
+      "T2_INTERMEDIATE": 3
+    }
+  }
+}

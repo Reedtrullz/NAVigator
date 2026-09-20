@@ -1,0 +1,56 @@
+{
+  "artifact": "V1.3M Set A run provenance (single completed dual-blind run)",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_3M-MIMO-MIGRATION",
+  "model": "command-code/xiaomi/mimo-v2.5",
+  "provider": "commandcode-auth via local proxy",
+  "fixtures": "boundary-calibration-a.json (SHA 0e1491c68e6907ed2bd022994b3982e98177b57d60e20ae54e84a4b04572703d, byte-identical V1.3 Set A)",
+  "n": 32,
+  "calls": 64,
+  "schema_failures": 3,
+  "error_rows": [
+    {
+      "id": "BRT-13",
+      "error": "'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "id": "BUN-03",
+      "error": "'NoneType' object has no attribute 'strip'"
+    },
+    {
+      "id": "BUN-10",
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    }
+  ],
+  "agreement_summary": {
+    "overall_full_label_including_note": 0.0,
+    "note_only_disagreement_rows_excluded_errors": 24,
+    "route_commitment": 0.8125,
+    "route_verdict": 0.8125,
+    "uncertainty_mode": 0.8125,
+    "uncertainty_verdict": 0.6875,
+    "zero_gates": {
+      "self_retracted_no_acceptable": 0,
+      "vague_no_acceptable": 0,
+      "non_assertion_not_required": 0
+    }
+  },
+  "deviations": [
+    {
+      "event": "ADAPTER_TRANSPORT_HEADROOM_FIX",
+      "detail": "First staged attempt aborted before any label output: frozen max_tokens=120 exhausted by mimo completion budget (finish_reason=length, empty content), reproduced deterministically on synthetic input. Fix: max_tokens 120->2000 in V1.3M adapter only. No semantic/prompt/fixture change."
+    },
+    {
+      "event": "DUAL_RUN_PROCESS_INCIDENT",
+      "detail": "A detached first staged run was believed dead after its tool session id disappeared but kept running; the second staged run overlapped with it for rows 1-31 of two interleaved streams. The older process was killed by PID; exactly one process completed and wrote the final artifacts. Log and artifacts are internally consistent with the surviving single run (one RESULT line, n=32, schema_failures=3). Deviation logged in TASK-LOCK execution_notes; final artifacts treated as authoritative single-run output."
+    }
+  ],
+  "artifact_files": {
+    "boundary-calibration-a-agreement.json": "9a97488343aed3d6fe36d2d322a8daf431f59bb2670e5e3c33799d75af834a0d",
+    "boundary-calibration-a-label1.json": "faaa5a601dd3be56303ef462f30c33dc286dfb328e3c8ce1684faac57b52eb12",
+    "boundary-calibration-a-label2.json": "5d8abebba4fd69ccf52350b2de80a0b8e13f42ae8770c385a0bfc5693db74855",
+    "set-a-agreement.json": "9a97488343aed3d6fe36d2d322a8daf431f59bb2670e5e3c33799d75af834a0d",
+    "calibration-a-run.log": "f5a45bd1cba6c509295ad5338c5ed30e76b6ded5e885ce93d667b7e59fb2fecf"
+  },
+  "set_a_semantically_burned": true,
+  "burn_rationale": "Unlike the V1.3 Luna attempts (0 labels observed), this run delivered model labels for Set A; the fixtures have influenced migration evaluation and are burned per the frozen protocol."
+}

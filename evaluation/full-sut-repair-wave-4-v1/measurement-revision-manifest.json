@@ -1,0 +1,39 @@
+{
+  "artifact": "measurement-revision-manifest",
+  "revision": "Measurement V3.1 Route Object Adapter",
+  "historical_measurement_preserved": true,
+  "old_source": {
+    "path": "evaluation/measurement-v3-combined-freeze/combined_measurement_v3.py",
+    "sha256": "ce7277aa365d4143563cfaa09dfd52712a89a0abd8515f075658b1d683964a29"
+  },
+  "new_source": {
+    "path": "evaluation/full-sut-repair-wave-4-v1/measurement_route_adapter.py",
+    "sha256": "a7ef277bc0eb8d1c7627277178dcbc26b33e5ccc39ddfc675ec184231e3db1e3"
+  },
+  "adapter_contract": {
+    "structured_mode": "STRUCTURED_V2_2 reads evidence.structured_routes; identity, target, access, conditions, track, route_state, evidence_refs, provenance_refs, fail-closed evaluable",
+    "legacy_mode": "LEGACY_LABELS_ONLY via observe_routes_legacy; identical field shape with None identity/target/conditions",
+    "structured_presence_never_falls_back_to_labels": true,
+    "route_semantic_standard_changed": false,
+    "gold_changed": false,
+    "scorer_changed": false
+  },
+  "compatibility_check_real_replay": {
+    "predictions_total": 120,
+    "mode_counts": {
+      "STRUCTURED_V2_2": 62,
+      "LEGACY_LABELS_ONLY": 58
+    }
+  },
+  "tests": {
+    "compatibility": {
+      "total": 13,
+      "pass": true
+    },
+    "cross_boundary": {
+      "total": 8,
+      "pass": true
+    }
+  },
+  "frozen_at": "2026-09-17"
+}

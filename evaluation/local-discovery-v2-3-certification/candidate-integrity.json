@@ -1,0 +1,45 @@
+{
+  "artifact": "candidate-integrity",
+  "certification_task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-V2_3-CANDIDATE-CERTIFICATION",
+  "generated_at": "2026-09-09T15:00:00Z",
+  "candidate": "LOCAL-DISCOVERY-RUNTIME-V2_3",
+  "candidate_manifest_path": "evaluation/local-discovery-site-direct-only-v2-3/candidate-runtime-v2-3/manifest.json",
+  "candidate_manifest_sha256": "b4567824f054af811f4c944daa8455d3a4b29e11b7916ebb9561d98061fe1af2",
+  "candidate_manifest_expected_sha256": "b4567824f054af811f4c944daa8455d3a4b29e11b7916ebb9561d98061fe1af2",
+  "candidate_manifest_sha_match": true,
+  "candidate_files_matched": "19/19",
+  "candidate_mismatches": [],
+  "candidate_files_changed_after_freeze": [],
+  "protocol": {
+    "version": "V1",
+    "sha256": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+    "expected_sha256": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+    "match": true
+  },
+  "provider_config": {
+    "path": "evaluation/local-discovery-site-direct-only-v2-3/provider-config-v2-3.json",
+    "sha256": "51ee5b28f62fea423e0f83bfb28eaa3ebe652ea91aefad7ed2ddbbbe2a714586",
+    "expected_sha256": "51ee5b28f62fea423e0f83bfb28eaa3ebe652ea91aefad7ed2ddbbbe2a714586",
+    "match": true
+  },
+  "historical_restoration": {
+    "historical_write_incident_occurred": true,
+    "incident": "runtime/discovery_v2/providers.py was transiently modified (max_urls edit) during the V2.3 task",
+    "authoritative_baseline": "V2.1 implementation snapshot manifest sha256[runtime/discovery_v2/providers.py]",
+    "expected_sha256": "54b38921b02736763d3baef25e7bb860f1bf1b9f8d3b0fb3ac58b0808083806a",
+    "current_sha256": "54b38921b02736763d3baef25e7bb860f1bf1b9f8d3b0fb3ac58b0808083806a",
+    "restored_byte_identical": true,
+    "v21_snapshot_files_on_disk": 7,
+    "v21_snapshot_files_matching": 7,
+    "v21_snapshot_mismatches": [],
+    "unknown_residual_differences": []
+  },
+  "lineage_isolation": {
+    "v2_3_url_budget_owner": "SiteDirectProviderV23 subclass in runtime/discovery_v2/cli_v23.py sets _url_budget=16",
+    "historical_v2_providers_contains_v23_behavior": false,
+    "historical_v2_providers_grep_max_urls_v23_hits": 0,
+    "provider_config_documents_separation": true,
+    "verdict": "V2.3 behavior is owned by new-lineage code; historical V2 implementation unchanged"
+  },
+  "integrity_adjudication": "RESTORED_WITHOUT_CANDIDATE_CONTAMINATION"
+}

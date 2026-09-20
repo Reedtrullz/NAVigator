@@ -1,0 +1,33 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_4-ROOT-RESOLUTION-REPAIR",
+  "status": "CLOSED_TERMINAL",
+  "terminal_status": "LOCAL_DISCOVERY_RUNTIME_V2_4_READY_FOR_FRESH_EVAL",
+  "closed_at": "2026-09-09T19:05:00+02:00",
+  "scope": "proven_root_resolution_bug_only",
+  "protocol_changes_allowed": false,
+  "historical_runtime_changes_allowed": false,
+  "route_semantics_changes_allowed": false,
+  "provider_architecture_changes_allowed": false,
+  "external_search_allowed": false,
+  "fresh_municipality_use_allowed": false,
+  "fresh_eval_allowed": false,
+  "gpt_5_5_allowed": false,
+  "created_at": "2026-09-09",
+  "predecessor": "NAV-EXPLORE-LOCAL-DISCOVERY-V2_3-CANDIDATE-CERTIFICATION",
+  "predecessor_terminal_status": "V2_3_CERTIFICATION_FAIL_RUNTIME_CHANGE_REQUIRED",
+  "allowed_write_paths": [
+    "evaluation/local-discovery-runtime-v2-4/**",
+    "runtime/discovery_v2/roots_v24.py (new)",
+    "runtime/discovery_v2/cli_v24.py (new)",
+    "runtime/discovery_v2/tests_v24.py (new)",
+    "candidate-runtime-v2-4/ at freeze, PASS-gated"
+  ],
+  "closure_summary": {
+    "gates_passed": "root-cause 4-source; TDD RED re-observed; 134/134 tests; Raelingen 9/9; benchmark 117/117 gold-domain; replay 22/22; access 7/9 with 0 existence-safety regressions and 2 documented source-drift cells; live 13/13; network audit 0 external calls; security PASS; historical integrity 13/13 modules + 19/19 V2.3 pins; protocol SHA unchanged",
+    "fresh_municipalities_used": 0,
+    "historical_write_incident_this_task": false,
+    "candidate_manifest_sha256": "6f7e7ab3fe5f1576a5ca03f9509aa5fd06928b607cebc462702ca1e3ec393a2d",
+    "provider_config_sha256": "6b7f35fc805a92ab28c472dbbfda6dd9b3b92e1d0ce7e9a33c76edfedd706b92",
+    "next_stage": "fresh V2.4 holdout in a separate task (forbidden here)"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "artifact": "preregistered-hypotheses",
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_7D-SHARED-MISS-DIAGNOSIS",
+  "frozen_utc": "2026-09-13T14:56:00Z",
+  "frozen_before": ["diagnostic-fixtures.json authoring completion", "annotation-pass1.json", "annotation-pass2.json", "raw-agreement.json"],
+  "hypotheses": {
+    "H1": {
+      "id": "MODEL_BIAS",
+      "statement": "The frozen contract is human-stable on fresh boundary-shaped cases; shared DeepSeek/MiMo misses are attributable primarily to a shared model bias.",
+      "supporting_evidence_required": "fresh human agreement >=0.95 per family with no central boundary exceeding 1 disagreement"
+    },
+    "H2": {
+      "id": "CONTRACT_BOUNDARY_AMBIGUITY",
+      "statement": "Humans applying the same frozen rule to fresh cases disagree at the same boundaries, indicating the contract/gold boundary itself is not stable enough.",
+      "supporting_evidence_required": "family agreement <0.95 or any central label-boundary with >1 genuine disagreement"
+    },
+    "H3": {
+      "id": "FIXTURE_GOLD_ARTIFACT",
+      "statement": "The contract is reasonably clear but specific historical V2.7 rows were poorly constructed or curated gold artifacts rather than representative boundary stress.",
+      "supporting_evidence_required": "fresh human-stable boundaries plus retrospective classification of the burned rows as historical fixture/gold questionable"
+    },
+    "H4": {
+      "id": "MIXED",
+      "statement": "Some failure families show model bias while others show contract/gold instability.",
+      "supporting_evidence_required": "per-family diagnoses that differ"
+    }
+  },
+  "selection_rule": "No hypothesis is chosen until fresh annotation data exists; per-family classification per spec section 22 then terminal status per spec section 28."
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "tier2-headroom-v1",
+  "task_id": "SEMANTIC-JUDGE-REVIEW-ANNOTATION-TIER2-ASSESSMENT",
+  "denominator_note": "389 frozen gate rows (4 duplicated IDs across minimal-pairs / minimal-pairs-supplement: MP-014A/B, MP-015A/B; 385 unique case IDs). Rates computed on rows.",
+  "current": {
+    "rows": 389,
+    "auto_decisions": 119,
+    "auto_rate_pct": 30.6,
+    "review_path_rows": 270,
+    "review_path_rate_pct": 69.4,
+    "review_finals_REVIEW_REQUIRED": 30,
+    "review_final_rate_pct": 7.71
+  },
+  "review_finals_taxonomy": {
+    "NECESSARY_REVIEW": 20,
+    "POTENTIALLY_ELIMINABLE_REVIEW": 3,
+    "SHOULD_ALREADY_AUTO_DECIDE_TIER1_BUG": 7,
+    "unnecessary_reviews_strict": 0,
+    "unsafe_auto_decisions": 0,
+    "disputes": 0,
+    "note": "All 30 review finals now dual-annotated (9 from Tier-1 stage + 21 this task). SHOULD_ALREADY cases are registered Tier-1 bug candidates (spec 25), not Tier-2 headroom."
+  },
+  "theoretical_headroom": {
+    "definition": "All POTENTIALLY_ELIMINABLE review finals solved perfectly by classified Tier-2 operators.",
+    "additional_auto_review_finals": 3,
+    "remaining_review_finals": 27,
+    "remaining_review_final_rate_pct": 6.94,
+    "review_final_reduction_pp": 0.77
+  },
+  "realistic_headroom": {
+    "definition": "Only operators with clear premises, low risk, high annotation agreement, and evidence present.",
+    "qualifying_cases": [
+      "CAL015 (RULE_PLUS_CONDITION: near-verbatim span, LOW risk, both passes agree on outcome)"
+    ],
+    "additional_auto_review_finals": 1,
+    "remaining_review_finals": 29,
+    "remaining_review_final_rate_pct": 7.46,
+    "review_final_reduction_pp": 0.26
+  },
+  "per_100_claims": {
+    "current_review_finals_per_100": 7.71,
+    "theoretical_reviews_saved_per_100": 0.77,
+    "realistic_reviews_saved_per_100": 0.26,
+    "realistic_model_calls_saved_per_100": "about 0.26 reviewer calls (1 review per review final); deterministic compute increase negligible",
+    "cost_implication": "Negligible at this corpus size and sample; no economic case for Tier-2 on review finals alone."
+  },
+  "canaries": {
+    "ENT_C": "Permanent negative control preserved: no Tier-2 mapping solves ENT-C; invalid auto-CONTRADICTED stays forbidden.",
+    "N_A4_N_R1": "Adversarial controls preserved: no proposed Tier-2 re-imports referral/actor-membership overreach; CAL031 and N-C3 flagged as same-family hazards requiring role-hierarchy preconditions.",
+    "ACT_25": "Positive canary: explicit proof, correct target, zero hidden premise; CAL015 is the only case matching this standard."
+  },
+  "threshold_check": {
+    "threshold_definition": "Tier-2 is not worth prototyping if realistic expectation is only 1-2 extra auto decisions in the 389-row development corpus or <2pp review-rate reduction, unless the operator is extremely simple and low-risk.",
+    "realistic_result": "1 extra auto decision, 0.26pp reduction.",
+    "verdict": "Fails threshold. The single qualifying operator is simple and low-risk but its payoff is one case in this corpus."
+  }
+}

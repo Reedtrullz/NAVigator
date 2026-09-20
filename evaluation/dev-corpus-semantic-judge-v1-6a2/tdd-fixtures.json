@@ -1,0 +1,146 @@
+{
+  "artifact": "tdd-fixtures.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A2-ROUTE-GROUNDING-REPAIR",
+  "authoring_engine_queries": 0,
+  "text_reuse_check": "PASS - no exact text match against V1.6A burned-120, V1.6A.1 unit-72, V1.6A.1 targeted-60",
+  "n": 17,
+  "fixtures": [
+    {
+      "id": "TDD-SAME-01",
+      "dimension": "route_commitment",
+      "group": "same_clause",
+      "text": "Helsesykepleieren er riktig første kontakt for slike spørsmål.",
+      "expected_label": "ASSERTED",
+      "design_note": "same-clause: inventory noun + assertion operator in one clause must stay deterministic [orthography corrected pre-freeze: ASCII transliteration was an authoring defect, corrected 2026-09-11 before candidate fix; correction logged in tdd-red-result]"
+    },
+    {
+      "id": "TDD-SAME-02",
+      "dimension": "route_commitment",
+      "group": "same_clause",
+      "text": "Familievernkontoret er trolig et godt utgangspunkt.",
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "same-clause: hedge demotes its own clause only"
+    },
+    {
+      "id": "TDD-SAME-03",
+      "dimension": "route_commitment",
+      "group": "same_clause",
+      "text": "Fastlegen er ikke riktig inngang for akutte tilfeller.",
+      "expected_label": "NEGATED",
+      "design_note": "same-clause: negation shares clause with noun"
+    },
+    {
+      "id": "TDD-SAME-04",
+      "dimension": "route_commitment",
+      "group": "same_clause",
+      "text": "Jeg trekker tilbake anbefalingen om helsestasjonen.",
+      "expected_label": "SELF_RETRACTED",
+      "design_note": "same-clause: retraction attaches to its own proposition"
+    },
+    {
+      "id": "TDD-CROSS-01",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Fastlegen er riktig inngang. Kriseteamet kan tilby oppfolging.",
+      "expected_label": "ABSTAIN",
+      "design_note": "assertion operator in clause 0, out-of-inventory service noun in clause 1 with no independent grounding; ADV-11 mechanism on fresh text"
+    },
+    {
+      "id": "TDD-CROSS-02",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Ppt kan hjelpe med vurdering. Skolehelsetjenesten er riktig sted for vaksiner.",
+      "expected_label": "ABSTAIN",
+      "design_note": "inverse direction: inventory noun with only vague wording in clause 0, assertion in clause 1; the vague clause cannot be grounded so whole output abstains"
+    },
+    {
+      "id": "TDD-CROSS-03",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Barnevernet er ikke riktig for denne henvendelsen. Helsesykepleieren er riktig inngang.",
+      "expected_label": "ABSTAIN",
+      "design_note": "negation locality: negated proposition in clause 0 must not collapse asserted proposition in clause 1; mixed polarity requires abstain"
+    },
+    {
+      "id": "TDD-CROSS-04",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Kanskje familievernkontoret kan passe. Helsesykepleieren er riktig inngang.",
+      "expected_label": "ABSTAIN",
+      "design_note": "hedge locality: hedged clause and asserted clause are different commitment strengths, cannot collapse to one deterministic label"
+    },
+    {
+      "id": "TDD-CROSS-05",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Rask psykisk helsehjelp finnes i kommunen. Gjeldsteamet kan hjelpe med økonomi.",
+      "expected_label": "ABSTAIN",
+      "design_note": "existence statement + unknown service noun with vague wording; no clause carries a licensing operator [orthography corrected pre-freeze: ASCII transliteration was an authoring defect, corrected 2026-09-11 before candidate fix; correction logged in tdd-red-result]"
+    },
+    {
+      "id": "TDD-CROSS-06",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Tjenesten er riktig sted — nei, det kan jeg ikke stå inne for. Men fastlegen kan kontaktes.",
+      "expected_label": "ABSTAIN",
+      "design_note": "retraction locality: self-retracted proposition in clause 0 plus fresh assertion in clause 1; whole output cannot be SELF_RETRACTED [orthography corrected pre-freeze: ASCII transliteration was an authoring defect, corrected 2026-09-11 before candidate fix; correction logged in tdd-red-result]"
+    },
+    {
+      "id": "TDD-QUOTE-01",
+      "dimension": "route_commitment",
+      "group": "quote_scope",
+      "text": "Nettsiden sier: «Barnevernet er riktig sted.»",
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "quoted noun must stay quoted, no adoption"
+    },
+    {
+      "id": "TDD-QUOTE-02",
+      "dimension": "route_commitment",
+      "group": "quote_scope",
+      "text": "Hun skriver at «familievernkontoret hjalp mye». For din situasjon er helsestasjonen riktig inngang.",
+      "expected_label": "ABSTAIN",
+      "design_note": "quote locality: quoted noun in clause 0 is not adopted; asserted noun in clause 1 is separately grounded; mixed QUOTED_ONLY/ASSERTED requires abstain"
+    },
+    {
+      "id": "TDD-QUOTE-03",
+      "dimension": "route_commitment",
+      "group": "quote_scope",
+      "text": "Helsestasjonen (eller psykisk helsetjeneste) er riktig inngang.",
+      "expected_label": "ABSTAIN",
+      "design_note": "parenthetical alternative: two inventory nouns compete for one operator, ambiguous grounding must abstain"
+    },
+    {
+      "id": "TDD-AMB-01",
+      "dimension": "route_commitment",
+      "group": "ambiguous_grounding",
+      "text": "BUP eller familievernkontor kan være riktig inngang her.",
+      "expected_label": "ABSTAIN",
+      "design_note": "two inventory nouns compete for one assertion operator [orthography corrected pre-freeze: ASCII transliteration was an authoring defect, corrected 2026-09-11 before candidate fix; correction logged in tdd-red-result]"
+    },
+    {
+      "id": "TDD-AMB-02",
+      "dimension": "route_commitment",
+      "group": "ambiguous_grounding",
+      "text": "Enten fastlegen eller helsesykepleieren bør kontaktes.",
+      "expected_label": "ABSTAIN",
+      "design_note": "either/or coordination: operator cannot be locally assigned to one noun [orthography corrected pre-freeze: ASCII transliteration was an authoring defect, corrected 2026-09-11 before candidate fix; correction logged in tdd-red-result]"
+    },
+    {
+      "id": "TDD-AMB-03",
+      "dimension": "route_commitment",
+      "group": "ambiguous_grounding",
+      "text": "Kontoret eller senteret kan hjelpe.",
+      "expected_label": "ABSTAIN",
+      "design_note": "two out-of-inventory service nouns, no independent grounding"
+    },
+    {
+      "id": "TDD-CROSS-07",
+      "dimension": "route_commitment",
+      "group": "cross_clause",
+      "text": "Dersom kommunen har familievernkontor, kan det være en mulighet. Helsesykepleieren er riktig inngang.",
+      "expected_label": "ABSTAIN",
+      "design_note": "hypothetical clause (non-assertion commitment) + asserted clause; mixed commitment strengths across clauses cannot collapse to one deterministic label [added post-burned-freeze as contract-derived RED before official authoring; process deviation documented]"
+    }
+  ],
+  "authoring_correction_note": "Fixture texts TDD-SAME-01, TDD-CROSS-05, TDD-CROSS-06, TDD-AMB-01, TDD-AMB-02 originally authored with ASCII-transliterated Norwegian (forste/sta/bor/vaere/okonomi). Corrected to proper Norwegian orthography before the fix was implemented; correction is a fixture-authoring defect, not engine tuning."
+}

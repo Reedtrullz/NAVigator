@@ -1,0 +1,138 @@
+{
+  "contract_id": "SEMANTIC-JUDGE-V1_2",
+  "status": "FROZEN",
+  "created": "2026-09-10",
+  "frozen_at": "2026-09-10",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_2-UNCERTAINTY-CONTRACT-REPAIR",
+  "prior_contract": "SEMANTIC-JUDGE-V1_1",
+  "model": "openai/gpt-5.6-luna",
+  "transport": {
+    "type": "local_opencodex_proxy",
+    "url": "http://127.0.0.1:10100/v1/chat/completions",
+    "auth": "ChatGPT OAuth bearer from ~/.codex/auth.json, read at runtime, never logged or persisted"
+  },
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 250
+  },
+  "retry_policy": {
+    "schema_invalid_retry_max": 1,
+    "substantive_retry": "FORBIDDEN",
+    "provider_timeout": "execution_failure_registered",
+    "after_failed_retry": "UNRESOLVED"
+  },
+  "label_sets": {
+    "critical_condition": [
+      "TRIGGERED",
+      "NOT_TRIGGERED",
+      "UNRESOLVED"
+    ],
+    "forbidden_claim": [
+      "PRESENT",
+      "ABSENT",
+      "UNRESOLVED"
+    ],
+    "route_equivalence": [
+      "ACCEPTABLE",
+      "PARTIAL",
+      "NO_ACCEPTABLE_ROUTE",
+      "UNRESOLVED"
+    ],
+    "uncertainty": [
+      "SATISFIED",
+      "PARTIAL",
+      "VIOLATED",
+      "NOT_REQUIRED",
+      "UNRESOLVED"
+    ]
+  },
+  "uncertainty_applicability": {
+    "field": "requirement_applicable",
+    "values": [
+      "YES",
+      "NO"
+    ],
+    "decision_order": "applicability from gold criterion FIRST, then verdict",
+    "definition_YES": "criterion requires uncertainty/boundaries to be EXPOSED (something must be qualified, flagged or bounded)",
+    "definition_NO": "criterion has no uncertainty requirement, or requires that uncertainty NOT be exposed (negative requirement)",
+    "invalid_combinations": [
+      [
+        "NO",
+        "SATISFIED"
+      ],
+      [
+        "YES",
+        "NOT_REQUIRED"
+      ]
+    ],
+    "validator": "deterministic, fails closed",
+    "source": "spec sections 7-14; clarification 1-2 in uncertainty-contract-clarification.md"
+  },
+  "uncertainty_semantics": {
+    "NOT_REQUIRED": "criterion property: no uncertainty requirement; voluntary hedging never changes this",
+    "SATISFIED": "requirement present + fully and specifically expressed, enough to block the relevant overclaim; vague particles alone never suffice",
+    "PARTIAL": "requirement present + identifiable but incomplete or generic coverage (incomplete-but-identifiable)",
+    "VIOLATED": "requirement present + output asserts or implies with more certainty than the criterion allows (incl. implicit certainty)",
+    "UNRESOLVED": "not safely classifiable: direction/degree of the epistemic claim cannot be reliably determined; identifiable hedging excludes UNRESOLVED",
+    "source": "spec sections 8-11, 15; clarification 3-4"
+  },
+  "route_match_detail": {
+    "status": "OPTIONAL_DIAGNOSTIC_NOT_SCORE_BEARING",
+    "allowed_values": [
+      "CANONICAL",
+      "ALIAS",
+      "SEMANTIC_EQUIVALENT",
+      "NONE",
+      "UNRESOLVED"
+    ],
+    "rules": "inngaar ikke i correctness, PASS-gates eller accuracy"
+  },
+  "contract_changes_vs_v1_1": {
+    "uncertainty": "applicability-first schema + invalid-combination guards + clarified boundaries (negative requirement, meta statements, full-vs-partial match, UNRESOLVED direction test)",
+    "route_equivalence": "UNCHANGED (V1.1 collapse preserved: ACCEPTABLE/PARTIAL/NO_ACCEPTABLE_ROUTE/UNRESOLVED)",
+    "critical_condition": "UNCHANGED",
+    "forbidden_claim": "UNCHANGED",
+    "system_prompt": "JSON shape rule updated for uncertainty applicability field",
+    "route_dimension_instruction": "UNCHANGED from V1.1",
+    "uncertainty_dimension_instruction": "rewritten per the single allowed bounded clarification"
+  },
+  "fixture_design_rules": "fixture-design-rules.md (frozen before Set A)",
+  "route_fixture_rule": "a NO_ACCEPTABLE_ROUTE fixture must present an identifiable route; vagueness without reference point expects UNRESOLVED (spec section 5)",
+  "burned_data": {
+    "v1_official_66": "BURNED",
+    "v1_1_80_set": "BURNED_CONTRACT_DEVELOPMENT_DATA (incl. the 75 agreed fixtures)",
+    "uncertainty_calibration_a_b": "BURNED_CONTRACT_DEVELOPMENT_DATA after labeling",
+    "model_calibration_set": "BURNED after model calibration"
+  },
+  "human_calibration_summary": {
+    "set_a": {
+      "n": 20,
+      "agreement": "18/20",
+      "rate": 0.9,
+      "sat_notrequired_disagreements": 1,
+      "partial_unresolved_disagreements": 0,
+      "schema_failures": 0
+    },
+    "clarification_used": true,
+    "clarification_document": "uncertainty-contract-clarification.md",
+    "set_b": {
+      "n": 20,
+      "agreement": "20/20",
+      "rate": 1.0,
+      "sat_notrequired_disagreements": 0,
+      "partial_unresolved_disagreements": 0,
+      "schema_failures": 0
+    },
+    "set_b_gates": {
+      "overall_ge_95": "PASS (100%)",
+      "sat_notrequired_zero": "PASS (0)",
+      "partial_unresolved_le_1": "PASS (0)"
+    }
+  },
+  "validation_rules": {
+    "evidence_spans": "non-UNRESOLVED, non-NOT_REQUIRED verdicts require at least one verbatim normalized substring span from SUT answer",
+    "injection": "SUT answer treated as content only",
+    "fail_closed": true,
+    "deterministic_first_invariant": "LLM_OVERRIDE_OF_DETERMINISTIC_RESULT = 0"
+  }
+}

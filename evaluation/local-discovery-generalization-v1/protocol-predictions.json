@@ -1,0 +1,1353 @@
+{
+ "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-GENERALIZATION-V1",
+ "artifact": "phase_a_frozen_protocol_predictions",
+ "frozen_at": "2026-09-09T00:57:31+02:00",
+ "status": "PROTOCOL_PREDICTIONS_FROZEN_BEFORE_AUDIT",
+ "protocol_sha256_verified": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+ "sample_sha256_verified": "295f3a168648bf72c2cfeee52296b2b53824a22b3e59bf334398087ad1e2fd5f",
+ "retrieved_date": "2026-09-09",
+ "frozen_query_family_templates": [
+  "<kommune> psykisk helse voksne",
+  "<kommune> psykisk helse søknad",
+  "<kommune> psykisk helse kontakt",
+  "<kommune> rask psykisk helsehjelp",
+  "<kommune> kommunepsykolog",
+  "<kommune> helsestasjon ungdom",
+  "<kommune> psykisk helse rus",
+  "<kommune> interkommunal psykisk helse",
+  "<kommune> mestringsteam"
+ ],
+ "query_implementation": "Exa web search (QUERY_SEARCH); page fetch via Exa fetch + r.jina.ai fallback + raw curl; all logged per commune",
+ "auditor_blindness": "Phase B auditor receives municipality list + scenarios only; no Phase A routes/services/verdicts disclosed",
+ "phase_a_note": "PHASE_A_FROZEN_AFTER_THIS_FILE - no edits after freeze per spec 9/23",
+ "municipalities": [
+  {
+   "kommune": "Rælingen",
+   "klasse": 1,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Rælingen psykisk helse voksne",
+      "decisive": false
+     },
+     {
+      "template_id": 3,
+      "query": "Rælingen psykisk helse kontakt",
+      "decisive": true
+     },
+     {
+      "template_id": 4,
+      "query": "Rælingen rask psykisk helsehjelp",
+      "decisive": true
+     },
+     {
+      "template_id": 6,
+      "query": "Rælingen helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 7,
+      "query": "Rælingen psykisk helse rus",
+      "decisive": false
+     },
+     {
+      "template_id": 9,
+      "query": "Rælingen mestringsteam",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.ralingen.kommune.no/artikkel/lavterskel-psykisk-helsehjelp",
+     "https://oldralingen.bedreinnsats.no/",
+     "https://oldralingen.bedreinnsats.no/tiltak-og-tjenester-for-barn-og-ungdom-i-kommunen/",
+     "https://iralingen.no/artikkel/Helsestasjon-for-ungdom",
+     "https://www.selvhjelp.no/kontaktpunkter/raelingen-kommune-avd-psykisk-helse-og-avhengighet-eht/",
+     "https://api.skjema.no/ralingen/templates/pdf/123461/nb"
+    ],
+    "rejected_pages_with_reason": [
+     "https://www.ralingen.kommune.no/artikkel/lavterskel-psykisk-helsehjelp -> JS-rendered SPA, full text not retrievable (curl/jina give shell only); only <meta description> usable",
+     "https://iralingen.no/artikkel/Helsestasjon-for-ungdom -> JS-rendered SPA, no body text retrievable; rejected as access evidence",
+     "karrierestart.no / linkedin / proff.no -> private sources, discovery hints only per source_hierarchy"
+    ],
+    "edges": [
+     "QUERY_SEARCH(Q3/Q4) -> https://www.ralingen.kommune.no/artikkel/lavterskel-psykisk-helsehjelp",
+     "QUERY_SEARCH(Q3/Q7) -> https://oldralingen.bedreinnsats.no/",
+     "NAVIGATION_LINK(oldralingen.bedreinnsats.no) -> /tiltak-og-tjenester-for-barn-og-ungdom-i-kommunen/",
+     "QUERY_SEARCH(Q4/Q7) -> https://api.skjema.no/ralingen/templates/pdf/123461/nb"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 404, robots.txt 403 (curl) - logged as rejected source; JS-rendering limits internal navigation",
+    "level_4_note": "No intermunicipal PH service relation found for psykisk helse; BTI platform is municipal, not IKS",
+    "level_5_note": "No municipal pointer to external portal followed"
+   },
+   "services": [
+    {
+     "name": "Lavterskel psykisk helsehjelp (Rælingen kommune)",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "UNCLEAR (meta beskriver målgruppen uten aldersgrense; artikkeltekst ikke tilgjengelig)",
+     "access": "UNCLEAR",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.ralingen.kommune.no/artikkel/lavterskel-psykisk-helsehjelp",
+       "quote": "Et tilbud til deg som sliter med psykiske helseutfordringer som nedstemthet, sorg, bekymringer, stress eller søvnproblemer.",
+       "retrieved_date": "2026-09-09",
+       "note": "Quote is <meta name=description>; body is JS-rendered"
+      }
+     ]
+    },
+    {
+     "name": "Avdeling psykisk helse og avhengighet (voksne)",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "PARTIAL - 'voksne innbyggere' documented verbatim",
+     "access": "UNCLEAR (ingen kontaktinformasjon fanget i tilgjengelig tekst)",
+     "age_coverage": "voksne",
+     "evidence": [
+      {
+       "url": "https://oldralingen.bedreinnsats.no/",
+       "quote": "Avdeling psykisk helse og avhengighet i kommunen tilbyr hjelp og bistand til voksne innbyggere med psykiske helseplager og/eller avhengighetsproblematikk samt deres pårørende.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Selvhenvisningsskjema helse/omsorg (inkl. psykisk helsetjeneste)",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "Skjema for tjenestekontoret; psykisk helsetjeneste nevnt i skjemaets liste",
+     "access": "PARTIAL - APPLICATION_FORM eksisterer (PDF), kobling til psykisk helsetjeneste via skjema",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://api.skjema.no/ralingen/templates/pdf/123461/nb",
+       "quote": "Tjenester som saksbehandles ved tjenestekontoret for helse og omsorg: ... psykisk helsetjeneste, ambulerende psykisk helsetjeneste, rustjeneste ...",
+       "retrieved_date": "2026-09-09",
+       "note": "Exa highlight av PDF-innhold"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_EXISTENCE_ONLY",
+     "selected_services": [
+      "Lavterskel psykisk helsehjelp",
+      "Avdeling psykisk helse og avhengighet"
+     ],
+     "discovery_depth": "level_1-2 (query+known pages)",
+     "access_model": "UNCLEAR",
+     "self_referral": "UNCLEAR",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "Artikkel-/SPA-rendering blokkerte tilgangsdokumentasjon",
+      "Selvhenvisningsskjema (APPLICATION_FORM) eksisterer, men kobles til psykisk helsetjeneste via skjema-liste, ikke via lavterskel-siden"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_EXISTENCE_ONLY",
+     "selected_services": [
+      "Lavterskel psykisk helsehjelp",
+      "Avdeling psykisk helse og avhengighet"
+     ],
+     "discovery_depth": "level_1-2 (query+known pages)",
+     "access_model": "UNCLEAR",
+     "self_referral": "UNCLEAR",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "Samme bevisbegrensning som scenario C"
+     ]
+    }
+   }
+  },
+  {
+   "kommune": "Drammen",
+   "klasse": 2,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Drammen psykisk helse voksne",
+      "decisive": false
+     },
+     {
+      "template_id": 3,
+      "query": "Drammen psykisk helse kontakt",
+      "decisive": false
+     },
+     {
+      "template_id": 4,
+      "query": "Drammen rask psykisk helsehjelp",
+      "decisive": true
+     },
+     {
+      "template_id": 6,
+      "query": "Drammen helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 7,
+      "query": "Drammen psykisk helse rus",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+     "https://www.drammen.kommune.no/tjenester/veiledere/hjelp-til-psykisk-helse/",
+     "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/drammen/helsestasjon-for-ungdom-drammen/"
+    ],
+    "rejected_pages_with_reason": [],
+    "edges": [
+     "QUERY_SEARCH(Q4) -> rask-psykisk-helsehjelp page",
+     "QUERY_SEARCH(Q6) -> helsestasjon-for-ungdom-drammen page"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 200 (checked)",
+    "level_4_note": "Vestreviken (DPS) er sykehus-eid, ikke interkommunal IKS; ikke nødvendig for lavterskel-rute",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Rask psykisk helsehjelp Drammen",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: personer over 16 år, bosatt Drammen (bosatt implisitt 'innbyggere'; alder eksplisitt)",
+     "access": "DIRECT_DIGITAL (påmelding kurs) + direct contact; gratis",
+     "age_coverage": "16+",
+     "evidence": [
+      {
+       "url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+       "quote": "Rask psykisk helsehjelp er et gratis behandlingstilbud for personer over 16 år som opplever vanlige angst- og depresjonsplager eller utfordringer rundt stress, rus og søvn. ... Behandlingen er kortvarig og du kan selv ta kontakt.",
+       "retrieved_date": "2026-09-09",
+       "note": "Sist endret 01.07.2026 per Exa metadata"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom Drammen",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: 13-25 år",
+     "access": "DIRECT_DROPIN (mandag 12-19 uten timebestilling) + timebestilling onsdag",
+     "age_coverage": "13-25",
+     "evidence": [
+      {
+       "url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/drammen/helsestasjon-for-ungdom-drammen/",
+       "quote": "Helsestasjon for ungdom er et gratis tilbud til ungdom fra 13 år og fram til du fyller 25 år. Helsesykepleier er alltid tilstede og det er ingen timebestilling.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Rask psykisk helsehjelp Drammen"
+     ],
+     "discovery_depth": "level_0-1 (query top hit -> full text)",
+     "access_model": "DIRECT_DIGITAL",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "Helsestasjon for ungdom (13-25, drop-in)"
+     ],
+     "notes": [
+      "19 år oppfyller 16+ kravet"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Rask psykisk helsehjelp Drammen"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_DIGITAL",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "Helsestasjon for ungdom (13-25, drop-in)"
+     ],
+     "notes": [
+      "22 år oppfyller 16+ kravet"
+     ]
+    }
+   }
+  },
+  {
+   "kommune": "Fredrikstad",
+   "klasse": 2,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Fredrikstad psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 4,
+      "query": "Fredrikstad rask psykisk helsehjelp",
+      "decisive": true
+     },
+     {
+      "template_id": 6,
+      "query": "Fredrikstad helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 9,
+      "query": "Fredrikstad mestringsteam",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+     "http://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/fredrikstadhjelpa/",
+     "https://www.fredrikstad.kommune.no/tjenester/barne-og-familietjenester/helsestasjoner/helsestasjon-for-ungdom/"
+    ],
+    "rejected_pages_with_reason": [
+     "fredrikstadhjelpa page via Exa returned title only; not needed for primary route"
+    ],
+    "edges": [
+     "QUERY_SEARCH(Q1/Q4) -> rask-psykisk-helsehjelp page",
+     "QUERY_SEARCH(Q6) -> helsestasjon-for-ungdom page"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 200 (checked)",
+    "level_4_note": "Sykehuset Østfold DPS er helseforetak, ikke interkommunal IKS",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Rask psykisk helsehjelp Fredrikstad",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: over 16 år, bo i Fredrikstad",
+     "access": "DIRECT_PHONE (kartleggingssamtale over telefon); ingen henvisning",
+     "age_coverage": "16+",
+     "evidence": [
+      {
+       "url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+       "quote": "Rask psykisk helsehjelp er et korttids behandlingstilbud for innbyggere i Fredrikstad kommune over 16 år med milde til moderate former for angst, depresjon, søvnvansker og/eller begynnende rusproblematikk. Rask psykisk helsehjelp er gratis, og du trenger ingen henvisning fra lege.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+       "quote": "Vi starter med en kartleggingssamtale over telefon, og blir enige om veien videre sammen med deg.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom Fredrikstad",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "Helsestasjon for ungdom (alder ikke fanget i utdrag)",
+     "access": "PARTIAL (side funnet via query; innhold ikke fullt hentet)",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.fredrikstad.kommune.no/tjenester/barne-og-familietjenester/helsestasjoner/helsestasjon-for-ungdom/",
+       "quote": "Helsestasjon for ungdom (sidetittel; eksisterer som kommunal tjeneste)",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Rask psykisk helsehjelp Fredrikstad"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "Helsestasjon for ungdom"
+     ],
+     "notes": [
+      "19 år > 16"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Rask psykisk helsehjelp Fredrikstad"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "Helsestasjon for ungdom"
+     ],
+     "notes": [
+      "22 år > 16"
+     ]
+    }
+   }
+  },
+  {
+   "kommune": "Askøy",
+   "klasse": 3,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Askøy psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 3,
+      "query": "Askøy psykisk helse kontakt",
+      "decisive": true
+     },
+     {
+      "template_id": 6,
+      "query": "Askøy helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 4,
+      "query": "Askøy rask psykisk helsehjelp",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/psykisk-helsetilbud-til-voksne",
+     "https://askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+     "https://askoy.kommune.no/tjenester/barn-unge-og-familie/helsestasjoner-og-skolehelsetjenesten/helsestasjon-for-ungdom-hfu",
+     "https://www.askoy24.no/nyheter/rask-psykisk-helsehjelp-pa-askoy-uteblir/184810"
+    ],
+    "rejected_pages_with_reason": [
+     "https://www.askoy24.no/... -> lokalavis (ikke offisiell kilde); brukt som hint om at RPH ikke er etablert; aldri slutevidens",
+     "sitemap-4seo.xml og com_jmap sitemap -> HTTP 404/403 ved henting; logged as rejected structured source"
+    ],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> psykisk-helsetilbud-til-voksne (Origo tilbudsoversikt)",
+     "QUERY_SEARCH(Q3) -> hvordan-ta-kontakt-med-origo",
+     "QUERY_SEARCH(Q6) -> helsestasjon-for-ungdom-hfu"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "Sitemap rejected (404/403); internal navigation via category pages sufficed",
+    "level_4_note": "Oyane DPS (Helse Bergen) er helseforetak; ikke interkommunal IKS",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Origo - livsmestring, psykisk helse og rus (barn/unge og voksen)",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "Barn/unge/foreldre: direkte kontakt mulig; psykologoppfølging krever fastlegehenvisning; voksne over 24: fortrinnsvis henvisning. 18-24-voksen-spor er eksplisitt uklar.",
+     "access": "DIRECT_PHONE 56 15 86 99 (09-14); henvisningsskjema for barn/unge/foreldre (APPLICATION_FORM); GP_REFERRAL for psykolog",
+     "age_coverage": "barn/unge (explicitt avsnitt) + voksne over 24; 18-24 voksne ikke eksplisitt dokumentert",
+     "evidence": [
+      {
+       "url": "https://askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+       "quote": "Ofte er det nyttig å ta kontakt med oss i samarbeid med noen du allerede er i kontakt med, for eksempel helsesykepleier eller fastlege. Men du er også velkommen til å ta kontakt med oss på egen hånd. Ser du for deg at du vil trenge psykologoppfølging må vi ha henvisning fra fastlege.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+       "quote": "Du kan ringe oss på telefon 56 15 86 99. Telefontid mandag-fredag: klokken 09.00-14.00.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+       "quote": "For voksne over 24 år ønsker vi fortrinnsvis henvisning fra fastlege eller spesialisthelsetjeneste for oppfølging i Origo.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom (HFU) Askøy",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "ungdom (aldersspenn ikke fanget i hentet tekst)",
+     "access": "PARTIAL",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://askoy.kommune.no/tjenester/barn-unge-og-familie/helsestasjoner-og-skolehelsetjenesten/helsestasjon-for-ungdom-hfu",
+       "quote": "Helsestasjon for ungdom HFU (sidetittel; tjeneste eksisterer)",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Origo barn og unge"
+     ],
+     "discovery_depth": "level_2 (kategori -> kontakt-side)",
+     "access_model": "DIRECT_PHONE + APPLICATION_FORM; psykologdel GP_REFERRAL",
+     "self_referral": "CONDITIONAL",
+     "fallback": null,
+     "secondary_services": [
+      "HFU Askøy ( SERVICE_VERIFIED )"
+     ],
+     "notes": [
+      "Barn/unge/foreldre-spor: direkte kontakt eksplisitt tillatt"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_ACCESS_PARTIAL",
+     "selected_services": [
+      "Origo voksen"
+     ],
+     "discovery_depth": "level_2",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "CONDITIONAL",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "22 år: 'barn, unge og foreldre'-sporet og 'voksne over 24'-sporet dekker ikke 22 eksplisitt; tilgang sannsynlig (telefon) men målgruppemekanisme for 22-årige voksne er udokumentert"
+     ]
+    }
+   }
+  },
+  {
+   "kommune": "Bamble",
+   "klasse": 3,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Bamble psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 3,
+      "query": "Bamble psykisk helse kontakt",
+      "decisive": true
+     },
+     {
+      "template_id": 4,
+      "query": "Bamble rask psykisk helsehjelp",
+      "decisive": false
+     },
+     {
+      "template_id": 6,
+      "query": "Bamble helsestasjon ungdom",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/",
+     "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/kontaktinformasjon/",
+     "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/vare-tilbud/drop-in-en-samtale-nar-du-trenger-det/",
+     "https://www.bamble.kommune.no/barn-unge-og-familie/helsetjenester-for-barn-unge-og-familier/helsestasjon-for-ungdom/"
+    ],
+    "rejected_pages_with_reason": [],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> bamblehjelpa",
+     "NAVIGATION_LINK(bamblehjelpa) -> /kontaktinformasjon/",
+     "NAVIGATION_LINK(bamblehjelpa) -> /vare-tilbud/drop-in-en-samtale-nar-du-trenger-det/"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 200 (checked)",
+    "level_4_note": "None",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Bamblehjelpa",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: 0-100 år, selv kan ta kontakt",
+     "access": "DIRECT_PHONE 48 16 50 77 (telefontid 10-14) + drop-in for voksne",
+     "age_coverage": "0-100",
+     "evidence": [
+      {
+       "url": "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/",
+       "quote": "Bamblehjelpa er en lavterskel helsetjeneste der du selv kan ta kontakt dersom du ønsker endring i din livssituasjon. Vi er en tjeneste fra 0-100 år, der vi jobber i et nettverksperspektiv.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/kontaktinformasjon/",
+       "quote": "Bamblehjelpa Mobil 48 16 50 77 (+4748165077) Adresse: Reidunsvei 37, 3961 Stathelle Telefontid: Hverdager kl. 10-14",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom Bamble",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "ungdom (side funnet)",
+     "access": "PARTIAL",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.bamble.kommune.no/barn-unge-og-familie/helsetjenester-for-barn-unge-og-familier/helsestasjon-for-ungdom/",
+       "quote": "Helsestasjon for ungdom (sidetittel)",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Bamblehjelpa"
+     ],
+     "discovery_depth": "level_2 (nav lenker til kontakt/tilbud)",
+     "access_model": "DIRECT_PHONE + DIRECT_DROPIN",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "HFU Bamble"
+     ],
+     "notes": []
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Bamblehjelpa"
+     ],
+     "discovery_depth": "level_2",
+     "access_model": "DIRECT_PHONE + DIRECT_DROPIN",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": []
+    }
+   }
+  },
+  {
+   "kommune": "Birkenes",
+   "klasse": 4,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Birkenes psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 2,
+      "query": "Birkenes psykisk helse søknad",
+      "decisive": true
+     },
+     {
+      "template_id": 5,
+      "query": "Birkenes kommunepsykolog",
+      "decisive": false
+     },
+     {
+      "template_id": 6,
+      "query": "Birkenes helsestasjon ungdom",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+     "https://skjema.birkenes.kommune.no/skjema/BIR0111/Psykisk_helse_og_rus__Skjema_for_selvhenvisning"
+    ],
+    "rejected_pages_with_reason": [],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> psykisk-helse-for-voksne",
+     "QUERY_SEARCH(Q2) -> skjema BIR0111 selvhenvisning"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 404, robots 404 - logged",
+    "level_4_note": "bivo.no hit i Q9 (mestringskontekst); ikke brukt som bevis",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Avdeling for psykisk helse og rus Birkenes",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: over 18 år, bo i Birkenes",
+     "access": "APPLICATION_FORM (BIR0111 selvhenvisning) + DIRECT_PHONE 95 00 36 52 (09-15) + fastlegehenvisning",
+     "age_coverage": "18+",
+     "evidence": [
+      {
+       "url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+       "quote": "Du må være over 18 år og bo i Birkenes kommune",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+       "quote": "Henvisning fra fastlege eller andre instanser. Fyll ut vårt digitale selvhenvisningsskjema som du finner her. Ta kontakt ved å ringe oss på tlf.: 95 00 36 52 (hverdager 09-15)",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon Birkenes (ressurssenter)",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "helsestasjon/skolehelsetjeneste",
+     "access": "PARTIAL",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.birkenes.kommune.no/innhold/barnehage-og-skole/ressurssenter/helsestasjon/",
+       "quote": "Helsestasjon (sidetittel)",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Avdeling for psykisk helse og rus"
+     ],
+     "discovery_depth": "level_0-1 + skjema-URL",
+     "access_model": "APPLICATION_FORM",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "19 år > 18"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Avdeling for psykisk helse og rus"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "APPLICATION_FORM",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": []
+    }
+   }
+  },
+  {
+   "kommune": "Bjerkreim",
+   "klasse": 4,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Bjerkreim psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 3,
+      "query": "Bjerkreim psykisk helse kontakt",
+      "decisive": false
+     },
+     {
+      "template_id": 6,
+      "query": "Bjerkreim helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 8,
+      "query": "Bjerkreim interkommunal psykisk helse",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+     "https://egersundregionen.no/partnere/bjerkreim-kommune/"
+    ],
+    "rejected_pages_with_reason": [],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> stotte-nar-livet-er-krevende",
+     "QUERY_SEARCH(Q8) -> egersundregionen.no partner-side (inspected; ikke nødvendig for lavterskel-rute)"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 200 (checked)",
+    "level_4_note": "Egersundregionen-medlemskap inspisert; ingen psykisk-helse-tjeneste som krever dette funnet",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Avdeling Mestring (psykisk helse og rus)",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "Target group dokumentert ('innbyggere i Bjerkreim kommune som opplever psykiske helseutfordringer og/eller rusrelaterte utfordringer'); ingen eksplisitt aldersgrense",
+     "access": "DIRECT_PHONE 404 44 911 (08-15), egen inngang; navngitte ansatte",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+       "quote": "Avdeling Mestring tilbyr tjenester til innbyggere i Bjerkreim kommune som opplever psykiske helseutfordringer og/eller rusrelaterte utfordringer.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+       "quote": "Du kan ta kontakt dersom du for eksempel opplever: ... Listen er ikke uttømmende, ta gjerne kontakt også dersom du er usikker på om tilbudet passer for deg.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+       "quote": "Telefon: 404 44 911 ... Anita Driftland Avdelingsleder mestringsavdeling",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_ACCESS_PARTIAL",
+     "selected_services": [
+      "Avdeling Mestring"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES (implisitt 'du kan ta kontakt')",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "19 år: aldersdekning ikke eksplisitt dokumentert (ingen aldersgrense nevnt); eksplisitt 18+-krav mangler"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_ACCESS_PARTIAL",
+     "selected_services": [
+      "Avdeling Mestring"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES (implisitt)",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "Samme aldersdokumentasjonsgap som C"
+     ]
+    }
+   }
+  },
+  {
+   "kommune": "Alstahaug",
+   "klasse": 5,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Alstahaug psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 3,
+      "query": "Alstahaug psykisk helse kontakt",
+      "decisive": false
+     },
+     {
+      "template_id": 6,
+      "query": "Alstahaug helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 4,
+      "query": "Alstahaug rask psykisk helsehjelp",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/psykisk-helse--og-rustjeneste/psykisk-helsetjeneste",
+     "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/psykisk-helse--og-rustjeneste",
+     "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/tjenester-til-barn-og-unge/helsestasjon/helsestasjon-for-ungdom"
+    ],
+    "rejected_pages_with_reason": [
+     "sitemap.xml 404 (logged); custompublish.com duplikater er legacy-kopier av samme innhold"
+    ],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> psykisk-helsetjeneste",
+     "QUERY_SEARCH(Q6) -> helsestasjon-for-ungdom"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "Sitemap rejected; oversiktsside fungerte som katalog",
+    "level_4_note": "Helgelandssykehuset (SfPH Ytre Helgeland) er helseforetak",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Psykisk helsetjeneste for voksne Alstahaug",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: bor/oppholder i kommunen, primært over 18 år",
+     "access": "Direkte kontakt eller fastlege; enkeltvedtak etter egensøknad; gratis",
+     "age_coverage": "primært 18+",
+     "evidence": [
+      {
+       "url": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/psykisk-helse--og-rustjeneste/psykisk-helsetjeneste",
+       "quote": "Mennesker som bor og midlertidig oppholder seg i kommunen, primært over fylte 18 år. Du kan ta kontakt direkte eller via fastlege.",
+       "retrieved_date": "2026-09-09",
+       "note": "Sist oppdatert 30.10.2025"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom Alstahaug",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: 12-20 år (eller vgs-elever)",
+     "access": "Timebestilling tlf 75 07 51 40 / skolehelsesykepleier; torsdager 13-15",
+     "age_coverage": "12-20",
+     "evidence": [
+      {
+       "url": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/tjenester-til-barn-og-unge/helsestasjon/helsestasjon-for-ungdom",
+       "quote": "Helsestasjon for ungdom er et gratis tilbud til ungdom mellom 12 og 20 år som bor i Alstahaug kommune, eller går på Sandnessjøen videregående skole.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Psykisk helsetjeneste for voksne"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE (avdelingsleder 468 49 969 / 750 75 215)",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "HFU Alstahaug (12-20; gjelder 19-åring)"
+     ],
+     "notes": []
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Psykisk helsetjeneste for voksne"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "22 år: voksen-tjenesten gjelder ('primært over 18')"
+     ]
+    }
+   }
+  },
+  {
+   "kommune": "Etnedal",
+   "klasse": 5,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Etnedal psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 5,
+      "query": "Etnedal kommunepsykolog",
+      "decisive": false
+     },
+     {
+      "template_id": 7,
+      "query": "Etnedal psykisk helse rus",
+      "decisive": false
+     },
+     {
+      "template_id": 8,
+      "query": "Etnedal interkommunal psykisk helse",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+     "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/kommunepsykolog/",
+     "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/radgivende-enhet-for-russaker/",
+     "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/interkommunalt-krisesentersamarbeid/"
+    ],
+    "rejected_pages_with_reason": [],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> psykisk-helsearbeid",
+     "QUERY_SEARCH(Q5) -> kommunepsykolog (side eksisterer; innhold ikke fullt hentet)"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 200 (checked)",
+    "level_4_note": "Interkommunalt krisesentersamarbeid funnet (ikke psykisk helse-rute); kommunepsykolog-siden antyder interkommunal ordning (ikke bevist i hentet tekst)",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Psykisk helsetjeneste Etnedal (psykisk helsearbeid)",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: alle - barn, ungdom, voksne og pårørende",
+     "access": "DIRECT_PHONE/SMS, ingen henvisning, gratis; åpningstid 08-16",
+     "age_coverage": "alle aldre",
+     "evidence": [
+      {
+       "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+       "quote": "Alle kan ta kontakt å få hjelp hos oss. Du trenger ikke henvisning fra lege eller andre instanser (Se kontaktinformasjon nederst på siden). Tjenesten er gratis, tilbudet gis til alle - barn, ungdom, voksne og til alle pårørende. Du kan ta kontakt ved å ringe eller sende SMS.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Kommunepsykolog Etnedal",
+     "state": "SERVICE_VERIFIED",
+     "eligibility": "Ikke fanget (side-tittel)",
+     "access": "PARTIAL",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/kommunepsykolog/",
+       "quote": "Kommunepsykolog (sidetittel)",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Psykisk helsetjeneste Etnedal"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE/SMS",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": []
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Psykisk helsetjeneste Etnedal"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE/SMS",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": []
+    }
+   }
+  },
+  {
+   "kommune": "Aure",
+   "klasse": 6,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Aure psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 5,
+      "query": "Aure kommunepsykolog",
+      "decisive": false
+     },
+     {
+      "template_id": 6,
+      "query": "Aure helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 8,
+      "query": "Aure interkommunal psykisk helse",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+     "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/kommunepsykolog/",
+     "https://www.aure.kommune.no/tjenester/helse-og-omsorg/familie-barn-og-ungdom/helsestasjon-for-ungdom/",
+     "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/distriktspsykiatrisk-senter-dps/"
+    ],
+    "rejected_pages_with_reason": [],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> psykisk-helsehjelp",
+     "QUERY_SEARCH(Q5) -> kommunepsykolog",
+     "QUERY_SEARCH(Q6) -> helsestasjon-for-ungdom"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "sitemap.xml 200 (checked)",
+    "level_4_note": "DPS-side er lokal henvisningsinfo til helseforetak",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Psykisk helse og rus Aure (kommunalt)",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "Tilbud til barn, unge og voksne (kontekst: 'del av det kommunale tjenestetilbudet til barn, unge og voksne'); bosatt/opphold i kommunen; gratis",
+     "access": "Ta kontakt selv eller henvises; vurderingssamtale raskt; fagleder tlf 90 52 27 36",
+     "age_coverage": "barn, unge og voksne (kontekstlinje); ingen eksplisitt tallsjekk",
+     "evidence": [
+      {
+       "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+       "quote": "Du kan ta kontakt selv eller du kan henvises av lege eller andre instanser. Du vil raskt få tilbud om hjelp i form av en vurderingssamtale/ førstegangssamtale.",
+       "retrieved_date": "2026-09-09",
+       "note": "Sist endret 20.04.2026"
+      },
+      {
+       "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+       "quote": "Psykisk helse og rus er en del av det kommunale tjenestetilbudet til barn, unge og voksne.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Kommunepsykolog Aure",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "Lavterskel behandlings- og oppfølgingstilbud; kontakt via Psykisk helse",
+     "access": "Via psykisk helse-tjenesten (navngitt rute)",
+     "age_coverage": null,
+     "evidence": [
+      {
+       "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/kommunepsykolog/",
+       "quote": "Lavterskel behandlings-og oppfølgingstilbud. Ta kontakt med Psykisk helse om du har behov for psykisk helsehjelp",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom Aure",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: 13-25 år",
+     "access": "Drop-in onsdager i oddetallsuker 14:30-15:15; helsesykepleier og lege",
+     "age_coverage": "13-25",
+     "evidence": [
+      {
+       "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/familie-barn-og-ungdom/helsestasjon-for-ungdom/",
+       "quote": "Helsestasjon for ungdom (HFU) er et gratis tilbud for deg mellom 13-25 år. Åpent onsdager i oddetalls-uker fra 14:30-15.15. Du møter både helsesykepleier og lege på HFU.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Psykisk helse og rus Aure"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "HFU Aure (13-25)"
+     ],
+     "notes": []
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Psykisk helse og rus Aure"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "HFU Aure (13-25; gjelder 22)"
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "kommune": "Balsfjord",
+   "klasse": 6,
+   "search_log": {
+    "queries": [
+     {
+      "template_id": 1,
+      "query": "Balsfjord psykisk helse voksne",
+      "decisive": true
+     },
+     {
+      "template_id": 4,
+      "query": "Balsfjord rask psykisk helsehjelp",
+      "decisive": true
+     },
+     {
+      "template_id": 6,
+      "query": "Balsfjord helsestasjon ungdom",
+      "decisive": false
+     },
+     {
+      "template_id": 9,
+      "query": "Balsfjord mestringsteam",
+      "decisive": false
+     }
+    ],
+    "inspected_urls": [
+     "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/psykisk-helsetjeneste-og-rusfaglig-helsearbied",
+     "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+     "https://www.balsfjord.kommune.no/nyhetsarkiv/nyheter/2026-01-13-helsestasjon-for-ungdom"
+    ],
+    "rejected_pages_with_reason": [
+     "sitemap.xml 404 (logged)"
+    ],
+    "edges": [
+     "QUERY_SEARCH(Q1) -> psykisk-helsetjeneste-og-rusfaglig-helsearbeid",
+     "QUERY_SEARCH(Q4) -> barne--ungdoms--og-familieteamet",
+     "QUERY_SEARCH(Q6) -> helsestasjon-for-ungdom nyhet"
+    ],
+    "levels_checked": {
+     "level_0": true,
+     "level_1": true,
+     "level_2": true,
+     "level_3": true,
+     "level_4": true,
+     "level_5": true
+    },
+    "level_3_note": "Sitemap rejected; query families dekket",
+    "level_4_note": "UNN avdeling nord er helseforetak",
+    "level_5_note": "None"
+   },
+   "services": [
+    {
+     "name": "Psykisk helsetjeneste og rusfaglig helsearbeid Balsfjord",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "Tilbud til barn, unge og voksne (eksplisitt)",
+     "access": "DIRECT_PHONE til navngitt avdelingsleder rus og psykisk helse (404 48 737); E2 oppfylt via navngitt stilling",
+     "age_coverage": "barn, unge og voksne",
+     "evidence": [
+      {
+       "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/psykisk-helsetjeneste-og-rusfaglig-helsearbied",
+       "quote": "Fokus på hjelpen er rettet mot psykososiale livsutfordringer, psykiske helseproblemer, eller rusmiddelutfordringer. Tilbud til barn, unge og voksne.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/psykisk-helsetjeneste-og-rusfaglig-helsearbied",
+       "quote": "Avdelingsleder rus og psykisk helse: Inger Louise Pulk (inger.louise.pulk@balsfjord.kommune.no) Telefon 404 48 737",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Barne-, ungdoms- og familieteamet (BUF) Balsfjord",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: barn og ungdom 0-25 år; rask psykisk helsehjelp",
+     "access": "Foresatte og ungdom kan selv ta kontakt via telefon (404 48 737 / 453 55 161); henvisningsskjema via post",
+     "age_coverage": "0-25",
+     "evidence": [
+      {
+       "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+       "quote": "Teamets formål er å fremme god psykisk helse, og gi rask psykisk helsehjelp til barn og ungdom i alderen 0-25 år.",
+       "retrieved_date": "2026-09-09"
+      },
+      {
+       "url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+       "quote": "Foresatte og ungdom kan selv ta kontakt via telefon (404 48 737 eller 453 55 161) for spørsmål eller benytte henvisningsskjema som sendes via post.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    },
+    {
+     "name": "Helsestasjon for ungdom Balsfjord",
+     "state": "ACCESS_VERIFIED",
+     "eligibility": "ELIGIBILITY_VERIFIED: 13-20 år",
+     "access": "Drop-in onsdag partallsuker 16-18, uten timebestilling",
+     "age_coverage": "13-20",
+     "evidence": [
+      {
+       "url": "https://www.balsfjord.kommune.no/nyhetsarkiv/nyheter/2026-01-13-helsestasjon-for-ungdom",
+       "quote": "Helsestasjon for ungdom er for deg mellom 13-20 år. Du kan få råd, veiledning og hjelp, - helt gratis og uten timebestilling.",
+       "retrieved_date": "2026-09-09"
+      }
+     ]
+    }
+   ],
+   "scenarios": {
+    "C": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Barne-, ungdoms- og familieteamet (0-25)"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [
+      "HFU Balsfjord (13-20; gjelder 19-åring)"
+     ],
+     "notes": [
+      "19 år: 'ungdom' i 0-25-sporet"
+     ]
+    },
+    "D": {
+     "route_verdict": "ROUTE_FULLY_VERIFIED",
+     "selected_services": [
+      "Barne-, ungdoms- og familieteamet (0-25)"
+     ],
+     "discovery_depth": "level_0-1",
+     "access_model": "DIRECT_PHONE",
+     "self_referral": "YES",
+     "fallback": null,
+     "secondary_services": [],
+     "notes": [
+      "22 år: fortsatt innen 0-25 for BUF-teamet; voksen-tjenesten ('barn, unge og voksne') er alternativ rute"
+     ]
+    }
+   }
+  }
+ ]
+}

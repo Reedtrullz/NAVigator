@@ -1,0 +1,126 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_11-FRESH-CANDIDATE-SCREENING",
+  "status": "V2_11_NO_NON_M2_JUDGE_QUALIFIES",
+  "task_family": "non-m2-semantic-judge-selection",
+  "lineage": "execution",
+  "authoritative_spec": "evaluation/judge-selection-v2-11-draft/TASK-SPEC-DRAFT.md",
+  "authoritative_spec_sha256": "b04e96219095f6ed7cb6525a7789adf9486d5633d026cede50ee193d5580df23",
+  "owner_authorization": "2026-09-14 AFK MEASUREMENT-SYSTEM CAMPAIGN (attachment 0d116f5f) - Stage 1 explicit; supersedes per-task next-stage holds for campaign branches only",
+  "execution_allowed": true,
+  "model_calls_allowed": true,
+  "fixture_generation_allowed": true,
+  "historical_writes_allowed": false,
+  "gate_value_changes_allowed": false,
+  "score_label_changes_allowed": false,
+  "m2_lane_changes_allowed": false,
+  "m2_automated_responsibility": "NONE",
+  "m2_path": "V2_6_HUMAN_REVIEW",
+  "product_runtime_changes_allowed": false,
+  "longcat_allowed": false,
+  "longcat_calls": 0,
+  "gpt_5_5_allowed": false,
+  "subagents_allowed_max": 2,
+  "subagent_default_model": "command-code/xiaomi-mimo-v2.5",
+  "subagents_planned": 0,
+  "candidate_selection": "EXPLICITLY_NAMED_IN_OWNER_AUTHORIZATION",
+  "authorized_candidates": [
+    {
+      "candidate": "ling-3.0-flash-sante",
+      "wire_id": "command-code/inclusionai-ling-3.0-flash-sante:free"
+    },
+    {
+      "candidate": "laguna-s-2.1",
+      "wire_id": "command-code/poolside-laguna-s-2.1-free"
+    }
+  ],
+  "new_candidate_discovery": false,
+  "candidate_additions_after_start": 0,
+  "screening_set_reuse": {
+    "source": "evaluation/judge-selection-v2-10-non-m2-rescreen/",
+    "provenance_argument": "frozen V2.10 official screening set had zero model exposure (deterministic prepass only); reuse preserves freshness",
+    "fixtures_sha256": "7afa5c9e751b840395eee72962545fb3a6a5c6795e8a8092ecd83af2db9dfa4c",
+    "gold_sha256": "efac73c40ca63b55d426c9141796b4b83702fce87c04ab2bf30155e375748f5f",
+    "prepass_sha256": "39bf8aa3a54be3b1058e2571d77a73fdaa99483a00a498d0fe7e56498e6582e6",
+    "repair_subset_membership_source": "evaluation/judge-selection-v2-10-non-m2-rescreen/repair-subset-membership.json (frozen; copied read-only)",
+    "prepass_counts": {
+      "deterministic_resolved": 80,
+      "semantic_residual": 88,
+      "total": 180
+    }
+  },
+  "prompt_lineage": {
+    "starting_prompt": "frozen V2.10 iter-2 prompt (judge_core_v2_10.py, unmodified import)",
+    "judge_core_source_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "max_iterations_v2_11": 2,
+    "iteration_gate": "strict improvement vs prior iteration AND overall >= 0.90 AND 0 trap overcommit",
+    "prompt_sensitivity_probe": {
+      "rows": 6,
+      "method": "frozen prompt vs preregistered trivial reorder of SYSTEM_PROMPT rules 6 and 7 (semantically equivalent)",
+      "byte_identical_result": "PROMPT_INERT flag; candidate excluded from prompt iterations; calibration result stands as-is; no iteration budget burned"
+    }
+  },
+  "calibration_set_contract": {
+    "n": 25,
+    "traps": 12,
+    "id_prefix": "V211C-",
+    "split": {
+      "route": 10,
+      "forbidden": 7,
+      "uncertainty": 8
+    },
+    "gold_rule": "machine-checked: derive_final from frozen judge_core_v2_10 AND rule-based pass1/pass2 derivation (U7E) must all agree on every fixture; any mismatch = fixture discarded, new ID, fresh text",
+    "collision_audit": "all historical evaluation JSON texts, 0 required",
+    "forbidden_convention_check": "no fixture may reproduce the FORB-01..06 vs FORB-32..39 convention contradiction; enforced by triple-derivation agreement"
+  },
+  "official_screening": {
+    "rows": 180,
+    "pipeline": "pipeline-connected; DETERMINISTIC_RESOLVED rows consume zero judge calls",
+    "technical_retry": "1 on 429/5xx only (frozen judge_core behavior)",
+    "gate_evaluator": "eval_gates_v2_11.py - eval_gates_v2_10.py verbatim gate logic; only docstring/task_id/candidate-source differ",
+    "gate_evaluator_basis_sha256": "baedee4891be9c59f641e56e36dad4086b1b1f8d65998b9e73ae350789a8821a"
+  },
+  "stability": {
+    "scope": "official-screening qualifiers only, semantic residual rows (88)",
+    "runs": 3,
+    "definition": "per-row stable iff all 3 run verdicts identical; overall and per-dimension >= 0.95; no majority-vote repair; official one-shot remains authoritative"
+  },
+  "tie_break_rule_frozen": [
+    "1. highest official overall accuracy",
+    "2. highest residual overall accuracy",
+    "3. lowest p95 residual latency",
+    "4. lexicographically smallest wire_id"
+  ],
+  "upstream_pins_verified_2026_09_14": {
+    "v2_10_task_lock": "49a38fb1dbc8a156d2d8fd188182c3092702ba460bc70c2b48efd17063921a16",
+    "v2_10_comparison_freeze": "2faf407701f77c8984ec76bb75f9fb14582a9d2a8dfff95dde38dabe20a3401e",
+    "v2_10_final_report": "ea19b8c16edc309978dd4344853f83a874f28a23d0e28e4ce745ecc9ae4bf34d",
+    "v2_10_gate_evaluator": "94ba8e4f2e0fa07ca6344813baabae50973e0588a785dac3f99abdeab9f35b53",
+    "v2_9_gate_basis": "baedee4891be9c59f641e56e36dad4086b1b1f8d65998b9e73ae350789a8821a",
+    "v2_11_draft_spec": "b04e96219095f6ed7cb6525a7789adf9486d5633d026cede50ee193d5580df23",
+    "v2_11_draft_readme": "477db843a6ad186c848447ade8fefba41fbf0e40bde99cdef7a565b5e9d437ab"
+  },
+  "execution_order": [
+    "pins_verify",
+    "lineage_freeze",
+    "calibration_gen_dual_pass_gold",
+    "collision_audit",
+    "transport_smoke",
+    "prompt_sensitivity_probe",
+    "calibration_iter1",
+    "calibration_eval",
+    "calibration_iter2_non_inert_only",
+    "qualifier_freeze",
+    "official_screening",
+    "official_gates",
+    "stability",
+    "comparison_freeze",
+    "terminal_status"
+  ],
+  "terminal_statuses": [
+    "V2_11_NON_M2_JUDGE_SELECTED_FOR_FRESH_VALIDATION",
+    "V2_11_NO_NON_M2_JUDGE_QUALIFIES",
+    "V2_11_GOLD_NOT_READY",
+    "V2_11_BASELINE_MISMATCH",
+    "V2_11_INVALID"
+  ]
+}

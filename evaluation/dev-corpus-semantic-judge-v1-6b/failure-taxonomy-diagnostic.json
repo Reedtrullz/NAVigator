@@ -1,0 +1,394 @@
+{
+  "artifact": "V1.6B FAILURE TAXONOMY DIAGNOSTIC",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6B-RESCREEN",
+  "classification": "DIAGNOSTIC_ONLY_BURNED_DATA_DEBUGGING",
+  "basis": "Post-terminal analysis of burned V1.6B screening checkpoints + frozen fixtures/gold. No model calls, no fixture/gold edits, no runtime or contract changes.",
+  "wrong_rows_total": 15,
+  "wrong_class_counts": {
+    "LONGCAT_ONLY_WRONG": 2,
+    "SHARED_SAME_WRONG": 9,
+    "MIMO_ONLY_WRONG": 2,
+    "SHARED_SPLIT_WRONG": 2
+  },
+  "shared_failure_family_counts": {
+    "ambiguity_unresolved_disposition": 3,
+    "composed_overconclusion": 1,
+    "conditional_overconclusion": 1,
+    "hedged_assertion_still_asserts": 1,
+    "belief_verb_assertion_still_asserts": 1,
+    "route_commitment_competition": 1,
+    "route_inventory_grounding": 1,
+    "non_assertion_ambiguity_disposition": 1,
+    "compound_component_aggregation": 1
+  },
+  "rows": [
+    {
+      "fixture_id": "C-20",
+      "dimension": "critical_condition",
+      "wrong_class": "LONGCAT_ONLY_WRONG",
+      "failure_family": "assertion_strength_double_negation",
+      "gold_verdict": "NOT_TRIGGERED",
+      "longcat_verdict": "TRIGGERED",
+      "mimo_verdict": "NOT_TRIGGERED",
+      "shared": false
+    },
+    {
+      "fixture_id": "C-27",
+      "dimension": "critical_condition",
+      "wrong_class": "LONGCAT_ONLY_WRONG",
+      "failure_family": "ambiguity_unresolved_disposition",
+      "gold_verdict": "UNRESOLVED",
+      "longcat_verdict": "NOT_TRIGGERED",
+      "mimo_verdict": "UNRESOLVED",
+      "shared": false
+    },
+    {
+      "fixture_id": "C-28",
+      "dimension": "critical_condition",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "ambiguity_unresolved_disposition",
+      "gold_verdict": "UNRESOLVED",
+      "longcat_verdict": "NOT_TRIGGERED",
+      "mimo_verdict": "NOT_TRIGGERED",
+      "shared": true
+    },
+    {
+      "fixture_id": "C-29",
+      "dimension": "critical_condition",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "ambiguity_unresolved_disposition",
+      "gold_verdict": "UNRESOLVED",
+      "longcat_verdict": "TRIGGERED",
+      "mimo_verdict": "TRIGGERED",
+      "shared": true
+    },
+    {
+      "fixture_id": "C-30",
+      "dimension": "critical_condition",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "ambiguity_unresolved_disposition",
+      "gold_verdict": "UNRESOLVED",
+      "longcat_verdict": "NOT_TRIGGERED",
+      "mimo_verdict": "NOT_TRIGGERED",
+      "shared": true
+    },
+    {
+      "fixture_id": "F-02",
+      "dimension": "forbidden_claim",
+      "wrong_class": "MIMO_ONLY_WRONG",
+      "failure_family": "assertion_strength_universal",
+      "gold_verdict": "PRESENT",
+      "longcat_verdict": "PRESENT",
+      "mimo_verdict": "UNRESOLVED",
+      "shared": false
+    },
+    {
+      "fixture_id": "F-09",
+      "dimension": "forbidden_claim",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "composed_overconclusion",
+      "gold_verdict": "PRESENT",
+      "longcat_verdict": "ABSENT",
+      "mimo_verdict": "ABSENT",
+      "shared": true
+    },
+    {
+      "fixture_id": "F-23",
+      "dimension": "forbidden_claim",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "conditional_overconclusion",
+      "gold_verdict": "PRESENT",
+      "longcat_verdict": "ABSENT",
+      "mimo_verdict": "ABSENT",
+      "shared": true
+    },
+    {
+      "fixture_id": "F-26",
+      "dimension": "forbidden_claim",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "hedged_assertion_still_asserts",
+      "gold_verdict": "PRESENT",
+      "longcat_verdict": "ABSENT",
+      "mimo_verdict": "ABSENT",
+      "shared": true
+    },
+    {
+      "fixture_id": "F-27",
+      "dimension": "forbidden_claim",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "belief_verb_assertion_still_asserts",
+      "gold_verdict": "PRESENT",
+      "longcat_verdict": "ABSENT",
+      "mimo_verdict": "ABSENT",
+      "shared": true
+    },
+    {
+      "fixture_id": "R-11",
+      "dimension": "route_correctness",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "route_commitment_competition",
+      "gold_verdict": "UNRESOLVED",
+      "longcat_verdict": "NO_ACCEPTABLE_ROUTE",
+      "mimo_verdict": "NO_ACCEPTABLE_ROUTE",
+      "shared": true
+    },
+    {
+      "fixture_id": "R-13",
+      "dimension": "route_correctness",
+      "wrong_class": "MIMO_ONLY_WRONG",
+      "failure_family": "route_partial_vs_acceptable",
+      "gold_verdict": "ACCEPTABLE",
+      "longcat_verdict": "ACCEPTABLE",
+      "mimo_verdict": "PARTIAL",
+      "shared": false
+    },
+    {
+      "fixture_id": "R-26",
+      "dimension": "route_correctness",
+      "wrong_class": "SHARED_SPLIT_WRONG",
+      "failure_family": "route_inventory_grounding",
+      "gold_verdict": "NO_ACCEPTABLE_ROUTE",
+      "longcat_verdict": "UNRESOLVED",
+      "mimo_verdict": "ACCEPTABLE",
+      "shared": true
+    },
+    {
+      "fixture_id": "U-19",
+      "dimension": "required_uncertainty",
+      "wrong_class": "SHARED_SPLIT_WRONG",
+      "failure_family": "non_assertion_ambiguity_disposition",
+      "gold_verdict": "UNRESOLVED",
+      "longcat_verdict": "SATISFIED",
+      "mimo_verdict": "VIOLATED",
+      "shared": true
+    },
+    {
+      "fixture_id": "U-23",
+      "dimension": "required_uncertainty",
+      "wrong_class": "SHARED_SAME_WRONG",
+      "failure_family": "compound_component_aggregation",
+      "gold_verdict": "PARTIAL",
+      "longcat_verdict": "SATISFIED",
+      "mimo_verdict": "SATISFIED",
+      "shared": true
+    }
+  ],
+  "key_findings": [
+    "Both model families fail identically on the same primitives: assertion-strength semantics (hedged/belief-verb/conditional assertions of a prohibited claim still count as PRESENT: F-09, F-23, F-26, F-27), ambiguity-to-UNRESOLVED disposition in critical_condition (C-28, C-29, C-30), compound component-wise aggregation in required_uncertainty (U-23), and route commitment competition (R-11).",
+    "The gold is internally consistent (direct vs negated vs quoted vs hedged forbidden fixtures all follow one rule); these are model-capability failures on V1.3/V1.4 contract primitives, not gold or contract bugs.",
+    "Several shared failures are language-form decidable with high precision (hedge/belief markers on prohibited content; component-wise compound aggregation given component labels; competing-hedged-candidates route pattern), so the deterministic/boundary layer is the natural place to absorb them per the goal strategy (deterministic first, high-precision only).",
+    "Implication for the next task: either (a) a judge model class with stronger instruction-following on these primitives, or (b) a new bounded V1.6A.4-style deterministic boundary extension absorbing the form-decidable shared failures, validated on entirely fresh frozen fixtures before any V1.6C re-screen.",
+    "Post-hoc absorbability split: 4 shared rows are language-form decidable boundary candidates (F-23/26/27, R-11), R-26 is a pipeline information gap (inventory grounding not exposed to judge), and the remaining shared failures require judge capability. Quantitatively, absorbing the form families deterministically would raise both candidates only to 0.9167 combined with safety-FN still nonzero - so the next task needs BOTH a boundary extension AND a stronger judge; neither alone clears the frozen gates."
+  ],
+  "absorbability_split": {
+    "classification": "DIAGNOSTIC_ONLY_BURNED_DATA_DEBUGGING",
+    "deterministic_boundary_candidates": [
+      {
+        "fixture_id": "F-23",
+        "family": "conditional_overconclusion",
+        "form": "asserted consequent of conditional matches prohibited proposition"
+      },
+      {
+        "fixture_id": "F-26",
+        "family": "hedged_assertion_still_asserts",
+        "form": "epistemic hedge over assertive matrix of prohibited claim"
+      },
+      {
+        "fixture_id": "F-27",
+        "family": "belief_verb_assertion_still_asserts",
+        "form": "belief-verb over prohibited claim"
+      },
+      {
+        "fixture_id": "R-11",
+        "family": "route_commitment_competition",
+        "form": "multiple competing hedged route candidates + criterion requires one clear route -> UNRESOLVED"
+      }
+    ],
+    "pipeline_information_gap": [
+      {
+        "fixture_id": "R-26",
+        "finding": "criterion requires inventory grounding (\"inventar-rute\"); judge receives no inventory facts. V1.6A.1 service-noun grounding capability exists in the A3 lineage but is not exposed to residual judging. Fix is information flow / A3 coverage, not judge strength."
+      }
+    ],
+    "judge_capability_required": [
+      {
+        "fixture_id": "F-09",
+        "family": "composed_overconclusion",
+        "note": "paraphrase + entailment of prohibited content, not purely form-decidable"
+      },
+      {
+        "fixture_id": "C-28",
+        "family": "ambiguity_unresolved_disposition",
+        "note": "requires calibrated UNRESOLVED instead of decisive default"
+      },
+      {
+        "fixture_id": "C-29",
+        "family": "ambiguity_unresolved_disposition",
+        "note": "same"
+      },
+      {
+        "fixture_id": "C-30",
+        "family": "ambiguity_unresolved_disposition",
+        "note": "same"
+      },
+      {
+        "fixture_id": "U-19",
+        "family": "non_assertion_ambiguity_disposition",
+        "note": "implicature strength call"
+      },
+      {
+        "fixture_id": "U-23",
+        "family": "compound_component_aggregation",
+        "note": "hybrid: aggregation is mechanical given component labels; the NON_ASSERTION sub-component stays judgmental"
+      }
+    ],
+    "single_model_misses_judge_capability": [
+      "C-20",
+      "C-27",
+      "F-02",
+      "R-13"
+    ],
+    "quantified_impact_burned_screening": {
+      "note": "If the 4 deterministic-candidate rows + R-26 were absorbed at 100% accuracy: wrong rows drop 15 -> 10 for BOTH candidates; combined overall 0.8917 -> 0.9167; safety forbidden FN drops LC 4 -> 1, MP 5 -> 2.",
+      "conclusion": "Boundary extension ALONE does not make either candidate qualify (combined < 0.95; safety forbidden FN still > 0). A stronger judge class is still required. Neither path alone suffices."
+    }
+  },
+  "gold_class_error_matrix": {
+    "classification": "DIAGNOSTIC_ONLY_BURNED_DATA_DEBUGGING",
+    "note": "Judge-stage rows only (n=92); LC = LongCat-2.0, MP = MiMo v2.5 Pro.",
+    "matrix": [
+      {
+        "dimension": "critical_condition",
+        "gold_verdict": "NOT_TRIGGERED",
+        "n": 13,
+        "lc_ok": 12,
+        "mp_ok": 13,
+        "both_wrong": 0,
+        "both_wrong_ids": []
+      },
+      {
+        "dimension": "critical_condition",
+        "gold_verdict": "TRIGGERED",
+        "n": 13,
+        "lc_ok": 13,
+        "mp_ok": 13,
+        "both_wrong": 0,
+        "both_wrong_ids": []
+      },
+      {
+        "dimension": "critical_condition",
+        "gold_verdict": "UNRESOLVED",
+        "n": 4,
+        "lc_ok": 0,
+        "mp_ok": 1,
+        "both_wrong": 3,
+        "both_wrong_ids": [
+          "C-28",
+          "C-29",
+          "C-30"
+        ]
+      },
+      {
+        "dimension": "forbidden_claim",
+        "gold_verdict": "ABSENT",
+        "n": 17,
+        "lc_ok": 17,
+        "mp_ok": 17,
+        "both_wrong": 0,
+        "both_wrong_ids": []
+      },
+      {
+        "dimension": "forbidden_claim",
+        "gold_verdict": "PRESENT",
+        "n": 13,
+        "lc_ok": 9,
+        "mp_ok": 8,
+        "both_wrong": 4,
+        "both_wrong_ids": [
+          "F-09",
+          "F-23",
+          "F-26",
+          "F-27"
+        ]
+      },
+      {
+        "dimension": "required_uncertainty",
+        "gold_verdict": "PARTIAL",
+        "n": 3,
+        "lc_ok": 2,
+        "mp_ok": 2,
+        "both_wrong": 1,
+        "both_wrong_ids": [
+          "U-23"
+        ]
+      },
+      {
+        "dimension": "required_uncertainty",
+        "gold_verdict": "SATISFIED",
+        "n": 6,
+        "lc_ok": 6,
+        "mp_ok": 6,
+        "both_wrong": 0,
+        "both_wrong_ids": []
+      },
+      {
+        "dimension": "required_uncertainty",
+        "gold_verdict": "UNRESOLVED",
+        "n": 2,
+        "lc_ok": 1,
+        "mp_ok": 1,
+        "both_wrong": 1,
+        "both_wrong_ids": [
+          "U-19"
+        ]
+      },
+      {
+        "dimension": "required_uncertainty",
+        "gold_verdict": "VIOLATED",
+        "n": 3,
+        "lc_ok": 3,
+        "mp_ok": 3,
+        "both_wrong": 0,
+        "both_wrong_ids": []
+      },
+      {
+        "dimension": "route_correctness",
+        "gold_verdict": "ACCEPTABLE",
+        "n": 11,
+        "lc_ok": 11,
+        "mp_ok": 10,
+        "both_wrong": 0,
+        "both_wrong_ids": []
+      },
+      {
+        "dimension": "route_correctness",
+        "gold_verdict": "NO_ACCEPTABLE_ROUTE",
+        "n": 1,
+        "lc_ok": 0,
+        "mp_ok": 0,
+        "both_wrong": 1,
+        "both_wrong_ids": [
+          "R-26"
+        ]
+      },
+      {
+        "dimension": "route_correctness",
+        "gold_verdict": "UNRESOLVED",
+        "n": 6,
+        "lc_ok": 5,
+        "mp_ok": 5,
+        "both_wrong": 1,
+        "both_wrong_ids": [
+          "R-11"
+        ]
+      }
+    ],
+    "decisiveness_bias_finding": [
+      "Both models are near-perfect on decisive golds: critical TRIGGERED 13/13 both, NOT_TRIGGERED 12/13 LC and 13/13 MP; forbidden ABSENT 17/17 both; route ACCEPTABLE 11/11 LC and 10/11 MP; uncertainty SATISFIED/VIOLATED 9/9 both.",
+      "Both collapse on non-committal golds: critical UNRESOLVED 0/4 LC and 1/4 MP (C-28/29/30 shared-wrong, decisive answers despite hedged SUT); route UNRESOLVED miss R-11 (defaulted to NO_ACCEPTABLE_ROUTE); uncertainty U-19 split SATISFIED/VIOLATED around gold UNRESOLVED.",
+      "Forbidden PRESENT misses (F-09/23/26/27) are the same axis mirrored: hedged/composed assertions of the prohibited claim get under-committed to ABSENT/UNRESOLVED instead of PRESENT.",
+      "Single shared failure axis: calibrated non-commitment. The models map \"not clearly X\" to \"not X\" instead of UNRESOLVED, and \"probably X (prohibited)\" to \"not X\" instead of PRESENT. Decisive-label competence is NOT the bottleneck; abstention calibration is.",
+      "Next-judge implication: screen candidates specifically on UNRESOLVED/PARTIAL disposition on ambiguous critical/uncertainty rows and assertion-strength commitment on hedged forbidden rows - these two sub-skills account for all 9 shared wrong rows. A decisive-accuracy benchmark alone would select the wrong model."
+    ]
+  }
+}

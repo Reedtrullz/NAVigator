@@ -1,0 +1,223 @@
+{
+  "policy_id": "RC2-V4-PHASE2-SCORING-POLICY-V1",
+  "frozen_before_key": true,
+  "task_id": "NAV-EXPLORE-RC2-BLIND-V4-PHASE2A-SCORING-POLICY",
+  "prediction_artifact": {
+    "path": "../RC2-V4-predictions.json",
+    "sha256": "49ab4e0d890cd3e9c15b44646c0235db3413647b971ba5b736888e651aa861a2",
+    "prediction_count": 160,
+    "runtime_failures": 0,
+    "reserve_executed": 0
+  },
+  "source_of_authority": [
+    "RC2-V4-set/certification-metrics.md (preregistered thresholds and hard gates, sha256 8b8b88ee7e13b3306c009f4121bf9a347e1402f23b1601aa350fb23611701fbd)",
+    "evaluation-contract/evaluation-contract.md (frozen contract-freeze-manifest-v1; auto correctness definition)",
+    "evaluation-contract/metrics-spec.md (metric definitions; review-as-semantic-miss)",
+    "RC2-V4-set/blind-manifest.json (preregistered counts: 62 compound CORE, 141 atoms, 40 critical/120 standard)",
+    "RC2-V4-set/annotation-atom-summary.md (atom annotation structure, label-free)",
+    "RC1-run/phase2/scoring-policy.json (established policy shape; superseded by this file for V4)"
+  ],
+  "denominators": {
+    "semantic_exact": "all 160 CORE cases; no exclusion after key",
+    "proof_safe_exact": "all 160 CORE cases; no exclusion after key",
+    "product_exact": "all 160 CORE cases; no exclusion after key",
+    "compound_atom": "all expected atom targets in preregistered compound CORE cases (62 cases, 141 atoms per preregistration); atoms without a valid target excluded only if key structural validation flags them before scoring",
+    "compound_product": "all 62 preregistered compound CORE cases",
+    "critical_product": "all preregistered critical CORE cases (40; rule: final_flags intersect {safety, age_legal} nonempty)",
+    "auto_precision": "all predicted auto decisions (product_action in {AUTO_SUPPORTED, AUTO_CONTRADICTED})"
+  },
+  "runtime_failure_policy": {
+    "rule": "frozen before key per spec 7; Phase 1 had zero failures so this is a general rule, not a patch",
+    "semantic_exact": "incorrect",
+    "proof_safe_exact": "incorrect",
+    "product_exact": "incorrect",
+    "accepted_proof": "none; excluded from accepted-proof denominators",
+    "runtime_hard_gate": "applied separately by certification thresholds (unhandled runtime exception > 0 = FAIL)",
+    "reconstruction_or_retry": "forbidden"
+  },
+  "semantic_output_mapping": {
+    "authoritative_field": "prediction.semantic_verdict",
+    "pure_name_aliases": {
+      "PARTIAL": "PARTIALLY_SUPPORTED",
+      "INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+    },
+    "alias_rationale": "explicit same-runtime-concept renames emitted by the frozen engine; recorded by the frozen Phase-1 driver",
+    "review_required_handling": {
+      "rule": "REVIEW_REQUIRED is NEVER translated to a semantic target class post hoc",
+      "scoring": "predicted semantic REVIEW_REQUIRED is a semantic abstention/non-exact prediction and counts as INCORRECT against all four semantic target classes (SUPPORTED, CONTRADICTED, PARTIALLY_SUPPORTED, INSUFFICIENT_EVIDENCE)"
+    },
+    "target_classes": ["SUPPORTED", "CONTRADICTED", "PARTIALLY_SUPPORTED", "INSUFFICIENT_EVIDENCE"]
+  },
+  "proof_safe_output_mapping": {
+    "authoritative_field": "prediction.proof_safe_verdict (recorded by the frozen Phase-1 driver: SUPPORTED iff final route auto, else INSUFFICIENT_EVIDENCE)",
+    "rc2_review_bucket_note": "RC2 does not produce a distinct REVIEW_REQUIRED proof verdict; non-auto routes are recorded as INSUFFICIENT_EVIDENCE by the frozen driver. Per spec 9 these are NOT converted post hoc in either direction; exact proof-safe scoring compares this recorded field against the key.",
+    "confidence_inference": "forbidden; proof-safe target is never inferred from reviewer confidence in Phase 2",
+    "target_classes": ["SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "REVIEW_REQUIRED"]
+  },
+  "product_output_mapping": {
+    "authoritative_field": "prediction.product_action",
+    "exact_only": {
+      "AUTO_SUPPORTED": "correct only against key product_expected_action AUTO_SUPPORTED",
+      "AUTO_CONTRADICTED": "correct only against key product_expected_action AUTO_CONTRADICTED",
+      "REVIEW_REQUIRED": "correct only against key product_expected_action REVIEW_REQUIRED",
+      "ABSTAIN_INSUFFICIENT": "correct only against key product_expected_action ABSTAIN_INSUFFICIENT"
+    },
+    "abstain_note": "RC2-FUSION-V1 cannot produce ABSTAIN_INSUFFICIENT (Phase 1: 0). REVIEW_REQUIRED against expected ABSTAIN_INSUFFICIENT is a product-action MISMATCH; review and abstain are never merged after labels open."
+  },
+  "auto_decision_definition": {
+    "counts_as_auto": ["AUTO_SUPPORTED", "AUTO_CONTRADICTED"],
+    "not_auto": ["REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT"]
+  },
+  "auto_precision": {
+    "primary_proof_based": {
+      "definition": "evaluation contract (frozen): auto is right iff the verdict matches proof_safe",
+      "AUTO_SUPPORTED_correct_iff": "key.proof_safe == SUPPORTED",
+      "AUTO_CONTRADICTED_correct_iff": "key.proof_safe == CONTRADICTED",
+      "denominator": "all predicted auto decisions",
+      "threshold": 0.99
+    },
+    "secondary_product_based": {
+      "definition": "reported for diagnosis only; not threshold-bearing",
+      "correct_iff": "key.product_expected_action equals the predicted AUTO_* class"
+    }
+  },
+  "invalid_accepted_proof": {
+    "structural_validity": "an accepted route (route == auto) whose recorded engine proof cannot be re-derived by the frozen deterministic validator (frozen engine re-run must reproduce the recorded verdict; frozen fidelity checks must pass)",
+    "semantic_soundness": "an accepted auto decision that exceeds the proof_safe target (AUTO_SUPPORTED with key.proof_safe != SUPPORTED, or AUTO_CONTRADICTED with key.proof_safe != CONTRADICTED) counts as an invalid accepted proof for the 0-tolerance proof-safety gate",
+    "proof_valid_field_role": "prediction.proof_valid is recorded metadata only; it does NOT by itself establish soundness",
+    "gate": "invalid accepted proofs == 0"
+  },
+  "hallucinated_proof": {
+    "definition": "an accepted proof referencing a span id absent from the rebuilt packet, a premise absent from the packet, a quote that does not match the source, or an external fact absent from the authorized evidence",
+    "mechanical_validation": "frozen reviewer.validate_fidelity over the rebuilt packet (deterministic, no model calls) plus span-id membership checks",
+    "gate": "hallucinated proofs == 0"
+  },
+  "unsafe_auto_definitions": {
+    "critical_unsafe_AUTO_SUPPORTED": "predicted AUTO_SUPPORTED on a critical case where key.product_expected_action != AUTO_SUPPORTED (equivalently key.proof_safe != SUPPORTED)",
+    "critical_unsafe_AUTO_CONTRADICTED": "predicted AUTO_CONTRADICTED on a critical case where key.product_expected_action != AUTO_CONTRADICTED (equivalently key.proof_safe != CONTRADICTED)",
+    "basis": "expected product action + proof-safe target + preregistered criticality metadata; never post-hoc judgment",
+    "gate": "each == 0"
+  },
+  "criticality_membership": {
+    "source": "sealed key.criticality (deterministic preregistered rule: final_flags intersect {safety, age_legal} nonempty; preregistered counts 40 critical / 120 standard)",
+    "post_hoc_selection": "forbidden"
+  },
+  "subgroup_membership": {
+    "source": "sealed key.final_flags for the 11 flag subgroups; label-derived insufficiency subgroup = key.semantic_truth == INSUFFICIENT_EVIDENCE (12 preregistered subgroups total per certification-metrics.md)",
+    "subgroups": ["safety", "legal", "numeric", "temporal", "locality", "modality", "actor", "condition_exception", "compound", "multi_span", "age_legal", "insufficiency"],
+    "post_hoc_assignment": "forbidden"
+  },
+  "compound_membership": {
+    "source": "key.final_flags includes compound (preregistered: 62 CORE cases; blind-manifest atoms.compound_core = 62)",
+    "prediction_based_selection": "forbidden"
+  },
+  "atom_prediction_extraction": {
+    "source_field": "prediction.proof_object.engine.atom_results (frozen engine output, present on all 160 Phase-1 rows; 202 atoms total)",
+    "ordering": "engine order = frozen decompose_claim order over the claim (deterministic)",
+    "atom_identity": "positional atom_id A1..An as emitted by the frozen engine",
+    "semantic_verdict_field": "atom_results[n].verdict, normalized with the same pure name aliases as top-level semantic mapping",
+    "proof_verdict_field": "none; the frozen engine produces no atom-level proof-safe verdict, so compound atom scoring is semantic-verdict exact only (documented limitation, frozen)",
+    "malformed_or_missing": "row flagged ATOM_EXTRACTION_INCOMPLETE; missing predicted atoms score as incorrect expectations; extra predicted atoms are recorded as decomposition errors and do not enter the numerator"
+  },
+  "atom_alignment": {
+    "rule": "deterministic positional alignment by atom_id order (frozen decompose_claim guarantees deterministic decomposition); fallback only if key atom ids are incompatible: normalized exact claim-atom text match",
+    "fuzzy_matching": "forbidden after key"
+  },
+  "atom_count_mismatch": {
+    "missing_expected_atom": "counts as incorrect (enters denominator)",
+    "extra_unmatched_predicted_atom": "aggregation/decomposition error, recorded and reported; not scored as correct",
+    "conservative_default": "never score only the atoms that happen to match"
+  },
+  "compound_metrics": {
+    "atom_accuracy": {
+      "numerator": "expected atom targets with exact normalized semantic verdict match",
+      "denominator": "all expected atom targets in preregistered compound CORE (141 per preregistration)",
+      "threshold": 0.90
+    },
+    "product_accuracy": {
+      "definition": "top-level product exact accuracy on the 62 compound CORE cases",
+      "threshold": 0.90
+    }
+  },
+  "aggregation_correctness": {
+    "status": "secondary diagnostic only; NOT a preregistered hard gate for V4",
+    "definition": "report whether RC2 top-level semantic output is consistent with its own atom outputs; reported after official-score freeze, never changes the verdict"
+  },
+  "review_metrics": {
+    "TP": "predicted REVIEW_REQUIRED and key.product_expected_action == REVIEW_REQUIRED",
+    "FP": "predicted REVIEW_REQUIRED and key expects an auto or abstain action",
+    "FN": "predicted auto or abstain and key.product_expected_action == REVIEW_REQUIRED",
+    "precision": "TP / (TP + FP) when denominator > 0",
+    "recall": "TP / (TP + FN) when denominator > 0",
+    "abstain_merge": "forbidden"
+  },
+  "abstain_metrics": {
+    "TP": "predicted ABSTAIN_INSUFFICIENT and key.product_expected_action == ABSTAIN_INSUFFICIENT",
+    "FP": "predicted ABSTAIN_INSUFFICIENT and key expects another action",
+    "FN": "key expects ABSTAIN_INSUFFICIENT and prediction is not ABSTAIN_INSUFFICIENT",
+    "precision_recall": "reported when denominators exist; RC2 never predicts abstain, so predicted-count 0 is reported mechanically",
+    "review_reinterpretation": "forbidden"
+  },
+  "confusion_label_order": {
+    "semantic": ["SUPPORTED", "CONTRADICTED", "PARTIALLY_SUPPORTED", "INSUFFICIENT_EVIDENCE", "REVIEW_REQUIRED_PREDICTED_ONLY"],
+    "proof_safe": ["SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "REVIEW_REQUIRED"],
+    "product": ["AUTO_SUPPORTED", "AUTO_CONTRADICTED", "REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT"]
+  },
+  "potential_label_error_policy": {
+    "rule": "sealed label remains official; official score remains; apparent label errors flagged POTENTIAL_BLIND_LABEL_ERROR only after official-score freeze; alternate-label sensitivity reported separately; certification verdict unchanged unless the preregistered protocol explicitly allows"
+  },
+  "error_severity_policy": {
+    "CRITICAL": "false auto-SUPPORTED",
+    "HIGH": "false auto-CONTRADICTED (legal/safety)",
+    "MEDIUM": "unnecessary REVIEW_REQUIRED (efficiency)",
+    "LOW": "semantic miss without auto-decision",
+    "detail_timing": "per-case severity classification only after official-score freeze"
+  },
+  "wilson_ci": {
+    "method": "standard Wilson score interval, 95% (z = 1.96)",
+    "applies_to": ["semantic_exact", "proof_safe_exact", "product_exact", "auto_precision", "major subgroups where meaningful"],
+    "threshold_interaction": "none; CI never affects hard thresholds"
+  },
+  "rounding": {
+    "authoritative": "raw integer counts and exact fractions",
+    "display": "percentages reported with 2 decimal places",
+    "threshold_comparison": "on exact unrounded fraction"
+  },
+  "certification_thresholds": {
+    "source": "certification-metrics.md (preregistered, unchanged; V3/V2 thresholds preserved)",
+    "semantic_exact_accuracy_min": 0.90,
+    "proof_safe_exact_accuracy_min": 0.95,
+    "product_exact_accuracy_min": 0.95,
+    "combined_auto_precision_min": 0.99,
+    "critical_product_exact_accuracy": 1.00,
+    "compound_atom_accuracy_min": 0.90,
+    "compound_product_accuracy_min": 0.90,
+    "invalid_accepted_proofs_max": 0,
+    "hallucinated_proofs_max": 0,
+    "critical_unsafe_auto_supported_max": 0,
+    "critical_unsafe_auto_contradicted_max": 0,
+    "unhandled_runtime_exception_max": 0
+  },
+  "certification_verdict_logic": {
+    "RC2_CERTIFIED": "all preregistered hard gates and thresholds pass",
+    "RC2_NOT_CERTIFIED": "any hard gate or threshold fails",
+    "CERTIFICATION_INVALID": "integrity or protocol compromise only",
+    "conditional_pass": "forbidden"
+  },
+  "score_order_mandatory": [
+    "authenticated decrypt",
+    "structural answer-key validation",
+    "mechanical scoring with this frozen policy",
+    "write complete official-score.json",
+    "hash and freeze official score",
+    "only then inspect individual errors",
+    "label audit",
+    "root-cause analysis"
+  ],
+  "key_integrity_gates": {
+    "prediction_sha256": "49ab4e0d890cd3e9c15b44646c0235db3413647b971ba5b736888e651aa861a2",
+    "blind_cases_sha256": "ad4fc1008063e52fb004fcdf5a3e48c2ca0277c7cf6dd9251b04d43c3e29a36d",
+    "answer_key_sealed_sha256": "65f72b170cb200b804cf817c32aaf42e9166a20ed002777a5d9f5e71b99fd80d",
+    "construction_audit_sealed_sha256": "5be70e666493d3a6e000b89418a8064099f03ee797ece3365840acb7a7646ff3"
+  }
+}

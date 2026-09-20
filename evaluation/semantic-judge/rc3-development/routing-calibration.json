@@ -1,0 +1,33 @@
+{
+  "routing_table": "PRODUCT_ROUTING_V2 (frozen, rc3_engine/routing.py)",
+  "thresholds": {
+    "auto_accept_confidence": null,
+    "note": "no confidence thresholds; auto requires an accepted proof object. RC2 0.90 gate removed (spec 31).",
+    "key_token_coverage_min": 0.6,
+    "subject_stem_overlap_chars": 6,
+    "rationale": "coverage floor rejects alignments that miss claim content tokens; 6-char stem overlap anchors clause guards. Both are pre-blind development constants with fail-closed failure direction (to REVIEW), not tuned on V4.",
+    "calibration_source": "false-auto analysis on RC2 unsound cases and generalized negation/deontic regression suite; no V4 label access during design (V4 was sealed until shadow run)"
+  },
+  "false_auto_analysis": {
+    "rc2_unsound_class_reproduction": "all 3 unsound classes now fail closed to ENGINE_UNSAFE/REVIEW",
+    "dev_false_autos": 0,
+    "dev_auto_precision": 1.0,
+    "shadow_auto_precision": 0.4706,
+    "shadow_note": "burned V4 shadow precision is low because RC3 accepts far fewer, stricter autos; BURNED/NON-BLIND/NON-CERTIFICATION"
+  },
+  "frozen_config_files": [
+    "rc3_engine/routing.py",
+    "rc3_engine/arbitration.py",
+    "rc3_engine/engine_rc3.py",
+    "rc3_engine/decomposition.py",
+    "rc3_engine/reviewer_v2.py",
+    "rc3_engine/reviewer_bridge.py"
+  ],
+  "spec_10_routing_table": {
+    "VALID SOUND SUPPORT PROOF": "AUTO_SUPPORTED",
+    "VALID SOUND CONTRADICTION PROOF": "AUTO_CONTRADICTED",
+    "EVIDENCE GENUINELY INSUFFICIENT": "ABSTAIN_INSUFFICIENT",
+    "RELEVANT EVIDENCE NO BOUNDED PROOF": "REVIEW_REQUIRED",
+    "CONFLICT OR AMBIGUOUS PROOF": "REVIEW_REQUIRED"
+  }
+}

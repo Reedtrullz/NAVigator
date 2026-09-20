@@ -1,0 +1,69 @@
+{
+  "artifact": "burned-data-registry.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A2-ROUTE-GROUNDING-REPAIR",
+  "burned_sets": [
+    {
+      "name": "V1.6A boundary validation 120",
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a/boundary-validation-fixtures.json",
+      "n": 120,
+      "status": "BURNED_REGRESSION_ONLY",
+      "allowed_uses": [
+        "burned regression (contract section 23)",
+        "diagnostic comparison"
+      ],
+      "forbidden_uses": [
+        "fresh evidence",
+        "fixture text reuse",
+        "threshold tuning"
+      ]
+    },
+    {
+      "name": "V1.6A.1 unit suite 72",
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a1/unit-fixtures.json",
+      "n": 72,
+      "status": "BURNED_REGRESSION_ONLY",
+      "allowed_uses": [
+        "unit regression (contract section 22)"
+      ],
+      "forbidden_uses": [
+        "fixture text reuse in V1.6A.2 dev fixtures"
+      ]
+    },
+    {
+      "name": "V1.6A.1 targeted 60",
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a1/targeted-validation-fixtures.json",
+      "n": 60,
+      "status": "BURNED_DIAGNOSTIC_DATA",
+      "burn_reason": "V1_6A1_TARGETED_GOLD_PROCESS_DEVIATION = TRUE (contract section 5): ADV-11 disputed pre-execution was resolved instead of discarded/replaced, violating frozen section 20. Whole set cannot serve as fresh V1.6A.2 evidence.",
+      "allowed_uses": [
+        "burned diagnostic regression (contract section 24)",
+        "ADV-11 root-cause trace and abstraction"
+      ],
+      "forbidden_uses": [
+        "V1.6A.2 official confirmation",
+        "sole regression test",
+        "exact-match rule",
+        "proof of generalization"
+      ]
+    }
+  ],
+  "diagnostic_only_fixture": {
+    "id": "ADV-11",
+    "set": "V1.6A.1 targeted 60",
+    "use_allowed": [
+      "trace",
+      "root-cause investigation",
+      "abstraction"
+    ],
+    "use_forbidden": [
+      "sole regression test",
+      "exact-match rule",
+      "official confirmation",
+      "proof that repair generalized"
+    ]
+  },
+  "fresh_v1_6a2_sets": {
+    "tdd_dev_fixtures": "authored new, no text reuse from any burned set",
+    "official_80": "authored and frozen after burned regressions pass; engine queries during authoring = 0"
+  }
+}

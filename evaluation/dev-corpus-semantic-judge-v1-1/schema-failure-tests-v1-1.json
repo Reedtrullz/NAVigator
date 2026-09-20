@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "tool": "test_schema_failures.py",
+  "cases": [
+    {
+      "case": "malformed_json",
+      "result": "rejected"
+    },
+    {
+      "case": "invalid_enum",
+      "reason": "invalid_enum:CANONICAL_ACCEPTABLE",
+      "result": "rejected"
+    },
+    {
+      "case": "invalid_enum_v1_label",
+      "reason": "invalid_enum:EQUIVALENT_ACCEPTABLE",
+      "result": "rejected"
+    },
+    {
+      "case": "missing_span",
+      "reason": "evidence_spans_not_list_of_strings",
+      "result": "rejected"
+    },
+    {
+      "case": "span_not_in_answer",
+      "reason": "evidence_span_not_in_answer",
+      "result": "rejected"
+    },
+    {
+      "case": "extra_field_rejected",
+      "reason": "unsupported_fields:score",
+      "result": "rejected"
+    },
+    {
+      "case": "valid_baseline",
+      "result": "accepted"
+    }
+  ],
+  "log": "schema-failure-tests-v1-1.log"
+}

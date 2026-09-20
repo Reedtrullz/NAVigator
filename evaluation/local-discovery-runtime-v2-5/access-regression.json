@@ -1,0 +1,221 @@
+{
+ "artifact": "access_regression_v2_3",
+ "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-SITE-DIRECT-ONLY-V2_3",
+ "data_class": "BURNED_ACCESS_TARGETS_9",
+ "credential_scrub": {
+  "scrubbed_keys": [],
+  "values_read": false,
+  "values_persisted": false
+ },
+ "targets_total": 9,
+ "route_matches": 7,
+ "mismatches": 2,
+ "existence_safety_regressions": 0,
+ "method_drift_cells": 4,
+ "self_referral_drift_cells": 6,
+ "mismatch_handling_note": "Route mismatches on live targets are compared against page evidence and classified in regression-report.md; existence-safety regressions are counted as frozen-route to ROUTE_UNVERIFIED downgrades only.",
+ "cells": [
+  {
+   "target_id": "T1",
+   "kommune": "Alta",
+   "service_name": "Psykisk helse og rus (voksentilbud, fire tjenester)",
+   "source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "DIRECT_PHONE",
+    "DIRECT_EMAIL"
+   ],
+   "runtime_route_state": "ROUTE_FULLY_VERIFIED",
+   "runtime_self_referral": "YES",
+   "frozen_self_referral": "YES",
+   "frozen_route_state": "ROUTE_FULLY_VERIFIED",
+   "frozen_access_methods": [
+    "DIRECT_PHONE",
+    "DIRECT_EMAIL"
+   ],
+   "route_match": true,
+   "method_drift": false,
+   "self_referral_drift": false
+  },
+  {
+   "target_id": "T2",
+   "kommune": "Alta",
+   "service_name": "Lavterskelteam",
+   "source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus/lavterskelteam",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "DIRECT_PHONE",
+    "DIRECT_EMAIL"
+   ],
+   "runtime_route_state": "ROUTE_EXISTENCE_ONLY",
+   "runtime_self_referral": "YES",
+   "frozen_self_referral": "YES",
+   "frozen_route_state": "ROUTE_FULLY_VERIFIED",
+   "frozen_access_methods": [
+    "DIRECT_PHONE",
+    "DIRECT_EMAIL"
+   ],
+   "route_match": false,
+   "method_drift": false,
+   "self_referral_drift": false
+  },
+  {
+   "target_id": "T3",
+   "kommune": "Steinkjer",
+   "service_name": "Kommunepsykologen",
+   "source_url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "UNCLEAR"
+   ],
+   "runtime_route_state": "ROUTE_EXISTENCE_ONLY",
+   "runtime_self_referral": "NO",
+   "frozen_self_referral": "UNCLEAR",
+   "frozen_route_state": "ROUTE_EXISTENCE_ONLY",
+   "frozen_access_methods": [
+    "UNCLEAR"
+   ],
+   "route_match": true,
+   "method_drift": false,
+   "self_referral_drift": true
+  },
+  {
+   "target_id": "T4",
+   "kommune": "Ulstein",
+   "service_name": "Teneste for psykisk helse og rus",
+   "source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "DIRECT_PHONE",
+    "DIRECT_DIGITAL",
+    "DIRECT_EMAIL",
+    "APPLICATION_FORM",
+    "GP_REFERRAL"
+   ],
+   "runtime_route_state": "ROUTE_EXISTENCE_ONLY",
+   "runtime_self_referral": "YES",
+   "frozen_self_referral": "YES",
+   "frozen_route_state": "ROUTE_EXISTENCE_ONLY",
+   "frozen_access_methods": [
+    "DIRECT_DIGITAL",
+    "APPLICATION_FORM",
+    "GP_REFERRAL"
+   ],
+   "route_match": true,
+   "method_drift": true,
+   "self_referral_drift": false
+  },
+  {
+   "target_id": "T5",
+   "kommune": "Ulstein",
+   "service_name": "Kommunepsykolog (interkommunal Ulstein/Sande)",
+   "source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/kommunepsykolog/",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "UNCLEAR"
+   ],
+   "runtime_route_state": "ROUTE_EXISTENCE_ONLY",
+   "runtime_self_referral": "NO",
+   "frozen_self_referral": "YES",
+   "frozen_route_state": "ROUTE_EXISTENCE_ONLY",
+   "frozen_access_methods": [
+    "DIRECT_DIGITAL",
+    "APPLICATION_FORM",
+    "GP_REFERRAL"
+   ],
+   "route_match": true,
+   "method_drift": true,
+   "self_referral_drift": true
+  },
+  {
+   "target_id": "T6",
+   "kommune": "Ørland",
+   "service_name": "Ambulant ungdomsteam",
+   "source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "UNCLEAR"
+   ],
+   "runtime_route_state": "ROUTE_EXISTENCE_ONLY",
+   "runtime_self_referral": "CONDITIONAL",
+   "frozen_self_referral": "UNCLEAR",
+   "frozen_route_state": "ROUTE_EXISTENCE_ONLY",
+   "frozen_access_methods": [
+    "UNCLEAR"
+   ],
+   "route_match": true,
+   "method_drift": false,
+   "self_referral_drift": true
+  },
+  {
+   "target_id": "T7",
+   "kommune": "Ørland",
+   "service_name": "Helsestasjon for ungdom",
+   "source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/lege-og-helsetjenester/helsestasjonen/helsestasjon-for-ungdom/",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "UNCLEAR"
+   ],
+   "runtime_route_state": "ROUTE_EXISTENCE_ONLY",
+   "runtime_self_referral": "CONDITIONAL",
+   "frozen_self_referral": "UNCLEAR",
+   "frozen_route_state": "ROUTE_EXISTENCE_ONLY",
+   "frozen_access_methods": [
+    "UNCLEAR"
+   ],
+   "route_match": true,
+   "method_drift": false,
+   "self_referral_drift": true
+  },
+  {
+   "target_id": "T8",
+   "kommune": "Askvoll",
+   "service_name": "Psykisk helse- og rusteneste for vaksne",
+   "source_url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "DIRECT_EMAIL"
+   ],
+   "runtime_route_state": "ROUTE_FULLY_VERIFIED",
+   "runtime_self_referral": "CONDITIONAL",
+   "frozen_self_referral": "YES",
+   "frozen_route_state": "ROUTE_FULLY_VERIFIED",
+   "frozen_access_methods": [
+    "DIRECT_PHONE"
+   ],
+   "route_match": true,
+   "method_drift": true,
+   "self_referral_drift": true
+  },
+  {
+   "target_id": "T9",
+   "kommune": "Hasvik",
+   "service_name": "Helsesykepleier (helsestasjon/skolehelsetjeneste)",
+   "source_url": "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsestasjon",
+   "fetch_status": "success",
+   "fetch_method": "http_get",
+   "runtime_access_methods": [
+    "DIRECT_EMAIL",
+    "GP_REFERRAL"
+   ],
+   "runtime_route_state": "ROUTE_FULLY_VERIFIED",
+   "runtime_self_referral": "NO",
+   "frozen_self_referral": "UNCLEAR",
+   "frozen_route_state": "ROUTE_EXISTENCE_ONLY",
+   "frozen_access_methods": [
+    "UNCLEAR"
+   ],
+   "route_match": false,
+   "method_drift": true,
+   "self_referral_drift": true
+  }
+ ]
+}

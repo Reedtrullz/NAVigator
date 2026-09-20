@@ -1,0 +1,41 @@
+{
+  "artifact": "root-cause-reproduction",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A1-ABSTAIN-REPAIR",
+  "reproduced_with": "frozen V1.6A engine (sha256 ccd30e7f7fae7e9090c9de443372b15bf3d2341cb447d800c1d55058f6f2c467, byte-identical copy in this lineage at reproduction time)",
+  "fixture_id_reference": "VR-H-08 (historical diagnostic reference only; no runtime case-ID branching)",
+  "input": "Det ser ut til at sosialtjenesten kan hjelpe med økonomisk rådgivning.",
+  "frozen_v1_6a_output": {
+    "route_commitment": {
+      "dimension": "route_commitment",
+      "label": "VAGUE_NONCOMMITTAL",
+      "rule_id": "BC_ROUTE_VAGUE_01",
+      "evidence_span": "hjelpe",
+      "deterministic": true,
+      "abstained": false,
+      "confidence": "DETERMINISTIC_HIGH"
+    },
+    "uncertainty_behavior": {
+      "dimension": "uncertainty_behavior",
+      "label": "HEDGE",
+      "rule_id": "UNC_HEDGE_01",
+      "evidence_span": "ser ut til",
+      "deterministic": true,
+      "abstained": false,
+      "confidence": "DETERMINISTIC_HIGH"
+    },
+    "assertion_scope": {
+      "dimension": "assertion_scope",
+      "label": "ABSTAIN",
+      "rule_id": null,
+      "evidence_span": null,
+      "deterministic": true,
+      "abstained": true,
+      "reason": "NO_HIGH_PRECISION_RULE"
+    }
+  },
+  "rule_id_fired": "BC_ROUTE_VAGUE_01",
+  "evidence_span": "hjelpe",
+  "gold_expected_label": "HEDGED_ASSERTION",
+  "unsoundness_reason": "BC_ROUTE_VAGUE_01 is the only route rule that fires without an inventory route-term hit; an out-of-inventory service noun (sosialtjenesten) plus generic help language produced a deterministic VAGUE_NONCOMMITTAL route classification even though the noun cannot be grounded in the recognized route inventory. Per the frozen repair hypothesis this state must abstain.",
+  "reproduction_status": "REPRODUCED"
+}

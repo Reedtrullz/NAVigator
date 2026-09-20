@@ -1,0 +1,62 @@
+{
+ "artifact": "reference-provenance",
+ "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V1",
+ "canonical_hash_contract": "WAVE4-QUOTA-SAFE-V1 (sha256 of {contract_version, dimension, case_context, criterion, sut_output}, sort_keys, ensure_ascii=False)",
+ "semantic_contract_version": "semantic-judge-contract-v1-4",
+ "source_lineages": [
+  {
+   "lineage_id": "W3",
+   "label": "evaluation/measurement-v3-remeasure-repair-wave-3",
+   "packets_file": "semantic-review-packets.jsonl",
+   "preferred_order": 1
+  },
+  {
+   "lineage_id": "W2",
+   "label": "evaluation/measurement-v3-remeasure-repair-wave-2",
+   "packets_file": "semantic-review-packets.jsonl",
+   "preferred_order": 2
+  },
+  {
+   "lineage_id": "B1",
+   "label": "evaluation/measurement-v3-human-review-batch-2-repaired",
+   "packets_file": "human-review-packets.jsonl",
+   "preferred_order": 3
+  },
+  {
+   "lineage_id": "W4",
+   "label": "evaluation/measurement-v3-remeasure-repair-wave-4-quota-safe-v1",
+   "packets_file": "semantic-review-packets.jsonl",
+   "preferred_order": 4
+  },
+  {
+   "lineage_id": "W1",
+   "label": "evaluation/measurement-v3-remeasure-repair-wave-1",
+   "packets_file": "semantic-review-packets.jsonl",
+   "preferred_order": 5
+  }
+ ],
+ "summary": {
+  "unique_canonical_inputs": 387,
+  "tier_a": 375,
+  "tier_b": 12,
+  "excluded_total": 25,
+  "excluded_by_reason": {
+   "KNOWN_MEASUREMENT_SENSITIVITY": 4,
+   "CRITERION_DEFECT_REPAIRED": 14,
+   "NO_FROZEN_OBSERVATION": 7
+  },
+  "reference_conflicts": 0,
+  "lanes": {
+   "forbidden_claim": 250,
+   "critical_condition": 137
+  },
+  "tier_by_lane": {
+   "A_forbidden_claim": 240,
+   "A_critical_condition": 135,
+   "B_critical_condition": 2,
+   "B_forbidden_claim": 10
+  }
+ },
+ "reference_target_semantics": "AGREEMENT_WITH_FROZEN_AUTHORITATIVE_SEMANTIC_REFERENCE",
+ "not_human_ground_truth": true
+}

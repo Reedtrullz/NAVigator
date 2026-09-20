@@ -1,0 +1,50 @@
+{
+ "task_id": "NAV-EXPLORE-RC2-ROOT-CAUSE-REPAIR",
+ "run_type": "RC2_BURNED_V1_SHADOW",
+ "burned_marker": "BURNED_BLIND_V1_DEVELOPMENT_ONLY",
+ "not_certification": true,
+ "n": 120,
+ "rc2_fused": {
+  "semantic": 63,
+  "product": 24,
+  "proof_safe": 28,
+  "autos": 13,
+  "false_autos": 0,
+  "critical_false_autos": 0,
+  "review": 107
+ },
+ "rc1_baseline": {
+  "semantic": 79,
+  "product": 79,
+  "proof_safe": 44,
+  "autos": 75,
+  "false_autos": 5,
+  "critical_false_autos": 5,
+  "review": 0
+ },
+ "engine_layer": {
+  "n": 120,
+  "rc1_semantic_correct": 42,
+  "rc2_semantic_correct": 52,
+  "fixed": [
+   "RC1B-0005",
+   "RC1B-0056",
+   "RC1B-0057",
+   "RC1B-0112",
+   "RC1B-0122",
+   "RC1B-0160",
+   "RC1B-0163",
+   "RC1B-0170",
+   "RC1B-0177",
+   "RC1B-0184"
+  ],
+  "regressed": []
+ },
+ "potential_label_sensitivity": {
+  "cases": [
+   "RC1B-0116",
+   "RC1B-0165"
+  ],
+  "note": "Strong POTENTIAL_BLIND_LABEL_ERROR per RC1 phase2 label-audit; official labels retained. Under official labels both are review-routed product misses; under audited PARTIAL labels the fused REVIEW_REQUIRED product action is correct."
+ }
+}

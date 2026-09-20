@@ -1,0 +1,94 @@
+{
+  "artifact": "partial-aggregate-metrics",
+  "baseline_partial": true,
+  "execution_completeness": "120/120",
+  "deterministic_criterion_performance": {
+    "critical_condition_verdicts": {
+      "CRITICAL_ERROR": 81,
+      "NO_CRITICAL_ERROR": 4
+    },
+    "forbidden_claim_verdicts": {
+      "CLAIM_ABSENT_TAKEN": 59,
+      "CLAIM_PRESENT": 2
+    },
+    "route_correctness_verdicts": {
+      "NO_ACCEPTABLE_ROUTE": 108
+    },
+    "required_uncertainty_verdicts": {
+      "NOT_REQUIRED": 83,
+      "PARTIAL": 36,
+      "VIOLATED": 1
+    },
+    "evidence_completeness_mean": 0.8083,
+    "evidence_completeness_fully_complete_n": 97
+  },
+  "deterministic_coverage": {
+    "artifact": "automated-coverage-report",
+    "total_criteria": 600,
+    "deterministic_criteria": 506,
+    "human_review_required": 94,
+    "human_review_pending": 94,
+    "automatic_measurement_coverage_pct": 84.33,
+    "per_dimension": {
+      "critical_condition": {
+        "total_criteria": 120,
+        "deterministic_scored": 85,
+        "not_applicable": 0,
+        "human_review_required": 35,
+        "human_review_pending": 35,
+        "automatic_coverage_pct": 70.83
+      },
+      "forbidden_claim": {
+        "total_criteria": 120,
+        "deterministic_scored": 61,
+        "not_applicable": 0,
+        "human_review_required": 59,
+        "human_review_pending": 59,
+        "automatic_coverage_pct": 50.83
+      },
+      "route_correctness": {
+        "total_criteria": 120,
+        "deterministic_scored": 108,
+        "not_applicable": 12,
+        "human_review_required": 0,
+        "human_review_pending": 0,
+        "automatic_coverage_pct": 100.0
+      },
+      "required_uncertainty": {
+        "total_criteria": 120,
+        "deterministic_scored": 120,
+        "not_applicable": 0,
+        "human_review_required": 0,
+        "human_review_pending": 0,
+        "automatic_coverage_pct": 100.0
+      },
+      "evidence_completeness": {
+        "total_criteria": 120,
+        "deterministic_scored": 120,
+        "not_applicable": 0,
+        "human_review_required": 0,
+        "human_review_pending": 0,
+        "automatic_coverage_pct": 100.0
+      }
+    }
+  },
+  "m2_lane": {
+    "HUMAN_REVIEW_M2_pending": 0,
+    "m2_items": 0,
+    "rationale": "M2 lane owns M2-workflow critical-condition decomposition; scorer input has no M2 workflow fields, so M2 routing N = 0"
+  },
+  "routing_to_human_correctness": {
+    "escalated_items": 75,
+    "pending_criteria_with_valid_packet": 94,
+    "pending_criteria_without_packet": 0,
+    "deterministic_criteria_with_packet": 0,
+    "duplicate_authoritative_owners": 0
+  },
+  "review_packet_validity_pct": 100.0,
+  "packets_total": 94,
+  "not_computable_until_human_review": [
+    "semantic verdict per pending criterion",
+    "semantic accuracy per dimension (forbidden/route/critical)",
+    "combined baseline accuracy"
+  ]
+}

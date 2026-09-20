@@ -1,0 +1,20 @@
+{
+  "frozen_utc": "2026-09-19T00:00:00Z",
+  "rule": "one exact wire ID per candidate; no provider/model switching between pass A and pass B; no fallback routes",
+  "routes": [
+    {
+      "logical_id": "BAI-GLM",
+      "provider": "B.AI",
+      "wire_id": "B.AI/glm-5.3-flash",
+      "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+      "auth": "local proxy access token from ~/.codex/auth.json (never printed/persisted)"
+    },
+    {
+      "logical_id": "BAI-DEEPSEEK",
+      "provider": "B.AI",
+      "wire_id": "B.AI/deepseek-v4-flash-vision-exp",
+      "transport": "POST http://127.0.0.1:10100/v1/chat/completions",
+      "auth": "local proxy access token from ~/.codex/auth.json (never printed/persisted)"
+    }
+  ]
+}

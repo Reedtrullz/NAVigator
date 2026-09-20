@@ -1,0 +1,58 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-RESIDUAL-HUMAN-ADJUDICATION-V1",
+  "status": "CLOSED",
+  "created_utc": "2026-09-16",
+  "owner_authorization": "explicit owner authorization (residual human adjudication v1, 2026-09-16)",
+  "upstream_lineage": "evaluation/measurement-v3-astra-integration-residual-v1/",
+  "upstream_terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_RESIDUAL_HUMAN_ADJUDICATION_REQUIRED",
+  "upstream_review_freeze_manifest_sha256": "108fef5664311432f8b8a1232e734097653bd7730f7baf0c1f9faf0139e071e4",
+  "upstream_hashes_txt_sha256": "3a3013b62a024962f6702b6c8287e42900249d52e2fc378524f049d48bd888e3",
+  "scope": [
+    "verify 2 frozen human-residual packets",
+    "present packets blindly to OWNER-01 one at a time",
+    "receive OWNER-01 human adjudication",
+    "validate human input mechanically",
+    "derive 2 final results with frozen deterministic kernel",
+    "integrate with existing 598 authoritative criteria",
+    "freeze complete 600/600 burned baseline"
+  ],
+  "ai_as_human_reviewer": false,
+  "llm_calls_for_semantic_review": 0,
+  "third_automated_pass_allowed": false,
+  "majority_vote_allowed": false,
+  "reruns_forbidden": {
+    "SUT_RERUN": false,
+    "PREDICTIONS_RERUN": false,
+    "DETERMINISTIC_SCORING_RERUN": false,
+    "ORIGINAL_ASTRA_AB_RERUN": false,
+    "RESIDUAL_ASTRA_RERUN": false
+  },
+  "immutable_lineages": [
+    "evaluation/measurement-v3-burned-baseline-v1",
+    "evaluation/dev-corpus-v1-1-repair",
+    "evaluation/measurement-v3-human-review-batch-2-repaired",
+    "evaluation/measurement-v3-astra-review-batch-1",
+    "evaluation/measurement-v3-astra-integration-residual-v1"
+  ],
+  "gold_changed": false,
+  "packets_changed": false,
+  "measurement_contract_changed": false,
+  "gpt_5_5_allowed": false,
+  "subagent_cap": 2,
+  "human_reviewer": "OWNER-01",
+  "pending_packets": [
+    "ROUT-025::forbidden:01",
+    "ROUT-066::forbidden:01"
+  ],
+  "expected_final_terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE",
+  "terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE",
+  "closed_utc": "2026-09-16",
+  "llm_calls_total": 0,
+  "final_authority_mix": {
+    "DETERMINISTIC": 526,
+    "LLM_REVIEWED": 64,
+    "LLM_ADJUDICATED": 8,
+    "HUMAN_REVIEWED": 2
+  },
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY"
+}

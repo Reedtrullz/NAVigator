@@ -1,0 +1,74 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "RC3.3.2 fresh micro-validation cases",
+ "type": "object",
+ "required": [
+  "set_id",
+  "case_count",
+  "cases"
+ ],
+ "properties": {
+  "set_id": {
+   "const": "RC33M2-MICROVAL-V1"
+  },
+  "case_count": {
+   "type": "integer",
+   "const": 30
+  },
+  "cases": {
+   "type": "array",
+   "minItems": 30,
+   "maxItems": 30,
+   "items": {
+    "type": "object",
+    "required": [
+     "case_id",
+     "claim",
+     "sources",
+     "evidence"
+    ],
+    "properties": {
+     "case_id": {
+      "pattern": "^RC33M2-[0-9]{3}$"
+     },
+     "claim": {
+      "type": "string",
+      "minLength": 10
+     },
+     "sources": {
+      "type": "array"
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "span_id",
+        "text"
+       ],
+       "properties": {
+        "span_id": {
+         "type": "string"
+        },
+        "text": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "compound": {
+      "type": "boolean"
+     },
+     "public_flags": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "additionalProperties": false
+}

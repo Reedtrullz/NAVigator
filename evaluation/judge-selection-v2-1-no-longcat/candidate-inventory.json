@@ -1,0 +1,56 @@
+{
+  "artifact": "V2.1 CANDIDATE INVENTORY (POLICY-FIRST, PRE-EXECUTION)",
+  "source_policy": "~/.codex/AGENTS.md Delegation Model Policy + owner V2.1 amendment",
+  "inventory": [
+    {
+      "model": "command-code/xiaomi/mimo-v2.5",
+      "classification": "AUTHORIZED_AND_TESTABLE",
+      "transport": "commandcode-auth local proxy 127.0.0.1:10100 (same as V2)",
+      "pre_benchmark_evidence": "judge_core_v1_4 default judge on V1.6B-era burned screens; structured JSON reliability on this pipeline architecture",
+      "quota": "daily cap unverified; 429 policy applies"
+    },
+    {
+      "model": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "classification": "AUTHORIZED_AND_TESTABLE",
+      "transport": "commandcode-auth local proxy",
+      "pre_benchmark_evidence": "none on this pipeline",
+      "quota": "daily cap unverified; 429 policy applies"
+    },
+    {
+      "model": "command-code/poolside/laguna-s-2.1-free",
+      "classification": "AUTHORIZED_AND_TESTABLE",
+      "transport": "commandcode-auth local proxy",
+      "pre_benchmark_evidence": "none on this pipeline",
+      "quota": "daily cap unverified; 429 policy applies"
+    },
+    {
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "classification": "FORBIDDEN_RERUN_TERMINAL_FAILED",
+      "reason": "complete V2 run, gates_all_pass=false, RESULT_DRIVEN_MIMO_RERUNS=0"
+    },
+    {
+      "model": "command-code/meituan/LongCat-2.0:free",
+      "classification": "FORBIDDEN",
+      "reason": "LONGCAT_WITHDRAWN_BY_OWNER_QUOTA_CONSTRAINT"
+    },
+    {
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "classification": "AVAILABLE_BUT_REQUIRES_TRANSPORT_VERIFICATION",
+      "reason": "policy-authorized fallback, but no verified transport path via commandcode proxy in this task; not shortlisted"
+    },
+    {
+      "model": "gpt-5.5 (any provider)",
+      "classification": "FORBIDDEN"
+    },
+    {
+      "model": "gpt-5.6-terra / gpt-5.6-sol / gpt-6-astra",
+      "classification": "FORBIDDEN (subagent override ban)"
+    },
+    {
+      "model": "openrouter/* free tier models",
+      "classification": "AVAILABLE_BUT_REQUIRES_OWNER_AUTHORIZATION_FOR_NEW_TRANSPORT",
+      "reason": "no established transport in this task; not shortlisted"
+    }
+  ],
+  "longcat_in_shortlist": false
+}

@@ -1,0 +1,53 @@
+{
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_3-BOUNDARY-CLARIFICATION",
+  "status": "ACTIVE",
+  "created": "2026-09-10",
+  "scope": [
+    "negative_uncertainty_requirement_semantics",
+    "route_commitment_semantics"
+  ],
+  "route_label_changes_allowed": false,
+  "critical_contract_changes_allowed": false,
+  "forbidden_contract_changes_allowed": false,
+  "historical_contract_changes_allowed": false,
+  "historical_gold_changes_allowed": false,
+  "runtime_changes_allowed": false,
+  "full_sut_allowed": false,
+  "phase_b_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "threshold_derivation_allowed": false,
+  "gpt_5_5_allowed": false,
+  "judge_model": "GPT-5.6-Luna",
+  "prior_task": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_2-UNCERTAINTY-CONTRACT-REPAIR",
+  "prior_terminal_status": "SEMANTIC_JUDGE_V1_2_ANNOTATION_CONTRACT_NOT_READY",
+  "preserved_terminal_statuses": [
+    "DEV_CORPUS_SEMANTIC_JUDGE_V1_NOT_READY",
+    "SEMANTIC_JUDGE_V1_1_CONTRACT_NOT_READY",
+    "SEMANTIC_JUDGE_V1_2_ANNOTATION_CONTRACT_NOT_READY"
+  ],
+  "model_calls_before_human_boundary_calibration_pass": 0,
+  "execution_notes": [
+    {
+      "date": "2026-09-10",
+      "event": "BOUNDARY_CALIBRATION_A_FIRST_RUN_TRANSPORT_FAILURE",
+      "detail": "All 64 annotation calls (2 passes x 32 Set A fixtures) rejected with HTTP 429 rate_limit_exceeded: 'The usage limit has been reached'. Persistent across 120s wait and backoff probes. Zero model output, zero labels registered; polluted 429-registration outputs deleted, failure log preserved in calibration-a-run.log. TASK-LOCK remains ACTIVE; Set A rerun pending usage-window reset."
+    },
+    {
+      "date": "2026-09-10",
+      "event": "RESUME_GATE_REGISTERED",
+      "detail": "Handoff follow-up: resume-gate-v1-3.json registered with 7-step gate. Steps 1-5 PASS (lock ACTIVE; 29 baselines re-verified; Set A/contract/runner SHAs frozen; successful_v1_3_annotations_before_resume=0; no partial label outputs). Step 6 BLOCKED: pre-resume probe still HTTP 429 on gpt-5.6-luna. Step 7 policy engaged: no model switch, no extra retries, no fixture regeneration. Global delegation policy noted: mimo-v2.5 default subagent model, no GPT-5.5."
+    },
+    {
+      "date": "2026-09-10",
+      "event": "LUNA_LINEAGE_SUPERSEDED_BY_AUTHORIZED_MODEL_MIGRATION",
+      "detail": "Terminal/handoff status: V1_3_LUNA_SUPERSEDED_BY_AUTHORIZED_MODEL_MIGRATION. User explicitly authorized migrating the judge model from GPT-5.6-Luna to commandcode-auth mimo-v2.5 in a separate V1.3M lineage (evaluation/dev-corpus-semantic-judge-v1-3m). Preserved facts: successful_semantic_annotations = 0; set_a_semantically_burned = false; failure_type = ACCOUNT_USAGE_WINDOW / TRANSPORT; semantic_evaluation_result = NOT_OBSERVED. This lineage is neither FAIL, NOT_READY nor PASS: it was superseded before any semantic observation existed. No contract, fixture, or historical files were changed by the migration."
+    }
+  ],
+  "terminal_statuses": [
+    "DEV_CORPUS_SEMANTIC_JUDGE_V1_3_READY",
+    "SEMANTIC_JUDGE_V1_3_BOUNDARY_CONTRACT_NOT_READY",
+    "SEMANTIC_JUDGE_V1_3_ANNOTATION_CONTRACT_NOT_READY",
+    "DEV_CORPUS_SEMANTIC_JUDGE_V1_3_NOT_READY",
+    "DEV_CORPUS_SEMANTIC_JUDGE_V1_3_INVALID"
+  ]
+}

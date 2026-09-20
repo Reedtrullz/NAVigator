@@ -1,0 +1,60 @@
+{
+  "purpose": "V3 spec section 15: cascade simulation deterministic -> Jev -> cheap qualified reviewer -> frontier escalation only when required",
+  "generated_utc": "2026-09-19T21:40:00Z",
+  "measured_basis": "analysis-results.json (3 fresh runs x 3 thresholds, n=235; FALSE_PASS=2 safety-critical at primary T=0.7 in ALL 3 runs)",
+  "operating_point_primary_T0_7": {
+    "auto_accept": 101,
+    "auto_reject": 5,
+    "escalate": 129,
+    "auto_accept_rate_all_n": 0.4298,
+    "safe_auto_coverage_among_decidable": 0.4709,
+    "escalation_rate": 0.5489,
+    "false_pass": 2,
+    "false_fail": 5,
+    "note": "DISQUALIFIED: safety-critical systematic FALSE_PASS (ESC-ROUT-050, both rows, all 3 runs, high-conf)"
+  },
+  "operating_point_diagnostic_T0_8": {
+    "auto_accept": 71,
+    "escalate": 162,
+    "auto_accept_rate_all_n": 0.3021,
+    "false_pass": 2,
+    "false_fail": 2,
+    "note": "diagnostic only; threshold selection after label reveal is forbidden and not proposed"
+  },
+  "stack_simulation": {
+    "deterministic_checks": "UNCHANGED_BY_THIS_TASK_COVERAGE_NOT_MEASURED_HERE",
+    "jev_layer": "MEASURED but DISQUALIFIED for auto use by precommitted safety gate",
+    "cheap_llm_reviewer": "ALL_HISTORICAL_CANDIDATES_FAILED_QUALIFICATION_NO_MEASURED_COVERAGE (V2 finding, unchanged)",
+    "frontier_escalation": "UNKNOWN_NO_MEASURED_FRONTIER_ROUTING_DATA_IN_THIS_TASK"
+  },
+  "jev_usage_measured": {
+    "input_tokens_total_3_runs": 2451932,
+    "input_tokens_per_case": 3477.9,
+    "output_tokens": "not exposed in raw records; V2 measured output as free",
+    "api_calls": 705,
+    "transport_errors": 1
+  },
+  "pricing": {
+    "input_usd_per_1m_tokens": 0.042,
+    "output_usd": 0.0,
+    "verification": "same rate verified against public secondary sources in V2; reused unchanged",
+    "observed_total_cost_usd": 0.103,
+    "observed_case_cost_usd": 0.0001461
+  },
+  "per_1000_cases_projection": {
+    "jev_calls": 1000,
+    "jev_cost_usd": 0.146,
+    "auto_resolved_by_jev_T0_7": 430,
+    "auto_resolved_by_jev_T0_8_diagnostic": 302,
+    "cheap_llm_calls_avoided_T0_7": 430,
+    "cheap_llm_cost_avoided_usd": "UNKNOWN_NO_PRICING_DATA_FOR_ANY_HISTORICAL_ROUTE",
+    "frontier_calls_avoided": "UNKNOWN"
+  },
+  "baseline_definition": "current baseline assumes 1 generative reviewer call per case; deterministic-layer coverage not re-measured in this task",
+  "verifiable_reduction_claim": "PERCENTAGE_OF_CALLS_AVOIDED_ONLY (measured 101/235 = 43.0% at T0.7 if Jev were auto-trusted, which it is NOT after disqualification)",
+  "notes": [
+    "Jev layer cost remains negligible (~0.15 USD per 1000 cases); the economic question is how many generative calls it eliminates",
+    "unlike V2, the fresh disqualification means the measured coverage cannot be claimed as deployable savings; it is upper-bound potential contingent on a future owner-authorized repair lineage",
+    "systematic FALSE_FAIL families (ESC-ROUT-093 x2 rows/run, ESC-ROUT-029) also reduce usable coverage below the raw AUTO_ACCEPT rate"
+  ]
+}

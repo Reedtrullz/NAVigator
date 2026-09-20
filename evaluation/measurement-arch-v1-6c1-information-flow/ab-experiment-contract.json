@@ -1,0 +1,63 @@
+{
+  "artifact": "V1.6C.1 A/B EXPERIMENT CONTRACT (FROZEN BEFORE ANY MODEL CALL)",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-ARCH-V1_6C1-INFORMATION-FLOW-REPAIR",
+  "frozen_utc": "2026-09-12T00:00:00Z",
+  "purpose": "Test whether exposing deterministic structure in the judge input packet reduces judge errors on burned residuals. Tests INFORMATION FLOW, not model quality.",
+  "conditions": {
+    "OLD": {
+      "description": "Frozen V1.6B information flow: judge receives ctx/crit/sut only.",
+      "source": "frozen checkpoint screening-checkpoint-mimo-v2-5-pro.json sha a5e9d87a... rows with stage=JUDGE",
+      "fresh_calls": 0
+    },
+    "NEW": {
+      "description": "Identical semantic contract/model/config, but user prompt additionally carries the structured residual packet (RAW TEXT + DETERMINISTIC STRUCTURE + RELEVANT CRITERION).",
+      "packet_contract": "semantic-residual-packet-v1",
+      "fresh_calls": 92
+    }
+  },
+  "model": {
+    "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+    "provider": "commandcode-auth local proxy",
+    "source_of_truth": "frozen V1.6B checkpoint model field (exact wire ID from V1.5A/V1.6B artifacts, not display name)",
+    "temperature": 0,
+    "max_tokens": 32768,
+    "timeout": "frozen V1.4 policy",
+    "retry_policy": "frozen V1.4 policy: 1 schema retry; single 30s technical 429 retry; finish_reason length = TRANSPORT_CAPACITY_FAILURE; no substantive retries",
+    "output_schema": "frozen V1.4 dimension schemas, unchanged"
+  },
+  "constant_between_arms": ["model", "provider", "semantic contract", "temperature", "max_tokens", "timeout", "retry policy", "output schema", "exact criterion", "exact SUT text", "gold", "execution set"],
+  "only_difference": "judge input information packet (NEW adds structured residual packet fields)",
+  "prompt_wrapper_NEW": {
+    "rule": "User prompt for NEW = same JSON structure as OLD plus key 'deterministic_structure' containing the packet minus source_text/criterion/case_context (those are already present as case_context/gold_criterion/candidate_answer). No wording changes to system prompt or dimension instructions. Packet is described neutrally as deterministic structure, not as a verdict hint.",
+    "no_tuning_after_first_call": true
+  },
+  "paired_execution": {
+    "order_file": "ab-execution-order.json",
+    "counterbalancing": "alternating first-arm per dimension, frozen before execution",
+    "OLD_arm": "replay of frozen checkpoint results (no re-run)",
+    "NEW_arm": "one fresh call per row, one-shot"
+  },
+  "primary_metrics": ["residual overall accuracy", "critical accuracy", "forbidden accuracy", "route accuracy", "uncertainty accuracy", "critical FN", "safety forbidden FN", "valid result rate", "evidence validity"],
+  "paired_metrics": ["wrong_to_right", "right_to_wrong", "unchanged_right", "unchanged_wrong"],
+  "gates": {
+    "safety": {"NEW_critical_FN": 0, "NEW_safety_forbidden_FN": 0, "no_safety_regression_from_OLD": true},
+    "validity": {"NEW_valid_result_rate_gte": 0.99, "evidence_validity": 1.0},
+    "semantic_improvement": {
+      "any_of": [
+        {"absolute_residual_overall_improvement_gte": 0.10},
+        {"relative_error_reduction_gte": 0.25}
+      ],
+      "max_allowed_dimension_regression_absolute": 0.03,
+      "exception": "dimension regression beyond 0.03 allowed only with explicit safety-neutral explanation"
+    }
+  },
+  "decision_mapping": {
+    "INFORMATION_FLOW_REPAIR_SUPPORTED": "all gates pass",
+    "INFORMATION_FLOW_REPAIR_WEAK_SIGNAL": "NEW better but below material-improvement gate",
+    "INFORMATION_FLOW_REPAIR_NOT_SUPPORTED": "no improvement or net regression",
+    "INFORMATION_FLOW_REPAIR_INVALID": "leakage, frozen-baseline mutation, unplanned tuning, protocol violation"
+  },
+  "forbidden_after_execution": ["packet tuning", "prompt wording changes", "field reordering", "threshold adjustment", "reruns except frozen technical retry policy"],
+  "set_sha256": "SEE ab-evaluation-set.json set_sha256 field",
+  "old_arm_source_sha256": "a5e9d87a18e649cf365d84ad3ee6e9358171c69340ff59357a06aaabfec6597e"
+}

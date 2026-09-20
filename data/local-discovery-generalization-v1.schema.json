@@ -1,0 +1,79 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "Local Discovery Generalization V1",
+ "type": "object",
+ "required": [
+  "task_id",
+  "artifact",
+  "status",
+  "sample",
+  "frozen_protocol",
+  "phase_a_predictions",
+  "independent_audit",
+  "cells",
+  "mismatches",
+  "metrics",
+  "gates"
+ ],
+ "properties": {
+  "task_id": {
+   "type": "string"
+  },
+  "artifact": {
+   "type": "string"
+  },
+  "created_at": {
+   "type": "string"
+  },
+  "status": {
+   "enum": [
+    "LOCAL_DISCOVERY_GENERALIZATION_PASS",
+    "LOCAL_DISCOVERY_GENERALIZATION_PARTIAL",
+    "LOCAL_DISCOVERY_GENERALIZATION_FAIL"
+   ]
+  },
+  "sample": {
+   "type": "object"
+  },
+  "frozen_protocol": {
+   "type": "object"
+  },
+  "phase_a_predictions": {
+   "type": "object"
+  },
+  "independent_audit": {
+   "type": "object"
+  },
+  "cells": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "municipality",
+     "scenario",
+     "phase_a_verdict",
+     "audit_route",
+     "recovered"
+    ]
+   }
+  },
+  "mismatches": {
+   "type": "array"
+  },
+  "missing_query_concepts_logged": {
+   "type": "object"
+  },
+  "metrics": {
+   "type": "object"
+  },
+  "gates": {
+   "type": "object"
+  },
+  "product_implications": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ }
+}

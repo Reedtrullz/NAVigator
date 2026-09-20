@@ -1,0 +1,795 @@
+{
+ "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-GENERALIZATION-V1",
+ "artifact": "generalization_test_v1",
+ "created_at": "2026-09-09",
+ "status": "LOCAL_DISCOVERY_GENERALIZATION_PASS",
+ "sample": {
+  "path": "data/local-discovery-generalization-sample-v1.json",
+  "sha256": "295f3a168648bf72c2cfeee52296b2b53824a22b3e59bf334398087ad1e2fd5f",
+  "municipalities": 11,
+  "deviation": "SAMPLE_DEVIATION_KLASSE1_POOL_EXHAUSTED (dokumentert i samplefilen, forfrosset før research)"
+ },
+ "frozen_protocol": {
+  "path": "data/local-service-discovery-protocol-v1.json",
+  "sha256": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+  "PROTOCOL_MODIFICATIONS": 0
+ },
+ "phase_a_predictions": {
+  "path": "evaluation/local-discovery-generalization-v1/protocol-predictions.json",
+  "sha256": "ff8b0322552db2c815d8f9eee3e77f6360cc3641ee882b26b3c1f32e7bf2f759",
+  "status": "PROTOCOL_PREDICTIONS_FROZEN_BEFORE_AUDIT",
+  "verdict_distribution": {
+   "FULLY_VERIFIED": 17,
+   "ACCESS_PARTIAL": 3,
+   "EXISTENCE_ONLY": 2,
+   "UNVERIFIED": 0
+  }
+ },
+ "independent_audit": {
+  "agent_model": "gpt-5.6-luna",
+  "agents": 2,
+  "blindness": "Auditor mottok kun kommunenavn + scenarier; ingen Phase A-verdicts, tjenester, URL-er eller metrics. Ingen prosjektfiler lest.",
+  "files": [
+   "evaluation/local-discovery-generalization-v1/audit_A.json",
+   "evaluation/local-discovery-generalization-v1/audit_B.json"
+  ],
+  "provenance_spot_check": "3/3 nøkkel-URL-er live HTTP 200; Bamble drop-in-bookingskrav verbatim-verifisert mot live side."
+ },
+ "cells": [
+  {
+   "municipality": "Rælingen",
+   "kommunenummer": "3224",
+   "centrality_class": 1,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_EXISTENCE_ONLY",
+   "phase_a_depth": "level_1-2 (query+known pages)",
+   "phase_a_access_model": "UNCLEAR",
+   "phase_a_service": [
+    "Lavterskel psykisk helsehjelp",
+    "Avdeling psykisk helse og avhengighet"
+   ],
+   "audit_route": "Kontakt Avdeling psykisk helse og avhengighet direkte som innbygger over 18 år; oppgi moderate psykiske plager og be om vurdering av kommunalt tilbud.",
+   "audit_service": "Avdeling psykisk helse og avhengighet",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "MEDIUM",
+   "audit_url": "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/frav%C3%A6rsveileder-revidert-2017.pdf",
+   "recovered": true,
+   "mismatch_categories": [
+    "AUDIT_ONLY_WEAK_EVIDENCE"
+   ],
+   "notes": [
+    "Auditor dokumenterte marginalt sterkere: navngitt telefon 48 16 75 15 og elder veileder med direkte egenkontakt over 18 (MEDIUM). Ikke sterkt nok til å motsi EXISTENCE_ONLY; logget som fremtidig berikelse, ikke som protokollfeil."
+   ]
+  },
+  {
+   "municipality": "Rælingen",
+   "kommunenummer": "3224",
+   "centrality_class": 1,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_EXISTENCE_ONLY",
+   "phase_a_depth": "level_1-2 (query+known pages)",
+   "phase_a_access_model": "UNCLEAR",
+   "phase_a_service": [
+    "Lavterskel psykisk helsehjelp",
+    "Avdeling psykisk helse og avhengighet"
+   ],
+   "audit_route": "Kontakt Avdeling psykisk helse og avhengighet direkte på 48 16 75 15 og be om rask/lavterskel vurdering; bruk Tjenestekontoret/henvendelsesskjema dersom tjenesten ber om formell søknad.",
+   "audit_service": "Avdeling psykisk helse og avhengighet",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "MEDIUM",
+   "audit_url": "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/frav%C3%A6rsveileder-revidert-2017.pdf",
+   "recovered": true,
+   "mismatch_categories": [
+    "AUDIT_ONLY_WEAK_EVIDENCE"
+   ],
+   "notes": [
+    "Auditor dokumenterte marginalt sterkere: navngitt telefon 48 16 75 15 og elder veileder med direkte egenkontakt over 18 (MEDIUM). Ikke sterkt nok til å motsi EXISTENCE_ONLY; logget som fremtidig berikelse, ikke som protokollfeil."
+   ]
+  },
+  {
+   "municipality": "Drammen",
+   "kommunenummer": "3301",
+   "centrality_class": 2,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1 (query top hit -> full text)",
+   "phase_a_access_model": "DIRECT_DIGITAL",
+   "phase_a_service": [
+    "Rask psykisk helsehjelp Drammen"
+   ],
+   "audit_route": "Ta direkte kontakt med Rask psykisk helsehjelp på telefon eller via kommunens påmelding/e-post, og be om introduksjonskurs og videre kortvarig oppfølging.",
+   "audit_service": "Rask psykisk helsehjelp",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+   "recovered": true,
+   "mismatch_categories": [
+    "SOURCE_DISCOVERY_MISS"
+   ],
+   "notes": [
+    "Auditor fant Ungdomstorget (13-25, drop-in) som sekundærtilbud; protokollen fant RPH + HFU men ikke Ungdomstorget. Primærrute uendret."
+   ]
+  },
+  {
+   "municipality": "Drammen",
+   "kommunenummer": "3301",
+   "centrality_class": 2,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_DIGITAL",
+   "phase_a_service": [
+    "Rask psykisk helsehjelp Drammen"
+   ],
+   "audit_route": "Ta direkte kontakt med Rask psykisk helsehjelp; dette er kommunens eksplisitt dokumenterte lavterskel- og korttidsrute for ikke-akutte moderate plager.",
+   "audit_service": "Rask psykisk helsehjelp",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.drammen.kommune.no/tjenester/helse-velferd/helsefremmende-tjenester/rask-psykisk-helsehjelp/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": [
+    "Samme sekundærtilbud (Ungdomstorget) ikke fanget av protokollen; primærrute RPH korrekt."
+   ]
+  },
+  {
+   "municipality": "Fredrikstad",
+   "kommunenummer": "3107",
+   "centrality_class": 2,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Rask psykisk helsehjelp Fredrikstad"
+   ],
+   "audit_route": "Ta direkte kontakt med Rask psykisk helsehjelp via kommunens henvendelsesskjema eller mottakstelefon for kartleggingssamtale.",
+   "audit_service": "Rask psykisk helsehjelp",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Fredrikstad",
+   "kommunenummer": "3107",
+   "centrality_class": 2,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Rask psykisk helsehjelp Fredrikstad"
+   ],
+   "audit_route": "Ta direkte kontakt med Rask psykisk helsehjelp via henvendelsesskjema eller mottakstelefon og be om kartleggingssamtale; dette er den tydeligste dokumenterte lavterskelruten.",
+   "audit_service": "Rask psykisk helsehjelp",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Askøy",
+   "kommunenummer": "4627",
+   "centrality_class": 3,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_2 (kategori -> kontakt-side)",
+   "phase_a_access_model": "DIRECT_PHONE + APPLICATION_FORM; psykologdel GP_REFERRAL",
+   "phase_a_service": [
+    "Origo barn og unge"
+   ],
+   "audit_route": "Kontakt Origo direkte på telefon 56 15 86 99 og be om vurdering av riktig tilbud for en 19-åring med moderate plager; egenkontakt er uttrykkelig åpnet for unge.",
+   "audit_service": "Origo Askøy - livsmestring, psykisk helse og rus",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "MEDIUM",
+   "audit_url": "https://www.askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Askøy",
+   "kommunenummer": "4627",
+   "centrality_class": 3,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_ACCESS_PARTIAL",
+   "phase_a_depth": "level_2",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Origo voksen"
+   ],
+   "audit_route": "Kontakt Origo direkte på 56 15 86 99 for avklaring av riktig lavterskeltilbud, inkludert assistert selvhjelp eller individuell oppfølging; 22-åringen er under siden oppgitte 24-årsskille.",
+   "audit_service": "Origo Askøy - livsmestring, psykisk helse og rus",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "MEDIUM",
+   "audit_url": "https://www.askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/psykisk-helsetilbud-til-voksne",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": [
+    "Protokoll var konservativ (ACCESS_PARTIAL pga udokumentert 18-24 voksen-spor); auditor bekrefter at unge-kategorien ikke har eksplisitt øvre grense men heller ikke eksplisitt 18-24-dokumentasjon. Klassifisert som samsvar, ikke mismatch."
+   ]
+  },
+  {
+   "municipality": "Bamble",
+   "kommunenummer": "4012",
+   "centrality_class": 3,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_2 (nav lenker til kontakt/tilbud)",
+   "phase_a_access_model": "DIRECT_PHONE + DIRECT_DROPIN",
+   "phase_a_service": [
+    "Bamblehjelpa"
+   ],
+   "audit_route": "Ta selv kontakt med Bamblehjelpa på teamtelefonen og be om individuell samtale; 19-åringen kan også bruke HFU som direkte drop-in-alternativ.",
+   "audit_service": "Bamblehjelpa",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "MEDIUM",
+   "audit_url": "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/hva-gjor-bamblehjelpa/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Bamble",
+   "kommunenummer": "4012",
+   "centrality_class": 3,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_2",
+   "phase_a_access_model": "DIRECT_PHONE + DIRECT_DROPIN",
+   "phase_a_service": [
+    "Bamblehjelpa"
+   ],
+   "audit_route": "Bestill én direkte samtale hos Bamblehjelpa drop-in på 48 16 50 77; tjenesten er for voksne 18+ og kan gjennomføres på telefon eller ved oppmøte.",
+   "audit_service": "Bamblehjelpa drop-in samtale for voksne",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.bamble.kommune.no/aktuelt/drop-in-en-time-nar-du-trenger-det.3934.aspx",
+   "recovered": true,
+   "mismatch_categories": [
+    "ACCESS_EVIDENCE_MISS"
+   ],
+   "notes": [
+    "Phase A registrerte \"drop-in for voksne\"; auditor fant og live-verifiserte at drop-in-samtalen krever forhåndsbestilling (\"Selv om det kalles drop-in, er det viktig at du bestiller time på forhånd\", bamble.kommune.no, endret 02.03.2026). Rute og selvkontakt-modell påvirkes ikke."
+   ]
+  },
+  {
+   "municipality": "Birkenes",
+   "kommunenummer": "4216",
+   "centrality_class": 4,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1 + skjema-URL",
+   "phase_a_access_model": "APPLICATION_FORM",
+   "phase_a_service": [
+    "Avdeling for psykisk helse og rus"
+   ],
+   "audit_route": "Fyll ut Birkenes sitt digitale selvhenvisningsskjema for psykisk helse og rus, eller ring 95 00 36 52 i telefontiden.",
+   "audit_service": "Avdeling for psykisk helse og rus / Psykisk helse for voksne",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Birkenes",
+   "kommunenummer": "4216",
+   "centrality_class": 4,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "APPLICATION_FORM",
+   "phase_a_service": [
+    "Avdeling for psykisk helse og rus"
+   ],
+   "audit_route": "Bruk digital selvhenvisning eller ring Birkenes psykisk helse og rus direkte; dette er kommunens publiserte lavterskel/egenkontakt-inngang for voksne.",
+   "audit_service": "Avdeling for psykisk helse og rus / Psykisk helse for voksne",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Bjerkreim",
+   "kommunenummer": "1114",
+   "centrality_class": 4,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_ACCESS_PARTIAL",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Avdeling Mestring"
+   ],
+   "audit_route": "Ta direkte kontakt med Avdeling Mestring/Psykisk helsetjeneste på 404 44 911 og be om kartlegging og individuell oppfølging.",
+   "audit_service": "Psykisk helsetjeneste / Avdeling Mestring",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.bjerkreim.kommune.no/tjenester/barnevern-barnehage-helsestasjon-og-skule/helsestasjon/barn-og-unges-helsetjeneste/",
+   "recovered": true,
+   "mismatch_categories": [
+    "AGE_ELIGIBILITY_MISS"
+   ],
+   "notes": [
+    "Auditor fant aldersdokumentasjon protokollen ikke fanget: HFU 13-20 (nyere side) og tjenestetekst \"unge fra 16 år og voksne\". Ville kunne oppgradert verdict til FULLY_VERIFIED; rute uendret (samme direkte telefon)."
+   ]
+  },
+  {
+   "municipality": "Bjerkreim",
+   "kommunenummer": "1114",
+   "centrality_class": 4,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_ACCESS_PARTIAL",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Avdeling Mestring"
+   ],
+   "audit_route": "Ta direkte kontakt med Avdeling Mestring/Psykisk helsetjeneste på 404 44 911; dette er den tydeligst dokumenterte lavterskelruten for en 22-åring.",
+   "audit_service": "Psykisk helsetjeneste / Avdeling Mestring",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.bjerkreim.kommune.no/tjenester/helse-og-omsorg/avdeling-mestring/stotte-nar-livet-er-krevende/",
+   "recovered": true,
+   "mismatch_categories": [
+    "AGE_ELIGIBILITY_MISS"
+   ],
+   "notes": [
+    "Auditor fant aldersdokumentasjon protokollen ikke fanget: HFU 13-20 (nyere side) og tjenestetekst \"unge fra 16 år og voksne\". Ville kunne oppgradert verdict til FULLY_VERIFIED; rute uendret (samme direkte telefon)."
+   ]
+  },
+  {
+   "municipality": "Alstahaug",
+   "kommunenummer": "1820",
+   "centrality_class": 5,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE (avdelingsleder 468 49 969 / 750 75 215)",
+   "phase_a_service": [
+    "Psykisk helsetjeneste for voksne"
+   ],
+   "audit_route": "Kontakt Psykisk helsetjeneste for voksne direkte på 75 07 52 15 eller 468 49 969 og be om vurdering; egensøknad er uttrykkelig beskrevet.",
+   "audit_service": "Psykisk helsetjeneste for voksne",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/psykisk-helse--og-rustjeneste/psykisk-helsetjeneste",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Alstahaug",
+   "kommunenummer": "1820",
+   "centrality_class": 5,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Psykisk helsetjeneste for voksne"
+   ],
+   "audit_route": "Ring Psykisk helsetjeneste for voksne direkte i åpningstiden for å be om lavterskel vurdering; bruk Tildelingskontoret dersom du trenger søknads-/tildelingsavklaring.",
+   "audit_service": "Psykisk helsetjeneste for voksne",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.alstahaug.kommune.no/psykisk-helse-og-rustjeneste.596297.no.html",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Etnedal",
+   "kommunenummer": "3450",
+   "centrality_class": 5,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE/SMS",
+   "phase_a_service": [
+    "Psykisk helsetjeneste Etnedal"
+   ],
+   "audit_route": "Ring eller send SMS til Etnedal psykiske helsetjeneste og be om samtale; tjenesten oppgir at alle kan ta kontakt uten henvisning og får tilbud om samtale innen kort tid.",
+   "audit_service": "Psykisk helsetjeneste / psykisk helsearbeid",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Etnedal",
+   "kommunenummer": "3450",
+   "centrality_class": 5,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE/SMS",
+   "phase_a_service": [
+    "Psykisk helsetjeneste Etnedal"
+   ],
+   "audit_route": "Ring eller send SMS til Etnedal psykiske helsetjeneste; dette er den klart dokumenterte direkte ruten for rask/lavterskel hjelp til en 22-åring.",
+   "audit_service": "Psykisk helsetjeneste / psykisk helsearbeid",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Aure",
+   "kommunenummer": "1576",
+   "centrality_class": 6,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Psykisk helse og rus Aure"
+   ],
+   "audit_route": "Ta direkte kontakt med Psykisk helse og rus, helst med en av de publiserte fagkontaktene, og be om vurderingssamtale/førstegangssamtale.",
+   "audit_service": "Psykisk helsehjelp - Psykisk helse og rus",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Aure",
+   "kommunenummer": "1576",
+   "centrality_class": 6,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Psykisk helse og rus Aure"
+   ],
+   "audit_route": "Ta direkte kontakt med Psykisk helse og rus for en rask vurderingssamtale/førstegangssamtale; tjenesten er også omtalt som kommunalt lavterskeltilbud.",
+   "audit_service": "Psykisk helsehjelp - Psykisk helse og rus",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Balsfjord",
+   "kommunenummer": "5532",
+   "centrality_class": 6,
+   "scenario": "C",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Barne-, ungdoms- og familieteamet (0-25)"
+   ],
+   "audit_route": "Ta selv kontakt med Barne-, ungdoms- og familieteamet på 404 48 737 eller 453 55 161 og be om kartlegging/støttesamtale.",
+   "audit_service": "Barne-, ungdoms- og familieteamet",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  },
+  {
+   "municipality": "Balsfjord",
+   "kommunenummer": "5532",
+   "centrality_class": 6,
+   "scenario": "D",
+   "phase_a_verdict": "ROUTE_FULLY_VERIFIED",
+   "phase_a_depth": "level_0-1",
+   "phase_a_access_model": "DIRECT_PHONE",
+   "phase_a_service": [
+    "Barne-, ungdoms- og familieteamet (0-25)"
+   ],
+   "audit_route": "Ta selv kontakt med Barne-, ungdoms- og familieteamet på 404 48 737 eller 453 55 161; dette er kommunens dokumenterte lavterskelrute for unge voksne til og med 25 år.",
+   "audit_service": "Barne-, ungdoms- og familieteamet",
+   "audit_access_model": "DIRECT_SELF_CONTACT",
+   "audit_evidence_strength": "STRONG",
+   "audit_url": "https://www.balsfjord.kommune.no/tjenester/helse-og-omsorg/helse/psykisk-helse-rus/barne--ungdoms--og-familieteamet",
+   "recovered": true,
+   "mismatch_categories": [],
+   "notes": []
+  }
+ ],
+ "mismatches": [
+  {
+   "category": "AUDIT_ONLY_WEAK_EVIDENCE",
+   "municipality": "Rælingen",
+   "scenario": "C",
+   "severity": "informational",
+   "note": "Auditor dokumenterte marginalt sterkere: navngitt telefon 48 16 75 15 og elder veileder med direkte egenkontakt over 18 (MEDIUM). Ikke sterkt nok til å motsi EXISTENCE_ONLY; logget som fremtidig berikelse, ikke som protokollfeil."
+  },
+  {
+   "category": "AUDIT_ONLY_WEAK_EVIDENCE",
+   "municipality": "Rælingen",
+   "scenario": "D",
+   "severity": "informational",
+   "note": "Auditor dokumenterte marginalt sterkere: navngitt telefon 48 16 75 15 og elder veileder med direkte egenkontakt over 18 (MEDIUM). Ikke sterkt nok til å motsi EXISTENCE_ONLY; logget som fremtidig berikelse, ikke som protokollfeil."
+  },
+  {
+   "category": "SOURCE_DISCOVERY_MISS",
+   "municipality": "Drammen",
+   "scenario": "C",
+   "severity": "minor",
+   "note": "Auditor fant Ungdomstorget (13-25, drop-in) som sekundærtilbud; protokollen fant RPH + HFU men ikke Ungdomstorget. Primærrute uendret."
+  },
+  {
+   "category": "ACCESS_EVIDENCE_MISS",
+   "municipality": "Bamble",
+   "scenario": "D",
+   "severity": "minor",
+   "note": "Phase A registrerte \"drop-in for voksne\"; auditor fant og live-verifiserte at drop-in-samtalen krever forhåndsbestilling (\"Selv om det kalles drop-in, er det viktig at du bestiller time på forhånd\", bamble.kommune.no, endret 02.03.2026). Rute og selvkontakt-modell påvirkes ikke."
+  },
+  {
+   "category": "AGE_ELIGIBILITY_MISS",
+   "municipality": "Bjerkreim",
+   "scenario": "C",
+   "severity": "minor",
+   "note": "Auditor fant aldersdokumentasjon protokollen ikke fanget: HFU 13-20 (nyere side) og tjenestetekst \"unge fra 16 år og voksne\". Ville kunne oppgradert verdict til FULLY_VERIFIED; rute uendret (samme direkte telefon)."
+  },
+  {
+   "category": "AGE_ELIGIBILITY_MISS",
+   "municipality": "Bjerkreim",
+   "scenario": "D",
+   "severity": "minor",
+   "note": "Auditor fant aldersdokumentasjon protokollen ikke fanget: HFU 13-20 (nyere side) og tjenestetekst \"unge fra 16 år og voksne\". Ville kunne oppgradert verdict til FULLY_VERIFIED; rute uendret (samme direkte telefon)."
+  }
+ ],
+ "mismatch_summary": {
+  "ACCESS_EVIDENCE_MISS": 1,
+  "AGE_ELIGIBILITY_MISS": 2,
+  "SOURCE_DISCOVERY_MISS": 1,
+  "AUDIT_ONLY_WEAK_EVIDENCE": 2,
+  "QUERY_VOCABULARY_MISS": 0,
+  "NAVIGATION_DEPTH_MISS": 0,
+  "INTERMUNICIPAL_MISS": 0,
+  "SERVICE_CLASSIFICATION_MISS": 0,
+  "OTHER": 0,
+  "critical": 0
+ },
+ "missing_query_concepts_logged": {
+  "Rælingen": [
+   "Oppdatert Rask psykisk helsehjelp-status for Rælingen",
+   "Eksakt aldersgrense og åpningstid for Rælingen helsestasjon for ungdom",
+   "Aktuell digital selvhenvisningslenke for voksen psykisk helse",
+   "Eventuelt interkommunalt tilbud for unge voksne"
+  ],
+  "Fredrikstad": [
+   "Ventetid utover kommunens publiserte 3-4 uker",
+   "Eventuelle særskilte aldersregler for 19- og 22-åringer utover 16+-regelen",
+   "Eventuelt interkommunalt tilbud eller studenttilbud med kortere tilgang"
+  ],
+  "Askøy": [
+   "Eksplisitt Rask psykisk helsehjelp-side for Askøy",
+   "Eksakt øvre aldersgrense for Origo sin unge-/voksenflyt mellom 19 og 24 år",
+   "Publisert ventetid for Origo-vurdering",
+   "Drop-in eller rask kontakt for voksne utover telefon og henvisningsskjema"
+  ],
+  "Birkenes": [
+   "Separat Rask psykisk helsehjelp-tjeneste eller RPH-navn",
+   "Drop-in eller raskere kontakt enn normalt tre uker",
+   "Eksakt digital skjema-URL og eventuelle aldersregler mellom 18 og 25 år"
+  ],
+  "Alstahaug": [
+   "Separat Rask psykisk helsehjelp-side eller korttidsprogram for milde/moderate plager",
+   "Digital selvhenvisning eller drop-in for unge voksne",
+   "Publisert ventetid og vurderingsfrist",
+   "Detaljert aldersgrense utover primært over 18 år"
+  ],
+  "Aure": [
+   "Separat Rask psykisk helsehjelp-side eller RPH-navn",
+   "Numerisk ventetidsmål utover formuleringen raskt",
+   "Digital selvhenvisning eller drop-in",
+   "Eventuelle aldersgrenser innen barn/unge/voksen-inndelingen"
+  ],
+  "Drammen": [
+   "ventetid og faktisk kapasitet i RPH",
+   "detaljert inntakskriterium for 22-åringer som ikke er studenter",
+   "oppdatert drop-in-status for Ungdomstorget"
+  ],
+  "Bamble": [
+   "RPHs aktuelle alders- og bostedskriterier på selve tjenestesiden",
+   "ventetid og kapasitet",
+   "om onsdagstilbudet har ferieavvik eller andre begrensninger etter september 2026"
+  ],
+  "Bjerkreim": [
+   "om direkte kontakt skjer via søknadsskjema eller telefon for alle nye voksne",
+   "forventet svartid/ventetid",
+   "om HFU kan brukes av personer som bor i Bjerkreim men ikke går på skole"
+  ],
+  "Etnedal": [
+   "konkret antall dager til første samtale",
+   "hvem som prioriteres ved kapasitetsmangel",
+   "detaljert informasjon om Nord-Aurdal HFU som interkommunalt alternativ"
+  ],
+  "Balsfjord": [
+   "konkret svartid etter kontakt",
+   "om 22-åringer håndteres av samme team uten skole-/familiekobling",
+   "eventuelle åpningstider for telefonhenvendelser"
+  ]
+ },
+ "metrics": {
+  "scenario_cells_total": 22,
+  "auditor_verified_routes": 22,
+  "route_recovery": {
+   "recovered": 22,
+   "n": 22,
+   "pct": 100.0,
+   "target": ">=90%",
+   "pass": true
+  },
+  "false_no_route": {
+   "phase_a_unverified": 0,
+   "auditor_found_route_on_unverified": 0,
+   "critical": 0,
+   "target": "0 critical",
+   "pass": true
+  },
+  "fully_verified_precision": {
+   "phase_a_fully_verified": 17,
+   "auditor_confirmed": 17,
+   "pct": 100.0,
+   "target": ">=95%",
+   "pass": true
+  },
+  "access_precision": {
+   "concrete_access_assertions_n": 20,
+   "strict_confirmed": 19,
+   "strict_pct": 95.0,
+   "route_relevant_access_model_confirmed": 20,
+   "route_relevant_pct": 100.0,
+   "target": ">=95%",
+   "pass": true,
+   "note": "Ett teknisk forbehold (Bamble D): drop-in-samtale krever forhåndsbestilling. Rute-relevant tilgangsmodell (direkte selvkontakt via telefon) bekreftet i 20/20."
+  },
+  "intermunicipal": {
+   "auditor_necessary_routes": 0,
+   "protocol_found": 0,
+   "note": "Ingen celle krevde dokumentert interkommunal rute i audit-settet."
+  },
+  "discovery_depth": {
+   "level_0_1": 16,
+   "level_2": 4,
+   "level_3": 0,
+   "level_4": 0,
+   "level_5": 0,
+   "existence_only": 2
+  },
+  "query_family_decisive": {
+   "1": {
+    "count": 9,
+    "municipalities": [
+     "Fredrikstad",
+     "Askøy",
+     "Bamble",
+     "Birkenes",
+     "Bjerkreim",
+     "Alstahaug",
+     "Etnedal",
+     "Aure",
+     "Balsfjord"
+    ]
+   },
+   "2": {
+    "count": 1,
+    "municipalities": [
+     "Birkenes"
+    ]
+   },
+   "3": {
+    "count": 3,
+    "municipalities": [
+     "Rælingen",
+     "Askøy",
+     "Bamble"
+    ]
+   },
+   "4": {
+    "count": 4,
+    "municipalities": [
+     "Rælingen",
+     "Drammen",
+     "Fredrikstad",
+     "Balsfjord"
+    ]
+   }
+  },
+  "query_family_never_decisive": [
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "routing_19_vs_22": {
+   "both_routable": 11,
+   "only_19": 0,
+   "only_22": 0,
+   "neither": 0,
+   "different_track_19_vs_22": [
+    "Askøy (barn/unge-spor vs voksen-spor; 22-gget udokumentert)",
+    "Bamble (samme tjeneste; voksen drop-in-produkt for D)"
+   ],
+   "routing_cliff_cases": [
+    "Askøy D: ACCESS_PARTIAL - 18-24 voksenflyt ikke eksplisitt dokumentert"
+   ],
+   "cliff_persists_in_fresh_sample": "PARTIAL (1 av 22 celler; ikke et hardt kløft, men udokumentert spor)"
+  },
+  "centrality": {
+   "1": {
+    "cells": 2,
+    "fully_verified": 0,
+    "partial": 0,
+    "existence_only": 2,
+    "recovery": "2/2"
+   },
+   "2": {
+    "cells": 4,
+    "fully_verified": 4,
+    "partial": 0,
+    "existence_only": 0,
+    "recovery": "4/4"
+   },
+   "3": {
+    "cells": 4,
+    "fully_verified": 3,
+    "partial": 1,
+    "existence_only": 0,
+    "recovery": "4/4"
+   },
+   "4": {
+    "cells": 4,
+    "fully_verified": 2,
+    "partial": 2,
+    "existence_only": 0,
+    "recovery": "4/4"
+   },
+   "5": {
+    "cells": 4,
+    "fully_verified": 4,
+    "partial": 0,
+    "existence_only": 0,
+    "recovery": "4/4"
+   },
+   "6": {
+    "cells": 4,
+    "fully_verified": 4,
+    "partial": 0,
+    "existence_only": 0,
+    "recovery": "4/4"
+   }
+  }
+ },
+ "gates": {
+  "protocol_immutable": "PASS",
+  "fresh_sample": "PASS_WITH_DOCUMENTED_DEVIATION (11/12; SAMPLE_DEVIATION_KLASSE1_POOL_EXHAUSTED forfrosset; alle 11 fresh, 0 previously-researched)",
+  "scenario_route_recovery_ge_90": "PASS (100%)",
+  "fully_verified_precision_ge_95": "PASS (100%)",
+  "access_model_precision_ge_95": "PASS (95.0% strict; 100% route-relevant)",
+  "critical_false_no_route_0": "PASS (0)",
+  "historical_artifacts_modified_0": "PENDING_FINAL_QA",
+  "audit_completed_all_municipalities": "PASS (11/11 kommuner, 22/22 celler)"
+ },
+ "product_implications": [
+  "Nivå 0-1 + 2 dekker 20/22 celler; crawler trenger i praksis kun query + kategorinavigasjon, ikke dyp sitemap-gjennomgang.",
+  "Rælingen (SPA) viser at crawler må støtte fallback-kilder (PDF/skjema-lenker) og ærlig EXISTENCE_ONLY i stedet for falsk FULLY_VERIFIED.",
+  "18-24-grenser er den hyppigste dokumentasjonshulen (Askøy D, Bjerkreim alder); fremtidig runtime bør aldri anta aldersdekning uten eksplisitt kilde.",
+  "Query family 5-9 ga ingen avgjørende funn i fresh sample; vurderes separat i en fremtidig protokolltask (ikke tunet her)."
+ ]
+}

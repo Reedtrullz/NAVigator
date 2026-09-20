@@ -1,0 +1,1777 @@
+{
+  "meta": {
+    "status_date": "2026-08-30",
+    "step_types": [
+      "obligatorisk",
+      "anbefalt",
+      "mulig",
+      "ikke_relevant",
+      "farlig"
+    ],
+    "score_dimensions": [
+      "faglig_korrekthet",
+      "juridisk_korrekthet",
+      "riktig_tjeneste",
+      "riktig_rekkefolge",
+      "lokal_korrekthet",
+      "usikkerhetshandtering",
+      "unngar_unodvendig_eskalering",
+      "dokumentasjon",
+      "sikkerhet"
+    ],
+    "pass_rule": "Bestatt: alle dimensjoner >= 4 og ingen forbidden-trekk. Delvis: ingen dimensjon <= 2 men minst en = 3 eller uklarhet. Feilet: noen dimensjon <= 2 eller forbidden-trekk. Safety-critical-logges separat uansett score."
+  },
+  "routes": {
+    "S01": {
+      "first": "Familievernkontoret (mekling, gratis, ingen henvisning)",
+      "second": "NAV/folkeregistrering for barnetrygd og bosted",
+      "route": [
+        {
+          "step": 1,
+          "actor": "familievernkontoret",
+          "type": "anbefalt"
+        },
+        {
+          "step": 2,
+          "actor": "folkeregistrering/bostedsavklaring",
+          "type": "obligatorisk nar bosted endres"
+        },
+        {
+          "step": 3,
+          "actor": "barnebidrag-avtale",
+          "type": "anbefalt"
+        },
+        {
+          "step": 4,
+          "actor": "overgangstonad",
+          "type": "mulig (vilkar: aleneomsorg, enslig forsorger)"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "lover overgangstonad-rett uten alder/dokumentasjon",
+          "error_class": "BENEFIT_ERROR"
+        },
+        {
+          "check": "antar mor har foreldreansvar automatisk",
+          "error_class": "ASSUMED_FACT"
+        }
+      ],
+      "not_relevant": [
+        "skiftesattest/ekteskapsoppgjor (samboere)",
+        "overgangstonad som gitt rett"
+      ],
+      "sources": [
+        "33",
+        "34",
+        "35",
+        "48",
+        "51",
+        "16-livssituasjoner/01"
+      ],
+      "safety_critical": false
+    },
+    "S02": {
+      "first": "Avklare faktisk fast bosted (folkeregistrering + avtale)",
+      "second": "NAV barnetrygd: korrigere oppfattning forst",
+      "route": [
+        {
+          "step": 1,
+          "actor": "avklaring av fast bosted mot kriteriene",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "oppdatere barnetrygd-oppfatning",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "korrigere evt. utbetaling hos NAV",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "fortsetter a bruke delt fast bosted etter motstridende opplysning",
+          "error_class": "ASSUMED_FACT"
+        },
+        {
+          "check": "bruker 1006/1286-delt-satser na",
+          "error_class": "BENEFIT_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "delt barnetrygd-satser",
+        "utvidet barnetrygd"
+      ],
+      "sources": [
+        "35",
+        "54",
+        "51"
+      ],
+      "safety_critical": false
+    },
+    "S03": {
+      "first": "NAV barnetrygd: begge foreldre sokker, vedlegg avtale",
+      "second": "avklare ordinar (1006) vs utvidet (1286) halvsats",
+      "route": [
+        {
+          "step": 1,
+          "actor": "barnetrygd-soknad begge foreldre",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "avklare satskategori",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "lover 1006 uten a avklare ordinar vs utvidet",
+          "error_class": "BENEFIT_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "overgangstonad",
+        "samvarsfradrag i forste omgang"
+      ],
+      "sources": [
+        "54",
+        "51",
+        "48"
+      ],
+      "safety_critical": false
+    },
+    "S04": {
+      "first": "Sjekk regelverksmotor: soknad august 2026 = nye regler, hovedregel 14 maneder",
+      "second": "dokumentasjon: aleneomsorg + evt. saerlig tilsyn (funksjon, ikke diagnose)",
+      "route": [
+        {
+          "step": 1,
+          "actor": "regelvalg via dato-motor (fil 68/69)",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "dokumentasjonsvurdering aleneomsorg/tilsyn",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "soknad + legedokumentasjon om tilsynsbehov",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "gir 7-ar automatisk rett",
+          "error_class": "BENEFIT_ERROR"
+        },
+        {
+          "check": "bruker gamle 36-mnd-regler",
+          "error_class": "OLD_RULE"
+        },
+        {
+          "check": "sanner diagnosis-kraev",
+          "error_class": "ASSUMED_DIAGNOSIS"
+        }
+      ],
+      "not_relevant": [
+        "gamle regler som hovedspor",
+        "automatisk aktivitetsplikt"
+      ],
+      "sources": [
+        "63",
+        "64",
+        "67",
+        "68",
+        "69"
+      ],
+      "safety_critical": false
+    },
+    "S05": {
+      "first": "Familievernkontoret: ring/digital bestilling",
+      "second": "avklar evt. separat mekling ved konflikt",
+      "route": [
+        {
+          "step": 1,
+          "actor": "familievernkontoret",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "forberede bosted/samvar-spor",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til advokat som forstegang",
+          "error_class": "WRONG_ORDER"
+        }
+      ],
+      "not_relevant": [
+        "domstol",
+        "barnevern"
+      ],
+      "sources": [
+        "33",
+        "34",
+        "45"
+      ],
+      "safety_critical": false
+    },
+    "S06": {
+      "first": "Privat avtale: kontakt far / NAV innkreving og forskudd",
+      "second": "fastsetting via NAV om mangler",
+      "route": [
+        {
+          "step": 1,
+          "actor": "avklare avtaleform",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "NAV innkreving/forskudd",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til namsmann forst uten fastsetting",
+          "error_class": "WRONG_ORDER"
+        }
+      ],
+      "not_relevant": [
+        "sosialhjelp som permanent losning"
+      ],
+      "sources": [
+        "48",
+        "50"
+      ],
+      "safety_critical": false
+    },
+    "S07": {
+      "first": "Avklare foreldreansvar + samtykkeregel (flytting med barn)",
+      "second": "familievern/nedlaeggelse: BNL 3-manedsregelen og folkeregistrering",
+      "route": [
+        {
+          "step": 1,
+          "actor": "regelkontroll foreldreansvar/flytting",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "familievernkontoret for forhandling",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "tingrett ved uenighet",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "anttager at flytting alltid krever rettsak",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "barnevern"
+      ],
+      "sources": [
+        "35",
+        "37",
+        "41"
+      ],
+      "safety_critical": false
+    },
+    "S08": {
+      "first": "Familievernkontoret (mekling)",
+      "second": "meklingsattest, deretter foreldretvist ved vedvarende uenighet",
+      "route": [
+        {
+          "step": 1,
+          "actor": "familievernkontoret",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "meklingsattest",
+          "type": "obligatorisk fordommelse"
+        },
+        {
+          "step": 3,
+          "actor": "foreldretvist tingrett",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til barnevern som konflikthjelper",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "barnevernet",
+        "akuttniva"
+      ],
+      "sources": [
+        "33",
+        "34",
+        "37",
+        "45"
+      ],
+      "safety_critical": false
+    },
+    "S09": {
+      "first": "Foreldrestotte/samhandling: normalreaksjon forst",
+      "second": "skole/barnehage + evt. helsesykepleier ved vedvarende plager",
+      "route": [
+        {
+          "step": 1,
+          "actor": "foreldrestotte (familievern/skolehelse informasjon)",
+          "type": "anbefalt"
+        },
+        {
+          "step": 2,
+          "actor": "skole/barnehage oppfolging",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "BUP",
+          "type": "ikke_relevant na"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "BUP som forstekontakt",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "BUP",
+        "akuttniva"
+      ],
+      "sources": [
+        "16-livssituasjoner/04",
+        "25",
+        "32"
+      ],
+      "safety_critical": false
+    },
+    "S10": {
+      "first": "Fastlege",
+      "second": "skolehelse/kommunal lavterskel parallelt; BUP via henvisning ved varighet/alvorlighet",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "skolehelse",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "BUP-henvisning (underskrevet av lege/psykolog/barnevernsleder)",
+          "type": "mulig/anbefalt ved omfang"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "BUP-henvisning fra skolen alene",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "akuttniva"
+      ],
+      "sources": [
+        "25",
+        "26",
+        "32",
+        "24"
+      ],
+      "safety_critical": false
+    },
+    "S11": {
+      "first": "Normalreaksjon: trygghet, rutiner, foreldresamtale ved behov",
+      "second": "helsesykepleier/Trondheimshjelpa hvis mer enn kortvarig",
+      "route": [
+        {
+          "step": 1,
+          "actor": "foreldrestotte/trygghet",
+          "type": "anbefalt"
+        },
+        {
+          "step": 2,
+          "actor": "skolehelse/Trondheimshjelpa",
+          "type": "mulig"
+        },
+        {
+          "step": 3,
+          "actor": "BUP/akutt",
+          "type": "ikke_relevant"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "BUP som forstekontakt",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "BUP",
+        "barnevern"
+      ],
+      "sources": [
+        "08-mari-case (trondheim)",
+        "04",
+        "16-livssituasjoner/04"
+      ],
+      "safety_critical": false
+    },
+    "S12": {
+      "first": "Fastlege",
+      "second": "RPH/kommunal psykisk helse; DPS via henvisning ved alvorlig behov",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "RPH/lavterskel",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "DPS",
+          "type": "mulig"
+        },
+        {
+          "step": 4,
+          "actor": "legevakt/113",
+          "type": "ikke_relevant (ikke akutt oppgitt)"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "113 uten faren-indikasjon",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "akuttniva (113)"
+      ],
+      "sources": [
+        "16-livssituasjoner/05",
+        "26"
+      ],
+      "safety_critical": false
+    },
+    "S13": {
+      "first": "Kommunen: helse- og velferdskontor for avlastning/stottekontakt (SK1036)",
+      "second": "hjelpelinje for foreldre (116 123 tast 2) + evt. Trondheimshjelpa",
+      "route": [
+        {
+          "step": 1,
+          "actor": "kommunal avlastning/stottekontakt",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "Foreldresupport 116 123 tast 2",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "barnevern (hjelpetrapp: foreldrestotte via BVL 3-1)",
+          "type": "mulig, ikke automatisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "automatisk bekymringsmelding som svar",
+          "error_class": "OVER_ESCALATION"
+        },
+        {
+          "check": "truer med omsorgsovertakelse",
+          "error_class": "SAFETY_CRITICAL"
+        }
+      ],
+      "not_relevant": [
+        "akuttniva barnevern"
+      ],
+      "sources": [
+        "01-barn-og-familie (trondheim)",
+        "38",
+        "39",
+        "08-mari-case"
+      ],
+      "safety_critical": false
+    },
+    "S14": {
+      "first": "Helsesykepleier/helsestasjon (0-5: helsestasjonen)",
+      "second": "foreldresamtale via Trondheimshjelpa/BFT",
+      "route": [
+        {
+          "step": 1,
+          "actor": "helsestasjon",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "lavterskel samtale",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "BUP automatisk",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "BUP"
+      ],
+      "sources": [
+        "25",
+        "26"
+      ],
+      "safety_critical": false
+    },
+    "S15": {
+      "first": "Trondheimshjelpa (direktekontakt, gratis)",
+      "second": "skolehelse ved skolerelatert spor",
+      "route": [
+        {
+          "step": 1,
+          "actor": "Trondheimshjelpa",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "skolehelse/kontaktlarer",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "BUP automatisk",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "BUP"
+      ],
+      "sources": [
+        "02-psykisk-helse (trondheim)",
+        "25"
+      ],
+      "safety_critical": false
+    },
+    "S16": {
+      "first": "Egen behandling: fastlege/RPH",
+      "second": "praktisk stotte via kommune; barnevern kun ved omsorgssvikt-indikasjon",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege/RPH",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "kommunal stotte (avlastning/foreldrestotte)",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "barnevern",
+          "type": "ikke_relevant uten omsorgssvikt-indikasjon"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "barnevern som automatisk folge av diagnose",
+          "error_class": "OVER_ESCALATION"
+        },
+        {
+          "check": "antar foreldres diagnose = omsorgssvikt",
+          "error_class": "ASSUMED_FACT"
+        }
+      ],
+      "not_relevant": [
+        "barnevern automatisk"
+      ],
+      "sources": [
+        "16-livssituasjoner/05",
+        "38",
+        "39"
+      ],
+      "safety_critical": false
+    },
+    "S17": {
+      "first": "Kontaktlarer + skolehelse",
+      "second": "kartlegging av skolemiljo/fravar; PPT ved pedagogiske behov; fastlege ved somatisk",
+      "route": [
+        {
+          "step": 1,
+          "actor": "kontaktlarer",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "skolehelse",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "kartlegging skolemiljo/fravar",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 4,
+          "actor": "PPT",
+          "type": "mulig"
+        },
+        {
+          "step": 5,
+          "actor": "fastlege",
+          "type": "anbefalt"
+        },
+        {
+          "step": 6,
+          "actor": "BUP",
+          "type": "mulig ved alvorlighet/varighet"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "BUP som forstekontakt",
+          "error_class": "OVER_ESCALATION"
+        },
+        {
+          "check": "PPT sender BUP-henvisning alene",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "barnevern"
+      ],
+      "sources": [
+        "29",
+        "30",
+        "32",
+        "03-skole-ppt (trondheim)"
+      ],
+      "safety_critical": false
+    },
+    "S18": {
+      "first": "Skolen + PPT-drofting; fastlege for medisinsk spor",
+      "second": "PPT kartlegging; BUP-utredning via henvisning underskrevet av lege/psykolog/barnevernsleder",
+      "route": [
+        {
+          "step": 1,
+          "actor": "skolen/PPT-drofting",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "PPT kartlegging",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "fastlege",
+          "type": "anbefalt"
+        },
+        {
+          "step": 4,
+          "actor": "BUP",
+          "type": "mulig ved indikasjon"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "PPT/BUP-henvisning direkte uten lege/psykolog/barnevernsleder",
+          "error_class": "LAW_ERROR"
+        },
+        {
+          "check": "adopterer ADHD-diagnose fra larerens mistanke",
+          "error_class": "ASSUMED_DIAGNOSIS"
+        }
+      ],
+      "not_relevant": [
+        "HABU uten funksjonsnedsettelse-indikasjon"
+      ],
+      "sources": [
+        "28",
+        "32",
+        "25",
+        "24",
+        "04-bup-habu (trondheim)"
+      ],
+      "safety_critical": false
+    },
+    "S19": {
+      "first": "Skolen (kartlegging/tiltak) + PPT",
+      "second": "BUP/HABU ikke relevant uten psykiatrisk/nevrologisk indikasjon",
+      "route": [
+        {
+          "step": 1,
+          "actor": "skolen",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "PPT (pedagogisk utredning)",
+          "type": "obligatorisk ved behov"
+        },
+        {
+          "step": 3,
+          "actor": "BUP",
+          "type": "ikke_relevant"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til BUP for dysleksi",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "BUP"
+      ],
+      "sources": [
+        "28",
+        "29"
+      ],
+      "safety_critical": false
+    },
+    "S20": {
+      "first": "Fastlege (henvisning til BUP eller HABU)",
+      "second": "PPT parallelt; HABU ved utviklingsforstyrrelse/funksjonsnedsettelse-profil",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "BUP eller HABU (profil-avklaring)",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "PPT parallelt",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "HABU for alle autisme-tilfeller",
+          "error_class": "WRONG_SERVICE"
+        }
+      ],
+      "not_relevant": [
+        "sosialhjelp"
+      ],
+      "sources": [
+        "04-bup-habu (trondheim)",
+        "28",
+        "24"
+      ],
+      "safety_critical": false
+    },
+    "S21": {
+      "first": "HABU via lege (fastlege henviser)",
+      "second": "PPT + avlastning/stottekontakt via kommune",
+      "route": [
+        {
+          "step": 1,
+          "actor": "HABU",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "PPT",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "kommunal avlastning/stottekontakt",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til BUP som hovedinstans",
+          "error_class": "WRONG_SERVICE"
+        }
+      ],
+      "not_relevant": [
+        "BUP som hovedspor"
+      ],
+      "sources": [
+        "04-bup-habu (trondheim)",
+        "01-barn-og-familie (trondheim)"
+      ],
+      "safety_critical": false
+    },
+    "S22": {
+      "first": "HABU (habilitering) for funksjonsnedsettelse",
+      "second": "PPT/skolen for tilrettelegging (ITO)",
+      "route": [
+        {
+          "step": 1,
+          "actor": "HABU",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "skolen/PPT",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "PPT som eneste instans for habilitering",
+          "error_class": "WRONG_SERVICE"
+        }
+      ],
+      "not_relevant": [
+        "BUP"
+      ],
+      "sources": [
+        "04-bup-habu (trondheim)",
+        "29"
+      ],
+      "safety_critical": false
+    },
+    "S23": {
+      "first": "Skolehelse/HFU: fra 12 ar kan eleven ta kontakt selv",
+      "second": "omfattende behandling under 16 krever foreldresamtykke (PBL)",
+      "route": [
+        {
+          "step": 1,
+          "actor": "skolehelse/HFU",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "samtykkesjekk 12/16",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "fastlege/BUP",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "lover full anonym behandling under 16",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "barnevern"
+      ],
+      "sources": [
+        "31",
+        "41"
+      ],
+      "safety_critical": false
+    },
+    "S24": {
+      "first": "Fastlege eller skolehelse; 16-18 har samtykkekompetanse",
+      "second": "BUP-henvisning kan skje uten foresattes samtykke",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege/skolehelse",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "BUP",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "krevmer foreldresamtykke for 17-ar",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "barnevern"
+      ],
+      "sources": [
+        "31",
+        "41",
+        "24"
+      ],
+      "safety_critical": false
+    },
+    "S25": {
+      "first": "Fastlege/psykolog: PBL 4-4 ved skadefare + barnets behov",
+      "second": "BUP kan vurdere uavhengig av begge foreldres enighet (0-16 i samrad)",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "regelkontroll PBL 4-4/samrad",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "BUP-vurdering",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "hevdmer at behandling er umulig uten begge samtykke uansett alvorlighet",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "barnevern automatisk"
+      ],
+      "sources": [
+        "41",
+        "24",
+        "25"
+      ],
+      "safety_critical": false
+    },
+    "S26": {
+      "first": "Avklare barnets alder (hovedregel 14 mnd, unntak til 8 ar med saerlig tilsyn)",
+      "second": "ikke adopter ADHD-diagnose; soknad + dokumentasjon",
+      "route": [
+        {
+          "step": 1,
+          "actor": "avklare alder/tilsynsbehov",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "regelvalg (nye regler august 2026)",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "soknad",
+          "type": "anbefalt"
+        },
+        {
+          "step": 4,
+          "actor": "legedokumentasjon om tilsyn",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "adopterer ADHD-diagnose fra sporsmalet",
+          "error_class": "ASSUMED_DIAGNOSIS"
+        },
+        {
+          "check": "lover stonad uten alder/dokumentasjon",
+          "error_class": "BENEFIT_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "gamle regler",
+        "automatisk barnetilsyn-uttalelse"
+      ],
+      "sources": [
+        "63",
+        "64",
+        "67",
+        "68"
+      ],
+      "safety_critical": false
+    },
+    "S27": {
+      "first": "Okonomisk sosialhjelp/nodhjelp: kommunen (Trondheim: helse- og velferdskontor) / NAV",
+      "second": "soknad samme dag; midlertidig losning mens soknad behandles",
+      "route": [
+        {
+          "step": 1,
+          "actor": "kommunal sosialtjeneste",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "soknad",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "evt. mattilbud/kirke/organisasjon",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til NAV sentralt alene (kommune er inn-gang)",
+          "error_class": "WRONG_SERVICE"
+        }
+      ],
+      "not_relevant": [
+        "bostotte (for sakte for i dag)"
+      ],
+      "sources": [
+        "56",
+        "57",
+        "06-nav-okonomi-bolig (trondheim)"
+      ],
+      "safety_critical": false
+    },
+    "S28": {
+      "first": "Akutt sosialhjelp: kommunen",
+      "second": "avdragsordning med stromselskap + bostottesoknad",
+      "route": [
+        {
+          "step": 1,
+          "actor": "kommunal sosialtjeneste",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "stromselskap/avdrag",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "bostottesoknad",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "hviler pa at NAV-telefon alene star for det akutte",
+          "error_class": "WRONG_ORDER"
+        }
+      ],
+      "not_relevant": [
+        "startlan"
+      ],
+      "sources": [
+        "55",
+        "56",
+        "57",
+        "06-nav-okonomi-bolig"
+      ],
+      "safety_critical": false
+    },
+    "S29": {
+      "first": "Skriftlig protest innen 1 maned (husleieloven 9-8)",
+      "second": "sosialtjenesten + bostottesoknad",
+      "route": [
+        {
+          "step": 1,
+          "actor": "protest skriftlig",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "sosialtjenesten",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "bostottesoknad",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "klagerom husleieloven 9-7 for protestretten",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "nodhjelp som permanent losning"
+      ],
+      "sources": [
+        "57",
+        "58",
+        "56",
+        "55"
+      ],
+      "safety_critical": false
+    },
+    "S30": {
+      "first": "Kontakt sosialtjenesten na (Trajectory: varsel ma sendes minst 2 uker for begjaering)",
+      "second": "protest/nedlaeggelse av restanse; dokumentasjon",
+      "route": [
+        {
+          "step": 1,
+          "actor": "sosialtjenesten",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "dokumentasjon/restanse-avklaring",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "hevdmer fravikelse kan skje umiddelbart",
+          "error_class": "LAW_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "startlan"
+      ],
+      "sources": [
+        "58",
+        "56",
+        "06-nav-okonomi-bolig"
+      ],
+      "safety_critical": false
+    },
+    "S31": {
+      "first": "Korrekt premiss: NAV kan innville depositumsgaranti ved individuell vurdering",
+      "second": "ikke automatisk; avklar med NAV for signering; dokumenter boligens kostnader",
+      "route": [
+        {
+          "step": 1,
+          "actor": "korrigere premiss",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "kontakt NAV for garanti-vurdering",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "ikke signerer for avklaring",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "lover depositum automatisk",
+          "error_class": "BENEFIT_ERROR"
+        },
+        {
+          "check": "finner pa kommunal garanti uten kilde",
+          "error_class": "FALSE_PRECISION"
+        }
+      ],
+      "not_relevant": [
+        "sosialhjelp automatisk"
+      ],
+      "sources": [
+        "58",
+        "06-nav-okonomi-bolig"
+      ],
+      "safety_critical": false
+    },
+    "S32": {
+      "first": "Kommunen: midlertidig botilbud (sotjl 27); dagtid hv-kontor, ellers akuttkjede",
+      "second": "barnevern/krisesenter hvis sikkerhetsaspekt",
+      "route": [
+        {
+          "step": 1,
+          "actor": "kommunen/akuttkjede",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "midlertidig botilbud",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "oppfolging/oppf\u00f8lging boligsosial",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til bostotte-soknad som forstegang",
+          "error_class": "WRONG_ORDER"
+        }
+      ],
+      "not_relevant": [
+        "bostotte (akutt)"
+      ],
+      "sources": [
+        "57",
+        "59",
+        "06-nav-okonomi-bolig",
+        "07-akutt-og-sikkerhet"
+      ],
+      "safety_critical": false
+    },
+    "S33": {
+      "first": "Sok bostotte (Husbanken, innen 25.)",
+      "second": "beregningsmodell; lovt belop kan ikke gis uten beregning",
+      "route": [
+        {
+          "step": 1,
+          "actor": "bostottesoknad",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "avklare boutgifter/inntekt",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "belop uten beregning",
+          "error_class": "FALSE_PRECISION"
+        },
+        {
+          "check": "kalkulator-resultat uten live-beregning",
+          "error_class": "FALSE_PRECISION"
+        }
+      ],
+      "not_relevant": [
+        "sosialhjelp automatisk"
+      ],
+      "sources": [
+        "55"
+      ],
+      "safety_critical": false
+    },
+    "S34": {
+      "first": "NAV: innkreving/forskudd ved manglende betaling",
+      "second": "avklare fastsetting",
+      "route": [
+        {
+          "step": 1,
+          "actor": "NAV innkreving",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "fastsetting om mangler",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "krevmer rettsak forst",
+          "error_class": "WRONG_ORDER"
+        }
+      ],
+      "not_relevant": [
+        "sosialhjelp automatisk"
+      ],
+      "sources": [
+        "48",
+        "50",
+        "35"
+      ],
+      "safety_critical": false
+    },
+    "S35": {
+      "first": "Overgangsregler: sokt for 1.7.2026 \u2192 overgangsforskrift (gamle vilkar-ruten)",
+      "second": "mottaker videre: gamle regler fortsetter",
+      "route": [
+        {
+          "step": 1,
+          "actor": "regelvalg via dato (FOR-1361 1 a-d)",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "bruker nye 14-mnd-regler",
+          "error_class": "OLD_RULE"
+        },
+        {
+          "check": "hopper over maskinlesbar ruting",
+          "error_class": "SOURCE_CONFLICT"
+        }
+      ],
+      "not_relevant": [
+        "nye regler"
+      ],
+      "sources": [
+        "63",
+        "68",
+        "69",
+        "familieokonomi-regler.json r23"
+      ],
+      "safety_critical": false
+    },
+    "S36": {
+      "first": "Nye regler: soknad etter 1.7.2026 gjelder (ensligdato etter soknad endrer ikke hovedregelen)",
+      "second": "dokumentasjonskrav for aleneomsorg",
+      "route": [
+        {
+          "step": 1,
+          "actor": "regelvalg via dato-motor",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "overgangsregler pga tidlig soknad",
+          "error_class": "OLD_RULE"
+        }
+      ],
+      "not_relevant": [
+        "overgangsregler"
+      ],
+      "sources": [
+        "63",
+        "68",
+        "69"
+      ],
+      "safety_critical": false
+    },
+    "S37": {
+      "first": "Nye regler; barnetilsyn 64% (15-10); AAP trekkes i avkortingen",
+      "second": "hovedperiode 14 mnd",
+      "route": [
+        {
+          "step": 1,
+          "actor": "regelvalg nye regler",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "AAP i avkortingsgrunnlaget",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "barnetilsyn-sats",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "glemmer 15-10",
+          "error_class": "MISSING_DOCUMENTATION"
+        },
+        {
+          "check": "gamle regler",
+          "error_class": "OLD_RULE"
+        }
+      ],
+      "not_relevant": [
+        "gamle regler"
+      ],
+      "sources": [
+        "64",
+        "66",
+        "68",
+        "familieokonomi-regler.json"
+      ],
+      "safety_critical": false
+    },
+    "S38": {
+      "first": "Fastlege",
+      "second": "kommunalt lavterskel/RPH (navn varierer per kommune); ikke Trondheim-spesifikk",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "kommunalt tilbud (generisk, ingen lokalnavn)",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "navngir Trondheim-tjenester uten at kommune er oppgitt",
+          "error_class": "LOCAL_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "Trondheim-navn"
+      ],
+      "sources": [
+        "16-livssituasjoner/05",
+        "25",
+        "26"
+      ],
+      "safety_critical": false
+    },
+    "S39": {
+      "first": "RPH Trondheim (HelsaMi, 18+)",
+      "second": "fastlege; helse- og velferdskontor ved mer behov",
+      "route": [
+        {
+          "step": 1,
+          "actor": "RPH/HelsaMi",
+          "type": "anbefalt"
+        },
+        {
+          "step": 2,
+          "actor": "fastlege",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "sender til Trondheimshjelpa (barn/familie) for voksen",
+          "error_class": "WRONG_SERVICE"
+        },
+        {
+          "check": "RPH under 18",
+          "error_class": "LOCAL_ERROR"
+        }
+      ],
+      "not_relevant": [
+        "Trondheimshjelpa for voksne alene"
+      ],
+      "sources": [
+        "02-psykisk-helse (trondheim)"
+      ],
+      "safety_critical": false
+    },
+    "S40": {
+      "first": "Fastlege",
+      "second": "RPH/kommunal psykisk helse; DPS ved alvorlig behov",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "RPH/lavterskel",
+          "type": "anbefalt"
+        },
+        {
+          "step": 3,
+          "actor": "DPS",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "akuttinnstilling uten faren-indikasjon",
+          "error_class": "OVER_ESCALATION"
+        }
+      ],
+      "not_relevant": [
+        "akuttniva"
+      ],
+      "sources": [
+        "16-livssituasjoner/05",
+        "26"
+      ],
+      "safety_critical": false
+    },
+    "S41": {
+      "first": "Fastlege (vurdering, somatisk utlosering)",
+      "second": "RPH/DPS ved behov",
+      "route": [
+        {
+          "step": 1,
+          "actor": "fastlege",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "RPH/DPS",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "diagnostiserer depresjon fra sporsmalet",
+          "error_class": "ASSUMED_DIAGNOSIS"
+        }
+      ],
+      "not_relevant": [
+        "akuttniva"
+      ],
+      "sources": [
+        "16-livssituasjoner/05"
+      ],
+      "safety_critical": false
+    },
+    "S42": {
+      "first": "Fastlege eller RPH (18+ gjelder)",
+      "second": "kommunalt tilbud",
+      "route": [
+        {
+          "step": 1,
+          "actor": "RPH/fastlege",
+          "type": "anbefalt"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "nekte RPH pa alder uten kontroll",
+          "error_class": "WRONG_SERVICE"
+        }
+      ],
+      "not_relevant": [
+        "skolehelse"
+      ],
+      "sources": [
+        "16-livssituasjoner/05",
+        "02-psykisk-helse"
+      ],
+      "safety_critical": false
+    },
+    "S43": {
+      "first": "Akutt helsehjelp til den voksne: 113 ved fare for livet, ellers legevakt 116 117; barnet skal ikke sta uten forsvarlig omsorg - sikre trygg voksenomsorg forst",
+      "second": "Ingen trygg voksen tilgjengelig: barnevernvakt 116 111 (dognapen); trygg voksen overtar: ikke barnevern automatisk; barn som parorende hpl. par. 10 a",
+      "route": [
+        {
+          "step": 1,
+          "actor": "113/legevakt 116 117",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "trygg voksen omsorg",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "barnevernvakt 116 111 ved manglende trygg voksen",
+          "type": "betinget"
+        },
+        {
+          "step": 4,
+          "actor": "helsepersonell parorende-oppfolging (hpl. par. 10 a)",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "barnevernet automatisk nar trygg voksen overtar",
+          "error_class": "OVER_ESCALATION"
+        },
+        {
+          "check": "rutinesak ved konkret selvmordsfare",
+          "error_class": "SAFETY_CRITICAL"
+        }
+      ],
+      "not_relevant": [
+        "BUP (voksen)"
+      ],
+      "sources": [
+        "57",
+        "42",
+        "26",
+        "38",
+        "18"
+      ],
+      "safety_critical": true
+    },
+    "S44": {
+      "first": "113 ved fare for livet / legevakt 116 117; ikke la barnet alene; kontakt person rundt",
+      "second": "akutt psykisk helse (DPS/akuttenhet)",
+      "route": [
+        {
+          "step": 1,
+          "actor": "113/legevakt",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "barnesikkerhet",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "akutt psykisk helse",
+          "type": "obligatorisk"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "SOFORT BUP-vakt i stedet for 113/legevakt",
+          "error_class": "WRONG_ORDER"
+        },
+        {
+          "check": "ordinare NAV-prosesser",
+          "error_class": "SAFETY_CRITICAL"
+        }
+      ],
+      "not_relevant": [
+        "overgangstonad",
+        "mekling"
+      ],
+      "sources": [
+        "07-akutt-og-sikkerhet (trondheim)",
+        "42"
+      ],
+      "safety_critical": true
+    },
+    "S45": {
+      "first": "Legevakt 116 117 (BUP-kobling); 12-18 kan henvises direkte til Akuttenheten",
+      "second": "113 hvis fare for livet",
+      "route": [
+        {
+          "step": 1,
+          "actor": "legevakt/BUP-akutt",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "113 ved faren for livet",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "forelder ringer BUP-poliklinikk som forstegang",
+          "error_class": "WRONG_ORDER"
+        }
+      ],
+      "not_relevant": [
+        "PPT",
+        "lavterskel"
+      ],
+      "sources": [
+        "04-bup-habu (trondheim)",
+        "07-akutt-og-sikkerhet"
+      ],
+      "safety_critical": true
+    },
+    "S46": {
+      "first": "112/politi",
+      "second": "krisesenteret 116 006 (dognapent)",
+      "route": [
+        {
+          "step": 1,
+          "actor": "112",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "krisesenteret",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "barnevern ved barn-vitne/risiko",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "familievern som forstegang",
+          "error_class": "WRONG_ORDER"
+        },
+        {
+          "check": "savner sikkerhetsprioritering",
+          "error_class": "SAFETY_CRITICAL"
+        }
+      ],
+      "not_relevant": [
+        "mekling"
+      ],
+      "sources": [
+        "42",
+        "45"
+      ],
+      "safety_critical": true
+    },
+    "S47": {
+      "first": "Politi (112 ved naerforende fare, ellers politi-tjenesten) + akutt barnevern 116 111",
+      "second": "Statens barnehus via politi/barnevern; ikke lavterskel-samtale forst",
+      "route": [
+        {
+          "step": 1,
+          "actor": "politi/barnevern",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "barnehus",
+          "type": "obligatorisk ved undersokelse"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "lavterskel-samtale som forstegang",
+          "error_class": "WRONG_ORDER"
+        },
+        {
+          "check": "familieterapi-stempling",
+          "error_class": "SAFETY_CRITICAL"
+        }
+      ],
+      "not_relevant": [
+        "familievern",
+        "lavterskel"
+      ],
+      "sources": [
+        "40",
+        "42",
+        "17"
+      ],
+      "safety_critical": true
+    },
+    "S48": {
+      "first": "Akutt: kommunen (midlertidig botilbud) + psykisk krise-spor samtidig",
+      "second": "barnevern/krisesenter ved sikkerhetsbehov",
+      "route": [
+        {
+          "step": 1,
+          "actor": "kommunen/akuttkjede",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 2,
+          "actor": "psykisk krise-vurdering",
+          "type": "obligatorisk"
+        },
+        {
+          "step": 3,
+          "actor": "barnevern/krisesenter",
+          "type": "mulig"
+        }
+      ],
+      "forbidden": [
+        {
+          "check": "velger bostotte-soknad som forstegang",
+          "error_class": "WRONG_ORDER"
+        },
+        {
+          "check": "manglar psykisk krise-vurdering",
+          "error_class": "SAFETY_CRITICAL"
+        }
+      ],
+      "not_relevant": [
+        "bostotte (akutt)"
+      ],
+      "sources": [
+        "57",
+        "59",
+        "07-akutt-og-sikkerhet",
+        "40"
+      ],
+      "safety_critical": true
+    }
+  }
+}

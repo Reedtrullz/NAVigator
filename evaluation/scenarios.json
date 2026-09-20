@@ -1,0 +1,887 @@
+{
+  "meta": {
+    "status_date": "2026-08-30",
+    "total": 48,
+    "purpose": "End-to-end beslutnings-QA av NAV Explore kunnskapssenteret",
+    "design_notes": [
+      "Ufullstendig informasjon er bevisst: known/unknown skiller det som er gitt fra det som ma avklarast.",
+      "Golden routes ligger i expected-routing.json og markerer obligatorisk/anbefalt/mulig/ikke_relevant/farlig.",
+      "48 scenarioer; 14 Trondheim-lokaliserte; 5 dato/overgangsregel-tester; 3 ledet-premiss-tester; 1 motstridende-opplysning-test."
+    ],
+    "category_distribution": {
+      "samlivsbrudd_familie": 8,
+      "barn_psykisk_helse": 8,
+      "skole_ppt_bup_habu": 9,
+      "okonomi_nav_bolig": 12,
+      "voksne_psykisk_helse": 5,
+      "akutt_sikkerhet": 6
+    },
+    "location_distribution": {
+      "nasjonalt": 32,
+      "trondheim": 16
+    }
+  },
+  "scenarios": [
+    {
+      "id": "S01",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Ny samboerbrudd, 5-ar",
+      "utterance": "Jeg og samboeren min har nettopp brutt. Vi har et barn pa 5 ar. Hva bor jeg gjore forst?",
+      "known": [
+        "brudd nylig",
+        "samboerskap",
+        "barn 5 ar",
+        "usikkerhet om videre situasjon"
+      ],
+      "unknown": [
+        "foreldreansvar",
+        "bostedsordning",
+        "inntekt",
+        "bolig",
+        "konfliktniva"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S02",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Motstridende bostedsopplysning",
+      "utterance": "Barnet bor 50/50 hos oss. Eller egentlig, hun er bare hos far annenhver helg. Hvilken barnetrygd far jeg?",
+      "known": [
+        "foreldrenes eget, motstridende bostedsspor",
+        "mor oppgir i utgangspunktet delt bosted"
+      ],
+      "unknown": [
+        "faktisk fast bosted",
+        "folkeregistrering",
+        "formell avtale"
+      ],
+      "cross_categories": [
+        "okonomi_nav_bolig"
+      ]
+    },
+    {
+      "id": "S03",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Delt bosted barnetrygd",
+      "utterance": "Vi har avtale om uke-for-uke bosted. Har jeg krav pa halv barnetrygd?",
+      "known": [
+        "felles foreldreansvar",
+        "avtale om uke-uke",
+        "begge aktive foreldre"
+      ],
+      "unknown": [
+        "om avtalen er formell/godkjent",
+        "folkeregistrering",
+        "utvidet sats eller ordinar"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S04",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Overgangstonad 7-ar (Mari-hovedregel)",
+      "utterance": "Jeg har brutt med samboeren og vil soke overgangstonad. Barnet mitt er 7 ar. Har jeg rett?",
+      "known": [
+        "soknad august 2026",
+        "barn 7 ar",
+        "samlivsbrudd nylig"
+      ],
+      "unknown": [
+        "aleneomsorg-dokumentasjon",
+        "tilsynsbehov",
+        "inntekt",
+        "arbeidsstatus"
+      ],
+      "cross_categories": [
+        "barn_psykisk_helse"
+      ]
+    },
+    {
+      "id": "S05",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Mekling i gar-situasjon",
+      "utterance": "Samlivsbruddet skjedde i gar. Hvordan bestiller jeg mekling?",
+      "known": [
+        "brudd i gar",
+        "barn finnes (antalt fra kontekst: felles barn)"
+      ],
+      "unknown": [
+        "konfliktniva",
+        "voldstvil",
+        "foreldreansvar"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S06",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Manglende barnebidrag",
+      "utterance": "Far betaler ikke barnebidraget som ble avtalt. Hva gjor jeg?",
+      "known": [
+        "avtalt bidrag",
+        "betalingsstop"
+      ],
+      "unknown": [
+        "om bidrag er NAV-fastsett eller privat",
+        "avtaleform",
+        "barnets bosted"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S07",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Flytting med barnet",
+      "utterance": "Jeg vil flytte med datteren til en annen kommune. Far vil ikke gi samtykke. Hva gjelder?",
+      "known": [
+        "flytteplan annen kommune",
+        "far motsetter seg"
+      ],
+      "unknown": [
+        "foreldreansvar",
+        "avstand",
+        "barnehage/skoleforhold",
+        "hvorfor far motsetter seg"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S08",
+      "category": "samlivsbrudd_familie",
+      "location": "nasjonalt",
+      "title": "Uenighet om fast bosted",
+      "utterance": "Vi blir ikke enige om hvor datteren skal bo fast. Hva er veien videre?",
+      "known": [
+        "uenighet om fast bosted",
+        "felles foreldreansvar"
+      ],
+      "unknown": [
+        "konfliktniva",
+        "hvor lenge uenigheten har vart",
+        "boforhold begge"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S09",
+      "category": "barn_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Trist barn 2 dager etter brudd",
+      "utterance": "Min 6-arige gutt er veldig trist og klistret etter bruddet for to dager siden. Trenger han BUP?",
+      "known": [
+        "symptomvarighet 2 dager",
+        "klar utloser: samlivsbrudd"
+      ],
+      "unknown": [
+        "fungering i skole/barnehage",
+        "sovn/ematferd over tid"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S10",
+      "category": "barn_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Deprimert barn over 4 maneder",
+      "utterance": "Min 9-arige har vart sterkt deprimert og trukket seg fra alt i fire maneder etter bruddet. Hvor starter jeg?",
+      "known": [
+        "varighet 4 maneder",
+        "omfattende endring",
+        "sammenheng med brudd"
+      ],
+      "unknown": [
+        "somatisk utlosering",
+        "skolefungering",
+        "selvskadingstvil"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S11",
+      "category": "barn_psykisk_helse",
+      "location": "trondheim",
+      "title": "Mari-datter grater forste natt",
+      "utterance": "Datteren min grater og sover darlig forste natten etter at jeg flyttet ut. Hva bor jeg gjore?",
+      "known": [
+        "akutt natt etter flytting",
+        "barn 7 ar",
+        "ingen andre opplysninger"
+      ],
+      "unknown": [
+        "varighet",
+        "skolefungering",
+        "om dette er normalreaksjon eller mer"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S12",
+      "category": "barn_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Voksen far ikke fungert over tid",
+      "utterance": "Etter bruddet klarer jeg ikke fungere lenger. Jeg spiser knapt, sover ikke og orker ikke jobb. Hvor far jeg hjelp?",
+      "known": [
+        "varig funksjonstap",
+        "sovn/ematferd",
+        "sammenheng med krise"
+      ],
+      "unknown": [
+        "selvmordstvil",
+        "inntekt/sykepermisjonstatus",
+        "tidligere behandling"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S13",
+      "category": "barn_psykisk_helse",
+      "location": "trondheim",
+      "title": "Utslitt aleneforelder",
+      "utterance": "Jeg orker ikke mer. Jeg er alene om alt med to barn pa 3 og 6 ar og klarer ikke hverdagen. Kommer barnevernet til a ta barna mine?",
+      "known": [
+        "utoemt kapasitet",
+        "to sma barn",
+        "aleneomsorg oppgitt"
+      ],
+      "unknown": [
+        "inntekt/bolig",
+        "nettverk",
+        "helseproblemer",
+        "konfliktniva med far"
+      ],
+      "cross_categories": [
+        "okonomi_nav_bolig"
+      ]
+    },
+    {
+      "id": "S14",
+      "category": "barn_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Sovnproblemer 5-ar",
+      "utterance": "Min 5-aring har vondt i magen hver morgen og grater om natten siden bruddet for en maned siden. Hvor far jeg hjelp?",
+      "known": [
+        "varighet ca 1 maned",
+        "sommatiske symptomer",
+        "klar utloser"
+      ],
+      "unknown": [
+        "barnehagefungering",
+        "omfattning"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S15",
+      "category": "barn_psykisk_helse",
+      "location": "trondheim",
+      "title": "Urolig 10-ar etter brudd",
+      "utterance": "Min 10-aring er urolig, sint og har sluttet a gjore leksejobb etter bruddet. Vi bor i Trondheim. Hvor starter jeg lavterskel?",
+      "known": [
+        "atferdsendring",
+        "barn 10 ar",
+        "Trondheim bosted"
+      ],
+      "unknown": [
+        "skolerapport",
+        "varighet",
+        "alvorlighet"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S16",
+      "category": "barn_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Forelder med depresjon",
+      "utterance": "Jeg har blitt diagnostisert med depresjon og er alenemor med et barn pa 8 ar. Blir barnet mitt tatt av barnevernet?",
+      "known": [
+        "forelder har diagnostisert depresjon",
+        "aleneomsorg oppgitt"
+      ],
+      "unknown": [
+        "behandlingsstatus",
+        "fungering",
+        "nettverk",
+        "stottebehov"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S17",
+      "category": "skole_ppt_bup_habu",
+      "location": "trondheim",
+      "title": "Skolefravar 7-ar med magesmerter",
+      "utterance": "Min 7-aring har okende skolefravar, vondt i magen om morgenen og vil ikke ga pa skolen. Vi bor i Trondheim. Hva gjor jeg?",
+      "known": [
+        "okende fravar",
+        "sommatiske symptomer",
+        "Trondheim"
+      ],
+      "unknown": [
+        "skolens vurdering",
+        "varighet",
+        "hjemmeforhold",
+        "laeringsvansker"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S18",
+      "category": "skole_ppt_bup_habu",
+      "location": "nasjonalt",
+      "title": "Mistanke ADHD 8-ar",
+      "utterance": "Lareren tror min 8-aring har ADHD. Hvordan far jeg utredet dette?",
+      "known": [
+        "larerens mistanke",
+        "konsentrasjons/atferdsvansker i skolen"
+      ],
+      "unknown": [
+        "hjemmeobservasjon",
+        "foreldres vurdering",
+        "tidligere tiltak"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S19",
+      "category": "skole_ppt_bup_habu",
+      "location": "nasjonalt",
+      "title": "Dysleksi-mistanke",
+      "utterance": "Min 9-aring leser langt bak klassen. Jeg mistenker dysleksi. Hvor bor jeg henvende meg?",
+      "known": [
+        "laeringssvanske-tmistanke",
+        "lesesvakheter rapportert"
+      ],
+      "unknown": [
+        "skolens kartlegging",
+        "synevor/horsel",
+        "tidligere tiltak"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S20",
+      "category": "skole_ppt_bup_habu",
+      "location": "trondheim",
+      "title": "Autisme-mistanke 6-ar",
+      "utterance": "Barnehagen mistenker autismespekter hos min 6-aring. Han har ogsa store sansevansker. Vi bor i Trondheim. Hvor henvender jeg meg?",
+      "known": [
+        "barnehagens mistanke",
+        "sansevansker",
+        "6 ar"
+      ],
+      "unknown": [
+        "funksjonsprofil",
+        "om det er omfattende funksjonsnedsettelse",
+        "logopedi/sprak"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S21",
+      "category": "skole_ppt_bup_habu",
+      "location": "trondheim",
+      "title": "Utviklingshemming 10-ar",
+      "utterance": "Min 10-aring har utviklingshemming. Hvilke tjenester har vi rett pa i Trondheim?",
+      "known": [
+        "diagnose utviklingshemming oppgitt av forelder",
+        "10 ar",
+        "Trondheim"
+      ],
+      "unknown": [
+        "grad av funksjonsnedsettelse",
+        "omsorgsbelastning",
+        "skolesituasjon"
+      ],
+      "cross_categories": [
+        "okonomi_nav_bolig"
+      ]
+    },
+    {
+      "id": "S22",
+      "category": "skole_ppt_bup_habu",
+      "location": "trondheim",
+      "title": "CP 12-ar skole",
+      "utterance": "Min 12-aring har cerebral parese og trenger tilrettelegging pa ungdomsskolen. Hvor far vi hjelp i Trondheim?",
+      "known": [
+        "diagnose CP",
+        "skolealder 12 ar",
+        "Trondheim"
+      ],
+      "unknown": [
+        "grad av motorisk funksjon",
+        "hjelpemidler",
+        "omsorgsbehov"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S23",
+      "category": "skole_ppt_bup_habu",
+      "location": "nasjonalt",
+      "title": "15-ar vil selv ha hjelp",
+      "utterance": "Jeg er 15 og sliter med angst. Kan jeg fa hjelp uten at foreldrene mine far vite det?",
+      "known": [
+        "alder 15",
+        "eget initiativ"
+      ],
+      "unknown": [
+        "alvorlighetsgrad",
+        "foreldrenes holdning",
+        "skole/bosted"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S24",
+      "category": "skole_ppt_bup_habu",
+      "location": "nasjonalt",
+      "title": "17-ar uten foreldresamtykke",
+      "utterance": "Jeg er 17 og trenger psykisk helsehjelp. Kan jeg henvise meg selv til BUP?",
+      "known": [
+        "alder 17",
+        "eget initiativ"
+      ],
+      "unknown": [
+        "alvorlighetsgrad",
+        "fastlege eller skolehelse-tilgang"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S25",
+      "category": "skole_ppt_bup_habu",
+      "location": "nasjonalt",
+      "title": "Foreldre uenige om helsehjelp",
+      "utterance": "Jeg vil at barnet mitt (9 ar) skal fa hjelp i BUP, men faren motsetter seg det. Kan behandlingen startes likevel?",
+      "known": [
+        "foreldre uenige",
+        "barn 9 ar",
+        "foreldres initiativ"
+      ],
+      "unknown": [
+        "hvorfor faren motsetter seg",
+        "alvorlighetsgrad",
+        "barnets egne behov"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S26",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Ledet premiss: ADHD + overgangstonad",
+      "utterance": "Jeg har et ADHD-barn og er alene med det. Hvordan far jeg overgangstonad?",
+      "known": [
+        "aleneomsorg oppgitt",
+        "ADHD-stemplet av forelder"
+      ],
+      "unknown": [
+        "barnets alder",
+        "om ADHD-diagnose faktisk er stilt",
+        "tilsynsbehov",
+        "inntekt"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S27",
+      "category": "okonomi_nav_bolig",
+      "location": "trondheim",
+      "title": "Ingen mat i dag",
+      "utterance": "Jeg har ingen mat i dag og ingen penger. Vi bor i Trondheim med barn. Hvor henvender jeg meg akkurat na?",
+      "known": [
+        "akutt matmangel",
+        "barn i husstand",
+        "Trondheim"
+      ],
+      "unknown": [
+        "inntekt",
+        "formue",
+        "andre ytelser mottatt"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S28",
+      "category": "okonomi_nav_bolig",
+      "location": "trondheim",
+      "title": "Strom stenges i morgen",
+      "utterance": "Strommen blir stengt i morgen kveld. Vi har sma barn. Hvor bor jeg ringe i Trondheim?",
+      "known": [
+        "umiddelbar stromstenging",
+        "sma barn",
+        "Trondheim"
+      ],
+      "unknown": [
+        "restansestorrelse",
+        "andre gjeld",
+        "inntekt"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S29",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Husleierestanse + oppsigelse",
+      "utterance": "Jeg har faatt oppsigelse pga husleierestanse. Hva gjor jeg forst?",
+      "known": [
+        "oppsigelse mottatt",
+        "restanse"
+      ],
+      "unknown": [
+        "leieform (tidsubestemt?))",
+        "dato for oppsigelse",
+        "inntekt",
+        "bostottesoknad"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S30",
+      "category": "okonomi_nav_bolig",
+      "location": "trondheim",
+      "title": "Fravikelsesvarsel",
+      "utterance": "Utleier har sagt at han gaar til fravikelse nar som helst. Vi bor i Trondheim. Hva gjor jeg?",
+      "known": [
+        "trussel om fravikelse",
+        "Trondheim"
+      ],
+      "unknown": [
+        "om skriftlig varsel er sendt",
+        "restanse",
+        "barnefamilie-status"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S31",
+      "category": "okonomi_nav_bolig",
+      "location": "trondheim",
+      "title": "Ledet premiss: depositum",
+      "utterance": "NAV ma vel betale depositumet mitt nar jeg har fatt bolig? Vi bor i Trondheim.",
+      "known": [
+        "bolig under oppsingling (antalt)",
+        "Trondheim"
+      ],
+      "unknown": [
+        "inntekt/formue",
+        "om boligen er godkjent",
+        "storrelse depositum"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S32",
+      "category": "okonomi_nav_bolig",
+      "location": "trondheim",
+      "title": "Ingen bolig i natt (barnefamilie)",
+      "utterance": "Jeg og barnet mitt har ingen bolig i natt. Vi er i Trondheim. Hvor bor jeg ga na?",
+      "known": [
+        "ingen botilbud i kveld",
+        "barn medforeldret",
+        "Trondheim"
+      ],
+      "unknown": [
+        "vold i forholdet",
+        "russituasjon",
+        "helsekrise"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S33",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Bostotte-soknad",
+      "utterance": "Jeg har lav inntekt og hoy husleie. Far jeg bostotte?",
+      "known": [
+        "lav inntekt",
+        "hoy husleie (storrelse oppgitt)"
+      ],
+      "unknown": [
+        "belop",
+        "formue",
+        "boutgiftstak",
+        "barnantall"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S34",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Bidragsforskudd ved manglende betaling",
+      "utterance": "Barnet bor fast hos meg. Far betaler ikke bidrag og jeg far ikke dekket utgifter. Hva gjor jeg?",
+      "known": [
+        "fast bosted hos mor",
+        "avtalt bidrag",
+        "manglende betaling"
+      ],
+      "unknown": [
+        "om bidrag er fastsatt",
+        "far sin inntekt",
+        "barnets alder"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S35",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Overgangstonad sokt 28.06.2026",
+      "utterance": "Jeg sokte overgangstonad 28. juni 2026 og fikk vedtak etterpaa. Hvilke regler gjelder for meg?",
+      "known": [
+        "soknadsdato 28.06.2026",
+        "vedtak etter soknad"
+      ],
+      "unknown": [
+        "om alle vilkar var oppfylt 30.06",
+        "barnets alder",
+        "inntekt"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S36",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Ble enslig 15.07.2026, sokt 02.07",
+      "utterance": "Jeg ble enslig forsorger 15. juli 2026, men sokte allerede 2. juli. Hvilket regelverk gjelder?",
+      "known": [
+        "soknadsdato 02.07.2026",
+        "ensligdato 15.07.2026"
+      ],
+      "unknown": [
+        "vilkar",
+        "barnets alder",
+        "inntekt"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S37",
+      "category": "okonomi_nav_bolig",
+      "location": "nasjonalt",
+      "title": "Ny sokende august 2026, AAP",
+      "utterance": "Jeg sokte overgangstonad i august 2026, barnet mitt er 10 maneder. Jeg far AAP. Hvordan pavirker det stonaden?",
+      "known": [
+        "soknad august 2026",
+        "barn 10 maneder",
+        "AAP mottaker"
+      ],
+      "unknown": [
+        "AAP-belop",
+        "tilsynsbehov",
+        "arbeidsstatus"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S38",
+      "category": "voksne_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Angst nasjonalt",
+      "utterance": "Hvor far jeg hjelp med angst?",
+      "known": [
+        "ingen kommune oppgitt",
+        "voksen (antalt)"
+      ],
+      "unknown": [
+        "alvorlighetsgrad",
+        "alder",
+        "bosted",
+        "somatisk utlosering"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S39",
+      "category": "voksne_psykisk_helse",
+      "location": "trondheim",
+      "title": "Angst i Trondheim",
+      "utterance": "Hvor far jeg hjelp med angst? Jeg bor i Trondheim.",
+      "known": [
+        "Trondheim bosted",
+        "voksen (antalt)"
+      ],
+      "unknown": [
+        "alvorlighetsgrad",
+        "alder",
+        "tidligere behandling"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S40",
+      "category": "voksne_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Psykisk utslitt men trygg",
+      "utterance": "Jeg er psykisk utslitt etter bruddet og har det vanskelig, men jeg er ikke i fare. Hvor starter jeg?",
+      "known": [
+        "ikke-akutt",
+        "fungering redusert"
+      ],
+      "unknown": [
+        "alvorlighetsgrad",
+        "varighet",
+        "tidligere diagnose"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S41",
+      "category": "voksne_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "Depresjon etter brudd",
+      "utterance": "Jeg tror jeg er deprimert etter bruddet for tre maneder siden. Hva er riktig vei inn?",
+      "known": [
+        "varighet 3 maneder",
+        "selvdiagnostisert"
+      ],
+      "unknown": [
+        "alvorlighetsgrad",
+        "somatisk utlosering",
+        "selvmordstvil"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S42",
+      "category": "voksne_psykisk_helse",
+      "location": "nasjonalt",
+      "title": "RPH-alder 19-ar",
+      "utterance": "Jeg er 19 ar og sliter med angst. Kan jeg fa rask psykisk helsehjelp?",
+      "known": [
+        "alder 19"
+      ],
+      "unknown": [
+        "bosted (om kommunen har RPH)",
+        "alvorlighetsgrad"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S43",
+      "category": "akutt_sikkerhet",
+      "location": "nasjonalt",
+      "title": "Selvmordstanker uten plan",
+      "utterance": "Jeg har selvmordstanker, men ingen plan. Jeg har barn hjemme. Hva gjor jeg?",
+      "known": [
+        "selvmordstanker",
+        "ingen plan",
+        "barn i husstand"
+      ],
+      "unknown": [
+        "tilgang til metoder",
+        "tidligere forsok",
+        "stotte rundt"
+      ],
+      "cross_categories": [
+        "barn_psykisk_helse"
+      ]
+    },
+    {
+      "id": "S44",
+      "category": "akutt_sikkerhet",
+      "location": "trondheim",
+      "title": "Konkret selvmordsplan (Mari E)",
+      "utterance": "Jeg har en konkret plan for a ta livet mitt. Jeg er hjemme alene med barnet mitt. Hva gjor jeg na?",
+      "known": [
+        "konkret plan",
+        "barn til stede",
+        "Trondheim"
+      ],
+      "unknown": [
+        "om det allerede er gjort forsok",
+        "tilgang til midler"
+      ],
+      "cross_categories": [
+        "barn_psykisk_helse"
+      ]
+    },
+    {
+      "id": "S45",
+      "category": "akutt_sikkerhet",
+      "location": "trondheim",
+      "title": "Barn i akutt psykisk krise",
+      "utterance": "Min 14-aring er i akutt psykisk krise og har saukt a skade seg. Vi bor i Trondheim. Hvor bor jeg ringe na?",
+      "known": [
+        "barn 14 ar",
+        "akutt krise",
+        "selvskadingstvil",
+        "Trondheim"
+      ],
+      "unknown": [
+        "om det er fare for livet na",
+        "tidligere BUP-kontakt"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S46",
+      "category": "akutt_sikkerhet",
+      "location": "nasjonalt",
+      "title": "Alvorlig vold mot mor",
+      "utterance": "Min eks truet meg med kniv i gar. Jeg og barnet er pa en trygg plass na. Hva gjor jeg forst?",
+      "known": [
+        "vold med vapen i gar",
+        "na pa trygg plass",
+        "barn"
+      ],
+      "unknown": [
+        "om politiet er kontaktet",
+        "skader",
+        "hvor eks er na"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S47",
+      "category": "akutt_sikkerhet",
+      "location": "nasjonalt",
+      "title": "Seksuelle overgrep mot barn",
+      "utterance": "Jeg mistenker at barnet mitt har blitt utsatt for seksuelle overgrep. Hva gjor jeg?",
+      "known": [
+        "mistanke om seksuelle overgrep"
+      ],
+      "unknown": [
+        "bevis",
+        "om overgriperen har tilgang",
+        "barnets alder"
+      ],
+      "cross_categories": []
+    },
+    {
+      "id": "S48",
+      "category": "akutt_sikkerhet",
+      "location": "trondheim",
+      "title": "Barn uten sted a sove",
+      "utterance": "Barnet mitt og jeg har ikke noe sted a sove i natt, og jeg orker ikke mer psykisk. Vi er i Trondheim. Hva gjor jeg?",
+      "known": [
+        "ingen botilbud i kveld",
+        "psykisk krise hos mor",
+        "barn",
+        "Trondheim"
+      ],
+      "unknown": [
+        "vold i forholdet",
+        "rus",
+        "om mor er i fare for seg selv"
+      ],
+      "cross_categories": [
+        "okonomi_nav_bolig",
+        "barn_psykisk_helse"
+      ]
+    }
+  ]
+}

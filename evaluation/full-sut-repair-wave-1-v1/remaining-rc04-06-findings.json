@@ -1,0 +1,45 @@
+{
+  "artifact": "remaining-rc04-06-findings",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-1-V1",
+  "created_utc": "2026-09-16T03:15:00Z",
+  "source": "evaluation/full-sut-burned-baseline-failure-analysis-v1/repair-candidates.json",
+  "status": "NOT_IMPLEMENTED_IN_WAVE_1_BY_SPEC_SECTION_23",
+  "findings": [
+    {
+      "id": "RC-04",
+      "title": "Emit uncertainty fields on the failure path",
+      "families": ["F6_UNCERTAINTY_UNDER_EXPRESSION (2 VIOLATED)"],
+      "sut_stage": "failure-path output builder",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "2 uncertainty VIOLATED on EXECUTION_FAILED cases; prevents future loss when executions fail",
+      "change": "When execution fails before the answer layer, still emit known epistemic limitations (e.g. age unknown, severity unknown) from the input profile into uncertainty_expressed.",
+      "regression_risk": "LOW",
+      "min_tests": "Unit test: EXECUTION_FAILED path with known profile gaps produces non-empty uncertainty_expressed."
+    },
+    {
+      "id": "RC-05",
+      "title": "Evidence field completeness assembly",
+      "families": ["F4_PROVENANCE_EVIDENCE_GAPS"],
+      "sut_stage": "evidence assembly",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "38 evidence_completeness rows below 1.0 (safety 17, discovery 11, routing 10)",
+      "change": "Ensure required_evidence_fields from the SUT contract (safety_priority, route provenance) are populated from real computation results rather than left as empty objects.",
+      "regression_risk": "LOW-MEDIUM. Must not fabricate evidence to satisfy completeness.",
+      "min_tests": "Contract-level tests that each required evidence field is populated when the corresponding computation succeeds."
+    },
+    {
+      "id": "RC-06",
+      "title": "Renderer cleanup: deduplication, cross-domain filter, meta-text suppression",
+      "families": ["F7_PRESENTATION_NOISE"],
+      "sut_stage": "answer renderer / content selection",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "0 frozen criteria; 98 answers with repeated national blocks, 23 with cross-domain material, 1 with evaluation meta-text",
+      "change": "Deduplicate repeated national-information blocks, suppress cross-domain content not matching the query domain, and remove any internal status/protocol strings from user-facing answers.",
+      "regression_risk": "LOW. Purely presentational; must not remove domain-relevant content.",
+      "min_tests": "Renderer tests: one national block per topic; cross-domain fixture filtered; no internal status tokens in output."
+    }
+  ]
+}

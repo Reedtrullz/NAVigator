@@ -1,0 +1,31 @@
+{
+ "meta": {
+  "version": "v0.4.1-diagnostic-20",
+  "certification": "DEVELOPMENT_ONLY_NEVER_CERTIFICATION",
+  "generated": "2026-09-01",
+  "n_claims": 20,
+  "note": "Development diagnostics (spec section 23). Synthetic claims over generic source text; no new NAV facts. Never use for certification or holdout scoring."
+ },
+ "claims": [
+  {"id": "D20-M1", "claim": "NAV kan velge aa utelate loennstilskuddet.", "expected": "CONTRADICTED", "dimension": "modality", "focus": "omit-option vs duty", "source": {"text": "NAV skal utbetale loennstilskuddet til bedriften."}},
+  {"id": "D20-M2", "claim": "Kommunen gir stoette i alle tilfeller.", "expected": "CONTRADICTED", "dimension": "modality", "focus": "universal vs special-case option", "source": {"text": "Kommunen kan i saerlige tilfeller gi stoette."}},
+  {"id": "D20-M3", "claim": "Du kan ha rett til veiledning.", "expected": "SUPPORTED", "dimension": "modality", "focus": "identical may-be-entitled", "source": {"text": "Du kan ha rett til veiledning hos NAV."}},
+  {"id": "D20-M4", "claim": "NAV skal svare innen en uke.", "expected": "INSUFFICIENT_EVIDENCE", "dimension": "modality", "focus": "must vs should", "source": {"text": "NAV boer svare innen en uke."}},
+  {"id": "D20-M5", "claim": "Det er aldri krav om dokumentasjon.", "expected": "CONTRADICTED", "dimension": "modality", "focus": "never vs required", "source": {"text": "Dokumentasjon kreves."}},
+  {"id": "D20-L1", "claim": "RPH i Bergen er for voksne.", "expected": "SUPPORTED", "dimension": "locality", "focus": "same locality", "source": {"text": "Rask psykisk helsehjelp i Bergen gjelder voksne 18 aar og over."}},
+  {"id": "D20-L2", "claim": "RPH er gratis i hele Norge.", "expected": "INSUFFICIENT_EVIDENCE", "dimension": "locality", "focus": "local to national generalization", "source": {"text": "Rask psykisk helsehjelp i Bergen er gratis."}},
+  {"id": "D20-L3", "claim": "Barnevernvakta i Oslo er doegnaapen.", "expected": "INSUFFICIENT_EVIDENCE", "dimension": "locality", "focus": "other locality", "source": {"text": "Barnevernvakta i Trondheim er doegnaapen."}},
+  {"id": "D20-L4", "claim": "Husbankens bostotte krever soknad.", "expected": "SUPPORTED", "dimension": "locality", "focus": "referent inheritance national", "source": {"text": "Bostotte administreres av Husbanken og krever soknad gjennom NAV."}},
+  {"id": "D20-L5", "claim": "Skolehelsetjenesten er gratis for elever i Stavanger.", "expected": "SUPPORTED", "dimension": "locality", "focus": "national rule to named instance", "source": {"text": "Skolehelsetjenesten er gratis."}},
+  {"id": "D20-A1", "claim": "Attest kan signeres av lege.", "expected": "SUPPORTED", "dimension": "actor", "focus": "actor inside exhaustive list", "source": {"text": "Attest skal underskrives av lege, psykolog eller barnevernsleder."}},
+  {"id": "D20-A2", "claim": "Attest kan signeres av fysioterapeut.", "expected": "CONTRADICTED", "dimension": "actor", "focus": "actor outside exhaustive list", "source": {"text": "Attest skal underskrives av lege, psykolog eller barnevernsleder."}},
+  {"id": "D20-A3", "claim": "Soknad kan sendes av advokat.", "expected": "SUPPORTED", "dimension": "actor", "focus": "actor inside open list", "source": {"text": "Soknad sendes blant annet av advokater eller fagforeninger."}},
+  {"id": "D20-A4", "claim": "Kun leger kan utarbeide svaret.", "expected": "CONTRADICTED", "dimension": "actor", "focus": "exclusive claim vs multi-actor rule", "source": {"text": "Svaret utarbeides av lege og psykolog."}},
+  {"id": "D20-A5", "claim": "Barnevernsleder kan underskrive alene.", "expected": "SUPPORTED", "dimension": "actor", "focus": "single signer from authorized list", "source": {"text": "Attest skal underskrives av lege, psykolog eller barnevernsleder."}},
+  {"id": "D20-C1", "claim": "Bostotten er 3 500 kroner.", "expected": "SUPPORTED", "dimension": "contradiction-insufficiency", "focus": "numeric same", "source": {"text": "Bostotten hans er 3 500 kroner per maaned."}},
+  {"id": "D20-C2", "claim": "Bostotten er 3 050 kroner.", "expected": "CONTRADICTED", "dimension": "contradiction-insufficiency", "focus": "numeric conflict", "source": {"text": "Bostotten hans er 3 500 kroner per maaned."}},
+  {"id": "D20-C3", "claim": "Fristen for aa soeke er 1. august.", "expected": "CONTRADICTED", "dimension": "contradiction-insufficiency", "focus": "deadline conflict", "source": {"text": "Fristen for aa soeke er 1. september."}},
+  {"id": "D20-C4", "claim": "NAV dekker reiseutgifter til lege.", "expected": "INSUFFICIENT_EVIDENCE", "dimension": "contradiction-insufficiency", "focus": "source silent", "source": {"text": "NAV dekker utgifter til behandling."}},
+  {"id": "D20-C5", "claim": "NAV dekker ikke reiseutgifter til lege.", "expected": "INSUFFICIENT_EVIDENCE", "dimension": "contradiction-insufficiency", "focus": "negated claim without source affirmation", "source": {"text": "NAV dekker utgifter til behandling."}}
+ ]
+}

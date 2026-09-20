@@ -1,0 +1,43 @@
+{
+  "event": "V2_PROVIDER_ROUTE_SELECTION_FROZEN",
+  "frozen_before_transport_calibration": true,
+  "wire_id_forms_probed": true,
+  "probe_results_file": "wire-probe-results.json",
+  "catalog_authority": "local proxy /v1/models snapshot 2026-09-18 (55 routes)",
+  "routes": {
+    "R1-nemotron-3-super": {
+      "logical_candidate": "openrouter/nvidia-nemotron-3-super:free",
+      "selected_route": null,
+      "status": "NOT_TESTABLE_NO_ROUTE",
+      "reason": "Route absent from local proxy catalog in both dash and slash form; probe returned HTTP_400 'not a valid model' for both. Only nemotron route in catalog is V1's RouteOpen/nemotron-3-ultra-550b-a55b (different model, not substitutable without silent model escalation)."
+    },
+    "R2-laguna-s-2.1": {
+      "selected_route": "command-code/poolside/laguna-s-2.1-free",
+      "status": "ROUTE_FROZEN",
+      "probe": "OK (both forms); canonical slash form frozen",
+      "fallbacks_authorized": [
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-free/deepseek-v4-flash-free"
+      ]
+    },
+    "R3-ling-3.0-flash-sante": {
+      "selected_route": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "status": "ROUTE_FROZEN",
+      "probe": "OK (both forms); canonical slash form frozen",
+      "fallbacks_authorized": [
+        "openrouter/inclusionai/ling-3.0-flash-sante:free"
+      ]
+    },
+    "R4-gemma-4-26b-a4b-it": {
+      "selected_route": "openrouter/google/gemma-4-26b-a4b-it:free",
+      "status": "ROUTE_FROZEN_PROBE_429",
+      "probe": "HTTP_429 at probe on both forms; route exists in catalog; testability decided by transport calibration (chronic 429 = operational disqualifier per spec section 8)"
+    },
+    "R5-inkling-small": {
+      "selected_route": "openrouter/thinkingmachines/inkling-small:free",
+      "status": "ROUTE_FROZEN_PROBE_403",
+      "probe": "HTTP_403 at probe on both forms ('only avail...' restrictions); one confirmation attempt allowed in calibration; 403 never retried per V1 policy"
+    }
+  },
+  "no_provider_mixing_rule": "One frozen route per logical candidate for ALL passes; fallback activation only via primary-route transport failure, documented, then frozen."
+}

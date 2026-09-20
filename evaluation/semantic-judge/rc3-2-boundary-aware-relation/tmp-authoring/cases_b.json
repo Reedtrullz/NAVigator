@@ -1,0 +1,1548 @@
+{
+ "suite": "fresh-architecture-cases-v1",
+ "part": "B",
+ "frozen": false,
+ "note": "Fresh dimension-annotated architecture suite, part B.",
+ "cases": [
+  {
+   "case_id": "BA-051",
+   "claim": "Helsesykepleier og lege jobber i skolehelsetjenesten.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tjenesten skal ha helsesykepleier og lege."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-052",
+   "claim": "Kommunens bostottekontor fatter vedtak om bostotte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Kommunen (eller bydelen i Oslo) er bostottekontor og fatter vedtak."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "LICENSED_ACTOR_EQUIVALENCE"
+   }
+  },
+  {
+   "case_id": "BA-053",
+   "claim": "Pasienten kan henvise seg selv til BUP.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Henvisning til BUP skjer fra fastlege, psykolog i kommunen eller barnevernsleder."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-054",
+   "claim": "Barn under 16 ar samtykker selv til all helsehjelp.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Foreldre samtykker pa vegne av barn under 16 ar, med unntak i pasient- og brukerrettighetsloven."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-055",
+   "claim": "Voksne over 20 ar kan bruke helsestasjonen for ungdom.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Helsestasjon for ungdom gjelder ungdom opptil 20 ar."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-056",
+   "claim": "Foreldre kan ta kontakt pa vegne av barnet.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Foreldre kan ogsa ta kontakt pa vegne av barnet."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-057",
+   "claim": "Skolehelsetjenesten er gratis for elevene.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Kommunen dekker alle utgifter, gratis for brukerne."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR",
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-058",
+   "claim": "Bostottekontoret er Husbanken.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Kommunen er bostottekontor; Husbanken eier system, regler og utbetaling."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR",
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-059",
+   "claim": "Alle kommuner har et eget familieteam for helse.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Flere kommuner bruker navn som familieteam; dette er ikke standardiserte nasjonale navn."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-060",
+   "claim": "PHFS finnes i alle kommuner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "PHFS finnes i Lillestrom som et lokalt tilbud."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-061",
+   "claim": "HFU gjelder opptil 25 ar i alle kommuner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Alle kommuner skal ha HFU-tilbud for ungdom opptil 20 ar; noen kommuner utvider til 25 ar."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-062",
+   "claim": "Helsestasjonstjenesten gjelder barn og ungdom 0-20 ar.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Helsestasjonstjeneste for 0-20 ar reguleres av forskriften."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-063",
+   "claim": "Drop-in finnes ved alle skoler.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Mange kommuner har faste drop-in-tider."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-064",
+   "claim": "Helsesykepleieren deler ikke opplysninger med kontaktlæreren uten samtykke.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Helsesykepleieren kan ikke dele elevens helseting med kontaktlæreren uten samtykke."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR",
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-065",
+   "claim": "Skolen bestemmer hva helsesykepleieren kan dele om elever.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Skolens ansatte er ikke helsepersonell; samtykke kreves for a dele helseopplysninger."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-066",
+   "claim": "Ungdom kan møte pa drop-in uten time.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Eleven kan i prinsippet mote pa drop-in eller apen dor uten time."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR",
+    "scope": "SCOPE_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-067",
+   "claim": "Kun foresatte kan bestille helsesamtale.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Faste punkter per trinn inkluderer helsesamtale i 8. trinn; eleven kan selv ta kontakt."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-068",
+   "claim": "Fastlegen kan henvise til BUP.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fastlegen kan henvise til kommunalt tilbud, privat spesialist og BUP."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-069",
+   "claim": "Barnevernslederen skriver sykemelding.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fastlegen er dorapner for helsehjelp og vurderer sykemelding."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "DIFFERENT_ACTOR"
+   }
+  },
+  {
+   "case_id": "BA-070",
+   "claim": "Elever pa videregaende har vaksinetilbud til og med 20 ar.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Videregaende skole: vaksineprogram til og med 20 ar."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "actor_scope",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR",
+    "scope": "SCOPE_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-071",
+   "claim": "Barns inntekt og formue telles med i bostottevurderingen.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Inntekt foer skatt for soeker og alle i husstanden over 20 ar telles med. Barns inntekt og formue er ikke med."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-072",
+   "claim": "Barnetrygd og barnebidrag er ikke med i inntektsgrunnlaget.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Barnetrygd og barnebidrag er ikke med i inntekten."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-073",
+   "claim": "Kontantstotte reduserer bostotten.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Kontantstotte er ikke med i inntektsgrunnlaget."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-074",
+   "claim": "Foreldrenes inntekt telles med i grunnlaget.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Barns inntekt er ikke med. Inntekt for soeker og husstanden over 20 ar telles med."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-075",
+   "claim": "Bostotte fortsetter automatisk etter flytting.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bostotte fortsetter ikke automatisk; ved flytting ma du sende inn ny soknad."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-076",
+   "claim": "Det finnes ingen nasjonal RPH-telefon.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Det finnes ingen nasjonal RPH-telefon; tilgangen er lokal."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-077",
+   "claim": "Etter tre avslag far du bostotte automatisk videre.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Etter tre avslag ma du sokke pa nytt."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-078",
+   "claim": "Alle kommuner har etablert RPH-tilbud.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "59 prosent svarte at de ikke har RPH."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-079",
+   "claim": "Samtykke kan trekkes tilbake.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Samtykke kan trekkes tilbake."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-080",
+   "claim": "Overgangsstonad teller ikke med i inntektsgrunnlaget.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Overgangsstonad er trygd og regnes med i inntektsgrunnlaget."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-081",
+   "claim": "Utleieinntekt fra rom i egen bolig er skattefri og utover det utenfor grunnlaget.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Skattefri utleieinntekt, for eksempel rom i egen bolig, regnes som inntekt."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT",
+    "condition": "CONDITION_MISSING"
+   }
+  },
+  {
+   "case_id": "BA-082",
+   "claim": "Du ma melde fra om endringer i boutgifter.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Du ma melde fra om endringer, blant annet boutgifter."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-083",
+   "claim": "Bostotte beregnes ut fra boutgifter og inntekt.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bostotte beregnes maned for maned ut fra faktiske boutgifter og husstandens inntekt."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-084",
+   "claim": "Bostotte gir bothjelp og startlan samtidig.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bostotte er en stotteordning for lave inntekter; startlan har egne vilkar."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "RELEVANT_BUT_UNRESOLVED"
+   }
+  },
+  {
+   "case_id": "BA-085",
+   "claim": "Kommunen kan kreve dokumentasjon uten at du far epost.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Kommunen sjekker opplysninger og dokumentasjon; det kan kreve tilleggsdokumentasjon uten varsel."
+    }
+   ],
+   "compound": false,
+   "rel": "AMBIGUOUS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "RELEVANT_BUT_UNRESOLVED"
+   }
+  },
+  {
+   "case_id": "BA-086",
+   "claim": "Sosialhjelp og skattepenger er ikke med i inntekten.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Sosialhjelp og skattepenger er ikke med."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-087",
+   "claim": "AAP og dagpenger utbetales hver maaned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "AAP og dagpenger utbetales hver 14. dag."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT",
+    "temporal": "TEMPORAL_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-088",
+   "claim": "Skolehelsetjenesten yter psykoterapi.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Skolehelsetjenesten yter ikke psykoterapi."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-089",
+   "claim": "Læreren kan hjelpe eleven med a ta kontakt med skolehelsen.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Læreren kan hjelpe med a ta kontakt."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-090",
+   "claim": "Barnebidrag og barnetrygd reduserer ikke bostotten direkte.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Barnebidrag og delt barnetrygd oker husstandsinntekten men reduserer ikke bostotten direkte."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "negation_polarity",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-091",
+   "claim": "Utbetalingen skjer den 20. i maneden etter soknadsmaneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Vedtak og utbetaling: den 20. i maneden etter soknadsmaneden."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "TEMPORAL_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-092",
+   "claim": "Utbetalingen skjer den 18. i maneden etter soknadsmaneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utbetaling sto oppgitt til 18. september."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "RELEVANT_BUT_UNRESOLVED"
+   }
+  },
+  {
+   "case_id": "BA-093",
+   "claim": "Oppvarmingstillegget er 613 kroner i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Det er 613 kroner i maneden til oppvarming hvis oppvarming ikke er dekket av leien."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE",
+    "condition": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-094",
+   "claim": "Minsteutbetalingen av bostotte er 613 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Minsteutbetaling er 61 kroner per maned."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-095",
+   "claim": "Fribelopet for kapitalinntekt er 6 672 kroner i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fribelop 6 672 kroner per ar per person."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_CONFLICT",
+    "temporal": "TEMPORAL_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-096",
+   "claim": "Full sats ordinær barnetrygd er 2 012 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Full sats for ordinær barnetrygd er 2 012 kroner i maneden."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-097",
+   "claim": "Delt sats ordinær barnetrygd er 2 012 kroner per forelder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Delt sats er 1 006 kroner per forelder."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-098",
+   "claim": "En forelder med delt ordinær og delt utvidet far 2 292 kroner totalt.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "1 006 + 1 286 = 2 292 kroner i maneden hvis begge deler er innvilget."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-099",
+   "claim": "Inntektsgrensen er 28 241 kroner i alle kommuner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Eksempel verifisert: 28 241 kroner i maneden for en 1-persons leietakerhusstand i valgt kommune; grensen varierer mellom kommuner."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-100",
+   "claim": "27 prosent av kommunene hadde eget RPH-tilbud i 2024.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "27 prosent, 94 kommuner og bydeler, hadde etablert eget RPH-tilbud i 2024."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-101",
+   "claim": "RPH-arsverkene okte fra 2023 til 2024.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "368 RPH-arsverk ble rapportert i 2024, en nedgang pa 15 fra 2023."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT",
+    "numeric_quantity": "NUMERIC_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-102",
+   "claim": "Formuestillegget fordeles over 12 maneder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "65 prosent av overskytende formue legges til inntekten som formuestillegg, fordelt pa 12 maneder."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE",
+    "temporal": "TEMPORAL_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-103",
+   "claim": "Netto formue pa 350 000 kroner gir omtrent 890 kroner ekstra i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Eksempel: netto formue 350 000 kroner i leid bolig gir tillegg pa omtrent 890 kroner i maneden."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-104",
+   "claim": "Klagefristen er tre uker.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Klage: frist tre uker fra du mottok vedtaket."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "TEMPORAL_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-105",
+   "claim": "Avslag viderefores automatisk i inntil seks maneder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Avslag viderefores automatisk i inntil tre maneder."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "TEMPORAL_CONFLICT",
+    "numeric_quantity": "NUMERIC_CONFLICT"
+   }
+  },
+  {
+   "case_id": "BA-106",
+   "claim": "Husleie for leiebolig telles som boutgift.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "For leiebolig er det husleie pluss 613 kroner i maneden til oppvarming."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NOT_APPLICABLE",
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-107",
+   "claim": "Smabarnstillegget er 712 kroner ved full overgangsstønad.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Smabarnstillegg 712 kroner i maneden ved full overgangsstønad for barn 0 til 3 ar."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "temporal_numeric_locality",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   }
+  },
+  {
+   "case_id": "BA-108",
+   "claim": "Bostotte utbetales den 20. i maneden etter soknadsmaneden, og soknadsfristen er den 25. i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utbetaling skjer den 20. i maneden etter soknadsmaneden."
+    },
+    {
+     "span_id": "S2",
+     "text": "Soknadsfrist er den 25. i maneden."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "TEMPORAL_COMPATIBLE"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-109",
+   "claim": "Delt ordinær barnetrygd er 1 006 kroner, og delt utvidet er 1 286 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Delt sats ordinær barnetrygd er 1 006 kroner per forelder."
+    },
+    {
+     "span_id": "S2",
+     "text": "Delt utvidet barnetrygd er 1 286 kroner i maneden."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-110",
+   "claim": "Full ordinær barnetrygd er 2 012 kroner, og delt sats er 2 012 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Full sats er 2 012 kroner i maneden."
+    },
+    {
+     "span_id": "S2",
+     "text": "Delt sats er 1 006 kroner per forelder."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-111",
+   "claim": "Barnetrygd telles ikke med i grunnlaget, og barnebidrag telles ikke med.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Barnetrygd og barnebidrag er ikke med i inntekten."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-112",
+   "claim": "Utbetalingen skjer den 20., og klagefristen er tre maneder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utbetaling skjer den 20. i maneden etter soknadsmaneden."
+    },
+    {
+     "span_id": "S2",
+     "text": "Klage: frist tre uker fra du mottok vedtaket."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "temporal": "TEMPORAL_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-113",
+   "claim": "Helsesykepleier jobber i skolehelsetjenesten, og tjenesten er gratis.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tjenesten skal ha helsesykepleier og lege."
+    },
+    {
+     "span_id": "S2",
+     "text": "Kommunen dekker alle utgifter, gratis for brukerne."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-114",
+   "claim": "Eleven kan mote pa drop-in, og foreldre kan ta kontakt pa vegne av barnet.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Eleven kan i prinsippet mote pa drop-in uten time."
+    },
+    {
+     "span_id": "S2",
+     "text": "Foreldre kan ogsa ta kontakt pa vegne av barnet."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-115",
+   "claim": "HFU gjelder opptil 20 ar, og alle kommuner har tilbud opp til 25 ar.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Alle kommuner skal ha HFU-tilbud opptil 20 ar."
+    },
+    {
+     "span_id": "S2",
+     "text": "Noen kommuner har tilbud opp til 25 ar."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "scope": "SCOPE_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-116",
+   "claim": "Du ma melde fra om flytting, og ny soknad kreves ved flytting.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Ved flytting ma du sende inn ny soknad."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-117",
+   "claim": "RPH er for personer over 16 ar, og alle kommuner har RPH.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "RPH er for innbyggere over 16 ar."
+    },
+    {
+     "span_id": "S2",
+     "text": "59 prosent svarte at de ikke har RPH."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-118",
+   "claim": "Bostotte beregnes ut fra boutgifter og husstandens inntekt.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bostotte beregnes maned for maned ut fra faktiske boutgifter og husstandens inntekt."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   }
+  },
+  {
+   "case_id": "BA-119",
+   "claim": "Skolehelsetjenesten skal ha helsesykepleier, og kommunen skal tilby tjenesten til 0-20 ar.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tjenesten skal ha helsesykepleier og lege."
+    },
+    {
+     "span_id": "S2",
+     "text": "Kommunen skal tilby helsestasjons- og skolehelsetjeneste til 0-20 ar."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "modality": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-120",
+   "claim": "Skolehelsetjenesten stiller diagnoser, og eleven kan fa helsesamtale.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Skolehelsetjenesten stiller normalt ikke diagnoser."
+    },
+    {
+     "span_id": "S2",
+     "text": "Helsesamtale er et fast tilbud i 8. trinn."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   },
+   "expected_atoms": [
+    "CONTRADICTS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-121",
+   "claim": "Samtykke kan trekkes tilbake, og foreldre samtykker for barn under 16 ar.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Samtykke kan trekkes tilbake."
+    },
+    {
+     "span_id": "S2",
+     "text": "Foreldre samtykker pa vegne av barn under 16 ar."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-122",
+   "claim": "Bokollektiv gir som hovedregel ikke bostotte, og studenter folger egne regler.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Bokollektiv er som hovedregel nei, unntak av helsemessige eller sosiale grunner."
+    },
+    {
+     "span_id": "S2",
+     "text": "Studenter, elever og larlinger folger egne regler."
+    }
+   ],
+   "compound": true,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "condition": "CONDITION_MISSING"
+   },
+   "expected_atoms": [
+    "RELATED_BUT_INSUFFICIENT",
+    "RELATED_BUT_INSUFFICIENT"
+   ]
+  },
+  {
+   "case_id": "BA-123",
+   "claim": "Minsteutbetaling er 61 kroner, og under det utbetales ingenting.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Minsteutbetaling er 61 kroner per maned; under det utbetales ingenting."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "numeric_quantity": "NUMERIC_COMPATIBLE",
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-124",
+   "claim": "Inntekt over 20 ar telles med, og barns inntekt telles med.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Inntekt for soeker og husstanden over 20 ar telles med."
+    },
+    {
+     "span_id": "S2",
+     "text": "Barns inntekt og formue er ikke med."
+    }
+   ],
+   "compound": true,
+   "rel": "PARTIAL",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXPLICIT_CONFLICT"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "CONTRADICTS"
+   ]
+  },
+  {
+   "case_id": "BA-125",
+   "claim": "Klage sendes kommunen, og Husbanken fatter nytt vedtak.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Klagen sendes kommunen, som kompletterer og sender til Husbanken."
+    },
+    {
+     "span_id": "S2",
+     "text": "Husbanken fatter nytt vedtak."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "actor": "SAME_ACTOR"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-126",
+   "claim": "Etterkontroll korrigerer inntekter automatisk, og du kan fa krav om tilbakebetaling.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Inntekter korrigeres automatisk nar arbeidsgiver retter opplysninger til Skatteetaten."
+    },
+    {
+     "span_id": "S2",
+     "text": "Du kan fa utbetaling etterpa eller krav om tilbakebetaling."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  },
+  {
+   "case_id": "BA-127",
+   "claim": "Utvidet barnetrygd deles likt, og Finnmarkstillegget deles i to.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utvidet barnetrygd halveres hvis du mottar full utvidet fra for."
+    },
+    {
+     "span_id": "S2",
+     "text": "Finnmark- og Svalbardtillegg deles i to ved delt barnetrygd."
+    }
+   ],
+   "compound": true,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "compound",
+   "kb_ref": "55-bostotte-i-dybden.md",
+   "expected_dims": {
+    "polarity": "EXACT_MATCH"
+   },
+   "expected_atoms": [
+    "ENTAILS",
+    "ENTAILS"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+  "artifact": "regression-tests",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A1-ABSTAIN-REPAIR",
+  "new_fixtures_n": 5,
+  "tdd_red_fixture": {
+    "id": "FIX-ABSTAIN-01",
+    "abstract_defect": "vague route wording + out-of-inventory service noun",
+    "expected_label": "ABSTAIN",
+    "not_text_identical_to_VR-H_08": true
+  },
+  "counterexamples": [
+    {
+      "id": "FIX-CE-01",
+      "requirement": "recognized service noun + genuinely vague noncommittal wording stays non-assertive (ABSTAIN, NO_HIGH_PRECISION_RULE)"
+    },
+    {
+      "id": "FIX-CE-02",
+      "requirement": "recognized service noun + asserted route stays ASSERTED"
+    },
+    {
+      "id": "FIX-CE-03",
+      "requirement": "out-of-inventory noun + explicit quotation stays QUOTED_ONLY (independent grounding rule wins)"
+    },
+    {
+      "id": "FIX-CE-04",
+      "requirement": "out-of-inventory noun + clearly hypothetical construction stays HYPOTHETICAL_ONLY (independent grounding rule wins)"
+    }
+  ],
+  "hard_gates": {
+    "all_72_green_required": true,
+    "no_existing_expected_label_changed": true
+  }
+}

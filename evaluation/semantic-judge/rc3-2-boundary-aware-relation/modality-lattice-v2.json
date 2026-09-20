@@ -1,0 +1,25 @@
+{
+  "version": "modality-relation-lattice-v2",
+  "frozen": true,
+  "frozen_at": "2026-09-07",
+  "purpose": "Relation-layer consumption table for dimension-evidence states (dimension-evidence-contract-v1 section 6). Maps dimension states to relation effects; the relation layer reads this file and does not re-encode direction logic in branches. The frozen boundary modality table and RC3.1 relation lattice are untouched.",
+  "relation_effects": {
+    "polarity_EXPLICIT_CONFLICT_same_proposition": "CONTRADICTS",
+    "modality_DEONTIC_OPPOSITION_same_proposition": "CONTRADICTS",
+    "modality_SOURCE_WEAKER_THAN_CLAIM_compatible": "RELATED_BUT_INSUFFICIENT",
+    "modality_SOURCE_STRONGER_THAN_CLAIM": "MAY_ENTAIL",
+    "modality_EXACT_MATCH": "MAY_ENTAIL",
+    "modality_CONDITIONALLY_COMPATIBLE": "MAY_ENTAIL",
+    "condition_CONDITION_MISSING": "AT_MOST_RBI",
+    "actor_DIFFERENT_ACTOR": "AT_MOST_RBI",
+    "scope_SCOPE_CONFLICT": "AT_MOST_RBI",
+    "clause_coverage_PARTIAL_OVERLAP": "BLOCKS_ENTAILS"
+  },
+  "invariants": [
+    "UNKNOWN is never upgraded to a compatible state.",
+    "AT_MOST_RBI effects cap the relation at RELATED_BUT_INSUFFICIENT unless a positive conflict rule (polarity/modality opposition) fires first.",
+    "SOURCE_WEAKER_THAN_CLAIM can never license ENTAILS.",
+    "BLOCKS_ENTAILS applies whenever the state is present, regardless of other compatible states.",
+    "No case IDs, no literal case-to-relation maps."
+  ]
+}

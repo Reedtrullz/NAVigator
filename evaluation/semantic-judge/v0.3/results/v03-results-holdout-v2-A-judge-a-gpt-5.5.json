@@ -1,0 +1,4495 @@
+{
+ "meta": {
+  "set": "holdout-v2",
+  "judge": "A",
+  "model": "gpt-5.5",
+  "version": "semantic-judge-v0.3",
+  "aggregator": "aggregate-v0.3",
+  "decompose_prompt_sha256": "c8b405e360ee34f3db73666b89507fb7dc988a644bc6354261ebda9f73ed172d",
+  "atom_prompt_sha256": "51abb3a8dcbd6d3899edcd424ee13a14a01fc707c433be5df91741a04dac1ab6",
+  "generated": "2026-08-31T07:28:06.935447+00:00",
+  "config": {
+   "proxy": "http://127.0.0.1:10100/v1",
+   "temperature": "0 (provider-supported)",
+   "timeout_s": 180,
+   "arbitrate": false,
+   "consensus": false
+  }
+ },
+ "results": [
+  {
+   "id": "HV2-001",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:28:06.938439+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Med nye regler varer hovedperioden for overgangsstønad til utløpet av måneden barnet fyller 14 måneder.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "14 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at overgangsstønad varer fra aleneomsorgen til utløpet av måneden barnet fyller 14 måneder, som støtter atomets varighet for hovedperioden under de nye reglene.",
+     "supporting_excerpt_or_fact": "Overgangsstønad fra aleneomsorgen til utløpet av måneden barnet fyller 14 måneder",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 26.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-002",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:28:33.542972+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Nye søkere fra 1. juli 2026 får overgangsstønad på samme måte som før, med stønad til barnet er 8 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "8 år"
+     ],
+     "dates": [
+      "1. juli 2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Atomet sier at nye søkere fra 1. juli 2026 får stønad etter gamle regler med 8-årsgrense, mens kilden sier at nye saker ikke skal rutes etter gamle regler, inkludert 8-årsgrensen.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Nye saker skal ikke rutes etter gamle regler (36 måneder, 8-årsgrense, aktivitetsplikt)"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 29.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-003",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:29:03.164758+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Full overgangsstønad er 25 603 kroner per måned før skatt",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "25 603 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "den utbetales med feriepenger",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at NAV angir full overgangsstønad til 25 603 kr per måned før skatt, som er samme beløp og scope som påstanden.",
+     "supporting_excerpt_or_fact": "NAV angir full overgangsstønad til 25 603 kr per måned før skatt",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at den utbetales med feriepenger, mens kilden sier at det ikke er feriepenger.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "ingen feriepenger"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026",
+    "64": "64. Overgangsstønad etter nye regler: praktisk dybde (fra 1.7.2026)"
+   },
+   "elapsed_s": 25.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-004",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:29:28.847097+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Hvis barnet går i videregående skole, forlenges barnebidraget til det fyller 21 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "21 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.88,
+     "near_miss": false,
+     "reason": "Kilden sier bare at videregående opplæring kan forlenge barnebidraget, og oppgir at nøyaktig varighetstak er et kunnskapshull. At bidraget forlenges til barnet fyller 21 år er derfor en hardere og mer spesifikk påstand enn kilden støtter.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "«videregaende opplaring kan forlenge ... Kunnskapshull: Noyaktige varighetstak»"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "48": "48. Barnebidrag i dybden"
+   },
+   "elapsed_s": 31.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-005",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:29:59.918450+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved delt fast bosted deles ordinær barnetrygd likt mellom foreldrene, slik at hver får 1 006 kroner per måned.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 006 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at ordinær barnetrygd ved delt fast bosted deles likt, med 1 006 kroner per forelder.",
+     "supporting_excerpt_or_fact": "Ved delt fast bosted deles den likt: 2 012 / 2 = 1 006 kroner per forelder.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 22.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-006",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:30:22.056720+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt barnetrygd fordeles mellom foreldrene etter hvor mange overnattinger barnet har hos hver av dem.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at delt barnetrygd fordeles etter antall overnattinger hos hver forelder, mens kilden sier at barnetrygd alltid deles likt uansett hvor mye tid barnet tilbringer hos hver forelder.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Barnetrygd deles alltid likt, uansett hvor mye tid barnet tilbringer hos hver forelder."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 19.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-007",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:30:41.777157+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt utvidet barnetrygd er 1 286 kroner per måned",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 286 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "begge foreldre får den automatisk uten å søke",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir eksplisitt samme ytelse, beløp og månedlig omfang som atomsetningen.",
+     "supporting_excerpt_or_fact": "delt utvidet barnetrygd er 1 286 kroner i måneden",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at begge foreldre får den automatisk uten å søke, mens kilden sier at begge foreldre må søke for at delingen skal skje.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Begge foreldre må søke for at delingen skal skje."
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 29.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-008",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:31:11.520058+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle som mottar overgangsstønad i dag, er fritatt fra enhver ny vurdering i overgangsfasen til de nye reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "i dag"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.96,
+     "near_miss": false,
+     "reason": "Påstanden sier at alle mottakere er fritatt fra enhver ny vurdering, men kilden sier at NAV vurderer i hver sak hvilket regelverk som gjelder.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "NAV vurderer i hver sak hvilket regelverk som gjelder"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.96,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 29.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-009",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:31:41.160671+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Inntekt over 0,5 G reduserer overgangsstønaden med 45 prosent.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0,5 G",
+      "45 prosent"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at inntekt under 0,5 G er fri, og at inntekt over dette reduseres med 45 prosent.",
+     "supporting_excerpt_or_fact": "45 prosent reduksjon av inntekt over dette",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 17.8,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-010",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:31:58.961154+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Gebyret for NAV-fastsetting av barnebidrag er totalt 1 345 kroner for hele saken.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 345 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Atomet sier at gebyret er 1 345 kroner totalt for hele saken, men kilden sier at gebyret er 1 345 kroner per part.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Gebyr NAV-fastsetting: 1 345 kr per part"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "48": "48. Barnebidrag i dybden"
+   },
+   "elapsed_s": 23.2,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-011",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:32:22.143428+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved barnets forbigående sykdom kan stønadstiden forlenges med inntil 24 måneder",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "24 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "det er ikke nødvendig med legeerklæring",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.88,
+     "near_miss": true,
+     "reason": "Påstanden gjør barnets forbigående sykdom alene til grunnlag for forlengelse, mens kilden stiller tilleggsvilkår om at sykdommen hindrer medlemmet i å arbeide, samt legeerklæring.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "\"hvis barnet har en forbigående sykdom som hindrer medlemmet i å arbeide ... legeerklæring kreves\""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at legeerklæring ikke er nødvendig, mens kilden sier uttrykkelig at legeerklæring kreves.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "legeerklæring kreves"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 2,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "64": "64. Overgangsstønad etter nye regler: praktisk dybde (fra 1.7.2026)"
+   },
+   "elapsed_s": 31.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-012",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:32:53.831261+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Hvis det fastsatte bidraget er lavere enn forskuddssatsen, supplerer NAV forskuddet opp til satsen.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier bare at NAVs utgevirkning ikke er fullt verifisert i de hentede kildene, og opplyser ikke regelen om supplering når fastsatt bidrag er lavere enn forskuddssatsen.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "50": "50. Bidragsforskudd og innkreving"
+   },
+   "elapsed_s": 17.4,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-013",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:33:11.193558+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Elever og foreldre kan ta direkte kontakt med skolehelsetjenesten i Trondheim uten henvisning.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at skolehelsetjenesten er på alle skoler i Trondheim, og at elever, foreldre, lærere og andre kan ta direkte kontakt uten henvisning.",
+     "supporting_excerpt_or_fact": "elever, foreldre, laerere og andre kan ta direkte kontakt uten henvisning",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-014",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:33:33.795882+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp (RPH) i Trondheim gis til barn og unge fra 13 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "13 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Påstanden sier at RPH i Trondheim gis til barn og unge fra 13 år, mens kilden sier at kommunen ikke tilbyr RPH for barn/unge under 18 år.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Kommunen tilbyr ikke RPH for barn/unge under 18"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.2,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-015",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:33:50.967412+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Trondheimshjelpa er gratis",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "Trondheimshjelpa krever ingen henvisning",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ingen"
+     ]
+    },
+    {
+     "id": "A3",
+     "text": "tilbudet gjelder bare voksne",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at Trondheimshjelpa er gratis.",
+     "supporting_excerpt_or_fact": "Gratis, ingen henvisning",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at Trondheimshjelpa er et tilbud og oppgir «ingen henvisning», som støtter at tilbudet ikke krever henvisning.",
+     "supporting_excerpt_or_fact": "Gratis, ingen henvisning",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A3",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at tilbudet er for gravide, barn, ungdom og familier, ikke bare voksne.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "\"lavterskeltilbud til gravide, barn, ungdom og familier\""
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 3,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 35.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-016",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:34:26.702382+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Omsorgsenheten i Trondheim har lengre åpningstider enn de andre BFT-bydelene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.94,
+     "near_miss": false,
+     "reason": "Kilden nevner BFT-bydeler og at bydelsinnganger har telefon, åpningstid og besøksadresse, men oppgir ikke konkrete åpningstider eller sammenligner Omsorgsenheten med de andre bydelene.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.94,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.5,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-017",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:34:43.238511+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret tilbyr veiledning, rådgivning og mekling til familier, par og enkeltpersoner.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at Familievernkontoret skal gi veiledning, rådgivning og mekling til samme målgrupper som i påstanden: familier, par og enkeltpersoner.",
+     "supporting_excerpt_or_fact": "Familievernkontoret skal gi veiledning, radgivning og mekling til familier, par og enkeltpersoner.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "33": "Familievernkontoret i dybden"
+   },
+   "elapsed_s": 28.2,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-018",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:35:11.448276+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Mekleren ved familievernkontoret fører journal over det som sies i mekling.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at mekleren fører journal over det som sies i mekling, mens kilden sier at det ikke føres journal ved mekling.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Mekling: ingen journal"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "33": "Familievernkontoret i dybden"
+   },
+   "elapsed_s": 27.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-019",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:35:39.178788+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Mekling hos familievernkontoret er gratis og uten henvisning",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    },
+    {
+     "id": "A2",
+     "text": "12-åringen kan selv bestemme om han vil delta",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "12-åringen"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at det er ingen henvisning og ingen kostnad, som støtter at mekling hos familievernkontoret er gratis og uten henvisning.",
+     "supporting_excerpt_or_fact": "Ingen henvisning ... ingen kostnad.",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at barnet kan delta hvis barnet selv vil og begge foreldrene er enige; atomets formulering gjør barnets egen beslutning tilstrekkelig og utelater foreldrenes samtykke.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "barn i skolepliktig alder kan delta i mekling hvis barnet selv vil og begge foreldrene er enige"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "33": "Familievernkontoret i dybden"
+   },
+   "elapsed_s": 29.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-020",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:36:08.187094+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Som offentlig meldingsyter har jeg rett til full innsyn i barnevernets undersøkelsesdokumenter.",
+     "role": "core",
+     "modality": "har rett",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.88,
+     "near_miss": false,
+     "reason": "Kilden sier bare at offentlig melder får tilbakemelding innen 3 uker, ikke at offentlig meldingsyter har rett til fullt innsyn i barnevernets undersøkelsesdokumenter.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "40": "Bekymringsmelding og undersokelse"
+   },
+   "elapsed_s": 27.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-021",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:36:35.257319+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernet skal gjennomgå en bekymringsmelding senest én uke etter at den er mottatt.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "én uke"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.94,
+     "near_miss": false,
+     "reason": "Kilden sier at bekymringsmeldingen skal gjennomgås snarest og senest innen 1 uke, som støtter atomets frist og plikt.",
+     "supporting_excerpt_or_fact": "Gjennomgang snarest, senest 1 uke",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.94,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "40": "Bekymringsmelding og undersokelse"
+   },
+   "elapsed_s": 21.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-022",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:36:56.369713+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnet er part i barnevernssaken fra det fyller 12 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "12 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at barnet er part fra 12 år, mens kilden sier at barnet er part fra 15 år. Alderstallet er sentralt og avviker.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "barnet er part fra 15 ar"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "38": "Barnevernet: hjelp, ikke bare inngrep"
+   },
+   "elapsed_s": 32.5,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-023",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:37:28.861240+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernets undersøkelse skal konkluderes senest 3 måneder",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "3 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "fristen kan forlenges til totalt 12 måneder",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "12 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.86,
+     "near_miss": false,
+     "reason": "Påstanden sier ubetinget at undersøkelsen skal konkluderes senest innen 3 måneder, mens kilden åpner for total utvidelse til 6 måneder.",
+     "supporting_excerpt_or_fact": "konkluderes senest 3 måneder etter 1-ukesfristen",
+     "contradicting_excerpt_or_fact": "total utvidelse til 6 måneder"
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at fristen kan forlenges til totalt 12 måneder, mens kilden sier total utvidelse til 6 måneder.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "total utvidelse til 6 maneder"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.86,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 2,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "38": "Barnevernet: hjelp, ikke bare inngrep"
+   },
+   "elapsed_s": 37.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-024",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:38:06.479799+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Som fosterforelder kan jeg selv samtykke til helsehjelp som er del av barnets daglige omsorg.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier at én forelder kan samtykke; atomets subjekt er fosterforelder, som ikke er oppgitt som aktør i kilden.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Én forelder kan samtykke til helsehjelp som er del av daglig og ordinær omsorg"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "31": "Skolehelsetjenesten i dybden"
+   },
+   "elapsed_s": 21.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-025",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:38:28.137585+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnets mening skal veie tungt fra 12 år.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "12 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at barnets mening skal veie tungt fra 12 år, samme alder og pliktmodalitet som i atomet.",
+     "supporting_excerpt_or_fact": "veie tungt fra 12 ar",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "41": "Samtykke pa tvers av tjenester"
+   },
+   "elapsed_s": 21.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-026",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:38:49.201506+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En samvarsforelder uten foreldreansvar kan selv samtykke til større helsehjelp for barnet.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at samtykkekompetansen følger foreldreansvaret, mens påstanden sier at en forelder uten foreldreansvar selv kan samtykke til større helsehjelp.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "samtykkekompetansen folger foreldreansvaret"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "41": "Samtykke pa tvers av tjenester"
+   },
+   "elapsed_s": 19.8,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-027",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:39:09.034371+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved beregningen av sosialhjelp holdes både barnetrygd og barnebidrag jeg mottar utenfor som inntekt.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "utenfor"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at barnetrygd ikke skal tas med, men at barnebidrag du mottar regnes som inntekt. Påstanden sier at begge holdes utenfor.",
+     "supporting_excerpt_or_fact": "Barnetrygd skal ikke med.",
+     "contradicting_excerpt_or_fact": "Barnebidrag: bidrag du mottar regnes som inntekt"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 20.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-028",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:39:28.998340+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen har egen veiledende sats på 10 000 kroner for enslige.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "10 000 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden sier bare at noen kommuner har egne satser og at praksis varierer. Den oppgir ikke at kommunen har en veiledende sats på 10 000 kroner for enslige.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 27.8,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-029",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:39:56.837818+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Søknadsfristen for bostøtte er den 25. i måneden for følgende måneds stønad.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "25."
+     ],
+     "dates": [
+      "den 25. i måneden"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomens frist, dato og tidskobling samsvarer direkte med kilden.",
+     "supporting_excerpt_or_fact": "Søknadsfrist: den 25. i måneden for følgende måneds stønad.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "55": "55. Bostøtte i dybden"
+   },
+   "elapsed_s": 24.3,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-030",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:40:21.108217+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnebidraget jeg mottar reduserer bostøtten min.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at mottatt barnebidrag reduserer bostøtten, mens kilden sier at barnebidrag ikke reduserer bostøtten direkte.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "barnebidrag ... reduserer ikke bostøtten direkte"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "55": "55. Bostøtte i dybden"
+   },
+   "elapsed_s": 26.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-031",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:40:47.680418+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Overgangsstønad teller ikke i Husbankens inntektsgrunnlag",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    },
+    {
+     "id": "A2",
+     "text": "barnebidrag reduserer ikke bostøtten direkte",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at overgangsstønad ikke teller i inntektsgrunnlaget, mens kilden sier at den regnes med som skattepliktig inntekt før skatt.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Overgangsstønad er trygd og regnes derfor med i inntektsgrunnlaget som skattepliktig inntekt før skatt"
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.95,
+     "near_miss": true,
+     "reason": "Kilden sier at overgangsstønad ikke reduserer bostøtten direkte, men atomets subjekt er barnebidrag. Den etablerer derfor ikke samme påstand.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 1,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "55": "55. Bostøtte i dybden"
+   },
+   "elapsed_s": 36.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-032",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:41:24.410225+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolen er pliktet til å arrangere opplæring i hjemmet når barnet ikke klarer skolen på grunn av angst.",
+     "role": "core",
+     "modality": "er pliktet til",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.93,
+     "near_miss": false,
+     "reason": "Påstanden sier at skolen er pliktet til å arrangere opplæring i hjemmet ved angst, mens kilden bare sier at opplæring i hjemmet kan være aktuelt ved langvarig sykdom. Påstanden gjør både modaliteten sterkere og vilkåret mer bestemt.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Ved langvarig sykdom kan opplæring i hjemmet være aktuelt"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.93,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "30": "Skolefravær og skolevegring"
+   },
+   "elapsed_s": 20.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-033",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:41:44.539021+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle elever har rett til et trygt og godt skolemiljø.",
+     "role": "core",
+     "modality": "har rett",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at alle elever har rett til et trygt og godt skolemiljø; tilleggskvalifikasjonen i kilden gjør ikke atomets kortere restatement feil.",
+     "supporting_excerpt_or_fact": "alle elever har rett til et trygt og godt skolemiljø",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "29": "Skolens ansvar: tilpasset opplæring, individuell tilrettelegging og skolemiljø"
+   },
+   "elapsed_s": 18.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-034",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:42:02.672551+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Jeg kan melde saken for Statsforvalteren uten å ta den opp med rektor først.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at saken kan meldes uten å ta den opp med rektor først, mens kilden sier at melding til Statsforvalteren kan skje etter at saken er tatt opp med rektor.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "eleven eller foreldrene kan melde saken til Statsforvalteren etter at saken er tatt opp med rektor"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "29": "Skolens ansvar: tilpasset opplæring, individuell tilrettelegging og skolemiljø"
+   },
+   "elapsed_s": 16.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-035",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:42:19.266933+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved tvil om tilfredsstillende utbytte skal lærere melde til rektor",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "skolen må alltid be PPT vurdere eleven",
+     "role": "core",
+     "modality": "må alltid",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at lærere skal melde til rektor ved tvil om eleven får tilfredsstillende utbytte.",
+     "supporting_excerpt_or_fact": "lærere skal følge med og melde til rektor ved tvil om eleven får tilfredsstillende utbytte",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.96,
+     "near_miss": false,
+     "reason": "Påstanden sier at skolen alltid må be PPT vurdere eleven, mens kilden gjør PPT-vurdering betinget av at tiltakene ikke er tilstrekkelige og at samtykke kreves.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Hvis tiltakene ikke er tilstrekkelige: PPT-vurdering (samtykke kreves)."
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.96,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "29": "Skolens ansvar: tilpasset opplæring, individuell tilrettelegging og skolemiljø"
+   },
+   "elapsed_s": 31.3,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-036",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:42:50.565665+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En sakkyndig vurdering fra PPT er gyldig i nøyaktig to år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "to år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.93,
+     "near_miss": false,
+     "reason": "Påstanden sier at sakkyndig vurdering er gyldig i nøyaktig to år, mens kilden sier at det ikke finnes lovbestemt varighet.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Ingen lovbestemt varighet"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.93,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "28": "Pedagogisk-psykologisk tjeneste (PPT) i dybden"
+   },
+   "elapsed_s": 18.9,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-037",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:43:09.436878+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT stiller ikke diagnoser.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at PPT ikke stiller diagnoser, samme subjekt og negasjon som i påstanden.",
+     "supporting_excerpt_or_fact": "PPT stiller ikke diagnoser",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "28": "Pedagogisk-psykologisk tjeneste (PPT) i dybden"
+   },
+   "elapsed_s": 18.5,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-038",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:43:27.969659+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan sette en ADHD-diagnose.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at PPT kan sette ADHD-diagnose, mens kilden sier at PPT ikke stiller diagnoser.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "PPT stiller ikke diagnoser"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "28": "Pedagogisk-psykologisk tjeneste (PPT) i dybden"
+   },
+   "elapsed_s": 22.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-039",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:43:50.076549+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP krever henvisning",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "skolen eller PPT kan sende den ferdige henvisningen alene",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at BUP krever henvisning.",
+     "supporting_excerpt_or_fact": "BUP krever henvisning",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at skolen eller PPT kan sende ferdig henvisning alene, mens kilden sier eksplisitt at de ikke kan gjøre det alene.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Skolen eller PPT alene kan ikke sende ferdig BUP-henvisning."
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-040",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:44:16.800400+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUPs poliklinikk i Trondheim har kveldsapning én dag i uken.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "én"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.93,
+     "near_miss": false,
+     "reason": "Kilden nevner Poliklinikk Klostergata/Elgeseter, telefonnummer og at den tilbyr ordinær utredning og behandling, men sier ingenting om kveldsåpning eller åpning én dag i uken.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.93,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.9,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-041",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:44:33.729511+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP skal gjøre rettighetsvurdering innen 10 virkedager.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "10"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.82,
+     "near_miss": true,
+     "reason": "Kilden oppgir rettighetsvurdering innen 10 virkedager, men sier ikke at BUP er aktøren som skal gjøre vurderingen.",
+     "supporting_excerpt_or_fact": "rettighetsvurdering innen 10 virkedager",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.82,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.9,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-042",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:44:59.647756+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp (RPH) i kommunen gis til barn fra 12 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "12 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Påstanden sier at RPH gis til barn fra 12 år, mens kilden avgrenser behandlingen til innbyggere over 16 år. Aldersgrensen er dermed i konflikt.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "innbyggere over 16 år"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "25": "Kommunale psykiske helsetjenester for barn og unge"
+   },
+   "elapsed_s": 21.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-043",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:45:21.244471+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlegen, psykologen i kommunen og barnevernslederen har henvisningsrett til psykisk helsevern for barn og unge",
+     "role": "core",
+     "modality": "har henvisningsrett",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "skolehelsetjenesten har samme henvisningsrett",
+     "role": "core",
+     "modality": "har samme henvisningsrett",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at fastlegen, psykolog i kommunen og barnevernsleder har henvisningsrett til psykisk helsevern for barn og unge.",
+     "supporting_excerpt_or_fact": "Fastlegen, psykolog i kommunen og barnevernsleder har henvisningsrett til psykisk helsevern for barn og unge",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at skolehelse ikke har henvisningsrett til BUP, mens atom sier at skolehelsetjenesten har samme henvisningsrett.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "skolehelse har ikke henvisningsrett til BUP"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "25": "Kommunale psykiske helsetjenester for barn og unge",
+    "31": "Skolehelsetjenesten i dybden"
+   },
+   "elapsed_s": 30.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-044",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:45:51.849944+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ventetiden for RPH er høyst fire uker over hele landet.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "fire uker"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.93,
+     "near_miss": false,
+     "reason": "Kilden sier at ventetid ikke kan angis generelt og at ingen nasjonal ventetidsstatistikk er verifisert i dokumentet. Den etablerer derfor ikke at ventetiden for RPH er høyst fire uker over hele landet, men oppgir heller ikke en motsatt konkret ventetid.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.93,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "25": "Kommunale psykiske helsetjenester for barn og unge"
+   },
+   "elapsed_s": 23.5,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-045",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:46:15.347156+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "HABU er et tilbud for barn og unge 0-18 år med medfødt eller ervervet funksjonsnedsettelse.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0-18 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden oppgir målgruppen som barn og unge 0-18 år med medfødt eller ervervet funksjonsnedsettelse, som støtter atomets beskrivelse av tilbudet for denne gruppen.",
+     "supporting_excerpt_or_fact": "Malgruppe: barn og unge 0-18 ar med medfodt eller ervervet funksjonsnedsettelse",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.95,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.9,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-046",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:46:33.292825+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barn som bare har angst uten funksjonsnedsettelse, hører til hos HABU.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden plasserer angst uten funksjonsnedsettelse hos BUP, mens påstanden sier at slike barn hører til hos HABU.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Angst, depresjon, atferd, traumer uten funksjonsnedsettelse | BUP"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-047",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:46:51.850859+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Voksne i akutt psykisk krise kan kontakte legevakt 116 117",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "116 117"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "BUP Akuttenheten tar imot ungdom fra 0 år",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden oppgir at ved akutt psykisk krise for voksne 18+ er kontaktpunktet Legevakt 116 117.",
+     "supporting_excerpt_or_fact": "Akutt psykisk krise - voksne 18+ | Legevakt 116 117",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at BUP Akuttenheten tar imot ungdom fra 0 år, mens kilden avgrenser tilbudet til ungdom 12-18 år.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Ungdom 12-18 år i psykisk krise | BUP Akuttenheten"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-048",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:47:18.554720+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Akuttseksjonen tar imot pårørende til krisesituerte samme dag ved direkte henvendelse.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "samme dag"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden beskriver kontaktvei via Legevakt 116 117 og vurdering før Akuttseksjonen/AAT, ikke direkte henvendelse. Den støtter heller ikke samme dag eller pårørende som målgruppe.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Legevakt 116 117 (24/7) -> vurdering -> Akuttseksjonen/AAT"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 20.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-049",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:47:39.224431+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret i Trondheim ligger i Carl Johans gate 3.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "3"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.78,
+     "near_miss": true,
+     "reason": "Kilden oppgir adressen Carl Johans gate 3, 7010 Trondheim, men identifiserer ikke at dette er adressen til Familievernkontoret i Trondheim.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.78,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 22.8,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-050",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:48:02.060708+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Krisesenteret i Trondheim krever henvisning.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at Krisesenteret i Trondheim krever henvisning, mens kilden sier at det er ingen henvisning.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Krisesenteret i Trondheim: ... ingen henvisning."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 15.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-051",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:48:17.750327+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "HFU Heimdal ligger i Reier Søbstads veg 22",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "22"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "HFU Heimdal har åpent hver ukedag",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden oppgir HFU Heimdal med adressen Reier Sobstads veg 22, som tilsvarer Reier Søbstads veg 22.",
+     "supporting_excerpt_or_fact": "HFU Heimdal: Reier Sobstads veg 22",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden oppgir åpningstid for HFU Heimdal som mandag 15.30-17.30, ikke hver ukedag.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "HFU Heimdal: Reier Sobstads veg 22, mandag 15.30-17.30"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 40.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-052",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:48:58.497074+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT i Trondheim kan ringes døgnet rundt.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.93,
+     "near_miss": false,
+     "reason": "Kilden oppgir telefonnumre for Heimdal og Ostbyen, men sier ikke at PPT i Trondheim kan ringes dognet rundt.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.93,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 20.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-053",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:49:18.490209+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Mottatt barnebidrag er ikke oppført som avkortingsgrunnlag i overgangsstønaden.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at dette ikke er oppført av NAV som avkortingsgrunnlag, og at § 15-9 bruker pensjonsgivende inntekt.",
+     "supporting_excerpt_or_fact": "Ikke oppført av NAV som avkortingsgrunnlag; § 15-9 bruker pensjonsgivende inntekt",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "66": "66. Barnetilsyn (§ 15-10) og samspill med andre ytelser"
+   },
+   "elapsed_s": 19.1,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-054",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:49:37.586516+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Nye søkere etter 1. juli 2026 har aktivitetsplikt på minst 50 prosent når barnet er 1-8 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "minst 50 prosent",
+      "1-8 år"
+     ],
+     "dates": [
+      "1. juli 2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Atomet gjelder nye søkere etter 1. juli 2026, mens kilden sier at aktivitetsplikt bare gjelder etter tidligere regelverk.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Aktivitetsplikt gjelder bare etter tidligere regelverk"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 20.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-055",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:49:58.154533+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved særlig tilsyn kan overgangsstønad innvilges til utløpet av måneden barnet fyller 18 år",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "18 år"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "diagnosen er selve vilkåret",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at det ved den aktuelle ordningen kan innvilges overgangsstønad inntil utløpet av måneden barnet fyller 18 år, med dokumentasjonskrav. Atomet gjengir samme mulighet og varighet.",
+     "supporting_excerpt_or_fact": "kan det innvilges overgangsstønad inntil utløpet av den måneden barnet fyller 18 år",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at lovteksten ikke krever diagnose, men legedokumentasjon av tilstand og arbeidsforhindring. Atomet hevder motsatt at diagnosen er selve vilkåret.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Lovteksten krever ikke diagnose; den krever legedokumentasjon av tilstand + arbeidsforhindring."
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "65": "65. Særlig tilsyn: dokumentasjon, aktører og praksisnotater"
+   },
+   "elapsed_s": 27.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-056",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:50:25.753788+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Får jeg nytt barn i husstanden, fjernes barnebidraget alltid.",
+     "role": "core",
+     "modality": "alltid",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.94,
+     "near_miss": false,
+     "reason": "Påstanden sier at barnebidraget alltid fjernes ved nytt barn i husstanden, men kilden oppgir satser for eget barn i egen husstand og sier bare at bidraget kan settes til 0 ved lav inntekt.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Eget barn i egen husstand: 4 652 kr/maned ... Har bidragspliktig lav inntekt, reduseres bidraget og kan settes til 0."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.94,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "48": "48. Barnebidrag i dybden"
+   },
+   "elapsed_s": 23.4,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-057",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:50:49.126837+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnebidrag justeres automatisk året barnet fyller 6, 11 eller 15 år, fra 1. juli.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "6",
+      "11",
+      "15"
+     ],
+     "dates": [
+      "1. juli"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at bidraget justeres automatisk året barnet fyller 6, 11 eller 15 år, fra 1. juli.",
+     "supporting_excerpt_or_fact": "justeres bidraget automatisk aret barnet fyller 6, 11 eller 15 ar, fra 1. juli",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "48": "48. Barnebidrag i dybden"
+   },
+   "elapsed_s": 21.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-058",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:51:10.166912+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Jeg kan få samværsfradrag for samvær som er avtalt, selv om det ikke gjennomføres.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at samværet må faktisk gjennomføres, og at avtalt men ikke gjennomført samvær ikke gir fradrag.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Avtalt men ikke gjennomfort samvar gir ikke fradrag."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "49": "49. Samvaersfradrag og reisekostnader"
+   },
+   "elapsed_s": 19.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-059",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:51:29.845847+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ved delt fast bosted utgår det i utgangspunktet ingen bidrag",
+     "role": "core",
+     "modality": "i utgangspunktet",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ingen"
+     ]
+    },
+    {
+     "id": "A2",
+     "text": "samværsfradrag kommer i tillegg på toppen",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at det i utgangspunktet ikke er bidrag ved delt fast bosted, selv om den nevner unntak ved inntektsforskjell.",
+     "supporting_excerpt_or_fact": "I utgangspunktet ingen bidrag",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.88,
+     "near_miss": false,
+     "reason": "Atometsier at samværsfradrag kommer i tillegg, mens kilden sier at ved delt fast bosted er samværsfradrag som hovedregel ikke aktuelt.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Ved DELT FAST BOSTED er samvaersfradrag som hovedregel IKKE aktuelt"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "48": "48. Barnebidrag i dybden",
+    "49": "49. Samvaersfradrag og reisekostnader"
+   },
+   "elapsed_s": 34.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-060",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:52:03.830558+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen må svare meg på søknaden om sosialhjelp innen fire uker.",
+     "role": "core",
+     "modality": "må",
+     "numbers": [
+      "fire uker"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden sier at søknad skal besvares innen rimelig tid, og raskt ved nødssituasjon, men oppgir ikke en frist på fire uker.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.92,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 23.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-061",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:52:27.405690+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Den statlige veiledende satsen for enslige på sosialhjelp er 8 300 kroner fra 1. januar 2026.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "8 300 kroner"
+     ],
+     "dates": [
+      "1. januar 2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir samme sats, gruppe og startdato: enslige har statlig veiledende sats 8 300 kr fra 1. januar 2026.",
+     "supporting_excerpt_or_fact": "Statlige veiledende satser fra 1. januar 2026 ... Enslige | 8 300 kr",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 24.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-062",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:52:51.965904+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Som person under 30 år kan jeg nekte å delta i aktiviteter NAV ber om, uten at det får konsekvenser for stønaden.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "30 år"
+     ],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.96,
+     "near_miss": false,
+     "reason": "Kilden sier at NAV vil stille aktivitetskrav for personer under 30 år, og at avtalt aktivitet kan påvirke stønaden. Det motsier påstanden om at man kan nekte uten konsekvenser for stønaden.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "under 30 vil Nav stille krav om aktivitet ... avtalt aktivitet ... kan pavirke stonaden"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.96,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 18.5,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-063",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:53:10.477864+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Begge foreldre kan føre barnet med delt fast bosted på sin bostøttesøknad",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "det avgjøres av antall overnattinger",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at Husbanken godtar at begge foreldre fører barn med delt fast bosted på sin bostøttesøknad.",
+     "supporting_excerpt_or_fact": "Husbanken godtar at begge foreldre fører barn med delt fast bosted på sin bostøttesøknad",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Påstanden sier at avgjørelsen bestemmes av antall overnattinger, men kilden sier eksplisitt at antall netter ikke er avgjørende.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Det er ikke avgjørende hvor mange netter barnet overnatter hos hvem."
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "55": "55. Bostøtte i dybden"
+   },
+   "elapsed_s": 27.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-064",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:53:38.138218+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Min bostøtte i Trondheim blir 5 000 kroner i måneden.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "5 000 kroner i måneden"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden sier bare at kalkulatoren skal brukes for et veiledende svar, og oppgir ikke bostøttebeløp for Trondheim eller 5 000 kroner per måned.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "55": "55. Bostøtte i dybden"
+   },
+   "elapsed_s": 23.4,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-065",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:54:01.552295+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Minsteutbetalingen av bostøtte er 61 kroner per måned.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "61 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at minsteutbetaling er 61 kroner per måned, samme beløp og tidsenhet som i påstanden.",
+     "supporting_excerpt_or_fact": "Minsteutbetaling er 61 kroner per måned",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "55": "55. Bostøtte i dybden"
+   },
+   "elapsed_s": 15.4,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-066",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:54:16.956288+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolens fraværsoppfølging gjelder bare ved høyt eller langvarig fravær.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at fraværsoppfølgingen gjelder alle typer fravær fra første dag, ikke bare høyt eller langvarig fravær.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "den gjelder alle typer fravær og fra første dag eleven er borte, ikke bare høyt eller langvarig fravær"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "30": "Skolefravær og skolevegring"
+   },
+   "elapsed_s": 17.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-067",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:54:34.587596+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernet kan gjennomføre undersøkelse uten samtykke",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    },
+    {
+     "id": "A2",
+     "text": "frivillige § 3-1-tiltak kan iverksettes uten samtykke",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "§ 3-1"
+     ],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.96,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at samtykke ikke er nødvendig for undersøkelse, som støtter at barnevernet kan gjennomføre undersøkelse uten samtykke.",
+     "supporting_excerpt_or_fact": "Ingen samtykke nødvendig for undersøkelse",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at frivillige § 3-1-tiltak kan iverksettes uten samtykke, mens kilden sier det motsatte: uten samtykke kan ikke § 3-1-tiltak iverksettes.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "uten samtykke kan ikke § 3-1-tiltak iverksettes"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.96,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "41": "Samtykke pa tvers av tjenester",
+    "39": "Frivillige hjelpetiltak etter barnevernsloven"
+   },
+   "elapsed_s": 35.2,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-068",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:55:09.841337+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Jeg får småbarnstillegg fordi jeg har barn under 3 år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "3 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Atomet sier at småbarnstillegg gis fordi man har barn under 3 år, men kilden gjør tillegget betinget av full overgangsstønad og egne vilkår. Barnets alder alene er ikke tilstrekkelig.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "småbarnstillegg ... ved full overgangsstønad for barn 0 til 3 år) følger egne vilkår"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 23.2,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-069",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:55:33.074749+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "På familievernkontoret skal barnets uttalelse gis stor vekt for barn 12-16 år.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "12-16 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at for barn 12-16 år skal barnets uttalelse gis stor vekt. Påstanden har samme subjekt, aldersspenn og modalitet.",
+     "supporting_excerpt_or_fact": "for barn 12-16 ar skal barnets uttalelse gis stor vekt",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "33": "Familievernkontoret i dybden"
+   },
+   "elapsed_s": 18.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-070",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:55:51.653653+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret kan påby en samværsavtale selv om foreldrene ikke blir enige.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at mekleren ikke kan påby løsning eller utforme avtale uten enighet, mens påstanden sier at Familievernkontoret kan påby samværsavtale uten enighet.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "mekleren kan ikke pabyde losning eller utforme avtale uten enighet"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "33": "Familievernkontoret i dybden"
+   },
+   "elapsed_s": 20.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-071",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:56:12.321409+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlegen er hovedhenviser til HABU",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "psykiske plager alene er nok grunnlag for henvisning",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.78,
+     "near_miss": true,
+     "reason": "Kilden sier at lege er hovedhenviser, inkludert fastlege eller spesialist, men den etablerer ikke eksplisitt at dette gjelder til HABU.",
+     "supporting_excerpt_or_fact": "lege er hovedhenviser (fastlege eller spesialist)",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at henvisningskriteriene krever funksjonsnedsettelse/utviklingsforstyrrelse, ikke bare psykiske plager.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "henvisningskriterier krever funksjonsnedsettelse/utviklingsforstyrrelse, ikke bare psykiske plager"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.78,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 1,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 36.3,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-072",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:56:48.587967+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernet i Trondheim lover svar innen 24 timer på alle bekymringsmeldinger.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "24 timer"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden sier bare at man kan kontakte barnevernstjenesten i egen bydel via BFT, og sier ingenting om svarfrist, løfte om svar innen 24 timer eller alle bekymringsmeldinger.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.95,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-073",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:57:08.194113+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Frivillige hjelpetiltak etter barnevernsloven iverksettes med samtykke fra de som har foreldreansvar.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at tiltak iverksettes med samtykke av de som har foreldreansvar. At kilden også nevner barnets samtykke etter alder/modenhet motsier ikke atomets påstand.",
+     "supporting_excerpt_or_fact": "Tiltak iverksettes med samtykke av de som har foreldreansvar",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "39": "Frivillige hjelpetiltak etter barnevernsloven"
+   },
+   "elapsed_s": 17.4,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-074",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:57:25.603939+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Det er ikke mulig å melde en bekymring til barnevernet anonymt.",
+     "role": "core",
+     "modality": "ikke mulig",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Atom sier at anonym bekymringsmelding ikke er mulig, mens kilden sier at det er rettslig adgang og at man kan være anonym.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "kan vaere anonym"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.98,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "40": "Bekymringsmelding og undersokelse"
+   },
+   "elapsed_s": 21.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-075",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:57:46.591364+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barn 0-11 år i psykisk krise går via legevakt",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0-11"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "ungdom 12-18 år kan komme til Akuttenheten uten henvisning",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "12-18"
+     ],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at akutte tilfeller for barn 0-11 år går via legevakt til BUP, som samsvarer med at barn 0-11 år i psykisk krise går via legevakt.",
+     "supporting_excerpt_or_fact": "Akutt: 0-11 ar via legevakt -> BUP",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Påstanden sier at ungdom 12-18 år kan komme uten henvisning, mens kilden sier at 12-18 år kan henvises direkte og nevner henvisning via legevakt/fastlege/poliklinikk.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "12-18 ar kan henvises direkte til BUP Akuttenheten; henvisning via legevakt/fastlege/poliklinikk"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 40.4,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-076",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:58:26.989808+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Sorg- og kriseteamet i Trondheim gir langtidsbehandling over flere år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden sier bare at tilbudet gjelder tidlig innsats og psykososial oppfolging, men oppgir ikke at Sorg- og kriseteamet i Trondheim gir langtidsbehandling over flere aar.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.92,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 27.3,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-077",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:58:54.260904+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernvakta i Trondheim kan nås døgnet rundt på 116 111 eller direkte på 90 28 70 37.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "116 111",
+      "90 28 70 37"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden oppgir Barnevernvakta Trondheim med 116 111 som døgnåpen nasjonal alarmtelefon og direkte nummer 90 28 70 37.",
+     "supporting_excerpt_or_fact": "116 111 (nasjonal alarmtelefon, dognapen) eller direkte 90 28 70 37",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.92,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.0,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-078",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:59:18.260439+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Når en trygg voksen tar over omsorgen for barnet, blir det automatisk en barnevernssak.",
+     "role": "core",
+     "modality": "automatisk",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Atomet sier at det automatisk blir en barnevernssak, mens kilden sier uttrykkelig at barnevern ikke er automatisk når en trygg voksen overtar.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Barnevern er IKKE automatisk nar en trygg voksen overtar"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.99,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "57": "57. Nodhjelp og akutte situasjoner"
+   },
+   "elapsed_s": 16.7,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-079",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T07:59:34.962829+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Nødhjelp kan dekke strømregningen for å hindre at strømmen stenges",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "det finnes en fast lovfestet sats",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden sier at nødhjelp kan gjelde regninger som må betales for å hindre at nødvendige tjenester, for eksempel strøm, blir stengt. Det støtter at nødhjelp kan dekke strømregningen for å hindre stenging.",
+     "supporting_excerpt_or_fact": "regninger som du ma betale for a hindre at nodvendige tjenester, for eksempel strom, blir stengt",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Atomet hevder at det finnes en fast lovfestet sats, mens kilden sier at det ikke finnes noen lovfestet belopsgrense for nodhjelp.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Det finnes ingen lovfestet belopsgrense"
+    }
+   ],
+   "verdict": "PARTIALLY_SUPPORTED",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "57": "57. Nodhjelp og akutte situasjoner"
+   },
+   "elapsed_s": 30.6,
+   "status": "ok"
+  },
+  {
+   "id": "HV2-080",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-31T08:00:05.529741+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Når jeg ringer 116 111, får jeg saksstatus innen én time.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "116 111",
+      "én time"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.94,
+     "near_miss": false,
+     "reason": "Kilden oppgir at 116 111 gjelder akutt barnevern og er døgnåpen, men sier ingenting om at innringer får saksstatus innen én time.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.94,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.1,
+   "status": "ok"
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+  "artifact": "rules-v1",
+  "purpose": "Frozen structured rules registry: deterministic eligibility/deadline facts for S6 route reasoning. Phase 1 freezes the seed; rule evaluation logic arrives in Phase 2. FC-02: an invalid registry downgrades eligibility answers to uncertainty, never to guessed eligibility.",
+  "seeded_from": [
+    "28b-18-20-aar-routing.md (juridisk QA 08.09.2026)",
+    "45-beslutningstre-hvem-ringer-jeg.md"
+  ],
+  "rules": [
+    {
+      "rule_id": "R-PRI-4A-65D",
+      "name": "65 virkedagers maksimumsfrist for oppstart",
+      "source": {
+        "kind": "LAW",
+        "ref": "Prioriteringsforskriften (pause- og prioriteringsforskriften) paragraf 4a",
+        "url": "https://lovdata.no/dokument/SF/forskrift/2000-12-01-1208",
+        "note": "sist endret FOR-2024-05-23-813, i kraft 01.06.2024; verifisert mot Lovdata 08.09.2026"
+      },
+      "applies_to": {
+        "age_max_inclusive": 22,
+        "target_group": "psykisk lidelse eller rusmiddelavhengighet",
+        "scope": "spesialisthelsetjenesten generelt; ikke begrenset til BUP"
+      },
+      "deadline_days": 65,
+      "deadline_unit": "virkedager",
+      "deadline_meaning": "MAKSIMUMSFRIST for naar nodvendig spesialisthelsetjeneste senest skal vaere paabegynt; den individuelle faglig forsvarlige fristen kan vaere kortere",
+      "verified_date": "2026-09-08"
+    },
+    {
+      "rule_id": "R-PAS-2-2A-10D",
+      "name": "10 virkedagers vurderingsfrist",
+      "source": {
+        "kind": "LAW",
+        "ref": "pasient- og brukerrettighetsloven paragraf 2-2a",
+        "url": "https://lovdata.no/dokument/NL/lov/1999-07-02-63",
+        "note": "generell vurderingsfrist ved henvisning til spesialisthelsetjenesten; alle aldre, ikke en under-23-regel; verifisert mot Lovdata 08.09.2026"
+      },
+      "applies_to": {
+        "age_min_inclusive": 0,
+        "scope": "generell vurderingsfrist etter henvisning til spesialisthelsetjenesten"
+      },
+      "deadline_days": 10,
+      "deadline_unit": "virkedager",
+      "deadline_meaning": "frist for beslutning om pasienten har rett til nodvendig helsehjelp fra spesialisthelsetjenesten, og om eventual tidspunkt for tilbudet",
+      "verified_date": "2026-09-08"
+    },
+    {
+      "rule_id": "R-EMERGENCY-113-116X",
+      "name": "Nodnummer ved akutt risiko",
+      "source": {
+        "kind": "NATIONAL_GUIDANCE",
+        "ref": "57-nodhjelp-og-akutte-situasjoner.md; 26-beslutningsstotte-hvor-henvende-seg.md; helsenorge.no (hentet 30.08.2026)",
+        "url": "https://www.helsenorge.no/hjelpetilbud-i-kommunene/legevakt/"
+      },
+      "mapping": {
+        "akutt_fare_for_liv_including_selvmordsfare": "113",
+        "haster_men_ikke_livsfare": "116 117",
+        "samtalestoette_mental_helse": "116 123",
+        "ingen_trygg_omsorgsperson_for_barnet": "116 111",
+        "krisesenter": "116 006",
+        "politiet_umiddelbar_fare": "112"
+      },
+      "verified_date": "2026-08-30"
+    }
+  ],
+  "frozen": "2026-09-14"
+}

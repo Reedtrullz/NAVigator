@@ -1,0 +1,654 @@
+{
+ "meta": {
+  "set": "calibration",
+  "judge": "A",
+  "model": "gpt-5.5",
+  "version": "semantic-judge-v0.3",
+  "aggregator": "aggregate-v0.3",
+  "decompose_prompt_sha256": "849a71469e82cfad083b294aba891e017920f3639c5468c389ca9df6a4d2a187",
+  "atom_prompt_sha256": "0740e647e0141f06af13d27418a30735c2dd3efb7c586fc348345e845eda7f41",
+  "generated": "2026-08-30T22:12:58.330688+00:00",
+  "config": {
+   "proxy": "http://127.0.0.1:10100/v1",
+   "temperature": "0 (provider-supported)",
+   "timeout_s": 180,
+   "arbitrate": false,
+   "consensus": false
+  }
+ },
+ "results": [
+  {
+   "id": "CAL001",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:12:58.332311+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt ordinær barnetrygd er 1 006 kroner per måned per forelder.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 006 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at delt sats for ordinær barnetrygd er 1 006 kr/mnd, og at dette er 1 006 kroner per forelder ved delt fast bosted.",
+     "supporting_excerpt_or_fact": "Ordinær barnetrygd: full sats 2 012 kr/mnd, delt sats 1 006 kr/mnd. Ved delt fast bosted deles ordinær barnetrygd likt: 2 012 / 2 = 1 006 kroner per forelder.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 24.6,
+   "status": "ok"
+  },
+  {
+   "id": "CAL002",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:13:22.897441+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt utvidet barnetrygd er 1 286 kroner per måned.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 286 kroner per måned"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir eksplisitt at delt sats for utvidet barnetrygd er 1 286 kr per måned, samme beløp og tidsenhet som i atomsetningen.",
+     "supporting_excerpt_or_fact": "Utvidet barnetrygd: full sats 2 572 kr/mnd, delt sats 1 286 kr/mnd.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 23.2,
+   "status": "ok"
+  },
+  {
+   "id": "CAL003",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:13:46.087689+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd får totalt 2 292 kroner i måneden hvis begge deler er innvilget.",
+     "role": "core",
+     "modality": "får",
+     "numbers": [
+      "2 292"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden hvis begge deler er innvilget.",
+     "supporting_excerpt_or_fact": "får 1 006 + 1 286 = 2 292 kroner i måneden fra NAV, hvis begge deler er innvilget",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "54": "54. Delt barnetrygd: ordinær og utvidet"
+   },
+   "elapsed_s": 21.2,
+   "status": "ok"
+  },
+  {
+   "id": "CAL004",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:14:07.325296+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd skal ikke tas hensyn til når økonomisk sosialhjelp til familier vurderes.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at det ved vurdering av stønad til familier ikke skal tas hensyn til barnetrygd.",
+     "supporting_excerpt_or_fact": "Ved vurdering av stønad til familier skal det ikke tas hensyn til barnetrygd",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 16.3,
+   "status": "ok"
+  },
+  {
+   "id": "CAL005",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:14:23.581539+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rett til opplysning, råd og veiledning etter sosialtjenesteloven § 17 gjelder uavhengig av rett til økonomisk sosialhjelp.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "§ 17"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at § 17 om opplysning, råd og veiledning gjelder uavhengig av rett til økonomisk sosialhjelp.",
+     "supporting_excerpt_or_fact": "Gjelder uavhengig av rett til økonomisk sosialhjelp",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "56": "56. Okonomisk sosialhjelp i dybden"
+   },
+   "elapsed_s": 23.4,
+   "status": "ok"
+  },
+  {
+   "id": "CAL006",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:14:46.944087+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "For nye saker gjelder overgangsstønad til utløpet av måneden barnet fyller 14 måneder.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "14 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at for nye saker gjelder overgangsstønad til utløpet av måneden barnet fyller 14 måneder.",
+     "supporting_excerpt_or_fact": "For nye saker gjelder ... overgangsstønad til utløpet av måneden barnet fyller 14 måneder",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 16.4,
+   "status": "ok"
+  },
+  {
+   "id": "CAL007",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:15:03.376785+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetilsynsstønad dekker 64 prosent av dokumenterte utgifter",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "64 prosent"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "det er ingen stønad ved pensjonsgivende inntekt over 6 G",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "6 G"
+     ],
+     "dates": [],
+     "negations": [
+      "ingen"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.93,
+     "near_miss": false,
+     "reason": "Kilden sier at barnetilsyn etter § 15-10 er 64 prosent av dokumenterte utgifter, med videre vilkår om satser og inntektsgrense. Atomets hovedpåstand samsvarer med dette.",
+     "supporting_excerpt_or_fact": "64 prosent av dokumenterte utgifter",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at det er ingen stønad ved pensjonsgivende inntekt over 6 G, samme vilkår og tall som i påstanden.",
+     "supporting_excerpt_or_fact": "ingen stønad ved pensjonsgivende inntekt over 6 G",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.93,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 30.7,
+   "status": "ok"
+  },
+  {
+   "id": "CAL008",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:15:34.087271+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Friinntekten for overgangsstønad er 0,5 G",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0,5 G"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "0,5 G er 68 274,50 kroner per år",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0,5 G",
+      "68 274,50 kroner per år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at friinntekten er 0,5 G.",
+     "supporting_excerpt_or_fact": "Friinntekt: 0,5 G",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir samme beløp og årlig scope: 0,5 G er 68 274,50 kr per år.",
+     "supporting_excerpt_or_fact": "0,5 G = 68 274,50 kr per år",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "64": "64. Overgangsstønad etter nye regler: praktisk dybde (fra 1.7.2026)"
+   },
+   "elapsed_s": 39.5,
+   "status": "ok"
+  },
+  {
+   "id": "CAL009",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:16:13.563444+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Mottakere som står i overgangsstønadsordningen per 30. juni 2026 beholder de tidligere reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "30. juni 2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at mottakere som står i ordningen per 30. juni 2026 beholder de tidligere reglene. Dokumenttittelen etablerer at ordningen er overgangsstønadsordningen.",
+     "supporting_excerpt_or_fact": "Mottakere som står i ordningen per 30. juni 2026 beholder de tidligere reglene",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "63": "63. Overgangsstønad: endringsloven og kapittel 15 fra 1. juli 2026"
+   },
+   "elapsed_s": 21.2,
+   "status": "ok"
+  },
+  {
+   "id": "CAL010",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:16:34.766070+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp (RPH) i Trondheim er gratis for alle over 18 år som bor i Trondheim kommune.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "18 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at RPH er gratis for alle over 18 år som bor i Trondheim kommune, samme subjekt, scope og vilkår som atom.",
+     "supporting_excerpt_or_fact": "Gratis for alle over 18 år som bor i Trondheim kommune.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "70-lokalt/trondheim/02-psykisk-helse.md": "02 Psykisk helse: Trondheim"
+   },
+   "elapsed_s": 21.6,
+   "status": "ok"
+  },
+  {
+   "id": "CAL011",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:16:56.365170+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Trondheimshjelpa er et lavterskeltilbud",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "man kan kontakte Trondheimshjelpa uten henvisning",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at Trondheimshjelpa er et lavterskeltilbud.",
+     "supporting_excerpt_or_fact": "Trondheimshjelpa er et lavterskeltilbud",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at Trondheimshjelpa er et tilbud i Trondheim og uttrykkelig oppgir «ingen henvisning», som støtter at man kan kontakte tilbudet uten henvisning.",
+     "supporting_excerpt_or_fact": "Gratis, ingen henvisning.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "70-lokalt/trondheim/02-psykisk-helse.md": "02 Psykisk helse: Trondheim"
+   },
+   "elapsed_s": 29.0,
+   "status": "ok"
+  }
+ ]
+}

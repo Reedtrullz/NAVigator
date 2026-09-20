@@ -1,0 +1,48 @@
+{
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_4-BOUNDARY-AGREEMENT-REPAIR",
+  "status": "DEV_CORPUS_SEMANTIC_JUDGE_V1_4_NOT_READY",
+  "closed": "2026-09-11",
+  "terminal_reason": "Official one-shot mimo-v2.5 validation failed model hard gates: overall 0.8265 < 0.95; critical FN 1 != 0; route 0.76; uncertainty 0.76; forbidden 0.92; critical 0.8696. Stability stage not reached per no-substantive-rerun rule.",
+  "created": "2026-09-10",
+  "scope": "agreement_metric_and_boundary_contract_only",
+  "judge_model": "command-code/xiaomi/mimo-v2.5",
+  "judge_provider": "commandcode-auth via local proxy",
+  "historical_changes_allowed": false,
+  "corpus_changes_allowed": false,
+  "runtime_changes_allowed": false,
+  "full_sut_allowed": false,
+  "model_calls_before_human_contract_gate": false,
+  "fresh_product_holdout_allowed": false,
+  "threshold_derivation_allowed": false,
+  "gpt_5_5_allowed": false,
+  "gpt_5_6_luna_judge_allowed": false,
+  "prior_task": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_3M-MIMO-MIGRATION",
+  "prior_terminal_status": "DEV_CORPUS_SEMANTIC_JUDGE_V1_3M_NOT_READY",
+  "permanent_process_notes": {
+    "V1_3M_DUPLICATE_PROCESS_INCIDENT": true,
+    "V1_3M_TRANSPORT_HEADROOM_CHANGE": "120 -> 2000",
+    "V1_3M_TRANSPORT_HEADROOM_CLASSIFICATION": "TRANSPORT_CAPACITY_CHANGE",
+    "classification_condition": "prompt unchanged; semantic contract unchanged; fixture unchanged; output schema unchanged",
+    "v1_4_preregistered_completion_headroom": 32768,
+    "v1_4_headroom_classification": "PREREGISTERED_TRANSPORT_CAPACITY_CHANGE",
+    "historical_rewrite_prohibited": "V1.3M history must not be rewritten as if it used 32768 tokens"
+  },
+  "agreement_metric_repair": {
+    "free_text_note_affects_label_agreement": false,
+    "score_bearing_fields": [
+      "route: proposition_present, speaker_commitment, route_verdict",
+      "uncertainty: uncertainty_requirement_mode, output_uncertainty_behavior (or compound_components), uncertainty_verdict"
+    ],
+    "non_score_bearing": [
+      "note",
+      "prose rationale wording",
+      "formatting",
+      "explanation wording"
+    ]
+  },
+  "burned_data": {
+    "V1_3M_SET_A": "BURNED_MODEL_CONTRACT_DEVELOPMENT_DATA",
+    "V1_2_OFFICIAL_80": "BURNED_CONTRACT_DEVELOPMENT_DATA (inherited)",
+    "V1_1_OFFICIAL_80": "BURNED_CONTRACT_DEVELOPMENT_DATA (inherited)"
+  }
+}

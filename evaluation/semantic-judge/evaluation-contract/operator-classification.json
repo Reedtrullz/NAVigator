@@ -1,0 +1,225 @@
+{
+ "schema": "operator-classification-v1",
+ "task_id": "SEMANTIC-JUDGE-EVALUATION-CONTRACT-REDESIGN",
+ "note": "classification only; no operator implemented in this stage (spec 30)",
+ "operators": [
+  {
+   "id": "DIRECT_ASSERTION",
+   "definition": "derives verdict when paraphrase-level overlap between claim and premises (per inference-operators.json v1)",
+   "premises": [
+    "paraphrase-level overlap between claim and premises"
+   ],
+   "safety_input": "high",
+   "failure_mode": "paraphrase gap widens into unsupported generalization",
+   "closed_world_risk": "LOW",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_FOR_AUTO_PROOF",
+   "tier": 1,
+   "note": ""
+  },
+  {
+   "id": "EXPLICIT_NEGATION",
+   "definition": "derives verdict when premise contains explicit negation token (per inference-operators.json v1)",
+   "premises": [
+    "premise contains explicit negation token"
+   ],
+   "safety_input": "high",
+   "failure_mode": "negation-scope misses (partial negation read as full)",
+   "closed_world_risk": "LOW",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_FOR_AUTO_PROOF",
+   "tier": 1,
+   "note": ""
+  },
+  {
+   "id": "NUMERIC_CONFLICT",
+   "definition": "derives verdict when premise contains a number on the claim axis (per inference-operators.json v1)",
+   "premises": [
+    "premise contains a number on the claim axis",
+    "values differ"
+   ],
+   "safety_input": "high",
+   "failure_mode": "unit/basis mismatch read as value conflict",
+   "closed_world_risk": "LOW",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_FOR_AUTO_PROOF",
+   "tier": 1,
+   "note": ""
+  },
+  {
+   "id": "TEMPORAL_CONFLICT",
+   "definition": "derives verdict when premise contains a date/duration anchor (per inference-operators.json v1)",
+   "premises": [
+    "premise contains a date/duration anchor",
+    "anchors conflict"
+   ],
+   "safety_input": "high",
+   "failure_mode": "anchor granularity mismatch",
+   "closed_world_risk": "LOW",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_FOR_AUTO_PROOF",
+   "tier": 1,
+   "note": ""
+  },
+  {
+   "id": "MODALITY_CONFLICT",
+   "definition": "derives verdict when modality tokens present on both sides (per inference-operators.json v1)",
+   "premises": [
+    "modality tokens present on both sides"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "strength miscalibrated (kan vs skal)",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "SAME_PREDICATE_OPPOSITE_POLARITY",
+   "definition": "derives verdict when shared predicate (per inference-operators.json v1)",
+   "premises": [
+    "shared predicate",
+    "opposite polarity"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "polarity of adjacent-but-different predicates conflated",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "RULE_PLUS_CONDITION",
+   "definition": "derives verdict when rule and condition co-present (two premises or condition-marked span) (per inference-operators.json v1)",
+   "premises": [
+    "rule and condition co-present (two premises or condition-marked span)"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "consequence matched while condition dropped",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "RULE_PLUS_EXCEPTION",
+   "definition": "derives verdict when rule span plus explicit exception marker (per inference-operators.json v1)",
+   "premises": [
+    "rule span plus explicit exception marker"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "main rule matched while exception applies",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "DEFINITION_PLUS_INSTANCE",
+   "definition": "derives verdict when class term shared between claim and premise (per inference-operators.json v1)",
+   "premises": [
+    "class term shared between claim and premise"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "non-identity definitional relationship treated as identity",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": "DEFINITION_PLUS_INSTANCE may graduate to SAFE_FOR_AUTO_PROOF only for explicit identity/inclusion definitions (spec 12)"
+  },
+  {
+   "id": "EXHAUSTIVE_SET_EXCLUSION",
+   "definition": "derives verdict when premise marks the list exhaustive (kun/bare/eneste/alle/...) (per inference-operators.json v1)",
+   "premises": [
+    "premise marks the list exhaustive (kun/bare/eneste/alle/...)"
+   ],
+   "safety_input": "high-if-marked",
+   "failure_mode": "unmarked list treated as exhaustive (closed-world)",
+   "closed_world_risk": "HIGH",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "ACTOR_MEMBERSHIP",
+   "definition": "derives verdict when actor term shared between claim and premise (per inference-operators.json v1)",
+   "premises": [
+    "actor term shared between claim and premise"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "role flattening (helsepersonell -> lege)",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "LOCAL_RULE_OVERRIDES_GENERAL",
+   "definition": "derives verdict when locality term present in the premise span (per inference-operators.json v1)",
+   "premises": [
+    "locality term present in the premise span"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "implicit legal hierarchy assumed",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "REVIEW_ONLY",
+   "tier": 3,
+   "note": ""
+  },
+  {
+   "id": "MULTI_SPAN_CONJUNCTION",
+   "definition": "derives verdict when at least two distinct premise spans (per inference-operators.json v1)",
+   "premises": [
+    "at least two distinct premise spans"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "spans combined across incompatible scopes",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  },
+  {
+   "id": "SIMPLE_ARITHMETIC",
+   "definition": "derives verdict when numbers in premises (per inference-operators.json v1)",
+   "premises": [
+    "numbers in premises",
+    "arithmetic relation in derived_fact"
+   ],
+   "safety_input": "high",
+   "failure_mode": "wrong arithmetic relation applied to unrelated numbers",
+   "closed_world_risk": "LOW",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_FOR_AUTO_PROOF",
+   "tier": 1,
+   "note": ""
+  },
+  {
+   "id": "TRANSITIVE_EQUIVALENCE",
+   "definition": "derives verdict when each equivalence step is a small paraphrase (per inference-operators.json v1)",
+   "premises": [
+    "each equivalence step is a small paraphrase"
+   ],
+   "safety_input": "medium",
+   "failure_mode": "chain accumulates drift over >2 steps",
+   "closed_world_risk": "MEDIUM",
+   "legal_safety_risk": "HIGH for LOCAL_RULE_OVERRIDES_GENERAL and unmarked exhaustiveness; LOW for bounded conflict detection",
+   "recommended_class": "SAFE_WITH_PRECONDITIONS",
+   "tier": 2,
+   "note": ""
+  }
+ ],
+ "no_operator": {
+  "id": "NO_OPERATOR",
+  "meaning": "no valid derivation; verdict must be INSUFFICIENT_EVIDENCE/REVIEW"
+ }
+}

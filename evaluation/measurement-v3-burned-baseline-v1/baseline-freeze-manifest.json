@@ -1,0 +1,101 @@
+{
+  "artifact": "baseline-freeze-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-BURNED-BASELINE-V1",
+  "status": "FROZEN",
+  "frozen_utc": "2026-09-14T16:38:44Z",
+  "inputs": {
+    "phase3_freeze_manifest_sha256": "485ecbe5d6957c4c8a34e37ac17986e1fe7a827aa6b7e819cb011924fcabfdce",
+    "measurement_v3_manifest_sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+    "dev_corpus_manifest_sha256": "9c265731e6e17ea54844b6db646dac4abe1901e49ee1c5ce56c3ec081db177ef",
+    "gold_model_sha256": "994ab1885b81d85a378ad3744930c2b9fc11cfe3e9dbc6df7bfa65f729949804",
+    "prediction_family_manifests": {
+      "safety": "08d64b58c6d8e3f385b520927096fcd9f3d33fd298e1a8ca7ddfb068673f9f5f",
+      "routing": "5a15f02070e6885dafe539876d86b35e6623bacb29de1a0d6c7b75f7a76791d2",
+      "discovery_adversarial": "fc4a87cbdd360c3d0e89d882b4c02814b17561484eab3af95abb345724e88e4d"
+    }
+  },
+  "pinned_artifacts": {
+    "README.md": {
+      "sha256": "899e701c80935516badf83634c159bb0ae2ecf398b09afb1d1ac1620673817c0",
+      "bytes": 1651
+    },
+    "automated-coverage-report.json": {
+      "sha256": "4fe923de5f7fd2e2dd08b2510d19b7472659f7cf9d8e504ba16433146cc2cf71",
+      "bytes": 1397
+    },
+    "baseline-integrity.json": {
+      "sha256": "1a874d88b3b8249e10a2c7166115f07d278b7652c2e5b42694eaf09cfca6c200",
+      "bytes": 1577
+    },
+    "case-prediction-alignment.json": {
+      "sha256": "4fae46742723dab92ac85a3f8df41f2aa8db4671d81adf351674992b2a27312d",
+      "bytes": 397
+    },
+    "corpus-integrity.json": {
+      "sha256": "455c93d03d1f6be44390cf9e279e342b490a93ac4cccdff73c4dced3ff829dd1",
+      "bytes": 563
+    },
+    "deterministic-scores.json": {
+      "sha256": "a8ffdd210c54e545c2359088630fec7f5923760e4750a73049dc6241fb6e4ff2",
+      "bytes": 469130
+    },
+    "freeze-repair-record.json": {
+      "sha256": "483ea8c4f78e81c292a1bdd552885061aca1d57f83531b2f03b809e4ec8b8968",
+      "bytes": 4713
+    },
+    "human-review-batch-manifest.json": {
+      "sha256": "4e7fc67946469f57a0e4729d92409b5b64f86cc67a914f7ebf43ae193c3ebd8a",
+      "bytes": 21621
+    },
+    "human-review-packets.jsonl": {
+      "sha256": "111ac642ea9ba6e4b7c4ebd6e6db18dfd075c164852fbed8576b8ddb56b80f8f",
+      "bytes": 741657
+    },
+    "measurement-determinism.json": {
+      "sha256": "8cd07aaa7a086c346e51f7b4e67d1f222cb95ca53737d2317ffd257e469655c9",
+      "bytes": 629
+    },
+    "measurement-routing-results.json": {
+      "sha256": "f21b97cf36a3bc2268b64c7da065ec767f120ac32b178ec327023bce16b8e3f7",
+      "bytes": 46464
+    },
+    "partial-aggregate-metrics.json": {
+      "sha256": "646ce8ac11ea88764b295904606a685f8051c76bb9e90afa93586b5719c94c0a",
+      "bytes": 2862
+    },
+    "prediction-integrity.json": {
+      "sha256": "a9f030d2dfac619b338ebe4cbfeffdcc7d55e9b7c1058155d3deaea4ca7b9c85",
+      "bytes": 587
+    },
+    "product-diagnostics.json": {
+      "sha256": "7712bdacfb65b3f1adda344a9d36c6c7e3e4ae2b4044c2c5e76e3739b2f743d7",
+      "bytes": 891
+    },
+    "review-packet-leakage-audit.json": {
+      "sha256": "69bcab490e396cc00f94daa4a04284339e49ea5a1f9ae383acf98fdd982ac383",
+      "bytes": 13559
+    },
+    "security-audit.json": {
+      "sha256": "133442406270eabc79c143a14ed3ed1cbe154e55b432801e82ca118b4cff1a7e",
+      "bytes": 658
+    }
+  },
+  "excluded": [
+    {
+      "file": "TASK-LOCK.json",
+      "reason": "task-state file references this manifest SHA"
+    },
+    {
+      "file": "final-report.md",
+      "reason": "post-freeze read-only reporting; not score-bearing"
+    },
+    {
+      "file": "hashes.txt",
+      "reason": "derived pin index"
+    },
+    {
+      "file": "run_baseline.py",
+      "reason": "task-local execution script; the scoring artifacts it produced are pinned"
+    }
+  ]
+}

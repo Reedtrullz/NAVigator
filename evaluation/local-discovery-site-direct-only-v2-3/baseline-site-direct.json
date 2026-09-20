@@ -1,0 +1,55 @@
+{
+ "artifact": "baseline_site_direct_only_v2_3",
+ "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-SITE-DIRECT-ONLY-V2_3",
+ "frozen_at": "2026-09-09",
+ "data_class": "BURNED_FROZEN_BASELINE_BYTE_COPIED_FROM_V2_ARTIFACTS",
+ "note": "Historical V2.1/V2 site-direct-only behavior, copied verbatim from frozen artifacts; no re-execution in V2.3 baseline phase.",
+ "source_artifacts": {
+  "benchmark": "evaluation/local-discovery-provider-arch-v2/site-direct-results.json",
+  "live": "evaluation/local-discovery-provider-arch-v2/live-burned-results.json",
+  "replay": "evaluation/local-discovery-provider-arch-v2/replay-regression.json",
+  "access": "evaluation/local-discovery-runtime-v1/access-regression-results.json"
+ },
+ "benchmark": {
+  "queries_total": 117,
+  "query_execution_rate": 1.0,
+  "site_direct_success_rate": 1.0,
+  "gold_url_exact_recall": 0.1538,
+  "gold_domain_recall": 1.0,
+  "official_domain_precision_mean": 0.9846,
+  "bot_block_rate": 0.0,
+  "median_latency_ms": 345,
+  "raw_counts": {
+   "executed": 117,
+   "success": 117,
+   "gold_exact": 18,
+   "gold_domain": 117,
+   "bot_blocks": 0,
+   "errors": 0
+  }
+ },
+ "live_burned": {
+  "municipalities": 13,
+  "executed_without_error": 13,
+  "with_pages_fetched": 13,
+  "site_direct_only_runs": 13,
+  "external_fallback_runs": 0,
+  "gold_or_official_domain_reach": 13,
+  "bot_block_municipalities": 0,
+  "render_fallback_municipalities": 0
+ },
+ "replay": {
+  "cells_total": 22,
+  "route_matches": 21,
+  "route_mismatches": 1,
+  "doctrine_regressions": [],
+  "critical_false_no_route": 0,
+  "unsupported_fully_verified": 0,
+  "askoy_fixture_incomplete_preserved": true
+ },
+ "access": {
+  "targets_total": 9,
+  "route_matches": 5,
+  "mismatches": 4
+ }
+}

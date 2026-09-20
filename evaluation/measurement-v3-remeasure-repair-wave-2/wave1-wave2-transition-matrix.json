@@ -1,0 +1,804 @@
+{
+  "artifact": "wave1-wave2-transition-matrix",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-2",
+  "created_utc": "2026-09-16T15:54:20Z",
+  "comparison_order": "WAVE2_MEASUREMENT_FROZEN_BEFORE_THIS_COMPARISON",
+  "old_side": {
+    "label": "MEASUREMENT_V3_REMEASURE_WAVE_1_COMPLETE",
+    "path": "measurement-v3-remeasure-repair-wave-1/wave1-combined-measurement-results.json",
+    "sha256": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+    "is_primary": true
+  },
+  "verdict_transitions": {
+    "CRITICAL_ERROR -> CRITICAL_ERROR": 73,
+    "CLAIM_ABSENT_TAKEN -> ABSENT": 6,
+    "ABSENT_OR_NOT_APPLICABLE -> ABSENT_OR_NOT_APPLICABLE": 12,
+    "NOT_REQUIRED -> NOT_REQUIRED": 83,
+    "0.0 -> 0.0": 23,
+    "ABSENT -> ABSENT": 49,
+    "NO_ACCEPTABLE_ROUTE -> NO_ACCEPTABLE_ROUTE": 108,
+    "1.0 -> 1.0": 82,
+    "CLAIM_ABSENT_TAKEN -> CLAIM_ABSENT_TAKEN": 42,
+    "PRESENT -> PRESENT": 1,
+    "ABSENT -> CLAIM_ABSENT_TAKEN": 14,
+    "CLAIM_PRESENT -> CLAIM_ABSENT_TAKEN": 1,
+    "NO_CRITICAL_ERROR -> CRITICAL_ERROR": 4,
+    "UNRESOLVED -> UNRESOLVED": 6,
+    "NOT_TRIGGERED -> NOT_TRIGGERED": 7,
+    "PRESENT -> CLAIM_ABSENT_TAKEN": 1,
+    "None -> ABSENT": 2,
+    "CLAIM_PRESENT -> CLAIM_PRESENT": 2,
+    "PARTIAL -> PARTIAL": 36,
+    "NOT_TRIGGERED -> UNRESOLVED": 1,
+    "CRITICAL_ERROR -> UNRESOLVED": 5,
+    "NOT_TRIGGERED -> CRITICAL_ERROR": 2,
+    "None -> PENDING": 1,
+    "CRITICAL_ERROR -> TRIGGERED": 2,
+    "None -> CLAIM_ABSENT_TAKEN": 1,
+    "CRITICAL_ERROR -> NOT_TRIGGERED": 9,
+    "UNRESOLVED -> NOT_TRIGGERED": 4,
+    "UNRESOLVED -> CRITICAL_ERROR": 2,
+    "TRIGGERED -> NOT_TRIGGERED": 1,
+    "CRITICAL_ERROR -> NO_CRITICAL_ERROR": 2,
+    "NO_CRITICAL_ERROR -> NO_CRITICAL_ERROR": 2,
+    "SATISFIED -> VIOLATED": 1,
+    "0.0 -> 1.0": 15
+  },
+  "semantic_state_transitions": {
+    "FAIL -> FAIL": 209,
+    "PASS -> PASS": 283,
+    "ABSENT_OR_NOT_APPLICABLE -> ABSENT_OR_NOT_APPLICABLE": 12,
+    "FAIL -> PASS": 27,
+    "UNRESOLVED -> FAIL": 6,
+    "UNRESOLVED -> UNRESOLVED": 8,
+    "DEGRADED -> DEGRADED": 36,
+    "PASS -> UNRESOLVED": 1,
+    "FAIL -> UNRESOLVED": 7,
+    "PASS -> FAIL": 3,
+    "UNRESOLVED -> PASS": 4
+  },
+  "per_dimension_transitions": {
+    "critical_condition": {
+      "CRITICAL_ERROR|CRITICAL_ERROR": 73,
+      "NO_CRITICAL_ERROR|CRITICAL_ERROR": 4,
+      "UNRESOLVED|UNRESOLVED": 6,
+      "NOT_TRIGGERED|NOT_TRIGGERED": 7,
+      "NOT_TRIGGERED|UNRESOLVED": 1,
+      "CRITICAL_ERROR|UNRESOLVED": 5,
+      "NOT_TRIGGERED|CRITICAL_ERROR": 2,
+      "CRITICAL_ERROR|TRIGGERED": 2,
+      "CRITICAL_ERROR|NOT_TRIGGERED": 9,
+      "UNRESOLVED|NOT_TRIGGERED": 4,
+      "UNRESOLVED|CRITICAL_ERROR": 2,
+      "TRIGGERED|NOT_TRIGGERED": 1,
+      "CRITICAL_ERROR|NO_CRITICAL_ERROR": 2,
+      "NO_CRITICAL_ERROR|NO_CRITICAL_ERROR": 2
+    },
+    "forbidden_claim": {
+      "CLAIM_ABSENT_TAKEN|ABSENT": 6,
+      "ABSENT|ABSENT": 49,
+      "CLAIM_ABSENT_TAKEN|CLAIM_ABSENT_TAKEN": 42,
+      "PRESENT|PRESENT": 1,
+      "ABSENT|CLAIM_ABSENT_TAKEN": 14,
+      "CLAIM_PRESENT|CLAIM_ABSENT_TAKEN": 1,
+      "PRESENT|CLAIM_ABSENT_TAKEN": 1,
+      "None|ABSENT": 2,
+      "CLAIM_PRESENT|CLAIM_PRESENT": 2,
+      "None|PENDING": 1,
+      "None|CLAIM_ABSENT_TAKEN": 1
+    },
+    "route_correctness": {
+      "ABSENT_OR_NOT_APPLICABLE|ABSENT_OR_NOT_APPLICABLE": 12,
+      "NO_ACCEPTABLE_ROUTE|NO_ACCEPTABLE_ROUTE": 108
+    },
+    "required_uncertainty": {
+      "NOT_REQUIRED|NOT_REQUIRED": 83,
+      "PARTIAL|PARTIAL": 36,
+      "SATISFIED|VIOLATED": 1
+    },
+    "evidence_completeness": {
+      "0.0|0.0": 23,
+      "1.0|1.0": 82,
+      "0.0|1.0": 15
+    }
+  },
+  "delta_report": {
+    "old_applicable": 588,
+    "new_applicable_authoritative": 587,
+    "old_states": {
+      "FAIL": 243,
+      "PASS": 287,
+      "UNRESOLVED": 18,
+      "PENDING": 4,
+      "DEGRADED": 36
+    },
+    "new_states_including_pending": {
+      "FAIL": 218,
+      "PASS": 317,
+      "UNRESOLVED": 16,
+      "DEGRADED": 36,
+      "PENDING": 1
+    },
+    "old_failure_rate": 0.5119,
+    "new_failure_rate_authoritative_only": 0.46,
+    "old_failing_cases": 120,
+    "new_failing_cases_including_pending": 118,
+    "old_case_coverage": "0/120",
+    "new_case_coverage_authoritative_only": "2/120"
+  },
+  "per_dimension_verdicts_old_vs_new": {
+    "critical_condition": {
+      "old": {
+        "CRITICAL_ERROR": 91,
+        "NO_CRITICAL_ERROR": 6,
+        "UNRESOLVED": 12,
+        "NOT_TRIGGERED": 10,
+        "TRIGGERED": 1
+      },
+      "new": {
+        "CRITICAL_ERROR": 81,
+        "UNRESOLVED": 12,
+        "NOT_TRIGGERED": 21,
+        "TRIGGERED": 2,
+        "NO_CRITICAL_ERROR": 4
+      }
+    },
+    "forbidden_claim": {
+      "old": {
+        "CLAIM_ABSENT_TAKEN": 48,
+        "ABSENT": 63,
+        "PRESENT": 2,
+        "CLAIM_PRESENT": 3,
+        "NOT_APPLICABLE": 4
+      },
+      "new": {
+        "ABSENT": 57,
+        "CLAIM_ABSENT_TAKEN": 59,
+        "PRESENT": 1,
+        "CLAIM_PRESENT": 2,
+        "NOT_APPLICABLE": 1
+      }
+    },
+    "route_correctness": {
+      "old": {
+        "NOT_APPLICABLE": 12,
+        "NO_ACCEPTABLE_ROUTE": 108
+      },
+      "new": {
+        "NOT_APPLICABLE": 12,
+        "NO_ACCEPTABLE_ROUTE": 108
+      }
+    },
+    "required_uncertainty": {
+      "old": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 36,
+        "SATISFIED": 1
+      },
+      "new": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 36,
+        "VIOLATED": 1
+      }
+    },
+    "evidence_completeness": {
+      "old": {
+        "0.0": 38,
+        "1.0": 82
+      },
+      "new": {
+        "0.0": 23,
+        "1.0": 97
+      }
+    }
+  },
+  "improved_criteria": [
+    {
+      "case_id": "DIS-105",
+      "criterion_id": "DIS-105::forbidden:01",
+      "dimension": "forbidden_claim",
+      "old_verdict": "CLAIM_PRESENT",
+      "new_verdict": "CLAIM_ABSENT_TAKEN",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "DIS-116",
+      "criterion_id": "DIS-116::forbidden:01",
+      "dimension": "forbidden_claim",
+      "old_verdict": "PRESENT",
+      "new_verdict": "CLAIM_ABSENT_TAKEN",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "ROUT-033",
+      "criterion_id": "ROUT-033::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "ROUT-039",
+      "criterion_id": "ROUT-039::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "UNRESOLVED",
+      "new_state": "PASS",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "ROUT-050",
+      "criterion_id": "ROUT-050::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "TRIGGERED",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "ROUT-059",
+      "criterion_id": "ROUT-059::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "UNRESOLVED",
+      "new_state": "PASS",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "ROUT-079",
+      "criterion_id": "ROUT-079::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "UNRESOLVED",
+      "new_state": "PASS",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "ROUT-085",
+      "criterion_id": "ROUT-085::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "UNRESOLVED",
+      "new_state": "PASS",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-001",
+      "criterion_id": "SAF-001::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-002",
+      "criterion_id": "SAF-002::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-003",
+      "criterion_id": "SAF-003::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-004",
+      "criterion_id": "SAF-004::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-005",
+      "criterion_id": "SAF-005::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-005",
+      "criterion_id": "SAF-005::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-006",
+      "criterion_id": "SAF-006::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-006",
+      "criterion_id": "SAF-006::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-008",
+      "criterion_id": "SAF-008::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-008",
+      "criterion_id": "SAF-008::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-009",
+      "criterion_id": "SAF-009::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-010",
+      "criterion_id": "SAF-010::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-010",
+      "criterion_id": "SAF-010::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-014",
+      "criterion_id": "SAF-014::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-015",
+      "criterion_id": "SAF-015::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-016",
+      "criterion_id": "SAF-016::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-016",
+      "criterion_id": "SAF-016::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-017",
+      "criterion_id": "SAF-017::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-018",
+      "criterion_id": "SAF-018::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-018",
+      "criterion_id": "SAF-018::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-019",
+      "criterion_id": "SAF-019::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-020",
+      "criterion_id": "SAF-020::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "IMPROVEMENT"
+    },
+    {
+      "case_id": "SAF-020",
+      "criterion_id": "SAF-020::evidence_completeness",
+      "dimension": "evidence_completeness",
+      "old_verdict": 0.0,
+      "new_verdict": 1.0,
+      "old_state": "FAIL",
+      "new_state": "PASS",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "IMPROVEMENT"
+    }
+  ],
+  "regressed_criteria": [
+    {
+      "case_id": "DIS-106",
+      "criterion_id": "DIS-106::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NO_CRITICAL_ERROR",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-026",
+      "criterion_id": "ROUT-026::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "PASS",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-049",
+      "criterion_id": "ROUT-049::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-057",
+      "criterion_id": "ROUT-057::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-063",
+      "criterion_id": "ROUT-063::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NO_CRITICAL_ERROR",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-065",
+      "criterion_id": "ROUT-065::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NO_CRITICAL_ERROR",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-070",
+      "criterion_id": "ROUT-070::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NO_CRITICAL_ERROR",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "UNRESOLVED",
+      "new_state": "FAIL",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-088",
+      "criterion_id": "ROUT-088::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "CRITICAL_ERROR",
+      "old_state": "PASS",
+      "new_state": "FAIL",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P0"
+    },
+    {
+      "case_id": "ROUT-091",
+      "criterion_id": "ROUT-091::required_uncertainty",
+      "dimension": "required_uncertainty",
+      "old_verdict": "SATISFIED",
+      "new_verdict": "VIOLATED",
+      "old_state": "PASS",
+      "new_state": "FAIL",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "REGRESSION",
+      "gold_wording_changed": false,
+      "severity": "P2"
+    }
+  ],
+  "lateral_criteria": [
+    {
+      "case_id": "ROUT-022",
+      "criterion_id": "ROUT-022::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "UNRESOLVED",
+      "old_state": "PASS",
+      "new_state": "UNRESOLVED",
+      "old_authority": "LLM_REVIEWED",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "ROUT-024",
+      "criterion_id": "ROUT-024::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "UNRESOLVED",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "ROUT-040",
+      "criterion_id": "ROUT-040::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "UNRESOLVED",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "ROUT-067",
+      "criterion_id": "ROUT-067::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NO_CRITICAL_ERROR",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "ROUT-075",
+      "criterion_id": "ROUT-075::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "UNRESOLVED",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "ROUT-083",
+      "criterion_id": "ROUT-083::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NO_CRITICAL_ERROR",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "DETERMINISTIC",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "SAF-014",
+      "criterion_id": "SAF-014::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "UNRESOLVED",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "LATERAL"
+    },
+    {
+      "case_id": "SAF-019",
+      "criterion_id": "SAF-019::critical_condition",
+      "dimension": "critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "UNRESOLVED",
+      "old_state": "FAIL",
+      "new_state": "UNRESOLVED",
+      "old_authority": "DETERMINISTIC",
+      "new_authority": "LLM_REVIEWED",
+      "transition_class": "LATERAL"
+    }
+  ],
+  "regression_count": 9,
+  "improvement_count": 31,
+  "lateral_count": 8,
+  "gold_wording_changed_criteria": {
+    "case_ids": [],
+    "criteria": [],
+    "note": "gold wording changed between original baseline and Wave-1 lineages; empty unless old side predates that repair"
+  },
+  "pending_note": "Wave-2 has 1 pending LLM adjudication (ROUT-026::forbidden:01); excluded from authoritative-only rates"
+}

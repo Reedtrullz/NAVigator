@@ -1,0 +1,52 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_11-FRESH-CANDIDATE-SCREENING",
+  "frozen_at": "2026-09-14",
+  "calibration_protocol": {
+    "fixtures": "calibration-fixtures-v2-11.json (25 burned, 12 traps)",
+    "max_iterations": 2,
+    "iteration_gate": "strict improvement AND overall >= 0.90 AND 0 trap overcommit",
+    "prompt_sensitivity_probe": "preregistered; PROMPT_INERT candidates skip iterations"
+  },
+  "smoke": [
+    {
+      "candidate": "ling",
+      "model": "command-code/inclusionai-ling-3.0-flash-sante:free",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 3.37,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "laguna",
+      "model": "command-code/poolside-laguna-s-2.1-free",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 1.71,
+      "retries": 0,
+      "error": null
+    }
+  ],
+  "probe_inert": {
+    "ling": false,
+    "laguna": false
+  },
+  "calibration_qualifiers": {},
+  "calibration_rejected": {
+    "ling": "CALIBRATION_OUT",
+    "laguna": "CALIBRATION_OUT"
+  },
+  "official_screening": {},
+  "selection": null,
+  "terminal_status": "V2_11_NO_NON_M2_JUDGE_QUALIFIES",
+  "artifact_sha256": {
+    "calibration-fixtures-v2-11.json": "f83f539497ee5bff860373e13a16100e2b471529faf9c85fc2912dda0cdcaf72",
+    "comparison-freeze-v2-11.json": "8c9dad42a1c8a055546a25b72f05f743e3f0268bdace006c10575272b1a8e14a"
+  }
+}

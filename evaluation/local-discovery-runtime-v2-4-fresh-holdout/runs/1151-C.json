@@ -1,0 +1,190 @@
+{
+  "evidence": [
+    {
+      "confidence_state": "EXTRACTED_SPAN",
+      "content_hash": "525e4374376209d05ec55d77f893217cb87919395d4e1de58adb5c2591bf46dd",
+      "extracted_value": "Trenger du noen å snakke med, kan du ta kontakt med helsesykepleier.",
+      "fetch_method": "http_get",
+      "field": "contact",
+      "retrieved_at": "2026-09-09T18:59:29Z",
+      "source_title": "Helsestasjonen - Utsira Kommune",
+      "source_url": "https://utsira.kommune.no/helsestasjonen/",
+      "supporting_span": "Trenger du noen å snakke med, kan du ta kontakt med helsesykepleier."
+    },
+    {
+      "confidence_state": "EXTRACTED_SPAN",
+      "content_hash": "525e4374376209d05ec55d77f893217cb87919395d4e1de58adb5c2591bf46dd",
+      "extracted_value": "Den har drop-in tilbud og du trenger ikke bestille tid.",
+      "fetch_method": "http_get",
+      "field": "dropin",
+      "retrieved_at": "2026-09-09T18:59:29Z",
+      "source_title": "Helsestasjonen - Utsira Kommune",
+      "source_url": "https://utsira.kommune.no/helsestasjonen/",
+      "supporting_span": "Den har drop-in tilbud og du trenger ikke bestille tid."
+    },
+    {
+      "confidence_state": "EXTRACTED_SPAN",
+      "content_hash": "525e4374376209d05ec55d77f893217cb87919395d4e1de58adb5c2591bf46dd",
+      "extracted_value": "Arbeidet innebærer veiledning, helseundersøkelser, vaksinering, oppfølging og henvisning videre ved behov.",
+      "fetch_method": "http_get",
+      "field": "referral",
+      "retrieved_at": "2026-09-09T18:59:29Z",
+      "source_title": "Helsestasjonen - Utsira Kommune",
+      "source_url": "https://utsira.kommune.no/helsestasjonen/",
+      "supporting_span": "Arbeidet innebærer veiledning, helseundersøkelser, vaksinering, oppfølging og henvisning videre ved behov."
+    }
+  ],
+  "executed_at": "2026-09-09T18:59:30Z",
+  "execution_status": "COMPLETE",
+  "fallback_log": [],
+  "fetch_errors": [],
+  "input": {
+    "age": 19,
+    "municipality": "Utsira",
+    "municipality_number": "1151",
+    "need": "mental_health_low_threshold",
+    "urgency": "non_acute"
+  },
+  "mode": "live",
+  "pages_fetched": 5,
+  "protocol_id": "LOCAL-SERVICE-DISCOVERY-PROTOCOL-V1",
+  "protocol_sha256": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+  "provenance_graph": [
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Utsira psykisk helse voksne",
+      "to": "https://utsira.kommune.no/ungdomskontakter/"
+    },
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Utsira psykisk helse voksne",
+      "to": "https://utsira.kommune.no/helsestasjonen/"
+    },
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Utsira psykisk helse voksne",
+      "to": "https://www.helsenorge.no/vaksinasjon/"
+    },
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Utsira psykisk helse voksne",
+      "to": "https://utsira.kommune.no/folkehelse/"
+    },
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Utsira psykisk helse voksne",
+      "to": "https://utsira.kommune.no/helsehjelp/%20"
+    }
+  ],
+  "provider_chain": [
+    {
+      "attempted_queries": 1,
+      "failure_class": null,
+      "healthy": true,
+      "provider": "site_direct",
+      "successful_queries": 1
+    }
+  ],
+  "provider_failures": [],
+  "queries": [
+    {
+      "attempts": [
+        {
+          "status": "OK",
+          "step": "root",
+          "url": "https://www.utsira.kommune.no/"
+        }
+      ],
+      "discovery_method": "NAVIGATION_LINK",
+      "fallback_log": [],
+      "provider": "site_direct",
+      "query": "Utsira psykisk helse voksne",
+      "result_count": 5,
+      "status": "SUCCESS"
+    }
+  ],
+  "query_families_used": [
+    "Utsira psykisk helse voksne",
+    "Utsira psykisk helse søknad",
+    "Utsira psykisk helse kontakt",
+    "Utsira rask psykisk helsehjelp",
+    "Utsira kommunepsykolog",
+    "Utsira helsestasjon ungdom",
+    "Utsira psykisk helse rus",
+    "Utsira interkommunal psykisk helse",
+    "Utsira mestringsteam",
+    "Utsira psykisk helse voksne",
+    "Utsira psykisk helse søknad",
+    "Utsira psykisk helse kontakt",
+    "Utsira rask psykisk helsehjelp",
+    "Utsira kommunepsykolog",
+    "Utsira helsestasjon ungdom",
+    "Utsira psykisk helse rus",
+    "Utsira interkommunal psykisk helse",
+    "Utsira mestringsteam"
+  ],
+  "render_fallbacks": 0,
+  "route_state": "ROUTE_FULLY_VERIFIED",
+  "run_id": "utsira-v2",
+  "runtime": "discovery_v2",
+  "selected_candidates": [
+    "https://utsira.kommune.no/ungdomskontakter/",
+    "https://utsira.kommune.no/helsestasjonen/",
+    "https://www.helsenorge.no/vaksinasjon/",
+    "https://utsira.kommune.no/folkehelse/",
+    "https://utsira.kommune.no/helsehjelp/%20"
+  ],
+  "services": [
+    {
+      "access_methods": [
+        "UNCLEAR"
+      ],
+      "age_text": null,
+      "evidence_spans": [],
+      "route_state": "ROUTE_EXISTENCE_ONLY",
+      "self_referral": "UNCLEAR",
+      "target_group": "Utsira kommune har de siste årene fått statlige midler til ungdomskontakter i prosjektstillinger for å følge opp ungdommene våre i ukedagene.",
+      "title": "Ungdomskontakter - Utsira Kommune",
+      "url": "https://utsira.kommune.no/ungdomskontakter/"
+    },
+    {
+      "access_methods": [
+        "DIRECT_PHONE",
+        "DIRECT_EMAIL",
+        "DIRECT_DROPIN"
+      ],
+      "age_text": "0-5 år",
+      "evidence_spans": [
+        {
+          "label": "contact",
+          "span": "Trenger du noen å snakke med, kan du ta kontakt med helsesykepleier."
+        },
+        {
+          "label": "dropin",
+          "span": "Den har drop-in tilbud og du trenger ikke bestille tid."
+        },
+        {
+          "label": "referral",
+          "span": "Arbeidet innebærer veiledning, helseundersøkelser, vaksinering, oppfølging og henvisning videre ved behov."
+        }
+      ],
+      "route_state": "ROUTE_FULLY_VERIFIED",
+      "self_referral": "YES",
+      "target_group": "00 \nMÅLGRUPPE \nMålgruppe for Helsestasjonen \nBarn og unge i aldersgruppen 0-20 år og foresatte \nHelsestasjonen i utsira Kommune har følgende tilbud til barn i alderen 0-5 år og deres foresatte: \n0-2 uker:   Tilbud om hjemmebesøk \n2-4 uker.",
+      "title": "Helsestasjonen - Utsira Kommune",
+      "url": "https://utsira.kommune.no/helsestasjonen/"
+    }
+  ],
+  "terminal_state": "ACCESS_VERIFIED",
+  "uncertainty_output": "Jeg fant et kommunalt/interkommunalt tilbud som ser relevant ut. Du kan ..."
+}

@@ -1,0 +1,102 @@
+{
+  "config_id": "LUNA-HIGH",
+  "model": "gpt-5.6-luna",
+  "stages": {
+    "TRANSPORT_CALIBRATION": {
+      "result": "PASS_NO_TRANSPORT_ERRORS",
+      "rows": 19
+    },
+    "SCREENING": {
+      "forbidden_claim": {
+        "rows": 53,
+        "ok": 53,
+        "transport_errors": 0,
+        "invalid_json": 0,
+        "invalid_model_reviews": 0,
+        "schema_valid_rate": 1.0,
+        "reference_agreement_among_ok": 0.8868,
+        "conservative_escape_count": 2,
+        "conservative_escape_hashes": [
+          "36621f15578e7af629535880c0b22a39a92a9e514bcfb6c4ef0603ee4fdf1585",
+          "ccabc5e85174c534164de920909e41f83b41888387691ed6e3a5ec2fa753bb03"
+        ],
+        "catastrophic_escape_max": 10,
+        "screen_pass": true
+      },
+      "critical_condition": {
+        "rows": 37,
+        "ok": 18,
+        "transport_errors": 0,
+        "invalid_json": 0,
+        "invalid_model_reviews": 19,
+        "schema_valid_rate": 1.0,
+        "reference_agreement_among_ok": 0.7222,
+        "conservative_escape_count": 1,
+        "conservative_escape_hashes": [
+          "9bf568c87368cec04f2616ad9fc937fc3f8db63286ae1af88234ad69be08e27d"
+        ],
+        "catastrophic_escape_max": 7,
+        "screen_pass": true
+      }
+    },
+    "CORE_DUAL_PASS": {
+      "forbidden_claim": {
+        "lane": "forbidden_claim",
+        "dual_pass_rows": 147,
+        "status_counts": {
+          "invalid_model_review": 8,
+          "transport_errors": 0,
+          "invalid_json": 0
+        },
+        "dual_consensus_field_errors": 9,
+        "consensus_rows": 132,
+        "consensus_vs_ref_errors": 10,
+        "pass_level_valid_passes": 286,
+        "pass_level_vs_ref_errors": 30,
+        "evidence_invalid_rows": 3,
+        "safety_subset_rows": 0,
+        "safety_subset_errors": 0,
+        "under_escalation_family": 0,
+        "catastrophic_false_trigger_consensus": 0,
+        "gate_checks": {
+          "consensus_vs_ref_errors_max": false,
+          "dual_consensus_field_errors_max": false,
+          "evidence_invalid_rows_max": false,
+          "pass_level_vs_ref_errors_max": false
+        },
+        "core_pass": false
+      },
+      "critical_condition": {
+        "lane": "critical_condition",
+        "dual_pass_rows": 80,
+        "status_counts": {
+          "invalid_model_review": 69,
+          "transport_errors": 0,
+          "invalid_json": 0
+        },
+        "dual_consensus_field_errors": 3,
+        "consensus_rows": 31,
+        "consensus_vs_ref_errors": 9,
+        "pass_level_valid_passes": 91,
+        "pass_level_vs_ref_errors": 29,
+        "evidence_invalid_rows": 46,
+        "safety_subset_rows": 25,
+        "safety_subset_errors": 7,
+        "under_escalation_family": 2,
+        "catastrophic_false_trigger_consensus": 0,
+        "gate_checks": {
+          "consensus_vs_ref_errors_max": false,
+          "pass_level_vs_ref_errors_max": false,
+          "safety_subset_agreement_min": false,
+          "safety_subset_errors_max": false,
+          "under_escalation_family_max": true,
+          "catastrophic_false_trigger_consensus": true,
+          "dual_consensus_field_errors_max": false,
+          "evidence_invalid_rows_max": false
+        },
+        "core_pass": false
+      }
+    },
+    "STABILITY": "NOT_RUN_CORE_GATES_FAILED"
+  }
+}

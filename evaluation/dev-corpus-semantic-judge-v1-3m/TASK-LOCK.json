@@ -1,0 +1,53 @@
+{
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_3M-MIMO-MIGRATION",
+  "status": "DEV_CORPUS_SEMANTIC_JUDGE_V1_3M_NOT_READY",
+  "created": "2026-09-10",
+  "execution_notes": [
+    {
+      "date": "2026-09-10",
+      "event": "ADAPTER_TRANSPORT_HEADROOM_FIX",
+      "detail": "First staged Set A run aborted after 19/32 rows showed systematic empty content (finish_reason=length; 120-token completion budget exhausted by mimo-v2.5 before JSON emission). Zero labels registered; Set A not semantically touched. Fix: max_tokens 120 -> 2000 in the V1.3M adapter only (transport parameter, no semantic contract, prompt, fixture or scoring change)."
+    },
+    {
+      "date": "2026-09-10",
+      "event": "SET_A_GATE_FAILURE_TERMINAL",
+      "detail": "Completed dual-blind Set A run (32 fixtures, 64 calls, mimo-v2.5). Frozen full-label gate: overall 0.0 (note-only disagreement rows counted as disagreement under frozen protocol; 24/32 rows agree on all semantic fields). Field-level: route_commitment 0.8125, route_verdict 0.8125, uncertainty_mode 0.8125, uncertainty_verdict 0.6875. Zero-gates all 0. Schema/transport failures 3. Real semantic-field disagreements: 5 (BRT-10, BRT-11 quoted/hypothetical vs hedged-positive; BUN-01 NONE vs EXPLICIT_LIMITATION; BUN-09 UNRESOLVED vs VIOLATED; BUN-13 PARTIAL vs VIOLATED). Per task sections 8/19: no clarification pass, no Set B, no threshold adjustment. Set A is burned (labels were delivered, unlike the Luna attempts)."
+    },
+    {
+      "date": "2026-09-10",
+      "event": "DUAL_RUN_PROCESS_INCIDENT",
+      "detail": "A detached first staged run was believed dead after its tool session id disappeared but kept running; a second staged run overlapped with it. The older process was killed by PID; exactly one process completed and wrote the final artifacts. Log and artifacts are internally consistent with the surviving single run (one RESULT line, n=32, schema_failures=3). Deviation logged; final artifacts treated as authoritative single-run output."
+    }
+  ],
+  "prior_task": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_3-BOUNDARY-CLARIFICATION",
+  "prior_lineage_terminal_status": "V1_3_LUNA_SUPERSEDED_BY_AUTHORIZED_MODEL_MIGRATION",
+  "prior_lineage_semantic_observations": {
+    "successful_semantic_annotations": 0,
+    "set_a_semantically_burned": false,
+    "failure_type": "ACCOUNT_USAGE_WINDOW / TRANSPORT",
+    "semantic_evaluation_result": "NOT_OBSERVED"
+  },
+  "authorized_judge_model": "mimo-v2.5",
+  "authorized_provider": "commandcode-auth",
+  "authorized_wire_model": "command-code/xiaomi/mimo-v2.5",
+  "model_change_authorized": true,
+  "semantic_contract_changes_allowed": false,
+  "fixture_changes_allowed": false,
+  "scoring_changes_allowed": false,
+  "threshold_changes_allowed": false,
+  "historical_file_changes_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "full_sut_run_allowed": false,
+  "runtime_changes_allowed": false,
+  "gpt_5_5_allowed": false,
+  "gpt_5_6_luna_judge_allowed": false,
+  "gpt_5_6_terra_sol_gpt6_astra_allowed": false,
+  "migration_principle": "ONE_VARIABLE: JUDGE_MODEL only. Frozen V1.3 contract, fixtures, scoring rules, decision trees and fail-closed parser reused after SHA verification.",
+  "terminal_statuses": [
+    "DEV_CORPUS_SEMANTIC_JUDGE_V1_3M_READY",
+    "DEV_CORPUS_SEMANTIC_JUDGE_V1_3M_NOT_READY",
+    "V1_3M_MODEL_CONTRACT_COMPATIBILITY_FAILURE",
+    "V1_3M_BLOCKED_BY_MODEL_TRANSPORT",
+    "V1_3M_INVALID"
+  ]
+}

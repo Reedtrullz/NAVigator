@@ -1,0 +1,278 @@
+{
+ "meta": {
+  "set": "ent-controls",
+  "engine": "quote-aligner-deterministic-v0.2"
+ },
+ "results": [
+  {
+   "id": "ENT-A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Sterk angst etter samlivsbrudd er en vanlig reaksjon;",
+      "source_span": "Barn (under 16) med sterk angst/depresjon etter samlivsbrudd: fastlege eller kommunalt lavterskeltilbud (kommunepsykolog/familieteam) først;",
+      "span_start": 0,
+      "span_end": 140
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Sterk angst etter samlivsbrudd er en vanlig reaksjon;"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SUBJECT_UNVERIFIED"
+      ],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "foreldresamtale og lavterskel støtte først.",
+      "source_span": "Barn (under 16) med sterk angst/depresjon etter samlivsbrudd: fastlege eller kommunalt lavterskeltilbud (kommunepsykolog/familieteam) først;",
+      "span_start": 0,
+      "span_end": 140
+     },
+     "review": false,
+     "atom_id": "A2",
+     "atom_text": "foreldresamtale og lavterskel støtte først."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Sterk angst etter samlivsbrudd er en vanlig reaksjon;",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    },
+    {
+     "id": "A2",
+     "text": "foreldresamtale og lavterskel støtte først.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ENT-B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_candidate_span",
+     "signals": {
+      "numeric": null,
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": null,
+      "contra_blocks": [],
+      "soft_blocks": []
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Fastlege er riktig inngang;"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_candidate_span",
+     "signals": {
+      "numeric": null,
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": null,
+      "contra_blocks": [],
+      "soft_blocks": []
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A2",
+     "atom_text": "henvisning ved behov."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlege er riktig inngang;",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_candidate_span"
+    },
+    {
+     "id": "A2",
+     "text": "henvisning ved behov.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_candidate_span"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ENT-C",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "rule": "division_of_function",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": "PPT kartlegger pedagogiske behov og gir sakkyndige vurderinger.",
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "FUNCTION_RESERVED_TO_OTHER_ACTOR",
+      "claim": "PPT kan stille ADHD-diagnose.",
+      "source_span": "PPT kartlegger pedagogiske behov og gir sakkyndige vurderinger.",
+      "span_start": 0,
+      "span_end": 63
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "PPT kan stille ADHD-diagnose."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan stille ADHD-diagnose.",
+     "verdict": "CONTRADICTED",
+     "rule": "division_of_function"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "ENT-D",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "ADHD-diagnose kan stilles av helsesykepleier på skolen."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "ADHD-diagnose kan stilles av helsesykepleier på skolen.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  }
+ ]
+}

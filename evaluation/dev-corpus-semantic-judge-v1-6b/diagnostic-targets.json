@@ -1,0 +1,42 @@
+{
+  "artifact": "V1.6B BURNED DIAGNOSTIC TARGETS",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6B-RESCREEN",
+  "registered_after_freeze_before_candidate_execution": true,
+  "count_in_selection_score": false,
+  "certification_claim": false,
+  "source": {
+    "frozen_replay": "../dev-corpus-semantic-judge-v1-6a3/burned-v1-4-diagnostic-replay.json",
+    "frozen_replay_sha256": "5eab08ca14d6df2732b676ca12ca3d26f27664c986c5ab648f394bbf1248f13e",
+    "engine_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+    "v1_4_fixtures_sha256": "9e60aca6a38d84ff48aa5985f7f0b258cb7934aedf9701de8d4e415582cbdf1c"
+  },
+  "targets": [
+    {
+      "fixture_id": "R-12",
+      "burned_class": "UNGROUNDED_ROUTE_CANDIDATE (V1.4 miss: description without licensing operator)",
+      "frozen_replay_route_label": "VAGUE_NONCOMMITTAL",
+      "v1_6b_new_text": "Fastlegen har egne rutiner for slike henvendelser.",
+      "v1_6b_expected_a3_route": "UNGROUNDED_ROUTE_CANDIDATE",
+      "expected_handling": "A3 abstain (no licensing operator in own clause); semantic judge adjudicates.",
+      "note": "Expected handling re-recorded from the frozen V1.6A.3 replay per-row data, never from memory."
+    },
+    {
+      "fixture_id": "R-16",
+      "burned_class": "HYPOTHETICAL_ONLY misfire on negated route (old burned text had a conditional before 'ikke')",
+      "frozen_replay_route_label": "HYPOTHETICAL_ONLY",
+      "v1_6b_new_text": "Fastlegen er ikke egnet for akutte kriser.",
+      "v1_6b_expected_a3_route": "NEGATED",
+      "expected_handling": "Deterministic NEGATED (no conditional before 'ikke' in new text); matches the design-matrix correction and R-24-style semantics.",
+      "note": "Old burned text produced HYPOTHETICAL_ONLY; the new text removes the conditional frame so the corrected deterministic expectation is NEGATED."
+    },
+    {
+      "fixture_id": "R-18",
+      "burned_class": "UNGROUNDED_ROUTE_CANDIDATE (V1.4 miss: description without licensing operator)",
+      "frozen_replay_route_label": "VAGUE_NONCOMMITTAL",
+      "v1_6b_new_text": "HFU har lokale aldersgrenser som varierer.",
+      "v1_6b_expected_a3_route": "UNGROUNDED_ROUTE_CANDIDATE",
+      "expected_handling": "A3 abstain (no licensing operator in own clause); semantic judge adjudicates.",
+      "note": "Expected handling re-recorded from the frozen V1.6A.3 replay per-row data, never from memory."
+    }
+  ]
+}

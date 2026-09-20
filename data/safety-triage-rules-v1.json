@@ -1,0 +1,53 @@
+{
+  "artifact": "safety-triage-rules-v1",
+  "purpose": "Frozen deterministic triage vocabulary for S2 safety/urgency triage. Phase 1 registers the data; S2 evaluation logic arrives in Phase 2 (fail-closed-contract.md FC-01: missing or invalid rule file must yield TERMINAL, never an unverified answer).",
+  "seeded_from": [
+    "26-beslutningsstotte-hvor-henvende-seg.md",
+    "42-vold-trusler-og-sikkerhet.md",
+    "45-beslutningstre-hvem-ringer-jeg.md",
+    "57-nodhjelp-og-akutte-situasjoner.md"
+  ],
+  "source_verification": {
+    "26_42_45_57": "repo research artifacts, verified 30.08.2026",
+    "emergency_numbers": "helsenorge.no legevakt/selvmord pages, hentet 30.08.2026 (per 57)"
+  },
+  "priorities": ["ACUTE_RISK_NOW", "URGENT_NOT_ACUTE", "NOT_ACUTE"],
+  "precedence": "first match wins; ACUTE_RISK_NOW dominates all tracks; matched signals are recorded verbatim",
+  "acute_signals": [
+    "selvmord",
+    "selvskading",
+    "livsfare",
+    "akutt fare",
+    "akutt krise",
+    "bevisstlos",
+    "psykose",
+    "rusforgiftning",
+    "traume",
+    "dodsulykke",
+    "trussel",
+    "vold"
+  ],
+  "urgent_signals": [
+    "haster",
+    "samme dag",
+    "dognapen",
+    "ikke akutt men"
+  ],
+  "acute_behavior": {
+    "suppressed_routing": true,
+    "note": "ACUTE_RISK_NOW suppresses ordinary route recommendation; emergency instruction becomes the primary output (ADR-002)."
+  },
+  "emergency_route_vocabulary": [
+    {"label": "113", "when": "akutt fare for liv/helse inkl. akutt selvmordsfare"},
+    {"label": "116 117", "when": "legevakt, dognapen, haster men ikke livsfare"},
+    {"label": "116 123", "when": "Mental Helse-hjelpelinjen, samtalestoette"},
+    {"label": "116 111", "when": "Alarmtelefonen for barn og unge / barnevernvakt naar ingen trygg omsorgsperson finnes"},
+    {"label": "116 006", "when": "krisesenterlinjen"},
+    {"label": "112", "when": "politiet ved umiddelbar fare"}
+  ],
+  "known_limits": [
+    "Phrase matching cannot resolve negation ('ingenting er akutt'); negation handling is a Phase 2 S2 concern.",
+    "Vocabulary is a floor: the deterministic layer must catch corpus safety cases; it is not a clinical classifier."
+  ],
+  "frozen": "2026-09-14"
+}

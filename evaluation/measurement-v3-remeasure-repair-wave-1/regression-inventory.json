@@ -1,0 +1,62 @@
+{
+  "artifact": "regression-inventory",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-1",
+  "created_utc": "2026-09-16",
+  "criteria_checked": 600,
+  "regression_count": 0,
+  "regressions": [],
+  "regression_definition": "A criterion whose new semantic state is strictly worse than its old state under frozen semantics (PASS->FAIL/PENDING, DEGRADED->FAIL/PENDING, FAIL->PENDING, UNRESOLVED->FAIL).",
+  "non_regression_observations": [
+    {
+      "criterion": "DIS-106::critical_condition",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NO_CRITICAL_ERROR",
+      "new_state": "UNRESOLVED",
+      "authority": "DETERMINISTIC",
+      "mechanism": "critical trigger was PREMATURE_ABSENCE on empty routes; structured route now present, verdict NO_CRITICAL_ERROR which maps to UNRESOLVED semantic state under frozen semantics",
+      "mechanism_split_note": "UNRESOLVED here is fail-closed lateral movement caused by the new structured-route path, not a measured product improvement or a regression."
+    },
+    {
+      "criterion_group": "critical_condition on ROUT-031, ROUT-032, ROUT-039, ROUT-049, ROUT-057, ROUT-066, ROUT-072",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "UNRESOLVED",
+      "new_state": "UNRESOLVED",
+      "authority": "LLM_REVIEWED",
+      "mechanism": "same fail-closed lateral path as DIS-106: old CRITICAL_ERROR was a PREMATURE_ABSENCE artifact of empty routes; new dual-pass Astra observations do not establish a critical trigger, so the frozen derivation emits UNRESOLVED instead of a positive verdict"
+    },
+    {
+      "criterion_group": "critical_condition on ROUT-022, ROUT-026, ROUT-047, ROUT-052, ROUT-068, ROUT-088",
+      "old_verdict": "CRITICAL_ERROR",
+      "new_verdict": "NOT_TRIGGERED",
+      "new_state": "PASS",
+      "authority": "LLM_REVIEWED",
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "criterion_group": "required_uncertainty on SAF-009, SAF-019",
+      "old_verdict": "VIOLATED",
+      "new_verdict": "PARTIAL",
+      "new_state": "DEGRADED",
+      "authority": "DETERMINISTIC",
+      "classification": "IMPROVEMENT"
+    }
+  ],
+  "report_only_anomalies": [
+    {
+      "criterion_group": "route_correctness evidence arrays on DIS-106 and ROUT-069",
+      "observation": "new route rows carry empty evidence arrays where the old rows carried the PREMATURE_ABSENCE flag",
+      "verdict_impact": "none; route verdicts unchanged (NO_ACCEPTABLE_ROUTE)",
+      "classification": "REPORT_ONLY"
+    }
+  ],
+  "gold_wording_changed_criteria": {
+    "case_ids": ["ROUT-061", "ROUT-070", "ROUT-073"],
+    "note": "Gold wording changed between lineages; state changes there are gold-wording effects, not product-caused regressions."
+  },
+  "pending_criteria_excluded": [
+    "DIS-118::forbidden:01",
+    "ROUT-026::forbidden:01",
+    "ROUT-031::forbidden:01",
+    "ROUT-037::forbidden:01"
+  ]
+}

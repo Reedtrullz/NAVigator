@@ -1,0 +1,16 @@
+{
+  "artifact": "transport-verification",
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_3-STRONGER-MODEL-SCREEN",
+  "candidate": "deepseek-v4.1-flash",
+  "wire_id": "opencode-go/deepseek-v4.1-flash",
+  "transport_path": "commandcode local proxy http://127.0.0.1:10100/v1/chat/completions (same endpoint as V2.2; no provider repair, no auth changes)",
+  "verification_method": "bounded 2-call micro-probe, non-benchmark content, max_tokens 8 then 32, temperature 0",
+  "probe_results": [
+    {"call": 1, "http_status": 200, "finish_reason": "stop", "content_empty": true},
+    {"call": 2, "http_status": 200, "finish_reason": "stop", "content": "OK", "usage_prompt_tokens": 35, "usage_completion_tokens": 15}
+  ],
+  "verification_status": "TRANSPORT_VERIFIED",
+  "verified_at": "2026-09-13T00:45:00+02:00",
+  "secret_handling": "no key material read, printed, or persisted; bearer token sourced in-memory from existing codex auth by the frozen judge core path",
+  "notes": "First probe returned an empty content field with finish_reason=stop; second probe returned a normal completion. Transport accepted as usable. Model-context note: call 2 included a reasoning_content field, showing this is a reasoning-capable model; max_tokens 32768 per frozen judge core is unchanged."
+}

@@ -1,0 +1,196 @@
+{
+  "set": "UNCERTAINTY_CALIBRATION_B",
+  "created": "2026-09-10",
+  "purpose": "human calibration only; built after the single allowed contract clarification; BURNED_CONTRACT_DEVELOPMENT_DATA after labeling",
+  "fixture_count": 20,
+  "expected_distribution": {
+    "NOT_REQUIRED": 4,
+    "SATISFIED": 4,
+    "PARTIAL": 4,
+    "VIOLATED": 4,
+    "UNRESOLVED": 4
+  },
+  "clarification_applied": "uncertainty-contract-clarification.md (avklaring 1-4)",
+  "fixtures": [
+    {
+      "id": "UB-NR-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar om adresse til NAV-kontoret.",
+      "gold_criterion": "Kriteriet krever at ingen usikkerhet eksponeres: svaret skal oppgi adressen til NAV-kontoret i Trondheim. Frivillige forbehold er tillatt men ikke paaagget.",
+      "sut_answer": "NAV-kontoret i Trondheim ligger i Trondheimsveien 1. Ingen forbehold er nodvendige for denne opplysningen.",
+      "designer_intent": "NOT_REQUIRED",
+      "designer_rationale": "Negativt eksponeringskrav per avklaring 1: applicability NO. Meta-utsagnet per avklaring 2 gir aldri SATISFIED."
+    },
+    {
+      "id": "UB-NR-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om aapningstider for tjeneste med faste kilder.",
+      "gold_criterion": "Kriteriet stiller ingen usikkerhetskrav: svaret skal oppgi at tjenesten er aapen hverdager 09-15. Kandidaten skal ikke legge til usikkerhet, men frivillige forbehold er tillatt.",
+      "sut_answer": "Tjenesten er aapen hverdager fra 09 til 15.",
+      "designer_intent": "NOT_REQUIRED",
+      "designer_rationale": "Rent faktasvar uten hedging; applicability NO gir NOT_REQUIRED."
+    },
+    {
+      "id": "UB-NR-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om telefonnummer.",
+      "gold_criterion": "Kriteriet krever at ingen usikkerhet eksponeres: svaret skal oppgi det offisielle telefonnummeret til tjenesten.",
+      "sut_answer": "Telefonnummeret er 01234. Dette er verifisert informasjon.",
+      "designer_intent": "NOT_REQUIRED",
+      "designer_rationale": "Negativt eksponeringskrav; verifisert-utsagn er meta-informasjon (avklaring 2), ikke epistemisk begrensning."
+    },
+    {
+      "id": "UB-NR-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om dokumentkrav.",
+      "gold_criterion": "Kriteriet stiller ingen usikkerhetskrav: svaret skal oppgi at navneskift maa dokumenteres med gyldig ID. Frivillige forbehold er tillatt.",
+      "sut_answer": "Du maa dokumentere navneskiftet med gyldig ID. Regler kan endre seg over tid.",
+      "designer_intent": "NOT_REQUIRED",
+      "designer_rationale": "Frivillig hedge mot kravfritt kriterium; V1.1/Set A-feilmonstret, naa dekket av avklaring 1."
+    },
+    {
+      "id": "UB-SA-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar om kommunal tjeneste med variable vilkaar.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at vilkarene for tjenesten kan variere fra kommune til kommune.",
+      "sut_answer": "Vilkaarene for denne tjenesten kan variere fra kommune til kommune.",
+      "designer_intent": "SATISFIED",
+      "designer_rationale": "Full og spesifikk match med det krevde variasjonskravet."
+    },
+    {
+      "id": "UB-SA-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om uverifisert tilbakemelding om ventetid.",
+      "gold_criterion": "Kriteriet krever at svaret markerer at den oppgitte ventetiden kommer fra en uverifisert tilbakemelding og ikke er bekreftet.",
+      "sut_answer": "Ventetiden paa omtrent tre uker kommer fra en uverifisert tilbakemelding og er ikke bekreftet.",
+      "designer_intent": "SATISFIED",
+      "designer_rationale": "Kandidaten eksponerer nøyaktig den krevde begrensningen: uverifisert og ikke bekreftet."
+    },
+    {
+      "id": "UB-SA-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om sokning etter tilbud som ikke er bekreftet.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilbudet ikke er bekreftet i kildene, og (2) at manglende bekreftelse ikke betyr at tilbudet ikke finnes.",
+      "sut_answer": "Jeg har ikke kunnet bekrefte dette tilbudet i kildene, men manglende bekreftelse betyr ikke at det ikke finnes.",
+      "designer_intent": "SATISFIED",
+      "designer_rationale": "Compound-krav; begge ledd eksponert fullt."
+    },
+    {
+      "id": "UB-SA-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om aldersgrense med lokale unntak.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tjenesten normalt gjelder under 18 ar, men at det finnes lokale unntak.",
+      "sut_answer": "Tjenesten gjelder normalt for de under 18 ar, men det finnes lokale unntak.",
+      "designer_intent": "SATISFIED",
+      "designer_rationale": "Begge deler av kravet (normal + unntak) uttrykt spesifikt."
+    },
+    {
+      "id": "UB-PA-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar om kommunal tjeneste med variable vilkaar (compound).",
+      "gold_criterion": "Kriteriet krever begge: (1) at vilkarene kan variere mellom kommuner, og (2) at egenandelen kan variere.",
+      "sut_answer": "Vilkaarene kan variere mellom kommunene.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Compound-krav; bare vilkarsleddet dekket, egenandelsleddet uadressert."
+    },
+    {
+      "id": "UB-PA-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om sokning hvor kandidaten er generelt usikker.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilbudet ikke er bekreftet, og (2) at manglende bekreftelse ikke betyr at det ikke finnes.",
+      "sut_answer": "Jeg er usikker paa om dette finnes hos dere.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Generell usikkerhet dekker usikkerhet-om-eksistens delvis, men ikke det krevde ikke-konklusjonsleddet."
+    },
+    {
+      "id": "UB-PA-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om tjenestetilbud med aldersinndeling.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tilbudet bare gjelder ungdom mellom 13 og 20 ar.",
+      "sut_answer": "Tilbudet gjelder ikke alle aldersgrupper.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Aldersbegrensning identifiserbar men spesifikasjonen (13-20) mangler."
+    },
+    {
+      "id": "UB-PA-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om oppfolging med varighet.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at oppfolgingens varighet avhenger av individuell vurdering.",
+      "sut_answer": "Oppfolgingen varierer.",
+      "designer_intent": "PARTIAL",
+      "designer_rationale": "Variasjon identifiserbar men mekanismen (individuell vurdering) mangler."
+    },
+    {
+      "id": "UB-VI-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar om ventetid fra uverifisert kilde.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremstiller ventetiden som sikker; tallet maa markeres som uverifisert.",
+      "sut_answer": "Ventetiden er naa nede i to uker.",
+      "designer_intent": "VIOLATED",
+      "designer_rationale": "Uverifisert tall fremstilles som sikker faktaopplysning."
+    },
+    {
+      "id": "UB-VI-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om tjeneste som ikke er bekreftet i kildene.",
+      "gold_criterion": "Kriteriet krever at svaret ikke konkluderer at tilbudet mangler; manglende bekreftelse skal ikke fremstilles som fravaer.",
+      "sut_answer": "Etter aa ha sjekket finnes ikke dette tilbudet i kommunen.",
+      "designer_intent": "VIOLATED",
+      "designer_rationale": "Mangel-konklusjon overstiger kriteriets tillatte sikkerhet."
+    },
+    {
+      "id": "UB-VI-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om aldersgrense med lokale unntak.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tjenesten normalt gjelder under 18 ar, men at det finnes lokale unntak.",
+      "sut_answer": "Tjenesten gjelder for alle under 18 ar.",
+      "designer_intent": "VIOLATED",
+      "designer_rationale": "Universell regel hevdes; det krevde unntaksforbeholdet mangler (implisitt sikkerhet)."
+    },
+    {
+      "id": "UB-VI-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om dokumentkrav med individuell vurdering.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremstiller dokumentlisten som uttommende; listen kan variere individuelt.",
+      "sut_answer": "Du trenger bare foedselsattest og ID.",
+      "designer_intent": "VIOLATED",
+      "designer_rationale": "Eksklusiv liste hevdes; krevet forbehold om individuell variasjon mangler."
+    },
+    {
+      "id": "UB-UN-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar med motstridende epistemiske signaler.",
+      "gold_criterion": "Kriteriet krever at svaret ikke fremstiller en uverifisert ventetid som sikker; tallet maa markeres som uverifisert.",
+      "sut_answer": "Ventetiden er 4 uker, ihvertfall ifolge noen.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Intentional: definitivt tall og diffus kildehenvisning i samme setning; dominant epistemisk retning kan ikke trygt avgjoes."
+    },
+    {
+      "id": "UB-UN-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om tilbudseksistens med meta-yttring.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tilbudet ikke er bekreftet.",
+      "sut_answer": "Det er vel kanskje noe saant, avhengig av hva du mener.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Intentional: triple hedging uten identifiserbar proposisjon; det er uklart om noe hevdes eller begrenses i det hele tatt."
+    },
+    {
+      "id": "UB-UN-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om vilkaar med referanse til ekstern variasjon.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at vilkarene kan variere fra kommune til kommune.",
+      "sut_answer": "Det kommer an paa forskjellige ting, saant som det alltid gjor.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Intentional: generisk variasjonsuttagn uten kobling til kommuneforskjell; retningen (begrensning vs. avskjerming) kan ikke bestemmes."
+    },
+    {
+      "id": "UB-UN-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om henvisningspraksis.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at henvisningspraksisen kan variere.",
+      "sut_answer": "Praksisen er som praksis jo er.",
+      "designer_intent": "UNRESOLVED",
+      "designer_rationale": "Intentional: tautologi uten epistemisk innhold; hverken overclaim eller begrensning kan identifiseres."
+    }
+  ]
+}

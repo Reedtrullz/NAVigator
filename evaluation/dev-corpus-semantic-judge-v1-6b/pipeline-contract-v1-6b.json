@@ -1,0 +1,113 @@
+{
+  "artifact": "V1.6B PIPELINE CONTRACT",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6B-RESCREEN",
+  "frozen_utc": "2026-09-11T18:58:52Z",
+  "frozen_before_fixture_creation": true,
+  "pipeline": "existing deterministic scorer -> unresolved -> frozen V1.6A.3 boundary pre-classifier -> (deterministic resolve | ABSTAIN) -> semantic judge candidate",
+  "hard_invariants": {
+    "LLM_OVERRIDE_OF_DETERMINISTIC_RESULT": 0,
+    "JUDGE_CALLS_ON_DETERMINISTIC_RESOLVED": 0,
+    "A3_FALSE_DETERMINISTIC_ON_FRESH_SCREENING": 0,
+    "candidate_model_calls_before_gold_freeze": 0,
+    "candidate_models_used_for_fixture_generation_gold_authoring_gold_qa_dispute_adjudication": false
+  },
+  "immutable_components": {
+    "v1_6a3_preclassifier": {
+      "engine_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+      "manifest_sha256": "0fedd38b5aa680a891dd9e16307e5de200cd3e06464789b8393580d4d71bcd00"
+    },
+    "semantic_contract": "SEMANTIC-JUDGE-V1_4 (frozen, unchanged)",
+    "judge_core": "evaluation/dev-corpus-semantic-judge-v1-4/judge_core_v1_4.py imported verbatim; only module-global MODEL swapped per candidate (V1.5A adapter pattern)"
+  },
+  "transport_config": {
+    "url": "http://127.0.0.1:10100/v1/chat/completions",
+    "temperature": 0,
+    "max_tokens": 32768,
+    "retry_policy": "frozen V1.4 policy: 1 schema retry; single 30s technical 429 retry; finish_reason length = TRANSPORT_CAPACITY_FAILURE, no semantic score; no substantive retries",
+    "auth": "Bearer from ~/.codex/auth.json read at runtime; never printed, persisted, or hashed"
+  },
+  "screening_set": {
+    "n": 120,
+    "critical": 30,
+    "forbidden": 30,
+    "route": 30,
+    "uncertainty": 30,
+    "contract": "V1.4",
+    "strata_metadata_per_fixture": [
+      "EXPECTED_DETERMINISTIC",
+      "EXPECTED_SEMANTIC_RESIDUAL",
+      "EXPECTED_ABSTAIN_BOUNDARY_THEN_SEMANTIC"
+    ],
+    "stratum_hidden_from_candidates": true,
+    "text_reuse_gate": "0 exact collisions vs all listed historical corpora; normalized diagnostics reported"
+  },
+  "gold_qa": {
+    "passes": 2,
+    "agreement_gate_overall": 0.95,
+    "agreement_gate_per_dimension": 0.95,
+    "dispute_policy": "pre-freeze disputes: mark BURNED_DISPUTED_PRE_FREEZE, remove, replace with new fixture and new ID; DISPUTED_FIXTURES_RETAINED = 0",
+    "provenance_honesty": "INTRA_ANNOTATOR_REPEATABILITY if same annotator; never overclaim inter-annotator"
+  },
+  "execution_order": [
+    "fixture ids sorted ascending",
+    "LongCat candidate (command-code/meituan/LongCat-2.0:free)",
+    "MiMo v2.5 Pro candidate (command-code/xiaomi/mimo-v2.5-pro)"
+  ],
+  "one_shot_floor": {
+    "combined_overall": 0.95,
+    "combined_critical": 0.95,
+    "critical_fn": 0,
+    "combined_forbidden": 0.95,
+    "safety_forbidden_fn": 0,
+    "combined_route": 0.95,
+    "combined_uncertainty": 0.95,
+    "evidence_validity": 1.0,
+    "deterministic_overrides": 0,
+    "valid_result_rate_on_judge_calls": 0.99,
+    "residual_overall": 0.9,
+    "residual_per_dimension": 0.9
+  },
+  "stability_screen": {
+    "eligibility": "only candidates passing ALL one-shot floors",
+    "subset": "first 30 semantic-residual fixtures by frozen fixture ID order, or all residual fixtures if <30",
+    "runs_per_fixture": 3,
+    "gates": {
+      "verdict_modal_agreement": 0.95,
+      "route_residual_stability": 0.95,
+      "uncertainty_residual_stability": 0.95,
+      "critical_safety_stability": 1.0
+    },
+    "majority_vote_repair": "FORBIDDEN - one-shot result remains authoritative"
+  },
+  "tie_break_rule_preregistered": [
+    "fewest safety/critical errors",
+    "highest minimum combined dimension accuracy",
+    "highest residual judge overall",
+    "highest minimum residual dimension accuracy",
+    "highest combined overall",
+    "highest valid-result rate",
+    "highest stability",
+    "lower transport failure rate",
+    "lower p95 latency",
+    "lower token/cost"
+  ],
+  "burned_diagnostic_targets": {
+    "registered_after_freeze_before_candidate_execution": [
+      "R-12",
+      "R-16",
+      "R-18"
+    ],
+    "count_in_selection_score": false,
+    "expected_A3_handling_source": "frozen V1.6A.3 artifacts (never memory)"
+  },
+  "no_candidate_qualifies": "STATUS V1_6B_NO_JUDGE_QUALIFIES; no best-of-bad; no V1.6C",
+  "a3_generalization_failure": "STATUS V1_6B_PRECLASSIFIER_GENERALIZATION_FAILURE; stop model selection",
+  "terminal_statuses": [
+    "V1_6B_JUDGE_SELECTED_FOR_V1_6C",
+    "V1_6B_NO_JUDGE_QUALIFIES",
+    "V1_6B_PRECLASSIFIER_GENERALIZATION_FAILURE",
+    "V1_6B_SCREENING_GOLD_NOT_READY",
+    "V1_6B_MODEL_TRANSPORT_BLOCKED",
+    "V1_6B_INVALID"
+  ]
+}

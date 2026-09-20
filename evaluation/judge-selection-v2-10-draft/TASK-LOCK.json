@@ -1,0 +1,61 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_10-BOUNDARY-EXTENSION-AND-RESCREEN",
+  "status": "ACTIVE",
+  "scope": "phase_a_boundary_extension_validated_phase_b_fresh_rescreen_authorized",
+  "lineage": "execution",
+  "authoritative_spec": "TASK-SPEC-DRAFT.md",
+  "owner_authorization": "2026-09-14 EXPLICIT OWNER AUTHORIZATION - V2.10 PHASE B (attachment eb0b88be)",
+  "execution_allowed": true,
+  "model_calls_allowed": true,
+  "fixture_generation_allowed": true,
+  "boundary_layer_changes_allowed": false,
+  "historical_writes_allowed": false,
+  "gate_value_changes_allowed": false,
+  "score_label_changes_allowed": false,
+  "m2_lane_changes_allowed": false,
+  "m2_automated_responsibility": "NONE",
+  "m2_path": "V2_6_HUMAN_REVIEW",
+  "product_runtime_changes_allowed": false,
+  "longcat_allowed": false,
+  "longcat_calls": 0,
+  "gpt_5_5_allowed": false,
+  "subagents_allowed_max": 2,
+  "subagent_default_model": "command-code/xiaomi-mimo-v2.5",
+  "candidate_selection": "EXPLICITLY_NAMED_IN_OWNER_AUTHORIZATION",
+  "authorized_candidates": [
+    {
+      "candidate": "deepseek-v4-1-flash",
+      "wire_id": "opencode-go/deepseek-v4.1-flash"
+    },
+    {
+      "candidate": "mimo-v2-5-pro",
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro"
+    }
+  ],
+  "new_candidate_discovery": false,
+  "candidate_additions_after_start": 0,
+  "prompt_iteration_accounting": "continues from V2.9 iteration 2; max 2 further iterations in V2.10",
+  "phase_a_frozen_boundary_extension_sha256": "7e0f84080d87872c21af2fa8011d29ad6d9b6a5073dbbc20b3b076e374995001",
+  "frozen_v1_6a3_boundary_preclassifier_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+  "frozen_gate_evaluator": "evaluation/judge-selection-v2-9-non-m2-post-diagnostic/eval_gates_v2_9.py (verbatim copy in execution lineage)",
+  "gate_evaluator_sha256": "baedee4891be9c59f641e56e36dad4086b1b1f8d65998b9e73ae350789a8821a",
+  "gate_evaluator_basis_sha256": "20e9b0e4bf86ca612217cc67e32fd6b3f4f732f894f3756028c4ff54903a4b43",
+  "v2_7e_uncertainty_contract_sha256": "7648039ea5706c279127c8ab72f459277a6e1adde7a7fa6724cc3a07f468a5c6",
+  "v2_9_terminal_status": "V2_9_NO_NON_M2_JUDGE_QUALIFIES",
+  "execution_lineage": "evaluation/judge-selection-v2-10-non-m2-rescreen/",
+  "execution_order": [
+    "pins",
+    "fixtures+gold",
+    "collision_audit",
+    "smoke",
+    "calibration",
+    "prompt_freeze",
+    "official_oneshot",
+    "gate_eval",
+    "stability_qualifiers",
+    "comparison_freeze",
+    "selection_or_terminal",
+    "STOP"
+  ],
+  "gate_0_verified": "2026-09-14: disk 66Gi free; V2.9 baseline-integrity pins 4/4 MATCH; Phase A unit suite ALL PASS; burned validation gate green (8 unc + 6 route fired, 0 wrong, frozen base unchanged); zero historical writes"
+}

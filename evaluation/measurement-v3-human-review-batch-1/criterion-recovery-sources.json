@@ -1,0 +1,73 @@
+{
+ "purpose": "AUTHORITATIVE_RECOVERY_ONLY audit; all expansion/interpretation evidence recovered exclusively from these frozen artifacts",
+ "method": "No web research, no NAV-domain knowledge, no inferred intent used as truth. Composition rule: criterion string + unique referent from packet utterance + corroborating frozen fields (critical_error_if / required_evidence_fields) as presented on the reviewer surface.",
+ "recovery_rule": "Full meaning must exist explicitly in a frozen artifact; absent that, fragment is SEMANTICALLY_UNDERSPECIFIED.",
+ "sources": [
+  {
+   "path": "evaluation/measurement-v3-burned-baseline-v1/human-review-packets.jsonl",
+   "role": "Authoritative packet surface (74 packets, immutable; SHA re-verified 74/74 this task)",
+   "sha256": "111ac642ea9ba6e4b7c4ebd6e6db18dfd075c164852fbed8576b8ddb56b80f8f",
+   "exists": true
+  },
+  {
+   "path": "evaluation/dev-corpus-v1/cases/routing_cases.json",
+   "role": "Original corpus cases; gold fields incl. critical_error_if and required_evidence_fields",
+   "sha256": "fa9018a94f78d87c5d085866adfa67210fa557edf8ec701aa9bbf39a96daf8df",
+   "exists": true
+  },
+  {
+   "path": "evaluation/dev-corpus-v1/cases/discovery_adversarial_cases.json",
+   "role": "Original corpus cases (discovery)",
+   "sha256": "8eb2ab761affc0f2ac4095e54c54c3ff4302005beb8eaf10830a5c93a2074104",
+   "exists": true
+  },
+  {
+   "path": "evaluation/dev-corpus-v1/cases/safety_cases.json",
+   "role": "Original corpus cases (safety)",
+   "sha256": "5d7cefcb43a9db233ed529f4cf439191d8f38125f727de104843933fe79e6800",
+   "exists": true
+  },
+  {
+   "path": "evaluation/dev-corpus-v1/gold-model.md",
+   "role": "Frozen gold-field semantics; forbidden_claims = statements the system must NOT make; critical_error_if = machine-readable conditions",
+   "sha256": "994ab1885b81d85a378ad3744930c2b9fc11cfe3e9dbc6df7bfa65f729949804",
+   "exists": true
+  },
+  {
+   "path": "evaluation/judge-selection-v2-13-forbidden-route-specialist/judge_core_v2_13.py",
+   "role": "Frozen scoring contract: forbidden = assertion-observation model; critical = evidence-state model",
+   "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+   "exists": true
+  },
+  {
+   "path": "evaluation/measurement-v2-15-semantic-human-review-fallback/review_lane_semantic_v2_15.py",
+   "role": "Frozen review-lane contract",
+   "sha256": "5ba5ad693a329054e59fc6bfd1d346fbd784e9d3bd7b79cdaf8e383914c86e7c",
+   "exists": true
+  },
+  {
+   "path": "evaluation/measurement-v3-human-review-batch-1/human-review-workbook-v2.md",
+   "role": "Reviewer surface v2: block A case, block B criterion + distinction context, block C SUT answer",
+   "sha256": "5d95303ce3caddc070709bbf2f364cdc18443eb75b86d60d8e0dc041d62e643e",
+   "exists": true
+  },
+  {
+   "path": "evaluation/measurement-v3-human-review-batch-1/pkt-esc-rout-070-diagnosis.md",
+   "role": "Prior diagnosis being honestly re-adjudicated",
+   "sha256": "2c331d073352183528de4da8759381be0e9a4b1227495857ab45a6407f8e3184",
+   "exists": true
+  },
+  {
+   "path": "evaluation/expected-routing.json",
+   "role": "Frozen operator-route expected outputs (S-keys; corroborating usage context for auto-escalation fragments)",
+   "sha256": "d762e01182c8acb14e9954342735a734cd480cd1c88f8af6adbb0894e711ebec",
+   "exists": true
+  },
+  {
+   "path": "evaluation/evaluator-regression/mutations.json",
+   "role": "Frozen regression mutations (MUT020/021 S43 auto-escalation usage context)",
+   "sha256": "2a0a75b9768acd1a60f04ef5c3721f6283d70429498bd5323d0ad956aa0af27a",
+   "exists": true
+  }
+ ]
+}

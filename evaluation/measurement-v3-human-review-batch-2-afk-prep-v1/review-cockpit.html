@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="no">
+<meta charset="utf-8">
+<title>Batch 2 review cockpit - OWNER-01</title>
+<style>
+:root { color-scheme: light; --line:#d0d4da; --ink:#1a1d21; --dim:#5a616b; --ok:#1a7f37; --bad:#b42318; --bg:#f6f7f9; --accent:#0b5cad; }
+* { box-sizing: border-box; }
+body { margin:0; font: 14px/1.45 -apple-system, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); }
+header { display:flex; align-items:center; gap:16px; padding:10px 16px; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+header h1 { font-size:15px; margin:0; font-weight:600; }
+#progress { font-variant-numeric: tabular-nums; color:var(--dim); }
+#savestate { font-size:12px; color:var(--dim); }
+#savestate.dirty { color:var(--accent); font-weight:600; }
+main { display:grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 45px); }
+nav { border-right:1px solid var(--line); background:#fff; overflow-y:auto; padding:6px 0; }
+nav button { display:flex; width:100%; text-align:left; background:none; border:0; border-left:3px solid transparent; padding:4px 10px; font:inherit; cursor:pointer; color:var(--ink); gap:6px; }
+nav button:hover { background:var(--bg); }
+nav button.active { border-left-color:var(--accent); background:#eef4fb; font-weight:600; }
+nav button .done { margin-left:auto; color:var(--ok); font-weight:700; }
+nav .lane-C::before, nav .lane-F::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-top:5px; }
+nav .lane-C::before { background:#8250df; }
+nav .lane-F::before { background:#9a6700; }
+#panel { padding:14px 18px; overflow-y:auto; max-height: calc(100vh - 45px); }
+.meta { color:var(--dim); font-size:12px; display:flex; gap:14px; flex-wrap:wrap; }
+.criterion { font-size:17px; font-weight:650; margin:6px 0 2px; }
+.context { margin:2px 0 8px; }
+.instructions { color:var(--dim); font-size:12.5px; margin:0 0 10px; }
+.answer { background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 14px; white-space:pre-wrap; overflow-wrap:anywhere; max-height:420px; overflow-y:auto; }
+fieldset { border:1px solid var(--line); border-radius:8px; background:#fff; margin:12px 0; padding:8px 12px; }
+legend { font-weight:600; font-size:12.5px; padding:0 4px; }
+fieldset label.radio { display:flex; gap:7px; align-items:baseline; padding:2px 0; cursor:pointer; }
+.spans textarea { width:100%; min-height:64px; font:12px/1.5 ui-monospace, Menlo, monospace; }
+.spanhelp { color:var(--dim); font-size:12px; }
+#spanresults div { padding:2px 0; font-size:12.5px; }
+.ok { color:var(--ok); } .bad { color:var(--bad); }
+.note textarea { width:100%; min-height:44px; font:inherit; }
+.actions { display:flex; gap:10px; align-items:center; margin:10px 0; }
+button.primary { background:var(--accent); border:1px solid var(--accent); color:#fff; border-radius:6px; padding:7px 16px; font:inherit; font-weight:600; cursor:pointer; }
+button.secondary { background:#fff; border:1px solid var(--line); color:var(--ink); border-radius:6px; padding:6px 12px; font:inherit; cursor:pointer; }
+#errors:empty { display:none; }
+#errors { border:1px solid var(--bad); background:#fef3f2; color:var(--bad); border-radius:6px; padding:8px 12px; margin:8px 0; white-space:pre-wrap; }
+details { margin-top:12px; }
+details summary { color:var(--dim); cursor:pointer; font-size:12.5px; }
+details pre { background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px; white-space:pre-wrap; overflow-wrap:anywhere; max-height:320px; overflow:auto; font-size:11.5px; }
+.navbtns { display:flex; gap:8px; margin-top:6px; }
+</style>
+<header>
+<h1>OWNER-01 review - Batch 2</h1>
+<span id="progress"></span>
+<span id="savestate"></span>
+<span style="margin-left:auto"><label class="spanhelp">Jump to chunk <select id="chunkselect"></select></label></span>
+</header>
+<main>
+<nav id="nav"></nav>
+<div id="panel">
+  <div id="packetview" hidden>
+    <div class="meta"><span id="pid"></span><span id="pl"></span><span id="psha"></span></div>
+    <div class="criterion" id="pcrit"></div>
+    <div class="context" id="pctx"></div>
+    <ul class="instructions" id="pinstr"></ul>
+    <fieldset id="pclaims" hidden>
+      <legend>Structured fields (kompakt)</legend>
+      <ul id="pclist" style="margin:4px 0 2px; padding-left:18px;"></ul>
+    </fieldset>
+    <div class="answer" id="pans"></div>
+    <div id="fields"></div>
+    <fieldset class="spans">
+      <legend>Evidence spans (verbatim)</legend>
+      <div class="spanhelp">Lim inn eksakt tekst fra SUT-svaret over. Linje = ett span. Kopier fra svarboksen; lagring konverterer mekanisk til raw-koding og avviser tekst som ikke finnes i den frosne SUT-outputen. Ingen semantisk hjelp.</div>
+      <textarea id="spans" spellcheck="false"></textarea>
+      <div class="actions"><button class="secondary" type="button" id="spancheck">Sjekk spans mekanisk</button></div>
+      <div id="spanresults"></div>
+    </fieldset>
+    <fieldset class="note">
+      <legend>Note (valgfri)</legend>
+      <textarea id="note" spellcheck="false"></textarea>
+    </fieldset>
+    <div id="errors"></div>
+    <div class="actions">
+      <button class="primary" type="button" id="save">Lagre draft</button>
+      <button class="secondary" type="button" id="clear">Fjern draft for denne pakken</button>
+      <span class="spanhelp" id="draftnote"></span>
+    </div>
+    <div class="navbtns">
+      <button class="secondary" type="button" id="prev">&#8592; Forrige</button>
+      <button class="secondary" type="button" id="next">Neste &#8594;</button>
+    </div>
+    <details><summary>Technical appendix: raw packet / provenance</summary><pre id="praw"></pre></details>
+  </div>
+</div>
+</main>
+<script>
+let S = null, cur = -1;
+const $ = (id) => document.getElementById(id);
+const esc = (s) => s; // DOM via textContent only
+
+async function init() {
+  const r = await fetch("/api/state"); S = await r.json();
+  renderNav(); renderChunks();
+  const first = S.packets.findIndex(p => !S.draft[p.packet_id]);
+  select(first >= 0 ? first : 0);
+}
+
+function renderNav() {
+  const nav = $("nav"); nav.textContent = "";
+  S.packets.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "lane-" + (p.dimension === "critical_condition" ? "C" : "F");
+    const t = document.createElement("span"); t.textContent = p.pos + " " + p.packet_id.replace("PKT-ESC-", "");
+    b.appendChild(t);
+    if (S.draft[p.packet_id]) { const d = document.createElement("span"); d.className = "done"; d.textContent = "\u2713"; b.appendChild(d); }
+    b.onclick = () => select(i); b.dataset.i = i; nav.appendChild(b);
+  });
+}
+
+function renderChunks() {
+  const sel = $("chunkselect"); sel.textContent = "";
+  S.chunks.forEach(c => { const o = document.createElement("option"); o.value = c.packet_ids[0]; o.textContent = c.chunk + " (" + c.packet_ids.length + ")"; sel.appendChild(o); });
+  sel.onchange = () => { const i = S.packets.findIndex(p => p.packet_id === sel.value); if (i >= 0) select(i); };
+}
+
+function updateProgress() {
+  const n = Object.keys(S.draft).length;
+  $("progress").textContent = n + " / 74 lagret";
+}
+
+function renderFields(p, j) {
+  const box = $("fields"); box.textContent = "";
+  const enums = S.enums[p.dimension];
+  Object.entries(enums).forEach(([field, vals]) => {
+    const fs = document.createElement("fieldset");
+    const lg = document.createElement("legend"); lg.textContent = field; fs.appendChild(lg);
+    vals.forEach(v => {
+      const lab = document.createElement("label"); lab.className = "radio";
+      const inp = document.createElement("input"); inp.type = "radio"; inp.name = field; inp.value = v;
+      if (j && j[field] === v) inp.checked = true;
+      lab.appendChild(inp);
+      const s = document.createElement("span"); s.textContent = v; lab.appendChild(s);
+      fs.appendChild(lab);
+    });
+    box.appendChild(fs);
+  });
+}
+
+function collectJudgment(p) {
+  const j = { evidence_spans: [], note: $("note").value };
+  const enums = S.enums[p.dimension];
+  Object.keys(enums).forEach(f => {
+    const sel = document.querySelector("input[name=" + JSON.stringify(f) + "]:checked");
+    j[f] = sel ? sel.value : "";
+  });
+  j.evidence_spans = $("spans").value.split("\n").map(s => s.trim()).filter(Boolean);
+  return j;
+}
+
+function currentJudgment() { const p = S.packets[cur]; const d = S.draft[p.packet_id]; return d ? d.judgment : null; }
+
+function select(i) {
+  saveStateClear(); $("errors").textContent = ""; $("spanresults").textContent = "";
+  cur = i; const p = S.packets[i];
+  document.querySelectorAll("nav button").forEach(b => b.classList.toggle("active", +b.dataset.i === i));
+  $("packetview").hidden = false;
+  $("pid").textContent = p.pos + "/74 " + p.packet_id;
+  $("pl").textContent = p.dimension + " | " + p.case_id + " | " + p.contract_version;
+  $("psha").textContent = "sha256 " + p.packet_sha256.slice(0, 12) + "\u2026";
+  $("pcrit").textContent = "Criterion: " + p.criterion;
+  $("pctx").textContent = "Context: " + p.case_context;
+  const ul = $("pinstr"); ul.textContent = "";
+  p.reviewer_instructions.forEach(t => { const li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+  const ans = parseAnswer(p.sut_output);
+  const cl = $("pclaims"), clu = $("pclist");
+  clu.textContent = "";
+  if (ans && Array.isArray(ans.claims) && ans.claims.length) {
+    ans.claims.forEach(c => { const li = document.createElement("li"); li.textContent = typeof c === "string" ? c : JSON.stringify(c); clu.appendChild(li); });
+    cl.hidden = false;
+  } else { cl.hidden = true; }
+  $("pans").textContent = ans ? ans.answer : p.sut_output;
+  renderFields(p, currentJudgment());
+  const d = S.draft[p.packet_id];
+  $("spans").value = d ? d.judgment.evidence_spans.join("\n") : "";
+  $("note").value = d ? (d.judgment.note || "") : "";
+  $("draftnote").textContent = d ? "Draft lagret " + d.reviewed_utc + " (kan endres til freeze)" : "";
+  const raw = document.createElement("pre"); raw.textContent = p.sut_output;
+  const ap = document.querySelector("details pre"); ap.textContent = ""; ap.appendChild(raw);
+  $("panel").scrollTop = 0;
+}
+
+function parseAnswer(raw) { try { const o = JSON.parse(raw); if (o && typeof o.answer === "string") return o; } catch (e) {} return null; }
+
+function saveStateClear() { $("savestate").textContent = ""; $("savestate").className = ""; }
+function saveStateDirty() { $("savestate").textContent = "ulagret"; $("savestate").className = "dirty"; }
+
+async function save() {
+  const p = S.packets[cur];
+  const j = collectJudgment(p);
+  const row = { packet_id: p.packet_id, case_id: p.case_id, packet_sha256: p.packet_sha256,
+                reviewer_id: S.reviewer_id, contract_version: p.contract_version,
+                reviewed_utc: new Date().toISOString().replace(/\.[0-9]+Z$/, "Z"), judgment: j };
+  const r = await fetch("/api/save", { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ row }) });
+  const res = await r.json();
+  if (!r.ok) { $("errors").textContent = res.errors.join("\n"); return; }
+  $("errors").textContent = "";
+  S.draft[p.packet_id] = row;
+  $("draftnote").textContent = "Draft lagret " + row.reviewed_utc + " (kan endres til freeze)";
+  updateProgress(); renderNav();
+  $("savestate").textContent = "lagret"; $("savestate").className = "";
+  const nextPending = S.packets.findIndex(q => !S.draft[q.packet_id]);
+  if (nextPending >= 0) select(nextPending);
+}
+
+async function clearDraft() {
+  const p = S.packets[cur];
+  const r = await fetch("/api/delete", { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ packet_id: p.packet_id }) });
+  if (!r.ok) { const res = await r.json(); $("errors").textContent = (res.errors || []).join("\n"); return; }
+  delete S.draft[p.packet_id]; updateProgress(); renderNav(); select(cur);
+}
+
+async function spancheck() {
+  const p = S.packets[cur];
+  const spans = $("spans").value.split("\n").map(s => s.trim()).filter(Boolean);
+  const out = $("spanresults"); out.textContent = "";
+  if (!spans.length) { const d = document.createElement("div"); d.className = "spanhelp"; d.textContent = "Ingen spans angitt."; out.appendChild(d); return; }
+  const r = await fetch("/api/spancheck", { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ packet_id: p.packet_id, spans }) });
+  const res = await r.json();
+  if (!r.ok) { $("errors").textContent = (res.errors || []).join("\n"); return; }
+  res.results.forEach((m, idx) => {
+    const d = document.createElement("div");
+    if (m.status === "ok") { d.className = "ok"; d.textContent = "span " + (idx + 1) + ": mekanisk OK (verbatim i frosen SUT-output" + (m.identical_in_raw ? ", allerede raw-kodet" : ", raw-rekodet") + ")"; }
+    else { d.className = "bad"; d.textContent = "span " + (idx + 1) + ": " + (m.reason || "not found"); }
+    out.appendChild(d);
+  });
+}
+
+$("save").onclick = save; $("clear").onclick = clearDraft; $("spancheck").onclick = spancheck;
+$("prev").onclick = () => select(Math.max(0, cur - 1));
+$("next").onclick = () => select(Math.min(S.packets.length - 1, cur + 1));
+document.addEventListener("input", saveStateDirty);
+init();
+</script>

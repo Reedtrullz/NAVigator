@@ -1,0 +1,1090 @@
+{
+ "meta": {
+  "set": "locality",
+  "engine": "quote-aligner-deterministic-v0.2",
+  "generated": "2026-09-01T23:49:40.280346+00:00",
+  "deterministic": true
+ },
+ "results": [
+  {
+   "id": "LOC-01",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "RPH i Trondheim er for voksne.",
+      "source_span": "Rask psykisk helsehjelp i Trondheim gjelder voksne 18 år og over.",
+      "span_start": 0,
+      "span_end": 65
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "RPH i Trondheim er for voksne."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Trondheim er for voksne.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-02",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "local to national",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "RPH er nasjonalt for voksne."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH er nasjonalt for voksne.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-03",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "other locality",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "PLACE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "RPH i Oslo er gratis."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Oslo er gratis.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-04",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": null,
+   "focus": "price vs free same locality",
+   "note": null,
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "rule": "concept_opposition:free_of_charge",
+     "signals": {
+      "numeric": "absent",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": []
+     },
+     "proof": {
+      "proof_type": "CONTRA",
+      "claim": "",
+      "source_span": "",
+      "span_start": -1,
+      "span_end": -1
+     },
+     "review": false,
+     "override": "concept_opposition:free_of_charge",
+     "atom_id": "A1",
+     "atom_text": "RPH i Trondheim koster 300 kroner."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH i Trondheim koster 300 kroner.",
+     "verdict": "CONTRADICTED",
+     "rule": "concept_opposition:free_of_charge"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-05",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Helsestasjon for ungdom finnes i Trondheim.",
+      "source_span": "Trondheim har helsestasjon for ungdom med drop-in.",
+      "span_start": 0,
+      "span_end": 50
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Helsestasjon for ungdom finnes i Trondheim."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Helsestasjon for ungdom finnes i Trondheim.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-06",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "universal_scope_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "UNIVERSAL_SCOPE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Alle kommuner har helsestasjon for ungdom."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner har helsestasjon for ungdom.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "universal_scope_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-07",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality address",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "equal",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Familievernkontoret i Trondheim ligger i Carl Johans gate 3.",
+      "source_span": "Adresse: Carl Johans gate 3, 7010 Trondheim.",
+      "span_start": 0,
+      "span_end": 44
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Familievernkontoret i Trondheim ligger i Carl Johans gate 3."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret i Trondheim ligger i Carl Johans gate 3.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-08",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "other locality address",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "place_conflict",
+     "signals": {
+      "numeric": "equal",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "PLACE_UNVERIFIED",
+       "PLACE_CONFLICT"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Familievernkontoret i Oslo ligger i Carl Johans gate 3."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret i Oslo ligger i Carl Johans gate 3.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "place_conflict"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-09",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "national rule local instance",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKEN_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "PLACE_UNVERIFIED"
+      ],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Skolehelsetjenesten er gratis i Trondheim.",
+      "source_span": "Skolehelsetjenesten er gratis for alle elever.",
+      "span_start": 0,
+      "span_end": 46
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Skolehelsetjenesten er gratis i Trondheim."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolehelsetjenesten er gratis i Trondheim.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-10",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "local variation",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "reverse_cost_axis",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "REVERSE_COST_AXIS"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Skolehelsetjenesten koster i enkelte kommuner."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Skolehelsetjenesten koster i enkelte kommuner.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "reverse_cost_axis"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-11",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "national option",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_lexical_rescue",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "SAME",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Kommuner kan ha egne lavterskeltilbud.",
+      "source_span": "Kommunene kan selv tilby lavterskeltjenester innen psykisk helse.",
+      "span_start": 0,
+      "span_end": 65
+     },
+     "review": false,
+     "override": "support_lexical_rescue",
+     "atom_id": "A1",
+     "atom_text": "Kommuner kan ha egne lavterskeltilbud."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommuner kan ha egne lavterskeltilbud.",
+     "verdict": "SUPPORTED",
+     "rule": "support_lexical_rescue"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-12",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "option vs mandate",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.6,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.6,
+     "rule": "claim_stronger_than_source",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "CLAIM_STRONGER",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Alle kommuner må ha lavterskeltilbud."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Alle kommuner må ha lavterskeltilbud.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "claim_stronger_than_source"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-13",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "same locality deadline",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "equal",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "BUP Trondheim har oppstart innen 65 virkedager.",
+      "source_span": "BUP i Trondheim: oppstart innen 65 virkedager ved innvilgelse.",
+      "span_start": 0,
+      "span_end": 62
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "BUP Trondheim har oppstart innen 65 virkedager."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP Trondheim har oppstart innen 65 virkedager.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-14",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "local to national",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "scope_inflation_unverified",
+     "signals": {
+      "numeric": "equal",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKEN_UNVERIFIED",
+       "SCOPE_INFLATION_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "BUP nasjonalt har oppstart innen 65 virkedager."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "BUP nasjonalt har oppstart innen 65 virkedager.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "scope_inflation_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-15",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "comparison",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "TOPIC_TOKENS_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "PLACE_UNVERIFIED",
+       "SUBJECT_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Ventetiden i Oslo er kortere enn i Trondheim."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ventetiden i Oslo er kortere enn i Trondheim.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-16",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": null,
+   "focus": "local instance",
+   "note": null,
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Kommunepsykolog finnes i Trondheim.",
+      "source_span": "Trondheim kommune har psykolog i kommunen.",
+      "span_start": 0,
+      "span_end": 42
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Kommunepsykolog finnes i Trondheim."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog finnes i Trondheim.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-17",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "universal_scope_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "UNIVERSAL_SCOPE_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Kommunepsykolog finnes i alle kommuner."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog finnes i alle kommuner.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "universal_scope_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-18",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "uniformity",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "scope_inflation_unverified",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "SCOPE_INFLATION_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Kommunepsykolog er et nasjonalt, likt tilbud."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunepsykolog er et nasjonalt, likt tilbud.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "scope_inflation_unverified"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-19",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "universal coverage",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "partitive_vs_universal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "PARTITIVE_VS_UNIVERSAL",
+       "SCOPE_WORD_UNVERIFIED",
+       "PARTITIVE_VS_UNIVERSAL",
+       "PARTITIVE_VS_UNIVERSAL"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "Rask psykisk helsehjelp finnes i alle kommuner."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp finnes i alle kommuner.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "partitive_vs_universal"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "LOC-20",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "dimension": null,
+   "focus": "mandate",
+   "note": null,
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "no_deterministic_signal",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED",
+       "SCOPE_WORD_UNVERIFIED",
+       "TOPIC_TOKENS_UNVERIFIED"
+      ]
+     },
+     "proof": null,
+     "review": true,
+     "atom_id": "A1",
+     "atom_text": "RPH er en lovpålagt plikt for kommunene."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "RPH er en lovpålagt plikt for kommunene.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "no_deterministic_signal"
+    }
+   ],
+   "status": "ok"
+  }
+ ]
+}

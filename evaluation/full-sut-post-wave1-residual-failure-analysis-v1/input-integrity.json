@@ -1,0 +1,55 @@
+{
+  "artifact": "post-wave1-residual-analysis-input-integrity",
+  "task_id": "NAV-EXPLORE-FULL-SUT-POST-WAVE1-RESIDUAL-FAILURE-ANALYSIS-V1",
+  "mode": "READ_ONLY_DIAGNOSIS",
+  "pins_verified": {
+    "P1_wave1_product_candidate_manifest": "evaluation/full-sut-repair-wave-1-v1/repaired-sut-manifest.json",
+    "P2_wave1_prediction_manifests": [
+      "evaluation/full-sut-repair-wave-1-v1/runs/structural-120-replay-v2/safety/predictions-manifest.json",
+      "evaluation/full-sut-repair-wave-1-v1/runs/structural-120-replay-v2/routing/predictions-manifest.json",
+      "evaluation/full-sut-repair-wave-1-v1/runs/structural-120-replay-v2/discovery_adversarial/predictions-manifest.json"
+    ],
+    "P3_wave1_measurement_freeze": "evaluation/measurement-v3-remeasure-repair-wave-1/wave1-measurement-freeze-manifest.json",
+    "P4_comparator_terminal": "evaluation/measurement-v3-wave1-consensus-comparator-repair-v1/TASK-LOCK.json",
+    "P5_final_600row": "evaluation/measurement-v3-wave1-consensus-comparator-repair-v1/complete-wave1-measurement-results.json",
+    "P6_old_baseline": "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json"
+  },
+  "checks": {
+    "comparator_lock_closed": true,
+    "comparator_terminal_status": "MEASUREMENT_V3_REMEASURE_WAVE_1_COMPLETE",
+    "final_600row_sha256": "1f4aac89aa90ef2e5b7e2da2455249633cf2d2c12c7856c64b202a5e45e5e7c1",
+    "final_600row_matches_comparator_manifest_pin": true,
+    "source_changed": false,
+    "predictions_changed": false,
+    "gold_changed": false,
+    "measurement_changed": false,
+    "predictions_rerun": false,
+    "llm_semantic_calls": 0
+  },
+  "recomputed_authority_mix": {
+    "TOTAL": 600,
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 4,
+    "HUMAN_REVIEWED": 0,
+    "PENDING": 0
+  },
+  "recomputed_states": {
+    "TOTAL": 600,
+    "PASS": 290,
+    "FAIL": 244,
+    "UNRESOLVED": 18,
+    "DEGRADED": 36,
+    "ABSENT_OR_NOT_APPLICABLE": 12,
+    "APPLICABLE_DENOMINATOR": 588,
+    "HARD_FAIL_RATE": 0.415,
+    "NON_PASS_RATE": 0.5068
+  },
+  "delta_vs_old_baseline_authoritative_policy": {
+    "improved": 8,
+    "regressed": 0,
+    "fail_to_unresolved_review_moves": 13,
+    "rule": "FAIL->PASS and FAIL->DEGRADED count as improvement; FAIL->UNRESOLVED is a move to LLM review, matching updated-baseline-transition-matrix.json",
+    "old_states": {"PASS": 284, "FAIL": 265, "UNRESOLVED": 5, "DEGRADED": 34, "ABSENT_OR_NOT_APPLICABLE": 12}
+  }
+}

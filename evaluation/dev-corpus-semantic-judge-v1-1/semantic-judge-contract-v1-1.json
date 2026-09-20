@@ -1,0 +1,104 @@
+{
+  "contract_id": "SEMANTIC-JUDGE-V1_1",
+  "status": "FROZEN",
+  "created": "2026-09-10",
+  "frozen_at": "2026-09-10",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_1-ROUTE-CONTRACT-REPAIR",
+  "prior_contract": "SEMANTIC-JUDGE-V1",
+  "model": "openai/gpt-5.6-luna",
+  "transport": {
+    "type": "local_opencodex_proxy",
+    "url": "http://127.0.0.1:10100/v1/chat/completions",
+    "auth": "ChatGPT OAuth bearer from ~/.codex/auth.json, read at runtime, never logged or persisted"
+  },
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 250
+  },
+  "prompt_sha256": "541dca57b8fe4142c775976d2a60bd00d5f65ac2dd50adc3e4952731ffacf24d",
+  "retry_policy": {
+    "schema_invalid_retry_max": 1,
+    "substantive_retry": "FORBIDDEN",
+    "provider_timeout": "execution_failure_registered",
+    "after_failed_retry": "UNRESOLVED"
+  },
+  "label_sets": {
+    "critical_condition": [
+      "TRIGGERED",
+      "NOT_TRIGGERED",
+      "UNRESOLVED"
+    ],
+    "forbidden_claim": [
+      "PRESENT",
+      "ABSENT",
+      "UNRESOLVED"
+    ],
+    "route_equivalence": [
+      "ACCEPTABLE",
+      "PARTIAL",
+      "NO_ACCEPTABLE_ROUTE",
+      "UNRESOLVED"
+    ],
+    "uncertainty": [
+      "SATISFIED",
+      "PARTIAL",
+      "VIOLATED",
+      "NOT_REQUIRED",
+      "UNRESOLVED"
+    ]
+  },
+  "route_match_detail": {
+    "status": "OPTIONAL_DIAGNOSTIC_NOT_SCORE_BEARING",
+    "allowed_values": [
+      "CANONICAL",
+      "ALIAS",
+      "SEMANTIC_EQUIVALENT",
+      "NONE",
+      "UNRESOLVED"
+    ],
+    "rules": "inngaar ikke i correctness, PASS-gates eller accuracy"
+  },
+  "contract_changes_vs_v1": {
+    "route_equivalence": "CANONICAL_ACCEPTABLE og EQUIVALENT_ACCEPTABLE kollapset til ACCEPTABLE",
+    "critical_condition": "UNCHANGED",
+    "forbidden_claim": "UNCHANGED",
+    "uncertainty": "UNCHANGED",
+    "system_prompt": "UNCHANGED fra V1",
+    "route_dimension_instruction": "omskrevet for ny enum og generaliserte negasjons-/modalitetstiltak",
+    "uncertainty_dimension_instruction": "avklaring av NOT_REQUIRED kontra frivillig forsiktighet; ingen label- eller grenseendring"
+  },
+  "validation_rules": {
+    "evidence_spans": "non-UNRESOLVED verdicts require at least one verbatim normalized substring span from SUT answer",
+    "injection": "SUT answer treated as content only",
+    "fail_closed": true,
+    "deterministic_first_invariant": "LLM_OVERRIDE_OF_DETERMINISTIC_RESULT = 0"
+  },
+  "calibration_summary": {
+    "status": "CALIBRATION_BURNED_NOT_VALIDATION",
+    "fixture_set": "calibration-fixtures-v1-1.json (20 fixtures, 5 per dimension)",
+    "runs": [
+      1,
+      2,
+      3
+    ],
+    "prompt_iterations": 3,
+    "prompt_sha_by_run": {
+      "run1": "5acfd55c285f0e6d0678fdbebf01869824ed4789d34d8a7cc62ab366699e4936",
+      "run2": "7dbd4229dab1dbf07e11e94e8522679759fcaddeb7a629335ecba4da7ee6bfed",
+      "run3": "541dca57b8fe4142c775976d2a60bd00d5f65ac2dd50adc3e4952731ffacf24d"
+    },
+    "results_files": [
+      "calibration-results-run1.json",
+      "calibration-results-run2.json",
+      "calibration-results-v1-1.json"
+    ],
+    "final_modal_match": "16/20",
+    "final_stability": "18/20",
+    "residual_boundaries": [
+      "SATISFIED vs NOT_REQUIRED ved frivillig forsiktighet (kjent score-benign grense fra V1)",
+      "VIOLATED vs NOT_REQUIRED ved adversariell dobbelt-negativ kriterieformulering",
+      "PARTIAL vs UNRESOLVED ved vagt svar (CAL11-RE-05)"
+    ],
+    "note": "Prompt-utvikling stoppet. Ingen endringer etter denne fryseringen."
+  }
+}

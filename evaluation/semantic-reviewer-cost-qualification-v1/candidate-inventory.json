@@ -1,0 +1,52 @@
+{
+  "excluded": {
+    "command-code/meituan-LongCat-2.0:free": "owner quota constraint; LONGCAT_CALLS=0",
+    "gpt-5.5": "forbidden",
+    "gpt-5.6-luna": "escalation-only, not routine screening",
+    "gpt-5.6-sol": "NEW_SOL_CALLS=0",
+    "gpt-6-astra": "NEW_ASTRA_CALLS=0; frozen observations are reference only"
+  },
+  "new_model_discovery_allowed": false,
+  "primary_screening_pool": [
+    {
+      "logical_id": "nemotron-3-ultra",
+      "routes": [
+        "openrouter/nvidia-nemotron-3-ultra:free"
+      ]
+    },
+    {
+      "logical_id": "nex-n2.5-pro",
+      "routes": [
+        "openrouter/nex-agi-nex-n2.5-pro:free"
+      ]
+    },
+    {
+      "logical_id": "gemma-4-31b-it",
+      "routes": [
+        "openrouter/google-gemma-4-31b-it:free"
+      ]
+    },
+    {
+      "fallbacks": [
+        "opencode-go/mimo-v2.5-pro"
+      ],
+      "logical_id": "mimo-v2.5-pro",
+      "routes": [
+        "command-code/xiaomi-mimo-v2.5-pro"
+      ]
+    },
+    {
+      "logical_id": "inkling",
+      "routes": [
+        "openrouter/thinkingmachines-inkling:free"
+      ]
+    }
+  ],
+  "reserve_pool_not_automatically_used": [
+    "openrouter/nvidia-nemotron-3-super:free",
+    "command-code/poolside-laguna-s-2.1-free",
+    "command-code/inclusionai-ling-3.0-flash-sante:free",
+    "openrouter/google-gemma-4-26b-a4b-it:free",
+    "openrouter/thinkingmachines-inkling-small:free"
+  ]
+}

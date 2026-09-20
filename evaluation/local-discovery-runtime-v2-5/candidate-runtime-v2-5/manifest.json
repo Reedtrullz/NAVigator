@@ -1,0 +1,82 @@
+{
+  "candidate": "LOCAL_DISCOVERY_RUNTIME_V2_5",
+  "release_name": "LOCAL-DISCOVERY-RUNTIME-V2.5",
+  "status": "LOCAL_DISCOVERY_RUNTIME_V2_5_CANDIDATE_FROZEN",
+  "frozen_at": "2026-09-10T00:03:23+02:00",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_5-ENGINEERING",
+  "base_lineage": "LOCAL-DISCOVERY-RUNTIME-V2.4 (canonical_roots_v24 reused unchanged; frozen base providers/render/orchestrator reused byte-identically via subclass/wrapper)",
+  "architecture_version": "DISCOVERY_FALLBACK_V25",
+  "purpose": "Repair the generalized V2.4 fresh-holdout failure classes (sitemapindex traversal, render-on-empty nav, FV section-page overclaim) in a new lineage; re-certify on burned data; no fresh municipalities, no external search providers, no Protocol V1 change.",
+  "repairs": {
+    "sitemapindex_follow": "SiteDirectProviderV25 follows up to 4 sitemapindex children (bounded, validated) when direct extraction is empty; method SITEMAP_INDEX_FOLLOW.",
+    "render_on_empty": "One bounded root render when nav+sitemap yield zero candidates; method RENDERED_NAVIGATION_LINK; fail-closed preserved.",
+    "fv_gate": "is_service_specific_url gate + RouteEvaluatorV25 caps FV on generic section pages; orchestrator_v25 = verbatim copy of frozen run_v2 with three documented deltas (name, discovery_v2_5 field, V25 evaluator)."
+  },
+  "budget_repair_during_validation": {
+    "what": "URL budget raised 8 -> 16 in providers_v25.__init__ for V23/V24 parity",
+    "why": "Dead root variants exhaust the frozen base budget before the live platform root is reached (observed as RATE_LIMITED); V2.3/V2.4 raised the same budget in their subclasses.",
+    "tests": "tests_v25 7/7 after change; all frozen suites re-run green."
+  },
+  "components": {
+    "protocol_v1": "runtime/discovery/protocol.py",
+    "providers_v25": "runtime/discovery_v2/providers_v25.py",
+    "classification_gate_v25": "runtime/discovery_v2/classification_gate_v25.py",
+    "classification_v25": "runtime/discovery_v2/classification_v25.py",
+    "orchestrator_v25": "runtime/discovery_v2/orchestrator_v25.py",
+    "cli_v25": "runtime/discovery_v2/cli_v25.py",
+    "tests_v25": "runtime/discovery_v2/tests_v25.py",
+    "roots_v24": "runtime/discovery_v2/roots_v24.py",
+    "cli_v23_base": "runtime/discovery_v2/cli_v23.py",
+    "providers_frozen_base": "runtime/discovery_v2/providers.py",
+    "render_frozen": "runtime/discovery_v2/render.py",
+    "sitemap_fetch_frozen": "runtime/discovery_v2/sitemap_fetch.py",
+    "security": "runtime/discovery/security.py",
+    "orchestrator_frozen_base": "runtime/discovery_v2/orchestrator.py",
+    "harness": "evaluation/local-discovery-runtime-v2-5/run_v25_harness.py",
+    "driver_ralingen": "evaluation/local-discovery-runtime-v2-5/ralingen_driver.py",
+    "driver_benchmark": "evaluation/local-discovery-runtime-v2-5/run_full_benchmark.py",
+    "driver_replay": "evaluation/local-discovery-runtime-v2-5/run_replay.py",
+    "driver_live": "evaluation/local-discovery-runtime-v2-5/run_live.py",
+    "driver_access": "evaluation/local-discovery-runtime-v2-5/run_access.py",
+    "driver_audit": "evaluation/local-discovery-runtime-v2-5/run_audit.py",
+    "task_lock": "evaluation/local-discovery-runtime-v2-5/TASK-LOCK.json"
+  },
+  "shas256": {
+    "protocol_v1": "daacc9da795942bb507cd048c0238f755f6413f0f7479303a1f5b0f13f399c51",
+    "providers_v25": "057e19d74cec208dc51dc0e0a7147ed05bae36fb711c7f9617c186e2a36db5b6",
+    "classification_gate_v25": "5a4ea43b32ddd0052ff12870f10c1e5df10ddbab22d3a5873fe21a8c6dd0338f",
+    "classification_v25": "b79a29ca43f63ad3f1cd63bcb671279ecd11000fbbe456e59e327ef089f81c8e",
+    "orchestrator_v25": "0eb752dc620f6218b8784ab2a62784d292f0b90eea76a5319b0cef9b01f475c0",
+    "cli_v25": "bf874268c61aa66f9a9f8839b9fa09ed3a318af90191663bae0feb3fff38f608",
+    "tests_v25": "8d93e443bc16876d2fb38183d5aafff33685d933deee7494a549c5da5066ed00",
+    "roots_v24": "51bdb9d3ad969ce4099816cc177d7c921a1424703ca5e0d5092541cab45d3742",
+    "cli_v23_base": "b498a0859df1edb99e791a371b6ca9661bbf4b925259b49bd137b9e2718a5fd8",
+    "providers_frozen_base": "54b38921b02736763d3baef25e7bb860f1bf1b9f8d3b0fb3ac58b0808083806a",
+    "render_frozen": "953a23dbc27e0552e95b50128e8ab4d3308a8f9b73295112d043a87ac5b1b36c",
+    "sitemap_fetch_frozen": "7e6b677edb43de726f3678d7df2b6cce1d4bf3b38cf34161c9fc14a698f25ba6",
+    "security": "ee60d773ff7a4c495de7246145a2535950b7b4e0a5b15f0be4b79088979b43b2",
+    "orchestrator_frozen_base": "1c9545b16357ab413baf0b36bbcb3617a6a35baa67a81b99a56902208db62b95",
+    "harness": "ae6bd348044e369290c4beca94aae3b70316a75070aad3b60163b5a8582f0f2c",
+    "driver_ralingen": "ff9c0c868594162eef9183ad39a7fca2c1b94ecee7dfd7b46f2354c1f23e63f9",
+    "driver_benchmark": "df0a4d7b5c1235c92da5263ffa2aee4809dcb371cf0f83e9f3514b54c2b94882",
+    "driver_replay": "c0992094020665440b6a150254b7e68f8a86e94ea1da00463fd759acd89621d1",
+    "driver_live": "e7cccdd87f580565a9560bf59892fa5a15eb9467ea52b56dfd755710c630edf4",
+    "driver_access": "63b6990e59aab4df96cdf8a268860ca333554285924535f1f82707e1ee2bb050",
+    "driver_audit": "7cbcba533a5df280d89786fd3e7b7f7197fbaded42a93b86e911cadecb068b66",
+    "task_lock": "e44121985e86fec8cfbe7e204f9fcd9c4666177b633b8ca8ea083ce2af08e5ce"
+  },
+  "official_artifacts": [
+    "evaluation/local-discovery-runtime-v2-5/ralingen-regression.json",
+    "evaluation/local-discovery-runtime-v2-5/site-direct-benchmark.json",
+    "evaluation/local-discovery-runtime-v2-5/benchmark-results.json",
+    "evaluation/local-discovery-runtime-v2-5/replay-regression.json",
+    "evaluation/local-discovery-runtime-v2-5/access-regression.json",
+    "evaluation/local-discovery-runtime-v2-5/live-burned-results.json",
+    "evaluation/local-discovery-runtime-v2-5/network-call-audit.json"
+  ],
+  "known_limitations": [
+    "site-direct-benchmark.json carries inherited task_id from the frozen V2.3 runner (cosmetic).",
+    "Access regression 7/9 with the two documented V2.3 source-drift pairs (Alta T2 FV->EXISTENCE_ONLY downgrade, Hasvik T9 EXISTENCE_ONLY->FV upgrade); 0 existence-safety regressions.",
+    "Raelingen gate re-run three times during validation: two aborted (foreground timeout 400; background process-group kill) + one pre-budget-fix run (RATE_LIMITED); final frozen artifact is the 9/9 SUCCESS run executed_at 2026-09-09T21:47:31Z."
+  ]
+}

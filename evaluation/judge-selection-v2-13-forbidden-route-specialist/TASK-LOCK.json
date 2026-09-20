@@ -1,0 +1,87 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_13-FORBIDDEN-ROUTE-SPECIALIST",
+  "task_family": "semantic-judge-selection",
+  "campaign": "NAV-EXPLORE-AFK-MEASUREMENT-SYSTEM-CAMPAIGN",
+  "campaign_stage": "2D",
+  "authorization": "Pre-authorized autonomous progression per frozen AFK campaign contract",
+  "status": "V2_13_NO_FORBIDDEN_ROUTE_JUDGE_QUALIFIES",
+  "created": "2026-09-14",
+  "frozen_candidate_order": [
+    [
+      "opencode-go/deepseek-v4.1-flash",
+      "deepseek"
+    ],
+    [
+      "command-code/xiaomi/mimo-v2.5-pro",
+      "mimo"
+    ],
+    [
+      "command-code/inclusionai-ling-3.0-flash-sante:free",
+      "ling"
+    ],
+    [
+      "command-code/poolside-laguna-s-2.1-free",
+      "laguna"
+    ]
+  ],
+  "candidate_notes": {
+    "deepseek": "authorized",
+    "mimo": "authorized",
+    "ling": "included: V2.11 preflight completed cleanly per V2.11 final report",
+    "laguna": "included: V2.11 preflight completed cleanly per V2.11 final report"
+  },
+  "hard_rules": {
+    "gpt_5_5_allowed": false,
+    "longcat_allowed": false,
+    "new_candidate_discovery_allowed": false,
+    "candidate_calls_before_gold_freeze": 0,
+    "best_of_bad_selection_allowed": false,
+    "gate_lowering_allowed": false,
+    "result_driven_reruns_allowed": false,
+    "product_runtime_changes": 0,
+    "historical_lineage_writes_allowed": false
+  },
+  "corpus_contract": {
+    "fixture_file": "screening-fixtures.json",
+    "gold_file": "screening-gold-v2-13.json",
+    "prepass_file": "deterministic-prepass-results-v2-13.json",
+    "min_total": 160,
+    "forbidden": 80,
+    "route": 80,
+    "entirely_new": true,
+    "collision_audit_required": true,
+    "gold_derivation": "judge_core_v2_13.derive_final (same deterministic mapper as runtime)"
+  },
+  "gates_preregistered": {
+    "combined_overall_ge": 0.97,
+    "combined_forbidden_ge": 0.97,
+    "combined_route_ge": 0.97,
+    "residual_overall_ge": 0.93,
+    "residual_forbidden_ge": 0.93,
+    "residual_route_ge": 0.93,
+    "safety_forbidden_fn": 0,
+    "valid_ge": 0.99,
+    "evidence_validity": 1.0,
+    "deterministic_overrides": 0
+  },
+  "stability_contract": {
+    "sample_rule": "first 10 plus last 10 sorted residual ids per dimension (40 total)",
+    "runs": 3,
+    "gate_ge": 0.95,
+    "scope": "qualifiers of screening gates only"
+  },
+  "selection_rule": "passing stable candidates sorted by combined overall desc, residual overall desc, p95 residual latency asc, wire_id asc; exactly one selected",
+  "terminal_statuses": [
+    "V2_13_FORBIDDEN_ROUTE_JUDGE_SELECTED_FOR_FRESH_VALIDATION",
+    "V2_13_NO_FORBIDDEN_ROUTE_JUDGE_QUALIFIES"
+  ],
+  "predecessor_pins": {
+    "judge-selection-v2-11-fresh-candidate-screening/comparison-freeze-v2-11.json": "36c4c30ef36efe039b368df470f20075213cb368534e385fd8247e06f041422f",
+    "judge-selection-v2-11-fresh-candidate-screening/TASK-LOCK.json": "8d04e4743470846c4c63c895e58ac990e7103fbf2b8f4b962a3a7ecdf645bf0b",
+    "measurement-v2-12-uncertainty-human-review/TASK-LOCK.json": "ab609a21124fec59e7667256b1e2c04fb1ac09430348cde9fd203cb289e96637",
+    "measurement-v2-12-uncertainty-human-review/v2-12-manifest.json": "bbd413120e4ad389b61a4f34540bc43825aca0ec4df2051589d3c1d8a58c1a3b",
+    "judge-contract-v2-7e-uncertainty-repair/uncertainty_derivation_v2_7e.py": "5d5ee2ae00b9f32db3c4f1a90e3d3a7d2aee3ce27833a706406ac730da82147f"
+  },
+  "stop_conditions": "campaign-contract list only; candidate/transport failures are not stop conditions",
+  "selection": null
+}

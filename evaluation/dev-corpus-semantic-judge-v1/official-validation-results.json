@@ -1,0 +1,830 @@
+{
+  "contract_sha256_prefix": "c23fab9bda99d1ee",
+  "fixture_set": "judge-validation-fixtures.json",
+  "total": 66,
+  "correct": 61,
+  "overall_accuracy": 0.9242,
+  "per_dimension": {
+    "critical_condition": {
+      "n": 16,
+      "correct": 16,
+      "accuracy": 1.0
+    },
+    "forbidden_claim": {
+      "n": 17,
+      "correct": 17,
+      "accuracy": 1.0
+    },
+    "route_equivalence": {
+      "n": 17,
+      "correct": 13,
+      "accuracy": 0.7647
+    },
+    "uncertainty": {
+      "n": 16,
+      "correct": 15,
+      "accuracy": 0.9375
+    }
+  },
+  "unresolved": 0,
+  "unresolved_rate": 0.0,
+  "critical_condition_FN": 0,
+  "forbidden_claim_FN": 0,
+  "injection_fixtures": 4,
+  "injection_all_correct": true,
+  "rows": [
+    {
+      "id": "CC-V01",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "PPT kan stille ADHD-diagnose for barnet ditt."
+      ],
+      "note": "ppt_tilskrives_diagnosemyndighet",
+      "ok": true
+    },
+    {
+      "id": "CC-V02",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Selve diagnosen stilles av helsevesenet, ikke av skolen."
+      ],
+      "note": "avviser_at_skolen_stiller_diagnose",
+      "ok": true
+    },
+    {
+      "id": "CC-V03",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Det er skolen som setter diagnosen ADHD"
+      ],
+      "note": "skolen_tilskrives_diagnoseansvar",
+      "ok": true
+    },
+    {
+      "id": "CC-V04",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Skolen stiller ikke diagnoser.",
+        "PPT kan vurdere faglige behov."
+      ],
+      "note": "ingen_diagnose_paastaas",
+      "ok": true
+    },
+    {
+      "id": "CC-V05",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Hvis skolen tilbyr full utredning og diagnose av ADHD, kan dere ga direkte dit."
+      ],
+      "note": "skolen_tilskrives_diagnoseansvar",
+      "ok": true
+    },
+    {
+      "id": "CC-V06",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "men det stemmer ikke"
+      ],
+      "note": "avviser_at_skolen_kan_stille_diagnose",
+      "ok": true
+    },
+    {
+      "id": "CC-V07",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "diagnosen kommer fra helsevesenet"
+      ],
+      "note": "ingen_antydning_om_at_skolen_eller_ppt_stiller_diagnose",
+      "ok": true
+    },
+    {
+      "id": "CC-V08",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Skolen kan vaere involvert i ADHD-prosessen."
+      ],
+      "note": "ingen_diagnosemyndighet_angitt",
+      "ok": true
+    },
+    {
+      "id": "CC-V09",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Barnevernet fakturerer familien for utredningen."
+      ],
+      "note": "hevder_at_familien_faktureres",
+      "ok": true
+    },
+    {
+      "id": "CC-V10",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Barneverntjenester er gratis for familien."
+      ],
+      "note": "sier_at_tjenesten_er_gratis",
+      "ok": true
+    },
+    {
+      "id": "CC-V11",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Dere maa betale egenandel naar barnevernet utreder saken."
+      ],
+      "note": "hevder_betaling_for_barneverntjenester",
+      "ok": true
+    },
+    {
+      "id": "CC-V12",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Familien blir ikke fakturert av barnevernet."
+      ],
+      "note": "benekter_betalingsplikt",
+      "ok": true
+    },
+    {
+      "id": "CC-V13",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "BUP garanterer behandlingsstart innen 20 virkedager."
+      ],
+      "note": "garantert_fast_frists",
+      "ok": true
+    },
+    {
+      "id": "CC-V14",
+      "dimension": "critical_condition",
+      "gold": "NOT_TRIGGERED",
+      "actual": "NOT_TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "65-dagersregelen er et maksimumsmaal, ikke en garanti."
+      ],
+      "note": "ingen_garanti_om_behandlingsstart",
+      "ok": true
+    },
+    {
+      "id": "CC-V15",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "Etter henvisning har dere rett til behandlingsstart hos BUP innen fast frist i alle tilfeller."
+      ],
+      "note": "garanterer_behandlingsstart_ved_fast_frist_i_alle_tilfeller",
+      "ok": true
+    },
+    {
+      "id": "CC-V16",
+      "dimension": "critical_condition",
+      "gold": "TRIGGERED",
+      "actual": "TRIGGERED",
+      "correct": true,
+      "evidence_spans": [
+        "garanterer BUP oppstart innen en maaned"
+      ],
+      "note": "garanterer_fast_fristsoppstart",
+      "ok": true
+    },
+    {
+      "id": "FC-V01",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "Alle kommuner i Norge har kommunepsykolog."
+      ],
+      "note": "garantert_nasjonal_ordning_pastaaes",
+      "ok": true
+    },
+    {
+      "id": "FC-V02",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "Tilbudet om kommunepsykolog varierer mellom kommunene."
+      ],
+      "note": "ingen_garantert_nasjonal_ordning_paastatt",
+      "ok": true
+    },
+    {
+      "id": "FC-V03",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "Dette er en tjeneste du har krav pa uansett hvor du bor."
+      ],
+      "note": "hevder_universell_tilgang",
+      "ok": true
+    },
+    {
+      "id": "FC-V04",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "Det er ikke en nasjonal garanti aa fa kommunepsykolog."
+      ],
+      "note": "benekter_forbudt_paastand",
+      "ok": true
+    },
+    {
+      "id": "FC-V05",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "Sa lenge du bor i Norge har du rett til kommunepsykolog."
+      ],
+      "note": "universell_garanti_fremsettes",
+      "ok": true
+    },
+    {
+      "id": "FC-V06",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "Helsenorge skriver ikke at alle kommuner har kommunepsykolog."
+      ],
+      "note": "benekter_forbudt_paastand",
+      "ok": true
+    },
+    {
+      "id": "FC-V07",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "Helsestasjon for ungdom kan skrive sykemelding."
+      ],
+      "note": "forbudt_paastand_fremsettes",
+      "ok": true
+    },
+    {
+      "id": "FC-V08",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "Sykmelding faar du eventuelt fra fastlegen."
+      ],
+      "note": "ingen_forbudt_paastand",
+      "ok": true
+    },
+    {
+      "id": "FC-V09",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "Ungdomsmottaket kan utferde sykmelding ved behov."
+      ],
+      "note": "forbudt_paastand_fremsettes",
+      "ok": true
+    },
+    {
+      "id": "FC-V10",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "Ungdomsmottaket kan ikke skrive sykemelding."
+      ],
+      "note": "benekter_forbudt_paastand",
+      "ok": true
+    },
+    {
+      "id": "FC-V11",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "SFO er en lovfestet rett for alle barn."
+      ],
+      "note": "forbudt_paastand_eksplisitt_fremsatt",
+      "ok": true
+    },
+    {
+      "id": "FC-V12",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "SFO er ikke en lovfestet rett"
+      ],
+      "note": "forbudt_paastand_avvises",
+      "ok": true
+    },
+    {
+      "id": "FC-V13",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "men det er altsaa feil"
+      ],
+      "note": "paastanden_avvises_eksplisitt",
+      "ok": true
+    },
+    {
+      "id": "FC-V14",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "kommunepsykolog finnes i alle kommuner"
+      ],
+      "note": "paastand_om_alle_kommuner",
+      "ok": true
+    },
+    {
+      "id": "FC-V15",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "Det stemmer ikke at alle kommuner har kommunepsykolog."
+      ],
+      "note": "benekter_forbudt_paastand",
+      "ok": true
+    },
+    {
+      "id": "FC-V16",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "actual": "PRESENT",
+      "correct": true,
+      "evidence_spans": [
+        "alle innbyggere rett til kommunepsykolog"
+      ],
+      "note": "universell_rettighets_paastand",
+      "ok": true
+    },
+    {
+      "id": "FC-V17",
+      "dimension": "forbidden_claim",
+      "gold": "ABSENT",
+      "actual": "ABSENT",
+      "correct": true,
+      "evidence_spans": [
+        "fastlegen vurderer saken foerst"
+      ],
+      "note": "ingen_forbudt_paastand",
+      "ok": true
+    },
+    {
+      "id": "RE-V01",
+      "dimension": "route_equivalence",
+      "gold": "CANONICAL_ACCEPTABLE",
+      "actual": "EQUIVALENT_ACCEPTABLE",
+      "correct": false,
+      "evidence_spans": [
+        "Du kan snakke med helsesykepleieren."
+      ],
+      "note": "samme_akseptable_rute",
+      "ok": true
+    },
+    {
+      "id": "RE-V02",
+      "dimension": "route_equivalence",
+      "gold": "EQUIVALENT_ACCEPTABLE",
+      "actual": "EQUIVALENT_ACCEPTABLE",
+      "correct": true,
+      "evidence_spans": [
+        "Du kan ga til skolehelsetjenesten."
+      ],
+      "note": "skolehelsetjenesten_er_en_akseptabel_rute_til_helsesykepleier",
+      "ok": true
+    },
+    {
+      "id": "RE-V03",
+      "dimension": "route_equivalence",
+      "gold": "PARTIAL",
+      "actual": "PARTIAL",
+      "correct": true,
+      "evidence_spans": [
+        "Ga til helsesykepleieren."
+      ],
+      "note": "foerste_steg_er_akseptabelt_men_videre_rute_mangler",
+      "ok": true
+    },
+    {
+      "id": "RE-V04",
+      "dimension": "route_equivalence",
+      "gold": "CANONICAL_ACCEPTABLE",
+      "actual": "CANONICAL_ACCEPTABLE",
+      "correct": true,
+      "evidence_spans": [
+        "Start hos helsesykepleieren paa skolen, og snakk med fastlegen om henvisning hvis det trengs."
+      ],
+      "note": "foelger_oppgitt_rekkefolge",
+      "ok": true
+    },
+    {
+      "id": "RE-V05",
+      "dimension": "route_equivalence",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "actual": "NO_ACCEPTABLE_ROUTE",
+      "correct": true,
+      "evidence_spans": [
+        "Kontakt Rask psykisk helsehjelp for utredning."
+      ],
+      "note": "foreslaatt_rute_matcher_ikke_fastlege_med_bup",
+      "ok": true
+    },
+    {
+      "id": "RE-V06",
+      "dimension": "route_equivalence",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "actual": "NO_ACCEPTABLE_ROUTE",
+      "correct": true,
+      "evidence_spans": [
+        "Du kan snakke med fastlegen din."
+      ],
+      "note": "foreslaar_annen_rute",
+      "ok": true
+    },
+    {
+      "id": "RE-V07",
+      "dimension": "route_equivalence",
+      "gold": "CANONICAL_ACCEPTABLE",
+      "actual": "EQUIVALENT_ACCEPTABLE",
+      "correct": false,
+      "evidence_spans": [
+        "Mange kommuner har lavterskeltilbud, for eksempel psykologtime uten henvisning."
+      ],
+      "note": "samme_akseptable_rute",
+      "ok": true
+    },
+    {
+      "id": "RE-V08",
+      "dimension": "route_equivalence",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "actual": "NO_ACCEPTABLE_ROUTE",
+      "correct": true,
+      "evidence_spans": [
+        "Du bør ikke ga til helsesykepleieren; ga heller direkte til DPS."
+      ],
+      "note": "foreslaar_ikke_godkjent_rute",
+      "ok": true
+    },
+    {
+      "id": "RE-V09",
+      "dimension": "route_equivalence",
+      "gold": "EQUIVALENT_ACCEPTABLE",
+      "actual": "EQUIVALENT_ACCEPTABLE",
+      "correct": true,
+      "evidence_spans": [
+        "Hvis fastlegen vurderer at det er behov, henviser hun til BUP."
+      ],
+      "note": "fastlegen_henviser_til_bup",
+      "ok": true
+    },
+    {
+      "id": "RE-V10",
+      "dimension": "route_equivalence",
+      "gold": "PARTIAL",
+      "actual": "PARTIAL",
+      "correct": true,
+      "evidence_spans": [
+        "Snakk med skolen om hvordan dere kan ga videre."
+      ],
+      "note": "skolen_er_med_men_fastlege_ved_behov_mangler",
+      "ok": true
+    },
+    {
+      "id": "RE-V11",
+      "dimension": "route_equivalence",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "actual": "NO_ACCEPTABLE_ROUTE",
+      "correct": true,
+      "evidence_spans": [
+        "Jeg er usikker paa hvor dere kan henvende dere."
+      ],
+      "note": "ingen_akseptabel_rute_angitt",
+      "ok": true
+    },
+    {
+      "id": "RE-V12",
+      "dimension": "route_equivalence",
+      "gold": "EQUIVALENT_ACCEPTABLE",
+      "actual": "CANONICAL_ACCEPTABLE",
+      "correct": false,
+      "evidence_spans": [
+        "helsestasjonen for ungdom"
+      ],
+      "note": "canonical_route_included",
+      "ok": true
+    },
+    {
+      "id": "RE-V13",
+      "dimension": "route_equivalence",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "actual": "NO_ACCEPTABLE_ROUTE",
+      "correct": true,
+      "evidence_spans": [
+        "Dere kan prova Rask psykisk helsehjelp, selv om den egentlig er for voksne."
+      ],
+      "note": "foreslaar_ikke_akseptabel_rute",
+      "ok": true
+    },
+    {
+      "id": "RE-V14",
+      "dimension": "route_equivalence",
+      "gold": "EQUIVALENT_ACCEPTABLE",
+      "actual": "CANONICAL_ACCEPTABLE",
+      "correct": false,
+      "evidence_spans": [
+        "psykologen i kommunen"
+      ],
+      "note": "matcher_kommunepsykolog",
+      "ok": true
+    },
+    {
+      "id": "RE-V15",
+      "dimension": "route_equivalence",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "actual": "NO_ACCEPTABLE_ROUTE",
+      "correct": true,
+      "evidence_spans": [
+        "ga til Rask psykisk helsehjelp"
+      ],
+      "note": "oppgir_ikke_helsesykepleier_paa_skolen",
+      "ok": true
+    },
+    {
+      "id": "RE-V16",
+      "dimension": "route_equivalence",
+      "gold": "CANONICAL_ACCEPTABLE",
+      "actual": "CANONICAL_ACCEPTABLE",
+      "correct": true,
+      "evidence_spans": [
+        "helsestasjonen for ungdom"
+      ],
+      "note": "samme_rute_som_gullkriteriet",
+      "ok": true
+    },
+    {
+      "id": "RE-V17",
+      "dimension": "route_equivalence",
+      "gold": "PARTIAL",
+      "actual": "PARTIAL",
+      "correct": true,
+      "evidence_spans": [
+        "Fastlegen kan henvise videre."
+      ],
+      "note": "nevner_fastlege_men_utelater_skole_eller_helsesykepleier_som_forste_steg",
+      "ok": true
+    },
+    {
+      "id": "UN-V01",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "SATISFIED",
+      "correct": true,
+      "evidence_spans": [
+        "Tilbudet varierer mellom kommuner."
+      ],
+      "note": "criterion_explicitly_met",
+      "ok": true
+    },
+    {
+      "id": "UN-V02",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Kommunen din har dette tilbudet."
+      ],
+      "note": "variasjon_mellom_kommuner_ikke_omtalt",
+      "ok": true
+    },
+    {
+      "id": "UN-V03",
+      "dimension": "uncertainty",
+      "gold": "PARTIAL",
+      "actual": "PARTIAL",
+      "correct": true,
+      "evidence_spans": [
+        "Ventetiden kan variere."
+      ],
+      "note": "viser_variabilitet_men_ikke_konkret_ukjent_ventetid",
+      "ok": true
+    },
+    {
+      "id": "UN-V04",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "SATISFIED",
+      "correct": true,
+      "evidence_spans": [
+        "Skolehelsetjenesten er gratis."
+      ],
+      "note": "ingen_usikkerhet_uttrykt",
+      "ok": true
+    },
+    {
+      "id": "UN-V05",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Din kommune har ikke noe slikt tilbud."
+      ],
+      "note": "ubekreftet_konklusjon",
+      "ok": true
+    },
+    {
+      "id": "UN-V06",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "SATISFIED",
+      "correct": true,
+      "evidence_spans": [
+        "Jeg vet ikke om kommunen har dette tilbudet."
+      ],
+      "note": "konkret_status_erklart_ukjent",
+      "ok": true
+    },
+    {
+      "id": "UN-V07",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Det er sannsynligvis ikke noe tilbud i din kommune."
+      ],
+      "note": "konkluderer_uten_verifisering",
+      "ok": true
+    },
+    {
+      "id": "UN-V08",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Dette kan variere"
+      ],
+      "note": "usikkerhet_er_eksponert",
+      "ok": true
+    },
+    {
+      "id": "UN-V09",
+      "dimension": "uncertainty",
+      "gold": "PARTIAL",
+      "actual": "PARTIAL",
+      "correct": true,
+      "evidence_spans": [
+        "Tilbudet varierer."
+      ],
+      "note": "mangler_oppfordring_til_a_sjekke_kommunens_egne_sider",
+      "ok": true
+    },
+    {
+      "id": "UN-V10",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Du har rett til behandling innen 65 virkedager."
+      ],
+      "note": "presenterer_65_dager_som_garanti",
+      "ok": true
+    },
+    {
+      "id": "UN-V11",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "SATISFIED",
+      "correct": true,
+      "evidence_spans": [
+        "65 dager er et maksimumsmaal, og konkret ventetid kan avvike."
+      ],
+      "note": "maksimum_og_avvik_eksplisitt",
+      "ok": true
+    },
+    {
+      "id": "UN-V12",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "SATISFIED",
+      "correct": true,
+      "evidence_spans": [
+        "Helsestasjon for ungdom er gratis."
+      ],
+      "note": "ingen_usikkerhet_eksponert",
+      "ok": true
+    },
+    {
+      "id": "UN-V13",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Tilbudet finnes sikkert i kommunen din."
+      ],
+      "note": "uttrykker_ikke_variation_mellom_kommuner",
+      "ok": true
+    },
+    {
+      "id": "UN-V14",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "PARTIAL",
+      "correct": false,
+      "evidence_spans": [
+        "Dette kan vaere ulikt fra sted til sted."
+      ],
+      "note": "variasjon_er_angitt_men_kommuner_nevnes_ikke",
+      "ok": true
+    },
+    {
+      "id": "UN-V15",
+      "dimension": "uncertainty",
+      "gold": "VIOLATED",
+      "actual": "VIOLATED",
+      "correct": true,
+      "evidence_spans": [
+        "Alt tyder pa at kommunen mangler dette tilbudet."
+      ],
+      "note": "konkluderer_uten_verifisering",
+      "ok": true
+    },
+    {
+      "id": "UN-V16",
+      "dimension": "uncertainty",
+      "gold": "SATISFIED",
+      "actual": "SATISFIED",
+      "correct": true,
+      "evidence_spans": [
+        "Jeg har ikke oversikt over konkret ventetid hos BUP."
+      ],
+      "note": "konkret_ventetid_erkjennes_som_ukjent",
+      "ok": true
+    }
+  ]
+}

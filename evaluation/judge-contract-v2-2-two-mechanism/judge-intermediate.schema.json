@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Semantic judge result V2.2 intermediate-state",
+  "type": "object",
+  "required": ["dimension", "intermediate", "evidence_spans", "note"],
+  "properties": {
+    "dimension": {
+      "enum": ["critical_condition", "forbidden_claim", "route_correctness", "required_uncertainty"]
+    },
+    "intermediate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "M1 assertion observation (forbidden_claim)",
+          "required": ["criterion_semantic_match", "speaker_commitment"],
+          "properties": {
+            "criterion_semantic_match": {"enum": ["MATCH", "NO_MATCH", "UNRESOLVED"]},
+            "speaker_commitment": {"enum": ["ASSERTED", "HEDGED_ASSERTION", "QUOTED_ONLY", "HYPOTHETICAL_ONLY", "NEGATED", "SELF_RETRACTED", "NONCOMMITTAL", "UNRESOLVED"]}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "M2 critical evidence state (critical_condition)",
+          "required": ["critical_evidence_state"],
+          "properties": {
+            "critical_evidence_state": {"enum": ["CLEAR_TRIGGER_SUPPORT", "CLEAR_NON_TRIGGER_SUPPORT", "AMBIGUOUS_OR_CONFLICTING", "INSUFFICIENT_TO_DECIDE", "UNRESOLVED"]}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "V1.4 frozen route intermediate (route_correctness), unchanged",
+          "required": ["route_proposition_present", "route_speaker_commitment"],
+          "properties": {
+            "route_proposition_present": {"enum": ["YES", "NO", "UNRESOLVED"]},
+            "route_speaker_commitment": {"enum": ["ASSERTED", "HEDGED_ASSERTION", "HYPOTHETICAL_ONLY", "QUOTED_ONLY", "NEGATED", "SELF_RETRACTED", "UNRESOLVED"]}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "V1.4 frozen uncertainty intermediate (required_uncertainty), unchanged",
+          "required": ["uncertainty_requirement_mode"],
+          "properties": {
+            "uncertainty_requirement_mode": {"enum": ["NONE", "EXPLICIT_LIMITATION", "NON_ASSERTION_CONSTRAINT", "COMPOUND"]},
+            "uncertainty_output_behavior": {"enum": ["NONE", "HEDGE", "EXPLICIT_LIMITATION", "PARTIAL_LIMITATION", "CONTRADICTORY_LIMITATION", "OVERCONFIDENT_ASSERTION", "UNRESOLVED"]},
+            "compound_components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["kind", "behavior"],
+                "properties": {
+                  "kind": {"enum": ["EXPRESSION", "NON_ASSERTION"]},
+                  "behavior": {"enum": ["NONE", "HEDGE", "EXPLICIT_LIMITATION", "PARTIAL_LIMITATION", "CONTRADICTORY_LIMITATION", "OVERCONFIDENT_ASSERTION", "UNRESOLVED"]}
+                },
+                "additionalProperties": false
+              }
+            },
+            "evidence_basis": {"enum": ["TEXT_SPAN", "ABSENCE_OF_PROHIBITED_ASSERTION"]},
+            "prohibited_conclusion_checked": {"type": "string"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "evidence_spans": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "note": {"type": "string"}
+  },
+  "additionalProperties": false
+}

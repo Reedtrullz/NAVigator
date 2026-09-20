@@ -1,0 +1,1624 @@
+{
+ "artifact": "workflow-test-fixtures-v2-15",
+ "n_fixtures": 60,
+ "fixtures": [
+  {
+   "fixture_id": "WF15-01",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-01",
+    "dimension": "forbidden_claim",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s",
+    "gold": "PRESENT"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-02",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-02",
+    "dimension": "forbidden_claim",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s",
+    "model_verdict": "PRESENT"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-03",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-03",
+    "dimension": "forbidden_claim",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s",
+    "automated_verdict": "ABSENT"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-04",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-04",
+    "dimension": "route_correctness",
+    "criterion": "",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-05",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-05",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": ""
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-06",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-06",
+    "dimension": "route",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-07",
+   "category": "packet_error",
+   "case": {
+    "case_id": "",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-08",
+   "category": "packet_error",
+   "case": {
+    "case_id": "WF15-08",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": 123,
+    "sut_output": "s"
+   },
+   "reviews": [],
+   "expect": {
+    "packet_error": true
+   }
+  },
+  {
+   "fixture_id": "WF15-09",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-09",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kvalifiserer fordi inntekten er under grensen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": [
+       "inntekten er under grensen"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "SINGLE_HUMAN_REVIEW",
+    "final_verdict": "TRIGGERED",
+    "provenance_events": [
+     "PACKET_CREATED",
+     "ROUTED",
+     "STATUS",
+     "REVIEW_ACCEPTED",
+     "STATUS"
+    ],
+    "routed_automated_authoritative_false": true
+   }
+  },
+  {
+   "fixture_id": "WF15-10",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-10",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer at utloeser mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Ingen utloeser er oppfyllt i dette tilfellet."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT",
+      "evidence_spans": [
+       "Ingen utloeser er oppfyllt"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "NOT_TRIGGERED"
+   }
+  },
+  {
+   "fixture_id": "WF15-11",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-11",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Delvis relevante opplysninger, motstridende."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "AMBIGUOUS_OR_CONFLICTING",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-12",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-12",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Teksten omhandler annet."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "INSUFFICIENT_TO_DECIDE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-13",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-13",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Kommunen mangler familietilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "ASSERTED",
+      "evidence_spans": [
+       "mangler familietilbud"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PRESENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-14",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-14",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det ser ut til aa mangle tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "HEDGED_ASSERTION",
+      "evidence_spans": [
+       "ser ut til aa mangle"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PRESENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-15",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-15",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Saken gjelder barnepensjon."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "NO_MATCH",
+      "speaker_commitment": "ASSERTED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "ABSENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-16",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-16",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det er ikke riktig at kommunen mangler tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "NEGATED",
+      "evidence_spans": [
+       "ikke riktig at kommunen mangler"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "ABSENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-17",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-17",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Nachbar sa: kommunen mangler tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "QUOTED_ONLY",
+      "evidence_spans": [
+       "kommunen mangler tilbud"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "ABSENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-18",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-18",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Uklart om teksten gjelder tilbud i det hele tatt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "UNRESOLVED",
+      "speaker_commitment": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-19",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-19",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Kontakt fastlegen for vurdering."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "ASSERTED",
+      "proposed_verdict": "ACCEPTABLE",
+      "evidence_spans": [
+       "Kontakt fastlegen"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "ACCEPTABLE",
+    "provenance_events": [
+     "PACKET_CREATED",
+     "ROUTED",
+     "STATUS",
+     "REVIEW_ACCEPTED",
+     "STATUS"
+    ]
+   }
+  },
+  {
+   "fixture_id": "WF15-20",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-20",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlege og HFU.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kan kontakte fastlegen, men HFU er ikke nevnt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "HEDGED_ASSERTION",
+      "proposed_verdict": "PARTIAL",
+      "evidence_spans": [
+       "kontakte fastlegen"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF15-21",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-21",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Ring skattekontoret for hjelp."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "ASSERTED",
+      "proposed_verdict": "NO_ACCEPTABLE_ROUTE",
+      "evidence_spans": [
+       "Ring skattekontoret"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "NO_ACCEPTABLE_ROUTE"
+   }
+  },
+  {
+   "fixture_id": "WF15-22",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-22",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Fastlegen er ikke riktig inngang her."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "NEGATED",
+      "proposed_verdict": "UNRESOLVED",
+      "evidence_spans": [
+       "Fastlegen er ikke riktig inngang"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-23",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-23",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Svaret nevner ingen konkrete steder."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "NO",
+      "route_speaker_commitment": "UNRESOLVED",
+      "proposed_verdict": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-24",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-24",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet stiller ingen usikkerhetskrav.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilbudet har apning hver tirsdag."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NONE",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "NOT_REQUIRED"
+   }
+  },
+  {
+   "fixture_id": "WF15-25",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-25",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgangen er ikke verifisert."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "EXPLICIT_LIMITATION",
+      "evidence_spans": [
+       "ikke verifisert"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF15-26",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-26",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det er kanskje tilgang."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": [
+       "kanskje"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF15-27",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-27",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Jeg vet ikke om det finnes tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF15-28",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-28",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever forbehold og ingen overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgangen er ikke verifisert; jeg konkluderer ikke om manglende tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": [
+       "ikke verifisert"
+      ],
+      "compound_components": [
+       {
+        "kind": "EXPRESSION",
+        "behavior": "EXPLICIT_LIMITATION"
+       },
+       {
+        "kind": "NON_ASSERTION",
+        "behavior": "NONE"
+       }
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF15-29",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-29",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Kommunen mangler familietilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "ASSERTED",
+      "evidence_spans": [
+       "span som ikke finnes"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-30",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-30",
+    "dimension": "forbidden_claim",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "SHOUTED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-31",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-31",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": "ikke et objekt"
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-32",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-32",
+    "dimension": "route_correctness",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "packet_id": "PKT-ANNEN",
+     "case_id": "WF15-32",
+     "reviewer_id": "R1",
+     "contract_version": "semantic-judge-contract-v1-4",
+     "reviewed_utc": "2026-09-14T00:00:00Z",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "ASSERTED",
+      "proposed_verdict": "ACCEPTABLE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-33",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-33",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "packet_id": "PKT-WF15-33",
+     "case_id": "ANNEN",
+     "reviewer_id": "R1",
+     "contract_version": "semantic-judge-contract-v1-4",
+     "reviewed_utc": "2026-09-14T00:00:00Z",
+     "judgment": {
+      "critical_evidence_state": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-34",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-34",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "packet_id": "PKT-WF15-34",
+     "case_id": "WF15-34",
+     "reviewer_id": "R1",
+     "contract_version": "annen-kontrakt",
+     "reviewed_utc": "2026-09-14T00:00:00Z",
+     "judgment": {
+      "critical_evidence_state": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-35",
+   "category": "review_invalid",
+   "case": {
+    "case_id": "WF15-35",
+    "dimension": "critical_condition",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "UNRESOLVED",
+      "evidence_spans": "ikke-liste"
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-36",
+   "category": "duplicate_review",
+   "case": {
+    "case_id": "WF15-36",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever identifisering av utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Grensen er overskredet."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": [
+       "Grensen er overskredet"
+      ]
+     }
+    },
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "SINGLE_HUMAN_REVIEW",
+    "final_verdict": "TRIGGERED",
+    "duplicate_rejected": true,
+    "provenance_events": [
+     "PACKET_CREATED",
+     "ROUTED",
+     "STATUS",
+     "REVIEW_ACCEPTED",
+     "STATUS",
+     "DUPLICATE_REVIEW_REJECTED"
+    ]
+   }
+  },
+  {
+   "fixture_id": "WF15-37",
+   "category": "dual_blind",
+   "case": {
+    "case_id": "WF15-37",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kvalifiserer fordi inntekten er under grensen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": [
+       "inntekten er under grensen"
+      ]
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": [
+       "inntekten er under grensen"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "DUAL_BLIND_REVIEW_AGREED",
+    "final_verdict": "TRIGGERED"
+   }
+  },
+  {
+   "fixture_id": "WF15-38",
+   "category": "dual_blind",
+   "case": {
+    "case_id": "WF15-38",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kvalifiserer fordi inntekten er under grensen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT",
+    "final_is_none": true,
+    "review_mode": null
+   }
+  },
+  {
+   "fixture_id": "WF15-39",
+   "category": "dual_blind",
+   "case": {
+    "case_id": "WF15-39",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kvalifiserer fordi inntekten er under grensen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT"
+   },
+   "adjudication": {
+    "adjudicated": true,
+    "model_outputs_visible_to_adjudicator": false,
+    "case_id": "WF15-39",
+    "contract_version": "semantic-judge-contract-v1-4",
+    "final_judgment": {
+     "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+     "evidence_spans": []
+    },
+    "adjudication_note": "R1 correct"
+   },
+   "expect_after_adjudication": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "DUAL_BLIND_REVIEW_WITH_ADJUDICATION",
+    "final_verdict": "TRIGGERED"
+   }
+  },
+  {
+   "fixture_id": "WF15-40",
+   "category": "dual_blind",
+   "case": {
+    "case_id": "WF15-40",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kvalifiserer fordi inntekten er under grensen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT",
+    "adjudication_error": true,
+    "final_is_none": true
+   },
+   "adjudication": {
+    "adjudicated": false,
+    "model_outputs_visible_to_adjudicator": false,
+    "case_id": "WF15-40",
+    "contract_version": "semantic-judge-contract-v1-4",
+    "final_judgment": {
+     "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+     "evidence_spans": []
+    },
+    "adjudication_note": "x"
+   }
+  },
+  {
+   "fixture_id": "WF15-41",
+   "category": "dual_blind",
+   "case": {
+    "case_id": "WF15-41",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Du kvalifiserer fordi inntekten er under grensen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_DISAGREEMENT",
+    "adjudication_error": true,
+    "final_is_none": true
+   },
+   "adjudication": {
+    "adjudicated": true,
+    "model_outputs_visible_to_adjudicator": true,
+    "case_id": "WF15-41",
+    "contract_version": "semantic-judge-contract-v1-4",
+    "final_judgment": {
+     "critical_evidence_state": "CLEAR_TRIGGER_SUPPORT",
+     "evidence_spans": []
+    },
+    "adjudication_note": "x"
+   }
+  },
+  {
+   "fixture_id": "WF15-42",
+   "category": "dual_blind",
+   "case": {
+    "case_id": "WF15-42",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever forbehold og ingen overkonklusjon.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgangen er ikke verifisert."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": [
+       "ikke verifisert"
+      ],
+      "compound_components": [
+       {
+        "kind": "EXPRESSION",
+        "behavior": "PARTIAL_LIMITATION"
+       },
+       {
+        "kind": "NON_ASSERTION",
+        "behavior": "NONE"
+       }
+      ]
+     }
+    },
+    {
+     "reviewer_id": "R2",
+     "judgment": {
+      "uncertainty_requirement_mode": "COMPOUND",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": [
+       "ikke verifisert"
+      ],
+      "compound_components": [
+       {
+        "kind": "EXPRESSION",
+        "behavior": "PARTIAL_LIMITATION"
+       },
+       {
+        "kind": "NON_ASSERTION",
+        "behavior": "NONE"
+       }
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "review_mode": "DUAL_BLIND_REVIEW_AGREED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF15-43",
+   "category": "fail_closed_derivation",
+   "case": {
+    "case_id": "WF15-43",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Ingen rute nevnt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "NO",
+      "route_speaker_commitment": "ASSERTED",
+      "proposed_verdict": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-44",
+   "category": "fail_closed_derivation",
+   "case": {
+    "case_id": "WF15-44",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Fastlegen er ikke riktig."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "NEGATED",
+      "proposed_verdict": "ACCEPTABLE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-45",
+   "category": "fail_closed_derivation",
+   "case": {
+    "case_id": "WF15-45",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det ble sagt: kontakt fastlegen."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "QUOTED_ONLY",
+      "proposed_verdict": "ACCEPTABLE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-46",
+   "category": "fail_closed_derivation",
+   "case": {
+    "case_id": "WF15-46",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Uklart om fastlegen er aktuell."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "UNRESOLVED",
+      "proposed_verdict": "PARTIAL",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-47",
+   "category": "fail_closed_derivation",
+   "case": {
+    "case_id": "WF15-47",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet stiller ingen usikkerhetskrav.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilbud finnes."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NONE",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-48",
+   "category": "fail_closed_derivation",
+   "case": {
+    "case_id": "WF15-48",
+    "dimension": "required_uncertainty",
+    "criterion": "c",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "s"
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "MAYBE",
+      "uncertainty_output_behavior": "NONE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_INVALID",
+    "final_is_none": true
+   }
+  },
+  {
+   "fixture_id": "WF15-49",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-49",
+    "dimension": "critical_condition",
+    "criterion": "Kriteriet krever at svaret identifiserer en klar utloeser.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Uklart om utloeser er oppfyllt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "critical_evidence_state": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-50",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-50",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Tilgangen fungerer sikkert."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "VIOLATED"
+   }
+  },
+  {
+   "fixture_id": "WF15-51",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-51",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Vi har ikke sjekket alle adresser."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "PARTIAL_LIMITATION",
+      "evidence_spans": [
+       "ikke sjekket alle adresser"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "PARTIAL"
+   }
+  },
+  {
+   "fixture_id": "WF15-52",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-52",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Hmm, altsaa, typisk."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "UNCLEAR_PROSE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-53",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-53",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret uttrykker at tilgang ikke er verifisert.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Ikke verifisert. Nei, det er sikkert verifisert."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+      "uncertainty_output_behavior": "CONTRADICTORY_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-54",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-54",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Kanskje tilbudet er der."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "HEDGE",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "SATISFIED"
+   }
+  },
+  {
+   "fixture_id": "WF15-55",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-55",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Trolig mangler kommunen tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION",
+      "evidence_spans": [
+       "Trolig mangler kommunen tilbud"
+      ]
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "VIOLATED"
+   }
+  },
+  {
+   "fixture_id": "WF15-56",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-56",
+    "dimension": "required_uncertainty",
+    "criterion": "Kriteriet krever at svaret ikke konkluderer med at kommunen mangler tilbud.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Det finnes tilbud. Det finnes ikke tilbud."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+      "uncertainty_output_behavior": "CONTRADICTORY_LIMITATION",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "VIOLATED"
+   }
+  },
+  {
+   "fixture_id": "WF15-57",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-57",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Kontakt habilitering. Nei, det var feil inngang."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "SELF_RETRACTED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "ABSENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-58",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-58",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Dagtilbud kan for eksempel vaere aktuelt."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "HYPOTHETICAL_ONLY",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "ABSENT"
+   }
+  },
+  {
+   "fixture_id": "WF15-59",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-59",
+    "dimension": "forbidden_claim",
+    "criterion": "Kriteriet forbyr konklusjonen at tilbud mangler.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Teksten nevner tilbud, men holder seg usikker."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "criterion_semantic_match": "MATCH",
+      "speaker_commitment": "NONCOMMITTAL",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  },
+  {
+   "fixture_id": "WF15-60",
+   "category": "derivation",
+   "case": {
+    "case_id": "WF15-60",
+    "dimension": "route_correctness",
+    "criterion": "Godkjent rute: fastlegen.",
+    "case_context": "Bruker spor om kommunalt tilbud.",
+    "sut_output": "Uklart om fastlegen er riktig inngang."
+   },
+   "reviews": [
+    {
+     "reviewer_id": "R1",
+     "judgment": {
+      "route_proposition_present": "YES",
+      "route_speaker_commitment": "ASSERTED",
+      "proposed_verdict": "UNRESOLVED",
+      "evidence_spans": []
+     }
+    }
+   ],
+   "expect": {
+    "status": "HUMAN_REVIEW_RESOLVED",
+    "final_verdict": "UNRESOLVED"
+   }
+  }
+ ]
+}

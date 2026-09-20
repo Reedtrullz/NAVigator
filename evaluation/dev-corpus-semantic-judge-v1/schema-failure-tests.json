@@ -1,0 +1,20 @@
+{
+  "tests": [
+    "malformed_json",
+    "invalid_enum",
+    "missing_span",
+    "span_not_in_answer",
+    "extra_field_rejected",
+    "valid_baseline"
+  ],
+  "result": "PASS",
+  "detail": [
+    "malformed_json: correctly rejected (parse failure)",
+    "invalid_enum: correctly rejected (invalid_enum:PROBABLY)",
+    "missing_span: correctly rejected (evidence_spans_not_list_of_strings)",
+    "span_not_in_answer: correctly rejected (evidence_span_not_in_answer)",
+    "valid_baseline: valid as expected",
+    "extra_field behavior: err='unsupported_fields:score' keys=[]",
+    "schema failure tests: PASS"
+  ]
+}

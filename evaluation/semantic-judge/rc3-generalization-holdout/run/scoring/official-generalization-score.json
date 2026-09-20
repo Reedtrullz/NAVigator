@@ -1,0 +1,634 @@
+{
+ "task_id": "NAV-EXPLORE-RC3-GENERALIZATION-G2",
+ "runtime_snapshot": "NAV-EXPLORE-RC3-GEN-SNAPSHOT-A",
+ "holdout": "RC3G-HOLDOUT-V1",
+ "scoring_policy_sha256": "89abe4c2097ea97352e1133c600b4c70cf6a83afbb351744f27764cc5fff9e99",
+ "scorer_sha256": "866f83786e8a9de7528e7c88f9d0d3e5951f47466f819a747e6913c610a53c2b",
+ "prediction_sha256": "6923c66c8abafde0bd0e3e58a282e2b40a3da4adefd3a364b25cddcd3a88a361",
+ "key_authenticated": true,
+ "key_persisted": false,
+ "overall_denominator": 159,
+ "metrics": {
+  "semantic_exact": {
+   "correct": 26,
+   "denominator": 159,
+   "fraction": "26/159",
+   "percent": 16.35,
+   "wilson_95_percent": {
+    "low": 11.41,
+    "high": 22.88
+   }
+  },
+  "proof_safe_exact": {
+   "correct": 44,
+   "denominator": 159,
+   "fraction": "44/159",
+   "percent": 27.67,
+   "wilson_95_percent": {
+    "low": 21.31,
+    "high": 35.09
+   }
+  },
+  "product_exact": {
+   "correct": 60,
+   "denominator": 159,
+   "fraction": "60/159",
+   "percent": 37.74,
+   "wilson_95_percent": {
+    "low": 30.57,
+    "high": 45.48
+   }
+  },
+  "runtime_failures": 0,
+  "auto_coverage": {
+   "auto_count": 24,
+   "denominator": 159
+  },
+  "confusion": {
+   "semantic": {
+    "labels": [
+     "SUPPORTED",
+     "CONTRADICTED",
+     "INSUFFICIENT_EVIDENCE",
+     "REVIEW_REQUIRED",
+     "ABSTAIN_INSUFFICIENT",
+     "PARTIALLY_SUPPORTED",
+     "AUTO_SUPPORTED",
+     "AUTO_CONTRADICTED"
+    ],
+    "matrix": {
+     "SUPPORTED": {
+      "SUPPORTED": 7,
+      "CONTRADICTED": 4,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 29,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "CONTRADICTED": {
+      "SUPPORTED": 1,
+      "CONTRADICTED": 3,
+      "INSUFFICIENT_EVIDENCE": 1,
+      "REVIEW_REQUIRED": 35,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "INSUFFICIENT_EVIDENCE": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 1,
+      "INSUFFICIENT_EVIDENCE": 16,
+      "REVIEW_REQUIRED": 18,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "REVIEW_REQUIRED": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "ABSTAIN_INSUFFICIENT": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "PARTIALLY_SUPPORTED": {
+      "SUPPORTED": 5,
+      "CONTRADICTED": 3,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 36,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "AUTO_SUPPORTED": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "AUTO_CONTRADICTED": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     }
+    },
+    "total": 159
+   },
+   "proof_safe": {
+    "labels": [
+     "SUPPORTED",
+     "CONTRADICTED",
+     "INSUFFICIENT_EVIDENCE",
+     "REVIEW_REQUIRED",
+     "ABSTAIN_INSUFFICIENT",
+     "PARTIALLY_SUPPORTED",
+     "AUTO_SUPPORTED",
+     "AUTO_CONTRADICTED"
+    ],
+    "matrix": {
+     "SUPPORTED": {
+      "SUPPORTED": 7,
+      "CONTRADICTED": 4,
+      "INSUFFICIENT_EVIDENCE": 29,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "CONTRADICTED": {
+      "SUPPORTED": 1,
+      "CONTRADICTED": 3,
+      "INSUFFICIENT_EVIDENCE": 36,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "INSUFFICIENT_EVIDENCE": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 1,
+      "INSUFFICIENT_EVIDENCE": 34,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "REVIEW_REQUIRED": {
+      "SUPPORTED": 5,
+      "CONTRADICTED": 3,
+      "INSUFFICIENT_EVIDENCE": 36,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "ABSTAIN_INSUFFICIENT": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "PARTIALLY_SUPPORTED": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "AUTO_SUPPORTED": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     },
+     "AUTO_CONTRADICTED": {
+      "SUPPORTED": 0,
+      "CONTRADICTED": 0,
+      "INSUFFICIENT_EVIDENCE": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0
+     }
+    },
+    "total": 159
+   },
+   "product": {
+    "labels": [
+     "AUTO_SUPPORTED",
+     "AUTO_CONTRADICTED",
+     "PARTIALLY_SUPPORTED",
+     "REVIEW_REQUIRED",
+     "ABSTAIN_INSUFFICIENT"
+    ],
+    "matrix": {
+     "AUTO_SUPPORTED": {
+      "AUTO_SUPPORTED": 7,
+      "AUTO_CONTRADICTED": 4,
+      "PARTIALLY_SUPPORTED": 0,
+      "REVIEW_REQUIRED": 29,
+      "ABSTAIN_INSUFFICIENT": 0
+     },
+     "AUTO_CONTRADICTED": {
+      "AUTO_SUPPORTED": 1,
+      "AUTO_CONTRADICTED": 3,
+      "PARTIALLY_SUPPORTED": 0,
+      "REVIEW_REQUIRED": 35,
+      "ABSTAIN_INSUFFICIENT": 1
+     },
+     "PARTIALLY_SUPPORTED": {
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 0,
+      "PARTIALLY_SUPPORTED": 0,
+      "REVIEW_REQUIRED": 0,
+      "ABSTAIN_INSUFFICIENT": 0
+     },
+     "REVIEW_REQUIRED": {
+      "AUTO_SUPPORTED": 5,
+      "AUTO_CONTRADICTED": 3,
+      "PARTIALLY_SUPPORTED": 2,
+      "REVIEW_REQUIRED": 34,
+      "ABSTAIN_INSUFFICIENT": 0
+     },
+     "ABSTAIN_INSUFFICIENT": {
+      "AUTO_SUPPORTED": 0,
+      "AUTO_CONTRADICTED": 1,
+      "PARTIALLY_SUPPORTED": 0,
+      "REVIEW_REQUIRED": 18,
+      "ABSTAIN_INSUFFICIENT": 16
+     }
+    },
+    "total": 159
+   }
+  },
+  "auto_precision": {
+   "correct": 10,
+   "denominator": 24,
+   "fraction": "10/24",
+   "percent": 41.67,
+   "wilson_95_percent": {
+    "low": 24.47,
+    "high": 61.17
+   },
+   "by_polarity": {
+    "AUTO_SUPPORTED": {
+     "correct": 7,
+     "denominator": 13,
+     "fraction": "7/13",
+     "percent": 53.85,
+     "wilson_95_percent": {
+      "low": 29.14,
+      "high": 76.79
+     }
+    },
+    "AUTO_CONTRADICTED": {
+     "correct": 3,
+     "denominator": 11,
+     "fraction": "3/11",
+     "percent": 27.27,
+     "wilson_95_percent": {
+      "low": 9.75,
+      "high": 56.57
+     }
+    }
+   }
+  },
+  "necessary_review": {
+   "correct": 34,
+   "denominator": 44,
+   "fraction": "34/44",
+   "percent": 77.27,
+   "wilson_95_percent": {
+    "low": 63.01,
+    "high": 87.16
+   }
+  },
+  "unnecessary_review": {
+   "unnecessary": 82,
+   "predicted_review": 116,
+   "fraction": "82/116",
+   "percent": 70.69
+  },
+  "abstain_recall": {
+   "correct": 16,
+   "denominator": 35,
+   "fraction": "16/35",
+   "percent": 45.71,
+   "wilson_95_percent": {
+    "low": 30.47,
+    "high": 61.81
+   }
+  },
+  "review_abstain_macro_f1": {
+   "review_f1": 0.425,
+   "abstain_f1": 0.615385,
+   "macro_f1": 0.520192,
+   "zero_denominator_f1": 0.0
+  },
+  "proof_gates": {
+   "structural_invalid_accepted_proofs": 0,
+   "ungrounded_accepted_proofs": 0,
+   "semantically_unsound_accepted_proofs": 53,
+   "accepted_auto_proofs": 64,
+   "proof_objects_emitted": 137,
+   "proof_safe_unsound_autos": 14
+  },
+  "compound": {
+   "case_count": 52,
+   "expected_atom_denominator": 119,
+   "atom_count_exact": {
+    "correct": 35,
+    "denominator": 52,
+    "fraction": "35/52",
+    "percent": 67.31,
+    "wilson_95_percent": {
+     "low": 53.76,
+     "high": 78.48
+    }
+   },
+   "atom_semantic_exact": {
+    "correct": 53,
+    "denominator": 119,
+    "fraction": "53/119",
+    "percent": 44.54,
+    "wilson_95_percent": {
+     "low": 35.92,
+     "high": 53.5
+    }
+   },
+   "missing_atom_rate": {
+    "correct": 15,
+    "denominator": 119,
+    "fraction": "15/119",
+    "percent": 12.61,
+    "wilson_95_percent": {
+     "low": 7.79,
+     "high": 19.76
+    }
+   },
+   "extra_atom_rate": {
+    "correct": 2,
+    "denominator": 119,
+    "fraction": "2/119",
+    "percent": 1.68,
+    "wilson_95_percent": {
+     "low": 0.46,
+     "high": 5.92
+    }
+   },
+   "top_level_aggregation_correctness": {
+    "correct": 29,
+    "denominator": 52,
+    "fraction": "29/52",
+    "percent": 55.77,
+    "wilson_95_percent": {
+     "low": 42.34,
+     "high": 68.41
+    }
+   },
+   "product_exact": {
+    "correct": 29,
+    "denominator": 52,
+    "fraction": "29/52",
+    "percent": 55.77,
+    "wilson_95_percent": {
+     "low": 42.34,
+     "high": 68.41
+    }
+   }
+  },
+  "gates": {
+   "semantic": {
+    "actual": 0.16352201257861634,
+    "threshold": 0.9,
+    "operator": ">=",
+    "pass": false
+   },
+   "proof_safe": {
+    "actual": 0.27672955974842767,
+    "threshold": 0.95,
+    "operator": ">=",
+    "pass": false
+   },
+   "product": {
+    "actual": 0.37735849056603776,
+    "threshold": 0.95,
+    "operator": ">=",
+    "pass": false
+   },
+   "auto_precision": {
+    "actual": 0.4166666666666667,
+    "threshold": 0.99,
+    "operator": ">=",
+    "pass": false
+   },
+   "auto_coverage": {
+    "actual": 0.1509433962264151,
+    "threshold": 0.2,
+    "operator": ">=",
+    "pass": false
+   },
+   "necessary_review_recall": {
+    "actual": 0.7727272727272727,
+    "threshold": 0.95,
+    "operator": ">=",
+    "pass": false
+   },
+   "unnecessary_review_rate": {
+    "actual": 0.7068965517241379,
+    "threshold": 0.15,
+    "operator": "<=",
+    "pass": false
+   },
+   "abstain_recall": {
+    "actual": 0.45714285714285713,
+    "threshold": 0.9,
+    "operator": ">=",
+    "pass": false
+   },
+   "review_abstain_macro_f1": {
+    "actual": 0.520192,
+    "threshold": 0.9,
+    "operator": ">=",
+    "pass": false
+   },
+   "structural_invalid_accepted_proofs": {
+    "actual": 0.0,
+    "threshold": 0,
+    "operator": "==",
+    "pass": true
+   },
+   "ungrounded_accepted_proofs": {
+    "actual": 0.0,
+    "threshold": 0,
+    "operator": "==",
+    "pass": true
+   },
+   "semantically_unsound_accepted_proofs": {
+    "actual": 0.0,
+    "threshold": 0,
+    "operator": "==",
+    "pass": true
+   },
+   "proof_safe_unsound_autos": {
+    "actual": 0.0,
+    "threshold": 0,
+    "operator": "==",
+    "pass": true
+   },
+   "compound_atom_semantic": {
+    "actual": 0.44537815126050423,
+    "threshold": 0.9,
+    "operator": ">=",
+    "pass": false
+   },
+   "compound_product": {
+    "actual": 0.5576923076923077,
+    "threshold": 0.9,
+    "operator": ">=",
+    "pass": false
+   },
+   "runtime_exceptions": {
+    "actual": 0.0,
+    "threshold": 0,
+    "operator": "==",
+    "pass": true
+   }
+  }
+ },
+ "hard_gates": {
+  "semantic": {
+   "actual": 0.16352201257861634,
+   "threshold": 0.9,
+   "operator": ">=",
+   "pass": false
+  },
+  "proof_safe": {
+   "actual": 0.27672955974842767,
+   "threshold": 0.95,
+   "operator": ">=",
+   "pass": false
+  },
+  "product": {
+   "actual": 0.37735849056603776,
+   "threshold": 0.95,
+   "operator": ">=",
+   "pass": false
+  },
+  "auto_precision": {
+   "actual": 0.4166666666666667,
+   "threshold": 0.99,
+   "operator": ">=",
+   "pass": false
+  },
+  "auto_coverage": {
+   "actual": 0.1509433962264151,
+   "threshold": 0.2,
+   "operator": ">=",
+   "pass": false
+  },
+  "necessary_review_recall": {
+   "actual": 0.7727272727272727,
+   "threshold": 0.95,
+   "operator": ">=",
+   "pass": false
+  },
+  "unnecessary_review_rate": {
+   "actual": 0.7068965517241379,
+   "threshold": 0.15,
+   "operator": "<=",
+   "pass": false
+  },
+  "abstain_recall": {
+   "actual": 0.45714285714285713,
+   "threshold": 0.9,
+   "operator": ">=",
+   "pass": false
+  },
+  "review_abstain_macro_f1": {
+   "actual": 0.520192,
+   "threshold": 0.9,
+   "operator": ">=",
+   "pass": false
+  },
+  "structural_invalid_accepted_proofs": {
+   "actual": 0.0,
+   "threshold": 0,
+   "operator": "==",
+   "pass": true
+  },
+  "ungrounded_accepted_proofs": {
+   "actual": 0.0,
+   "threshold": 0,
+   "operator": "==",
+   "pass": true
+  },
+  "semantically_unsound_accepted_proofs": {
+   "actual": 0.0,
+   "threshold": 0,
+   "operator": "==",
+   "pass": true
+  },
+  "proof_safe_unsound_autos": {
+   "actual": 0.0,
+   "threshold": 0,
+   "operator": "==",
+   "pass": true
+  },
+  "compound_atom_semantic": {
+   "actual": 0.44537815126050423,
+   "threshold": 0.9,
+   "operator": ">=",
+   "pass": false
+  },
+  "compound_product": {
+   "actual": 0.5576923076923077,
+   "threshold": 0.9,
+   "operator": ">=",
+   "pass": false
+  },
+  "runtime_exceptions": {
+   "actual": 0.0,
+   "threshold": 0,
+   "operator": "==",
+   "pass": true
+  }
+ },
+ "gates_failed": [
+  "abstain_recall",
+  "auto_coverage",
+  "auto_precision",
+  "compound_atom_semantic",
+  "compound_product",
+  "necessary_review_recall",
+  "product",
+  "proof_safe",
+  "review_abstain_macro_f1",
+  "semantic",
+  "unnecessary_review_rate"
+ ],
+ "readiness_verdict": "GENERALIZATION_FAIL",
+ "error_analysis_started": false
+}

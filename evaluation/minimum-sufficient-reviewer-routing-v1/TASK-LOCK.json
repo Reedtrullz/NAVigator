@@ -1,0 +1,88 @@
+{
+  "task_id": "NAV-EXPLORE-MINIMUM-SUFFICIENT-REVIEWER-ROUTING-V1",
+  "task_family": "minimum-sufficient-reviewer-routing",
+  "status": "CLOSED",
+  "terminal_status": "ROUTER_V1_INSUFFICIENT_REVIEWER_EVIDENCE",
+  "closed_utc": "2026-09-19T23:59:00Z",
+  "owner_authorization": "attachment 08252183-f158-43c0-a7a0-36548f414b67 (GOAL: NAV-EXPLORE-MINIMUM-SUFFICIENT-REVIEWER-ROUTING-V1)",
+  "created_utc": "2026-09-19T22:00:00Z",
+  "predecessors": [
+    {
+      "task_id": "NAV-EXPLORE-NATIVE-JEV-FRESH-FROZEN-QUALIFICATION-V3",
+      "terminal_status": "JEV_NATIVE_FRESH_NOT_QUALIFIED",
+      "relationship": "PRESERVED_IMMUTABLE; V3 = burned development data; this task does not reopen V3 or repair Jev as PASS/FAIL reviewer"
+    }
+  ],
+  "scope": [
+    "stage0_read_only_reviewer_evidence_inventory",
+    "stageA_burned_minimum_sufficient_reviewer_labels",
+    "stageA_burned_router_development",
+    "stageB_fresh_frozen_router_qualification",
+    "cascade_simulation_diagnostic_only"
+  ],
+  "hard_rules": {
+    "jev_role": "DIFFICULTY_ROUTING_MODEL_ONLY",
+    "jev_may_not_decide_final_correctness": true,
+    "safety_critical_under_routing_tolerance": 0,
+    "under_routing_safety": "ZERO_TOLERANCE_DISQUALIFIER",
+    "over_routing_treatment": "COST_INEFFICIENCY_MEASURED_NOT_SYMMETRIC",
+    "precommit_before_fresh_label_or_outcome_reveal": true,
+    "fresh_router_validation_required": true,
+    "burned_slices_may_not_be_presented_as_fresh_validation": true,
+    "case_id_in_runtime_or_router_schema_allowed": false,
+    "longcat_allowed": false,
+    "astra_max_allowed": false,
+    "astra_role": "LAST_RESERVE_TIER_FRESH_CALLS_MINIMIZED_TARGET_0",
+    "gpt_5_5_allowed": false,
+    "runtime_changes_allowed": false,
+    "cascade_runtime_implementation_allowed": false,
+    "max_subagents": 2,
+    "preferred_subagents": 0
+  },
+  "stages": {
+    "stage0": {
+      "name": "READ_ONLY_REVIEWER_EVIDENCE_INVENTORY",
+      "status": "COMPLETE",
+      "completed_utc": "2026-09-19T22:30:00Z",
+      "forbidden": ["jev_calls", "reviewer_model_runs", "fresh_inference", "astra_calls", "dataset_relabelling", "runtime_changes", "routing_changes"]
+    },
+    "stageA": {
+      "name": "BURNED_MINIMUM_SUFFICIENT_REVIEWER_LABELS_AND_ROUTER_DEVELOPMENT",
+      "status": "COMPLETE",
+      "completed_utc": "2026-09-19T22:30:00Z",
+      "label_set_sha256": "4cd87708c79c44ce8a424b1feee491727096dbfd4edc55e0985a3a26fc64902e",
+      "summary": {
+        "supervised_rows": 72,
+        "label_distribution": {"T1_BASIC": 64, "T2_INTERMEDIATE": 8},
+        "t4_supervised_candidates": 0,
+        "t4_investigation": "26 rows with T3=FAILED audited; none had T1+T2+T3 all definitively FAILED; ladder rule correct as frozen",
+        "jev_dev_exact": "5/72",
+        "jev_dev_under_routes": 0,
+        "jev_dev_over_routes": 67,
+        "safety_critical_supervised": 2,
+        "safety_critical_under_routes": 0,
+        "stage_a_report": "MINIMUM_SUFFICIENT_REVIEWER_STAGE_A.md"
+      }
+    },
+    "stageB": {
+      "name": "FRESH_FROZEN_ROUTER_QUALIFICATION",
+      "status": "NOT_EXECUTABLE_NO_FRESH_ROWS",
+      "blocking_evidence": {
+        "gold_pool_rows": 375,
+        "rows_in_v2_slice": 140,
+        "rows_in_v3_slice": 235,
+        "v2_v3_overlap": 0,
+        "remaining_fresh_rows": 0,
+        "unused_rows_gold_none": 12,
+        "sealed_reserve_pool": "none defined"
+      },
+      "note": "Stage B per spec B.1 requires fresh rows outside V2/V3/StageA with independent frozen gold; none exist. Downstream artifacts intentionally not fabricated."
+    }
+  },
+  "terminal_statuses": [
+    "ROUTER_V1_INSUFFICIENT_REVIEWER_EVIDENCE",
+    "ROUTER_V1_NOT_QUALIFIED",
+    "ROUTER_V1_PROMISING_NEEDS_MORE_EVIDENCE",
+    "ROUTER_V1_QUALIFIED_FOR_CASCADE_SHADOW_TEST"
+  ]
+}

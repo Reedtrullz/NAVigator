@@ -1,0 +1,72 @@
+{
+  "analysis_rule": "diagnostic classification of frozen screening rows; semantic reference = frozen V1 authoritative fields",
+  "candidates": {
+    "R2-laguna-s-2.1": {
+      "forbidden_claim": {
+        "rows": 53,
+        "ok": 30,
+        "invalid_reason_counts": {
+          "EVIDENCE_INVALID": 13,
+          "INVALID_JSON": 2,
+          "ENUM_INVALID": 1
+        },
+        "ok_row_field_disagreement_patterns": {
+          "criterion_semantic_match: NO_MATCH -> MATCH": 12,
+          "speaker_commitment: UNRESOLVED -> ASSERTED": 5,
+          "speaker_commitment: UNRESOLVED -> NONCOMMITTAL": 4,
+          "speaker_commitment: UNRESOLVED -> NEGATED": 2,
+          "speaker_commitment: UNRESOLVED -> QUOTED_ONLY": 2,
+          "speaker_commitment: UNRESOLVED -> HYPOTHETICAL_ONLY": 1
+        },
+        "conservative_escape_count": 0
+      },
+      "critical_condition": {
+        "rows": 37,
+        "ok": 25,
+        "invalid_reason_counts": {
+          "EVIDENCE_INVALID": 8,
+          "INVALID_JSON": 4
+        },
+        "ok_row_field_disagreement_patterns": {
+          "critical_evidence_state: CLEAR_NON_TRIGGER_SUPPORT -> CLEAR_TRIGGER_SUPPORT": 4,
+          "critical_evidence_state: CLEAR_NON_TRIGGER_SUPPORT -> INSUFFICIENT_TO_DECIDE": 4,
+          "critical_evidence_state: AMBIGUOUS_OR_CONFLICTING -> CLEAR_NON_TRIGGER_SUPPORT": 3,
+          "critical_evidence_state: INSUFFICIENT_TO_DECIDE -> CLEAR_NON_TRIGGER_SUPPORT": 2,
+          "critical_evidence_state: CLEAR_TRIGGER_SUPPORT -> CLEAR_NON_TRIGGER_SUPPORT": 1,
+          "critical_evidence_state: AMBIGUOUS_OR_CONFLICTING -> CLEAR_TRIGGER_SUPPORT": 1
+        },
+        "conservative_escape_count": 4
+      }
+    },
+    "R3-ling-3.0-flash-sante": {
+      "forbidden_claim": {
+        "rows": 53,
+        "ok": 31,
+        "invalid_reason_counts": {
+          "EVIDENCE_INVALID": 11,
+          "ENUM_INVALID": 9,
+          "INVALID_JSON": 2
+        },
+        "ok_row_field_disagreement_patterns": {
+          "criterion_semantic_match: NO_MATCH -> MATCH": 8,
+          "speaker_commitment: UNRESOLVED -> NONCOMMITTAL": 7,
+          "speaker_commitment: UNRESOLVED -> NEGATED": 6,
+          "speaker_commitment: UNRESOLVED -> ASSERTED": 2,
+          "speaker_commitment: NEGATED -> HEDGED_ASSERTION": 1
+        },
+        "conservative_escape_count": 2
+      },
+      "critical_condition": {
+        "rows": 37,
+        "ok": 6,
+        "invalid_reason_counts": {
+          "EVIDENCE_INVALID": 7
+        },
+        "ok_row_field_disagreement_patterns": {
+          "critical_evidence_state: CLEAR_TRIGGER_SUPPORT -> INSUFFICIENT_TO_DECIDE": 1
+        },
+        "conservative_escape_count": 0
+      }
+    }
+  }
+}

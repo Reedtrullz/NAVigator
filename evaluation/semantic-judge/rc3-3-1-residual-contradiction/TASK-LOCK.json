@@ -1,0 +1,43 @@
+{
+  "task_id": "NAV-EXPLORE-RC3_3_1-RESIDUAL-CONTRADICTION-COMPARATOR",
+  "status": "RC3_3_1_RESIDUAL_REPAIR_NOT_READY",
+  "source_state": "RC3_3_RELATION_NUMERIC_PASS_PROOF_NOT_READY",
+  "broad_architecture_changes_allowed": false,
+  "boundary_changes_allowed": false,
+  "routing_tuning_allowed": false,
+  "reviewer_tuning_allowed": false,
+  "sealed_validation_access_allowed": false,
+  "sealed_validation_execution_allowed": false,
+  "new_blind_set_allowed": false,
+  "kb_changes_allowed": false,
+  "nav_research_allowed": false,
+  "gpt_5_5_allowed": false,
+  "write_sandbox": {
+    "allowed_roots": [
+      "evaluation/semantic-judge/rc3-3-1-residual-contradiction/"
+    ],
+    "forbidden": [
+      "rc2-development",
+      "rc3-1-proof-semantics",
+      "rc3-1-support-boundary",
+      "rc3-1-relation-repair",
+      "rc3-2-boundary-aware-relation",
+      "rc3-3-gate-consumption-numeric",
+      "rc3-1-proof-semantics/corpus/validation-answer-key.sealed",
+      "Obsidian"
+    ],
+    "explicit_output_required": true
+  },
+  "subagents_used": 0,
+  "gpt_5_6_luna_policy": "default for subagents; none used; GPT-5.5 forbidden and not used",
+  "ancestor_freeze": {
+    "engine.py": "fb6f943f8b90eed46003f57168914c877fa11482c5c581885d067923986f9b20",
+    "numeric.py": "9e76fb9c70f5942d6c7751a640f1e56d621bc738a6f5aa1c24bf8b60c8a958d4",
+    "boundary.py": "9200aa9033bb25eaa63dcb23552f814b0e079accff86b97c48c3ef026343fc1e"
+  },
+  "implementation_pass_budget": "1 main pass + max 1 bounded general bugfix (pre-declared order: dev -> bounded bugfix if needed -> global regression -> freeze)",
+  "bounded_bugfix_used": true,
+  "bugfix_summary": "Single generalized bounded bugfix: frac_premise_unverified guard (numeric layer) wired into numeric contradiction path plus R07/R08 hard-rule producers; an unverified in-claim fraction premise blocks auto-CONTRADICTS and yields RBI. No case IDs, source filenames, amounts, or literal verdict maps.",
+  "hidden_micro_validation_protocol_note": "The hidden 30-case run was executed once BEFORE the pre-validation freeze (spec section 32 sequence violation; recorded and voided as a section-32 validation). It failed gates (relation 0.8667, C-precision 0.8182, false-stale 2, unsound 1, quantity 0.8571) and is burned as diagnostics in results/micro-validation-premature-void.json. Per section 34 no tuning and no rerun followed; the single pre-declared bounded bugfix was applied before the dev/global re-runs and candidate freeze. The hidden 30-case labels are burned for THIS task only; fresh-targeted-cases.json SHA is unchanged (7228cffa...).",
+  "subagents_policy": "GPT-5.6-Luna default for any subagent; GPT-5.5 forbidden and not used"
+}

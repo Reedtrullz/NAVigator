@@ -1,0 +1,43 @@
+{
+  "task_id": "NAV-EXPLORE-NATIVE-JEV-QUALIFICATION-V2",
+  "task_family": "semantic-reviewer-qualification",
+  "status": "CLOSED",
+  "created_utc": "2026-09-19T19:40:00Z",
+  "objective": "Qualify native TypeSafe Jev (via installed typesafe-ai skill and official System One API) as a cheap first-line semantic judgment layer for NAV Explore; experimental only, no production routing.",
+  "constraints": {
+    "use_installed_jev_skill": true,
+    "native_typesafe_api_only": true,
+    "opencode_jev_emulation_allowed": false,
+    "generic_llm_jev_emulation_allowed": false,
+    "gpt_6_astra_new_ground_truth_labels": false,
+    "astra_diagnostic_comparison_allowed": "LOW_ONLY_AND_ONLY_IF_NECESSARY",
+    "longcat_2_0_allowed": false,
+    "sealed_reserve_or_future_holdout_access": false,
+    "production_reviewer_changes": false,
+    "production_routing_changes": false,
+    "api_key_never_printed_logged_hashed_or_persisted": true,
+    "stop_after_experiment": true
+  },
+  "dataset": {
+    "source": "evaluation/semantic-reviewer-cost-qualification-v1/reference-corpus.jsonl",
+    "frozen_before_this_experiment": true,
+    "purpose": "evaluator_development_calibration_only",
+    "sealed_reserve_used": false
+  },
+  "phases": {
+    "phase_0_skill_and_architecture_inspection": "COMPLETE",
+    "phase_1_native_connectivity": "COMPLETE",
+    "phase_2_primitive_verification": "COMPLETE",
+    "phase_3_to_6_question_schema_state_slice_and_first_run": "COMPLETE",
+    "phase_7_no_tuning_analysis": "COMPLETE",
+    "phase_8_controlled_question_revision": "COMPLETE_ONE_PASS_SPENT",
+    "phase_9_to_13_routing_coverage_cost": "COMPLETE",
+    "phase_14_stability": "COMPLETE",
+    "phase_15_adversarial_sanity": "COMPLETE",
+    "phase_16_artifacts_report": "COMPLETE"
+  },
+  "terminal_status": "JEV_NATIVE_PROMISING_NEEDS_CALIBRATION",
+  "closed_utc": "2026-09-19T20:35:00Z",
+  "terminal_report": "JEV_NATIVE_QUALIFICATION_V2.md",
+  "production_changes": "NONE"
+}

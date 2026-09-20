@@ -1,0 +1,25 @@
+{
+  "artifact": "astra-review-config",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-WAVE-4-QUOTA-RESUME-V1",
+  "recorded_after_execution": true,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "LOW",
+  "reasoning_effort_enforcement": "hard; MEDIUM/HIGH/MAX forbidden",
+  "transport": "local proxy http://127.0.0.1:10100/v1/chat/completions",
+  "auth": "bearer token from existing auth store; never printed, logged, or persisted in artifacts",
+  "passes": [
+    "ASTRA-A",
+    "ASTRA-B"
+  ],
+  "call_count": {
+    "ASTRA-A": 110,
+    "ASTRA-B": 110
+  },
+  "transport_retries_observed": 0,
+  "request_config_hash": [
+    "1810302cdeeed668773d0ec3af832ee7d47cf1eff01aab4da335b1c494edc0db"
+  ],
+  "prompt_and_validation_technique": "frozen Wave-3 run_astra_review.py imported unchanged",
+  "retry_policy": "ONE technical transport retry only; schema-invalid or disagreeing output NOT retried",
+  "blindness": "A and B blind to each other, to historical verdicts, to gold, and to prior model results"
+}

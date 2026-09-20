@@ -1,0 +1,37 @@
+{
+  "audit": "AUTO_SUPPORTED-eligibility soundness audit, RC3.1 boundary repair",
+  "date": "2026-09-05",
+  "engine_sha256": "c4bc71862febf51783e2e48550f899746f9a6d0cb00f03a84d084edcd8fdce37",
+  "method": "Full burned-train run (124 cases) plus fresh 80-case suite, product-level eligibility per run_boundary.py. Every eligible proof was re-checked against its expected relation class; flagged atoms inside non-entail products were individually re-executed and inspected.",
+  "headline": {
+    "false_auto_support_boundary_fresh_suite": 0,
+    "support_boundary_precision": 1.0,
+    "semantically_unsound_eligible_support_proofs_burned_train": 0,
+    "hallucinated_proofs": 0,
+    "critical_unsafe_autos": 0
+  },
+  "verified_sound_atoms_inside_partial_products": {
+    "note": "These ENTAILS atoms are each sound against their own evidence span but sit inside a PARTIAL product whose other atom conflicts. The product never reaches AUTO_SUPPORTED. Listed to show the fail-closed aggregation is doing its job, not as eligibility errors.",
+    "count": 7,
+    "cases": [
+      {"case_id": "RC31-0016", "atom": "A1", "rule": "R25-coverage", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true},
+      {"case_id": "RC31-0050", "atom": "A2", "rule": "R25-coverage", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true},
+      {"case_id": "RC31-0131", "atom": "A1", "rule": "R19-requirement-object", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true},
+      {"case_id": "RC31-0138", "atom": "A1", "rule": "R23-shared-number", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true},
+      {"case_id": "RC31-0143", "atom": "A1", "rule": "R25-coverage", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true},
+      {"case_id": "RC31-0150", "atom": "A1", "rule": "R25-coverage", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true},
+      {"case_id": "RC31-0174", "atom": "A1", "rule": "R25-coverage", "boundary": "BOUNDARY_COMPATIBLE", "product": "PARTIAL", "atom_sound": true}
+    ],
+    "verification": "Each case re-executed against the final engine this session; atom verdicts, rules, and boundary states match the recorded run."
+  },
+  "genuine_bugs_fixed_during_bugfix_pass": [
+    {"case_id": "RC31-0042", "root_cause": "CLAIM 'uten Y' with no matching exclusion object in evidence resolved as entailed instead of unresolved.", "fix": "R26b-uten-object-unresolved: claim exclusion object with no evidence counterpart fail-closes to PARTIAL.", "verified": "exp CONTRADICTS, got PARTIAL on final engine."},
+    {"case_id": "RC31-0099", "root_cause": "Universal claim quantifier ('alltid') matched evidence containing an alternative construction ('eller').", "fix": "R26d-universal-vs-alternative: word-boundary 'eller' check blocks universal-to-alternative entailment to PARTIAL.", "verified": "exp CONTRADICTS, got PARTIAL on final engine."}
+  ],
+  "atom_sound_but_product_contradicts": {
+    "case_id": "RC31-0135",
+    "detail": "A2 (R23-shared-number) is a sound atom-level entailment against its own evidence, but the product verdict is CONTRADICTS (expected CONTRADICTS, correct). The contradiction path is unchanged per section 28; the entailed atom never upgrades the product.",
+    "verified": "Re-executed this session: top CONTRADICTS, A1 CONTRADICTS (BOUNDARY_COMPATIBLE), A2 ENTAILS (BOUNDARY_COMPATIBLE)."
+  },
+  "conclusion": "No unsound AUTO_SUPPORTED-eligible proof remains on either suite. The two genuine generalized bugs found during the bounded bugfix pass are fixed and regression-verified. Fresh-suite boundary precision is 1.0 with zero false auto-support."
+}

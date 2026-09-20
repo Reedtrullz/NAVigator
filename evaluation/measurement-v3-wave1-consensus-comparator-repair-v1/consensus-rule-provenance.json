@@ -1,0 +1,43 @@
+{
+  "artifact": "consensus-rule-provenance",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "verdict": "CONSENSUS_COMPARATOR_IMPLEMENTATION_DEFECT",
+  "branch": "A",
+  "measurement_contract_changed": false,
+  "contract_rule_sources": [
+    {
+      "artifact": "evaluation/measurement-v3-remeasure-repair-wave-1/build_primary_consensus.py",
+      "location": "auth_fields() lines 55-59",
+      "content": "criterion_semantic_match + speaker_commitment equality, plus independent per-pass validation"
+    },
+    {
+      "artifact": "evaluation/measurement-v3-remeasure-repair-wave-1/build_residual_consensus.py",
+      "location": "auth_fields() lines 55-59",
+      "content": "criterion_semantic_match + speaker_commitment equality, plus independent per-pass validation"
+    }
+  ],
+  "old_task_local_rule_sources": [
+    {
+      "artifact": "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-adjudication-consensus.json",
+      "field": "rule",
+      "verbatim": "A==B on all fields -> LLM_ADJUDICATED (GPT_5_6_SOL_DUAL_PASS_RESIDUAL); any disagreement or invalidity -> PENDING_HUMAN_ADJUDICATION; no third pass, no majority vote"
+    },
+    {
+      "artifact": "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/sol-adjudication-frozen-observations.json",
+      "field": "consensus_outcome.rule",
+      "verbatim": "A==B on entire result object (frozen TASK-LOCK scope)"
+    },
+    {
+      "artifact": "evaluation/measurement-v3-wave1-residual-llm-adjudication-v1/TASK-LOCK.json",
+      "field": "terminal_summary.consensus_rule",
+      "verbatim": "whole-object A==B (frozen)"
+    }
+  ],
+  "distinguishing_evidence": [
+    "The whole-object A==B wording appears only in the Wave-1 residual task's own execution artifacts, not in any measurement contract, frozen spec, or upstream lineage document.",
+    "The upstream measurement lineage's persisted consensus builders implement authoritative-field equality plus independent validation; no whole-object equality rule exists in persisted measurement logic.",
+    "The Wave-1 residual comparator was ephemeral (not persisted), and the owner spec for this repair explicitly offered Branch A (implementation defect, no contract amendment) versus Branch B (contract ambiguity amendment).",
+    "Frozen disagreement analysis itself observed: primitives fully agree; whole-object equality is stricter than primitive-level agreement."
+  ],
+  "conclusion": "The measurement contract semantic is primitive-level consensus on AUTHORITATIVE_SEMANTIC fields. The whole-object A==B rule was task-local implementation scope in the Wave-1 residual execution. No contract amendment is required; no historical artifact is rewritten."
+}

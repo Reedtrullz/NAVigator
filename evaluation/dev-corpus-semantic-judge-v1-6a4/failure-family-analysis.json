@@ -1,0 +1,96 @@
+{
+  "artifact": "failure-family-analysis.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-BOUNDARY-V1_6A4-ASSERTION-STRENGTH-GROUNDING",
+  "status": "POSTMORTEM_DIAGNOSTIC_ONLY",
+  "source": "official-validation-results.json (frozen one-shot, engine SHA 22a5f61c38b991611b636d24d9a6765f90aa25cf9cc616c5fa0964a770ac5cee)",
+  "scope": "All 36 false deterministics plus 2 evidence-invalid rows (CLEAN-16, CLEAN-17 counted in both sets).",
+  "usage_policy": "Diagnostic taxonomy only. Per auth constraint 3: no rule-per-family implementation is authorized; each family records whether a fix would be lexical expansion (whack-a-mole risk) or structural parsing (outside deterministic scope).",
+  "family_count": 9,
+  "families": [
+    {
+      "family_id": "F1",
+      "name": "QUOTE_DELIMITER_COVERAGE",
+      "mechanism": "Claim is inside quotation marks, but the quotation uses ASCII double quotes which are not in A3 QUOTE_MARKERS (only guillemets and verbal markers). The quoted-claim path never fires and the claim falls through to BC_CLAIM_FRAME_07 ASSERTED.",
+      "coverage_class": "LEXICAL_COVERAGE",
+      "fix_class_note": "Lexeme addition; next surface form (single quotes, dash quotes, unmarked quotation) would miss again. Not a structural fix.",
+      "member_ids": ["OFFA4-CLEAN-10", "OFFA4-CLEAN-21", "OFFA4-ADV-18"]
+    },
+    {
+      "family_id": "F2",
+      "name": "ATTRIBUTION_ADOPTION_RETRACTION_LEXEME_COVERAGE",
+      "mechanism": "Attribution, adoption, or retraction via surface forms outside the A3/A4 lexicons: 'ifolge' (impersonal), 'skrev at' and 'sa at' (past tense of covered present-tense verbs), 'hevder at', 'det rapporteres at', 'er enig i at' and 'som jeg er enig i' (adoption), 'jeg mener det samme' (adoption), 'tok feil' and 'tar tilbake' (retraction; only 'trekker tilbake' is covered). Quoted/reported/retracted claims read as bare assertions.",
+      "coverage_class": "LEXICAL_COVERAGE",
+      "fix_class_note": "Largest family (10/36). Pure lexeme expansion; each verb, tense, and construction is a new miss class. Auth constraint 3 forbids rule-per-miss patches.",
+      "member_ids": ["OFFA4-CLEAN-08", "OFFA4-CLEAN-11", "OFFA4-CLEAN-15", "OFFA4-CLEAN-20", "OFFA4-ABST-02", "OFFA4-ABST-08", "OFFA4-ABST-17", "OFFA4-ADV-03", "OFFA4-ADV-09", "OFFA4-ADV-15"]
+    },
+    {
+      "family_id": "F3",
+      "name": "COPULAR_HEDGE_CONSTRUCTION_COVERAGE",
+      "mechanism": "Sentence-initial copular hedge 'Det er sannsynlig at ...' places the hedge before the claim in a construction not matched by HEDGE_MARKERS or BELIEF_STEM_RE; hedged claim reads as asserted.",
+      "coverage_class": "LEXICAL_COVERAGE",
+      "fix_class_note": "Construction-level lexeme/parse gap; generic fix requires syntactic hedging-frame recognition.",
+      "member_ids": ["OFFA4-CLEAN-07"]
+    },
+    {
+      "family_id": "F4",
+      "name": "NEGATION_MODAL_SCOPE_COMPOSITION",
+      "mechanism": "Negation composes with attribution, modality, or a second negation: negated attitude verbs ('mener ikke at'), double negation ('ikke umulig', 'ikke sant at ikke'), hedge-negation ordering ('mangler kanskje ikke' flipped to NEGATED), attribution plus negation ('ifolge rapporten mangler det ikke'), and conflicting attributions ('Noen sier ... andre sier det ikke'). A4 has no scope composition for stacked operators.",
+      "coverage_class": "SCOPE_COMPOSITION",
+      "fix_class_note": "Requires operator-scope composition (stacked negation, attitude, modality), i.e. genuine semantic interpretation, not a lexeme.",
+      "member_ids": ["OFFA4-ABST-01", "OFFA4-ABST-06", "OFFA4-ABST-11", "OFFA4-ABST-14", "OFFA4-ADV-08", "OFFA4-ADV-10", "OFFA4-ADV-17"]
+    },
+    {
+      "family_id": "F5",
+      "name": "CONDITIONAL_TEMPORAL_CONSEQUENT_BINDING",
+      "mechanism": "Conditional, temporal, or irrealis frames outside CONDITIONAL_ROUTE_MARKERS ('sa snart', 'hadde vaert rart om', 'det kan tenkes at hvis') and consequent binding ('betyr det at', negated consequents 'betyr ikke det at', 'hvis det ikke mangler ... er saken lukket'). Engine either mislabels the embedded consequent as asserted or hypothetical, or abstains on a definitional conditional the gold scores as assertable (ADV-01).",
+      "coverage_class": "SCOPE_COMPOSITION",
+      "fix_class_note": "Requires clause-level consequent binding including consequent polarity; both over- and under-abstention observed. Beyond deterministic surface rules.",
+      "member_ids": ["OFFA4-CLEAN-22", "OFFA4-ABST-09", "OFFA4-ABST-13", "OFFA4-ADV-01", "OFFA4-ADV-11", "OFFA4-ADV-12"]
+    },
+    {
+      "family_id": "F6",
+      "name": "CONTRASTIVE_DISCOURSE_AND_SELF_REVISION",
+      "mechanism": "Second-clause discourse operators change commitment after an apparently clean assertion: contrastive update ('men har nettopp ansatt en ny'), self-revision ('Eller, det avhenger av hvordan man regner'). Commitment depends on the discourse relation across clauses.",
+      "coverage_class": "DISCOURSE_STRUCTURE",
+      "fix_class_note": "Requires cross-clause discourse-state resolution; not mechanically decidable from the matched fragment.",
+      "member_ids": ["OFFA4-ABST-07", "OFFA4-ABST-10"]
+    },
+    {
+      "family_id": "F7",
+      "name": "PARENTHETICAL_ASIDE_SCOPE",
+      "mechanism": "First-person assessment appears as a parenthetical aside inside a larger sentence about a different subject ('(som mangler psykolog etter min vurdering)'); the engine binds the claim to the main-clause frame and reads it as asserted, gold requires abstain.",
+      "coverage_class": "SCOPE_COMPOSITION",
+      "fix_class_note": "Requires syntactic parenthetical scoping; deterministic parenthesis detection alone cannot decide commitment binding.",
+      "member_ids": ["OFFA4-ABST-05"]
+    },
+    {
+      "family_id": "F8",
+      "name": "ABSENCE_RULE_ORDERING_AND_VAGUE_SURFACE",
+      "mechanism": "No prohibited-claim term matches lexically, so BC_CLAIM_ABSENCE_01 fires NOT_PRESENT before any vague or noncommittal surface ('varierende', 'komplisert') is considered; VAGUE_MARKERS miss these forms and the row is emitted with no evidence span (evidence-invalid).",
+      "coverage_class": "RULE_ORDERING",
+      "fix_class_note": "Ordering fix alone is insufficient: deciding 'vague vs true absence' on arbitrary surfaces is a semantic judgment.",
+      "member_ids": ["OFFA4-CLEAN-16", "OFFA4-CLEAN-17"]
+    },
+    {
+      "family_id": "F9",
+      "name": "UNCERTAIN_COMMITMENT_BINDING_COMPOSITE",
+      "mechanism": "Multiple weak signals co-occur (quote plus adoption plus hedge; attribution plus hedge 'trolig'; indecision frame 'uenige om hvorvidt'; vague referent 'Kanskje noe mangler') and gold requires ABSTAIN, but the engine resolves to its single strongest frame and commits.",
+      "coverage_class": "SCOPE_COMPOSITION",
+      "fix_class_note": "Requires weighted combination of weak signals, i.e. exactly the semantic interpretation this layer was forbidden to take on.",
+      "member_ids": ["OFFA4-ABST-03", "OFFA4-ABST-12", "OFFA4-ABST-15", "OFFA4-ABST-16"]
+    }
+  ],
+  "member_totals": {
+    "false_deterministic": 36,
+    "evidence_invalid": 2,
+    "classified": 38,
+    "unclassified": 0
+  },
+  "cross_cutting_root_causes": [
+    "BC_CLAIM_FRAME_07 is the catch-all for 34/36 false deterministics: once criterion terms match lexically, any uncovered frame defaults to ASSERTED instead of abstaining.",
+    "A3 lexicons were tuned on burned surfaces (present-tense attribution verbs, guillemet quotes, 'trekker tilbake'); fresh fixtures used equally ordinary Norwegian surface forms the lexicons never enumerated.",
+    "Clause segmentation (_clauses splitting on commas) scatters attribution and claim into different clauses, so clause-local scope checks see only the claim fragment.",
+    "Families F4, F5, F6, F7, F9 (20/36) require operator-scope composition, discourse state, or multi-signal commitment binding - semantic interpretation, not deterministic surface structure.",
+    "Families F1, F2, F3, F8 (16/36) are lexeme or ordering gaps; closing them by enumeration is the benchmark-whack-a-mole pattern the authorization explicitly forbids."
+  ]
+}

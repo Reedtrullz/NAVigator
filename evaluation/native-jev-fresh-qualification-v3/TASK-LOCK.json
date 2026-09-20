@@ -1,0 +1,36 @@
+{
+  "task_id": "NAV-EXPLORE-NATIVE-JEV-FRESH-FROZEN-QUALIFICATION-V3",
+  "status": "JEV_NATIVE_FRESH_NOT_QUALIFIED",
+  "owner_authorization": "explicit, user prompt attachment dd3f3420-cd17-4ba3-95fe-b81f322f0131",
+  "predecessor_task": "NAV-EXPLORE-NATIVE-JEV-QUALIFICATION-V2",
+  "predecessor_terminal_status": "JEV_NATIVE_PROMISING_NEEDS_CALIBRATION",
+  "phases": {
+    "1_predecessor_integrity_and_precommit": "COMPLETE",
+    "2_fresh_run": "COMPLETE (235 rows x 3 runs, 705 calls, 1 transport error run3 ESC-ROUT-046 HTTP 503)",
+    "3_analysis_and_report": "COMPLETE (analysis-results.json, cascade-simulation.json, JEV_NATIVE_FRESH_FROZEN_QUALIFICATION_V3.md)"
+  },
+  "constraints": {
+    "native_typesafe_jev_only": true,
+    "opencode_jev_emulation_allowed": false,
+    "longcat_2_0_allowed": false,
+    "gpt_5_5_allowed": false,
+    "gpt_6_astra_max_allowed": false,
+    "astra_label_generation_allowed": false,
+    "phase_8_tuning": "SPENT",
+    "post_label_reveal_policy_changes_allowed": false,
+    "case_id_logic_allowed": false,
+    "sealed_or_reserve_access_allowed": false,
+    "relabelling_allowed": false,
+    "api_key_persisted": false,
+    "subagents_max": 2,
+    "subagents_used": 0,
+    "production_changes_allowed": false,
+    "max_implementation_passes": 1
+  },
+  "terminal_statuses": [
+    "JEV_NATIVE_FRESH_NOT_QUALIFIED",
+    "JEV_NATIVE_FRESH_PROMISING_NEEDS_MORE_EVIDENCE",
+    "JEV_NATIVE_FRESH_QUALIFIED_FOR_SHADOW_ROUTING"
+  ],
+  "stop_condition": "hard stop after final report; no shadow routing, no V4, no further tuning"
+}

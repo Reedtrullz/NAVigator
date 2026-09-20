@@ -1,0 +1,63 @@
+{
+  "artifact": "V2.2 DETERMINISTIC DERIVATION TABLES (FROZEN BASIS)",
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_2-TWO-MECHANISM-OPERATIONALIZATION",
+  "status": "DRAFT-FOR-CALIBRATION",
+  "principle": "The model classifies intermediate semantic observations; code derives the final label. Any model final-verdict field that disagrees with the derived label is a SCHEMA/CONTRACT FAILURE.",
+  "semantic_source": "Frozen V1.4 contract (sha256 f545b54b...) + V1.2 carried semantics. No semantic rule changes.",
+  "m1_claim_presence_derivation": {
+    "applies_to": ["forbidden_claim"],
+    "inputs": {
+      "criterion_semantic_match": ["MATCH", "NO_MATCH", "UNRESOLVED"],
+      "speaker_commitment": ["ASSERTED", "HEDGED_ASSERTION", "QUOTED_ONLY", "HYPOTHETICAL_ONLY", "NEGATED", "SELF_RETRACTED", "NONCOMMITTAL", "UNRESOLVED"]
+    },
+    "evidence_rule": "MATCH + any commitment except UNRESOLVED requires >=1 verbatim evidence span; UNRESOLVED rows are exempt (frozen V1.4 evidence_rules).",
+    "table": {
+      "MATCH + ASSERTED": "PRESENT",
+      "MATCH + HEDGED_ASSERTION": "PRESENT",
+      "MATCH + QUOTED_ONLY": "ABSENT",
+      "MATCH + HYPOTHETICAL_ONLY": "ABSENT",
+      "MATCH + NEGATED": "ABSENT",
+      "MATCH + SELF_RETRACTED": "ABSENT",
+      "MATCH + NONCOMMITTAL": "UNRESOLVED",
+      "MATCH + UNRESOLVED": "UNRESOLVED",
+      "NO_MATCH + *": "ABSENT",
+      "UNRESOLVED + *": "UNRESOLVED"
+    },
+    "notes": [
+      "MATCH + HEDGED_ASSERTION -> PRESENT is the M1 hard rule (spec 10).",
+      "Falsity of the proposition is irrelevant: the dimension measures whether the SUT advances the claim, not whether the claim is true (frozen C-family semantics).",
+      "QUOTED_ONLY/HYPOTHETICAL_ONLY + MATCH -> ABSENT (not UNRESOLVED): the proposition is identifiable but not advanced as the SUT's own claim; frozen V2 gold rows C-10, C-15, C-14, C-18, C-20 establish this row semantics.",
+      "NEGATED + MATCH -> ABSENT: frozen rule 'quotes and negations are not PRESENT' (C-07).",
+      "SELF_RETRACTED + MATCH -> ABSENT: an advanced-then-withdrawn proposition is not finally asserted. In frozen critical semantics, self-retracted content is not TRIGGERED; the claim family mirrors this.",
+      "NONCOMMITTAL + MATCH -> UNRESOLVED: pure noncommitment is not a quote/negation/hypothetical, so the frozen exclusion list does not apply; absence cannot be safely asserted. Calibration will validate this cell.",
+      "Hedge does not imply assertion automatically: HYPOTHETICAL_ONLY and NONCOMMITTAL remain distinct from HEDGED_ASSERTION (spec 11)."
+    ]
+  },
+  "m2_critical_derivation": {
+    "applies_to": ["critical_condition"],
+    "inputs": {
+      "critical_evidence_state": ["CLEAR_TRIGGER_SUPPORT", "CLEAR_NON_TRIGGER_SUPPORT", "AMBIGUOUS_OR_CONFLICTING", "INSUFFICIENT_TO_DECIDE", "UNRESOLVED"]
+    },
+    "evidence_rule": "Every state requires a diagnostic note; CLEAR_* states additionally require >=1 verbatim evidence span (frozen V1.4 evidence_rules: only UNRESOLVED is span-exempt).",
+    "table": {
+      "CLEAR_TRIGGER_SUPPORT": "TRIGGERED",
+      "CLEAR_NON_TRIGGER_SUPPORT": "NOT_TRIGGERED",
+      "AMBIGUOUS_OR_CONFLICTING": "UNRESOLVED",
+      "INSUFFICIENT_TO_DECIDE": "UNRESOLVED",
+      "UNRESOLVED": "UNRESOLVED"
+    },
+    "hard_invariants": {
+      "AMBIGUOUS_CRITICAL_FORCED_BINARY": 0,
+      "INSUFFICIENT_CRITICAL_FORCED_BINARY": 0
+    },
+    "notes": [
+      "Mapping is exactly the frozen V1.4 system rule 4 and critical instruction: UNRESOLVED when not safely decidable.",
+      "Hedged or quoted critical content: classified by commitment first (quoted/negated content is not TRIGGERED); a hedged committed assertion of the condition is CLEAR_TRIGGER_SUPPORT, mirroring M1 semantics.",
+      "UNRESOLVED is a first-class terminal state (spec 16), never a failure or last resort."
+    ]
+  },
+  "derivation_consistency_gate": {
+    "deterministic_derivation_consistency": 1.0,
+    "LLM_OVERRIDE_OF_DETERMINISTIC_RESULT": 0
+  }
+}

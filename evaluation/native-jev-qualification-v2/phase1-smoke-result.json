@@ -1,0 +1,44 @@
+{
+  "phase": 1,
+  "purpose": "connectivity_smoke",
+  "state": {
+    "reference": "The application may be submitted digitally.",
+    "candidate": "The application must always be submitted in person."
+  },
+  "questions": {
+    "same_core_meaning": {
+      "type": "noul",
+      "instructions": "Do the reference and the candidate state the same core meaning?",
+      "criteria": {
+        "true": "Same core obligation or permission is conveyed, allowing minor paraphrase",
+        "false": "They differ in a way that changes what a person must or may do"
+      }
+    },
+    "material_contradiction": {
+      "type": "noul",
+      "instructions": "Does the candidate materially contradict the reference?",
+      "criteria": {
+        "true": "A person following both texts could not comply with both",
+        "false": "Both texts can be true at the same time, or the candidate merely adds detail"
+      }
+    }
+  },
+  "latency_seconds": 0.76,
+  "response": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "same_core_meaning": {
+        "type": "noul",
+        "noul": 0.01
+      },
+      "material_contradiction": {
+        "type": "noul",
+        "noul": 0.95
+      }
+    },
+    "usage": {
+      "input_tokens": 407,
+      "output_tokens": 44
+    }
+  }
+}

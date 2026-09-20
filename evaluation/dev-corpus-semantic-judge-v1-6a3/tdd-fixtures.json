@@ -1,0 +1,256 @@
+{
+  "artifact": "tdd-fixtures.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A3-AMBIGUITY-ABSTENTION-HARDENING",
+  "authoring_engine_queries": 0,
+  "text_reuse_check": "PENDING",
+  "n": 30,
+  "coverage": {
+    "clean_deterministic": 10,
+    "required_abstain": 12,
+    "counterexample": 8
+  },
+  "frozen_gate_design": "ambiguity-gate-design.md",
+  "fixtures": [
+    {
+      "id": "A3-N-01",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Kommunepsykologen er riktig første kontakt for unge voksne.",
+      "expected_label": "ASSERTED",
+      "design_note": "clean single-clause assertion; must survive all gates"
+    },
+    {
+      "id": "A3-N-02",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Du bør kontakte fastlegen ved vedvarende søvnvansker hos barnet.",
+      "expected_label": "ASSERTED",
+      "design_note": "clean adoption-style assertion without hedging"
+    },
+    {
+      "id": "A3-N-03",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Familievernkontoret er sannsynligvis en god inngang ved samlivsproblemer.",
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "clean single-candidate hedge"
+    },
+    {
+      "id": "A3-N-04",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Helsestasjonen ser ut til å være et egnet tilbud for småbarnsforeldre.",
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "clean hedge with vague noun present but candidate grounded"
+    },
+    {
+      "id": "A3-N-05",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "BUP er ikke riktig inngang ved lette skoleplager.",
+      "expected_label": "NEGATED",
+      "design_note": "clean same-clause negation over assertion marker"
+    },
+    {
+      "id": "A3-N-06",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Barnevernet bør ikke kontaktes i denne situasjonen.",
+      "expected_label": "NEGATED",
+      "design_note": "negation interrupts adoption phrase; no assertion marker survives"
+    },
+    {
+      "id": "A3-N-07",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Hvis uroen vedvarer over tid, kan en samtale hos helsesykepleieren være et første steg.",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "design_note": "conditional frame, no negation"
+    },
+    {
+      "id": "A3-N-08",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Dersom familien trenger råd om samvær, kan familievernkontoret vurderes.",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "design_note": "conditional + vurderes marker"
+    },
+    {
+      "id": "A3-N-09",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Jeg tok feil om HFU. Jeg trekker tilbake anbefalingen om henvendelse dit.",
+      "expected_label": "SELF_RETRACTED",
+      "design_note": "retraction in next clause retroactively grounds candidate"
+    },
+    {
+      "id": "A3-N-10",
+      "dimension": "route_commitment",
+      "group": "clean_deterministic",
+      "text": "Rapporten sier: «Fastlegen er riktig inngang for denne typen henvendelser.»",
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "plain quote, no out-of-quote commitment signal"
+    },
+    {
+      "id": "A3-RA-01",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Læreren sier: «Familievernkontoret er riktig sted å få hjelp.» Nei, det stemmer ikke for denne situasjonen.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G1: quote plus out-of-quote retraction/disagreement signal"
+    },
+    {
+      "id": "A3-RA-02",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Rapporten sier: «Fastlegen er riktig inngang.» I tilfeller der barnet er over 18, må vurderingen gjøres på nytt.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G1: quote plus out-of-quote conditional signal"
+    },
+    {
+      "id": "A3-RA-03",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "(Helsesykepleieren er riktig inngang for denne typen spørsmål.)",
+      "expected_label": "ABSTAIN",
+      "design_note": "G2: entire commitment confined to parentheses"
+    },
+    {
+      "id": "A3-RA-04",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Rutinen beskriver oppfølging. (Familievernkontoret er trolig et egnet tilbud her.)",
+      "expected_label": "ABSTAIN",
+      "design_note": "G2: candidate and hedge only inside parenthetical aside"
+    },
+    {
+      "id": "A3-RA-05",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Helsesykepleieren er riktig første kontakt. Det er kanskje ikke riktig for ungdom over 18.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G3: single candidate, ASSERTED clause vs hedged-negated qualifier clause"
+    },
+    {
+      "id": "A3-RA-06",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "BUP passer ikke for denne typen plager. Hvis behovet gjelder utredning, må saken vurderes separat.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G3: single candidate, NEGATED clause vs hypothetical clause"
+    },
+    {
+      "id": "A3-RA-07",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Fastlegen ser ut til å være en god inngang, eller helsesykepleieren er kanskje et alternativ for lette plager.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G4: disjunctive eller between two hedge-licensed clauses on different candidates; parallel hedges without disjunction stay HEDGED_ASSERTION per burned OFF-CROSS-10/18 precedent"
+    },
+    {
+      "id": "A3-RA-08",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Fastlegen er trolig en god inngang, men familievernkontoret er kanskje bedre ved samlivsproblemer.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G4: men-split hedged alternation between two candidates"
+    },
+    {
+      "id": "A3-RA-09",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Helsesykepleieren eller helsestasjonen kan kontaktes for denne typen råd.",
+      "expected_label": "ABSTAIN",
+      "design_note": "multi-candidate alternation already guarded by clause-locality; must stay ABSTAIN"
+    },
+    {
+      "id": "A3-RA-10",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Nei, der tok jeg feil. Jeg trekker tilbake det jeg sa.",
+      "expected_label": "ABSTAIN",
+      "design_note": "retraction with no grounded candidate proposition"
+    },
+    {
+      "id": "A3-RA-11",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Hun sier: «Fastlegen bør kontaktes.» Jeg anbefaler fastlegen.",
+      "expected_label": "ABSTAIN",
+      "design_note": "quote adoption conflict keeps abstain path"
+    },
+    {
+      "id": "A3-RA-12",
+      "dimension": "route_commitment",
+      "group": "required_abstain",
+      "text": "Helsesøster skriver: «PPT bør kontaktes.» Det ser ut til å være en god løsning.",
+      "expected_label": "ABSTAIN",
+      "design_note": "G1: quote plus out-of-quote hedge signal"
+    },
+    {
+      "id": "A3-CX-01",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Helsestasjonen (som de fleste familier bruker) er riktig inngang for vaksinasjonsspørsmål.",
+      "expected_label": "ASSERTED",
+      "design_note": "G2 must not fire: candidate and operator outside parentheses"
+    },
+    {
+      "id": "A3-CX-02",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Kommunen skriver at «familievernkontoret kan kontaktes». Tilbudet gjelder voksne.",
+      "expected_label": "QUOTED_ONLY",
+      "design_note": "G1 must not fire: no out-of-quote commitment signal"
+    },
+    {
+      "id": "A3-CX-03",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Familievernkontoret er riktig sted ved samlivsproblemer. Samtaler er gratis.",
+      "expected_label": "ASSERTED",
+      "design_note": "G3 must not fire: second clause carries no commitment operator"
+    },
+    {
+      "id": "A3-CX-04",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Rask psykisk helsehjelp er kanskje aktuelt ved lette angstplager.",
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "G4 must not fire: single hedged candidate"
+    },
+    {
+      "id": "A3-CX-05",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Hvis fastlegen ikke har kapasitet, kan helsestasjonen være et egnet alternativ.",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "design_note": "G5: negation scoped inside conditional antecedent must not yield NEGATED"
+    },
+    {
+      "id": "A3-CX-06",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Helsesykepleieren er ikke riktig inngang for alvorlige plager.",
+      "expected_label": "NEGATED",
+      "design_note": "G5 must not over-fire: clean negation without conditional frame"
+    },
+    {
+      "id": "A3-CX-07",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Kommunepsykologen kan kontaktes direkte i noen kommuner (opplyst på nettstedet).",
+      "expected_label": "ASSERTED",
+      "design_note": "G2 must not fire: operator outside parenthetical attribution"
+    },
+    {
+      "id": "A3-CX-08",
+      "dimension": "route_commitment",
+      "group": "counterexample",
+      "text": "Fastlegen er trolig riktig inngang her.",
+      "expected_label": "HEDGED_ASSERTION",
+      "design_note": "G3 must not fire: hedge and assertion in one clause are one polarity frame"
+    }
+  ],
+  "authoring_correction_note": "Fixture A3-RA-07 originally authored as parallel period-separated hedges with expected ABSTAIN; this contradicted the frozen burned-gold precedent (OFF-CROSS-10/OFF-CROSS-18: parallel hedges without disjunction = HEDGED_ASSERTION). Corrected to disjunctive eller-structure before the RED artifact was produced; correction is a fixture-authoring defect, not engine tuning. No other fixture changed."
+}

@@ -1,0 +1,105 @@
+{
+  "artifact": "capability_readiness_v2_4_fresh_holdout_H1",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_4-FRESH-HOLDOUT",
+  "executed_at": "2026-09-09T20:05:00+02:00",
+  "data_class": "BURNED_MUNICIPALITIES_ONLY",
+  "method": "Frozen V2.4 candidate (manifest 6f7e7ab3...393a2d) executed once per burned municipality via python3 -m runtime.discovery_v2.cli_v24 with canonical inputs only (municipality, number, age=19, need=mental_health_low_threshold). No fresh municipality touched.",
+  "municipalities": [
+    "Raelingen (3224, platform root)",
+    "Drammen (3301, nav-heavy)",
+    "Bamble (4012)",
+    "Bjerkreim (1114)",
+    "Alstahaug (1820)"
+  ],
+  "gates": {
+    "A_root_resolution": {
+      "gate": "5/5",
+      "result": "5/5 COMPLETE",
+      "evidence": "All five returned execution_status=COMPLETE; Raelingen resolved platform root ralingen.bedreinnsats.no lineage after kommune.no variants; zero root failures."
+    },
+    "B_direct_fetch": {
+      "gate": "5/5 usable public fetches",
+      "result": "5/5",
+      "evidence": "pages_fetched>0 and fetch_errors=[] for all five."
+    },
+    "C_navigation_level2": {
+      "gate": "PASS",
+      "result": "PASS",
+      "evidence": "Drammen: 16 provenance-graph edges, all level=2, discovery_method=NAVIGATION_LINK; evidence pages at URL path depth 3-6 (e.g. /tjenester/helse-velferd/psykisk-helse-rus-og-avhengighet/...)."
+    },
+    "D_sitemap": {
+      "gate": "PASS",
+      "result": "PASS",
+      "evidence": "Raelingen burned benchmark attempt_log shows 4 sitemap fetch steps (OK) gating the platform-root fallback; Raelingen readiness probe re-confirmed root resolution path."
+    },
+    "E_render": {
+      "gate": "PASS if capability available in candidate",
+      "result": "PASS (capability available, bounded probe OK)",
+      "evidence": "render.py present in frozen candidate (SHA 953a23db...b1b36c); _chrome_binary() finds Chrome; direct probe render_url('https://www.raelingen.kommune.no/') completed within bound. No burned case required render (render_fallbacks=0), matching frozen V2.4 behavior; capability exists and functions."
+    },
+    "F_provenance": {
+      "gate": "PASS",
+      "result": "PASS",
+      "evidence": "Every evidence span carries source_url, source_title, content_hash, supporting_span, retrieved_at; provenance_graph nodes carry discovery_method/level/query_family/from/to (Drammen: 16 nodes)."
+    },
+    "external_search_calls": {
+      "gate": 0,
+      "result": 0,
+      "evidence": "No external provider on V2.4 path; no external_search keys or calls in any readiness output."
+    },
+    "runtime_internal_errors": {
+      "gate": 0,
+      "result": 0,
+      "evidence": "fetch_errors=[] and exit 0 for all five."
+    }
+  },
+  "per_municipality": [
+    {
+      "municipality": "Raelingen",
+      "number": "3224",
+      "execution_status": "COMPLETE",
+      "route_state": "ROUTE_EXISTENCE_ONLY",
+      "pages": 2,
+      "provenance_nodes": 2,
+      "root": "https://ralingen.bedreinnsats.no/tiltak-og-tjenester-for-barn-og-ungdom-i-kommunen/"
+    },
+    {
+      "municipality": "Drammen",
+      "number": "3301",
+      "execution_status": "COMPLETE",
+      "route_state": "ROUTE_FULLY_VERIFIED",
+      "pages": 10,
+      "provenance_nodes": 16,
+      "root": "https://www.drammen.kommune.no/tjenester/helse-velferd/seniorsiden/"
+    },
+    {
+      "municipality": "Bamble",
+      "number": "4012",
+      "execution_status": "COMPLETE",
+      "route_state": "ROUTE_FULLY_VERIFIED",
+      "pages": 2,
+      "provenance_nodes": 2,
+      "root": "https://www.bamble.kommune.no/helse-og-mestring/"
+    },
+    {
+      "municipality": "Bjerkreim",
+      "number": "1114",
+      "execution_status": "COMPLETE",
+      "route_state": "ROUTE_EXISTENCE_ONLY",
+      "pages": 2,
+      "provenance_nodes": 2,
+      "root": "https://www.bjerkreim.kommune.no/tjenester/barnevern-barnehage-helsestasjon-og-skule/"
+    },
+    {
+      "municipality": "Alstahaug",
+      "number": "1820",
+      "execution_status": "COMPLETE",
+      "route_state": "ROUTE_UNVERIFIED",
+      "pages": 1,
+      "provenance_nodes": 1,
+      "root": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/bolig/omsorgsbolig/prestegarden-borettslag"
+    }
+  ],
+  "note": "Route states vary across burned municipalities as expected; readiness gates concern capability function (root/fetch/nav/sitemap/render/provenance), not route quality. Raw probe outputs retained at /tmp/v24_readiness_<number>.json (machine-generated, not task artifacts).",
+  "result": "PASS"
+}

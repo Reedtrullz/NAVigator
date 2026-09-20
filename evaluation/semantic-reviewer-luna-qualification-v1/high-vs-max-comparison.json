@@ -1,0 +1,91 @@
+{
+  "note": "MAX stopped after screening per section 14 cheapest-sufficient policy; core/stability fields are protocol-correct absences, not failures",
+  "per_lane": {
+    "forbidden_claim": {
+      "LUNA-HIGH": {
+        "schema_validity": 1.0,
+        "evidence_validity_note": "screening invalid_model_reviews: 0/53",
+        "reference_agreement_among_ok": 0.8868,
+        "core_dual_pass": {
+          "lane": "forbidden_claim",
+          "dual_pass_rows": 147,
+          "status_counts": {
+            "invalid_model_review": 8,
+            "transport_errors": 0,
+            "invalid_json": 0
+          },
+          "dual_consensus_field_errors": 9,
+          "consensus_rows": 132,
+          "consensus_vs_ref_errors": 10,
+          "pass_level_valid_passes": 286,
+          "pass_level_vs_ref_errors": 30,
+          "evidence_invalid_rows": 3,
+          "safety_subset_rows": 0,
+          "safety_subset_errors": 0,
+          "under_escalation_family": 0,
+          "catastrophic_false_trigger_consensus": 0,
+          "gate_checks": {
+            "consensus_vs_ref_errors_max": false,
+            "dual_consensus_field_errors_max": false,
+            "evidence_invalid_rows_max": false,
+            "pass_level_vs_ref_errors_max": false
+          },
+          "core_pass": false
+        },
+        "stability": "NOT_RUN"
+      },
+      "LUNA-MAX": {
+        "schema_validity": 1.0,
+        "evidence_validity_note": "screening invalid_model_reviews: 2/53",
+        "reference_agreement_among_ok": 0.8824,
+        "core_dual_pass": "NOT_RUN_PROTOCOL_STOPPED_AFTER_SCREENING",
+        "stability": "NOT_RUN"
+      }
+    },
+    "critical_condition": {
+      "LUNA-HIGH": {
+        "schema_validity": 1.0,
+        "evidence_validity_note": "screening invalid_model_reviews: 19/37",
+        "reference_agreement_among_ok": 0.7222,
+        "core_dual_pass": {
+          "lane": "critical_condition",
+          "dual_pass_rows": 80,
+          "status_counts": {
+            "invalid_model_review": 69,
+            "transport_errors": 0,
+            "invalid_json": 0
+          },
+          "dual_consensus_field_errors": 3,
+          "consensus_rows": 31,
+          "consensus_vs_ref_errors": 9,
+          "pass_level_valid_passes": 91,
+          "pass_level_vs_ref_errors": 29,
+          "evidence_invalid_rows": 46,
+          "safety_subset_rows": 25,
+          "safety_subset_errors": 7,
+          "under_escalation_family": 2,
+          "catastrophic_false_trigger_consensus": 0,
+          "gate_checks": {
+            "consensus_vs_ref_errors_max": false,
+            "pass_level_vs_ref_errors_max": false,
+            "safety_subset_agreement_min": false,
+            "safety_subset_errors_max": false,
+            "under_escalation_family_max": true,
+            "catastrophic_false_trigger_consensus": true,
+            "dual_consensus_field_errors_max": false,
+            "evidence_invalid_rows_max": false
+          },
+          "core_pass": false
+        },
+        "stability": "NOT_RUN"
+      },
+      "LUNA-MAX": {
+        "schema_validity": 1.0,
+        "evidence_validity_note": "screening invalid_model_reviews: 21/37",
+        "reference_agreement_among_ok": 0.5,
+        "core_dual_pass": "NOT_RUN_PROTOCOL_STOPPED_AFTER_SCREENING",
+        "stability": "NOT_RUN"
+      }
+    }
+  }
+}

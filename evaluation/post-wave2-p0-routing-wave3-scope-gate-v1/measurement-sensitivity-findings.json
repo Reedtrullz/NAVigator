@@ -1,0 +1,48 @@
+{
+ "artifact": "measurement-sensitivity-findings",
+ "task_id": "NAV-EXPLORE-POST-WAVE2-P0-ROUTING-WAVE3-SCOPE-GATE-V1",
+ "note": "Measurement V3 was NOT modified in this task. These findings require separate owner authorization and separate versioning.",
+ "findings": [
+  {
+   "id": "M-SENS-1",
+   "dimension": "critical_condition",
+   "finding": "R3 rule fires unconditionally on no_route_asserted when gold.acceptable_routes exists, before case-specific critical_error_if evaluation; free-text/unmapped conditions thereby convert UNRESOLVED/PASS/NOT_TRIGGERED into CRITICAL_ERROR when structured routes are absent, even when prose asserts the route and safety fields are unchanged",
+   "evidence": [
+    "frozen scorer.py R3 branch (evaluation/dev-corpus-scorer-v1/scorer.py)",
+    "first-party counterfactual replay reproduces all 8 P0 regressions"
+   ],
+   "affected": [
+    "8 P0 critical_condition regressions (Wave1->Wave2)"
+   ],
+   "classification": "MEASUREMENT_SENSITIVITY",
+   "proven": true
+  },
+  {
+   "id": "M-SENS-2",
+   "dimension": "required_uncertainty",
+   "finding": "CERTAINTY_MARKERS lexical list matches substrings regardless of epistemic use (\"garanti\" in a deposit-guarantee scheme description fired VIOLATED)",
+   "evidence": [
+    "ROUT-091 SATISFIED->VIOLATED with legitimate Wave-2 content addition"
+   ],
+   "affected": [
+    "ROUT-091"
+   ],
+   "classification": "MEASUREMENT_SENSITIVITY",
+   "proven": true
+  },
+  {
+   "id": "M-SENS-3",
+   "dimension": "route_correctness",
+   "finding": "PARAPHRASE_NOT_DETERMINISTICALLY_MATCHED: paraphrased acceptable routes cannot be matched deterministically (SEMANTIC_JUDGE_STUB); route PASS is structurally unreachable for paraphrased targets even when prose states them",
+   "evidence": [
+    "frozen evidence codes in measurement rows",
+    "Wave-2 RC-07 analysis: route_equivalent stub returns False"
+   ],
+   "affected": [
+    "route lane parity mechanism"
+   ],
+   "classification": "MEASUREMENT_SENSITIVITY",
+   "proven": true
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "set": "holdout",
+ "judge": "judge-a-gpt-5.5",
+ "n": 40,
+ "accuracy": 0.85,
+ "confusion": {
+  "SUPPORTED": {},
+  "CONTRADICTED": {
+   "CONTRADICTED": 22,
+   "PARTIALLY_SUPPORTED": 5
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 12,
+   "CONTRADICTED": 1
+  },
+  "INSUFFICIENT_EVIDENCE": {}
+ },
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 0
+  },
+  "CONTRADICTED": {
+   "precision": 0.957,
+   "recall": 0.815,
+   "f1": 0.88,
+   "support": 27
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 0.706,
+   "recall": 0.923,
+   "f1": 0.8,
+   "support": 13
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 0
+  }
+ },
+ "group_stats": {
+  "numeric": {
+   "n": 16,
+   "correct": 15,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "legal": {
+   "n": 15,
+   "correct": 12,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "temporal": {
+   "n": 3,
+   "correct": 2,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "local": {
+   "n": 3,
+   "correct": 2,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "safety": {
+   "n": 3,
+   "correct": 3,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "confidence_buckets": {
+  "0.85-0.94": {
+   "n": 7,
+   "accuracy": 0.571
+  },
+  "0.95-1.0": {
+   "n": 32,
+   "accuracy": 0.906
+  },
+  "0.70-0.84": {
+   "n": 1,
+   "accuracy": 1.0
+  }
+ },
+ "consistency": {
+  "claims_with_multiple_runs": 0,
+  "identical_all_runs": 0,
+  "claims": {}
+ },
+ "misses": [
+  {
+   "id": "HOL008",
+   "expected": "CONTRADICTED",
+   "got": "PARTIALLY_SUPPORTED",
+   "confidence": 0.93,
+   "group": "legal",
+   "claim": "Etter lovendringen får både nye søkere og dagens mottakere hovedperiode til barnet fyller 14 måneder, og alle må oppfylle aktivitetsplikten på minst 50 prosent yrkesrettet aktivitet når barnet er 1-8 år.",
+   "judge_reason": "Kilden støtter 14-månedersperiode og aktivitetsplikt etter tidligere regelverk, men motsier at dagens mottakere omfattes av de nye reglene og at aktivitetsplikten gjelder alle."
+  },
+  {
+   "id": "HOL026",
+   "expected": "CONTRADICTED",
+   "got": "PARTIALLY_SUPPORTED",
+   "confidence": 0.95,
+   "group": "local",
+   "claim": "I motsetning til det mange tror, krever Helsestasjon for ungdom henvisning fra fastlegen, men tilbyr der utredning og diagnoser for ungdom opptil 20 år.",
+   "judge_reason": "Kilden støtter at HFU er for ungdom opptil 20 år, men motsier krav om henvisning og diagnoser ved å si drop-in og ikke diagnoser."
+  },
+  {
+   "id": "HOL029",
+   "expected": "CONTRADICTED",
+   "got": "PARTIALLY_SUPPORTED",
+   "confidence": 0.86,
+   "group": "temporal",
+   "claim": "Egenandelsfritaket for psykisk helsehjelp gjelder pasienter under 16 år fra 1. august 2026.",
+   "judge_reason": "Kilden støtter egenandelsfritak fra 01.08.2026 for personer under 18 år, som omfatter under 16 år, men sier ikke at det gjelder psykisk helsehjelp."
+  },
+  {
+   "id": "HOL030",
+   "expected": "CONTRADICTED",
+   "got": "PARTIALLY_SUPPORTED",
+   "confidence": 0.9,
+   "group": "legal",
+   "claim": "Som samvarsforelder har han likevel samtykkekompetanse i helsesaker fordi han har opplysningsrett fra helseinstansene.",
+   "judge_reason": "Kilden støtter at samværsforelder har opplysningsrett fra helse, men motsier at dette gir samtykkekompetanse; samtykkekompetanse følger foreldreansvaret."
+  },
+  {
+   "id": "HOL032",
+   "expected": "CONTRADICTED",
+   "got": "PARTIALLY_SUPPORTED",
+   "confidence": 0.95,
+   "group": "legal",
+   "claim": "Mottatt barnebidrag holdes utenfor inntektsgrunnlaget ved økonomisk sosialhjelp, på samme måte som barnetrygd.",
+   "judge_reason": "Kilden støtter at barnetrygd holdes utenfor, men sier motsatt om mottatt barnebidrag."
+  },
+  {
+   "id": "HOL040",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "numeric",
+   "claim": "Barnebidraget skal automatisk aldersjusteres året barnet fyller 5, 10 eller 15 år når bidraget kreves inn.",
+   "judge_reason": "Kilden sier aldersjustering skjer når barnet fyller 6, 11 eller 15 år, ikke 5, 10 eller 15 år."
+  }
+ ],
+ "binary": {
+  "unsupported_total": 40,
+  "unsupported_to_supported_fp": 0,
+  "fp_rate": 0.0
+ }
+}

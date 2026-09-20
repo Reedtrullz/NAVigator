@@ -1,0 +1,24 @@
+{
+  "lattice": "COMPARATOR_LATTICE_V1",
+  "frozen": true,
+  "interval_semantics": {
+    "=": "[v, v]",
+    ">": "(v, inf)",
+    ">=": "[v, inf)",
+    "<": "(-inf, v)",
+    "<=": "(-inf, v]",
+    "BETWEEN": "[lo, hi] inclusive",
+    "APPROXIMATE": "[0.9v, 1.1v] frozen approximation",
+    "UNKNOWN": "never entails or contradicts"
+  },
+  "entailment_rule": "source_interval subset claim_interval, boundary type respected",
+  "conflict_rule": "intervals disjoint with both comparators known and same quantity identity",
+  "examples": [
+    {"source": ">= 20", "claim": ">= 18", "relation": "ENTAILS"},
+    {"source": ">= 18", "claim": ">= 20", "relation": "NUMERIC_RELEVANT_BUT_UNRESOLVED"},
+    {"source": "> 18", "claim": ">= 18", "relation": "NUMERIC_RELEVANT_BUT_UNRESOLVED"},
+    {"source": ">= 18", "claim": "minst 18 (>= 18)", "relation": "ENTAILS"},
+    {"source": ">= 20", "claim": "<= 18", "relation": "CONTRADICTS"},
+    {"source": "= 6 months", "claim": "= 1 year", "relation": "NUMERIC_RELEVANT_BUT_UNRESOLVED"}
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "evidence": [
+    {
+      "confidence_state": "EXTRACTED_SPAN",
+      "content_hash": "f2d8ad3feea1004babd0489aa44ea4573872f667555c73d21144af7da3e27e1f",
+      "extracted_value": "ale tenester (NAV og bustad) \n Klage- og varselordningar for helse- og velferd \nKontakt oss \n Innbyggarservice\n Telefon: 51 77 60 00 \nR&aring;dhuset, Arne Garborgs veg 30, Bryne\n Opningstider: \nM&arin",
+      "fetch_method": "http_get",
+      "field": "contact",
+      "retrieved_at": "2026-09-09T18:49:33Z",
+      "source_title": "Helse og velferd - Hovedportal",
+      "source_url": "https://www.time.kommune.no/tenester/helse-og-velferd/",
+      "supporting_span": "ale tenester (NAV og bustad) \n Klage- og varselordningar for helse- og velferd \nKontakt oss \n Innbyggarservice\n Telefon: 51 77 60 00 \nR&aring;dhuset, Arne Garborgs veg 30, Bryne\n Opningstider: \nM&aring;ndag-fredag 09."
+    }
+  ],
+  "executed_at": "2026-09-09T18:49:33Z",
+  "execution_status": "COMPLETE",
+  "fallback_log": [],
+  "fetch_errors": [],
+  "input": {
+    "age": 19,
+    "municipality": "Time",
+    "municipality_number": "1121",
+    "need": "mental_health_low_threshold",
+    "urgency": "non_acute"
+  },
+  "mode": "live",
+  "pages_fetched": 2,
+  "protocol_id": "LOCAL-SERVICE-DISCOVERY-PROTOCOL-V1",
+  "protocol_sha256": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+  "provenance_graph": [
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Time psykisk helse voksne",
+      "to": "https://www.time.kommune.no/tenester/helse-og-velferd/"
+    },
+    {
+      "discovery_method": "NAVIGATION_LINK",
+      "from": "site_direct",
+      "level": 2,
+      "query_family": "Time psykisk helse voksne",
+      "to": "https://www.time.kommune.no/aktuelt/sok-om-tilskot-til-haustferie-aktivitetar-for-barn-og-unge.27814.aspx"
+    }
+  ],
+  "provider_chain": [
+    {
+      "attempted_queries": 1,
+      "failure_class": null,
+      "healthy": true,
+      "provider": "site_direct",
+      "successful_queries": 1
+    }
+  ],
+  "provider_failures": [],
+  "queries": [
+    {
+      "attempts": [
+        {
+          "status": "OK",
+          "step": "root",
+          "url": "https://www.time.kommune.no/"
+        }
+      ],
+      "discovery_method": "NAVIGATION_LINK",
+      "fallback_log": [],
+      "provider": "site_direct",
+      "query": "Time psykisk helse voksne",
+      "result_count": 2,
+      "status": "SUCCESS"
+    }
+  ],
+  "query_families_used": [
+    "Time psykisk helse voksne",
+    "Time psykisk helse søknad",
+    "Time psykisk helse kontakt",
+    "Time rask psykisk helsehjelp",
+    "Time kommunepsykolog",
+    "Time helsestasjon ungdom",
+    "Time psykisk helse rus",
+    "Time interkommunal psykisk helse",
+    "Time mestringsteam",
+    "Time psykisk helse voksne",
+    "Time psykisk helse søknad",
+    "Time psykisk helse kontakt",
+    "Time rask psykisk helsehjelp",
+    "Time kommunepsykolog",
+    "Time helsestasjon ungdom",
+    "Time psykisk helse rus",
+    "Time interkommunal psykisk helse",
+    "Time mestringsteam"
+  ],
+  "render_fallbacks": 0,
+  "route_state": "ROUTE_EXISTENCE_ONLY",
+  "run_id": "time-v2",
+  "runtime": "discovery_v2",
+  "selected_candidates": [
+    "https://www.time.kommune.no/tenester/helse-og-velferd/",
+    "https://www.time.kommune.no/aktuelt/sok-om-tilskot-til-haustferie-aktivitetar-for-barn-og-unge.27814.aspx"
+  ],
+  "services": [
+    {
+      "access_methods": [
+        "DIRECT_EMAIL"
+      ],
+      "age_text": null,
+      "evidence_spans": [
+        {
+          "label": "contact",
+          "span": "ale tenester (NAV og bustad) \n Klage- og varselordningar for helse- og velferd \nKontakt oss \n Innbyggarservice\n Telefon: 51 77 60 00 \nR&aring;dhuset, Arne Garborgs veg 30, Bryne\n Opningstider: \nM&aring;ndag-fredag 09."
+        }
+      ],
+      "route_state": "ROUTE_EXISTENCE_ONLY",
+      "self_referral": "CONDITIONAL",
+      "target_group": null,
+      "title": "Helse og velferd - Hovedportal",
+      "url": "https://www.time.kommune.no/tenester/helse-og-velferd/"
+    }
+  ],
+  "terminal_state": "PUBLIC_DATA_EXHAUSTED",
+  "uncertainty_output": "Jeg finner et relevant tilbud, men den offentlige informasjonen gjør det ikke klart hvordan du kommer inn i tjenesten."
+}

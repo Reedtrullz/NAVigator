@@ -1,0 +1,31 @@
+{
+  "artifact": "field-authority-map",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "dimension": "forbidden_claim",
+  "fields": [
+    {
+      "name": "criterion_semantic_match",
+      "authority": "AUTHORITATIVE_SEMANTIC",
+      "role": "consensus primitive and derivation input",
+      "enum": ["MATCH", "NO_MATCH", "UNRESOLVED"]
+    },
+    {
+      "name": "speaker_commitment",
+      "authority": "AUTHORITATIVE_SEMANTIC",
+      "role": "consensus primitive and derivation input",
+      "enum": ["ASSERTED", "HEDGED_ASSERTION", "QUOTED_ONLY", "HYPOTHETICAL_ONLY", "NEGATED", "SELF_RETRACTED", "NONCOMMITTAL", "UNRESOLVED"]
+    },
+    {
+      "name": "evidence_spans",
+      "authority": "REQUIRED_EVIDENCE",
+      "role": "must independently validate for both passes (verbatim in SUT output, present iff MATCH with non-UNRESOLVED commitment); never contributes to auto-route polarity"
+    },
+    {
+      "name": "rationale",
+      "authority": "EXPLANATORY_NON_AUTHORITATIVE",
+      "role": "stochastic explanatory prose; never breaks consensus; never drives auto-route"
+    }
+  ],
+  "consensus_rule": "Two valid independent reviews achieve semantic consensus iff all AUTHORITATIVE_SEMANTIC fields are identical and required evidence independently validates for both passes. Rationale, explanatory prose, and transport metadata never break consensus.",
+  "precedent": "Frozen build_primary_consensus.py / build_residual_consensus.py auth_fields() equality semantics from the measurement-v3-remeasure-repair-wave-1 lineage."
+}

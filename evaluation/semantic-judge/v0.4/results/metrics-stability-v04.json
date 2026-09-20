@@ -1,0 +1,945 @@
+{
+ "results_file": "results/v04-results-stability-C-judge-c-gpt-5.6-luna.json",
+ "n_rows": 150,
+ "n_graded": 150,
+ "n_run_errors": 0,
+ "run_error_ids": [],
+ "stability": {
+  "n_ids": 30,
+  "runs_per_id": [
+   5
+  ],
+  "verdict_modal_consistency": 0.8333,
+  "verdict_inconsistent_ids": [
+   {
+    "id": "CAL035",
+    "verdicts": [
+     "CONTRADICTED",
+     "INSUFFICIENT_EVIDENCE",
+     "CONTRADICTED",
+     "CONTRADICTED",
+     "INSUFFICIENT_EVIDENCE"
+    ],
+    "flags": []
+   },
+   {
+    "id": "CAL041",
+    "verdicts": [
+     "CONTRADICTED",
+     "INSUFFICIENT_EVIDENCE",
+     "INSUFFICIENT_EVIDENCE",
+     "CONTRADICTED",
+     "CONTRADICTED"
+    ],
+    "flags": [
+     "safety"
+    ]
+   },
+   {
+    "id": "CAL055",
+    "verdicts": [
+     "CONTRADICTED",
+     "PARTIALLY_SUPPORTED",
+     "CONTRADICTED",
+     "CONTRADICTED",
+     "CONTRADICTED"
+    ],
+    "flags": [
+     "local"
+    ]
+   },
+   {
+    "id": "CAL061",
+    "verdicts": [
+     "PARTIALLY_SUPPORTED",
+     "PARTIALLY_SUPPORTED",
+     "INSUFFICIENT_EVIDENCE",
+     "PARTIALLY_SUPPORTED",
+     "PARTIALLY_SUPPORTED"
+    ],
+    "flags": []
+   },
+   {
+    "id": "CAL088",
+    "verdicts": [
+     "SUPPORTED",
+     "SUPPORTED",
+     "INSUFFICIENT_EVIDENCE",
+     "SUPPORTED",
+     "INSUFFICIENT_EVIDENCE"
+    ],
+    "flags": []
+   }
+  ],
+  "field_consistency": {
+   "relation": {
+    "rate": 0.7667,
+    "mean_modal_agreement": 0.9267,
+    "inconsistent_ids": [
+     {
+      "id": "CAL035",
+      "values": [
+       "contradicts",
+       "insufficient",
+       "contradicts",
+       "contradicts",
+       "insufficient"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "contradicts",
+       "insufficient",
+       "insufficient",
+       "contradicts",
+       "contradicts"
+      ]
+     },
+     {
+      "id": "CAL048",
+      "values": [
+       "contradicts;supports",
+       "insufficient;supports",
+       "contradicts;supports",
+       "contradicts;supports",
+       "insufficient;supports"
+      ]
+     },
+     {
+      "id": "CAL051",
+      "values": [
+       "insufficient;supports",
+       "insufficient;supports",
+       "insufficient;supports",
+       "contradicts;supports",
+       "insufficient;supports"
+      ]
+     },
+     {
+      "id": "CAL055",
+      "values": [
+       "contradicts;insufficient",
+       "contradicts;supports",
+       "contradicts;insufficient",
+       "contradicts;insufficient",
+       "contradicts;insufficient"
+      ]
+     },
+     {
+      "id": "CAL061",
+      "values": [
+       "insufficient;supports",
+       "insufficient;supports",
+       "insufficient",
+       "insufficient;supports",
+       "insufficient;supports"
+      ]
+     },
+     {
+      "id": "CAL088",
+      "values": [
+       "supports",
+       "supports",
+       "insufficient",
+       "supports",
+       "insufficient"
+      ]
+     }
+    ],
+    "n_inconsistent": 7
+   },
+   "relation_type": {
+    "rate": 0.5333,
+    "mean_modal_agreement": 0.8267,
+    "inconsistent_ids": [
+     {
+      "id": "CAL003",
+      "values": [
+       "n/a",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT"
+      ]
+     },
+     {
+      "id": "CAL013",
+      "values": [
+       "OTHER_INSUFFICIENT",
+       "DIRECT_SUPPORT;OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT"
+      ]
+     },
+     {
+      "id": "CAL014",
+      "values": [
+       "OTHER_INSUFFICIENT",
+       "n/a",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT"
+      ]
+     },
+     {
+      "id": "CAL035",
+      "values": [
+       "EXPLICIT_NEGATION",
+       "SCOPE_MISMATCH",
+       "EXPLICIT_NEGATION",
+       "EXPLICIT_NEGATION",
+       "SCOPE_MISMATCH"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "MUTUALLY_EXCLUSIVE_VALUE",
+       "SCOPE_MISMATCH",
+       "SCOPE_MISMATCH",
+       "EXPLICIT_NEGATION",
+       "MUTUALLY_EXCLUSIVE_VALUE"
+      ]
+     },
+     {
+      "id": "CAL044",
+      "values": [
+       "EXPLICIT_DISCRETION_CONFLICT;OTHER_INSUFFICIENT",
+       "EXPLICIT_DISCRETION_CONFLICT;OTHER_INSUFFICIENT",
+       "EXPLICIT_DISCRETION_CONFLICT;OTHER_INSUFFICIENT",
+       "DIRECT_SUPPORT;EXPLICIT_DISCRETION_CONFLICT",
+       "EXPLICIT_DISCRETION_CONFLICT;OTHER_INSUFFICIENT"
+      ]
+     },
+     {
+      "id": "CAL048",
+      "values": [
+       "DIRECT_SUPPORT;EXPLICIT_NEGATION",
+       "OTHER_INSUFFICIENT;SCOPE_MISMATCH",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT;SCOPE_MISMATCH"
+      ]
+     },
+     {
+      "id": "CAL051",
+      "values": [
+       "OTHER_INSUFFICIENT;TEMPORAL_SCOPE_UNRESOLVED",
+       "GENERAL_TO_SPECIFIC;OTHER_INSUFFICIENT",
+       "GENERAL_TO_SPECIFIC;n/a",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT;SCOPE_MISMATCH"
+      ]
+     },
+     {
+      "id": "CAL055",
+      "values": [
+       "EXPLICIT_NEGATION;GENERAL_TO_SPECIFIC",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "EXPLICIT_NEGATION;SCOPE_MISMATCH",
+       "EXPLICIT_NEGATION;MEMBER_ELIGIBILITY_UNKNOWN",
+       "EXPLICIT_NEGATION;GENERAL_TO_SPECIFIC"
+      ]
+     },
+     {
+      "id": "CAL060",
+      "values": [
+       "EXACT_MATCH;EXPLICIT_NEGATION",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT",
+       "EXPLICIT_NEGATION;OTHER_INSUFFICIENT"
+      ]
+     },
+     {
+      "id": "CAL061",
+      "values": [
+       "OTHER_INSUFFICIENT;SOURCE_SILENCE",
+       "OTHER_INSUFFICIENT;SOURCE_SILENCE",
+       "SOURCE_SILENCE",
+       "ACTOR_NOT_MENTIONED;OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT;SOURCE_SILENCE"
+      ]
+     },
+     {
+      "id": "CAL067",
+      "values": [
+       "GENERAL_TO_SPECIFIC",
+       "ACTOR_NOT_MENTIONED",
+       "ACTOR_NOT_MENTIONED",
+       "ACTOR_NOT_MENTIONED",
+       "ACTOR_NOT_MENTIONED"
+      ]
+     },
+     {
+      "id": "CAL075",
+      "values": [
+       "SOURCE_SILENCE",
+       "GENERAL_TO_SPECIFIC",
+       "SOURCE_SILENCE",
+       "SOURCE_SILENCE",
+       "SOURCE_SILENCE"
+      ]
+     },
+     {
+      "id": "CAL088",
+      "values": [
+       "OTHER_INSUFFICIENT",
+       "OTHER_INSUFFICIENT",
+       "ACTOR_NOT_MENTIONED",
+       "OTHER_INSUFFICIENT",
+       "ACTOR_NOT_MENTIONED"
+      ]
+     }
+    ],
+    "n_inconsistent": 14
+   },
+   "subject_match": {
+    "rate": 0.8333,
+    "mean_modal_agreement": 0.9667,
+    "inconsistent_ids": [
+     {
+      "id": "CAL041",
+      "values": [
+       "True",
+       "True",
+       "False",
+       "True",
+       "True"
+      ]
+     },
+     {
+      "id": "CAL061",
+      "values": [
+       "False;True",
+       "True",
+       "True",
+       "True",
+       "True"
+      ]
+     },
+     {
+      "id": "CAL067",
+      "values": [
+       "False",
+       "True",
+       "True",
+       "True",
+       "True"
+      ]
+     },
+     {
+      "id": "CAL078",
+      "values": [
+       "True",
+       "True",
+       "True",
+       "True",
+       "False"
+      ]
+     },
+     {
+      "id": "CAL079",
+      "values": [
+       "True",
+       "True",
+       "True",
+       "False",
+       "True"
+      ]
+     }
+    ],
+    "n_inconsistent": 5
+   },
+   "scope_match": {
+    "rate": 0.8333,
+    "mean_modal_agreement": 0.94,
+    "inconsistent_ids": [
+     {
+      "id": "CAL035",
+      "values": [
+       "True",
+       "False",
+       "True",
+       "True",
+       "False"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "True",
+       "False",
+       "False",
+       "True",
+       "True"
+      ]
+     },
+     {
+      "id": "CAL048",
+      "values": [
+       "True",
+       "False;True",
+       "True",
+       "True",
+       "False;True"
+      ]
+     },
+     {
+      "id": "CAL051",
+      "values": [
+       "True",
+       "True",
+       "False;True",
+       "True",
+       "False;True"
+      ]
+     },
+     {
+      "id": "CAL055",
+      "values": [
+       "True",
+       "True",
+       "False;True",
+       "True",
+       "True"
+      ]
+     }
+    ],
+    "n_inconsistent": 5
+   },
+   "time_match": {
+    "rate": 0.9,
+    "mean_modal_agreement": 0.96,
+    "inconsistent_ids": [
+     {
+      "id": "CAL033",
+      "values": [
+       "True",
+       "False",
+       "True",
+       "False",
+       "False"
+      ]
+     },
+     {
+      "id": "CAL035",
+      "values": [
+       "True",
+       "False",
+       "True",
+       "True",
+       "False"
+      ]
+     },
+     {
+      "id": "CAL051",
+      "values": [
+       "False;True",
+       "False;True",
+       "True",
+       "True",
+       "True"
+      ]
+     }
+    ],
+    "n_inconsistent": 3
+   },
+   "actor_match": {
+    "rate": 0.8667,
+    "mean_modal_agreement": 0.9533,
+    "inconsistent_ids": [
+     {
+      "id": "CAL060",
+      "values": [
+       "False;True",
+       "True",
+       "False;True",
+       "True",
+       "True"
+      ]
+     },
+     {
+      "id": "CAL061",
+      "values": [
+       "False;True",
+       "True",
+       "True",
+       "False;True",
+       "False;True"
+      ]
+     },
+     {
+      "id": "CAL078",
+      "values": [
+       "True",
+       "True",
+       "True",
+       "True",
+       "False"
+      ]
+     },
+     {
+      "id": "CAL088",
+      "values": [
+       "True",
+       "True",
+       "False",
+       "True",
+       "False"
+      ]
+     }
+    ],
+    "n_inconsistent": 4
+   },
+   "modality_relation": {
+    "rate": 0.4333,
+    "mean_modal_agreement": 0.7933,
+    "inconsistent_ids": [
+     {
+      "id": "CAL003",
+      "values": [
+       "same",
+       "same",
+       "n/a",
+       "same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL007",
+      "values": [
+       "n/a;same",
+       "n/a;same",
+       "n/a;same",
+       "n/a;same",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL009",
+      "values": [
+       "n/a",
+       "n/a",
+       "n/a",
+       "n/a",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL010",
+      "values": [
+       "n/a",
+       "same",
+       "n/a",
+       "same",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL012",
+      "values": [
+       "same",
+       "same",
+       "same",
+       "n/a",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL013",
+      "values": [
+       "n/a",
+       "n/a;same",
+       "n/a;same",
+       "n/a",
+       "n/a;same"
+      ]
+     },
+     {
+      "id": "CAL024",
+      "values": [
+       "same",
+       "same",
+       "same",
+       "n/a",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL035",
+      "values": [
+       "conflict",
+       "stronger",
+       "n/a",
+       "n/a",
+       "stronger"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "n/a",
+       "same",
+       "same",
+       "n/a",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL048",
+      "values": [
+       "conflict;n/a",
+       "conflict;same",
+       "conflict;n/a",
+       "conflict;same",
+       "conflict;n/a"
+      ]
+     },
+     {
+      "id": "CAL051",
+      "values": [
+       "n/a",
+       "n/a;stronger",
+       "n/a;same",
+       "conflict;n/a",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL054",
+      "values": [
+       "conflict;same",
+       "conflict;same",
+       "conflict;same",
+       "same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL055",
+      "values": [
+       "conflict;n/a",
+       "conflict;n/a",
+       "conflict;n/a",
+       "conflict;same",
+       "conflict;same"
+      ]
+     },
+     {
+      "id": "CAL060",
+      "values": [
+       "conflict;same",
+       "same",
+       "conflict;same",
+       "conflict;same",
+       "conflict;same"
+      ]
+     },
+     {
+      "id": "CAL067",
+      "values": [
+       "stronger",
+       "same",
+       "same",
+       "n/a",
+       "stronger"
+      ]
+     },
+     {
+      "id": "CAL078",
+      "values": [
+       "same",
+       "same",
+       "n/a",
+       "same",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL079",
+      "values": [
+       "n/a",
+       "same",
+       "n/a",
+       "n/a",
+       "n/a"
+      ]
+     }
+    ],
+    "n_inconsistent": 17
+   },
+   "numeric_relation": {
+    "rate": 0.8,
+    "mean_modal_agreement": 0.94,
+    "inconsistent_ids": [
+     {
+      "id": "CAL009",
+      "values": [
+       "n/a",
+       "n/a",
+       "n/a",
+       "n/a",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL013",
+      "values": [
+       "same",
+       "n/a;same",
+       "n/a;same",
+       "n/a;same",
+       "n/a;same"
+      ]
+     },
+     {
+      "id": "CAL035",
+      "values": [
+       "n/a",
+       "n/a",
+       "n/a",
+       "conflict",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "conflict",
+       "same",
+       "conflict",
+       "same",
+       "conflict"
+      ]
+     },
+     {
+      "id": "CAL060",
+      "values": [
+       "n/a;same",
+       "same",
+       "same",
+       "same",
+       "n/a;same"
+      ]
+     },
+     {
+      "id": "CAL067",
+      "values": [
+       "same",
+       "n/a",
+       "n/a",
+       "same",
+       "n/a"
+      ]
+     }
+    ],
+    "n_inconsistent": 6
+   },
+   "negation_relation": {
+    "rate": 0.5667,
+    "mean_modal_agreement": 0.8333,
+    "inconsistent_ids": [
+     {
+      "id": "CAL033",
+      "values": [
+       "same",
+       "same",
+       "conflict",
+       "conflict",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL035",
+      "values": [
+       "conflict",
+       "n/a",
+       "conflict",
+       "conflict",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "same",
+       "n/a",
+       "same",
+       "same",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL044",
+      "values": [
+       "same",
+       "n/a;same",
+       "n/a;same",
+       "n/a;same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL045",
+      "values": [
+       "n/a;same",
+       "same",
+       "n/a;same",
+       "n/a;same",
+       "n/a;same"
+      ]
+     },
+     {
+      "id": "CAL051",
+      "values": [
+       "n/a",
+       "same",
+       "n/a;same",
+       "conflict;same",
+       "n/a;same"
+      ]
+     },
+     {
+      "id": "CAL054",
+      "values": [
+       "n/a;same",
+       "conflict;same",
+       "conflict;same",
+       "conflict;same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL060",
+      "values": [
+       "conflict;same",
+       "conflict;same",
+       "same",
+       "conflict;same",
+       "conflict;same"
+      ]
+     },
+     {
+      "id": "CAL061",
+      "values": [
+       "n/a;same",
+       "n/a;same",
+       "same",
+       "n/a;same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL067",
+      "values": [
+       "same",
+       "n/a",
+       "n/a",
+       "same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL075",
+      "values": [
+       "same",
+       "n/a",
+       "same",
+       "same",
+       "n/a"
+      ]
+     },
+     {
+      "id": "CAL078",
+      "values": [
+       "n/a",
+       "same",
+       "n/a",
+       "same",
+       "same"
+      ]
+     },
+     {
+      "id": "CAL079",
+      "values": [
+       "n/a",
+       "same",
+       "same",
+       "n/a",
+       "same"
+      ]
+     }
+    ],
+    "n_inconsistent": 13
+   },
+   "verdict": {
+    "rate": 0.8333,
+    "mean_modal_agreement": 0.9467,
+    "inconsistent_ids": [
+     {
+      "id": "CAL035",
+      "values": [
+       "CONTRADICTED",
+       "INSUFFICIENT_EVIDENCE",
+       "CONTRADICTED",
+       "CONTRADICTED",
+       "INSUFFICIENT_EVIDENCE"
+      ]
+     },
+     {
+      "id": "CAL041",
+      "values": [
+       "CONTRADICTED",
+       "INSUFFICIENT_EVIDENCE",
+       "INSUFFICIENT_EVIDENCE",
+       "CONTRADICTED",
+       "CONTRADICTED"
+      ]
+     },
+     {
+      "id": "CAL055",
+      "values": [
+       "CONTRADICTED",
+       "PARTIALLY_SUPPORTED",
+       "CONTRADICTED",
+       "CONTRADICTED",
+       "CONTRADICTED"
+      ]
+     },
+     {
+      "id": "CAL061",
+      "values": [
+       "PARTIALLY_SUPPORTED",
+       "PARTIALLY_SUPPORTED",
+       "INSUFFICIENT_EVIDENCE",
+       "PARTIALLY_SUPPORTED",
+       "PARTIALLY_SUPPORTED"
+      ]
+     },
+     {
+      "id": "CAL088",
+      "values": [
+       "SUPPORTED",
+       "SUPPORTED",
+       "INSUFFICIENT_EVIDENCE",
+       "SUPPORTED",
+       "INSUFFICIENT_EVIDENCE"
+      ]
+     }
+    ],
+    "n_inconsistent": 5
+   }
+  },
+  "flips": {
+   "safety": [
+    "CAL041"
+   ],
+   "numeric": [],
+   "temporal": []
+  },
+  "modal_accuracy": 0.8667
+ }
+}

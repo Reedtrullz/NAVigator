@@ -1,0 +1,76 @@
+{
+ "schema": "contract-freeze-manifest-v1",
+ "task_id": "SEMANTIC-JUDGE-TIER1-PROOF-OPERATORS",
+ "status": "CONTRACT_FROZEN_BEFORE_TIER1_IMPLEMENTATION",
+ "frozen_at": "2026-09-02T18:58:04+0200",
+ "annotation_state": {
+  "oracle_46": {
+   "confirmed": 46,
+   "disputes": 0,
+   "resolved_this_stage": [
+    "CI-046",
+    "CAL089"
+   ]
+  },
+  "novel_40": {
+   "confirmed": 40,
+   "disputes": 0,
+   "second_pass": "independent gpt-5.6-luna pass; semantic agreement 31/32; N-R1 adjudicated to INSUFFICIENT (RESOLVED_NEW_LABEL)"
+  },
+  "ent_a_d": {
+   "confirmed": 4,
+   "disputes": 0,
+   "ent_c_legacy_history_preserved": true
+  }
+ },
+ "contract_consistency_check": "PASS (0 violations: proof-safe never more aggressive than semantic; original labels present in 90/90 cases)",
+ "legacy_vs_current_regression_separation": {
+  "LEGACY_REGRESSION": "Documents what the old single-target system/tests expected. Examples: ENT-C legacy_expected=CONTRADICTED with old gate PASS on an invalid auto-contradiction; novel-40 90% single-label gate; oracle benchmark accuracy. Preserved in dual-label files via original_benchmark_label and legacy_expected fields. Not normative going forward.",
+  "CURRENT_CONTRACT_REGRESSION": "Tests the correct semantic/proof/product targets under the frozen dual contract. ENT-C is the explicit example: semantic_truth=INSUFFICIENT_EVIDENCE, proof_safe=INSUFFICIENT, product_action=REVIEW; system must NOT auto-CONTRADICTED on absence of a valid exclusion premise. Implemented as a permanent safety canary in operator-regression (spec 41).",
+  "ent_c_example": {
+   "legacy_expected": "CONTRADICTED",
+   "legacy_outcome": "PASS (invalid auto-contradiction rewarded)",
+   "current_semantic_truth": "INSUFFICIENT_EVIDENCE",
+   "current_proof_safe": "INSUFFICIENT",
+   "current_product_action": "REVIEW"
+  }
+ },
+ "files": {
+  "evaluation-contract/evaluation-contract.md": {
+   "sha256": "e56fc1ab7adc4ff299bcb6b988b20164ed0962ab2629c64380b8c91eb31164cc",
+   "bytes": 3214
+  },
+  "evaluation-contract/evaluation-contract.schema.json": {
+   "sha256": "a67404039cc0cad31d60d4d1ea046b1a05e03255bb2763532ea925b206dd55a4",
+   "bytes": 2440
+  },
+  "evaluation-contract/oracle-46-dual-labels.json": {
+   "sha256": "b48237db887966a60f58d48a31c5804ba41ea14fd624fde8a32f18afd59ae0f8",
+   "bytes": 49605
+  },
+  "evaluation-contract/novel-40-dual-labels.json": {
+   "sha256": "6661a6a7b28d6ef3d34d8c7b99213995e978fbc5339d7be3d58aa46115f9cbf1",
+   "bytes": 30719
+  },
+  "evaluation-contract/ent-controls-dual-labels.json": {
+   "sha256": "79717ea0dd0475372778e64f5902748d2530fe677fcede942ae69ee0b1385a62",
+   "bytes": 3946
+  },
+  "evaluation-contract/operator-classification.json": {
+   "sha256": "edc65e6c99e2f87adc508a93c22d51f88dde07537f5239b8616281e140f075fe",
+   "bytes": 9045
+  },
+  "evaluation-contract/operator-backlog.md": {
+   "sha256": "4cb9a0415f04449ea702c9834b82ffd1b4e9735988d67453648b145d251ecff7",
+   "bytes": 7252
+  },
+  "tier1-proof/annotation-resolution.json": {
+   "sha256": "54c5ec0fe750b7927b0c8dd76f20a6aa62b48f5a67f567e3779c8ff9d6fbc21d",
+   "bytes": 4667
+  },
+  "tier1-proof/annotation-second-pass.md": {
+   "sha256": "aff245051da43a8464c1c39e44b3e0bbbd2a1920a8ee01c0944191e982351acc",
+   "bytes": 6752
+  }
+ }
+}

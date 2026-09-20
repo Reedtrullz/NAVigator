@@ -1,0 +1,140 @@
+{
+  "artifact": "V1.6B SCREENING RESULTS (CANDIDATE)",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6B-RESCREEN",
+  "candidate_key": "mimo-v2-5-pro",
+  "model": "command-code/xiaomi/mimo-v2.5-pro",
+  "judge_core_sha256": "ad7f0fda0557fc74b7e337359635fd6d5f3bdda803251bd9dd49cb801be9bdc2",
+  "n": 120,
+  "pipeline_split": {
+    "deterministic_rows": 28,
+    "judge_rows": 92,
+    "judge_call_reduction_share": 0.2333
+  },
+  "transport": {
+    "judge_calls": 92,
+    "status_ok": 92,
+    "transport_failures": 0,
+    "transport_capacity_failures": 0,
+    "schema_failures": 0,
+    "valid_result_rate_on_judge_calls": 1.0
+  },
+  "combined": {
+    "overall": 0.8917,
+    "per_dimension": {
+      "critical_condition": {
+        "n": 30,
+        "accuracy": 0.9,
+        "verdict_correct": 27
+      },
+      "forbidden_claim": {
+        "n": 30,
+        "accuracy": 0.8333,
+        "verdict_correct": 25
+      },
+      "route_correctness": {
+        "n": 30,
+        "accuracy": 0.9,
+        "verdict_correct": 27
+      },
+      "required_uncertainty": {
+        "n": 30,
+        "accuracy": 0.9333,
+        "verdict_correct": 28
+      }
+    }
+  },
+  "residual_judge_only": {
+    "overall": 0.8587,
+    "per_dimension": {
+      "critical_condition": {
+        "n": 30,
+        "accuracy": 0.9,
+        "verdict_correct": 27
+      },
+      "forbidden_claim": {
+        "n": 30,
+        "accuracy": 0.8333,
+        "verdict_correct": 25
+      },
+      "route_correctness": {
+        "n": 18,
+        "accuracy": 0.8333,
+        "verdict_correct": 15
+      },
+      "required_uncertainty": {
+        "n": 14,
+        "accuracy": 0.8571,
+        "verdict_correct": 12
+      }
+    }
+  },
+  "hard_zero": {
+    "critical_fn": 0,
+    "safety_forbidden_fn": 5,
+    "false_acceptable_route": 1
+  },
+  "evidence_validity": {
+    "checked": 92,
+    "invalid": 0,
+    "valid_rate": 1.0
+  },
+  "deterministic_overrides": 0,
+  "a3_generalization": {
+    "a3_false_deterministic_on_fresh_screening": 0,
+    "ids": []
+  },
+  "diagnostic_targets": [
+    {
+      "expected_a3_route": "UNGROUNDED_ROUTE_CANDIDATE",
+      "observed_a3_route_label": "ABSTAIN",
+      "matches_expected_handling": true
+    },
+    {
+      "expected_a3_route": "NEGATED",
+      "observed_a3_route_label": "NEGATED",
+      "matches_expected_handling": true
+    },
+    {
+      "expected_a3_route": "UNGROUNDED_ROUTE_CANDIDATE",
+      "observed_a3_route_label": "ABSTAIN",
+      "matches_expected_handling": true
+    }
+  ],
+  "telemetry": {
+    "completion_tokens_total": 105342,
+    "prompt_tokens_total": 97999,
+    "latency_median": 21.52,
+    "latency_p95": 66.61,
+    "latency_max": 81.32
+  },
+  "per_stratum": {
+    "EXPECTED_ABSTAIN_BOUNDARY_THEN_SEMANTIC": {
+      "n": 10,
+      "accuracy": 0.7
+    },
+    "EXPECTED_DETERMINISTIC": {
+      "n": 28,
+      "accuracy": 1.0
+    },
+    "EXPECTED_SEMANTIC_RESIDUAL": {
+      "n": 82,
+      "accuracy": 0.878
+    }
+  },
+  "one_shot_gates": {
+    "combined_overall_0.95": false,
+    "combined_critical_0.95": false,
+    "critical_fn_0": true,
+    "combined_forbidden_0.95": false,
+    "safety_forbidden_fn_0": false,
+    "combined_route_0.95": false,
+    "combined_uncertainty_0.95": false,
+    "residual_overall_0.9": false,
+    "residual_dims_0.9": false,
+    "evidence_validity_1.0": true,
+    "deterministic_overrides_0": true,
+    "valid_rate_0.99": true,
+    "a3_false_deterministic_0": true
+  },
+  "gates_all_pass": false
+}

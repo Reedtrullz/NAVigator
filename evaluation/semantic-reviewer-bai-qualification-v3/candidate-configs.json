@@ -1,0 +1,13 @@
+{
+  "frozen_utc": "2026-09-19T00:00:00Z",
+  "inherited_from": "evaluation/semantic-reviewer-cost-qualification-v1/qualification-contract.json",
+  "prompt": "FROZEN_V1 (byte-identical via V1 build_prompts())",
+  "structured_output_mode": "response_format json_object, with V2 transport fallback (disable json_mode on HTTP 400/422) allowed as transport fix only",
+  "retry_policy": "V1 frozen: per-row retry same route at most once; 402/403 never retried",
+  "parser": "V1 validate() + spans_ok()",
+  "reasoning_config": "none (V1 prompt/contract semantics)",
+  "candidates": [
+    {"logical_id": "BAI-GLM", "wire_id": "B.AI/glm-5.3-flash"},
+    {"logical_id": "BAI-DEEPSEEK", "wire_id": "B.AI/deepseek-v4-flash-vision-exp"}
+  ]
+}

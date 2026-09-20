@@ -1,0 +1,20 @@
+{
+  "artifact": "astra-review-config",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-3",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "LOW",
+  "reasoning_effort_enforcement": "hard; MEDIUM/HIGH/MAX forbidden",
+  "transport": "local proxy http://127.0.0.1:10100/v1/chat/completions",
+  "auth": "bearer token from existing auth store; never printed, logged, or persisted in artifacts",
+  "passes": [
+    "ASTRA-A",
+    "ASTRA-B"
+  ],
+  "blindness": "B must not see A; neither pass may see historical verdicts, Wave-1 results, gold outcomes, or prior model results",
+  "response_format": {
+    "type": "json_object"
+  },
+  "retry_policy": "ONE technical transport retry only; schema-invalid or semantically disagreeing output is NOT retried",
+  "no_web": true,
+  "review_order_source": "semantic-review-packet-manifest.json packet_bindings order"
+}

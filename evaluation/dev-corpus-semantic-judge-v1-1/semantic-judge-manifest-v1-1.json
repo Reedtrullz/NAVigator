@@ -1,0 +1,85 @@
+{
+  "manifest_id": "SEMANTIC-JUDGE-V1_1-MANIFEST",
+  "created": "2026-09-10",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_1-ROUTE-CONTRACT-REPAIR",
+  "status": "SEMANTIC_JUDGE_V1_1_CONTRACT_NOT_READY",
+  "terminal_reason": "Preregistrert agreement gate feilet: 75/80 = 93.75% overall (< 95%), uncertainty 17/20 = 85% (< 90%). Official model validation aldri startet.",
+  "model": "openai/gpt-5.6-luna",
+  "prompt_sha256_frozen": "541dca57b8fe4142c775976d2a60bd00d5f65ac2dd50adc3e4952731ffacf24d",
+  "contract_file_sha256": "fc47022f24038507e6c95f0559ea6cbd4c4e1ed03805013a2b8ba1bf52047f70",
+  "route_contract_change": {
+    "score_bearing_labels_v1": [
+      "CANONICAL_ACCEPTABLE",
+      "EQUIVALENT_ACCEPTABLE",
+      "PARTIAL",
+      "NO_ACCEPTABLE_ROUTE",
+      "UNRESOLVED"
+    ],
+    "score_bearing_labels_v1_1": [
+      "ACCEPTABLE",
+      "PARTIAL",
+      "NO_ACCEPTABLE_ROUTE",
+      "UNRESOLVED"
+    ],
+    "diagnostic_detail_retained": [
+      "CANONICAL",
+      "ALIAS",
+      "SEMANTIC_EQUIVALENT",
+      "NONE",
+      "UNRESOLVED"
+    ],
+    "other_dimensions": "UNCHANGED (critical, forbidden, uncertainty)"
+  },
+  "baselines_verified": {
+    "dev_corpus_v1_manifest": "9c265731e6e17ea54844b6db646dac4abe1901e49ee1c5ce56c3ec081db177ef",
+    "scorer_v1_manifest": "cca4a57732cb9ba53c504c69c2abd4248e11281d535499e3ad055b13ec74e71c",
+    "v1_artifacts_reverified_at_close": true,
+    "historical_files_modified": 0
+  },
+  "burned_counterfactual_projection": {
+    "marker": "BURNED_COUNTERFACTUAL_NOT_VALIDATION",
+    "overall": "92.42% -> 98.48%",
+    "route": "76.47% -> 100%",
+    "stability": "87.5% -> 91.67%"
+  },
+  "calibration": {
+    "status": "CALIBRATION_BURNED_NOT_VALIDATION",
+    "fixtures": 20,
+    "runs": 3,
+    "prompt_iterations": 3,
+    "final_modal_match": "16/20",
+    "final_stability": "18/20"
+  },
+  "dual_label_agreement": {
+    "overall": "75/80 = 93.75%",
+    "per_dimension": {
+      "critical_condition": "20/20 = 100%",
+      "forbidden_claim": "20/20 = 100%",
+      "route_equivalence": "18/20 = 90%",
+      "uncertainty": "17/20 = 85%"
+    },
+    "adjudicated_count": 5,
+    "gold_frozen": false,
+    "gold_artifact": "judge-validation-gold-v1-1.UNFROZEN.json"
+  },
+  "agreement_gate": {
+    "required": "overall >= 95%, per dimension >= 90%",
+    "result": "FAIL",
+    "overall_margin": "-1.25 percentage points",
+    "failed_dimensions": [
+      "uncertainty (85% < 90%)"
+    ]
+  },
+  "disagreement_taxonomy": {
+    "NO_ACCEPTABLE_ROUTE_vs_UNRESOLVED": 2,
+    "SATISFIED_vs_NOT_REQUIRED": 2,
+    "PARTIAL_vs_UNRESOLVED": 1,
+    "collapsed_CANONICAL_vs_EQUIVALENT_boundary": 0,
+    "note": "Ingen uenigheter ligger pa den kollapsete grensen; CANONICAL/EQUIVALENT-skillet oppsto ikke som annoteringsproblem i V1.1 form."
+  },
+  "official_validation": "NOT_RUN_AGREEMENT_GATE_FAILED",
+  "stability": "NOT_RUN_OFFICIAL_VALIDATION_NOT_EXECUTED",
+  "combined_scorer": "NOT_CREATED_NOT_READY",
+  "schema_failure_tests": "PASS",
+  "secrets_note": "Ingen tokens printet eller persistert; auth via runtime-lesing av ~/.codex/auth.json"
+}

@@ -1,0 +1,109 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-3",
+  "task_family": "measurement-v3-remeasurement",
+  "status": "MEASUREMENT_V3_REMEASURE_WAVE_3_COMPLETE",
+  "created_utc": "2026-09-16T19:05:00Z",
+  "owner_authorization": "explicit owner authorization (measurement v3 remeasure repair wave 3, 2026-09-16)",
+  "authoritative_product_state": "FULL_SUT_REPAIR_WAVE_3_READY_FOR_REMEASUREMENT",
+  "authoritative_repair_lineage": "evaluation/full-sut-repair-wave-3-v1/",
+  "authoritative_candidate": {
+    "candidate": "W3-RC-A v1",
+    "candidate_attempts": "1 of 2",
+    "candidate_manifest": "evaluation/full-sut-repair-wave-3-v1/repaired-sut-manifest.json",
+    "candidate_manifest_sha256": "6c1f7d4b4b52eeabc16a13e0c34d9cdd332a6acd532cd33ddb796660fd2be14f",
+    "components": 24,
+    "components_changed_from_wave2": 1,
+    "changed_component": "routes.py",
+    "official_replay": "120/120 SUCCESS, determinism 120/120 byte-identical, tests 242/242 PASS"
+  },
+  "authoritative_measurement_state": "MEASUREMENT_V3_REMEASURE_WAVE_2_RESIDUAL_ADJUDICATION_REQUIRED",
+  "authoritative_wave2_measurement": {
+    "dir": "evaluation/measurement-v3-remeasure-repair-wave-2/",
+    "combined_results_sha256": "005eaebf901a3cf491d67a60738a28ca6ee30e531db47f4069bab2bb2e4b30e3",
+    "freeze_manifest_sha256": "f5e0a0193d9ddb4da7046ba9719c0d52dafa2982eee1bcac6c11393d5391fc30",
+    "aggregates": {"PASS": 317, "FAIL": 218, "UNRESOLVED": 16, "DEGRADED": 36, "authority_mix": {"DETERMINISTIC": 506, "LLM_REVIEWED": 90, "LLM_ADJUDICATED": 3, "PENDING": 1}}
+  },
+  "authoritative_comparison_baselines": {
+    "wave1": {
+      "dir": "evaluation/measurement-v3-wave1-consensus-comparator-repair-v1/",
+      "results_sha256": "1f4aac89aa90ef2e5b7e2da2455249633cf2d2c12c7856c64b202a5e45e5e7c1"
+    },
+    "original_provenance_corrected": {
+      "dir": "evaluation/measurement-v3-final-authority-provenance-repair-v1/",
+      "results_sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf"
+    }
+  },
+  "scope": [
+    "score frozen Wave-3 W3-RC-A v1 predictions with frozen Measurement V3",
+    "create fresh Wave-3 semantic-review packets",
+    "blind dual-pass GPT-6 Astra semantic review with reasoning_effort LOW only",
+    "bounded blind dual-pass gpt-5.6-sol residual adjudication with reasoning LOW only if available",
+    "mechanical derivation via frozen judge_core_v2_13",
+    "freeze complete/partial Wave-3 measurement",
+    "compare Wave-3 against Wave-2 (primary), Wave-1 and original burned baseline (secondary)",
+    "route-funnel / R0-R10 stage analysis / W3-RES assessment / readiness assessment"
+  ],
+  "hard_constraints": {
+    "ASTRA_MODEL": "gpt-6-astra",
+    "ASTRA_REASONING_EFFORT": "LOW",
+    "ASTRA_MEDIUM_CALLS": 0,
+    "ASTRA_HIGH_CALLS": 0,
+    "ASTRA_MAX_CALLS": 0,
+    "SOL_MODEL": "gpt-5.6-sol",
+    "SOL_REASONING_EFFORT": "LOW",
+    "SUT_RERUN": false,
+    "PREDICTIONS_REGENERATED": false,
+    "PREDICTIONS_RERENDERED": false,
+    "WAVE3_SOURCE_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "CORPUS_CHANGED": false,
+    "HISTORICAL_MEASUREMENTS_CHANGED": false,
+    "W3RES_FIXES_ALLOWED": false,
+    "RC04_IMPLEMENTATION_ALLOWED": false,
+    "RC06_IMPLEMENTATION_ALLOWED": false,
+    "WAVE4_ALLOWED": false,
+    "FRESH_HOLDOUT_ALLOWED": false,
+    "DEPLOY_ALLOWED": false,
+    "MAX_SUBAGENTS": 2,
+    "gpt_5_5_allowed": false,
+    "HUMAN_REVIEW_ALLOWED": false,
+    "DUPLICATE_AUTHORITATIVE_OWNERS": 0,
+    "UNOWNED_CRITERIA": 0,
+    "LLM_CALLS_DURING_DERIVATION": 0,
+    "PACKET_REUSE_FROM_PRIOR_WAVES": false,
+    "PRIOR_SEMANTIC_OBSERVATION_REUSE": false,
+    "SEMANTIC_RETRIES_AFTER_RESIDUAL": 0,
+    "THIRD_PASS_ALLOWED": false
+  },
+  "upstream_pins": {
+    "wave3_task_lock_sha256": "5fa29d34205b7276c59e576dfe2c69f53a15fa226c96e5fdf02c26dc0244d93c",
+    "wave3_candidate_manifest_sha256": "6c1f7d4b4b52eeabc16a13e0c34d9cdd332a6acd532cd33ddb796660fd2be14f",
+    "wave3_component_count": 24,
+    "wave3_report_close_out_provenance": {
+      "pinned_pre_close_out_report_sha256": "c9506c33be61b4a57246ea66134e677e12a5537f49cb31c9c8a5f0f4f79e0465",
+      "actual_report_sha256_after_close_out_record": "d05546190eed3d4a4301756b3ca6132802f118703256292a49440c01b0a3bdca",
+      "disposition": "documented close-out provenance per spec section 3; candidate integrity verified from manifest/component pins, not report self-hash"
+    },
+    "wave3_replay_prediction_manifests": {
+      "routing": "4cbaa0da5b5cd0ae2c8dc81c67d5517048c8cc6a1ac5c29136e35b0bf10832bc",
+      "safety": "b8b4c2a7a9c0bed84e6f6ffa4ba5e52e0ece024e9fde3acd0a5cf7118c15daa3",
+      "discovery_adversarial": "7ea0c4a48f5880bf6d5749c4c3708d6044b58ca0be3e87e3259560507a9830fa"
+    },
+    "wave2_measurement_results_sha256": "005eaebf901a3cf491d67a60738a28ca6ee30e531db47f4069bab2bb2e4b30e3",
+    "wave1_measurement_results_sha256": "1f4aac89aa90ef2e5b7e2da2455249633cf2d2c12c7856c64b202a5e45e5e7c1",
+    "original_baseline_results_sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+    "combined_engine_sha256": "3f715dd1b27db15fa761f38dee8c20b2acdd9c97382073e1108906a9f25a4588",
+    "judge_core_v2_13_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "repaired_corpus_manifest_sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17"
+  },
+  "terminal_statuses": [
+    "MEASUREMENT_V3_REMEASURE_WAVE_3_COMPLETE",
+    "MEASUREMENT_V3_REMEASURE_WAVE_3_RESIDUAL_ADJUDICATION_REQUIRED",
+    "MEASUREMENT_V3_REMEASURE_WAVE_3_INVALID"
+  ],
+  "terminal_status": "MEASUREMENT_V3_REMEASURE_WAVE_3_COMPLETE",
+  "closed_utc": "2026-09-16T23:25:58Z",
+  "terminal_basis": "600/600 authoritative criteria (0 pending); all spec section 45 hard constraints met: no SUT rerun, no source/prediction/gold/measurement changes, Astra LOW only, Sol LOW only, 0 LLM calls during derivation, 0 packet reuse, BURNED_DEV_BASELINE_ONLY retained; measurement frozen 6385bcd9...5d54 before comparison; hashes.txt 26/26 verified.",
+  "burned_label": "BURNED_DEV_BASELINE_ONLY"
+}

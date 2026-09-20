@@ -1,0 +1,90 @@
+{
+ "set_version": "NAV-EXPLORE-RC2-BLIND-V3",
+ "created": "2026-09-04",
+ "task_id": "NAV-EXPLORE-RC2-BLIND-V3-CONSTRUCTION",
+ "release_candidate": "NAV-EXPLORE-EVALUATOR-RC2",
+ "rc2_status": "FROZEN_DEVELOPMENT_CANDIDATE",
+ "n_core": 160,
+ "n_reserve": 122,
+ "pool_size": 282,
+ "blind_cases_sha256": "ad4fc1008063e52fb004fcdf5a3e48c2ca0277c7cf6dd9251b04d43c3e29a36d",
+ "answer_key_sealed_sha256": "45323257f325cca82bc80167ff09cda4da1d93ff441445fcd604cfbb71e2aeb9",
+ "encryption": {
+  "algorithm": "AES-256-GCM",
+  "aad": "UTF-8 bytes of the blind-cases.json SHA-256 hex string; envelope associated_data field is urlsafe-b64 of the raw 32-byte digest",
+  "key": "memory-only, delivered once to owner"
+ },
+ "core_class_distributions": {
+  "semantic": {
+   "PARTIALLY_SUPPORTED": 40,
+   "SUPPORTED": 40,
+   "CONTRADICTED": 40,
+   "INSUFFICIENT_EVIDENCE": 40
+  },
+  "proof_safe": {
+   "REVIEW_REQUIRED": 54,
+   "SUPPORTED": 40,
+   "CONTRADICTED": 40,
+   "INSUFFICIENT_EVIDENCE": 26
+  },
+  "product_expected_action": {
+   "REVIEW_REQUIRED": 54,
+   "AUTO_SUPPORTED": 40,
+   "AUTO_CONTRADICTED": 40,
+   "ABSTAIN_INSUFFICIENT": 26
+  }
+ },
+ "core_flag_counts": {
+  "actor": 99,
+  "age_legal": 20,
+  "compound": 62,
+  "cond_exc": 42,
+  "legal": 89,
+  "modality": 132,
+  "multi_span": 31,
+  "numeric": 92,
+  "temporal": 82,
+  "locality": 38,
+  "safety": 20
+ },
+ "annotation_agreement": {
+  "core_pre_adjudication": {
+   "semantic_truth": 0.95,
+   "proof_safe": 0.9375,
+   "product_action": 0.9375
+  },
+  "adjudication_rate_core": "10/160 = 0.0625",
+  "gate": "all three >= 0.90: PASS"
+ },
+ "fidelity": {
+  "candidates": 282,
+  "fidelity_failures": 0,
+  "all_pass": true
+ },
+ "novelty": {
+  "candidates": 282,
+  "rejected_exact": 0,
+  "rejected_near": 0,
+  "rejected_skeleton": 0,
+  "retained": 282,
+  "max_similarity_retained": 0.5385,
+  "thresholds": {
+   "jaccard_near": 0.55,
+   "char3_near": 0.8,
+   "skeleton_entity_overlap": 0.5,
+   "exact": 1.0
+  },
+  "excluded_prior_art": {
+   "corpus": "RC2-V2-set/blind-cases.json",
+   "condition": "candidate provenance == V2_REUSED_UNSEEN_BY_RC2 (spec 29: V2 overlap is expected for reused-but-never-executed cases; RC2 execution verified absent)",
+   "v2_blind_entries": 160
+  },
+  "corpus_note": "repo scan + RC2-V2-set/blind-cases.json (pre-registered prior art)"
+ },
+ "construction_qa": "construction_qa.py exit 0 (construction-qa-report.md)",
+ "rc2_hash_verification": {
+  "before_construction": "ALL_OK (11/11)",
+  "after_seal": "ALL_OK (11/11), re-verified after seal"
+ },
+ "rc2_executed_on_blind_set": false
+}

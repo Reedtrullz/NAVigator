@@ -1,0 +1,69 @@
+{
+  "task_id": "NAV-EXPLORE-RC2-ROOT-CAUSE-REPAIR",
+  "burned_marker": "BURNED_BLIND_V1_DEVELOPMENT_ONLY",
+  "policy_version": "RC2-FUSION-V1",
+  "auto_accept": {
+    "condition": "reviewer_verdict == SUPPORTED AND confidence >= 0.90 AND gate_reason has no specific-defect prefix",
+    "threshold": 0.9,
+    "generic_bypassable_flags": [
+      "not_a_proof:*",
+      "engine_review_flag"
+    ],
+    "specific_veto_flags": [
+      "numeric_support_binding",
+      "compound_claim",
+      "weak_support_rule:*",
+      "support_undercovered:*",
+      "support_weak_span",
+      "universal_quantifier_support",
+      "weak_contra_rule:*"
+    ]
+  },
+  "rejected_options": [
+    {
+      "option": "lower global threshold to 0.78-0.84",
+      "reason": "0/12 counterfactual-correct in that band"
+    },
+    {
+      "option": "engine-agreement conditioning",
+      "reason": "halves accept volume, zero accuracy gain (16/16 vs 16/16)"
+    },
+    {
+      "option": "accept reviewer CONTRA at >=0.90",
+      "reason": "30/31; single miss is RC1B-0169 (HIGH criticality)"
+    }
+  ],
+  "simulated_metrics_burned_v1": {
+    "note": "Development-only shadow simulation over 120 core rows; never a certification claim.",
+    "rows": 120,
+    "autos": 13,
+    "auto_semantic_precision": "13/13",
+    "auto_product_precision": "13/13",
+    "false_autos": 0,
+    "critical_false_autos": 0,
+    "review": 107,
+    "overall_semantic": 63,
+    "overall_product": 24,
+    "overall_proof_safe": 28,
+    "deterministic_path": "RC1 auto rows without reviewer output re-run through RC2 engine + auto_gate: 0 autos (all engine-CONTRA, and CONTRA never autos), 16 review. Includes the symmetric-policy false-CONTRA autos RC1B-0176/0178, eliminated by the no-CONTRA rule.",
+    "rc1_baseline_overall": {
+      "semantic": 79,
+      "product": 79,
+      "proof_safe": 44
+    },
+    "tradeoff": "Conservative soundness-first: fewer, provably-clean autos; overall scores dip because previously-correct CONTRA autos (46 rows) now go to review. Correctness of the auto channel is the pre-freeze priority. Overall numbers use the strict scorer (review rows score correct only when the expected action is review/abstain)."
+  },
+  "calibration_set_sanity": {
+    "note": "RC2 engine (not fusion) run over calibration-set.json: 48/84 = 0.571 exact-verdict accuracy; deterministic layer remains review-heavy by design. Fusion operates only on reviewer output, which calibration set has no model for; therefore fusion was NOT tuned on the calibration set and burned V1 evidence is labeled development-only.",
+    "engine_accuracy": "48/84"
+  },
+  "kb_gate": {
+    "score_baseline": "48/48 BESTATT"
+  },
+  "provenance_sha256": {
+    "rc1_predictions": "0178f086b1e376c9a6f7f9bfaa67befd59507607fd12b1b4bbe502ade207f7b1",
+    "blind_cases": "a3a4dd60bc8662dd77581696809be6f68e93aeddf136ebad6f828cd4b52e7a39",
+    "phase_b_results": "0e5737182057200a825597e1e2e894a7c73e2fba2c2a72ba0d6f5c09176aa949",
+    "before_after_results": "255ee6eafb6ad4f86e3d5618f41dfa9724ef9642928155ce625cacd6c70234ce"
+  }
+}

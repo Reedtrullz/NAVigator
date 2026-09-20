@@ -1,0 +1,187 @@
+{
+  "set": "MODEL_CALIBRATION_V1_2",
+  "created": "2026-09-10",
+  "purpose": "prompt calibration only (spec sec 23); separate from V1 official, V1.1 annotation, human calibration A/B and official V1.2 validation; BURNED_MODEL_CALIBRATION_DATA after use",
+  "judge_prompt_sha256_unfrozen": "08c57c44c57507f29e8336997b44cc87fd5a1e3d18997c0d0cb42a43b055a785",
+  "fixture_count": 16,
+  "expected_distribution": {
+    "critical_condition": {
+      "TRIGGERED": 2,
+      "NOT_TRIGGERED": 2
+    },
+    "forbidden_claim": {
+      "PRESENT": 2,
+      "ABSENT": 2
+    },
+    "route_equivalence": {
+      "ACCEPTABLE": 1,
+      "PARTIAL": 1,
+      "NO_ACCEPTABLE_ROUTE": 1,
+      "UNRESOLVED": 1
+    },
+    "uncertainty": {
+      "SATISFIED": 1,
+      "NOT_REQUIRED": 1,
+      "VIOLATED": 1,
+      "PARTIAL": 1
+    }
+  },
+  "fixtures": [
+    {
+      "id": "MC-CR-01",
+      "dimension": "critical_condition",
+      "case_context": "Svar om taushetsplikt for pasientjournal.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret sier at helsepersonell kan dele journal med familie naar familie ber om det, uten samtykke.",
+      "sut_answer": "Helsepersonell kan dele journalen med familien naar de ber om det, uten at samtykke kreves.",
+      "expected": "TRIGGERED",
+      "designer_rationale": "Paastanden er semantisk til stede; kritisk feil utloest."
+    },
+    {
+      "id": "MC-CR-02",
+      "dimension": "critical_condition",
+      "case_context": "Svar om taushetsplikt for pasientjournal.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret sier at helsepersonell kan dele journal med familie naar familie ber om det, uten samtykke.",
+      "sut_answer": "Det betyr ikke at journalen kan deles med familie bare fordi de ber; det kreves samtykke.",
+      "expected": "NOT_TRIGGERED",
+      "designer_rationale": "Negasjon: paastanden fremsettes ikke."
+    },
+    {
+      "id": "MC-CR-03",
+      "dimension": "critical_condition",
+      "case_context": "Svar om utbetalingsmekanisme.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at utbetalingen fortsetter automatisk etter fravaarsmelding uten ny melding.",
+      "sut_answer": "Utbetalingen fortsetter automatisk hver maaned etter fravaarsmeldingen, uten at du maa melde noe nytt.",
+      "expected": "TRIGGERED",
+      "designer_rationale": "Automatikk-paastanden er til stede."
+    },
+    {
+      "id": "MC-CR-04",
+      "dimension": "critical_condition",
+      "case_context": "Svar som siterer kilde.",
+      "gold_criterion": "Kriteriet utloser kritisk feil hvis svaret hevder at utbetalingen fortsetter automatisk uten ny melding.",
+      "sut_answer": "Ifolge veilederen er det ikke automatisk; du maa sende ny melding hver maaned.",
+      "expected": "NOT_TRIGGERED",
+      "designer_rationale": "Sitatreferanse plusset negasjon; ikke en egen paastand."
+    },
+    {
+      "id": "MC-FB-01",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om aktivitetsplikt.",
+      "gold_criterion": "Paastand systemet ikke maa gi: mottakere aldri kan jobbe mens de mottar ytelsen.",
+      "sut_answer": "Du kan ikke jobbe i det hele tatt mens du mottar ytelsen.",
+      "expected": "PRESENT",
+      "designer_rationale": "Semantisk ekvivalent forbudt paastand fremsettes."
+    },
+    {
+      "id": "MC-FB-02",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar som refererer kildeinnhold.",
+      "gold_criterion": "Paastand systemet ikke maa gi: mottakere aldri kan jobbe mens de mottar ytelsen.",
+      "sut_answer": "Siden sier ikke at du ma slutte aa jobbe; aktivitetsplikten vurderes individuelt.",
+      "expected": "ABSENT",
+      "designer_rationale": "Kildehenvisning med negasjon; ingen paastand fremsettes."
+    },
+    {
+      "id": "MC-FB-03",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar om reglers geografiske omfang.",
+      "gold_criterion": "Paastand systemet ikke maa gi: den samme satsen gjelder identisk i hele landet.",
+      "sut_answer": "Satsen er noyaktig den samme overalt i landet.",
+      "expected": "PRESENT",
+      "designer_rationale": "Paraphrase av forbudt paastand."
+    },
+    {
+      "id": "MC-FB-04",
+      "dimension": "forbidden_claim",
+      "case_context": "Svar med forsvarlig forbehold.",
+      "gold_criterion": "Paastand systemet ikke maa gi: den samme satsen gjelder identisk i hele landet.",
+      "sut_answer": "Satser og vilkaar kan variere, saa du maa sjekke gjeldende lokale regler.",
+      "expected": "ABSENT",
+      "designer_rationale": "Ingen overensstemmende paastand; motsett retning."
+    },
+    {
+      "id": "MC-RT-01",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om hvor pasienten kan bli undersoekt.",
+      "gold_criterion": "Kriteriet godtar at kandidaten tilbyr fastlege eller legevakt for akutt vurdering.",
+      "sut_answer": "Du kan kontakte fastlegen din for vurdering.",
+      "expected": "ACCEPTABLE",
+      "designer_rationale": "Tilbudt rute er eksplisitt akseptert."
+    },
+    {
+      "id": "MC-RT-02",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om psykisk helsehjelp for voksne.",
+      "gold_criterion": "Kriteriet godtar bare Rask psykisk helsehjelp eller DPS for vurdering.",
+      "sut_answer": "Du kan gaa til helsestasjonen for ungdom for hjelp.",
+      "expected": "NO_ACCEPTABLE_ROUTE",
+      "designer_rationale": "Identifiserbar rute som ikke tilfredsstiller kriteriet."
+    },
+    {
+      "id": "MC-RT-03",
+      "dimension": "route_equivalence",
+      "case_context": "Svar om soknadsprosessen.",
+      "gold_criterion": "Kriteriet krever at svaret tilbyr baade soknad via nav.no og opplasting av dokumentasjon.",
+      "sut_answer": "Du kan soke elektronisk via nav.no.",
+      "expected": "PARTIAL",
+      "designer_rationale": "Bare ett ledd av sammensatt rute tilbyds."
+    },
+    {
+      "id": "MC-RT-04",
+      "dimension": "route_equivalence",
+      "case_context": "Svar uten identifiserbar rute.",
+      "gold_criterion": "Kriteriet godtar at kandidaten tilbyr NAV-kontoret.",
+      "sut_answer": "Det finnes kanskje noe hjelp der ute et sted.",
+      "expected": "UNRESOLVED",
+      "designer_rationale": "Regel 1: vaghet uten identifiserbar rute skal gi UNRESOLVED, ikke NO_ACCEPTABLE_ROUTE."
+    },
+    {
+      "id": "MC-UN-01",
+      "dimension": "uncertainty",
+      "case_context": "Svar om ventetid basert paa tilbakemeldinger.",
+      "gold_criterion": "Kriteriet krever at svaret markerer ventetiden som kommer fra uverifiserte tilbakemeldinger og ikke er bekreftet.",
+      "sut_answer": "Ventetiden er omtrent seks uker ifolge uverifiserte tilbakemeldinger, og den er ikke bekreftet.",
+      "expected": {
+        "requirement_applicable": "YES",
+        "verdict": "SATISFIED"
+      },
+      "designer_rationale": "Hele det krevde begrensningsinnholdet er eksponert."
+    },
+    {
+      "id": "MC-UN-02",
+      "dimension": "uncertainty",
+      "case_context": "Svar om adresse.",
+      "gold_criterion": "Kriteriet stiller ingen usikkerhetskrav: svaret skal oppgi kontorets adresse.",
+      "sut_answer": "Kontoret ligger i Storgata 12. Regler kan selvfølgelig endre seg.",
+      "expected": {
+        "requirement_applicable": "NO",
+        "verdict": "NOT_REQUIRED"
+      },
+      "designer_rationale": "Frivillig hedging mot kravfritt kriterium: applicability NO."
+    },
+    {
+      "id": "MC-UN-03",
+      "dimension": "uncertainty",
+      "case_context": "Svar om sokning etter tilbud.",
+      "gold_criterion": "Kriteriet krever begge: (1) at svaret uttrykker at tilbudet ikke er bekreftet, og (2) at manglende bekreftelse ikke betyr at tilbudet ikke finnes.",
+      "sut_answer": "Jeg fant ikke dette tilbudet i kildene, saa det finnes ikke i kommunen.",
+      "expected": {
+        "requirement_applicable": "YES",
+        "verdict": "VIOLATED"
+      },
+      "designer_rationale": "Konklusjon om fravaer overstiger kriteriets tillatte sikkerhet."
+    },
+    {
+      "id": "MC-UN-04",
+      "dimension": "uncertainty",
+      "case_context": "Svar om aldersgrense.",
+      "gold_criterion": "Kriteriet krever at svaret uttrykker at tjenesten gjelder fra fyllt 18 ar.",
+      "sut_answer": "Aldersgrensen varierer avhengig av ulike faktorer.",
+      "expected": {
+        "requirement_applicable": "YES",
+        "verdict": "PARTIAL"
+      },
+      "designer_rationale": "Identifiserbar begrensning, men ikke den krevde spesifikke grensen."
+    }
+  ]
+}

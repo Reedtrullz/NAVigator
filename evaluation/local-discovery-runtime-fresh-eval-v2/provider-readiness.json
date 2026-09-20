@@ -1,0 +1,171 @@
+{
+ "artifact": "E1_provider_readiness",
+ "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-FRESH-EVAL-V2",
+ "executed_at": "2026-09-09",
+ "candidate_manifest_sha256": "74329662e2df1e8bffb69165b3c39820af6313e7a3096fe6754d78f80977a678",
+ "data_class": "BURNED_MUNICIPALITIES_ONLY",
+ "fresh_sample_created": false,
+ "fresh_municipalities_burned": 0,
+ "site_direct": {
+  "method": "frozen run_v2 stack (candidate V2) with Stage-A roots derived from benchmark-corpus gold hosts",
+  "municipalities_tested": [
+   "Alta",
+   "Farsund",
+   "Sor-Varanger",
+   "Alstahaug",
+   "Hasvik"
+  ],
+  "runs": [
+   {
+    "municipality": "Alta",
+    "roots": [
+     "https://www.alta.kommune.no/"
+    ],
+    "execution_status": "COMPLETE",
+    "route_state": "ROUTE_EXISTENCE_ONLY",
+    "pages_fetched": 5,
+    "services_n": 2,
+    "selected_n": 5,
+    "provenance_edges_n": 5,
+    "provider_failures_n": 0,
+    "fetch_errors_n": 0,
+    "queries_n": 1,
+    "first_provider_status": "SUCCESS"
+   },
+   {
+    "municipality": "Farsund",
+    "roots": [],
+    "execution_status": "COMPLETE",
+    "route_state": "ROUTE_FULLY_VERIFIED",
+    "pages_fetched": 5,
+    "services_n": 4,
+    "selected_n": 5,
+    "provenance_edges_n": 5,
+    "provider_failures_n": 0,
+    "fetch_errors_n": 0,
+    "queries_n": 1,
+    "first_provider_status": "SUCCESS"
+   },
+   {
+    "municipality": "Sor-Varanger",
+    "roots": [],
+    "execution_status": "COMPLETE",
+    "route_state": "ROUTE_EXISTENCE_ONLY",
+    "pages_fetched": 3,
+    "services_n": 3,
+    "selected_n": 3,
+    "provenance_edges_n": 3,
+    "provider_failures_n": 0,
+    "fetch_errors_n": 0,
+    "queries_n": 1,
+    "first_provider_status": "SUCCESS"
+   },
+   {
+    "municipality": "Alstahaug",
+    "roots": [
+     "https://www.alstahaug.kommune.no/"
+    ],
+    "execution_status": "COMPLETE",
+    "route_state": "ROUTE_UNVERIFIED",
+    "pages_fetched": 1,
+    "services_n": 0,
+    "selected_n": 1,
+    "provenance_edges_n": 1,
+    "provider_failures_n": 0,
+    "fetch_errors_n": 0,
+    "queries_n": 1,
+    "first_provider_status": "SUCCESS"
+   },
+   {
+    "municipality": "Hasvik",
+    "roots": [
+     "https://hasvik.kommune.no/"
+    ],
+    "execution_status": "COMPLETE",
+    "route_state": "ROUTE_EXISTENCE_ONLY",
+    "pages_fetched": 1,
+    "services_n": 1,
+    "selected_n": 1,
+    "provenance_edges_n": 1,
+    "provider_failures_n": 0,
+    "fetch_errors_n": 0,
+    "queries_n": 1,
+    "first_provider_status": "SUCCESS"
+   }
+  ],
+  "technical_success": "5/5 (root resolution + fetch + navigation/sitemap discovery + provenance capture on every successful path)",
+  "gate_ge_5_of_5": true,
+  "bot_blocks": 0,
+  "fetch_gate_ge_5_of_5": true,
+  "provenance_captured_all_successful_paths": true
+ },
+ "external_fallback_adapter": {
+  "method": "provider-interface-level probe of frozen brave_html adapter, 5 burned technical queries",
+  "probe_harness_note": "probe used 5 queries / 2s interval; frozen composite budget is 3 queries / 10s per run and applies to runtime runs, not the readiness harness; all attempts single-shot, no retries, no evasion",
+  "queries": [
+   {
+    "query": "Alta kommune psykisk helse voksne",
+    "status": "NO_RESULTS",
+    "result_count": 0,
+    "error": null,
+    "latency_ms": 0,
+    "first_results": []
+   },
+   {
+    "query": "Farsund kommune psykisk helse kontakt",
+    "status": "NO_RESULTS",
+    "result_count": 0,
+    "error": null,
+    "latency_ms": 0,
+    "first_results": []
+   },
+   {
+    "query": "Hasvik kommune helsestasjon",
+    "status": "NO_RESULTS",
+    "result_count": 0,
+    "error": null,
+    "latency_ms": 0,
+    "first_results": []
+   },
+   {
+    "query": "Alstahaug kommune psykisk helse rus",
+    "status": "NO_RESULTS",
+    "result_count": 0,
+    "error": null,
+    "latency_ms": 0,
+    "first_results": []
+   },
+   {
+    "query": "Sor-Varanger kommune rask psykisk helsehjelp",
+    "status": "NO_RESULTS",
+    "result_count": 0,
+    "error": null,
+    "latency_ms": 0,
+    "first_results": []
+   }
+  ],
+  "reported_statuses": {
+   "NO_RESULTS": 5
+  },
+  "execution_success": "0/5",
+  "gate_ge_4_of_5": false,
+  "underlying_http_evidence": "raw curl to search.brave.com returned HTTP 429 (73KB CAPTCHA/challenge page; markers: captcha x4, challenge); frozen adapter reported NO_RESULTS because brave_fetch_fn maps curl exit 0 to HTTP 200, so 429 never reaches classify_http_response and the challenge body exceeds the 5000-char BOT_MARKERS scan head",
+  "confirmation_probe_after_90s_backoff": {
+   "query": "Alta kommune psykisk helse voksne",
+   "status": "NO_RESULTS",
+   "result_count": 0,
+   "note": "persistent, not transient"
+  },
+  "prior_volume_evidence": "provider-comparison.json: 117/117 RATE_LIMITED at full volume during provider-arch-v2 R&D; readiness behavior now consistent"
+ },
+ "gates": {
+  "site_direct_technical_success_ge_5_of_5": true,
+  "external_fallback_execution_ge_4_of_5": false,
+  "systematic_bot_block_zero": "site-direct: 0 blocks; external backend: systematic 429 challenge (bot block present)",
+  "provider_contract_schema_canonical": true,
+  "fetch_ge_5_of_5": true,
+  "provenance_100pct_successful_paths": true
+ },
+ "verdict": "RUNTIME_FRESH_EVAL_V2_BLOCKED_BY_PROVIDER",
+ "verdict_basis": "external fallback readiness gate failed 0/5 (requires >= 4/5); external adapter capability not operational, and its challenge responses are silently misreported as NO_RESULTS in the frozen candidate (not patchable under task lock)"
+}

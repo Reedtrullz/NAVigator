@@ -1,0 +1,60 @@
+{
+  "contract_id": "semantic-judge-contract-v2-7e",
+  "status": "DRAFT_NOT_AUTHORIZED",
+  "pending_human_calibration": "SET_A",
+  "created": "2026-09-13",
+  "task_id_draft": "NAV-EXPLORE-JUDGE-CONTRACT-V2_7E-UNCERTAINTY-CONTRACT-REPAIR",
+  "prior_lineage": "NAV-EXPLORE-JUDGE-CONTRACT-V2_7D-SHARED-MISS-DIAGNOSIS (terminal V2_7D_CONTRACT_REPAIR_REQUIRED)",
+  "base_contract": {
+    "path": "evaluation/dev-corpus-semantic-judge-v1-4/semantic-judge-contract-v1-4.json",
+    "sha256_prefix": "f545b54b3295",
+    "rule": "all V1.4 semantics carried verbatim except the two repairs registered below"
+  },
+  "repairs": {
+    "UNC_A1_contradictory_limitation": {
+      "defect": "V1.4 derivation_tables.EXPLICIT_LIMITATION.CONTRADICTORY_LIMITATION = PARTIAL conflicts with UNRESOLVED semantics for unusable limitation prose; caused 0.75 human instability in V2.7D",
+      "repair": "EXPLICIT_LIMITATION x CONTRADICTORY_LIMITATION => UNRESOLVED (PARTIAL row removed)"
+    },
+    "UNC_A2_unclear_prose": {
+      "defect": "UNCLEAR_PROSE behavior not defined in V1.4 output_behaviors",
+      "repair": "UNCLEAR_PROSE added as output behavior; canonical verdict UNRESOLVED in all derivation tables"
+    }
+  },
+  "uncertainty_model": {
+    "requirement_modes": ["NONE", "EXPLICIT_LIMITATION", "NON_ASSERTION_CONSTRAINT", "COMPOUND"],
+    "output_behaviors": ["NONE", "HEDGE", "EXPLICIT_LIMITATION", "PARTIAL_LIMITATION", "CONTRADICTORY_LIMITATION", "UNCLEAR_PROSE", "OVERCONFIDENT_ASSERTION", "UNRESOLVED"],
+    "applicability_rule": "NONE => NOT_REQUIRED (requirement_applicable NO); EXPLICIT_LIMITATION, NON_ASSERTION_CONSTRAINT, COMPOUND => applicable YES; NON_ASSERTION_CONSTRAINT + NOT_REQUIRED is schema-invalid",
+    "non_assertion_constraint_definition": "criterion requires that a specific overconclusion is NOT asserted/implied; no explicit hedge required; applicability YES",
+    "behavior_definitions": {
+      "CONTRADICTORY_LIMITATION": "limitation prose that contradicts itself or retracts itself at sentence level; does not communicate a usable epistemic limitation",
+      "UNCLEAR_PROSE": "limitation-related output text cannot be classified as communicating a limitation, failing to communicate one, or making a specific prohibited over-conclusion, because the text is incoherent or fragmentary at sentence level"
+    },
+    "derivation_tables": {
+      "EXPLICIT_LIMITATION": {
+        "EXPLICIT_LIMITATION": "SATISFIED",
+        "PARTIAL_LIMITATION": "PARTIAL",
+        "HEDGE": "PARTIAL",
+        "CONTRADICTORY_LIMITATION": "UNRESOLVED",
+        "UNCLEAR_PROSE": "UNRESOLVED",
+        "OVERCONFIDENT_ASSERTION": "VIOLATED",
+        "NONE": "UNRESOLVED",
+        "UNRESOLVED": "UNRESOLVED"
+      },
+      "NON_ASSERTION_CONSTRAINT": {
+        "NONE": "SATISFIED",
+        "HEDGE": "SATISFIED",
+        "EXPLICIT_LIMITATION": "SATISFIED",
+        "PARTIAL_LIMITATION": "SATISFIED",
+        "CONTRADICTORY_LIMITATION": "VIOLATED",
+        "UNCLEAR_PROSE": "UNRESOLVED",
+        "OVERCONFIDENT_ASSERTION": "VIOLATED",
+        "UNRESOLVED": "UNRESOLVED"
+      }
+    },
+    "compound_rule": "mode COMPOUND requires explicit component list (kind EXPRESSION|NON_ASSERTION + behavior); verdict derived per component with the repaired tables then aggregated: all SATISFIED => SATISFIED; VIOLATED+SATISFIED => PARTIAL; all VIOLATED => VIOLATED; no VIOLATED with some SATISFIED => PARTIAL; else UNRESOLVED",
+    "absence_vs_violation": "absence of uncertainty language is never automatically VIOLATED; VIOLATION requires the output to assert or imply a claim conflicting with the requirement; NON_ASSERTION + absence of prohibited conclusion = SATISFIED",
+    "partial_vs_unresolved": "PARTIAL = identifiable part of requirement fulfilled; UNRESOLVED = cannot safely determine fulfilment or violation from text, including contradictory, self-retracted, or incoherent limitation prose; PARTIAL is never 'mild uncertainty'"
+  },
+  "carried_semantics_from_v1_2": "verbatim from V1.4 contract; route and forbidden semantics untouched",
+  "freeze_rule": "contract may be amended only before Set B labeling starts; after Set B starts it is frozen for the task"
+}

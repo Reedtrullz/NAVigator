@@ -1,0 +1,107 @@
+{
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-3-V1",
+  "task_family": "full-sut-repair",
+  "status": "FULL_SUT_REPAIR_WAVE_3_READY_FOR_REMEASUREMENT",
+  "created": "2026-09-16T18:45:00+02:00",
+  "closed_utc": "2026-09-16T18:57:59Z",
+  "source_candidate": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-2-V1",
+  "primary_repair": "W3-RC-A-route-proposition-construction",
+  "starting_states": {
+    "scope_gate": "POST_WAVE2_P0_ROUTING_WAVE3_SCOPE_GATE_COMPLETE",
+    "product": "FULL_SUT_REPAIR_WAVE_2_READY_FOR_REMEASUREMENT",
+    "measurement": "MEASUREMENT_V3_REMEASURE_WAVE_2_RESIDUAL_ADJUDICATION_REQUIRED"
+  },
+  "scope": {
+    "authorized": [
+      "route proposition construction (W3-RC-A)",
+      "mechanically necessary supporting wiring in planner/finalize/evidence attachment"
+    ],
+    "forbidden": [
+      "measurement_v3_changes",
+      "scoring",
+      "safety_policy_changes",
+      "broad_retrieval_rewrite",
+      "rc04_uncertainty_repair",
+      "rc06_renderer_cleanup",
+      "gold_changes",
+      "fresh_holdout",
+      "deployment",
+      "benchmark_tuning",
+      "case_ids_or_corpus_strings_in_runtime",
+      "semantic_review_calls"
+    ]
+  },
+  "candidate_attempts_max": 2,
+  "candidate_attempts_used": 1,
+  "candidate_frozen": {
+    "version": "v1",
+    "manifest": "repaired-sut-manifest.json",
+    "manifest_sha256": "6c1f7d4b4b52eeabc16a13e0c34d9cdd332a6acd532cd33ddb796660fd2be14f",
+    "routes_py_sha256": "29b0bd44ee5ad4e7e3bbca492f34958e3cbb570fd45e0231d7c0c7c13213d7fa",
+    "components": 24,
+    "components_changed_from_wave2": 1,
+    "components_verified_live_at_close": "24/24 hash-match, 0 mismatches"
+  },
+  "official_replay": {
+    "runs_dir": "runs/structural-120-replay-v1/",
+    "predictions": 120,
+    "success": 120,
+    "crashes": 0,
+    "schema_valid": 120,
+    "gates_overall": "PASS",
+    "determinism": "runs/determinism-check-v1/ 120/120 byte-identical",
+    "prediction_manifest_sha256": {
+      "routing": "4cbaa0da5b5cd0ae2c8dc81c67d5517048c8cc6a1ac5c29136e35b0bf10832bc",
+      "safety": "b8b4c2a7a9c0bed84e6f6ffa4ba5e52e0ece024e9fde3acd0a5cf7118c15daa3",
+      "discovery_adversarial": "7ea0c4a48f5880bf6d5749c4c3708d6044b58ca0be3e87e3259560507a9830fa"
+    }
+  },
+  "regression": {
+    "total": 242,
+    "passed": 242,
+    "failed": 0,
+    "baseline_pre_wave3": 216
+  },
+  "terminal_report": "final-report.md",
+  "terminal_report_sha256": "c9506c33be61b4a57246ea66134e677e12a5537f49cb31c9c8a5f0f4f79e0465",
+  "invariants": {
+    "HISTORICAL_PREDICTIONS_MUTATED": false,
+    "HISTORICAL_MEASUREMENTS_MUTATED": false,
+    "GOLD_MUTATED": false,
+    "MEASUREMENT_MUTATED": false,
+    "SAFETY_POLICY_CHANGED": false,
+    "FRESH_CASES_CONSUMED": 0,
+    "PRODUCT_IMPORTS_EVALUATION": 0,
+    "RC04_IMPLEMENTED": false,
+    "RC06_IMPLEMENTED": false,
+    "SCORER_QUIRKS_IN_RUNTIME": false
+  },
+  "frozen_pins": {
+    "wave2_manifest": {
+      "path": "evaluation/full-sut-repair-wave-2-v1/repaired-sut-manifest.json",
+      "sha256": "8369e21309d7b53413bb6ab93ba7e0983769e707ca7680803237edc1a39ee22e"
+    },
+    "wave2_prediction_manifests": {
+      "routing": "35be9666f47ff6ae1f85875185945957ec95401c8ffb4427a53f31eefd51cfd0",
+      "safety": "71d65c5973aeda50530d8c256118ea6cb71d75b238eea393bbd842145052569d",
+      "discovery_adversarial": "099c4aa9da36d04c101cb7b0c44097a7d46c9c3526679db36aa6460605e6dc2e"
+    },
+    "scope_gate_lineage": "evaluation/post-wave2-p0-routing-wave3-scope-gate-v1/",
+    "scope_gate_hashes_file": "evaluation/post-wave2-p0-routing-wave3-scope-gate-v1/hashes.txt",
+    "gold": {
+      "routing_cases": "55f634d9cee8726343b75a6d61eb0a375532a3ac2948df3b5383e70d1983e317",
+      "safety_cases": "5d7cefcb43a9db233ed529f4cf439191d8f38125f727de104843933fe79e6800",
+      "discovery_adversarial_cases": "8eb2ab761affc0f2ac4095e54c54c3ff4302005beb8eaf10830a5c93a2074104"
+    },
+    "wave3_candidate_spec": {
+      "path": "evaluation/post-wave2-p0-routing-wave3-scope-gate-v1/wave3-repair-candidates.json",
+      "sha256": "bf796725a6acd814f3cae2c2d3c12fd11912683f9d3ca5787b3e6b4ce080d41d"
+    },
+    "wave2_component_manifest_verification": "ALL_OK (24/24 components hash-match frozen manifest at task start)"
+  },
+  "terminal_states": [
+    "FULL_SUT_REPAIR_WAVE_3_READY_FOR_REMEASUREMENT",
+    "FULL_SUT_REPAIR_WAVE_3_BLOCKED",
+    "FULL_SUT_REPAIR_WAVE_3_INVALID"
+  ]
+}

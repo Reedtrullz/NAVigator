@@ -1,0 +1,429 @@
+{
+  "analysis_id": "NEX_V1_INVALID_ANALYSIS",
+  "source": "semantic-reviewer-cost-qualification-v1/screening-results.json candidate nex-n2.5-pro",
+  "wire_id": "openrouter/nex-agi/nex-n2.5-pro:free",
+  "total_screen_rows": 90,
+  "status_counts": {
+    "INVALID_MODEL_REVIEW": 38,
+    "OK": 48,
+    "TRANSPORT_ERROR": 4
+  },
+  "transport_errors": 4,
+  "invalid_model_reviews": 38,
+  "classification_totals": {
+    "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM": 30,
+    "EVIDENCE_RULE_VIOLATION": 8
+  },
+  "decision_rule_from_spec_section_5": "retest authorized only if transport/serialization clearly dominates; semantic/evidence violation dominance forbids retest",
+  "finding": "All 38 invalid rows have schema_valid=true (valid JSON parsed every time). 30 rows violate the enum contract by returning speaker_commitment=null; 8 rows violate the conditional evidence rule. Zero rows show transport, serialization, or JSON-parse failure.",
+  "dominant_failure_class": "SEMANTIC_CONTRACT_VIOLATION",
+  "transport_or_serialization_share": 0.0,
+  "semantic_or_evidence_share": 1.0,
+  "decision": "NEX_RECHECK_NOT_AUTHORIZED",
+  "rationale": "Semantic/evidence violations dominate (38/38 = 100%). Section 5 explicitly forbids retest in this case. A JSON wrapper or serialization fix would not address null speaker_commitment or evidence-rule failures, and prompt tuning is forbidden.",
+  "invalid_rows": [
+    {
+      "canonical_hash": "00373c2b66b0dfd6878e77710e517681b7bfd73519cbaa6624165b5aa66b14c9",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "008610953dcb2d4b9f690cc0cdb1c8803f4c91ed030931feb6e8c1b3a2ab4a53",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "0e23b838ffe9e9bcbf1f5a52b3135c80e6dce6cadd7921df97adc1ea3326d9d3",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "178852aff5a122d990c92e782f8f281489ca6a0852e694077d1a7fd068e4513d",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "18ff46c005e23dfb902a9c0817d865d76224c507452591dc1fea6b605a07f102",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "219666f0586e5bf1a008b91ebb30b7c2d31b8c4a30e80a86b6790954ab753a68",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "2bdcfe9aa44c1757a11e876879dcbfd768bd73cf6b28aaa592315eb35be8b832",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "2d3f0e9b6df0cf8d2e6d173e06f435fea25454660274d68cb9cc517ea942ffee",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "35f11f14b2deddfcb66aefe04004df8bc9a42e31001ac4ba25bd991220599ecf",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "40074761969c895e7fe51836decd6607570c6df7edf463ffd82a5767fb050c75",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "45fb8224015f922401293aae49f815c77ad16a84e0848f0b00189893bc80b267",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "551d9205ef74eee4f533ae48d0eaedf31dac34db3295e0b197a5ad7d0da3cd72",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "55c890d8312e2507d06458630a7728dfa343a0c4beb852e29101194c63db05f6",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "563ee44284a80cefe873422e74d9a15b9d5c05d473286c8d0f36350a2c703176",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "578a4066fcf0eae1cf1ac56b5fae1c5840fa5db8f5de0a516ea53203d8434541",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "5c77f4a1a71a1c55754570081392b71f304774e8bf20f3cf4f985376ff4b69dd",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "60657ce95411880690a2cf1749e35671ad81d123905d7d89b4492d48f30d69fa",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "7355b4d0a52b69f0ec1f72451376472a0f14520c88e03ad445f5455be0f2f89d",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "840ff64b7b8f866478c46f7381ff42490afbb6f46d01bd15d756df4b8d93cea1",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "8b4b16bdf6e6cd9b817013a75c5b3d5d07476f1a5ab08b16ecb8d109a76721e7",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "8ee2d03d326de2ab717cdc833d7533c25ac89f42b10f5107bd6d8a4d36f22c0c",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "a51331df1c05b10fe5cbdaa0cbdfc7590464420594bcdbc7226489cb87e613c6",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "b3baaf6bf8fbc1ed879dd4f4bf4015d6c30efe41a97b952e8a7456480d5461d8",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "b4faf9f0cee64ed5b57544a0747f0d4e1848014a355318d2cceefc24cd10d767",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "baca59afcca0cf9c7ce42adca3ba449029b4f5379dae6cde7095e6b9d6487e80",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "cbb7c074e88a18c9fe3a09a1068ac82cdb240952643e98f3378f7ab7532a9108",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "d435693ec3704285b608dc516247369a0364539d1df9e345cf813320164aa1de",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "d525b4808a1fab8a5d499d7d18959f75818c55751e09c2bf7773377735ce0daa",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "d7cec211f60d8300b02c92a1118de8bcce0370f799b74167b67259a09b0fb386",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "e7644579fd3f968b23d7ecb9c6c07b2689f47896fb2b14836c5ca76b1fada2dd",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "ee899843612db9afeaf5f2b49dffc3be28e658af17e4ea10e3efa1f345bf7ef0",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "f09838001be6e0ae2afbed328198e3ebef14fff65e71acc3e93798ccf36bbf20",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "fbb0971025d5734e087d320aeec5373b4e4f4060fc540176a881d1ef28b97c55",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "fcca2c2eef3a20003423e75568e52ecb85c16b66270ffe3a2bef610541b949e6",
+      "lane": "forbidden_claim",
+      "schema_valid": true,
+      "enum_valid": false,
+      "evidence_valid": true,
+      "null_fields": [
+        "speaker_commitment"
+      ],
+      "classification": "SEMANTIC_CONTRACT_VIOLATION_NULL_ENUM"
+    },
+    {
+      "canonical_hash": "288d1555aa39d158bc87f0544ba9afc66df47a6df980e4cda4b92d6b43e580be",
+      "lane": "critical_condition",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "7bcbf43a28e66db1b9cb710f64dcfcf2225dd623f5ab383b441cb4c2f3385f2d",
+      "lane": "critical_condition",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "a50ba9140024283c9cdb367d2524754844a4ddfb6fdb821f027a3db0fcd95293",
+      "lane": "critical_condition",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    },
+    {
+      "canonical_hash": "cc9d1dbbb54f6cf82a47df4455eefa87c1e9475bba05f554890ead0ae0bfc07e",
+      "lane": "critical_condition",
+      "schema_valid": true,
+      "enum_valid": true,
+      "evidence_valid": false,
+      "null_fields": [],
+      "classification": "EVIDENCE_RULE_VIOLATION"
+    }
+  ],
+  "timeouts_note": "V1 recorded 4 TRANSPORT_ERROR rows for nex (attempt-level transport observations); these were transport events in V1, not model-review invalids, and alone cannot satisfy the dominance test for recheck authorization."
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Semantic judge V1.2 result (per dimension call)",
+  "type": "object",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "dimension": {"const": "uncertainty"},
+        "requirement_applicable": {"enum": ["YES", "NO"]},
+        "verdict": {"enum": ["SATISFIED", "PARTIAL", "VIOLATED", "NOT_REQUIRED", "UNRESOLVED"]},
+        "evidence_spans": {"type": "array", "items": {"type": "string"}},
+        "note": {"type": "string", "pattern": "^[a-z0-9_]{0,120}$"}
+      },
+      "required": ["dimension", "requirement_applicable", "verdict"],
+      "allOf": [
+        {
+          "if": {"properties": {"requirement_applicable": {"const": "NO"}}},
+          "then": {"properties": {"verdict": {"const": "NOT_REQUIRED"}}}
+        },
+        {
+          "if": {"properties": {"requirement_applicable": {"const": "YES"}}},
+          "then": {"properties": {"verdict": {"enum": ["SATISFIED", "PARTIAL", "VIOLATED", "UNRESOLVED"]}}}
+        },
+        {
+          "if": {"properties": {"verdict": {"const": "UNRESOLVED"}}},
+          "then": {"properties": {"evidence_spans": {"maxItems": 0}}}
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "dimension": {"enum": ["critical_condition", "forbidden_claim", "route_equivalence"]},
+        "verdict": {"enum": ["TRIGGERED", "NOT_TRIGGERED", "PRESENT", "ABSENT", "ACCEPTABLE", "PARTIAL", "NO_ACCEPTABLE_ROUTE", "UNRESOLVED"]},
+        "evidence_spans": {"type": "array", "items": {"type": "string"}},
+        "note": {"type": "string", "pattern": "^[a-z0-9_]{0,120}$"}
+      },
+      "required": ["dimension", "verdict"]
+    }
+  ]
+}

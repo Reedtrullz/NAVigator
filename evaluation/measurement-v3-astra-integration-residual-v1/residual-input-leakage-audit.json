@@ -1,0 +1,68 @@
+{
+  "artifact": "residual-input-leakage-audit",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-INTEGRATION-AND-RESIDUAL-ADJUDICATION-V1",
+  "audited_utc": "2026-09-15T22:39:34Z",
+  "audited_artifact": "residual-input-set.json",
+  "audit_scope_contract": {
+    "scanned": "the exact per-packet payload sent to the adjudicator: case_context, case_id, contract_definitions, criterion, dimension, evidence_span_instructions, packet_id, sut_output",
+    "not_scanned_by_design": [
+      "residual-input-set.json task-metadata sections (frozen_before_model_calls, blindness_contract, artifact, task_id, created_utc)",
+      "TASK-LOCK.json",
+      "this audit artifact itself",
+      "other meta artifacts"
+    ],
+    "rationale": "explicit artifact-class scope per task spec section 27; avoids self-referential meta-string false positives"
+  },
+  "structural_allowlist_check": {
+    "rule": "each packet object contains exactly the reviewer-permitted keys",
+    "packet_count": 10,
+    "pass": true
+  },
+  "frozen_equality_check": {
+    "rule": "criterion, case_context and sut_output byte-identical to frozen Batch-2 packets (no injected hints)",
+    "pass": true
+  },
+  "residual_reason_mapping_removed": true,
+  "verdict_marker_scan": {
+    "markers": [
+      "ASTRA_A",
+      "ASTRA_B",
+      "astra_a",
+      "astra_b",
+      "ADJ-A",
+      "ADJ-B",
+      "LLM_CONSENSUS",
+      "LLM_REVIEW_DISAGREEMENT",
+      "INVALID_MODEL_REVIEW",
+      "HUMAN_ADJUDICATION",
+      "final_gold",
+      "expected_verdict",
+      "model_verdict",
+      "automated_verdict",
+      "deterministic",
+      "authority_class",
+      "authoritative_fields",
+      "differing_fields",
+      "consensus_status",
+      "critical_evidence_state\"",
+      "criterion_semantic_match\"",
+      "speaker_commitment\"",
+      "aggregate"
+    ],
+    "hits": {}
+  },
+  "frozen_contract_vocabulary_allowance": {
+    "marker": "Gold",
+    "occurrences_in_payload": 10,
+    "source": "frozen CRIT_CONTRACT/FORB_CONTRACT definitions reused verbatim from evaluation/measurement-v3-astra-review-batch-1/run_astra_review.py",
+    "classification": "ALLOWED_FROZEN_CONTRACT_VOCABULARY — generic contract preamble present in the original frozen Batch-1 prompt; not a packet-specific expected verdict",
+    "packet_specific_gold_hits": []
+  },
+  "hard_gates": {
+    "PRIOR_ASTRA_VERDICT_VISIBLE": 0,
+    "EXPECTED_GOLD_VERDICT_VISIBLE": 0,
+    "DETERMINISTIC_EXPECTED_RESULT_VISIBLE": 0,
+    "AGGREGATE_SCORE_VISIBLE": 0
+  },
+  "result": "PASS"
+}

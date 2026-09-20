@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V1.6A Boundary Pre-Classifier Result",
+  "type": "object",
+  "required": ["route_commitment", "uncertainty_behavior", "assertion_scope"],
+  "properties": {
+    "route_commitment": { "$ref": "#/$defs/boundary" },
+    "uncertainty_behavior": { "$ref": "#/$defs/boundary" },
+    "assertion_scope": { "$ref": "#/$defs/boundary" }
+  },
+  "$defs": {
+    "boundary": {
+      "type": "object",
+      "required": ["dimension", "label", "rule_id", "evidence_span", "deterministic", "abstained"],
+      "properties": {
+        "dimension": { "enum": ["route_commitment", "uncertainty_behavior", "assertion_scope"] },
+        "label": { "type": "string" },
+        "rule_id": { "type": ["string", "null"] },
+        "evidence_span": { "type": ["string", "null"] },
+        "deterministic": { "const": true },
+        "abstained": { "type": "boolean" },
+        "reason": { "enum": [null, "NO_HIGH_PRECISION_RULE", "ABSTAIN_CONFLICT"] },
+        "conflict": { "type": "array", "items": { "type": "object" } }
+      }
+    }
+  }
+}

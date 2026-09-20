@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Semantic judge result V1.4",
+  "type": "object",
+  "required": [
+    "dimension",
+    "verdict",
+    "evidence_spans",
+    "note"
+  ],
+  "properties": {
+    "dimension": {
+      "enum": [
+        "critical_condition",
+        "forbidden_claim",
+        "route_correctness",
+        "required_uncertainty"
+      ]
+    },
+    "verdict": {
+      "type": "string"
+    },
+    "evidence_spans": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_basis": {
+      "enum": [
+        "TEXT_SPAN",
+        "ABSENCE_OF_PROHIBITED_ASSERTION"
+      ]
+    },
+    "prohibited_conclusion_checked": {
+      "type": "string"
+    },
+    "route_proposition_present": {
+      "enum": [
+        "YES",
+        "NO",
+        "UNRESOLVED"
+      ]
+    },
+    "route_speaker_commitment": {
+      "enum": [
+        "ASSERTED",
+        "HEDGED_ASSERTION",
+        "HYPOTHETICAL_ONLY",
+        "QUOTED_ONLY",
+        "NEGATED",
+        "SELF_RETRACTED",
+        "UNRESOLVED"
+      ]
+    },
+    "uncertainty_requirement_mode": {
+      "enum": [
+        "NONE",
+        "EXPLICIT_LIMITATION",
+        "NON_ASSERTION_CONSTRAINT",
+        "COMPOUND"
+      ]
+    },
+    "uncertainty_output_behavior": {
+      "enum": [
+        "NONE",
+        "HEDGE",
+        "EXPLICIT_LIMITATION",
+        "PARTIAL_LIMITATION",
+        "CONTRADICTORY_LIMITATION",
+        "OVERCONFIDENT_ASSERTION",
+        "UNRESOLVED"
+      ]
+    },
+    "compound_components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "behavior"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "EXPRESSION",
+              "NON_ASSERTION"
+            ]
+          },
+          "behavior": {
+            "enum": [
+              "NONE",
+              "HEDGE",
+              "EXPLICIT_LIMITATION",
+              "PARTIAL_LIMITATION",
+              "CONTRADICTORY_LIMITATION",
+              "OVERCONFIDENT_ASSERTION",
+              "UNRESOLVED"
+            ]
+          }
+        }
+      }
+    },
+    "note": {
+      "type": "string",
+      "maxLength": 160
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "dimension": {
+            "const": "route_correctness"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "route_proposition_present",
+          "route_speaker_commitment"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "dimension": {
+            "const": "required_uncertainty"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "uncertainty_requirement_mode",
+          "uncertainty_output_behavior"
+        ]
+      }
+    }
+  ]
+}

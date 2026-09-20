@@ -1,0 +1,40 @@
+{
+  "task_id": "NAV-EXPLORE-JEV-1.13-FREE-QUALIFICATION-V1",
+  "captured": "2026-09-19T12:00-12:08 local (Europe/Oslo)",
+  "model_catalog_evidence": {
+    "opencodex_config_modelDiscovery_knownModels_opencode-free_ids": ["big-pickle", "deepseek-v4-flash-free", "jev-1.13-free", "ling-3.0-flash-fin-free", "mimo-v2.5-free", "muse-spark-1.2-contributor-free", "muse-spark-1.3-contributor-free", "nemotron-3-ultra-free", "nemotron-3.5-lightning-free"],
+    "opencodex_config_recentArrivals_opencode-free": ["ling-3.0-flash-fin-free", "muse-spark-1.3-contributor-free", "jev-1.13-free"],
+    "opencode_cli_v1_18_21_models": ["opencode/jev-1.13", "opencode/jev-1.13-free", "opencode/jev-latest"],
+    "catalog_compatible_json_contains_alias": "opencode-free/jev-1.13-free"
+  },
+  "invocation_attempts": [
+    {"path": "direct POST https://opencode.ai/zen/v1/chat/completions, model=jev-1.13-free, no key", "result": "HTTP 403 Cloudflare error 1010"},
+    {"path": "local OpenCodex proxy v2.58.0, model=opencode-free/jev-1.13-free", "result": "HTTP 500 upstream_server_error (repeated)"},
+    {"path": "local OpenCodex proxy, model=jev-1.13-free (unprefixed)", "result": "HTTP 404 The model 'jev-1.13-free' does not exist (distributor)"},
+    {"path": "direct POST https://opencode.ai/zen/go/v1/chat/completions with opencode-go subscription key, model=jev-1.13-free", "result": "HTTP 403 Cloudflare error 1010"},
+    {"path": "local OpenCodex proxy, model=opencode-go/jev-1.13-free", "result": "HTTP 400 Upstream request failed: Model is unavailable."},
+    {"path": "authorized OpenCode CLI v1.18.21: opencode run -m opencode/jev-1.13-free (Sisyphus primary agent), plain and --format json, plus --agent build fallback", "result": "no assistant output; CLI log shows repeated stream errors"},
+    {"path": "authorized OpenCode CLI: opencode/jev-1.13", "result": "no output; stream error: Upstream request failed: Insufficient account funds"},
+    {"path": "authorized OpenCode CLI: opencode/jev-latest", "result": "no output; stream error: Upstream request failed: Model is unavailable."}
+  ],
+  "authorized_client_log_evidence": {
+    "log_path": "~/.local/share/opencode/log/opencode.log",
+    "selected_lines": [
+      "2026-09-19T12:00:58.385Z ERROR run=2bade1a4 stream providerID=opencode modelID=jev-1.13-free error.error=\"AI_APICallError: Upstream request failed: Endpoint is unavailable.\"",
+      "2026-09-19T12:01:01.684Z ERROR run=1d657f6d stream providerID=opencode modelID=jev-1.13-free error.error=\"AI_APICallError: Upstream request failed: Endpoint is unavailable.\"",
+      "2026-09-19T12:01:06.814Z ERROR run=1d657f6d stream providerID=opencode modelID=jev-1.13-free error.error=\"AI_APICallError: Upstream request failed: Endpoint is unavailable.\"",
+      "2026-09-19T12:01:15.909Z ERROR run=1d657f6d stream providerID=opencode modelID=jev-1.13-free error.error=\"AI_APICallError: Upstream request failed: Endpoint is unavailable.\"",
+      "2026-09-19T12:05:54.284Z ERROR run=2d73a7f8 stream providerID=opencode modelID=jev-1.13-free error.error=\"AI_APICallError: Upstream request failed: Endpoint is unavailable.\"",
+      "2026-09-19T12:07:07.703Z ERROR run=35242355 stream providerID=opencode modelID=jev-1.13 error.error=\"AI_APICallError: Upstream request failed: Insufficient account funds\"",
+      "2026-09-19T12:07:32.697Z ERROR run=3e0a6654 stream providerID=opencode modelID=jev-latest error.error=\"AI_APICallError: Upstream request failed: Model is unavailable.\""
+    ],
+    "interpretation": "The authorized client path (opencode run) reaches provider routing but the jev-1.13-free upstream endpoint is unavailable; sibling jev-1.13 alias additionally reports 'Insufficient account funds', so paid-tier Jev is also currently blocked by account state."
+  },
+  "route_health_check": {
+    "description": "opencode-free/mimo-v2.5-free via local proxy was called once to verify the free route itself responds distinctly",
+    "result": "HTTP 403 permission_error: OpenCode's free tier can only be used from within OpenCode",
+    "conclusion": "free route enforces client gating; jev-1.13-free additionally fails upstream even from within the authorized client"
+  },
+  "secret_handling": "No API keys, tokens, or account identifiers printed or stored; provider config inspected programmatically with values redacted.",
+  "integration_change_required": "Provider-side remediation: jev-1.13-free upstream endpoint must become available within the authorized OpenCode client, or the OpenCode account must have Jev access/funds if the free alias is decommissioned. No local code change can invoke the model while the upstream endpoint is unavailable."
+}

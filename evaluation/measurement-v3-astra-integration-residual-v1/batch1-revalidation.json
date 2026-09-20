@@ -1,0 +1,60 @@
+{
+  "artifact": "batch1-revalidation",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-INTEGRATION-AND-RESIDUAL-ADJUDICATION-V1",
+  "verified_utc": "2026-09-15T22:38:40Z",
+  "validation_logic_source": "frozen evaluation/measurement-v3-astra-review-batch-1/build_consensus.py validate() (authoritative Batch-1 revalidation logic)",
+  "revalidation_note": "the per-record status field stored in the jsonl files reflects a stricter in-run span rule (flagged 55/74 per pass); the authoritative frozen consensus builder treats empty spans as legal where the contract does not require them; independent revalidation reproduced consensus-results.json exactly",
+  "model_check": {
+    "expected": "gpt-6-astra",
+    "records_checked": 148,
+    "mismatches": 0
+  },
+  "reasoning_effort_check": {
+    "expected": "low",
+    "records_checked": 148,
+    "mismatches": 0
+  },
+  "packet_sha_binding": {
+    "records_checked": 148,
+    "mismatches": 0
+  },
+  "evidence_span_rule": "spans required iff critical_evidence_state in {CLEAR_TRIGGER_SUPPORT, CLEAR_NON_TRIGGER_SUPPORT} OR (criterion_semantic_match == MATCH and speaker_commitment != UNRESOLVED); all spans must be verbatim substrings of sut_output",
+  "lane_coverage": {
+    "critical_condition_packets": 10,
+    "forbidden_claim_packets": 64
+  },
+  "valid_astra_a": 70,
+  "valid_astra_b": 71,
+  "invalid_astra_a": {
+    "PKT-ESC-ROUT-085": "INVALID_MODEL_REVIEW",
+    "PKT-ESC-ROUT-025": "INVALID_ENUM",
+    "PKT-ESC-ROUT-063": "INVALID_ENUM",
+    "PKT-ESC-ROUT-066": "INVALID_ENUM"
+  },
+  "invalid_astra_b": {
+    "PKT-ESC-DIS-109-F01": "INVALID_ENUM",
+    "PKT-ESC-ROUT-021-F02": "INVALID_ENUM",
+    "PKT-ESC-ROUT-038-F02": "INVALID_ENUM"
+  },
+  "invalid_enum_note": "speaker_commitment = null at criterion_semantic_match = NO_MATCH; null is not in the frozen enum; NOT normalized and NOT repaired",
+  "consensus_recomputed": 64,
+  "disagreements_recomputed": [
+    "PKT-ESC-DIS-109",
+    "PKT-ESC-DIS-118",
+    "PKT-ESC-ROUT-041"
+  ],
+  "residual_recomputed": [
+    "PKT-ESC-DIS-109",
+    "PKT-ESC-DIS-109-F01",
+    "PKT-ESC-DIS-118",
+    "PKT-ESC-ROUT-021-F02",
+    "PKT-ESC-ROUT-025",
+    "PKT-ESC-ROUT-038-F02",
+    "PKT-ESC-ROUT-041",
+    "PKT-ESC-ROUT-063",
+    "PKT-ESC-ROUT-066",
+    "PKT-ESC-ROUT-085"
+  ],
+  "matches_frozen_consensus_results": true,
+  "result": "PASS"
+}

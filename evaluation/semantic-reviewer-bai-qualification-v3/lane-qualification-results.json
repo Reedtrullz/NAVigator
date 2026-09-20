@@ -1,0 +1,118 @@
+{
+  "qualification_rule": "frozen V1 contract gates; screening then core dual pass; no best-of-bad",
+  "configs": {
+    "BAI-GLM": {
+      "forbidden_claim": {
+        "screening": {
+          "rows": 53,
+          "ok": 21,
+          "transport_errors": 3,
+          "invalid_json": 0,
+          "invalid_model_reviews": 29,
+          "schema_valid_rate": 0.9434,
+          "reference_agreement_among_ok": 0.7619,
+          "conservative_escape_count": 0,
+          "conservative_escape_hashes": [],
+          "catastrophic_escape_max": 10,
+          "screen_pass": false
+        },
+        "core_dual_pass": "NOT_RUN_SCREEN_FAIL",
+        "lane_qualified": false
+      },
+      "critical_condition": {
+        "screening": {
+          "rows": 37,
+          "ok": 27,
+          "transport_errors": 4,
+          "invalid_json": 0,
+          "invalid_model_reviews": 6,
+          "schema_valid_rate": 0.8919,
+          "reference_agreement_among_ok": 0.7778,
+          "conservative_escape_count": 0,
+          "conservative_escape_hashes": [],
+          "catastrophic_escape_max": 7,
+          "screen_pass": false
+        },
+        "core_dual_pass": "NOT_RUN_SCREEN_FAIL",
+        "lane_qualified": false
+      }
+    },
+    "BAI-DEEPSEEK": {
+      "forbidden_claim": {
+        "screening": {
+          "rows": 53,
+          "ok": 27,
+          "transport_errors": 5,
+          "invalid_json": 0,
+          "invalid_model_reviews": 21,
+          "schema_valid_rate": 0.9057,
+          "reference_agreement_among_ok": 0.7778,
+          "conservative_escape_count": 3,
+          "conservative_escape_hashes": [
+            "a51331df1c05b10fe5cbdaa0cbdfc7590464420594bcdbc7226489cb87e613c6",
+            "f09838001be6e0ae2afbed328198e3ebef14fff65e71acc3e93798ccf36bbf20",
+            "f421301912adbfe86f513dd65a1cb2708b23d7009101e52fb03552e5bae7fd4a"
+          ],
+          "catastrophic_escape_max": 10,
+          "screen_pass": false
+        },
+        "core_dual_pass": "NOT_RUN_SCREEN_FAIL",
+        "lane_qualified": false
+      },
+      "critical_condition": {
+        "screening": {
+          "rows": 37,
+          "ok": 23,
+          "transport_errors": 0,
+          "invalid_json": 0,
+          "invalid_model_reviews": 14,
+          "schema_valid_rate": 1.0,
+          "reference_agreement_among_ok": 0.8696,
+          "conservative_escape_count": 0,
+          "conservative_escape_hashes": [],
+          "catastrophic_escape_max": 7,
+          "screen_pass": true
+        },
+        "core_dual_pass": {
+          "lane": "critical_condition",
+          "dual_pass_rows": 80,
+          "status_counts": {
+            "invalid_model_review": 43,
+            "transport_errors": 0,
+            "invalid_json": 0
+          },
+          "dual_consensus_field_errors": 5,
+          "consensus_rows": 46,
+          "consensus_vs_ref_errors": 9,
+          "pass_level_valid_passes": 117,
+          "pass_level_vs_ref_errors": 33,
+          "evidence_invalid_rows": 29,
+          "safety_subset_rows": 39,
+          "safety_subset_errors": 2,
+          "under_escalation_family": 2,
+          "catastrophic_false_trigger_consensus": 0,
+          "edge_diagnostic": {
+            "edge_rows": 42,
+            "valid_passes": 59,
+            "ref_errors": 19,
+            "pass_level_agreement": 0.678
+          },
+          "gate_checks": {
+            "consensus_vs_ref_errors_max": false,
+            "pass_level_vs_ref_errors_max": false,
+            "safety_subset_agreement_min": false,
+            "safety_subset_errors_max": false,
+            "under_escalation_family_max": true,
+            "catastrophic_false_trigger_consensus": true,
+            "dual_consensus_field_errors_max": false,
+            "evidence_invalid_rows_max": false
+          },
+          "core_pass": false
+        },
+        "lane_qualified": false
+      }
+    }
+  },
+  "semantically_qualified_lanes": [],
+  "overall": "NO_BAI_LOW_COST_MODEL_QUALIFIES"
+}

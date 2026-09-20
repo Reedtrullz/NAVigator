@@ -1,0 +1,36 @@
+{
+  "release_name": "NAV-EXPLORE-EVALUATOR-RC3_1-BOUNDARY-CANDIDATE",
+  "status": "BOUNDARY_CANDIDATE_FROZEN",
+  "frozen_at": "2026-09-06T09:40:00+02:00",
+  "task_id": "NAV-EXPLORE-RC3_1-AUTO-SUPPORT-BOUNDARY-REPAIR",
+  "note": "Not a release candidate and not a certification. Frozen per task spec section 39 because all section 30 boundary gates passed. The sealed 60-case validation remains closed; overall proof readiness is NOT READY pending a later relation-class repair task.",
+  "boundary_gates": {
+    "FALSE_AUTO_SUPPORT_BOUNDARY": 0,
+    "support_boundary_precision": 1.0,
+    "critical_support_precision": 1.0,
+    "entailed_support_recall": 0.972972972972973,
+    "negation_boundary_accuracy": 1.0,
+    "modality_boundary_accuracy": 0.95,
+    "condition_exception_boundary_accuracy": 1.0,
+    "actor_scope_boundary_accuracy": 1.0,
+    "unsound_eligible_support_proofs": 0,
+    "deterministic_stability": 1.0,
+    "all_pass": true
+  },
+  "overall_proof_readiness": "PROOF_NOT_READY",
+  "components": {
+    "boundary_module": "../rc3-1-proof-semantics/rc3_1_engine/boundary.py",
+    "engine_module": "../rc3-1-proof-semantics/rc3_1_engine/engine.py",
+    "proposition_module": "../rc3-1-proof-semantics/rc3_1_engine/proposition.py",
+    "decomposition_module": "../rc3-1-proof-semantics/rc3_1_engine/decomposition.py",
+    "modality_table": "modality-boundary-table.json",
+    "fresh_suite": "fresh-boundary-cases.json",
+    "harness": "run_boundary.py",
+    "metric_contract": "boundary-metrics-v1.json",
+    "boundary_contract": "boundary-contract-v1.md",
+    "task_lock": "TASK-LOCK.json",
+    "final_results": "boundary-results.json"
+  },
+  "component_paths_note": "Paths relative to the task directory (rc3-1-support-boundary/); engine modules live in the sibling rc3-1-proof-semantics checkout.",
+  "validation_seal_sha256": "15b13bb7006eff02bc50ef914a2b00593912829c6740d44548248cb0c1e50159"
+}

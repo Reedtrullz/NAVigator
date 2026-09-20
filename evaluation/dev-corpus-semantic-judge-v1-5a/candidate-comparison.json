@@ -1,0 +1,216 @@
+{
+  "artifact": "V1.5A CANDIDATE COMPARISON",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_5A-MODEL-SELECTION",
+  "generated_date": "2026-09-11",
+  "data_classification": "BURNED_JUDGE_MODEL_SELECTION_DATA (not certification evidence)",
+  "authorization": {
+    "original": "user chat 2026-09-11 (5 display names)",
+    "amendment": "user chat 2026-09-11 (wire ids; added Ling + Laguna)",
+    "artifact": "authorization-amendment.json"
+  },
+  "candidates": [
+    {
+      "candidate_key": "longcat-2-0-free",
+      "model": "command-code/meituan/LongCat-2.0:free",
+      "n": 100,
+      "status_ok": 97,
+      "transport_failures": 3,
+      "schema_failures": 0,
+      "overall": 0.866,
+      "critical": 0.92,
+      "forbidden": 0.92,
+      "route": 0.84,
+      "uncertainty": 0.7727,
+      "hard_zero": {
+        "critical_fn": 0,
+        "safety_forbidden_fn": 0,
+        "false_acceptable_route": 0
+      },
+      "evidence_invalid": 1,
+      "latency_median_s": 16.99,
+      "completion_tokens_total": 96288
+    },
+    {
+      "candidate_key": "mimo-v2-5-pro",
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "n": 100,
+      "status_ok": 100,
+      "transport_failures": 0,
+      "schema_failures": 0,
+      "overall": 0.84,
+      "critical": 0.92,
+      "forbidden": 0.92,
+      "route": 0.8,
+      "uncertainty": 0.72,
+      "hard_zero": {
+        "critical_fn": 0,
+        "safety_forbidden_fn": 0,
+        "false_acceptable_route": 0
+      },
+      "evidence_invalid": 0,
+      "latency_median_s": 18.07,
+      "completion_tokens_total": 127553
+    },
+    {
+      "candidate_key": "ling-3-0-flash-sante-free",
+      "model": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "n": 100,
+      "status_ok": 80,
+      "transport_failures": 13,
+      "schema_failures": 7,
+      "overall": 0.8375,
+      "critical": 0.84,
+      "forbidden": 0.92,
+      "route": 0.76,
+      "uncertainty": 0.8,
+      "hard_zero": {
+        "critical_fn": 0,
+        "safety_forbidden_fn": 0,
+        "false_acceptable_route": 0
+      },
+      "evidence_invalid": 0,
+      "latency_median_s": 2.41,
+      "completion_tokens_total": 50015
+    },
+    {
+      "candidate_key": "laguna-s-2-1-free",
+      "model": "command-code/poolside/laguna-s-2.1-free",
+      "n": 100,
+      "status_ok": 15,
+      "transport_failures": 81,
+      "schema_failures": 4,
+      "overall": 0.8,
+      "critical": 1.0,
+      "forbidden": 1.0,
+      "route": 0.6667,
+      "uncertainty": 0.8333,
+      "hard_zero": {
+        "critical_fn": 0,
+        "safety_forbidden_fn": 0,
+        "false_acceptable_route": 0
+      },
+      "evidence_invalid": 0,
+      "latency_median_s": 2.26,
+      "completion_tokens_total": 1175
+    }
+  ],
+  "baseline_not_rerun": {
+    "candidate_key": "mimo-v2-5",
+    "model": "command-code/xiaomi/mimo-v2.5",
+    "source": "V1.4 frozen official results (DO_NOT_RERUN)",
+    "overall": 0.8265,
+    "valid_rate": 0.98
+  },
+  "selection_floors": {
+    "overall": 0.95,
+    "critical": 0.95,
+    "critical_fn": 0,
+    "forbidden": 0.95,
+    "safety_forbidden_fn": 0,
+    "route": 0.95,
+    "uncertainty": 0.95,
+    "valid_rate": 0.99,
+    "evidence_validity": 1.0
+  },
+  "floor_adjudication": {
+    "longcat-2-0-free": {
+      "metrics": {
+        "overall": 0.866,
+        "critical": 0.92,
+        "critical_fn": 0,
+        "forbidden": 0.92,
+        "safety_forbidden_fn": 0,
+        "route": 0.84,
+        "uncertainty": 0.7727,
+        "valid_rate": 0.97,
+        "evidence_validity": 0.0
+      },
+      "floor_failures": [
+        "overall=0.866 (floor 0.95)",
+        "critical=0.92 (floor 0.95)",
+        "forbidden=0.92 (floor 0.95)",
+        "route=0.84 (floor 0.95)",
+        "uncertainty=0.7727 (floor 0.95)",
+        "valid_rate=0.97 (floor 0.99)",
+        "evidence_validity=0.0 (floor 1.0)"
+      ],
+      "passes_all_floors": false,
+      "passes_safety_filter": true
+    },
+    "mimo-v2-5-pro": {
+      "metrics": {
+        "overall": 0.84,
+        "critical": 0.92,
+        "critical_fn": 0,
+        "forbidden": 0.92,
+        "safety_forbidden_fn": 0,
+        "route": 0.8,
+        "uncertainty": 0.72,
+        "valid_rate": 1.0,
+        "evidence_validity": 1.0
+      },
+      "floor_failures": [
+        "overall=0.84 (floor 0.95)",
+        "critical=0.92 (floor 0.95)",
+        "forbidden=0.92 (floor 0.95)",
+        "route=0.8 (floor 0.95)",
+        "uncertainty=0.72 (floor 0.95)"
+      ],
+      "passes_all_floors": false,
+      "passes_safety_filter": true
+    },
+    "ling-3-0-flash-sante-free": {
+      "metrics": {
+        "overall": 0.8375,
+        "critical": 0.84,
+        "critical_fn": 0,
+        "forbidden": 0.92,
+        "safety_forbidden_fn": 0,
+        "route": 0.76,
+        "uncertainty": 0.8,
+        "valid_rate": 0.8,
+        "evidence_validity": 1.0
+      },
+      "floor_failures": [
+        "overall=0.8375 (floor 0.95)",
+        "critical=0.84 (floor 0.95)",
+        "forbidden=0.92 (floor 0.95)",
+        "route=0.76 (floor 0.95)",
+        "uncertainty=0.8 (floor 0.95)",
+        "valid_rate=0.8 (floor 0.99)"
+      ],
+      "passes_all_floors": false,
+      "passes_safety_filter": true
+    },
+    "laguna-s-2-1-free": {
+      "metrics": {
+        "overall": 0.8,
+        "critical": 1.0,
+        "critical_fn": 0,
+        "forbidden": 1.0,
+        "safety_forbidden_fn": 0,
+        "route": 0.6667,
+        "uncertainty": 0.8333,
+        "valid_rate": 0.15,
+        "evidence_validity": 1.0
+      },
+      "floor_failures": [
+        "overall=0.8 (floor 0.95)",
+        "route=0.6667 (floor 0.95)",
+        "uncertainty=0.8333 (floor 0.95)",
+        "valid_rate=0.15 (floor 0.99)"
+      ],
+      "passes_all_floors": false,
+      "passes_safety_filter": true
+    }
+  },
+  "models_passing_safety_filter": [
+    "longcat-2-0-free",
+    "mimo-v2-5-pro",
+    "ling-3-0-flash-sante-free",
+    "laguna-s-2-1-free"
+  ],
+  "models_passing_all_selection_floors": [],
+  "stability_screen_triggered": false,
+  "selection": "NONE (V1_5A_NO_MODEL_MEETS_SELECTION_FLOOR)"
+}

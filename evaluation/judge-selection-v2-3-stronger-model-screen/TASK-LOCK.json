@@ -1,0 +1,97 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_3-STRONGER-MODEL-SCREEN",
+  "owner_authorization_task_id_string": "NAV-EXPLORE-JUDGE-SELECTION-V2_3-SUBSKILL-SCREENING",
+  "status": "V2_3_NO_MODEL_QUALIFIES",
+  "created": "2026-09-13",
+  "owner_authorization_date": "2026-09-13",
+  "owner_authorization": "EXPLICIT_OWNER_AUTHORIZATION_RECEIVED_IN_THREAD",
+  "authorized_spec": {
+    "path": "evaluation/judge-selection-v2-3-draft/TASK-SPEC-DRAFT.md",
+    "frozen_sha256": "8b0be315b3ce0d39a4687482642e13e9f867831541f305dff2667ffd95c25152"
+  },
+  "derived_from": "NAV-EXPLORE-JUDGE-CONTRACT-V2_2-TWO-MECHANISM-OPERATIONALIZATION (terminal: V2_2_REFERENCE_MODEL_NOT_READY)",
+  "authorized_candidates": [
+    {
+      "priority": 1,
+      "candidate": "mimo-v2.5",
+      "wire_id": "command-code/xiaomi/mimo-v2.5",
+      "transport": "commandcode-auth local proxy"
+    },
+    {
+      "priority": 2,
+      "candidate": "ling-3.0-flash-sante",
+      "wire_id": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "transport": "commandcode-auth local proxy"
+    },
+    {
+      "priority": 3,
+      "candidate": "laguna-s-2.1",
+      "wire_id": "command-code/poolside/laguna-s-2.1-free",
+      "transport": "commandcode-auth local proxy"
+    },
+    {
+      "priority": 4,
+      "candidate": "deepseek-v4.1-flash",
+      "wire_id": "opencode-go/deepseek-v4.1-flash",
+      "transport": "opencode-go (transport verification required before screening)",
+      "conditional": true
+    }
+  ],
+  "candidate_set_frozen": true,
+  "candidate_expansion_after_start": "FORBIDDEN",
+  "openrouter_new_candidates_allowed": false,
+  "longcat_allowed": false,
+  "longcat_calls": 0,
+  "longcat_probes": 0,
+  "longcat_aliases_allowed": false,
+  "gpt_5_5_allowed": false,
+  "best_of_bad_selection_allowed": false,
+  "no_candidate_expansion_after_execution_start": true,
+  "screening_benchmark": "BURNED V2.2 official 120-row set (BURNED_CONTRACT_DIAGNOSTIC_DATA)",
+  "gates_source": "V2.2 spec sections 35-38, applied per candidate, unchanged",
+  "selection_rule": "spec section 6; no qualifying candidate = SELECTED null",
+  "terminal_statuses": [
+    "V2_3_MODEL_SELECTED",
+    "V2_3_NO_MODEL_QUALIFIES",
+    "V2_3_SCREENING_INCOMPLETE_QUOTA",
+    "V2_3_BLOCKED_OWNER_GATE",
+    "V2_3_INVALID"
+  ],
+  "product_runtime_changes_allowed": false,
+  "full_sut_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "prompt_or_contract_tuning_allowed": false,
+  "max_implementation_passes_per_candidate": 1,
+  "terminal_status": "V2_3_NO_MODEL_QUALIFIES",
+  "terminal_date": "2026-09-13",
+  "selection": {
+    "selected": null,
+    "reason": "no candidate passed all section-5 gates; best-of-bad forbidden",
+    "qualifiers": []
+  },
+  "screening_completed": {
+    "mimo-v2-5": {
+      "overall_accuracy": 0.7917,
+      "gates_all_pass": false
+    },
+    "ling-3-0-flash-sante-free": {
+      "overall_accuracy": 0.6333,
+      "gates_all_pass": false,
+      "note": "20 quota-429 invalid rows; capability gates fail among completed rows regardless"
+    },
+    "poolside-laguna-s-2-1-free": {
+      "overall_accuracy": 0.75,
+      "gates_all_pass": false
+    },
+    "deepseek-v4-1-flash": {
+      "overall_accuracy": 0.8333,
+      "gates_all_pass": false,
+      "note": "transport VERIFIED; strongest candidate; failed overall/M1/M2-ambiguity/controls; passed all structure and safety gates"
+    }
+  },
+  "stability_stage": "NOT_RUN_NO_QUALIFIERS",
+  "comparison_frozen_before_selection": true,
+  "gpt_5_5_calls": 0,
+  "openrouter_new_candidates_used": 0,
+  "historical_files_modified": 0
+}

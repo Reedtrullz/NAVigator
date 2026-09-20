@@ -1,0 +1,43 @@
+{
+  "task_id": "NAV-EXPLORE-POST-WAVE3-P0-RC04-BINDING-WAVE4-SCOPE-GATE-V1",
+  "status": "POST_WAVE3_P0_BINDING_WAVE4_SCOPE_GATE_COMPLETE",
+  "task_type": "READ_ONLY_DIAGNOSIS",
+  "authoritative_starting_state": "MEASUREMENT_V3_REMEASURE_WAVE_3_COMPLETE",
+  "wave3_measurement_lineage": "evaluation/measurement-v3-remeasure-repair-wave-3/",
+  "wave3_product_lineage": "evaluation/full-sut-repair-wave-3-v1/",
+  "prior_diagnosis": "POST_WAVE2_P0_ROUTING_WAVE3_SCOPE_GATE_COMPLETE",
+  "allowed": [
+    "inspect_frozen_wave3_predictions",
+    "inspect_frozen_wave3_measurement_results",
+    "inspect_wave2_comparison_artifacts",
+    "inspect_scorer_ownership_routing",
+    "diagnose_5_p0_regressions",
+    "diagnose_rout_030_lateral_flag",
+    "trace_route_label_evidence_provenance_binding",
+    "determine_wave4_scope"
+  ],
+  "forbidden": [
+    "modify_sut",
+    "modify_measurement_v3",
+    "modify_gold",
+    "modify_predictions",
+    "run_new_astra_sol_semantic_review",
+    "resolve_cases_by_resampling",
+    "implement_wave4",
+    "consume_fresh_holdout",
+    "deploy",
+    "gpt_5_5",
+    "semantic_llm_calls"
+  ],
+  "hard_invariants": {
+    "SOURCE_CHANGED": false,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false
+  },
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "created": "2026-09-17",
+  "terminal_status": "POST_WAVE3_P0_BINDING_WAVE4_SCOPE_GATE_COMPLETE",
+  "closed": "2026-09-17",
+  "terminal_report": "final-report.md"
+}

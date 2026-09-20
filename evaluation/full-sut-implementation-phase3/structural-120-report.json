@@ -1,0 +1,38 @@
+{
+  "artifact": "structural-120-run",
+  "label": "BURNED / DEV - first complete S1-S11 product run; not fresh evidence",
+  "attempted": 120,
+  "predictions": 120,
+  "crashes": 0,
+  "schema_valid": 120,
+  "gold_leakage": 0,
+  "merged_report": "runs/structural-120-run.json",
+  "official_prediction_sha256_self": "c7515f4f38ed614a2f256d1df77ec9dc70ec61a7d0b380ce15eec88b7f92c2e2",
+  "per_corpus": {
+    "safety": {"expected": 20, "predictions": 20, "errors": 0},
+    "routing": {"expected": 75, "predictions": 75, "errors": 0},
+    "discovery_adversarial": {"expected": 25, "predictions": 25, "errors": 0}
+  },
+  "failure_breakdown": {
+    "terminal": 9,
+    "recoverable": 98,
+    "terminal_stage_input_normalization": 9,
+    "note": "All 9 terminal failures are S1 input-schema rejections (household_children/context fields, age type) - legit fail-closed behavior on malformed dev inputs, matching the Phase 2 baseline exactly."
+  },
+  "state_distribution": {
+    "UNVERIFIED": 22,
+    "EXISTENCE_ONLY": 98,
+    "note": "FULLY_VERIFIED unreachable via natural replay corpus (no strong_access services in burned discovery data); component-level coverage only, documented in phase3-design-lock.md."
+  },
+  "epistemic_counts": {"claims_total": 610, "provenance_total": 610, "provenance_gaps": 0},
+  "discovery_invoked_n": 0,
+  "discovery_note": "dev-corpus-v1 cases carry no location_context; same as Phase 2. Discovery path exercised by synthetic integration fixtures with real municipalities.",
+  "gates": {
+    "attempted_120": "PASS",
+    "crashes_0": "PASS",
+    "schema_valid_120": "PASS",
+    "gold_leakage_0": "PASS",
+    "explicit_failure_states": "PASS",
+    "prediction_freeze": "PASS"
+  }
+}

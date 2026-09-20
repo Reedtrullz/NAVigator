@@ -1,0 +1,26 @@
+{
+  "task_id": "NAV-EXPLORE-JEV-1.13-FREE-QUALIFICATION-V1",
+  "task_family": "semantic-reviewer-qualification",
+  "status": "TERMINAL",
+  "created": "2026-09-19",
+  "closed": "2026-09-19",
+  "terminal_status": "JEV_PROVIDER_ACCESS_FAILED",
+  "stop_condition": "Phase 1 hard stop: model registered in OpenCode catalogs but upstream endpoint unavailable through every available invocation path; no successful model call, so Phase 2-12 were not started per task contract.",
+  "model_under_test": "jev-1.13-free",
+  "provider_intended": "opencode-free (baseUrl https://opencode.ai/zen/v1, adapter openai-chat, no local apiKey by design)",
+  "provider_fallback_tested": [
+    "local OpenCodex proxy v2.58.0 -> opencode-free/jev-1.13-free",
+    "local OpenCodex proxy -> unprefixed jev-1.13-free",
+    "opencode-go subscription key -> jev-1.13-free",
+    "authorized OpenCode CLI v1.18.21 (opencode run -m opencode/jev-1.13-free)",
+    "diagnostic-only: opencode/jev-1.13 and opencode/jev-latest aliases"
+  ],
+  "successful_model_calls": 0,
+  "no_fallback_activated": true,
+  "no_longcat": true,
+  "no_astra_max": true,
+  "astra_calls": 0,
+  "sealed_reserve_touched": false,
+  "production_changes": 0,
+  "evaluation_dir": "evaluation/semantic-reviewer-jev-1-13-free-qualification-v1/"
+}

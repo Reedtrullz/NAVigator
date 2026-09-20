@@ -1,0 +1,29 @@
+{
+  "version": "modality-relation-lattice-v1",
+  "frozen": true,
+  "frozen_at": "2026-09-06",
+  "purpose": "Directional entailment lattice for ATOM-LEVEL SEMANTIC RELATION classification (relation-contract-v2 section 5). This is the relation layer's lattice: it decides what the source proposition semantically establishes about the claim atom. It does not replace, weaken, or modify the frozen support-boundary modality table (../rc3-1-support-boundary/modality-boundary-table.json), which continues to gate AUTO_SUPPORT eligibility.",
+  "relations": [
+    {"source": "REQUIRED", "claim": "PERMITTED", "relation_effect": "LICENSED_ENTAILMENT"},
+    {"source": "REQUIRED", "claim": "POSSIBLE", "relation_effect": "LICENSED_ENTAILMENT"},
+    {"source": "ENTITLED", "claim": "POSSIBLE", "relation_effect": "LICENSED_ENTAILMENT"},
+    {"source": "CONDITIONAL_ENTITLEMENT", "claim": "ENTITLED", "relation_effect": "LICENSED_ENTAILMENT", "condition": "claim context inherits/binds the source condition; otherwise NOT_ENTAILED"},
+    {"source": "DEFAULT_RULE", "claim": "REQUIRED", "relation_effect": "LICENSED_ENTAILMENT", "condition": "default explicitly binding; otherwise NOT_ENTAILED"},
+    {"source": "DEFAULT_RULE", "claim": "PERMITTED", "relation_effect": "LICENSED_ENTAILMENT", "condition": "default explicitly binding; otherwise NOT_ENTAILED"},
+    {"source": "PERMITTED", "claim": "REQUIRED", "relation_effect": "NOT_ENTAILED"},
+    {"source": "PERMITTED", "claim": "ENTITLED", "relation_effect": "NOT_ENTAILED"},
+    {"source": "POSSIBLE", "claim": "ENTITLED", "relation_effect": "NOT_ENTAILED"},
+    {"source": "POSSIBLE", "claim": "REQUIRED", "relation_effect": "NOT_ENTAILED"},
+    {"source": "CONDITIONAL_ENTITLEMENT", "claim": "ENTITLED", "relation_effect": "NOT_ENTAILED", "condition": "unconditional claim"},
+    {"source": "DISCRETIONARY", "claim": "REQUIRED", "relation_effect": "NOT_ENTAILED"},
+    {"source": "DISCRETIONARY", "claim": "ENTITLED", "relation_effect": "NOT_ENTAILED"},
+    {"source": "DISCRETIONARY", "claim": "PERMITTED", "relation_effect": "MISMATCH"},
+    {"source": "NOT_REQUIRED", "claim": "REQUIRED", "relation_effect": "DEONTIC_OPPOSITION", "note": "same proposition and scope: positive incompatibility, may support CONTRADICTS per contract section 6"},
+    {"source": "PROHIBITED", "claim": "REQUIRED", "relation_effect": "DEONTIC_OPPOSITION"},
+    {"source": "PROHIBITED", "claim": "PERMITTED", "relation_effect": "DEONTIC_OPPOSITION"},
+    {"source": "REQUIRED", "claim": "NOT_REQUIRED", "relation_effect": "DEONTIC_OPPOSITION"},
+    {"source": "PROHIBITED", "claim": "NOT_REQUIRED", "relation_effect": "NOT_ENTAILED", "note": "prohibition is stronger than absence of requirement; weaker-directional, no positive conflict on deontic force alone"}
+  ],
+  "weakness_rule": "A source strictly weaker than the claim (PERMITTED vs REQUIRED, POSSIBLE vs ENTITLED, CONDITIONAL vs unconditional) is NOT_ENTAILED: the claim is not established. Without positive incompatibility the relation is RELATED_BUT_INSUFFICIENT or PARTIAL (contract section 8), never CONTRADICTS.",
+  "separation_note": "Relation output and boundary output remain independent. A DEONTIC_OPPOSITION relation with boundary BOUNDARY_COMPATIBLE still does not by itself authorize AUTO_CONTRADICTED; existing contradiction-proof requirements apply."
+}

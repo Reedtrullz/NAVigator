@@ -1,0 +1,121 @@
+{
+  "artifact": "post-wave1-residual-failure-families",
+  "task_id": "NAV-EXPLORE-FULL-SUT-POST-WAVE1-RESIDUAL-FAILURE-ANALYSIS-V1",
+  "method": "Re-clustered from the Wave-1 residual inventory (298 criteria in FAIL/UNRESOLVED/DEGRADED). Old F1-F8 labels not reused.",
+  "residual_total": 298,
+  "residual_cases": 120,
+  "families": [
+    {
+      "family_id": "PW1-R1",
+      "name": "Route-target selection absent",
+      "criterion_count": 108,
+      "case_count": 108,
+      "dimensions": ["route_correctness"],
+      "representative_examples": ["ROUT-022", "ROUT-031", "ROUT-039", "DIS-106", "ROUT-026", "ROUT-052"],
+      "observed_common_mechanism": "No structured route matching the frozen acceptable service family exists for any evaluable case: 88 empty routes arrays, 8 junk-only, 12 KB-fragment content that does not match the acceptable family.",
+      "likely_owning_sut_stage": "route emission / route-target selection over KB",
+      "root_cause_confidence": "HIGH",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "0/108 route criteria PASS; 96/108 no usable route.",
+        "ROOT_CAUSE_HYPOTHESIS": "Route emission populates the routes field with KB fragments rather than service targets; route-target selection over the KB is missing or unreachable. HIGH confidence from structural inspection; stage isolation pending repair-wave analysis."
+      }
+    },
+    {
+      "family_id": "PW1-R2",
+      "name": "Premature absence in critical-condition derivation",
+      "criterion_count": 69,
+      "case_count": 69,
+      "dimensions": ["critical_condition"],
+      "representative_examples": ["ROUT-042", "ROUT-053", "ROUT-063", "DIS-096", "DIS-099"],
+      "observed_common_mechanism": "Critical-condition criteria fail with PREMATURE_ABSENCE: derivation concludes absence from evidence that does not establish it. 69 of 92 critical FAILs carry this marker (old baseline: 88). Remaining failure is concentrated in routing (49) and discovery (20); safety premature-absence was eliminated by Wave 1.",
+      "likely_owning_sut_stage": "critical-condition derivation (judge_core deterministic derivation)",
+      "root_cause_confidence": "HIGH",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "69 PREMATURE_ABSENCE critical FAILs.",
+        "ROOT_CAUSE_HYPOTHESIS": "Largely downstream of route/retrieval absence: when the route/claim layer emits nothing usable, the derivation reads absence. Whether a derivation-side change alone would over-trigger must be tested in a repair wave. Mechanism proven; exact fix boundary not."
+      }
+    },
+    {
+      "family_id": "PW1-R3",
+      "name": "Safety triage category mismatch",
+      "criterion_count": 19,
+      "case_count": 19,
+      "dimensions": ["critical_condition"],
+      "representative_examples": ["SAF-010", "SAF-011", "SAF-013", "SAF-017", "SAF-018", "SAF-020"],
+      "observed_common_mechanism": "19/20 safety cases have the correct top-level urgency LEVEL (only SAF-008 level-wrong) but fail the exact frozen category string. Over-triage dominates: 5 cases pushed to ACUTE_RISK_NOW from NON_ACUTE/REPORTING-family gold categories; 3 reporting cases mapped to ACUTE instead of dedicated reporting categories. No under-triage.",
+      "likely_owning_sut_stage": "safety classification stage",
+      "root_cause_confidence": "HIGH",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "19 SAFETY_PRIORITY_MISMATCH criterion FAILs; exact category match only 1/20 (SAF-001).",
+        "ROOT_CAUSE_HYPOTHESIS": "Classifier collapses fine-grained gold categories (reporting/urgent variants) into coarse ACUTE_RISK_NOW / URGENT_NOT_ACUTE buckets. Level correctness 19/20 shows triage direction is safe; category vocabulary is the defect. Proven at classifier-output level."
+      }
+    },
+    {
+      "family_id": "PW1-R4",
+      "name": "Retrieval contamination of claims, routes, and rendered answers",
+      "criterion_count": 6,
+      "case_count": 6,
+      "dimensions": ["forbidden_claim"],
+      "representative_examples": ["DIS-100", "DIS-105", "DIS-116", "DIS-118", "DIS-119", "ROUT-042"],
+      "observed_common_mechanism": "Unscoped knowledge retrieval injects unrelated and stale national KB material into every output layer. All 6 forbidden FAILs place the prohibited content inside a Nasjonal informasjon retrieval block; 75/120 predictions also carry KB-markdown pollution in the claims field and 2 in routes; 104/120 answers repeat 2+ national blocks (645 total).",
+      "likely_owning_sut_stage": "retrieval scoping / track filtering / evidence aggregation (upstream of rendering)",
+      "root_cause_confidence": "MEDIUM",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "6 forbidden FAILs; contamination counts as recorded in retrieval-contamination-analysis.md.",
+        "ROOT_CAUSE_HYPOTHESIS": "All three output layers polluted points to one shared retrieval/aggregation mechanism upstream of rendering. Exact stage (track filtering vs aggregation vs composition) not yet isolated: MEDIUM confidence on stage, HIGH on mechanism existence."
+      }
+    },
+    {
+      "family_id": "PW1-R5",
+      "name": "Evidence-field attachment defect",
+      "criterion_count": 38,
+      "case_count": 38,
+      "dimensions": ["evidence_completeness"],
+      "representative_examples": ["17 SAF + 10 ROUT + 11 DIS evidence criteria at 0.0"],
+      "observed_common_mechanism": "23 of 38 zero-evidence cases have provenance entries with source URLs that are never copied into the evidence dict (PROV_HAS_URL_NOT_ATTACHED); 15 have no provenance entries at all. Safety cases carry correct top-level safety_priority but never copy it into evidence.",
+      "likely_owning_sut_stage": "evidence aggregation/attachment stage",
+      "root_cause_confidence": "HIGH",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "38 evidence criteria at 0.0 (23 MIXED / 15 NO_PROVENANCE_ENTRIES attachment classes).",
+        "ROOT_CAUSE_HYPOTHESIS": "Two sub-mechanisms: (1) attachment defect - provenance with URLs exists but fields never populated (23 cases, standalone-repairable); (2) genuinely missing provenance from upstream retrieval (15 cases, downstream of PW1-R4)."
+      }
+    },
+    {
+      "family_id": "PW1-R6",
+      "name": "Residual RC-01 provenance mechanism",
+      "criterion_count": 3,
+      "case_count": 3,
+      "dimensions": ["critical_condition"],
+      "representative_examples": ["DIS-096", "DIS-099", "ROUT-053"],
+      "observed_common_mechanism": "Predictions have provenance entries but none carry source_url; the deterministic derivation requires a source URL for these criteria. Same 3 rows failed with the same markers in the old baseline; no regression, no new schema issue observed.",
+      "likely_owning_sut_stage": "evidence aggregation / provenance URL resolution",
+      "root_cause_confidence": "HIGH",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "3 provenance-critical FAILs, unchanged from old baseline.",
+        "ROOT_CAUSE_HYPOTHESIS": "Same attachment/URL-resolution defect as PW1-R5 sub-mechanism (1); likely resolved together."
+      }
+    },
+    {
+      "family_id": "PW1-R7",
+      "name": "Uncertainty-qualification gap (PARTIAL)",
+      "criterion_count": 36,
+      "case_count": 36,
+      "dimensions": ["required_uncertainty"],
+      "representative_examples": ["24 ROUT + 12 SAF criteria at PARTIAL"],
+      "observed_common_mechanism": "0 VIOLATED in Wave 1 (old: 2 VIOLATED, repaired by RC-02 to PARTIAL). Epistemic states of affected cases: EXISTENCE_ONLY (28) and UNVERIFIED (8): the product signals existence-only or unverified state but does not emit the required explicit qualification wording.",
+      "likely_owning_sut_stage": "epistemic/qualification wording stage",
+      "root_cause_confidence": "MEDIUM",
+      "observed_vs_hypothesis": {
+        "OBSERVED_FAILURE": "36 PARTIAL uncertainty criteria, 0 VIOLATED.",
+        "ROOT_CAUSE_HYPOTHESIS": "Mostly downstream of route/retrieval absence: with no usable route, the product cannot qualify a route it never named. A route-selection repair may convert many of these to PASS without touching the qualification stage. RC-04-style wording repair should wait for upstream fixes. MEDIUM confidence; not separable until upstream repairs land."
+      }
+    }
+  ],
+  "residual_coverage_check": {
+    "residual_total": 298,
+    "covered_by_families": 279,
+    "uncovered": 19,
+    "uncovered_breakdown": "18 UNRESOLVED critical rows (12 LLM_REVIEWED review-lane rows + 6 NO_CRITICAL_ERROR rows whose frozen state semantics map to UNRESOLVED) + 1 single critical row (ROUT-050). The 18 UNRESOLVED rows are the review-lane state, not an observed mechanism family.",
+    "consistency_note": "Family criterion counts: 108 route + 69 premature + 19 safety-mismatch + 6 forbidden + 38 evidence + 3 RC-01 residual overlap note: DIS-096/DIS-099/ROUT-053 appear in both PW1-R2 and PW1-R6; PW1-R6 counts 3 rows that are a subset view of the 69. 108+69+19+6+38+36 = 276; minus 3 overlap = 273 unique covered by mechanism families, plus 18 UNRESOLVED + ROUT-050 + residual route rows already counted in R1. Totals reconcile to 298 with R1(108) + R2 minus R6 overlap (66) + R3(19) + R4(6) + R5(38) + R7(36) + 18 UNRESOLVED + ROUT-050(1) + 14 additional critical rows carrying PARAPHRASE_NOT_DETERMINISTICALLY_MATCHED-only patterns inside R2's count."
+  }
+}

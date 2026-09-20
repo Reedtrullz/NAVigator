@@ -1,0 +1,96 @@
+{
+  "artifact": "post-wave1-next-repair-candidates",
+  "task_id": "NAV-EXPLORE-FULL-SUT-POST-WAVE1-RESIDUAL-FAILURE-ANALYSIS-V1",
+  "created_utc": "2026-09-16T13:50:00+02:00",
+  "status": "PROPOSALS_ONLY_NOT_IMPLEMENTED",
+  "read_only_analysis": true,
+  "prior_wave_reference": "evaluation/full-sut-burned-baseline-failure-analysis-v1/repair-candidates.json (RC-01..RC-06)",
+  "anti_overfit_rules": [
+    "No runtime logic may reference Wave-1 or burned case IDs.",
+    "No burned-corpus literal strings in runtime code.",
+    "No tuning against individual expected verdicts.",
+    "Any candidate that can only be justified as making a specific case pass is marked OVERFIT_RISK and excluded."
+  ],
+  "candidates": [
+    {
+      "id": "RC-08",
+      "title": "Scope retrieval to the case track and remove unscoped national blocks from structured layers",
+      "families": ["PW1-R4"],
+      "sut_stage": "retrieval scoping / track filtering / evidence aggregation (upstream of answer assembly)",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "6 forbidden residual (5 product-side; ROUT-042 label-sensitivity excluded), 75 polluted claims fields, 2 polluted routes fields, 104 polluted answers, 15 NO_PROVENANCE_ENTRIES evidence sub-cases",
+      "change": "Restrict KB retrieval per case to the active track and case-relevant material; prevent national/cross-track blocks from entering answers, claims, and routes; attribute any retained national material explicitly.",
+      "regression_risk": "MEDIUM. Over-scoping could starve legitimate national context; gate on relevance checks with fail-closed fallback to fewer blocks, not empty answers.",
+      "min_tests": "Synthetic cross-track fixture (KB containing other-track content must not surface it); national-context relevance test; forbidden-claim regression fixtures from class definitions, not case IDs; claims/routes layer purity assertions."
+    },
+    {
+      "id": "RC-10",
+      "title": "Attach existing provenance URLs and safety priority into evidence fields",
+      "families": ["PW1-R5 (sub-mechanism 1)", "PW1-R6"],
+      "sut_stage": "evidence aggregation/attachment stage",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "23 PROV_HAS_URL_NOT_ATTACHED evidence criteria plus 3 RC-01 provenance residual rows (same URL-attachment mechanism)",
+      "change": "Copy source URLs from already-present provenance entries into evidence fields; copy computed safety_priority into safety evidence; leave cases with genuinely absent provenance (15 rows) to RC-08 rather than fabricating entries.",
+      "regression_risk": "LOW. Pure field-population from existing data; no new authority.",
+      "min_tests": "Attachment round-trip test for each evidence field; assertion that no evidence entry is emitted without a provenance source; RC-01-class provenance requirement fixture (generic, not case-derived)."
+    },
+    {
+      "id": "RC-11",
+      "title": "Emit the full frozen safety priority category vocabulary with safe fallback ordering",
+      "families": ["PW1-R3"],
+      "sut_stage": "safety classification stage",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "19 SAFETY_PRIORITY_MISMATCH criteria (level already correct 19/20; exact category 1/20)",
+      "change": "Distinguish the frozen fine-grained categories (reporting variants, urgent variants, acute families) instead of collapsing into coarse acute buckets; keep fail-safe ordering: indeterminate class escalates to the more urgent safe default, never calmer.",
+      "regression_risk": "MEDIUM. Must not introduce under-triage; under-escalation canary mandatory.",
+      "min_tests": "One synthetic fixture per frozen priority class; safe-fallback test (indeterminate input escalates, never de-escalates); under-escalation canary; exact-category regression fixtures from class definitions."
+    },
+    {
+      "id": "RC-07",
+      "title": "Implement route-target selection over the KB and emit service targets into structured routes",
+      "families": ["PW1-R1"],
+      "sut_stage": "route emission / route-target selection over KB",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "0/108 route criteria PASS; 88 empty routes arrays, 8 junk-only, 12 KB-fragment routes",
+      "change": "Select concrete service targets from case-relevant KB material and populate the structured routes field with them; require RC-08 scoping first so targets come from clean retrieval, not contaminated fragments.",
+      "regression_risk": "MEDIUM-HIGH. Largest single mechanism; depends on RC-08; downstream effects on premature-absence derivation and uncertainty qualification are expected and must be measured, not tuned.",
+      "min_tests": "Route-target selection test over a fixture KB; empty-vs-junk-vs-target route classification assertions; end-to-end route criterion smoke on synthetic cases; no case-ID literals in tests."
+    },
+    {
+      "id": "RC-09",
+      "title": "Critical-condition premature-absence derivation guard",
+      "families": ["PW1-R2"],
+      "sut_stage": "critical-condition derivation (judge_core deterministic derivation)",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "69 PREMATURE_ABSENCE critical FAILs (49 ROUT, 20 DIS)",
+      "change": "DEFERRED. Premature absence is largely downstream of route/retrieval emptiness: when route and claims carry nothing usable, derivation reads absence. Re-derive after RC-08+RC-10+RC-07 land and re-measure before deciding whether a derivation-side guard is still needed.",
+      "regression_risk": "HIGH if done now: could convert true absences into unsupported presence (safety-critical direction).",
+      "min_tests": "If later activated: absence-vs-insufficiency boundary fixtures; safety direction canary (never auto-assert presence from absence)."
+    },
+    {
+      "id": "RC-12",
+      "title": "Uncertainty qualification wording when a route/state is asserted",
+      "families": ["PW1-R7"],
+      "sut_stage": "epistemic/qualification wording stage",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "36 PARTIAL uncertainty criteria (24 ROUT, 12 SAF), 0 VIOLATED",
+      "change": "DEFERRED. Mostly downstream: with no usable route, the product cannot qualify a route it never named. Re-evaluate after RC-07/RC-08; RC-04-style wording repair only if PARTIALs persist on cases with real route content.",
+      "regression_risk": "LOW standalone, but premature wording changes risk noise without upstream fixes.",
+      "min_tests": "If later activated: qualification-emission fixtures tied to asserted-route and existence-only epistemic states."
+    }
+  ],
+  "explicitly_not_recommended": [
+    {
+      "id": "RC-04-retry",
+      "reason": "Post-Wave-1 evidence shows the residual uncertainty gap is downstream of route absence; wording-only repair would add noise. See rc04-assessment.md."
+    }
+  ],
+  "overfit_risk_flags": [],
+  "note": "Counts cite frozen artifacts only; no scoring changes proposed."
+}

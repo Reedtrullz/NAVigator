@@ -1,0 +1,58 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-PROVIDER-ARCH-V2",
+  "artifact": "provider_failure_simulation",
+  "executed_at": "2026-09-09",
+  "source": "runtime/discovery_v2/tests.py (unittest, stdlib)",
+  "simulated_failures": [
+    {
+      "failure": "BOT_BLOCKED",
+      "input_shape": "HTTP 403 root / DDG 202 anomaly body",
+      "classified_as": "BOT_BLOCKED",
+      "folded_into_no_results": false,
+      "false_no_local_match": false
+    },
+    {
+      "failure": "RATE_LIMITED",
+      "input_shape": "HTTP 429 / query budget exhausted",
+      "classified_as": "RATE_LIMITED",
+      "folded_into_no_results": false,
+      "false_no_local_match": false
+    },
+    {
+      "failure": "TIMEOUT",
+      "input_shape": "fetch_fn raises TimeoutError",
+      "classified_as": "TIMEOUT",
+      "folded_into_no_results": false,
+      "false_no_local_match": false
+    },
+    {
+      "failure": "NO_RESULTS",
+      "input_shape": "HTTP 200, large body, empty parse, no bot markers",
+      "classified_as": "NO_RESULTS",
+      "folded_into_no_results": "n/a (genuine no-results)",
+      "false_no_local_match": false
+    },
+    {
+      "failure": "MALFORMED_RESPONSE",
+      "input_shape": "backend raises RuntimeError",
+      "classified_as": "INTERNAL_ERROR",
+      "folded_into_no_results": false,
+      "false_no_local_match": false
+    },
+    {
+      "failure": "PROVIDER_UNAVAILABLE",
+      "input_shape": "HTTP 404 root (curl exit code 0)",
+      "classified_as": "PROVIDER_UNAVAILABLE",
+      "folded_into_no_results": false,
+      "false_no_local_match": false
+    }
+  ],
+  "composite_fallback_log_preserved": true,
+  "provenance_invariant_tested": true,
+  "test_counts": {
+    "v2_tests": 27,
+    "v2_failures": 0,
+    "v1_tests": 49,
+    "v1_failures": 0
+  }
+}

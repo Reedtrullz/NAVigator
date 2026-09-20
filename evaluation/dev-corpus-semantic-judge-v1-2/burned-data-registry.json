@@ -1,0 +1,31 @@
+{
+  "registry": "V1_2_BURNED_DATA",
+  "created": "2026-09-10",
+  "entries": {
+    "v1_1_80_fixture_set": {
+      "path": "evaluation/dev-corpus-semantic-judge-v1-1/judge-validation-fixtures-v1-1.json",
+      "sha256": "442f34fd8fc64335f31c3dd6b1e8ee026515bdbde6e59e551d6929eb7e088f47",
+      "marked": "BURNED_CONTRACT_DEVELOPMENT_DATA",
+      "reason": "V1.2-kontrakten designes med kunnskap om V1.1 disagreement patterns; hele settet er diagnostisk. Ingen fixtures fra dette settet skal brukes i V1.2 official validation (inkludert de 75 agreed).",
+      "reuse_in_official_validation_allowed": false,
+      "agreed_fixtures_reused": "FORBIDDEN",
+      "disputed_fixtures_replaced": "IRRELEVANT - hele settet burned"
+    },
+    "v1_official_66": {
+      "path": "evaluation/dev-corpus-semantic-judge-v1/",
+      "marked": "BURNED_VALIDATION_DATA",
+      "reason": "V1 official valideringssett er burned fra tidligere tasker.",
+      "reuse_in_official_validation_allowed": false
+    },
+    "uncertainty_calibration_sets_a_b": {
+      "marked": "BURNED_AFTER_HUMAN_CALIBRATION",
+      "reason": "Set A og B brukes kun til menneskelig kalibrering i denne tasken; de skal ikke brukes som official model validation senere.",
+      "reuse_in_official_validation_allowed": false
+    },
+    "model_calibration_set": {
+      "marked": "BURNED_AFTER_MODEL_CALIBRATION",
+      "reason": "Separat syntetisk modellkalibrering, aldri official validation.",
+      "reuse_in_official_validation_allowed": false
+    }
+  }
+}

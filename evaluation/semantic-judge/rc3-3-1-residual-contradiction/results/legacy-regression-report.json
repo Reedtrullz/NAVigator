@@ -1,0 +1,113 @@
+{
+ "suite": "RC3_3_1_LEGACY_REGRESSION_REPORT",
+ "note": "RC3.3.1 modifies only engine_local/numeric.py and engine_local/engine.py in the task-local copy (temporal.py is new task-local). Frozen ancestor artifacts are byte-identical (provenance SHAs below), so legacy suites that execute ancestor code need no re-execution; where the ancestor code itself was re-executed read-only or in-process, results are recorded. In-process re-executions were used for suites that would otherwise write into their own (forbidden) task directories; their outputs were redirected to this task's results/.",
+ "sha_identity_proofs": {
+  "rc3_1_engine_engine": {
+   "sha256": "16d4fdbf34afe1ca460c6ea2c43b2937dc1cc4c7ace21c4da6324520a28b2f20",
+   "path": "rc3-1-proof-semantics/rc3_1_engine/engine.py",
+   "status": "byte-identical to frozen provenance"
+  },
+  "rc3_1_engine_boundary": {
+   "sha256": "9200aa9033bb25eaa63dcb23552f814b0e079accff86b97c48c3ef026343fc1e",
+   "path": "rc3-1-proof-semantics/rc3_1_engine/boundary.py",
+   "status": "byte-identical to frozen provenance"
+  },
+  "rc331_task_local_boundary": {
+   "sha256": "9200aa9033bb25eaa63dcb23552f814b0e079accff86b97c48c3ef026343fc1e",
+   "path": "rc3-3-1-residual-contradiction/engine_local/boundary.py",
+   "status": "byte-identical to frozen RC3.2/RC3.3 artifact"
+  },
+  "rc331_task_local_proposition": {
+   "sha256": "4e3b2d007e406f5e4ba6e0f7a8935ec846651847a70b9a51fc8cda87ab90b2e1",
+   "path": "rc3-3-1-residual-contradiction/engine_local/proposition.py",
+   "status": "byte-identical to frozen RC3.3 artifact"
+  },
+  "rc33_task_local_boundary": {
+   "sha256": "9200aa9033bb25eaa63dcb23552f814b0e079accff86b97c48c3ef026343fc1e",
+   "path": "rc3-3-gate-consumption-numeric/engine_local/boundary.py",
+   "status": "byte-identical to frozen RC3.2 artifact"
+  },
+  "rc33_task_local_proposition": {
+   "sha256": "4e3b2d007e406f5e4ba6e0f7a8935ec846651847a70b9a51fc8cda87ab90b2e1",
+   "path": "rc3-3-gate-consumption-numeric/engine_local/proposition.py",
+   "status": "byte-identical"
+  },
+  "rc31_relation_runner_provenance": {
+   "engine_sha256": "16d4fdbf34afe1ca460c6ea2c43b2937dc1cc4c7ace21c4da6324520a28b2f20",
+   "status": "legacy R31/R32 runners executed ancestor engine on disk; recorded engine sha matches on-disk file"
+  }
+ },
+ "executed_results": {
+  "rc2_regressions_37": {
+   "result": "37/37 PASS",
+   "mode": "in-process re-execution (module import), output redirected to results/legacy-rc2-regression.json",
+   "source": "rc2-development/regressions/run_regression.py"
+  },
+  "tier1_operators_43": {
+   "result": "43/43 PASS (PASS 43 FAIL 0)",
+   "mode": "executed read-only; writes nothing",
+   "source": "tier1-proof/test_tier1_operators.py"
+  },
+  "operator_regression_23": {
+   "result": "23/23 PASS",
+   "mode": "in-process re-execution, output redirected to results/legacy-operator-regression.json",
+   "source": "operator-regression/run_regression.py"
+  },
+  "rc3_1_engine_probes_21": {
+   "result": "ALL PROBES PASS",
+   "mode": "executed read-only; writes nothing",
+   "source": "rc3-1-proof-semantics/test_engine_probes.py"
+  },
+  "rc3_1_relation_runner": {
+   "result": "executed with explicit task-local output path (results/legacy-r31-relation.json); metrics reproduce frozen baseline (atom_relation_accuracy 0.6277, macro_f1 0.6866)",
+   "source": "rc3-1-relation-repair/run_relation.py"
+  },
+  "rc3_2_architecture_runner": {
+   "result": "executed with explicit task-local output path (results/legacy-r32-arch.json); metrics reproduce frozen baseline (atom_relation_accuracy 0.514, macro_f1 0.4693, collapse 0.1034)",
+   "source": "rc3-2-boundary-aware-relation/run_architecture.py"
+  },
+  "sibling_sha_audit": {
+   "result": "rc3-1-proof-semantics engine/boundary modules byte-identical to their frozen recorded SHAs; task-local boundary/proposition byte-identical to RC3.3 freeze",
+   "mode": "sha256 comparison only"
+  }
+ },
+ "burned_diagnostics_not_gates": {
+  "rc3_1_fresh_suite": {
+   "atom_relation_accuracy": 0.6277,
+   "macro_f1": 0.6866,
+   "note": "burned secondary diagnostic, no tuning performed"
+  },
+  "rc3_2_fresh_suite": {
+   "atom_relation_accuracy": 0.514,
+   "macro_f1": 0.4693,
+   "collapse_rate": 0.1034,
+   "note": "burned secondary diagnostic, no tuning performed"
+  }
+ },
+ "not_run": [
+  {
+   "item": "RC2 phase-a-gates bundle (qa_check, canaries, id_guard)",
+   "reason": "invokes runners that write into rc2-development/engine and sibling dirs; forbidden by write sandbox. Gate evidence is frozen artifact rc2-development/phase-a-gates.json (_verdict RC2_PHASE_A_PASS); Tier-1 unit battery and RC2 regression suite were re-executed green here."
+  },
+  {
+   "item": "KB baseline 48/48",
+   "reason": "no score_baseline.py runner exists on disk; RC2 gate evidence is the frozen phase-a-gates.json record. RC3.3.1 does not touch the RC2 engine layer executed by that gate."
+  },
+  {
+   "item": "RC3 dev evaluator regression",
+   "reason": "rc3-development/evaluate_dev.py requires /tmp/rc3_review_cache.json (absent) and writes into its own dir; RC3.3.1 does not modify rc3_engine. Frozen development-results.json stands."
+  },
+  {
+   "item": "decomposition 44/44",
+   "reason": "no 44-case decomposition runner found on disk; decomposition module byte-identical to RC3.2 freeze, probes pass"
+  },
+  {
+   "item": "quote-aligner standalone",
+   "reason": "documented standalone mismatches out of scope per spec 41; no RC3.3.1 runtime import path"
+  }
+ ],
+ "safety_canaries_reference": {
+  "frozen": "rc2-development/phase-a-gates.json canaries all pass (ENT-C, N-R1, product variants)",
+  "rc331": "critical false ENTAILS = 0 and critical false CONTRADICTS = 0 on dev-60 and global-140 (see results/proof-safety-audit.json and results/dev-final.json)"
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "artifact": "judge-call-reduction-estimate.json",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A3-AMBIGUITY-ABSTENTION-HARDENING",
+  "basis": "burned-v1-4-diagnostic-replay.json",
+  "v1_4_n": 100,
+  "pre_classifier_abstain_share": 1.0,
+  "full_deterministic_share": 0.0,
+  "conservative_estimate": {
+    "assumption": "Judge still called for every row (critical/forbidden safety checks are outside pre-classifier scope); reduction applies to route/uncertainty/scope sub-adjudication only where all three pre-classifier dimensions resolve deterministically.",
+    "reducible_sub_adjudication_share": 0.0,
+    "full_judge_call_reduction_share": 0.0
+  },
+  "note": "Diagnostic-only estimate. The pre-classifier is a boundary gate, not a judge replacement: safety dimensions still require the semantic judge on every row."
+}

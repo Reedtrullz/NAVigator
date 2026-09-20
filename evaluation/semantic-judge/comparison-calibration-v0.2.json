@@ -1,0 +1,87 @@
+{
+ "meta": {
+  "set": "calibration",
+  "version": "semantic-judge-v0.2",
+  "A_model": "gpt-5.5",
+  "B_model": "deepseek/deepseek-v4-flash"
+ },
+ "n_both": 84,
+ "verdict_agreement": 77,
+ "verdict_agreement_rate": 0.9167,
+ "A_correct": 78,
+ "B_correct": 77,
+ "abcd_groups": {
+  "A": 74,
+  "B": 3,
+  "D": 3,
+  "C": 4
+ },
+ "disagreement_groups": {
+  "B_right_A_wrong": 3,
+  "A_right_B_wrong": 4
+ },
+ "disagreements": [
+  {
+   "id": "CAL009",
+   "expected": "SUPPORTED",
+   "A": "INSUFFICIENT_EVIDENCE",
+   "B": "SUPPORTED",
+   "A_conf": 0.74,
+   "B_conf": 0.95
+  },
+  {
+   "id": "CAL066",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "A": "INSUFFICIENT_EVIDENCE",
+   "B": "PARTIALLY_SUPPORTED",
+   "A_conf": 0.95,
+   "B_conf": 0.9
+  },
+  {
+   "id": "CAL068",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "A": "INSUFFICIENT_EVIDENCE",
+   "B": "CONTRADICTED",
+   "A_conf": 0.92,
+   "B_conf": 0.66
+  },
+  {
+   "id": "CAL074",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "A": "INSUFFICIENT_EVIDENCE",
+   "B": "SUPPORTED",
+   "A_conf": 0.86,
+   "B_conf": 0.7
+  },
+  {
+   "id": "CAL075",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "A": "INSUFFICIENT_EVIDENCE",
+   "B": "CONTRADICTED",
+   "A_conf": 0.88,
+   "B_conf": 0.7
+  },
+  {
+   "id": "CAL077",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "A": "CONTRADICTED",
+   "B": "INSUFFICIENT_EVIDENCE",
+   "A_conf": 0.88,
+   "B_conf": 0.95
+  },
+  {
+   "id": "CAL078",
+   "expected": "SUPPORTED",
+   "A": "INSUFFICIENT_EVIDENCE",
+   "B": "SUPPORTED",
+   "A_conf": 0.84,
+   "B_conf": 0.86
+  }
+ ],
+ "fusion_both_must_support": {
+  "description": "SUPPORTED krever at begge dommere sier SUPPORTED",
+  "unsupported_total": 62,
+  "fusion_fp": 0,
+  "fusion_fp_rate": 0.0
+ }
+}

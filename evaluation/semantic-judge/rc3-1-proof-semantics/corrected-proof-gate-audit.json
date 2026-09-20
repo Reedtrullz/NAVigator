@@ -1,0 +1,61 @@
+{
+  "audit_id": "RC3_1_CORRECTED_PROOF_GATE_AUDIT_V1",
+  "task_id": "NAV-EXPLORE-RC3_1-PROOF-SEMANTICS-REPAIR",
+  "classification": "ANALYTICS_FIX_ONLY",
+  "official_artifact": {
+    "path": "evaluation/semantic-judge/rc3-generalization-holdout/run/scoring/official-generalization-score.json",
+    "sha256": "384e1a21798001041d961ab06b0f5111f3b3077d6e3b519f56fff7aa739a61bb",
+    "modified": false,
+    "readiness_verdict": "GENERALIZATION_FAIL",
+    "readiness_verdict_unchanged": true
+  },
+  "root_cause": {
+    "component": "score_generalization_frozen.py :: gate_results()",
+    "bug": "Each gate was evaluated as actual = numerator / denominator. Zero-tolerance gates passed a hardcoded denominator of 0, so the expression short-circuited to 0.0 and 0.0 == 0 evaluated as PASS regardless of the violation count.",
+    "affected_gates": [
+      "structural_invalid_accepted_proofs",
+      "ungrounded_accepted_proofs",
+      "semantically_unsound_accepted_proofs",
+      "proof_safe_unsound_autos",
+      "runtime_exceptions"
+    ],
+    "not_affected": "All ratio gates with genuine denominators (semantic, proof_safe, product, auto, review/abstain, compound) computed correctly."
+  },
+  "official_frozen_gate_display": {
+    "structural_invalid_accepted_proofs": {"actual": 0.0, "pass": true},
+    "ungrounded_accepted_proofs": {"actual": 0.0, "pass": true},
+    "semantically_unsound_accepted_proofs": {"actual": 0.0, "pass": true},
+    "proof_safe_unsound_autos": {"actual": 0.0, "pass": true},
+    "runtime_exceptions": {"actual": 0.0, "pass": true}
+  },
+  "official_frozen_gate_counts_in_same_file": {
+    "structural_invalid_accepted_proofs": 0,
+    "ungrounded_accepted_proofs": 0,
+    "semantically_unsound_accepted_proofs": 53,
+    "proof_safe_unsound_autos": 14,
+    "runtime_failures": 0,
+    "accepted_auto_proofs": 64,
+    "proof_objects_emitted": 137
+  },
+  "corrected_mechanical_gate_result": {
+    "engine": "SCORER_V2_ZERO_TOLERANCE_COUNT_DIRECT",
+    "scorer_v2_sha256": "ebc6390e7e44bdee278ae74bbbca29e0190d57388a4e7da94af3350aaa08c04b",
+    "gates": {
+      "structural_invalid_accepted_proofs": {"actual": 0, "threshold": 0, "pass": true, "note": "genuine pass: count is truly 0"},
+      "ungrounded_accepted_proofs": {"actual": 0, "threshold": 0, "pass": true, "note": "genuine pass: count is truly 0"},
+      "semantically_unsound_accepted_proofs": {"actual": 53, "threshold": 0, "pass": false},
+      "proof_safe_unsound_autos": {"actual": 14, "threshold": 0, "pass": false},
+      "runtime_exceptions": {"actual": 0, "threshold": 0, "pass": true, "note": "genuine pass: count is truly 0"}
+    },
+    "verification": "count 0 -> PASS, count 1 -> FAIL, count 53 -> FAIL, demonstrated in scorer-v2 self-test (SCORER_V2 SELF_TEST PASS)"
+  },
+  "verdict_impact": {
+    "official_verdict_before_audit": "GENERALIZATION_FAIL",
+    "official_verdict_after_correction": "GENERALIZATION_FAIL",
+    "changed": false,
+    "reason": "The official verdict was already GENERALIZATION_FAIL from 11 failing ratio gates (semantic, proof_safe, product, auto_precision, auto_coverage, necessary_review_recall, unnecessary_review_rate, abstain_recall, review_abstain_macro_f1, compound_atom_semantic, compound_product). The corrected zero-tolerance gates only add further failures; no failing gate becomes passing."
+  },
+  "display_vs_reality": "The bug affected gate DISPLAY only. The underlying counts (53 unsound, 14 proof-safe-unsound autos) were recorded correctly in metrics.proof_gates inside the same official file. Metrics were never wrong; only the gate pass/fail presentation was.",
+  "generated_at": "2026-09-04T23:59:00+02:00",
+  "generated_by": "NAV-EXPLORE-RC3_1-PROOF-SEMANTICS-REPAIR (Claude/GPT via Codex exec)"
+}

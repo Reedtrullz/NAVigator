@@ -1,0 +1,38 @@
+{
+  "artifact": "batch1-record-provenance",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-INTEGRATION-AND-RESIDUAL-ADJUDICATION-V1",
+  "verified_utc": "2026-09-15T22:38:40Z",
+  "record_multiplicity": {
+    "astra_pass_a_records": 74,
+    "astra_pass_a_unique_packet_ids": 74,
+    "astra_pass_a_duplicate_packet_ids": 0,
+    "astra_pass_b_records": 74,
+    "astra_pass_b_unique_packet_ids": 74,
+    "astra_pass_b_duplicate_packet_ids": 0,
+    "exactly_one_retained_a_per_packet": true,
+    "exactly_one_retained_b_per_packet": true
+  },
+  "duplicate_process_incident": {
+    "documented_in": "evaluation/measurement-v3-astra-review-batch-1/final-report.md (Execution section)",
+    "summary": "first background process survived an isolated tool failure; a second process wrote duplicate records; both processes were stopped; files were deterministically deduplicated retaining the first record per packet+pass; remainder completed via one controlled process",
+    "dedup_rule": "first record per packet+pass retained",
+    "retained_selection_matches_frozen_artifact": true,
+    "discarded_duplicates_contribute_to_consensus": false,
+    "hidden_third_vote_possible": false
+  },
+  "rout_053_b_retry": {
+    "original_attempt": "TRANSPORT_ERROR per Batch-1 final-report; original error record was superseded by the documented dedup/retry protocol and is not present in the retained frozen pass file",
+    "retries": 1,
+    "retry_type": "technical transport retry only (same packet, same prompt/config, model gpt-6-astra, effort low)",
+    "retained_record": {
+      "packet_id": "PKT-ESC-ROUT-053",
+      "pass": "ASTRA_B",
+      "status": "OK",
+      "timestamp_utc": "2026-09-15T22:18:24Z"
+    },
+    "semantic_verdict_rerun": false,
+    "verified": true,
+    "verification_note": "no TRANSPORT_ERROR records remain in the retained pass files; exactly one ROUT-053 ASTRA_B record exists and it is the retained retry result"
+  },
+  "result": "PASS"
+}

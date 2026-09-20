@@ -1,0 +1,69 @@
+{
+  "note": "computed from frozen transport calibration + screening + bounded recovery; quota metadata not exposed by providers -> QUOTA_STATUS=UNKNOWN unless explicitly observed",
+  "candidates": {
+    "nemotron-3-ultra": {
+      "wire_id": "RouteOpen/nemotron-3-ultra-550b-a55b",
+      "transport_calibration_ok": 15,
+      "transport_calibration_errors": 1,
+      "screening_rows": 90,
+      "screening_ok": 5,
+      "screening_transport_errors": {
+        "402": 30,
+        "429": 54
+      },
+      "recovery_attempted": 54,
+      "recovery_recovered": 0,
+      "chronic_429_pattern": true,
+      "chronic_failure_classification": "CHRONIC_429_CREDIT_EXHAUSTION",
+      "operational_viability": "NOT_VIABLE_AT_SCREENING",
+      "quota_status": "UNKNOWN_NOT_EXPOSED_BY_PROVIDER"
+    },
+    "nex-n2.5-pro": {
+      "wire_id": "openrouter/nex-agi/nex-n2.5-pro:free",
+      "transport_calibration_ok": 12,
+      "transport_calibration_errors": 2,
+      "screening_rows": 90,
+      "screening_ok": 48,
+      "screening_transport_errors": {
+        "Timeout": 4
+      },
+      "recovery_attempted": 13,
+      "recovery_recovered": 9,
+      "chronic_429_pattern": false,
+      "chronic_failure_classification": "EPISODIC_TIMEOUTS",
+      "operational_viability": "PARTIALLY_VIABLE",
+      "quota_status": "UNKNOWN_NOT_EXPOSED_BY_PROVIDER"
+    },
+    "gemma-4-31b-it": {
+      "wire_id": "openrouter/google/gemma-4-31b-it:free",
+      "transport_calibration_ok": 9,
+      "transport_calibration_errors": 10,
+      "screening_rows": 90,
+      "screening_ok": 16,
+      "screening_transport_errors": {
+        "429": 72,
+        "503": 1
+      },
+      "recovery_attempted": 75,
+      "recovery_recovered": 3,
+      "chronic_429_pattern": true,
+      "chronic_failure_classification": "CHRONIC_429_CREDIT_EXHAUSTION",
+      "operational_viability": "NOT_VIABLE_AT_SCREENING",
+      "quota_status": "UNKNOWN_NOT_EXPOSED_BY_PROVIDER"
+    },
+    "mimo-v2.5-pro": {
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "transport_calibration_ok": 9,
+      "transport_calibration_errors": 2,
+      "screening_rows": 90,
+      "screening_ok": 32,
+      "screening_transport_errors": {},
+      "recovery_attempted": 0,
+      "recovery_recovered": 0,
+      "chronic_429_pattern": false,
+      "chronic_failure_classification": "NO_TRANSPORT_FAILURES_INVALID_OUTPUT_DOMINANT",
+      "operational_viability": "NOT_VIABLE_AT_SCREENING",
+      "quota_status": "UNKNOWN_NOT_EXPOSED_BY_PROVIDER"
+    }
+  }
+}

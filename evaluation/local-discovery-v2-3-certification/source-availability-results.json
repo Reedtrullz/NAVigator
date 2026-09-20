@@ -1,0 +1,97 @@
+{
+  "artifact": "source_availability_adjudication_v2_3_certification",
+  "certification_task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-V2_3-CANDIDATE-CERTIFICATION",
+  "contract": "source-availability-adjudication-contract.md (frozen before probes)",
+  "probed_at": "2026-09-09T15:03-15:19Z (UTC timestamps in evidence)",
+  "probe_evidence_files": {
+    "raw_probes": "probe-evidence-raw.json",
+    "nav_probe": "probe-evidence-nav.json"
+  },
+  "general_failure_behavior": {
+    "burned_fixtures_tested": 4,
+    "sources": [
+      "evaluation/local-discovery-external-backend-v2-2-restart-2/provider-failure-tests.json (401, 403, 429, transport-0, 5xx, timeout, malformed-200, empty-200)",
+      "evaluation/local-discovery-provider-v2-1/archived-challenge-regression.json (429 challenge fixture, PASS)",
+      "evaluation/local-discovery-provider-v2-1/fixtures/brave-429-challenge-001.html (sha256 7007522f2940989d85b62dd5f22edc1e6895c028146959fc6389a1223dc9aba4)",
+      "evaluation/local-discovery-runtime-v1/fixtures/fixture-manifest.json (8 frozen replay fixtures incl. failure modes)"
+    ],
+    "taxonomy_generality": "PASS: frozen failure modes (AUTH_REQUIRED, BOT_BLOCKED, RATE_LIMITED, PROVIDER_UNAVAILABLE, TIMEOUT, INVALID_RESPONSE, NO_RESULTS) are distinct and fail-closed; NO_RESULTS is reserved for legitimate empty 200 (V2.2 provider-failure suite). No Raelingen-specific exception exists in code."
+  },
+  "raelingen_relevant_host_determination": {
+    "rule": "Contract rule 4: gold URLs of the frozen benchmark corpus define authoritative hosts",
+    "gold_host": "ralingen.bedreinnsats.no",
+    "gold_urls_all_nine": "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/fravraeilsder-revidert-2017.pdf (percent-encoded ae), shared by Q-raaelingen-1..9"
+  },
+  "probe_summary": {
+    "dns_ralingen_bedreinnsats_no": {
+      "resolved": true,
+      "addrs": [
+        "65.21.34.157"
+      ],
+      "probes": 2,
+      "consistent": true
+    },
+    "http_ralingen_bedreinnsats_no_root": {
+      "status_code": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "size_bytes": 176590,
+      "body_sha256": "c75893b63e7b805ad329f688d06563ce4fd6e9e19e2c97137c428edb8ef57c87"
+    },
+    "http_gold_pdf": {
+      "status_code": 200,
+      "content_type": "application/pdf",
+      "size_bytes": 2022924,
+      "body_sha256": "d5a45e398ca3c4ed464361fa70239dd9d12cd748646c84cf5bdda00e338ff6ee",
+      "note": "2 MiB limit applies to text fetches in runtime; PDF is gold target evidence, not a fetch the provider would have needed to parse"
+    },
+    "http_ralingen_bedreinnsats_no_sitemap": {
+      "status_code": 200,
+      "effective_url": "https://ralingen.bedreinnsats.no/wp-sitemap.xml",
+      "size_bytes": 412,
+      "body_sha256": "624329a194ddc6090b53e4975e098a58743ad1387a298fa9d308250d3ae2fe83"
+    },
+    "frozen_nav_links_on_gold_host_root": {
+      "tool": "runtime.discovery_v2.providers.SiteDirectProvider._nav_links (frozen code, unmodified, called read-only)",
+      "results": 2,
+      "example_links": [
+        "https://ralingen.bedreinnsats.no/tiltak-og-tjenester-for-barn-og-ungdom-i-kommunen/",
+        "https://ralingen.bedreinnsats.no/bekymring-for-barn-og-unge/"
+      ],
+      "meaning": "The frozen provider logic would have produced usable candidates from the gold host root."
+    },
+    "runtime_probed_host_ralingen_bedinnsats_no": {
+      "dns_resolved": false,
+      "error": "nodename nor servname provided, or not known",
+      "note": "Host does not resolve today; historical attempt logs recorded status OK on this host (external DNS/hosting drift on a non-authoritative host is out of scope for the certification)"
+    },
+    "commune_variants_today": {
+      "www.raelingen.kommune.no": "DNS NXDOMAIN today",
+      "raelingen.kommune.no": "DNS NXDOMAIN today",
+      "www.ralingen.kommune.no": "DNS OK, HTTP 200, 293 KB JS-config shell (window.serverdata), render probe returned 0 bytes"
+    }
+  },
+  "per_query_adjudication": {
+    "queries": "Q-raaelingen-1..9 (all nine, identical source situation)",
+    "adjudicated_class": "RUNTIME_FAILURE_OR_UNRESOLVED",
+    "external_source_unavailable": false,
+    "reasoning": [
+      "Criterion 1 (no crash): PASS",
+      "Criterion 2 (fail-closed semantics): PASS",
+      "Criterion 3 (unavailability documented): FAIL - the relevant host is reachable and serves usable content",
+      "Criterion 4 (no relevant source missed due to implementation defect): FAIL - frozen roots.py constructs ralingen.bedinnsats.no while its own docstring and the frozen provider-config-v2-3.json specify bedreinnsats.no; the gold host was never probed by the runtime",
+      "Criterion 5 (no false definitive no-route): FAIL - NO_RESULTS was returned despite an available relevant source"
+    ]
+  },
+  "benchmark_certification_metrics": {
+    "attempted": 117,
+    "original_success": 108,
+    "original_success_preserved": "V2_3_ORIGINAL_SUCCESS = 108/117 unchanged",
+    "adjudicated_external_source_unavailable": 0,
+    "runtime_internal_failures": 9,
+    "unresolved": 0,
+    "available_source_denominator": 117,
+    "runtime_success_on_available_sources": "108/117",
+    "critical_false_no_route": "9 (one per Raelingen query: honest-looking NO_RESULTS on an available source; no FULLY_VERIFIED claim, so no unsupported-FULLY_VERIFIED event)"
+  },
+  "source_availability_gate": "FAIL"
+}

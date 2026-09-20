@@ -1,0 +1,589 @@
+{
+ "meta": {
+  "stage": "packet-v2.1-iteration-A",
+  "s0_mode": "no_s0",
+  "max_spans": 6,
+  "dry_run": true,
+  "prompt_meta": {
+   "prompt_sha": "7377d10307e2fb7d",
+   "model": "openai/gpt-5.6-luna",
+   "temperature": 0,
+   "max_tokens": 300,
+   "packet_schema": "packet-v2.1"
+  },
+  "elapsed_s": 0.1
+ },
+ "summary": {
+  "minimal-pairs": {
+   "n": 48,
+   "auto": 22,
+   "review": 0,
+   "packet_only": 26,
+   "decided": 22,
+   "correct": 22,
+   "selective_accuracy": 1.0,
+   "auto_supported": 14,
+   "auto_supported_fp": 0,
+   "auto_contra": 8,
+   "auto_contra_fp": 0,
+   "review_required": 0,
+   "fidelity_failed": 0
+  },
+  "ent": {
+   "n": 4,
+   "auto": 1,
+   "review": 0,
+   "packet_only": 3,
+   "decided": 1,
+   "correct": 1,
+   "selective_accuracy": 1.0,
+   "auto_supported": 0,
+   "auto_supported_fp": 0,
+   "auto_contra": 1,
+   "auto_contra_fp": 0,
+   "review_required": 0,
+   "fidelity_failed": 0
+  }
+ },
+ "rows": [
+  {
+   "id": "MP-001A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-001B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 11
+  },
+  {
+   "id": "MP-002A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-002B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-003A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 16
+  },
+  {
+   "id": "MP-003B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 16
+  },
+  {
+   "id": "MP-004A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-004B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 13
+  },
+  {
+   "id": "MP-005A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-005B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 2,
+   "approx_packet_tokens": 27
+  },
+  {
+   "id": "MP-006A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-006B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 3,
+   "approx_packet_tokens": 27
+  },
+  {
+   "id": "MP-007A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 2,
+   "approx_packet_tokens": 22
+  },
+  {
+   "id": "MP-007B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-008A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "PARTIAL",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 3,
+   "approx_packet_tokens": 41
+  },
+  {
+   "id": "MP-008B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-009A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 7
+  },
+  {
+   "id": "MP-009B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 7
+  },
+  {
+   "id": "MP-010A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-010B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 14
+  },
+  {
+   "id": "MP-011A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-011B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 7
+  },
+  {
+   "id": "MP-012A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 19
+  },
+  {
+   "id": "MP-012B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 19
+  },
+  {
+   "id": "MP-013A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-013B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 12
+  },
+  {
+   "id": "MP-014A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 15
+  },
+  {
+   "id": "MP-014B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-015A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 15
+  },
+  {
+   "id": "MP-015B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-016A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 3,
+   "approx_packet_tokens": 35
+  },
+  {
+   "id": "MP-016B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 0,
+   "approx_packet_tokens": 0
+  },
+  {
+   "id": "MP-017A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-017B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-018A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-018B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 14
+  },
+  {
+   "id": "MP-019A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 3,
+   "approx_packet_tokens": 22
+  },
+  {
+   "id": "MP-019B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 3,
+   "approx_packet_tokens": 22
+  },
+  {
+   "id": "MP-020A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-020B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-021A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-021B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 8
+  },
+  {
+   "id": "MP-022A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-022B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 14
+  },
+  {
+   "id": "MP-023A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-023B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-024A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 8
+  },
+  {
+   "id": "MP-024B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 1,
+   "approx_packet_tokens": 8
+  },
+  {
+   "id": "ENT-A",
+   "set": "ent",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "compound_claim",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 4,
+   "approx_packet_tokens": 57
+  },
+  {
+   "id": "ENT-B",
+   "set": "ent",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 0,
+   "approx_packet_tokens": 0
+  },
+  {
+   "id": "ENT-C",
+   "set": "ent",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "ENT-D",
+   "set": "ent",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "path": "packet_only",
+   "final": null,
+   "n_spans": 2,
+   "approx_packet_tokens": 33
+  }
+ ],
+ "totals": {
+  "n": 52,
+  "decided": 23,
+  "correct": 23,
+  "selective_accuracy": 1.0,
+  "auto": 23,
+  "review": 0,
+  "llm_calls": 0,
+  "review_rate": 0.0,
+  "fidelity_failures": 0,
+  "auto_supported_fp": 0,
+  "auto_contra_fp": 0
+ }
+}

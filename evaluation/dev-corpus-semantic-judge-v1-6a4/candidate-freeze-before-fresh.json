@@ -1,0 +1,42 @@
+{
+  "artifact": "candidate-freeze-before-fresh",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-BOUNDARY-V1_6A4-ASSERTION-STRENGTH-GROUNDING",
+  "frozen_engine": "a4_boundary_preclassifier.py",
+  "engine_sha256": "22a5f61c38b991611b636d24d9a6765f90aa25cf9cc616c5fa0964a770ac5cee",
+  "a3_base_engine_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+  "frozen_rules": [
+    "BC_CLAIM_ABSENCE_01 (criterion-anchored prohibited-claim absence, evidence_basis ABSENCE_OF_PROHIBITED_ASSERTION)",
+    "BC_CLAIM_VAGUE_02 (vague-only -> VAGUE_NONCOMMITTAL, non-gating)",
+    "BC_CLAIM_RETRACTED_03 (claim retraction -> SELF_RETRACTED)",
+    "BC_CLAIM_QUOTED_04 (quoted claim -> QUOTED_ONLY unless adopted outside quote)",
+    "BC_CLAIM_FRAME_05 (A4-N1 first-person belief + negation -> NEGATED)",
+    "BC_CLAIM_FRAME_06 (mixed frames -> ABSTAIN)",
+    "BC_CLAIM_FRAME_07 (consequent assertion -> ASSERTED)",
+    "BC_CLAIM_ATTRIBUTED_08 (bare belief stem without FP match -> REPORTED_ATTRIBUTED)"
+  ],
+  "frozen_config_version": "BOUNDARY_PRECLASSIFIER_V1_6A4",
+  "tdd": {
+    "red_pass": 5,
+    "red_total": 30,
+    "green_pass": 30,
+    "green_total": 30
+  },
+  "burned_cascade": {
+    "burned_120_legacy_mismatches": 0,
+    "targeted_60_legacy_mismatches": 0,
+    "official_80_legacy_mismatches": 0,
+    "forbidden_claim_diagnostic_only": true
+  },
+  "engine_changes_allowed_after_freeze": false,
+  "frozen_before_fresh_fixture_authoring": true,
+  "frozen_files": {
+    "a4_boundary_preclassifier.py": "22a5f61c38b991611b636d24d9a6765f90aa25cf9cc616c5fa0964a770ac5cee",
+    "run_tdd.py": "5461db12189427fcbf82388dab05956f4386a7cfd73ea49e21cf2d2613367ad3",
+    "run_burned_regressions.py": "ac82d3f407b35d4659f4f4b7de7e9de3685bc410e782d5d254bfa2afccc72c2e",
+    "tdd-fixtures.json": "2d096a7d01308a6a8285ce4270bc17f2670c14294238154d8e407f029c43bfc4",
+    "tdd-red-result.json": "8a91914cac062c84341de8bdf5ef331c2fc4015274cc10d32a96dce60286ea43",
+    "tdd-green-result.json": "29987d4eddc18ef0b89be8d7696fb0f55731fcfe1f15c56ed85cee7d2f2aa99f",
+    "capability-proof.md": "55ef6eb4cf41c7a641c607756c9dd4e89c60d01303804523bc39c97fc5469513",
+    "TASK-LOCK.json": "0509889d65e7efe3523b80b4117be156879bd985e51897cc69e97deda7567aeb"
+  }
+}

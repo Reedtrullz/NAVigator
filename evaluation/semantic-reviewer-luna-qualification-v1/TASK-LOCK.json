@@ -1,0 +1,81 @@
+{
+  "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-LUNA-QUALIFICATION-V1",
+  "task_family": "semantic-reviewer-evaluation",
+  "status": "NO_LUNA_REVIEWER_CONFIG_QUALIFIES",
+  "owner_authorization": {
+    "source": "attachment 7528f0b4-95c0-4d69-85c6-538037a58fa4 (Pasted text.txt)",
+    "granted": true,
+    "scope": "test gpt-5.6-luna HIGH and MAX as lower-cost replacement for routine Astra LOW review; qualification + proposed router policy only"
+  },
+  "predecessors": [
+    {
+      "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V1",
+      "terminal_status": "NO_LOW_COST_MODEL_QUALIFIES",
+      "lineage": "evaluation/semantic-reviewer-cost-qualification-v1"
+    },
+    {
+      "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V2",
+      "terminal_status": "NO_LOW_COST_MODEL_QUALIFIES_V2",
+      "lineage": "evaluation/semantic-reviewer-cost-qualification-v2"
+    }
+  ],
+  "candidates": [
+    {
+      "config_id": "LUNA-HIGH",
+      "model": "gpt-5.6-luna",
+      "provider_route": "local proxy 127.0.0.1:10100 (gpt-5.6-luna)",
+      "reasoning_effort": "HIGH"
+    },
+    {
+      "config_id": "LUNA-MAX",
+      "model": "gpt-5.6-luna",
+      "provider_route": "local proxy 127.0.0.1:10100 (gpt-5.6-luna)",
+      "reasoning_effort": "MAX"
+    }
+  ],
+  "hard_rules": {
+    "NEW_ASTRA_CALLS": 0,
+    "NEW_SOL_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "THIRD_PARTY_LOW_COST_CALLS": 0,
+    "ASTRA_EFFORT_IF_FUTURE_ESCALATION": "LOW only",
+    "ROUTER_ACTIVATION_ALLOWED": false,
+    "REFERENCE_CORPUS_CHANGED": false,
+    "QUALIFICATION_GATES_CHANGED": false,
+    "SEMANTIC_CONTRACT_CHANGED": false,
+    "HISTORICAL_REVIEWS_CHANGED": false,
+    "HISTORICAL_MEASUREMENTS_CHANGED": false,
+    "SUT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "FRESH_CASES_CONSUMED": 0,
+    "NO_BEST_OF_BAD": true,
+    "PROVIDER_HOPPING_DURING_DUAL_PASS": false,
+    "EXCLUDED_MODEL_VARIANTS": [
+      "gpt-5.6-luna--fast",
+      "gpt-6-astra--fast"
+    ]
+  },
+  "inherited_standard": "evaluation/semantic-reviewer-cost-qualification-v1/qualification-contract.json (frozen, wins over prompt on divergence)",
+  "reference_target": "AGREEMENT_WITH_FROZEN_AUTHORITATIVE_SEMANTIC_REFERENCE_NOT_HUMAN_GROUND_TRUTH",
+  "stage_order": [
+    "TRANSPORT_CALIBRATION",
+    "SCREENING",
+    "CORE_DUAL_PASS",
+    "STABILITY",
+    "COMPARISON_COST_CASCADE"
+  ],
+  "created_utc": "2026-09-18T22:51:01Z",
+  "terminal_status": "NO_LUNA_REVIEWER_CONFIG_QUALIFIES",
+  "closed_utc": "2026-09-19T03:12:00Z",
+  "closure_summary": {
+    "transport_calibration": "PASS both configs (0 transport errors each)",
+    "screening": "PASS both lanes both configs (catastrophic escapes 0)",
+    "core_dual_pass": "LUNA-HIGH FAIL forbidden and critical; LUNA-MAX NOT_RUN (cheapest-sufficient stop)",
+    "stability": "NOT_RUN both configs (protocol-correct absence)",
+    "qualified_lanes": [],
+    "router_activation_authorized": false,
+    "astra_calls": 0,
+    "sol_calls": 0,
+    "fresh_cases_consumed": 0
+  }
+}

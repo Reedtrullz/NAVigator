@@ -1,0 +1,59 @@
+{
+  "artifact": "V1.3 resume gate (handoff follow-up)",
+  "created": "2026-09-10",
+  "created_utc": "2026-09-10T16:30:41Z",
+  "policy": "same task, same lineage, same Set A; no new V1.3 task, no fixture regeneration, no contract change, no model switch, no extra retries",
+  "gate_steps": [
+    {
+      "step": 1,
+      "check": "TASK-LOCK.status == ACTIVE",
+      "result": "PASS"
+    },
+    {
+      "step": 2,
+      "check": "29 baseline artifacts SHA-reverified via build_baseline.py (V1 10, V1.1 7, V1.2 12) + V1.2 prompt hash 08c57c44...a785",
+      "result": "PASS",
+      "evidence": "baseline-integrity.json regenerated 2026-09-10T16:30:41Z, all verified=true, historical_writes=0"
+    },
+    {
+      "step": 3,
+      "check": "SHA-verify boundary-calibration-a.json, frozen contract docs, v1_3_annotate.py",
+      "result": "PASS",
+      "shas": {
+        "boundary-calibration-a.json": "0e1491c68e6907ed2bd022994b3982e98177b57d60e20ae54e84a4b04572703d",
+        "uncertainty-requirement-modes.md": "f13a01bb00424f5e86b3cfc48370a273e7283435d0847de452e6369cac98779e",
+        "route-commitment-contract.md": "cc40c27104d012f3ad47a99cffd737cd6b27f4fbd018df24822b49c67cbd8d85",
+        "boundary-analysis.md": "040f2ac8c336a7408a6d28171b07b483eec2aa778ce3b957d69786067640ddcc",
+        "annotation-decision-trees.md": "e33532f5db8c8642170573301224e7a35ca22e95f6c28dd1bad8678a3267f158",
+        "v1_3_annotate.py": "546ed0b94d454abbc001ff7d29670f84af3a4296fc6949a32318bd694284f3f8",
+        "v1_2_judge.py": "a56410321cb1e5ce30fedf455f3736254864898d325ce08204ea6580a10ce206"
+      }
+    },
+    {
+      "step": 4,
+      "check": "successful_v1_3_annotations_before_resume == 0",
+      "result": "PASS",
+      "value": 0
+    },
+    {
+      "step": 5,
+      "check": "no partial label output from the 429 attempt exists",
+      "result": "PASS",
+      "detail": "boundary-calibration-a-label1.json, -label2.json, -agreement.json all absent; only calibration-a-run.log (transport-failure evidence) preserved"
+    },
+    {
+      "step": 6,
+      "check": "run the frozen resume command: python3 v1_3_annotate.py boundary-calibration-a.json boundary-calibration-a",
+      "result": "BLOCKED",
+      "detail": "Pre-resume probe 2026-09-10T16:30:41Z still returns HTTP 429 rate_limit_exceeded ('The usage limit has been reached') on openai/gpt-5.6-luna. Step 7 policy applies: stop without changes."
+    },
+    {
+      "step": 7,
+      "check": "if the first new call still gets account-429: stop, no other model, no other account, no more retries, no new fixture generation",
+      "result": "ENGAGED",
+      "detail": "gpt-5.6-luna quota empty per user handoff; global AGENTS.md delegation policy updated: mimo-v2.5 is the default subagent model (commandcode routing first); no gpt-5.5, no gpt-5.6-terra/sol/gpt-6-astra"
+    }
+  ],
+  "transport_note": "The 64 failed 429 calls burn nothing semantically: zero model verdicts were delivered, so Set A remains unused and reusable as-is.",
+  "next_action": "When the usage window resets: rerun gate steps 1-5, then execute step 6 exactly once with the frozen command."
+}

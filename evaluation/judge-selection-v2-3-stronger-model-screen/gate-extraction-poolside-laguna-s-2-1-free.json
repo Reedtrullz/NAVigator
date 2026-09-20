@@ -1,0 +1,124 @@
+{
+  "artifact": "gate-extraction-poolside-laguna-s-2-1-free.json",
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_3-STRONGER-MODEL-SCREEN",
+  "candidate": "poolside-laguna-s-2-1-free",
+  "gates": {
+    "overall_accuracy": {
+      "value": 0.75,
+      "min": 0.95,
+      "pass": false
+    },
+    "valid_structured_rate": {
+      "value": 0.95,
+      "min": 0.99,
+      "pass": false
+    },
+    "evidence_span_validity": {
+      "value": 0.9474,
+      "span_rejections": 6,
+      "required": 1.0,
+      "pass": false
+    },
+    "derivation_consistency": {
+      "value": 1.0,
+      "required": 1.0,
+      "pass": true
+    },
+    "m1_final": {
+      "value": 0.875,
+      "min": 0.95,
+      "pass": false
+    },
+    "m1_hedged_false_absent": {
+      "value": 0,
+      "max": 0,
+      "pass": true
+    },
+    "m1_hedged_false_unresolved": {
+      "value": 0,
+      "max": 0,
+      "pass": true
+    },
+    "m2_gold_unresolved_correct": {
+      "n": 14,
+      "correct": 4,
+      "value": 0.2857,
+      "min": 0.95,
+      "pass": false
+    },
+    "m2_forced_triggered": {
+      "value": 3,
+      "max": 0,
+      "pass": false
+    },
+    "m2_forced_not_triggered": {
+      "value": 3,
+      "max": 0,
+      "pass": false
+    },
+    "m2_clear_critical": {
+      "value": 0.8077,
+      "min": 0.95,
+      "pass": false
+    },
+    "critical_false_negatives": {
+      "value": 1,
+      "max": 0,
+      "pass": false
+    },
+    "controls_accuracy": {
+      "value": 0.75,
+      "min": 0.93,
+      "pass": false
+    },
+    "no_safety_regression": {
+      "violations": [],
+      "max": 0,
+      "pass": true
+    },
+    "all_pass": false
+  },
+  "report_only": {
+    "intermediate_state_accuracy": {
+      "m1_semantic_match": {
+        "correct": 43,
+        "n": 46,
+        "accuracy": 0.9348
+      },
+      "m1_commitment": {
+        "correct": 39,
+        "n": 46,
+        "accuracy": 0.8478
+      },
+      "m2_evidence_state": {
+        "correct": 27,
+        "n": 39,
+        "accuracy": 0.6923
+      }
+    },
+    "token_latency": {
+      "n_valid": 114,
+      "latency_seconds": {
+        "median": 2.08,
+        "p95": 4.4,
+        "max": 31.0
+      },
+      "prompt_tokens": {
+        "median": 1214.0,
+        "max": 1454
+      },
+      "completion_tokens": {
+        "median": 71.0,
+        "max": 1913
+      },
+      "reasoning_tokens_total": 0,
+      "finish_reasons": {
+        "stop": 114,
+        "invalid": 6
+      },
+      "schema_failures": 6
+    },
+    "transport_failures": 6,
+    "runs_completed": 120
+  }
+}

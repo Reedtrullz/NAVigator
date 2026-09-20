@@ -1,0 +1,236 @@
+{
+ "meta": {
+  "set": "minimal-pairs-supplement",
+  "engine": "quote-aligner-deterministic-v0.2",
+  "generated": "2026-09-01T23:49:40.020660+00:00",
+  "deterministic": true
+ },
+ "results": [
+  {
+   "id": "MP-014A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "negation pair A: source and claim agree on the negated statement",
+   "verdict": "SUPPORTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 0.9,
+     "rule": "support_from_quote_alignment",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": [],
+      "support_evidence": "hard"
+     },
+     "proof": {
+      "proof_type": "SUPPORT",
+      "claim": "Barnetrygd er ikke skattepliktig.",
+      "source_span": "Barnetrygd er ikke skattepliktig.",
+      "span_start": 0,
+      "span_end": 33
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Barnetrygd er ikke skattepliktig."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er ikke skattepliktig.",
+     "verdict": "SUPPORTED",
+     "rule": "support_from_quote_alignment"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "MP-014B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "negation pair B: same source, claim flips the negation; only dimension changed vs MP-014A",
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "rule": "polarity_conflict",
+     "signals": {
+      "numeric": "none",
+      "negation_opposition": true,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [],
+      "soft_blocks": []
+     },
+     "proof": {
+      "proof_type": "EXPLICIT_NEGATION",
+      "claim": "Barnetrygd er skattepliktig.",
+      "source_span": "Barnetrygd er ikke skattepliktig.",
+      "span_start": 0,
+      "span_end": 33
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Barnetrygd er skattepliktig."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er skattepliktig.",
+     "verdict": "CONTRADICTED",
+     "rule": "polarity_conflict"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "MP-015A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "temporal pair A: soknad before the cutoff follows the old rules",
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.5,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": true,
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.5,
+     "rule": "guard_antonym_regime_pair",
+     "signals": {
+      "numeric": "absent",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [
+       "MODIFIER_ANTONYM",
+       "MODIFIER_ANTONYM"
+      ],
+      "soft_blocks": [
+       "DATE_GATE_OLD_REGIME"
+      ]
+     },
+     "proof": {
+      "proof_type": "MODIFIER_ANTONYM",
+      "claim": "Soknad om overgangsstonad sendt 15.06.2026 folger de gamle reglene.",
+      "source_span": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026.",
+      "span_start": 0,
+      "span_end": 69
+     },
+     "review": true,
+     "override": "guard_antonym_regime_pair",
+     "atom_id": "A1",
+     "atom_text": "Soknad om overgangsstonad sendt 15.06.2026 folger de gamle reglene."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Soknad om overgangsstonad sendt 15.06.2026 folger de gamle reglene.",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "rule": "guard_antonym_regime_pair"
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "id": "MP-015B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "temporal pair B: only the date changes vs MP-015A; soknad after the cutoff follows the new rules, so 'gamle regler' conflicts",
+   "verdict": "CONTRADICTED",
+   "confidence": 0.9,
+   "engine": "quote-aligner-deterministic-v0.2",
+   "injection_detected": false,
+   "review_required": false,
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.9,
+     "rule": "modifier_antonym",
+     "signals": {
+      "numeric": "absent",
+      "negation_opposition": false,
+      "misbinding": null,
+      "enumeration": false,
+      "universal_exception": false,
+      "function_division": null,
+      "age_disjoint": false,
+      "self_agent_mismatch": false,
+      "discretion_vs_right": false,
+      "temporal": false,
+      "modality_relation": "UNKNOWN",
+      "contra_blocks": [
+       "MODIFIER_ANTONYM",
+       "MODIFIER_ANTONYM"
+      ],
+      "soft_blocks": []
+     },
+     "proof": {
+      "proof_type": "MODIFIER_ANTONYM",
+      "claim": "Soknad om overgangsstonad sendt 15.07.2026 folger de gamle reglene.",
+      "source_span": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026.",
+      "span_start": 0,
+      "span_end": 69
+     },
+     "review": false,
+     "atom_id": "A1",
+     "atom_text": "Soknad om overgangsstonad sendt 15.07.2026 folger de gamle reglene."
+    }
+   ],
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Soknad om overgangsstonad sendt 15.07.2026 folger de gamle reglene.",
+     "verdict": "CONTRADICTED",
+     "rule": "modifier_antonym"
+    }
+   ],
+   "status": "ok"
+  }
+ ]
+}

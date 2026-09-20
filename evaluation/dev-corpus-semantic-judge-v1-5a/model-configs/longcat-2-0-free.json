@@ -1,0 +1,18 @@
+{
+  "config_id": "MODEL-CONFIG-V1_5A-LONGCAT-2-0-FREE",
+  "status": "FROZEN",
+  "frozen_at_date": "2026-09-11",
+  "provider": "commandcode-auth local proxy",
+  "endpoint": "http://127.0.0.1:10100/v1/chat/completions",
+  "requested_model": "command-code/meituan/LongCat-2.0:free",
+  "effective_model": "to record from response telemetry at run time",
+  "temperature": 0,
+  "max_tokens": 32768,
+  "max_tokens_classification": "PREREGISTERED_COMPLETION_HEADROOM_LIMIT (spec 14/26; not tuned per model)",
+  "timeout_seconds": 300,
+  "retry_policy": {"schema_invalid_retry_max": 1, "http_429_5xx_retry": "single technical retry after 30s, same max_tokens", "finish_reason_length": "TRANSPORT_CAPACITY_FAILURE, no semantic score", "substantive_retry": "FORBIDDEN"},
+  "structured_output_mode": "frozen V1.4 loose JSON parse + validate_result",
+  "prompt_sha256": "b17596419cfa30d16ccec8e98af40595e63411661d65b8273cada83013dbc9a3",
+  "judge_core_sha256": "ad7f0fda0557fc74b7e337359635fd6d5f3bdda803251bd9dd49cb801be9bdc2",
+  "auth": "Bearer from ~/.codex/auth.json at runtime only; never printed, persisted, or hashed"
+}

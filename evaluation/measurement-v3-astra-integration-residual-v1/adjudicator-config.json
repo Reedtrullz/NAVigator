@@ -1,0 +1,74 @@
+{
+  "artifact": "adjudicator-config",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-INTEGRATION-AND-RESIDUAL-ADJUDICATION-V1",
+  "created_utc": "2026-09-15T22:38:40Z",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "reasoning_effort_invariant": {
+    "ASTRA_REASONING_EFFORT": "LOW",
+    "ASTRA_MEDIUM_CALLS": 0,
+    "ASTRA_HIGH_CALLS": 0,
+    "ASTRA_MAX_CALLS": 0,
+    "escalation_on_hard_cases": "forbidden"
+  },
+  "transport": {
+    "endpoint": "local proxy http://127.0.0.1:10100/v1/chat/completions",
+    "auth": "bearer token from ~/.codex/auth.json; never printed, persisted, hashed or logged",
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "passes": {
+    "ADJ-A": {
+      "pass_id": "ADJ-A"
+    },
+    "ADJ-B": {
+      "pass_id": "ADJ-B"
+    },
+    "independence": "ADJ-B never sees ADJ-A; both are blind to Batch-1 Astra results, gold, deterministic verdicts and aggregates"
+  },
+  "prompt_source": "frozen CRIT_CONTRACT / FORB_CONTRACT strings and system prompt from evaluation/measurement-v3-astra-review-batch-1/run_astra_review.py (reused verbatim; no prompt tuning)",
+  "schemas": {
+    "critical_condition": {
+      "required": [
+        "critical_evidence_state",
+        "evidence_spans",
+        "rationale"
+      ],
+      "critical_evidence_state_enum": [
+        "AMBIGUOUS_OR_CONFLICTING",
+        "CLEAR_NON_TRIGGER_SUPPORT",
+        "CLEAR_TRIGGER_SUPPORT",
+        "INSUFFICIENT_TO_DECIDE",
+        "UNRESOLVED"
+      ]
+    },
+    "forbidden_claim": {
+      "required": [
+        "criterion_semantic_match",
+        "speaker_commitment",
+        "evidence_spans",
+        "rationale"
+      ],
+      "criterion_semantic_match_enum": [
+        "MATCH",
+        "NO_MATCH",
+        "UNRESOLVED"
+      ],
+      "speaker_commitment_enum": [
+        "ASSERTED",
+        "HEDGED_ASSERTION",
+        "HYPOTHETICAL_ONLY",
+        "NEGATED",
+        "NONCOMMITTAL",
+        "QUOTED_ONLY",
+        "SELF_RETRACTED",
+        "UNRESOLVED"
+      ],
+      "null_commitment_allowed": false
+    }
+  },
+  "evidence_span_rule": "verbatim substrings of sut_output; required iff classification is CLEAR_TRIGGER_SUPPORT/CLEAR_NON_TRIGGER_SUPPORT or MATCH with commitment != UNRESOLVED; empty otherwise legal",
+  "retry_policy": "at most ONE technical transport retry per call attempt; no semantic retries; no retry after a valid response",
+  "request_config_hash": "89a6ec772c7a3090b8d99f5ced54a6435713c6d58299b0a7991c0c236c0d0d38"
+}

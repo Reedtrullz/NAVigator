@@ -1,0 +1,51 @@
+{
+  "artifact": "wave4-resume-routing-funnel",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-WAVE-4-QUOTA-RESUME-V1",
+  "created_utc": "2026-09-18T13:39:24Z",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "basis": {
+    "wave4_measurement_freeze": "completed-wave4-measurement-freeze-manifest.json",
+    "wave4_predictions": "evaluation/full-sut-repair-wave-4-v1/runs/structural-120-replay-v1 (frozen)",
+    "route_adapter_analysis_data": "measurement-v3-remeasure-repair-wave-4-quota-safe-v1/route-adapter-analysis-data.json (frozen)"
+  },
+  "wave3_bridge": {
+    "route_criteria_total": 120,
+    "route_evaluated": 108,
+    "not_applicable": 12,
+    "route_pass": 0,
+    "route_fail": 108,
+    "partial_route": 2,
+    "structured_route_cases": 62,
+    "structured_route_entries": 125,
+    "evidence_joins_found": 0
+  },
+  "wave4": {
+    "route_criteria_total": 120,
+    "route_evaluated": 108,
+    "not_applicable": 12,
+    "route_pass": 0,
+    "route_fail": 108,
+    "partial_route": 2,
+    "no_acceptable_route": 106,
+    "unresolved": 0,
+    "structured_route_cases": 62,
+    "structured_route_cases_all_120": 62,
+    "structured_route_entries": 125,
+    "service_identities": 125,
+    "evaluable_routes": 125,
+    "access_bound": 125,
+    "condition_bound": 125,
+    "evidence_joins_found": 0,
+    "evidence_joins_missing": 125,
+    "no_route_asserted_cases": 58,
+    "presented_as_complete_cases": 104
+  },
+  "stage_counts": {
+    "R0_NO_STRUCTURED_ROUTE": 54,
+    "R1_INVALID_ROUTE_OBJECT": 9,
+    "R3_WRONG_SERVICE_FAMILY": 11,
+    "R5_MISSING_OR_WRONG_CONDITION": 4,
+    "R6_PROVENANCE_OR_EVIDENCE": 30
+  },
+  "funnel_note": "Wave-4 endpoint unchanged from the Wave-3 compatibility bridge: 0 route PASS, 108 route FAIL (106 NO_ACCEPTABLE_ROUTE, 2 PARTIAL). Structured emission is present (62 emitter cases, 125 entries, all access- and condition-bound) but evidence joins remain 0/125, so binding (RC-04) and the lexical route scorer (MS-06) still block every route PASS. The two PARTIAL verdicts remain the frozen token-substring artifacts ROUT-040 and ROUT-061 (MS-04/MS-05)."
+}

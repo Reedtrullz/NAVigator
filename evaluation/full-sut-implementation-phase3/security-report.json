@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "ssrf": "runtime/discovery/security.py validate_url enforced at orchestrator+engine fetch boundaries in frozen V1 runtime",
+  "private_ip": "blocked ranges 10/8, 172.16/12, 192.168/16, 169.254/16, 127/8, 100.64/10, ::1, fc00::/7, fe80::/10 plus localhost/0.0.0.0 hostnames",
+  "schemes": "http, https only; max_url_len 2048",
+  "redirect_constraints": "frozen V1 runtime official-domain validation",
+  "response_size": "frozen V1 fetch limits",
+  "timeout": "frozen V1 fetch timeout",
+  "malformed_urls": "covered by frozen runtime validators and phase2 adapter tests",
+  "path_injection": "SUT writes confined to run-scoped output dirs; no user-controlled path interpolation",
+  "prompt_injection": "knowledge and discovery content is data-only (phase2 tests carried in 134-test runtime suite)",
+  "secrets": "no secrets in outputs or artifacts; PRODUCT_LLM_CALLS=0",
+  "phase3_delta": "no new fetch surface; renderer transliteration and finalizer gates are pure string functions"
+}

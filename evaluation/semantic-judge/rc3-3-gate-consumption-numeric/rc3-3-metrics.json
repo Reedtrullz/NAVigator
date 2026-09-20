@@ -1,0 +1,50 @@
+{
+  "metrics": "RC3_3_METRICS_V1",
+  "frozen": true,
+  "relation_metrics": {
+    "atom_relation_accuracy": "correct atom relation / atom decisions",
+    "macro_f1": "unweighted mean F1 over classes with truth support > 0 (ENTAILS, CONTRADICTS, PARTIAL, RELATED_BUT_INSUFFICIENT, AMBIGUOUS)",
+    "entails_precision": "true ENTAILS / predicted ENTAILS",
+    "contradicts_precision": "true CONTRADICTS / predicted CONTRADICTS",
+    "insufficient_recall": "true RBI predicted RBI / true RBI",
+    "critical_false_entails": "count of critical:true cases predicted ENTAILS with truth not ENTAILS",
+    "critical_false_contradicts": "count of critical:true cases predicted CONTRADICTS with truth not CONTRADICTS",
+    "collapse_rate": "gate-collapse groups / total error groups (diagnostic)"
+  },
+  "diagnostic_metrics": {
+    "RELATION_ACCURACY_WITHIN_BLOCKED_GATE": "accuracy over atoms whose boundary projection is BOUNDARY_BLOCKED",
+    "RELATION_ACCURACY_WITHIN_UNRESOLVED_GATE": "accuracy over atoms whose boundary projection is BOUNDARY_UNRESOLVED"
+  },
+  "numeric_metrics": {
+    "numeric_relation_accuracy": "accuracy on numeric-marked cases",
+    "numeric_entails_precision": "true ENTAILS / predicted ENTAILS on numeric subset",
+    "numeric_contradicts_precision": "true CONTRADICTS / predicted CONTRADICTS on numeric subset",
+    "quantity_identity_accuracy": "gold quantity_identity matches predicted relation resolving identity (ENTAILS/CONTRADICTS vs RBI)",
+    "comparator_accuracy": "expected comparator_entails field vs predicted numeric direction",
+    "critical_aggregate_errors": "critical aggregate/component confusions",
+    "law_reference_numeric_errors": "law-ref numbers treated as quantities causing wrong verdict"
+  },
+  "gates": {
+    "relation_accuracy": 0.95,
+    "macro_f1": 0.93,
+    "entails_precision": 0.99,
+    "contradicts_precision": 0.99,
+    "insufficient_recall": 0.90,
+    "critical_false_entails": 0,
+    "critical_false_contradicts": 0,
+    "gate_collapse_accuracy": 0.95,
+    "gate_collapse_macro_f1": 0.93,
+    "numeric_accuracy": 0.95,
+    "numeric_entails_precision": 0.99,
+    "numeric_contradicts_precision": 0.99,
+    "quantity_identity": 0.98,
+    "comparator": 0.98,
+    "critical_aggregate_errors": 0,
+    "law_reference_numeric_errors": 0,
+    "projection_diffs": 0,
+    "false_auto_support": 0,
+    "boundary_precision": 0.99,
+    "entailed_support_recall": 0.85,
+    "unsound_eligible": 0
+  }
+}

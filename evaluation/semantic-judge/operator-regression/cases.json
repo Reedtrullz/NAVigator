@@ -1,0 +1,163 @@
+[
+ {
+  "id": "DA-POS",
+  "operator": "DIRECT_ASSERTION",
+  "claim": "Ordningen er gratis.",
+  "source": "Ordningen er kostnadsfritt for brukerne.",
+  "expect": "fire:SUPPORTED"
+ },
+ {
+  "id": "DA-PRECOND",
+  "operator": "DIRECT_ASSERTION",
+  "claim": "Tjenesten er gratis.",
+  "source": "Ordningen er kostnadsfritt.",
+  "expect": "abstain"
+ },
+ {
+  "id": "DA-SCOPE",
+  "operator": "DIRECT_ASSERTION",
+  "claim": "Alle faar ordningen gratis.",
+  "source": "Ordningen er kostnadsfritt.",
+  "expect": "abstain"
+ },
+ {
+  "id": "DA-TIME",
+  "operator": "DIRECT_ASSERTION",
+  "claim": "Ordningen var gratis 01.01.2020.",
+  "source": "Ordningen er kostnadsfritt 01.01.2024.",
+  "expect": "abstain"
+ },
+ {
+  "id": "EN-CONTRA",
+  "operator": "EXPLICIT_NEGATION",
+  "claim": "BUP stiller diagnoser.",
+  "source": "BUP stiller ikke diagnoser.",
+  "expect": "fire:CONTRADICTED"
+ },
+ {
+  "id": "EN-SUPPORT",
+  "operator": "EXPLICIT_NEGATION",
+  "claim": "Ordningen krever ikke henvisning.",
+  "source": "Ordningen krever henvisning.",
+  "expect": "fire:SUPPORTED"
+ },
+ {
+  "id": "EN-NEARMISS-NR1",
+  "operator": "EXPLICIT_NEGATION",
+  "claim": "Helsesykepleier stiller ADHD-diagnose.",
+  "source": "Skolehelsetjenesten stiller ikke diagnoser.",
+  "expect": "no-contradiction"
+ },
+ {
+  "id": "EN-SCOPE",
+  "operator": "EXPLICIT_NEGATION",
+  "claim": "Tilfellet er kostnadsfritt.",
+  "source": "Tilfellet som ikke omfattes av ordningen er kostnadsfritt.",
+  "expect": "abstain"
+ },
+ {
+  "id": "NUM-POS",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Satsen er maksimalt 5000 kr.",
+  "source": "Satsen er 6500 kr.",
+  "expect": "fire:CONTRADICTED"
+ },
+ {
+  "id": "NUM-UNIT",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Ventetiden er maksimalt 6 maneder.",
+  "source": "Ventetiden er maksimalt 6 uker.",
+  "expect": "abstain"
+ },
+ {
+  "id": "TMP-POS",
+  "operator": "TEMPORAL_CONFLICT",
+  "claim": "Fristen er 01.03.2024.",
+  "source": "Fristen for ordningen er 15.02.2024.",
+  "expect": "fire:CONTRADICTED"
+ },
+ {
+  "id": "TMP-THRESHOLD",
+  "operator": "TEMPORAL_CONFLICT",
+  "claim": "Soknad sendt 15.06.2026 folger de gamle reglene.",
+  "source": "Nye regler gjelder for soknader sendt etter 01.07.2026.",
+  "expect": "abstain"
+ },
+ {
+  "id": "ARI-POS",
+  "operator": "SIMPLE_ARITHMETIC",
+  "claim": "Satsen blir til sammen 8000 kr.",
+  "source": "Satsen har en grunnandel pa 5000 kr. Satsen har et tillegg pa 3000 kr.",
+  "expect": "fire:SUPPORTED"
+ },
+ {
+  "id": "ARI-AMBIG",
+  "operator": "SIMPLE_ARITHMETIC",
+  "claim": "Satsen blir til sammen 8000 kr.",
+  "source": "Satsen har en grunnandel pa 5000 kr. Satsen har et tillegg pa 3000 kr. Satsen har en maksimal ramme pa 11000 kr.",
+  "expect": "abstain"
+ },
+ {
+  "id": "CONFLICT-REVIEW",
+  "operator": "CROSS",
+  "claim": "Ordningen krever ikke henvisning og fristen er 01.03.2024.",
+  "source": "Ordningen krever henvisning per 01.03.2024. Fristen er 15.02.2024 for ordningen.",
+  "expect": "conflict:REVIEW"
+ },
+ {
+  "id": "CANARY-ENTC",
+  "operator": "CANARY",
+  "claim": "PPT kan stille ADHD-diagnose.",
+  "source": "PPT kartlegger pedagogiske behov og gir sakkyndige vurderinger. BUP utreder psykiske lidelser/nevroutviklingsforstyrrelser.",
+  "expect": "no-contradiction"
+ },
+ {
+  "id": "NUM-THRESH-POS",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Det er ingen barnetilsynsst\u00f8nad ved pensjonsgivende inntekt over 4 G.",
+  "source": "Barnetilsyn (\u00a7 15-10): 64 prosent av dokumenterte utgifter; ingen st\u00f8nad ved pensjonsgivende inntekt over 6 G (819 294 kr per \u00e5r).",
+  "expect": "fire:CONTRADICTED"
+ },
+ {
+  "id": "NUM-THRESH-SAME-NEARMISS",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Det er ingen st\u00f8nad ved inntekt over 6 G.",
+  "source": "Ingen st\u00f8nad ved inntekt over 6 G.",
+  "expect": "abstain"
+ },
+ {
+  "id": "NUM-THRESH-UNIT-NEARMISS",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Det er ingen st\u00f8nad ved inntekt over 4 G.",
+  "source": "Ingen st\u00f8nad ved inntekt over 600 000 kr.",
+  "expect": "abstain"
+ },
+ {
+  "id": "NUM-GWORD-NEARMISS",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Ventetiden er over 6 ganger lenger enn lovet.",
+  "source": "Ventetiden ble 12 ganger lenger enn forventet.",
+  "expect": "abstain"
+ },
+ {
+  "id": "NUM-MIXED-CONJ-NEARMISS",
+  "operator": "NUMERIC_CONFLICT",
+  "claim": "Satsen er 100 kr per dag og maksimalt 5000 kr totalt.",
+  "source": "Satsen er 200 kr per dag.",
+  "expect": "abstain"
+ },
+ {
+  "id": "DA-FRAG-CHAIN-POS",
+  "operator": "DIRECT_ASSERTION",
+  "claim": "Trondheimshjelpa er et lavterskeltilbud som man kan kontakte uten henvisning.",
+  "source": "Trondheimshjelpa er et lavterskeltilbud til gravide, barn, ungdom og familier i Trondheim. Gratis, ingen henvisning.",
+  "expect": "fire:SUPPORTED"
+ },
+ {
+  "id": "DA-FRAG-ORPHAN-NEARMISS",
+  "operator": "DIRECT_ASSERTION",
+  "claim": "Familievernkontoret er gratis.",
+  "source": "Gratis, ingen henvisning.",
+  "expect": "abstain"
+ }
+]

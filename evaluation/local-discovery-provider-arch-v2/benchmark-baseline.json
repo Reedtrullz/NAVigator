@@ -1,0 +1,70 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-PROVIDER-ARCH-V2",
+  "artifact": "benchmark_baseline",
+  "data_class": "BURNED_MUNICIPALITIES_ONLY",
+  "executed_at": "2026-09-09",
+  "corpus": {
+    "queries": 117,
+    "municipalities": 13,
+    "corpus_sha256": "40b0b9c3b0b915a71b36866b182c04ef00b4774569bfadea2414c61e9bee29f2"
+  },
+  "external_backend_probe": {
+    "backends": {
+      "ddg_html": {
+        "attempted": 6,
+        "success": 0,
+        "failure_class": "BOT_BLOCKED"
+      },
+      "ddg_lite": {
+        "attempted": 6,
+        "success": 0,
+        "failure_class": "BOT_BLOCKED"
+      },
+      "bing_html": {
+        "attempted": 6,
+        "success": 0,
+        "failure_class": "NO_RESULTS"
+      },
+      "mojeek": {
+        "attempted": 6,
+        "success": 0,
+        "failure_class": "BOT_BLOCKED"
+      },
+      "brave_html": {
+        "attempted": 6,
+        "success": 3,
+        "failure_class": "MIXED"
+      }
+    },
+    "note": "ddg_html/ddg_lite/mojeek/bing_html verified BOT_BLOCKED; brave_html success at probe volume"
+  },
+  "external_volume_run": {
+    "note": "full 117-query Brave run returned 429 RATE_LIMITED on all queries; documented in provider-comparison.json; no retry storm performed",
+    "interpretation": "external HTML search cannot be the primary path; frozen budgeted fallback only"
+  },
+  "site_direct_frozen_benchmark": {
+    "queries_total": 117,
+    "query_execution_rate": 1.0,
+    "site_direct_success_rate": 1.0,
+    "relevant_target_recall_gold_url_exact": 0.1538,
+    "relevant_target_recall_gold_domain": 1.0,
+    "official_domain_precision_mean": 0.9846,
+    "bot_block_rate": 0.0,
+    "provider_error_rate": 0.0,
+    "median_latency_ms": 345,
+    "raw_counts": {
+      "executed": 117,
+      "success": 117,
+      "gold_exact": 18,
+      "gold_domain": 117,
+      "bot_blocks": 0,
+      "errors": 0
+    }
+  },
+  "provider_decision": "site-direct-first composite with budgeted brave_html fallback (max 3 queries/run, 10s interval in runtime; live test used 2/5s)",
+  "engineering_gate_check": {
+    "query_execution_rate_ge_095": true,
+    "relevant_target_recall_note": "gold-URL-exact 0.154 (candidate-set); gold-domain 1.000; formal recall gate is evaluated on final candidates+fetch path in live-burned-results.json (13/13 GOLD_DOMAIN)",
+    "systematic_bot_block_zero": true
+  }
+}

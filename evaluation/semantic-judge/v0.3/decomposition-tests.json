@@ -1,0 +1,442 @@
+{
+ "meta": {
+  "version": "v0.3-decomposition-tests",
+  "generated": "2026-08-30",
+  "purpose": "Tester stage 1 (dekomponering): atomantall, forbudte splitt og betinget semantikk. Gradering: decomposition_test.py",
+  "n_cases": 44,
+  "types": {
+   "single": 5,
+   "og": 6,
+   "men": 5,
+   "hvis": 5,
+   "med mindre": 3,
+   "dato": 3,
+   "tall": 4,
+   "lokal+nasjonal": 3,
+   "aarsak": 3,
+   "lov+anbefaling": 3,
+   "trap": 4
+  }
+ },
+ "cases": [
+  {
+   "id": "DEC-001",
+   "type": "single",
+   "claim": "Delt ordinær barnetrygd er 1 006 kroner per måned per forelder.",
+   "expected_atoms": 1,
+   "forbid": [
+    "no split"
+   ],
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-002",
+   "type": "single",
+   "claim": "Helsestasjon for ungdom er gratis og krever ikke timebestilling.",
+   "expected_atoms": 1,
+   "note": "gratis+drop-in er ett tilbudspredikat",
+   "forbid": [
+    "split og her"
+   ],
+   "tags": [
+    "modality"
+   ]
+  },
+  {
+   "id": "DEC-003",
+   "type": "single",
+   "claim": "Alle kommuner skal ha et helsestasjonstilbud for ungdom opp til 20 år.",
+   "expected_atoms": 1,
+   "tags": [
+    "numeric",
+    "modality"
+   ]
+  },
+  {
+   "id": "DEC-004",
+   "type": "single",
+   "claim": "Familievernkontoret tilbyr gratis samtaler uten henvisning.",
+   "expected_atoms": 1
+  },
+  {
+   "id": "DEC-005",
+   "type": "single",
+   "claim": "PPT utarbeider sakkyndige vurderinger der loven krever det.",
+   "expected_atoms": 1
+  },
+  {
+   "id": "DEC-006",
+   "type": "og",
+   "claim": "Ordinær barnetrygd er 2 012 kroner per måned, og utvidet barnetrygd er 2 572 kroner per måned.",
+   "expected_atoms": 2,
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-007",
+   "type": "og",
+   "claim": "Bostøtte administreres av Husbanken, og økonomisk sosialhjelp behandles av NAV-kontoret i kommunen.",
+   "expected_atoms": 2
+  },
+  {
+   "id": "DEC-008",
+   "type": "og",
+   "claim": "HFU er for ungdom opp til 20 år, og tilbudet er gratis.",
+   "expected_atoms": 2,
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-009",
+   "type": "og",
+   "claim": "Overgangsstønad krever aktivitetsplikt, og satsen avhenger av inntekt.",
+   "expected_atoms": 2
+  },
+  {
+   "id": "DEC-010",
+   "type": "og",
+   "claim": "Barnebidrag aldersjusteres automatisk, og indeksreguleres årlig.",
+   "expected_atoms": 2
+  },
+  {
+   "id": "DEC-011",
+   "type": "og",
+   "claim": "Skolehelsetjenesten er gratis, og eleven kan ta direkte kontakt.",
+   "expected_atoms": 2
+  },
+  {
+   "id": "DEC-012",
+   "type": "men",
+   "claim": "Rask psykisk helsehjelp er for personer over 16 år, men dekker ikke de yngste barna.",
+   "expected_atoms": 2,
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-013",
+   "type": "men",
+   "claim": "HFU har drop-in uten foreldretillatelse, men stiller ikke diagnoser.",
+   "expected_atoms": 2,
+   "tags": [
+    "modality"
+   ]
+  },
+  {
+   "id": "DEC-014",
+   "type": "men",
+   "claim": "Kommunepsykolog er en vanlig betegnelse, men det finnes ingen nasjonal enhetlig ordning.",
+   "expected_atoms": 2
+  },
+  {
+   "id": "DEC-015",
+   "type": "men",
+   "claim": "PPT gir sakkyndig vurdering, men stiller ikke diagnoser.",
+   "expected_atoms": 2,
+   "tags": [
+    "modality"
+   ]
+  },
+  {
+   "id": "DEC-016",
+   "type": "men",
+   "claim": "Barnevernvakta er døgnåpen, men den erstatter ikke akutt medisinsk hjelp.",
+   "expected_atoms": 2
+  },
+  {
+   "id": "DEC-017",
+   "type": "hvis",
+   "claim": "Hvis vilkårene i folketrygdloven kapittel 15 er oppfylt, kan overgangsstønad gis.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split condition"
+   ],
+   "note": "conditional preserved"
+  },
+  {
+   "id": "DEC-018",
+   "type": "hvis",
+   "claim": "Dersom barnet bor like mye hos begge foreldre, deles ordinær barnetrygd likt.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split condition"
+   ]
+  },
+  {
+   "id": "DEC-019",
+   "type": "hvis",
+   "claim": "Hvis barnet fyller 6 år, justeres barnebidraget automatisk.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split condition"
+   ],
+   "tags": [
+    "numeric",
+    "conditional"
+   ]
+  },
+  {
+   "id": "DEC-020",
+   "type": "hvis",
+   "claim": "Naar det er fare for liv og helse, skal man ringe 113.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split condition"
+   ],
+   "tags": [
+    "safety"
+   ]
+  },
+  {
+   "id": "DEC-021",
+   "type": "hvis",
+   "claim": "Hvis familien har lav inntekt, kan kommunen gi bostøtte etter individuell vurdering.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split condition"
+   ],
+   "tags": [
+    "modality"
+   ]
+  },
+  {
+   "id": "DEC-022",
+   "type": "med mindre",
+   "claim": "Begge foreldre skal samtykke til helsehjelp for barn under 16 år, med mindre ett vilkår i pbL § 4-4 er oppfylt.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split exception"
+   ],
+   "tags": [
+    "legal"
+   ]
+  },
+  {
+   "id": "DEC-023",
+   "type": "med mindre",
+   "claim": "HFU forteller ingenting til foreldrene, med mindre det er fare for liv eller alvorlig skade.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split exception"
+   ],
+   "tags": [
+    "safety"
+   ]
+  },
+  {
+   "id": "DEC-024",
+   "type": "med mindre",
+   "claim": "Møteplikt i mekling gjelder, med mindre unntak i meklingsforskriften gjelder.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split exception"
+   ]
+  },
+  {
+   "id": "DEC-025",
+   "type": "dato",
+   "claim": "Fritak fra egenandeler for barn under 18 år gjelder fra 1. august 2026.",
+   "expected_atoms": 1,
+   "tags": [
+    "temporal",
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-026",
+   "type": "dato",
+   "claim": "Mottakere som står i ordningen per 30. juni 2026 beholder de tidligere reglene.",
+   "expected_atoms": 1,
+   "tags": [
+    "temporal"
+   ]
+  },
+  {
+   "id": "DEC-027",
+   "type": "dato",
+   "claim": "Satser fra 1. februar 2026 gjelder ordinær og utvidet barnetrygd.",
+   "expected_atoms": 1,
+   "tags": [
+    "temporal",
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-028",
+   "type": "tall",
+   "claim": "Ordinær barnetrygd deles likt ved delt fast bosted: 1 006 kroner per forelder.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split rate calc"
+   ],
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-029",
+   "type": "tall",
+   "claim": "Barnebidrag aldersjusteres når barnet fyller 6, 11 eller 15 år.",
+   "expected_atoms": 1,
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-030",
+   "type": "tall",
+   "claim": "BUP skal vurdere rett til nødvendig helsehjelp innen 10 virkedager.",
+   "expected_atoms": 1,
+   "tags": [
+    "numeric",
+    "temporal"
+   ]
+  },
+  {
+   "id": "DEC-031",
+   "type": "tall",
+   "claim": "Ca. 6 av 10 kommuner hadde ansatt egen psykolog i 2022.",
+   "expected_atoms": 1,
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-032",
+   "type": "lokal+nasjonal",
+   "claim": "Alle kommuner skal ha skolehelsetjeneste, og i Trondheim drives den med drop-in for ungdom.",
+   "expected_atoms": 2,
+   "tags": [
+    "local"
+   ]
+  },
+  {
+   "id": "DEC-033",
+   "type": "lokal+nasjonal",
+   "claim": "Nasjonalt gjelder RPH for over 16 år, mens Trondheim kan ha egne lavterskeltilbud for yngre.",
+   "expected_atoms": 2,
+   "tags": [
+    "local",
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-034",
+   "type": "lokal+nasjonal",
+   "claim": "HFU er et nasjonalt tilbud for ungdom opptil 20 år, og i enkelte kommuner varer det til 25 år.",
+   "expected_atoms": 2,
+   "tags": [
+    "local",
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-035",
+   "type": "aarsak",
+   "claim": "Fordi barnets beste er grunnleggende, skal barnets mening tillegges vekt.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split causality"
+   ]
+  },
+  {
+   "id": "DEC-036",
+   "type": "aarsak",
+   "claim": "Aktivitetsplikten gjelder fordi stønadens formål er yrkesrettet aktivitet.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split causality"
+   ]
+  },
+  {
+   "id": "DEC-037",
+   "type": "aarsak",
+   "claim": "Ved omsorgsovertakelse kan barnevernet samtykke til helsehjelp fordi det har omsorgsansvar.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split causality"
+   ],
+   "tags": [
+    "legal"
+   ]
+  },
+  {
+   "id": "DEC-038",
+   "type": "lov+anbefaling",
+   "claim": "Pasient- og brukerrettighetsloven § 4-4 gir samtykkeregler, og Helsedirektoratet anbefaler at begge foreldre informeres.",
+   "expected_atoms": 2,
+   "tags": [
+    "legal"
+   ]
+  },
+  {
+   "id": "DEC-039",
+   "type": "lov+anbefaling",
+   "claim": "Opplæringsloven gir rett til tilpasset opplæring, og PPT anbefales tidlig involvert.",
+   "expected_atoms": 2,
+   "tags": [
+    "legal"
+   ]
+  },
+  {
+   "id": "DEC-040",
+   "type": "lov+anbefaling",
+   "claim": "Forskriften krever helsestasjonstilbud for ungdom, og Helsedirektoratet anbefaler drop-in.",
+   "expected_atoms": 2,
+   "tags": [
+    "legal"
+   ]
+  },
+  {
+   "id": "DEC-041",
+   "type": "trap",
+   "claim": "BUP krever henvisning, PPT kan stille ADHD-diagnose, og foreldre kan bestille BUP-time direkte.",
+   "expected_atoms": 3,
+   "note": "spec-eksempelet; 3 uavhengige atomer",
+   "tags": [
+    "adversarial"
+   ]
+  },
+  {
+   "id": "DEC-042",
+   "type": "trap",
+   "claim": "NAV kan gi støtte dersom vilkårene er oppfylt, men svaret tar 6 uker.",
+   "expected_atoms": 2,
+   "forbid": [
+    "split condition i atom 1"
+   ],
+   "note": "kondisjonal holder seg i atom 1; frist er egen kjerne",
+   "tags": [
+    "adversarial",
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-043",
+   "type": "trap",
+   "claim": "Deles likt: 1 006 kroner per forelder.",
+   "expected_atoms": 1,
+   "forbid": [
+    "split rate from components"
+   ],
+   "note": "tall+enhet+per-hvem er ETT predikat",
+   "tags": [
+    "numeric"
+   ]
+  },
+  {
+   "id": "DEC-044",
+   "type": "trap",
+   "claim": "Fastlegen, psykolog i kommunen og barnevernsleden har henvisningsrett til BUP.",
+   "expected_atoms": 1,
+   "note": "én autoritativ liste-predikat over tre subjekter i samme regel; ikke splitt",
+   "forbid": [
+    "split into 3 subjects"
+   ]
+  }
+ ]
+}

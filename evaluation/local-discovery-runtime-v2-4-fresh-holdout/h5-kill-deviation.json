@@ -1,0 +1,16 @@
+{
+  "artifact": "h5-kill-deviation",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_4-FRESH-HOLDOUT",
+  "recorded_at": "2026-09-09",
+  "H5_OPERATOR_DEVIATION": true,
+  "deviation": "Operator killed the frozen cli_v24 process for cell 1146-C at 175.0s wall time, before the frozen 900s wrapper timeout.",
+  "root_cause": "Operator polling bookkeeping error: cumulative sleep accounting incorrectly concluded the 900s frozen timeout had been exceeded. ps etime verification at 20:56 showed 175s elapsed, far below the frozen limit. This was an operator (harness) error, not a runtime behavior.",
+  "observation_impact": "No runtime output existed for the cell at kill time; no result observation occurred before the kill. No evidence was consumed before re-execution.",
+  "response": {
+    "one_identical_authorized_rerun_of_cell_1146_C": true,
+    "rerun_method": "the same frozen batch runner /tmp/v24_run_holdout.py with unchanged frozen candidate, config, queries, timeouts, and output path; it skips the 29 cells with existing outputs and executes only 1146-C once",
+    "killed_attempt_wrapper_preserved": "runs/1146-C.wrapper.killed-attempt.json",
+    "all_other_cells": "one official run each, untouched"
+  },
+  "policy_note": "Contract sections 10-11 require exactly one official run per cell and forbid result-driven reruns. No result was observed before this rerun; the rerun is the first and only observed execution of 1146-C. The deviation itself is preserved permanently in this artifact rather than hidden."
+}

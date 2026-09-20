@@ -1,0 +1,42 @@
+{
+  "logical_candidates": [
+    {
+      "logical_id": "R1-nemotron-3-super",
+      "spec_route": "openrouter/nvidia-nemotron-3-super:free",
+      "lane_role": "reserve"
+    },
+    {
+      "logical_id": "R2-laguna-s-2.1",
+      "spec_route": "command-code/poolside-laguna-s-2.1-free",
+      "fallbacks": [
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-free/deepseek-v4-flash-free"
+      ],
+      "lane_role": "reserve"
+    },
+    {
+      "logical_id": "R3-ling-3.0-flash-sante",
+      "spec_route": "command-code/inclusionai-ling-3.0-flash-sante:free",
+      "fallbacks": [
+        "openrouter/inclusionai-ling-3.0-flash-sante:free"
+      ],
+      "lane_role": "reserve-medical"
+    },
+    {
+      "logical_id": "R4-gemma-4-26b-a4b-it",
+      "spec_route": "openrouter/google-gemma-4-26b-a4b-it:free",
+      "lane_role": "reserve"
+    },
+    {
+      "logical_id": "R5-inkling-small",
+      "spec_route": "openrouter/thinkingmachines-inkling-small:free",
+      "lane_role": "reserve"
+    }
+  ],
+  "excluded": {
+    "LongCat-2.0": "LONGCAT_CALLS=0 per spec section 4",
+    "mimo-v2.5-pro": "spec section 6: no retest (critical wrong-direction error in V1)",
+    "nex-n2.5-pro": "nex-v1-invalid-analysis.json: NEX_RECHECK_NOT_AUTHORIZED (semantic dominance)"
+  },
+  "frozen_before_probes": true
+}

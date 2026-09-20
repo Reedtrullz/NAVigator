@@ -1,0 +1,123 @@
+{
+  "artifact": "complete-wave1-aggregate-metrics",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "created_utc": "2026-09-16T10:55:09Z",
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY",
+  "interpretation_boundary": "comparator repair completes the Wave-1 measurement for the burned dev baseline only; not certification, production readiness, or generalization evidence",
+  "coverage": {
+    "TOTAL_CRITERIA": 600,
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 4,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_HUMAN_ADJUDICATION": 0,
+    "AUTHORITATIVE_TOTAL": 600,
+    "AUTHORITATIVE_PCT": 100.0
+  },
+  "semantic_state_counts": {
+    "FAIL": 244,
+    "PASS": 290,
+    "ABSENT_OR_NOT_APPLICABLE": 12,
+    "UNRESOLVED": 18,
+    "DEGRADED": 36,
+    "APPLICABLE_DENOMINATOR": 588,
+    "HARD_FAIL_RATE_AUTHORITATIVE": 0.415,
+    "NON_PASS_RATE_AUTHORITATIVE": 0.5068,
+    "NOTE": "authoritative scored rows only; rows with verdict=None are ABSENT_OR_NOT_APPLICABLE and excluded from the denominator"
+  },
+  "per_dimension": {
+    "critical_condition": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "CRITICAL_ERROR": 91,
+        "NOT_TRIGGERED": 10,
+        "NO_CRITICAL_ERROR": 6,
+        "TRIGGERED": 1,
+        "UNRESOLVED": 12
+      }
+    },
+    "forbidden_claim": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "ABSENT": 66,
+        "CLAIM_ABSENT_TAKEN": 48,
+        "CLAIM_PRESENT": 3,
+        "PRESENT": 3
+      }
+    },
+    "route_correctness": {
+      "total_criteria": 120,
+      "authoritative": 108,
+      "pending": 12,
+      "verdict_distribution": {
+        "NONE": 12,
+        "NO_ACCEPTABLE_ROUTE": 108
+      }
+    },
+    "required_uncertainty": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 36,
+        "SATISFIED": 1
+      }
+    },
+    "evidence_completeness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "0.0": 38,
+        "1.0": 82
+      }
+    }
+  },
+  "authority_mix_honesty": "508 deterministic, 88 LLM-reviewed (dual-pass Astra LOW consensus), 4 LLM-adjudicated (GPT-5.6-Sol dual-pass residual consensus via repaired comparator), 0 human-reviewed, 0 pending",
+  "delta_vs_old_baseline": {
+    "changed_verdict_rows": [
+      "DIS-106::critical_condition",
+      "ROUT-022::critical_condition",
+      "ROUT-026::critical_condition",
+      "ROUT-031::critical_condition",
+      "ROUT-032::critical_condition",
+      "ROUT-039::critical_condition",
+      "ROUT-047::critical_condition",
+      "ROUT-049::critical_condition",
+      "ROUT-052::critical_condition",
+      "ROUT-057::critical_condition",
+      "ROUT-063::critical_condition",
+      "ROUT-065::critical_condition",
+      "ROUT-066::critical_condition",
+      "ROUT-068::critical_condition",
+      "ROUT-069::critical_condition",
+      "ROUT-070::critical_condition",
+      "ROUT-072::critical_condition",
+      "ROUT-073::critical_condition",
+      "ROUT-078::forbidden:01",
+      "ROUT-087::forbidden:01",
+      "ROUT-088::critical_condition",
+      "ROUT-088::forbidden:01",
+      "SAF-009::forbidden:01",
+      "SAF-009::required_uncertainty",
+      "SAF-019::forbidden:01",
+      "SAF-019::required_uncertainty"
+    ],
+    "improved_criteria": [
+      "ROUT-022::critical_condition",
+      "ROUT-026::critical_condition",
+      "ROUT-047::critical_condition",
+      "ROUT-052::critical_condition",
+      "ROUT-068::critical_condition",
+      "ROUT-088::critical_condition",
+      "SAF-009::required_uncertainty",
+      "SAF-019::required_uncertainty"
+    ],
+    "regressed_criteria": []
+  }
+}

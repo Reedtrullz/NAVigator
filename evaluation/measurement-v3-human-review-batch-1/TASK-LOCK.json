@@ -1,0 +1,81 @@
+{
+ "task_id": "NAV-EXPLORE-MEASUREMENT-V3-HUMAN-REVIEW-BATCH-1",
+ "status": "ACTIVE",
+ "current_state": "CRITERION_AUDIT_COMPLETE_REPAIR_REQUIRED",
+ "owner_authorization": "EXPLICIT - MEASUREMENT V3 HUMAN REVIEW BATCH 1 (2026-09-14)",
+ "prior_baseline_status": "MEASUREMENT_V3_BURNED_BASELINE_HUMAN_REVIEW_PENDING",
+ "baseline_manifest_sha256": "554e7d4a3c91f3cf928eb17e147046434c20ec71dbacd818616a99c9f23c03c9",
+ "invariants": {
+  "REVIEW_PACKETS_REGENERATED": false,
+  "REVIEW_PACKETS_EDITED": false,
+  "PREDICTIONS_RERUN": false,
+  "SCORING_RERUN": false,
+  "AI_AS_HUMAN_REVIEWER": false,
+  "PRODUCT_SOURCE_CHANGES": 0,
+  "MEASUREMENT_SOURCE_CHANGES": 0
+ },
+ "reviewer_policy": "SINGLE_HUMAN_REVIEW (permitted by frozen V2.6 routing contract modes; honest labeling, never consensus)",
+ "reviewer_id": "OWNER-01",
+ "review_order_frozen": true,
+ "packet_hashes_verified": "74/74",
+ "reviewer_usability_repair": {
+  "authorized_by": "OWNER (HUMAN REVIEW BATCH 1 - REVIEWER-USABILITY REPAIR, 2026-09-14)",
+  "status": "HUMAN_REVIEW_BATCH_1_INTERFACE_READY",
+  "usability_hard_gate": "74/74 = YES",
+  "v1_primary_statuses": {
+   "forbidden_claim": "CONTEXT_OVERLOAD (64/64)",
+   "critical_condition": "REQUIRES_MISSING_CONTRACT_CONTEXT (10/10)"
+  },
+  "v2_status": "SELF_CONTAINED_REVIEWABLE (74/74)",
+  "artifacts": [
+   "human-review-workbook-v2.md",
+   "human-review-form-v2.jsonl",
+   "reviewability-audit.json",
+   "reviewability-issues.json",
+   "reviewer-interface-contract.md",
+   "pkt-esc-rout-070-diagnosis.md",
+   "span_tool.py"
+  ],
+  "v1_workbook_preserved": true,
+  "v1_form_preserved": true
+ },
+ "ai_role_boundary": "AI may present packets, validate schemas, ingest human answers, derive final labels mechanically via frozen V2.13 core, and write reports. AI may never decide semantic review content.",
+ "terminal_statuses_available": [
+  "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE",
+  "MEASUREMENT_V3_HUMAN_REVIEW_BATCH_PARTIAL",
+  "MEASUREMENT_V3_HUMAN_REVIEW_BATCH_NOT_READY",
+  "MEASUREMENT_V3_HUMAN_REVIEW_BATCH_INVALID"
+ ],
+ "next_step": "Owner completes human reviews in human-review-form.jsonl (or workbook) for packets in frozen order; then run: ingest, freeze, reports, terminal status.",
+ "criterion_audit": {
+  "task_id": "NAV-EXPLORE-HUMAN-REVIEW-CRITERION-SEMANTIC-COMPLETENESS-AUDIT",
+  "completed_utc_date": "2026-09-14",
+  "reviews_performed": 0,
+  "ingest_performed": 0,
+  "rescoring_performed": 0,
+  "packet_mutation": 0,
+  "gold_rewrite": 0,
+  "prediction_rerun": 0,
+  "packets_audited": 74,
+  "classification_counts": {
+   "PROPOSITION_COMPLETE": 66,
+   "SHORTHAND_BUT_AUTHORITATIVELY_EXPANDABLE": 5,
+   "SEMANTICALLY_UNDERSPECIFIED": 3
+  },
+  "underspecified_packets": [
+   "PKT-ESC-ROUT-061",
+   "PKT-ESC-ROUT-070",
+   "PKT-ESC-ROUT-073"
+  ],
+  "owner_01_reviewable_v3": 71,
+  "terminal_status": "HUMAN_REVIEW_CRITERION_REPAIR_REQUIRED",
+  "artifacts": [
+   "criterion-semantic-completeness-audit.json",
+   "criterion-quality-defects.json",
+   "reviewability-v3-summary.json",
+   "pkt-esc-rout-070-readjudication.md",
+   "criterion-recovery-sources.json",
+   "final-report-criterion-audit.md"
+  ]
+ }
+}

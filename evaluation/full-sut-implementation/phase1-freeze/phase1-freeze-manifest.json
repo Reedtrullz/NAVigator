@@ -1,0 +1,51 @@
+{
+  "artifact": "NAV-EXPLORE-FULL-SUT-PHASE-1-CANDIDATE",
+  "task_id": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-1",
+  "frozen_at": "2026-09-14",
+  "status": "FROZEN_DEVELOPMENT_CANDIDATE",
+  "authoritative_spec": {
+    "file": "evaluation/full-sut-architecture-v1/next-task-phase1.md",
+    "sha256": "91d85301171b965f2af84ec8480f5368b60db67ba550affc60b49e6bd88a14c8"
+  },
+  "measurement_baseline": {
+    "manifest": "evaluation/measurement-v3-combined-freeze/v3-manifest.json",
+    "sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+    "pins_verified": 22
+  },
+  "candidate_hashes_file": "phase1-freeze/hashes.txt",
+  "component_files_hashed": 19,
+  "schema_copies_byte_identical_to_architecture": [
+    "sut-input.schema.json",
+    "sut-output.schema.json",
+    "decision-context.schema.json"
+  ],
+  "test_results": {
+    "product_unit_tests": {"command": "PYTHONPATH=runtime python3 -m unittest discover -s runtime/sut -p 'test_*.py'", "tests": 37, "result": "OK"},
+    "runner_unit_tests": {"command": "PYTHONPATH='evaluation/full-sut-implementation:runtime' python3 -m unittest discover -s evaluation/full-sut-implementation/sut_runner -p 'test_*.py'", "tests": 15, "result": "OK"}
+  },
+  "acceptance_freeze_run": {
+    "run_id": "20260914T0830Z-phase1-freeze",
+    "directory": "evaluation/full-sut-implementation/runs/20260914T0830Z-phase1-freeze",
+    "mode": "replay",
+    "corpora": {
+      "safety_cases": {"predictions": 20, "errors": 0},
+      "routing_cases": {"predictions": 75, "errors": 0},
+      "discovery_adversarial_cases": {"predictions": 25, "errors": 0}
+    },
+    "gold_leak_grep": {
+      "fields": ["acceptable_routes", "forbidden_claims", "required_uncertainty", "required_evidence_fields", "critical_error_if", "gold"],
+      "hits": 0,
+      "note": "safety_priority excluded: REQUIRED output mirror of context field; loader gold guard covers case-side gold"
+    }
+  },
+  "determinism_check": {
+    "date": "2026-09-14",
+    "method": "safety corpus replay rerun to /tmp/phase1-det2b; diff -r against official freeze predictions",
+    "result": "BYTE_IDENTICAL_20_OF_20"
+  },
+  "registered_gaps": {
+    "INTERFACE_GAP-001": "decision-context schema allows safety.priority=TRIAGE_FAILED; sut-output enum does not. Fail-closed mapping to ACUTE_RISK_NOW placeholder + TERMINAL failure record + presented_as_complete=false. No frozen schema edits."
+  },
+  "forbidden_scope_respected": ["no scoring in runner", "no gold in predictions", "no LLM stages", "no live discovery", "no measurement-v3 changes", "no historical artifact writes", "no gpt_5_5 usage"],
+  "terminal_status": "FULL_SUT_PHASE_1_READY"
+}

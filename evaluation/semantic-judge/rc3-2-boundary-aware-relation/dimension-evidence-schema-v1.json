@@ -1,0 +1,19 @@
+{
+  "version": "dimension-evidence-schema-v1",
+  "frozen": true,
+  "dimensions": {
+    "polarity": { "enum": ["EXACT_MATCH", "EXPLICIT_CONFLICT", "PARTIAL_OVERLAP", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "modality": { "enum": ["EXACT_MATCH", "SOURCE_STRONGER_THAN_CLAIM", "SOURCE_WEAKER_THAN_CLAIM", "DEONTIC_OPPOSITION", "CONDITIONALLY_COMPATIBLE", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "condition": { "enum": ["EXACT_MATCH", "CONDITIONALLY_COMPATIBLE", "CONDITION_MISSING", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "exception": { "enum": ["EXACT_MATCH", "EXCEPTION_CONFLICT", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "actor": { "enum": ["SAME_ACTOR", "LICENSED_ACTOR_EQUIVALENCE", "DIFFERENT_ACTOR", "ACTOR_UNRESOLVED", "NOT_APPLICABLE"] },
+    "scope": { "enum": ["SCOPE_COMPATIBLE", "SCOPE_CONFLICT", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "temporal": { "enum": ["TEMPORAL_COMPATIBLE", "TEMPORAL_CONFLICT", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "numeric_quantity": { "enum": ["NUMERIC_COMPATIBLE", "NUMERIC_CONFLICT", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] },
+    "clause_coverage": { "enum": ["EXACT_MATCH", "PARTIAL_OVERLAP", "RELEVANT_BUT_UNRESOLVED", "NOT_APPLICABLE"] }
+  },
+  "per_dimension_provenance": {
+    "description": "Each dimension value additionally appears in a provenance map with {state, rule, evidence_span_id, note}.",
+    "required_keys": ["state", "rule"]
+  }
+}

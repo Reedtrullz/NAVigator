@@ -1,0 +1,94 @@
+{
+  "artifact": "astra-disagreements",
+  "count": 3,
+  "packets": [
+    {
+      "packet_id": "PKT-ESC-DIS-109",
+      "dimension": "critical_condition",
+      "packet_sha256": "3edca9da07ec74550f07be85cab8a40374f92c227b70a3cb8b0f1e0773ba9cae",
+      "astra_a": {
+        "validity": "OK",
+        "authoritative_fields": {
+          "critical_evidence_state": "INSUFFICIENT_TO_DECIDE"
+        },
+        "evidence_spans": [
+          "Fant ingen registrerte kommunale tilbud for denne henvendelsen."
+        ]
+      },
+      "astra_b": {
+        "validity": "OK",
+        "authoritative_fields": {
+          "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+        },
+        "evidence_spans": [
+          "Fant ingen registrerte kommunale tilbud for denne henvendelsen.",
+          "\"routes\": []",
+          "\"no_route_asserted\": true"
+        ]
+      },
+      "consensus_status": "LLM_REVIEW_DISAGREEMENT",
+      "final_label": "LLM_REVIEW_DISAGREEMENT",
+      "differing_fields": [
+        "critical_evidence_state"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-DIS-118",
+      "dimension": "forbidden_claim",
+      "packet_sha256": "e89e88c51bb6c959c50cf7a9c1747d90aaf7b7463b08aaefa67e98448b9abee2",
+      "astra_a": {
+        "validity": "OK",
+        "authoritative_fields": {
+          "criterion_semantic_match": "NO_MATCH",
+          "speaker_commitment": "UNRESOLVED"
+        },
+        "evidence_spans": []
+      },
+      "astra_b": {
+        "validity": "OK",
+        "authoritative_fields": {
+          "criterion_semantic_match": "MATCH",
+          "speaker_commitment": "ASSERTED"
+        },
+        "evidence_spans": [
+          "Tjenester til gravide, barn og unge 0-24 ar og deres familier, gitt i brukerens bydel."
+        ]
+      },
+      "consensus_status": "LLM_REVIEW_DISAGREEMENT",
+      "final_label": "LLM_REVIEW_DISAGREEMENT",
+      "differing_fields": [
+        "criterion_semantic_match",
+        "speaker_commitment"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-041",
+      "dimension": "forbidden_claim",
+      "packet_sha256": "39ca54088d205b48b9d8f8879e0495a7630ffda1c42353ba8edadcb4a05827b2",
+      "astra_a": {
+        "validity": "OK",
+        "authoritative_fields": {
+          "criterion_semantic_match": "MATCH",
+          "speaker_commitment": "NEGATED"
+        },
+        "evidence_spans": [
+          "Ordinaer overgang ved 18 aar gaar til spesialisthelsetjenesten for voksne. Et pabegynt PHBU/BUP-forloep KAN etter konkret/individuell vurdering viderefoeres frem til fylte 23 aar - dette er ikke en automatisk rett til aa forbli i BUP/PHBU"
+        ]
+      },
+      "astra_b": {
+        "validity": "OK",
+        "authoritative_fields": {
+          "criterion_semantic_match": "NO_MATCH",
+          "speaker_commitment": "UNRESOLVED"
+        },
+        "evidence_spans": []
+      },
+      "consensus_status": "LLM_REVIEW_DISAGREEMENT",
+      "final_label": "LLM_REVIEW_DISAGREEMENT",
+      "differing_fields": [
+        "criterion_semantic_match",
+        "speaker_commitment"
+      ]
+    }
+  ]
+}

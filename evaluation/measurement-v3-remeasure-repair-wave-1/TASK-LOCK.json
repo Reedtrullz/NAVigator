@@ -1,0 +1,71 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-1",
+  "status": "MEASUREMENT_V3_REMEASURE_WAVE_1_RESIDUAL_ADJUDICATION_REQUIRED",
+  "task_family": "measurement-v3-remeasurement",
+  "created_utc": "2026-09-16",
+  "owner_authorization": "explicit owner authorization (measurement v3 remeasure repair wave 1, 2026-09-16)",
+  "authoritative_product_state": "FULL_SUT_REPAIR_WAVE_1_READY_FOR_REMEASUREMENT",
+  "authoritative_repair_lineage": "evaluation/full-sut-repair-wave-1-v1/",
+  "authoritative_candidate": {
+    "candidate": "v2",
+    "candidate_manifest": "evaluation/full-sut-repair-wave-1-v1/repaired-sut-manifest.json",
+    "candidate_manifest_sha256": "e19dd2d6d5329ef3fe85e1719fdc879717563a2e18dc561812b5e6d2a7035f27"
+  },
+  "authoritative_comparison_baseline": "MEASUREMENT_V3_BURNED_BASELINE_COMPLETE_PROVENANCE_CORRECTED",
+  "authoritative_failure_analysis_lineage": "evaluation/full-sut-burned-baseline-failure-analysis-v1/",
+  "scope": [
+    "score frozen Wave-1 v2 predictions with frozen Measurement V3",
+    "create fresh semantic-review packets for Wave-1 v2 predictions",
+    "blind GPT-6 Astra semantic review with reasoning_effort LOW only",
+    "bounded blind residual LLM adjudication with reasoning_effort LOW only",
+    "mechanical derivation via frozen judge_core_v2_13",
+    "freeze complete/partial Wave-1 burned remeasurement",
+    "compare frozen new result with old burned baseline"
+  ],
+  "hard_constraints": {
+    "ASTRA_REASONING_EFFORT": "LOW",
+    "ASTRA_MEDIUM_CALLS": 0,
+    "ASTRA_HIGH_CALLS": 0,
+    "ASTRA_MAX_CALLS": 0,
+    "SUT_RERUN": false,
+    "PREDICTIONS_REGENERATED": false,
+    "WAVE1_SOURCE_CHANGED": false,
+    "WAVE1_PREDICTIONS_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "CORPUS_CHANGED": false,
+    "OLD_BASELINE_CHANGED": false,
+    "SOURCE_CHANGES_AFTER_MEASUREMENT_START": 0,
+    "IMPLEMENT_RC04": false,
+    "IMPLEMENT_RC05": false,
+    "IMPLEMENT_RC06": false,
+    "TUNING_ALLOWED": false,
+    "FRESH_HOLDOUT_ALLOWED": false,
+    "DEPLOY_ALLOWED": false,
+    "MAX_SUBAGENTS": 2,
+    "gpt_5_5_allowed": false,
+    "HUMAN_REVIEW_ALLOWED": false,
+    "DUPLICATE_AUTHORITATIVE_OWNERS": 0,
+    "UNOWNED_CRITERIA": 0
+  },
+  "upstream_pins": {
+    "wave1_task_lock_sha256": "06f8caead236c18b2b12b69e41001b9f1e960d16021c0a2d6c39e0adaccf6e75",
+    "replay_prediction_manifests": {
+      "safety": "2f8fb5dbb392a8481024f6947f769737c4ed69fda2a85b2bf6f14f79706b5839",
+      "routing": "7a4939c35760c2c74727e700d37a4ff1cea75397157b23c6b72dcc42ffeed588",
+      "discovery_adversarial": "d8cc213c677d59e3de9487d133f96b108274d7aae49326be5c8ee42b086b42a3"
+    },
+    "combined_engine_sha256": "ce7277aa365d4143563cfaa09dfd52712a89a0abd8515f075658b1d683964a29",
+    "review_lane_v2_15_sha256": "5ba5ad693a329054e59fc6bfd1d346fbd784e9d3bd7b79cdaf8e383914c86e7c",
+    "judge_core_v2_13_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "repaired_corpus_manifest_sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17",
+    "old_baseline_results_sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf"
+  },
+  "terminal_statuses": [
+    "MEASUREMENT_V3_REMEASURE_WAVE_1_COMPLETE",
+    "MEASUREMENT_V3_REMEASURE_WAVE_1_RESIDUAL_ADJUDICATION_REQUIRED",
+    "MEASUREMENT_V3_REMEASURE_WAVE_1_INVALID"
+  ],
+  "burned_label": "BURNED_DEV_BASELINE_ONLY",
+  "post_freeze_closure_note": "Terminal closure action 2026-09-16. hashes.txt pins the frozen artifact set; TASK-LOCK freeze-time SHA256 was ebf07b5eb0541af7064450bdfd026520c946d14c15014395daad7ff3fd015046 and hashes.txt was not regenerated. This status change is the terminal closure action, not an artifact mutation. Frozen analysis files and post-freeze-analysis-hashes.txt remain pinned separately by design."
+}

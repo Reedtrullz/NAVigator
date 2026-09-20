@@ -1,0 +1,88 @@
+{
+  "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V2",
+  "task_family": "semantic-reviewer-evaluation",
+  "status": "NO_LOW_COST_MODEL_QUALIFIES_V2",
+  "owner_authorization": {
+    "source": "attachment d5ea8aa6-32bd-4bd5-a01f-1fcabd210265",
+    "granted": true
+  },
+  "predecessor": {
+    "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V1",
+    "terminal_status": "NO_LOW_COST_MODEL_QUALIFIES",
+    "lineage": "evaluation/semantic-reviewer-cost-qualification-v1"
+  },
+  "scope": [
+    "reserve_pool_transport_calibration",
+    "reserve_pool_semantic_screening",
+    "optional_nex_operational_recheck",
+    "full_dual_pass_qualification",
+    "stability_testing",
+    "cascade_simulation",
+    "proposed_router_freeze"
+  ],
+  "hard_rules": {
+    "REFERENCE_CORPUS_CHANGED": false,
+    "QUALIFICATION_GATES_CHANGED": false,
+    "SEMANTIC_CONTRACT_CHANGED": false,
+    "SCHEMA_VALID_RATE_MIN_RELAXED": false,
+    "NEW_ASTRA_CALLS": 0,
+    "NEW_SOL_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "LONGCAT_CALLS": 0,
+    "MIMO_PRO_RETEST": false,
+    "ROUTER_ACTIVATION_ALLOWED": false,
+    "V1_ARTIFACTS_CHANGED": false,
+    "HISTORICAL_MEASUREMENTS_CHANGED": false,
+    "SUT_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "FRESH_CASES_CONSUMED": 0,
+    "NO_BEST_OF_BAD": true
+  },
+  "reserve_pool": {
+    "R1": "openrouter/nvidia-nemotron-3-super:free",
+    "R2": "command-code/poolside-laguna-s-2.1-free",
+    "R2_fallbacks": [
+      "opencode-go/deepseek-v4.1-flash",
+      "opencode-free/deepseek-v4-flash-free"
+    ],
+    "R3": "command-code/inclusionai-ling-3.0-flash-sante:free",
+    "R3_fallback": "openrouter/inclusionai-ling-3.0-flash-sante:free",
+    "R4": "openrouter/google-gemma-4-26b-a4b-it:free",
+    "R5": "openrouter/thinkingmachines-inkling-small:free"
+  },
+  "created_utc": "2026-09-18T00:00:00Z",
+  "terminal": {
+    "status": "NO_LOW_COST_MODEL_QUALIFIES_V2",
+    "terminal_utc": "2026-09-19T00:00:00Z",
+    "reason": "Zero reserve-pool candidates passed the frozen V1 screening gates (schema_valid_rate_min 1.0); no best-of-bad selection performed",
+    "screening_results": {
+      "R2-laguna-s-2.1": {
+        "forbidden_schema_valid_rate": 0.8302,
+        "critical_schema_valid_rate": 0.8919,
+        "critical_conservative_escapes": 4,
+        "screen_pass": false
+      },
+      "R3-ling-3.0-flash-sante": {
+        "forbidden_schema_valid_rate": 0.9623,
+        "critical_schema_valid_rate": 0.3514,
+        "screening_http_429_events": 48,
+        "screen_pass": false
+      }
+    },
+    "stages_not_started": ["full_dual_pass_qualification", "stability_testing", "cascade_simulation", "proposed_router_freeze"],
+    "nex_recheck": "NEX_RECHECK_NOT_AUTHORIZED (semantic dominance 30 null-enum + 8 evidence violations of 38 invalids)",
+    "v1_pins_reverified_after_screening": "9/9 MATCH",
+    "compliance": {
+      "NEW_ASTRA_CALLS": 0,
+      "NEW_SOL_CALLS": 0,
+      "GPT_5_5_CALLS": 0,
+      "LONGCAT_CALLS": 0,
+      "V1_ARTIFACTS_CHANGED": false,
+      "SUT_CHANGED": false,
+      "GOLD_CHANGED": false,
+      "FRESH_CASES_CONSUMED": 0,
+      "NO_BEST_OF_BAD": true
+    },
+    "artifact_inventory": "hashes.txt (28 files)"
+  }
+}

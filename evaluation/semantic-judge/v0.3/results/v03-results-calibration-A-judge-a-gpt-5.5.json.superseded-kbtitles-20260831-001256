@@ -1,0 +1,1065 @@
+{
+ "meta": {
+  "set": "calibration",
+  "judge": "A",
+  "model": "gpt-5.5",
+  "version": "semantic-judge-v0.3",
+  "aggregator": "aggregate-v0.3",
+  "decompose_prompt_sha256": "849a71469e82cfad083b294aba891e017920f3639c5468c389ca9df6a4d2a187",
+  "atom_prompt_sha256": "0740e647e0141f06af13d27418a30735c2dd3efb7c586fc348345e845eda7f41",
+  "generated": "2026-08-30T22:03:29.779499+00:00",
+  "config": {
+   "proxy": "http://127.0.0.1:10100/v1",
+   "temperature": "0 (provider-supported)",
+   "timeout_s": 180,
+   "arbitrate": false,
+   "consensus": false
+  }
+ },
+ "results": [
+  {
+   "id": "CAL053",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:03:29.780967+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt ordinær barnetrygd er 1 006 kroner per forelder",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 006 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "delt utvidet barnetrygd er 1 006 kroner",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 006 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.92,
+     "near_miss": false,
+     "reason": "Kilden oppgir at ordinær barnetrygd har delt sats på 1 006 kr/mnd, som støtter at delt ordinær barnetrygd er 1 006 kroner per forelder.",
+     "supporting_excerpt_or_fact": "Ordinær barnetrygd: delt sats 1 006 kr/mnd.",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "CONTRADICTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier at delt sats for utvidet barnetrygd er 1 286 kr/mnd, ikke 1 006 kroner. 1 006 gjelder ordinær barnetrygd.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": "Utvidet barnetrygd: delt sats 1 286 kr/mnd."
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.92,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "counts": {
+    "supported": 1,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 37.3,
+   "status": "ok"
+  },
+  {
+   "id": "CAL001",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:05:51.103723+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt ordinær barnetrygd er 1 006 kroner per måned per forelder.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 006 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir at ordinær barnetrygd har delt sats 1 006 kr/mnd og presiserer at dette er 1 006 kroner per forelder ved delt fast bosted.",
+     "supporting_excerpt_or_fact": "Ordinær barnetrygd: full sats 2 012 kr/mnd, delt sats 1 006 kr/mnd. Ved delt fast bosted deles ordinær barnetrygd likt: 2 012 / 2 = 1 006 kroner per forelder.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.5,
+   "status": "ok"
+  },
+  {
+   "id": "CAL002",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:06:17.641767+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Delt utvidet barnetrygd er 1 286 kroner per måned.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "1 286 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir eksplisitt at delt sats for utvidet barnetrygd er 1 286 kr per måned, samme beløp og tidsenhet som påstanden.",
+     "supporting_excerpt_or_fact": "delt sats 1 286 kr/mnd",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.5,
+   "status": "ok"
+  },
+  {
+   "id": "CAL003",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:06:34.154706+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd får totalt 2 292 kroner i måneden hvis begge deler er innvilget.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "2 292 kroner"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden hvis begge deler er innvilget.",
+     "supporting_excerpt_or_fact": "en forelder med delt fast bosted og innvilget delt utvidet barnetrygd får 1 006 + 1 286 = 2 292 kroner i måneden fra NAV, hvis begge deler er innvilget",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.4,
+   "status": "ok"
+  },
+  {
+   "id": "CAL004",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:06:53.525620+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd skal ikke tas hensyn til når økonomisk sosialhjelp til familier vurderes.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at det ved vurdering av stønad til familier ikke skal tas hensyn til barnetrygd.",
+     "supporting_excerpt_or_fact": "Ved vurdering av stønad til familier skal det ikke tas hensyn til barnetrygd",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 15.2,
+   "status": "ok"
+  },
+  {
+   "id": "CAL005",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:07:08.679707+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rett til opplysning, råd og veiledning etter sosialtjenesteloven § 17 gjelder uavhengig av rett til økonomisk sosialhjelp.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "§ 17"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at § 17 om opplysning, råd og veiledning gjelder uavhengig av rett til økonomisk sosialhjelp.",
+     "supporting_excerpt_or_fact": "Gjelder uavhengig av rett til økonomisk sosialhjelp",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 15.5,
+   "status": "ok"
+  },
+  {
+   "id": "CAL006",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:07:24.200422+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "For nye saker gjelder overgangsstønad til utløpet av måneden barnet fyller 14 måneder.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "14 måneder"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at for nye saker gjelder overgangsstønad til utløpet av måneden barnet fyller 14 måneder.",
+     "supporting_excerpt_or_fact": "For nye saker gjelder ... overgangsstønad til utløpet av måneden barnet fyller 14 måneder",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.2,
+   "status": "ok"
+  },
+  {
+   "id": "CAL007",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:07:42.374311+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetilsynsstønad dekker 64 prosent av dokumenterte utgifter",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "64 prosent"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "det er ingen stønad ved pensjonsgivende inntekt over 6 G",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "6 G"
+     ],
+     "dates": [],
+     "negations": [
+      "ingen"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.97,
+     "near_miss": false,
+     "reason": "Kilden sier at barnetilsyn dekkes med 64 prosent av dokumenterte utgifter, som samsvarer med atomets påstand.",
+     "supporting_excerpt_or_fact": "Barnetilsyn (§ 15-10): 64 prosent av dokumenterte utgifter",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at det er ingen stønad ved pensjonsgivende inntekt over 6 G, som er samme påstand og terskel som i atomutsagnet.",
+     "supporting_excerpt_or_fact": "ingen stønad ved pensjonsgivende inntekt over 6 G",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.97,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 30.1,
+   "status": "ok"
+  },
+  {
+   "id": "CAL008",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:08:12.501684+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Friinntekten for overgangsstønad er 0,5 G, som er 68 274,50 kroner per år.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "0,5 G",
+      "68 274,50 kroner per år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir samme friinntekt for overgangsstønad med samme G-verdi og årsbeløp.",
+     "supporting_excerpt_or_fact": "Friinntekt: 0,5 G = 68 274,50 kr per år",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 23.7,
+   "status": "ok"
+  },
+  {
+   "id": "CAL009",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:08:36.239378+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Mottakere som står i overgangsstønadsordningen per 30. juni 2026 beholder de tidligere reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "30. juni 2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.82,
+     "near_miss": true,
+     "reason": "Kilden sier at mottakere som står i «ordningen» per 30. juni 2026 beholder tidligere regler, men dokumenttittel/referent er ukjent og etablerer ikke at «ordningen» er overgangsstønadsordningen.",
+     "supporting_excerpt_or_fact": "",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.82,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 19.3,
+   "status": "ok"
+  },
+  {
+   "id": "CAL010",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:08:55.538495+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Rask psykisk helsehjelp (RPH) i Trondheim er gratis for alle over 18 år som bor i Trondheim kommune.",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "18 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier direkte at RPH for voksne 18+ er gratis for alle over 18 år som bor i Trondheim kommune.",
+     "supporting_excerpt_or_fact": "Gratis for alle over 18 år som bor i Trondheim kommune.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 18.5,
+   "status": "ok"
+  },
+  {
+   "id": "CAL011",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:09:14.043067+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Trondheimshjelpa er et lavterskeltilbud som man kan kontakte uten henvisning.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at Trondheimshjelpa er et lavterskeltilbud og at det er gratis med ingen henvisning, som støtter at man kan kontakte tilbudet uten henvisning.",
+     "supporting_excerpt_or_fact": "Trondheimshjelpa er et lavterskeltilbud ... Gratis, ingen henvisning.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 17.8,
+   "status": "ok"
+  },
+  {
+   "id": "CAL012",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:09:31.893890+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Ungdom 12-18 år i psykisk krise i Trondheim kan kontaktes via BUP Akuttenheten på 72 82 27 80.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [
+      "12-18",
+      "72 82 27 80"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.88,
+     "near_miss": true,
+     "reason": "Kilden støtter aldersgruppe, krisesituasjon, BUP Akuttenheten og telefonnummeret, men sier ikke at dette gjelder Trondheim. DOC_TITLE gir heller ingen arvet Trondheim-referanse.",
+     "supporting_excerpt_or_fact": "Ungdom 12-18 år i psykisk krise: BUP Akuttenheten 72 82 27 80",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.88,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 21.1,
+   "status": "ok"
+  },
+  {
+   "id": "CAL013",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:09:52.963607+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnevernvakta i Trondheim har nummer 90 28 70 37",
+     "role": "core",
+     "modality": null,
+     "numbers": [
+      "90 28 70 37"
+     ],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "Barnevernvakta i Trondheim er døgnåpen.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden oppgir eksplisitt at Barnevernvakta har nummer 90 28 70 37.",
+     "supporting_excerpt_or_fact": "Barnevernvakta 90 28 70 37",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.95,
+     "near_miss": false,
+     "reason": "Kilden oppgir Barnevernvakta med telefonnummer og beskriver den som døgnåpen. At stedet Trondheim ikke gjentas i kilden, gir ikke grunnlag for å avvise når atomets kjerne er samme tjeneste og åpningstid.",
+     "supporting_excerpt_or_fact": "Barnevernvakta 90 28 70 37, døgnåpen.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.95,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 29.1,
+   "status": "ok"
+  },
+  {
+   "id": "CAL014",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:10:22.092592+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Familievernkontoret kan kontaktes direkte uten henvisning",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "uten"
+     ]
+    },
+    {
+     "id": "A2",
+     "text": "det er gratis",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier at familier, par og enkeltpersoner kan henvende seg direkte, og at henvisning er valgfri/ikke nødvendig.",
+     "supporting_excerpt_or_fact": "Familier, par og enkelt kan henvende seg direkte; henvisning er valgfri.",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at det er «ingen kostnad», som betyr at det er gratis.",
+     "supporting_excerpt_or_fact": "ingen kostnad",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 26.5,
+   "status": "ok"
+  },
+  {
+   "id": "CAL015",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:10:48.562716+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "For barn 12-16 år skal barnets uttalelse i familievernkontorets samtaler gis stor vekt.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "12-16 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier eksplisitt at for barn 12-16 år skal barnets uttalelse gis stor vekt, samme modalitet og aldersscope som påstanden.",
+     "supporting_excerpt_or_fact": "for barn 12-16 år skal barnets uttalelse gis stor vekt",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 20.7,
+   "status": "ok"
+  },
+  {
+   "id": "CAL016",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:11:09.234648+00:00",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen skal ha en pedagogisk-psykologisk tjeneste",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "der loven krever sakkyndig vurdering er det PPT som skal utarbeide den",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at kommunen skal ha en pedagogisk-psykologisk tjeneste, samme subjekt og pliktmodalitet som atom.",
+     "supporting_excerpt_or_fact": "kommunen og fylkeskommunen SKAL ha en pedagogisk-psykologisk tjeneste",
+     "contradicting_excerpt_or_fact": ""
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at der lova eller forskrift krever sakkyndig vurdering, er det PPT som skal utarbeide den.",
+     "supporting_excerpt_or_fact": "Der lova eller forskrift krever sakkyndig vurdering, er det PPT som skal utarbeide den.",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 2,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 31.2,
+   "status": "ok"
+  },
+  {
+   "id": "CAL017",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:11:40.478575+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Kommunen skal tilby skolehelsetjeneste til barn og ungdom 0-20 år, gratis for brukerne.",
+     "role": "core",
+     "modality": "skal",
+     "numbers": [
+      "0-20 år"
+     ],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.99,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at kommunen skal tilby skolehelsetjeneste til barn og ungdom 0-20 år, og at kommunen dekker alle utgifter, altså gratis for brukerne.",
+     "supporting_excerpt_or_fact": "kommunen skal tilby helsestasjons- og skolehelsetjeneste til barn og ungdom 0-20 år; kommunen dekker alle utgifter (gratis for brukerne)",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.99,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 16.9,
+   "status": "ok"
+  },
+  {
+   "id": "CAL018",
+   "run": 1,
+   "judge": "A",
+   "model": "gpt-5.5",
+   "ts": "2026-08-30T22:11:57.399412+00:00",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Bostøtte søkes elektronisk via Husbankens eSøknad.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "confidence": 0.98,
+     "near_miss": false,
+     "reason": "Kilden sier uttrykkelig at elektronisk søknad skjer via Husbankens eSøknad, som støtter at bostøtte søkes elektronisk der.",
+     "supporting_excerpt_or_fact": "Elektronisk søknad via Husbankens eSøknad",
+     "contradicting_excerpt_or_fact": ""
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 0.98,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 25.5,
+   "status": "ok"
+  }
+ ]
+}

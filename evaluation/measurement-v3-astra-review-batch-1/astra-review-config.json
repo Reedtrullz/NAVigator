@@ -1,0 +1,46 @@
+{
+  "artifact": "astra-review-config",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-REVIEW-BATCH-1",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "transport": {
+    "endpoint": "http://127.0.0.1:10100/v1/chat/completions",
+    "auth": "local proxy bearer (auth.json access_token; never printed/persisted)",
+    "timeout_s": 600
+  },
+  "contracts": {
+    "critical_condition": {
+      "field": "critical_evidence_state",
+      "enum": [
+        "CLEAR_TRIGGER_SUPPORT",
+        "CLEAR_NON_TRIGGER_SUPPORT",
+        "AMBIGUOUS_OR_CONFLICTING",
+        "INSUFFICIENT_TO_DECIDE",
+        "UNRESOLVED"
+      ]
+    },
+    "forbidden_claim": {
+      "fields": ["criterion_semantic_match", "speaker_commitment"],
+      "criterion_semantic_match_enum": ["MATCH", "NO_MATCH", "UNRESOLVED"],
+      "speaker_commitment_enum": [
+        "ASSERTED",
+        "HEDGED_ASSERTION",
+        "QUOTED_ONLY",
+        "HYPOTHETICAL_ONLY",
+        "NEGATED",
+        "SELF_RETRACTED",
+        "NONCOMMITTAL",
+        "UNRESOLVED"
+      ]
+    }
+  },
+  "consensus": {
+    "authoritative_fields_critical": ["critical_evidence_state"],
+    "authoritative_fields_forbidden": ["criterion_semantic_match", "speaker_commitment"],
+    "identical_fields": "LLM_CONSENSUS",
+    "differing_fields": "LLM_REVIEW_DISAGREEMENT",
+    "rationale_only_differences_do_not_disagree": true
+  },
+  "evidence_validation": "each evidence span must occur verbatim in packet sut_output; invalid -> INVALID_MODEL_REVIEW for that pass, no silent repair",
+  "note": "reasoning effort LOW per same-day owner amendment; original authorization said max"
+}

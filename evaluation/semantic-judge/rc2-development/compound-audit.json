@@ -1,0 +1,934 @@
+{
+ "burned_marker": "BURNED_BLIND_V1_DEVELOPMENT_ONLY",
+ "failures_audited": 41,
+ "counts": {
+  "BAD_DECOMPOSITION": 24,
+  "WRONG_ATOM_BOUNDARY": 12,
+  "ATOM_VERDICT_ERROR": 4,
+  "AGGREGATION_OR_FUSION": 1
+ },
+ "detail": [
+  {
+   "case_id": "RC1B-0001",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Ordinær barnetrygd er 2 012 kroner per måned per barn fra 1. februar 2026",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "barnet kan ha rett til ytelsen til",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "med 18 år.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Ordinær barnetrygd er 2 012 kroner per måned per barn fra 1. februar 2026"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "barnet kan ha rett til ytelsen til og med 18 år."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0004",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Ved delt fast bosted får hver forelder 1 286 kroner i måneden i delt utvidet barnetrygd",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "vilkårene er oppfylt.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Ved delt fast bosted får hver forelder 1 286 kroner i måneden i delt utvidet barnetrygd, hvis vilkårene er oppfylt."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0005",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 3 vs 2 label atoms",
+   "label_atoms": [
+    {
+     "atom": "Utvidet barnetrygd har full sats 2 572 kroner i måneden. Ved delt fast bosted halveres den til 1 286 kroner per forelder",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "dette beløpet kommer i tillegg til den delte ordinære barnetrygden.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Utvidet barnetrygd har full sats 2 572 kroner i måneden."
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "Ved delt fast bosted halveres den til 1 286 kroner per forelder"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "dette beløpet kommer i tillegg til den delte ordinære barnetrygden."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0009",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Småbarnstillegget er 712 kroner i måneden",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "forutsetter at du er alene med barn 0-3 år",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "mottar full overgangsstønad.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Småbarnstillegget er 712 kroner i måneden"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "forutsetter at du er alene med barn 0-3 år og mottar full overgangsstønad."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0010",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "712 kroner per måned",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "alle enslige forsørgere under 3 år får ytelsen uten vilkår om full overgangsstønad",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Alle enslige forsørgere med barn under 3 år får småbarnstillegg på 712 kroner i måneden."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0014",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "6G tilsvarer 819 294 kroner",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "barnetilsyn faller bort som hovedregel over denne inntekten",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Barnetilsyn for enslige forsørgere faller bort som hovedregel hvis inntekten overstiger 6G, som tilsvarer 819 294 kroner."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0017",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Etter reglene som trådte i kraft 1. juli 2026, kan enslige forsørgere aldri få barnetilsyn for barn som er over 14 måneder."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0028",
+   "class": "ATOM_VERDICT_ERROR",
+   "why": "verdict mismatch ['INSUFFICIENT', 'INSUFFICIENT'] vs ['CONTRADICTED', 'CONTRADICTED']",
+   "label_atoms": [
+    {
+     "atom": "Barnebidrag opphører alltid i den måneden barnet fyller 18 år",
+     "semantic_truth": "CONTRADICTED"
+    },
+    {
+     "atom": "kan aldri gjelde lenger.",
+     "semantic_truth": "CONTRADICTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Barnebidrag opphører alltid i den måneden barnet fyller 18 år"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "kan aldri gjelde lenger."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0078",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 2 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "I Trondheim får barn 0-11 år i psykisk krise hjelp via legevakta 116 117, som kobler til BUP;"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "BUP-akutt skjer via henvisning fra lege."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0079",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Barnevernvakta i Trondheim kan nås døgnet rundt på 116 111",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "90 28 70 37",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "et barn ikke er trygt.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Barnevernvakta i Trondheim kan nås døgnet rundt på 116 111 eller 90 28 70 37 når et barn ikke er trygt."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0086",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Barnevernets undersøkelse skal avsluttes med konklusjon senest 3 måneder",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "1-ukesfristen, med mulighet for utvidelse til 6 måneder totalt.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Barnevernets undersøkelse skal avsluttes med konklusjon senest 3 måneder etter 1-ukesfristen, med mulighet for utvidelse til 6 måneder totalt."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0101",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Det finnes et verifisert telefonnummer for RPH i Trondheim i det lokale tjenesteregisteret."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0102",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Trondheimshjelpa er et lavterskeltilbud for barn, unge og familier i alderen 0-24 år",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "tilbudet er gratis",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Trondheimshjelpa er et lavterskeltilbud for barn, unge og familier i Trondheim med aldersspenn 0-24 år, direkte tilgang og gratis."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0112",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Foreldre kan kontakte PPT på eget initiativ for råd",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "veiledning",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "det er mulig å drøfte bekymringer med PPT anonymt før en eventuell henvisning.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Foreldre kan kontakte PPT på eget initiativ for råd og veiledning"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "det er mulig å drøfte bekymringer med PPT anonymt før en eventuell henvisning."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0113",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "PPTs individrettete arbeid krever samtykke",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "det er vanligvis barnehagen",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "skolen som sender henvisning i samarbeid med foreldrene.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "PPTs individrettete arbeid krever samtykke"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "det er vanligvis barnehagen eller skolen som sender henvisning i samarbeid med foreldrene."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0116",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Meklingsattesten utferdes",
+     "semantic_truth": "CONTRADICTED"
+    },
+    {
+     "atom": "meklingen er gjennomført",
+     "semantic_truth": "CONTRADICTED"
+    },
+    {
+     "atom": "er gyldig i 12 måneder.",
+     "semantic_truth": "CONTRADICTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Meklingsattesten utferdes når meklingen er gjennomført"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "er gyldig i 12 måneder."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0117",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Meklingsattesten er gyldig i 6 måneder",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "at den er utferdet.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Meklingsattesten er gyldig i 6 måneder etter at den er utferdet."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0121",
+   "class": "AGGREGATION_OR_FUSION",
+   "why": "atoms fully correct, overall wrong",
+   "label_atoms": [
+    {
+     "atom": "Samvar er foreldrerettigheten til den som ikke bor fast med barnet",
+     "semantic_truth": "CONTRADICTED"
+    },
+    {
+     "atom": "kan bare avtales mellom de to foreldrene.",
+     "semantic_truth": "CONTRADICTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Samvar er foreldrerettigheten til den som ikke bor fast med barnet"
+    },
+    {
+     "verdict": "CONTRADICTED",
+     "text": "kan bare avtales mellom de to foreldrene."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0122",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 5 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Store helsebeslutninger som operasjon",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "utredning tas normalt av begge foreldre med foreldreansvar sammen",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "barnet fra 16 år kan samtykke selv",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "pasient-",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "brukerrettighetsloven § 4-3.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Store helsebeslutninger som operasjon eller utredning tas normalt av begge foreldre med foreldreansvar sammen, mens barnet fra 16 år kan samtykke selv etter pasient- og brukerrettighetsloven § 4-3."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0126",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Ved barnevernets undersøkelse kan enkelte opplysninger innhentes uten samtykke",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "offentlig ansatte",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "yrkesutøvere har meldeplikt til barnevernet uansett taushetsplikt.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Ved barnevernets undersøkelse kan enkelte opplysninger innhentes uten samtykke"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "offentlig ansatte og yrkesutøvere har meldeplikt til barnevernet uansett taushetsplikt."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0130",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Foreldre uten foreldreansvar har alltid rett til å delta i alle store avgjørelser om barnet med vetorett."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0131",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Overgangsforskriften (FOR-2026-06-25-1361) omfatter blant annet enslig mor/far som før 1.7.2026 har vedtak om overgangsstønad",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "barnetilsyn med periode ut over 1.7.2026.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Overgangsforskriften (FOR-2026-06-25-1361) omfatter blant annet enslig mor/far som før 1.7.2026 har vedtak om overgangsstønad eller barnetilsyn med periode ut over 1.7.2026."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0132",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Stønadsperioder",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "overgangsforskriften løper ikke ut over 30.06.2031",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "forskriften opphører å gjelde 01.07.2031.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Stønadsperioder etter overgangsforskriften løper ikke ut over 30.06.2031"
+    },
+    {
+     "verdict": "CONTRADICTED",
+     "text": "forskriften opphører å gjelde 01.07.2031."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0134",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Om det er skatteplikt på etterbetaling av barnebidrag er ikke separat verifisert mot Skatteetaten i kunnskapsbasen, så dette kan ikke ruttes i dag."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0139",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Ved akutt voksenkrise der en omsorgsperson blir akutt psykisk syk, skal man først ringe 113 ved akutt fare for liv",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "ringe 116 111",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "ingen trygg omsorgsperson kan overta for barnet.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Ved akutt voksenkrise der en omsorgsperson blir akutt psykisk syk, skal man først ringe 113 ved akutt fare for liv"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "ringe 116 111 når ingen trygg omsorgsperson kan overta for barnet."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0142",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 4 label atoms into 3",
+   "label_atoms": [
+    {
+     "atom": "Trondheim kommunes psykososiale sorg-",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "kriseteam er en tidlig-innsats-løsning for familier i krise",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "er ikke en akuttnødtjeneste; ved akutt fare gjelder 113",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "116 117.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Trondheim kommunes psykososiale sorg- og kriseteam er en tidlig-innsats-løsning for familier i krise,"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "er ikke en akuttnødtjeneste;"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "ved akutt fare gjelder 113 eller 116 117."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0143",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Trondheimshjelpa er et lavterskeltilbud i Trondheim for barn, unge",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "familier med aldersspenn 0-24 år, direkte tilgang uten henvisning",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "med egne telefonnumre per bydel.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Trondheimshjelpa er et lavterskeltilbud i Trondheim for barn, unge og familier med aldersspenn 0-24 år, direkte tilgang uten henvisning"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "med egne telefonnumre per bydel."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0144",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 3 label atoms into 2",
+   "label_atoms": [
+    {
+     "atom": "Etter samlivsbrudd kan depositum plasseres pa vanlig depositumskonto",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "belopet er som utgangspunkt inntil seks maneders leie",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "husleieloven § 3-8.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "SUPPORTED",
+     "text": "Etter samlivsbrudd kan depositum plasseres pa vanlig depositumskonto"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "belopet er som utgangspunkt inntil seks maneders leie etter husleieloven § 3-8."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0145",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Alle kommuner er pliktige til a tilby kommunalt depositumslan til leietakere som ikke har egne midler til depositum."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0151",
+   "class": "ATOM_VERDICT_ERROR",
+   "why": "false-CONTRA atom (label INSUFFICIENT)",
+   "label_atoms": [
+    {
+     "atom": "paragrafnummer og innfrielsesperiode er verifisert",
+     "semantic_truth": "CONTRADICTED"
+    },
+    {
+     "atom": "innfrielsesperioden er normalt 3 år",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Gjeldsordningslovens paragrafnummer og naverende innfrielseperiode er verifisert i kunnskapbasen"
+    },
+    {
+     "verdict": "CONTRADICTED",
+     "text": "innfrielseperioden er normalt 3 ar."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0152",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 5 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "Etter sosialtjenesteloven § 27 er Nav forpliktet til a finne et midlertidig botilbud",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "du ikke har et sted a sove",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "oppholde seg det neste dognet, ogsa",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "du midlertidig bor hos venner",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "familie.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Etter sosialtjenesteloven § 27 er Nav forpliktet til a finne et midlertidig botilbud hvis du ikke har et sted a sove og oppholde seg det neste dognet, ogsa nar du midlertidig bor hos venner eller familie."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0153",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Ved § 27-situasjon kan Nav-kontoret sette deg i vanlig soknadsk i stedet for a finne et forsvarlig botilbud for na."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0154",
+   "class": "ATOM_VERDICT_ERROR",
+   "why": "verdict mismatch ['INSUFFICIENT', 'SUPPORTED'] vs ['SUPPORTED', 'SUPPORTED']",
+   "label_atoms": [
+    {
+     "atom": "Vedtak om midlertidig botilbud kan klages",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "klagefristen er tre uker.",
+     "semantic_truth": "SUPPORTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Vedtak om midlertidig botilbud kan klages"
+    },
+    {
+     "verdict": "SUPPORTED",
+     "text": "klagefristen er tre uker."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0162",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "En 13-arig elev kan samtykke til helsehjelp i skolehelsetjenesten i forhold foreldrene ikke er informert om."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0165",
+   "class": "ATOM_VERDICT_ERROR",
+   "why": "verdict mismatch ['INSUFFICIENT', 'INSUFFICIENT'] vs ['SUPPORTED', 'CONTRADICTED']",
+   "label_atoms": [
+    {
+     "atom": "loven er vedtatt",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "loven har trådt i kraft per 30.08.2026",
+     "semantic_truth": "CONTRADICTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Lovendringen av folketrygdloven § 15-4 er vedtatt"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "den har tradd i kraft per 30.08.2026."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0169",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "etterbetalt barnebidrag for et barn på 19 år er ikke skattepliktig",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+     "atom": "Skatteetaten har verifisert dette separat",
+     "semantic_truth": "CONTRADICTED"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Etterbetalt barnebidrag for et barn pa 19 ar er ikke skattepliktig, fordi Skatteetaten har verifisert dette separat."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0170",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "Det er klagefrist pa tre uker for vedtak om saerbidrag."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0175",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 2 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Det finnes en lovbestemt saksbehandlingsfrist for PPT-utredning"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "text": "de kommunale fristene er lik over hele landet."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0176",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "aleneomsorg gir utvidet rett til omsorgspenger",
+     "semantic_truth": "SUPPORTED"
+    },
+    {
+     "atom": "retten er 100 dager i 2026",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "En enslig forsorger med barn under 3 ar har rett til omsorgspenger i 100 dager i 2026."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0178",
+   "class": "BAD_DECOMPOSITION",
+   "why": "engine merged 2 label atoms into 1",
+   "label_atoms": [
+    {
+     "atom": "småbarnstillegg deles ved delt fast bosted",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+     "atom": "delingsmåten er den samme som for delt barnetrygd",
+     "semantic_truth": "INSUFFICIENT_EVIDENCE"
+    }
+   ],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Smabarnstillegg deles mellom foreldrene ved delt fast bosted pa samme mate som delt barnetrygd."
+    }
+   ]
+  },
+  {
+   "case_id": "RC1B-0192",
+   "class": "WRONG_ATOM_BOUNDARY",
+   "why": "engine split into 1 vs 0 label atoms",
+   "label_atoms": [],
+   "engine_atoms": [
+    {
+     "verdict": "CONTRADICTED",
+     "text": "Trygderettens praksis for kravet om saerlig tilsyn etter § 15-5 fjerde ledd er hentet fra praksisdatabaser og fullt verifisert, inkludert barn under utredning uten diagnose."
+    }
+   ]
+  }
+ ]
+}

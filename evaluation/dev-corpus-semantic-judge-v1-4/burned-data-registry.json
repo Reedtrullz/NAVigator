@@ -1,0 +1,49 @@
+{
+  "artifact": "V1.4 burned data registry",
+  "created": "2026-09-10",
+  "burned_sets": [
+    {
+      "set": "SEMANTIC_JUDGE_V1_3M_BOUNDARY_CALIBRATION_A",
+      "n": 32,
+      "status": "BURNED_MODEL_CONTRACT_DEVELOPMENT_DATA",
+      "burn_rationale": "mimo-v2.5 delivered dual-pass labels for all 32 fixtures during the V1.3M migration run; the fixtures have influenced model-contract evaluation and cannot be reused as official validation data.",
+      "permitted_uses": [
+        "diagnosis",
+        "mechanical rescoring under V1.4 agreement definition",
+        "contract development"
+      ],
+      "prohibited_uses": [
+        "official validation",
+        "calibration A/B fixtures or text variants",
+        "stability subset",
+        "model calibration"
+      ],
+      "fixture_file_sha256": "0e1491c68e6907ed2bd022994b3982e98177b57d60e20ae54e84a4b04572703d"
+    },
+    {
+      "set": "V1_2_OFFICIAL_80",
+      "n": 80,
+      "status": "BURNED_CONTRACT_DEVELOPMENT_DATA",
+      "burn_rationale": "Inherited from V1.2/V1.3: the official 80-set derived the V1.3 boundary contract and is burned for all later lineages.",
+      "permitted_uses": ["diagnosis"],
+      "prohibited_uses": ["official validation", "text variants in any V1.4 set"]
+    },
+    {
+      "set": "V1_1_OFFICIAL_80",
+      "n": 80,
+      "status": "BURNED_CONTRACT_DEVELOPMENT_DATA",
+      "burn_rationale": "Inherited from V1.1/V1.2 lineage.",
+      "permitted_uses": ["diagnosis"],
+      "prohibited_uses": ["official validation", "text variants in any V1.4 set"]
+    },
+    {
+      "set": "V1_3_LUNA_SET_A",
+      "n": 32,
+      "status": "BURNED_CONTRACT_DEVELOPMENT_DATA",
+      "burn_rationale": "Same fixture text as V1.3M Set A (byte-identical copy); burned with it. The Luna lineage itself produced 0 semantic labels, but the fixture text is identical to the burned V1.3M set.",
+      "permitted_uses": ["diagnosis"],
+      "prohibited_uses": ["official validation"]
+    }
+  ],
+  "fixture_text_reuse_rule": "No V1.4 fixture (calibration A/B, model calibration, official 100, stability 40) may reuse text or near-copies from any burned set above."
+}

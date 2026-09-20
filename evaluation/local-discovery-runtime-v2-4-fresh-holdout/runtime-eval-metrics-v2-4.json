@@ -1,0 +1,62 @@
+{
+  "artifact": "runtime-eval-metrics-v2-4",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_4-FRESH-HOLDOUT",
+  "frozen_at": "2026-09-09",
+  "frozen_before": "H5 runtime execution",
+  "scoring_procedure": "mechanical; computed by script from runtime-predictions-v2-4.json and audit-reference-v2-4.json after H8; no manual overall pass before hard metrics",
+  "official_denominator_cells": 30,
+  "no_denominator_rewrite_after_comparison": true,
+  "metrics": {
+    "execution_completeness": {
+      "definition": "all 30 cells attempted; COMPLETE_DISCOVERY count reported per frozen runtime failure policy",
+      "gate": "COMPLETE_DISCOVERY >= 29/30",
+      "notes": "preregistered failures (DISCOVERY_INCOMPLETE or equivalent) stay in denominator and count against completeness"
+    },
+    "route_recovery": {
+      "definition": "runtime found at least one route equivalent to auditor-documented route per equivalence contract",
+      "denominator": "audit cells with documented relevant route",
+      "gate": ">= 0.90",
+      "report_raw": true
+    },
+    "fully_verified_precision": {
+      "definition": "of runtime ROUTE_FULLY_VERIFIED cells, audit confirms service exists, age eligibility, scenario relevance, access, usable entry/contact, and runtime provenance supports these",
+      "denominator": "cells with runtime state ROUTE_FULLY_VERIFIED",
+      "gate": ">= 0.95"
+    },
+    "unsupported_fully_verified": {
+      "definition": "ROUTE_FULLY_VERIFIED cells audit does not confirm",
+      "gate": "= 0"
+    },
+    "access_precision": {
+      "definition": "of concrete runtime access assertions (direct phone, email, digital, drop-in, application, GP referral, professional referral, intermunicipal gateway, specialist gateway), audit confirms those documented",
+      "gate": ">= 0.95"
+    },
+    "critical_false_no_route": {
+      "definition": "runtime completed discovery and returned no verified relevant route or no-route-like output while audit documents a clear relevant public route",
+      "gate": "= 0",
+      "exclusion": "explicit DISCOVERY_INCOMPLETE is not false-no-route; it counts against execution completeness"
+    },
+    "provenance_completeness": {
+      "definition": "share of assertions authorizing FULLY_VERIFIED with runtime source provenance",
+      "gate": "= 1.00"
+    },
+    "epistemic_state_accuracy": {
+      "definition": "runtime states FULLY_VERIFIED, ACCESS_PARTIAL, EXISTENCE_ONLY, UNVERIFIED, DISCOVERY_INCOMPLETE scored against audit evidence",
+      "gate": ">= 0.90"
+    },
+    "materially_overconfident_outputs": {
+      "definition": "user-facing wording asserts certainty beyond evidence: certain access when access unclear, no-offer claims after incomplete execution, verified wording without eligibility evidence",
+      "gate": "= 0"
+    }
+  },
+  "descriptive_metrics": {
+    "age_routing": ["both_19_and_22", "only_19", "only_22", "neither", "different_route_service"],
+    "intermunicipal": "auditor intermunicipal routes N, runtime recovered N, missed N (raw counts, no percentage gate at low N)",
+    "centrality": "per class 2-6: cells, complete discovery, route recovery, route states, misses, intermunicipal use, render/sitemap use",
+    "discovery_depth": "recovered routes by Level 0-5",
+    "failures": "DNS, fetch, timeout, render, parse, security, source unavailable, runtime internal; no reruns",
+    "miss_taxonomy": "classified only after official score freeze per contract section 57"
+  },
+  "audit_unresolved_handling": "AUDIT_REFERENCE_UNRESOLVED cells excluded from route-recovery denominator only if reference genuinely unresolvable; reported separately per preregistered failure policy",
+  "no_post_hoc_adjudication_to_rescue_scores": true
+}

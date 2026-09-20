@@ -1,0 +1,62 @@
+{
+  "purpose": "phase12_cascade_simulation_and_phase13_cost_analysis",
+  "generated_utc": "2026-09-19T20:30:00Z",
+  "measured_basis": "routing-simulation.json (6 runs x 3 thresholds, n=57, FALSE_PASS=0 in all 18 cells)",
+  "operating_point_conservative": {
+    "variant": "V1_run_T0_8",
+    "auto_accept": 13,
+    "escalate": 44,
+    "auto_reject": 0,
+    "false_pass": 0,
+    "false_fail": 0,
+    "auto_accept_rate": 0.2281,
+    "escalation_rate": 0.7719
+  },
+  "operating_point_looser": {
+    "variant": "V1_run_T0_7",
+    "auto_accept": 16,
+    "escalate": 40,
+    "false_pass": 0,
+    "false_fail_note": "1 FALSE_FAIL observed in run1 only (ESC-ROUT-027 auto-reject); stable ESCALATE in runs 2-3",
+    "auto_accept_rate": 0.2807
+  },
+  "stack_simulation": {
+    "deterministic_checks": "UNCHANGED_BY_THIS_TASK_COVERAGE_NOT_MEASURED_HERE",
+    "jev_layer": "MEASURED (routing-simulation.json)",
+    "cheap_llm_reviewer": "ALL_HISTORICAL_CANDIDATES_FAILED_QUALIFICATION_NO_MEASURED_COVERAGE",
+    "frontier_escalation": "UNKNOWN_NO_MEASURED_FRONTIER_ROUTING_DATA_IN_THIS_TASK"
+  },
+  "jev_usage_measured": {
+    "v1_input_tokens_per_run": 191592,
+    "v1_input_tokens_per_case": 3361.3,
+    "v2_input_tokens_per_run": 195267,
+    "v2_input_tokens_per_case": 3425.7,
+    "output_tokens_per_run": "4867-4950",
+    "output_charged": false
+  },
+  "pricing": {
+    "input_usd_per_1m_tokens": 0.042,
+    "output_usd": 0.0,
+    "verification": "VERIFIED_AGAINST_PUBLIC_SECONDARY_SOURCES_2026-09-19 (llmreference.com, vercel.com/ai-gateway/models/jev, apidog.com/blog/jev-api-key quoting TypeSafe models page); not an official invoice or first-party quote",
+    "observed_run_cost_usd": { "v1": 0.0080, "v2": 0.0082 },
+    "observed_case_cost_usd": { "v1": 0.000141, "v2": 0.000144 }
+  },
+  "per_1000_cases_projection": {
+    "jev_calls": 1000,
+    "jev_input_tokens": 3425700,
+    "jev_cost_usd": 0.144,
+    "auto_resolved_by_jev_V1_T0_8": 228,
+    "auto_resolved_by_jev_V1_T0_7": 281,
+    "auto_resolved_by_jev_V2_T0_8": 158,
+    "cheap_llm_calls_avoided_V1_T0_8": 228,
+    "frontier_calls_avoided": "UNKNOWN",
+    "cheap_llm_cost_avoided_usd": "UNKNOWN_NO_PRICING_DATA_FOR_ANY_HISTORICAL_ROUTE",
+    "frontier_cost_avoided_usd": "UNKNOWN"
+  },
+  "baseline_definition": "current baseline assumes 1 generative reviewer call per case; deterministic-layer coverage not re-measured in this task",
+  "verifiable_reduction_claim": "PERCENTAGE_OF_CALLS_AVOIDED_ONLY; USD savings vs other reviewers not computable because no historical route exposed pricing",
+  "notes": [
+    "Jev layer cost is negligible (about 0.14 USD per 1000 cases); the economic question is how many generative calls it eliminates, not its own cost",
+    "coverage claims are development-slice evidence (n=57) and are not certification"
+  ]
+}

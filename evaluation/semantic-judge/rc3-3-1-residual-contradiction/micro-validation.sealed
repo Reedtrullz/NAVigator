@@ -1,0 +1,792 @@
+{
+ "sealed": true,
+ "sealed_at": "2026-09-08",
+ "suite": "RC3_3_1-RESIDUAL-CONTRADICTION-TARGETED-SUITE",
+ "corpus_sha256": "562d1ec080d55aa27c1514f311508c3370003df4ded1c85f5da09555775da441",
+ "case_count": 30,
+ "case_ids": [
+  "T90-061",
+  "T90-062",
+  "T90-063",
+  "T90-064",
+  "T90-065",
+  "T90-066",
+  "T90-067",
+  "T90-068",
+  "T90-069",
+  "T90-070",
+  "T90-071",
+  "T90-072",
+  "T90-073",
+  "T90-074",
+  "T90-075",
+  "T90-076",
+  "T90-077",
+  "T90-078",
+  "T90-079",
+  "T90-080",
+  "T90-081",
+  "T90-082",
+  "T90-083",
+  "T90-084",
+  "T90-085",
+  "T90-086",
+  "T90-087",
+  "T90-088",
+  "T90-089",
+  "T90-090"
+ ],
+ "note": "Hidden micro-validation cases with gold labels. Labels must not be read or used until post-freeze one-shot validation.",
+ "cases": [
+  {
+   "case_id": "T90-061",
+   "split": "hidden",
+   "claim": "I 2024 var smabarnstillegget 712 kroner per maned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Smabarnstillegg 712 kr/mnd ved full overgangsstønad for barn 0 til 3 ar."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "curhist",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:712:NOK",
+   "temporal_applicability": "HISTORICAL_VS_CURRENT",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-062",
+   "split": "hidden",
+   "claim": "I 2024 kostet gebyret for Barnebidrag 1200 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Gebyr for nav Barnebidrag: 1 345 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "curhist",
+   "kb_ref": "48-barnebidrag-i-dybden.md",
+   "quantity_identity": "MONEY:1200:NOK",
+   "temporal_applicability": "HISTORICAL_VS_CURRENT",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-063",
+   "split": "hidden",
+   "claim": "Delt ordinær barnetrygd var 996 kroner, som er halvparten av 1992.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Ordinær barnetrygd: full sats 2 012 kr/mnd; delt sats per forelder 1 006 kr/mnd."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "curhist",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:996:NOK:DERIVED",
+   "temporal_applicability": "HISTORICAL_VS_CURRENT",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "COMPONENT",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-064",
+   "split": "hidden",
+   "claim": "I 2024 var full utvidet barnetrygd 2448 kroner per maned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tidligere sats (2024): utvidet barnetrygd full 2 448 kr/mnd; fra 01.02.2026: 2 572 kr/mnd."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "curhist",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2448:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-065",
+   "split": "hidden",
+   "claim": "Full utvidet barnetrygd er 2572 kroner per maned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Satser fra 1. februar 2026: utvidet barnetrygd full sats 2 572 kr/mnd; delt sats 1 286 kr/mnd."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "curhist",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2572:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-066",
+   "split": "hidden",
+   "claim": "I 2024 var maksgrensen for minstefradrag 75000 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tidligere minstefradrag (2024): 40 prosent, maks 75 000 kroner; fra 2026: maks 75 400 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "superseded",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "MONEY:75000:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "SUPERSEDED",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-067",
+   "split": "hidden",
+   "claim": "I 2024 var maksgrensen for minstefradrag 76000 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tidligere minstefradrag (2024): 40 prosent, maks 75 000 kroner; fra 2026: maks 75 400 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "superseded",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "MONEY:76000:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "SUPERSEDED",
+   "comparator_applicable": true,
+   "comparator_relation": "=",
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-068",
+   "split": "hidden",
+   "claim": "Maksgrensen for minstefradrag er na 75000 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Tidligere minstefradrag (2024): 40 prosent, maks 75 000 kroner; fra 2026: maks 75 400 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": true,
+   "group": "superseded",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "MONEY:75000:NOK",
+   "temporal_applicability": "HISTORICAL_VS_CURRENT",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-069",
+   "split": "hidden",
+   "claim": "Satsene gjaldt fra 1. juli 2025.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Sjablongene gjelder fra 1. juli 2026."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": false,
+   "group": "superseded",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "DATE:20250701",
+   "temporal_applicability": "PERIOD_MISMATCH",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-070",
+   "split": "hidden",
+   "claim": "Sjablongene gjelder fra 1. juli 2026.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Rundskriv v1-55-02: alle sjablonger 1.7.2026."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "superseded",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "DATE:20260701",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-071",
+   "split": "hidden",
+   "claim": "Forskriften trådte i kraft 19. oktober 2018.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Forskrift FOR-2018-10-19-1584, sist endret FOR-2024-04-26-685."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "effdate",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "quantity_identity": "DATE:20181019",
+   "temporal_applicability": "NOT_APPLICABLE",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-072",
+   "split": "hidden",
+   "claim": "Forskriften trådte i kraft 19. oktober 2019.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Forskrift FOR-2018-10-19-1584, sist endret FOR-2024-04-26-685."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "effdate",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "quantity_identity": "DATE:20191019",
+   "temporal_applicability": "UNKNOWN",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-073",
+   "split": "hidden",
+   "claim": "Inkrevingloven har nummer LOV-2005-04-29-20.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Inkrevingloven (LOV-2005-04-29-20) paragraf 5 og 7."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "effdate",
+   "kb_ref": "48-barnebidrag-i-dybden.md",
+   "quantity_identity": "DATE:20050429",
+   "temporal_applicability": "NOT_APPLICABLE",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-074",
+   "split": "hidden",
+   "claim": "Inkrevingloven ble sist endret 25. april 2025.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Inkrevingloven LOV-2005-04-29-20, sist endret LOV-2025-04-25-12."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "effdate",
+   "kb_ref": "48-barnebidrag-i-dybden.md",
+   "quantity_identity": "DATE:20250425",
+   "temporal_applicability": "NOT_APPLICABLE",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-075",
+   "split": "hidden",
+   "claim": "Forskriften ble endret i 2022.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Forskrift FOR-2018-10-19-1584, sist endret FOR-2024-04-26-685."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "effdate",
+   "kb_ref": "31-skolehelsetjenesten-i-dybden.md",
+   "quantity_identity": "DATE:20220101",
+   "temporal_applicability": "PERIOD_MISMATCH",
+   "quantity_status": "HISTORICAL",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-076",
+   "split": "hidden",
+   "claim": "Soknaden ma vaere sendt innen den 15. i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fristen er den 15. hver maned."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "periods",
+   "kb_ref": "50-bidragsforskudd-og-innkreving.md",
+   "quantity_identity": null,
+   "temporal_applicability": "NOT_APPLICABLE",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-077",
+   "split": "hidden",
+   "claim": "Soknaden ma vaere sendt innen den 12. i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fristen er den 15. hver maned."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "periods",
+   "kb_ref": "50-bidragsforskudd-og-innkreving.md",
+   "quantity_identity": null,
+   "temporal_applicability": "PERIOD_MISMATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": true,
+   "comparator_relation": "=",
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-078",
+   "split": "hidden",
+   "claim": "Behandlingstiden er 6 maneder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Behandlingstid 6 maneder."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "periods",
+   "kb_ref": "48-barnebidrag-i-dybden.md",
+   "quantity_identity": "PERIOD:6:MONTH",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-079",
+   "split": "hidden",
+   "claim": "Behandlingstiden er 4 maneder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Behandlingstid 9 maneder."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "periods",
+   "kb_ref": "48-barnebidrag-i-dybden.md",
+   "quantity_identity": "PERIOD:4:MONTH",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": true,
+   "comparator_relation": "=",
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-080",
+   "split": "hidden",
+   "claim": "Svarfristen er 14 dager.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Behandlingstid 9 maneder."
+    }
+   ],
+   "compound": false,
+   "rel": "RELATED_BUT_INSUFFICIENT",
+   "critical": false,
+   "group": "periods",
+   "kb_ref": "48-barnebidrag-i-dybden.md",
+   "quantity_identity": "PERIOD:14:DAY",
+   "temporal_applicability": "UNKNOWN",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": null,
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-081",
+   "split": "hidden",
+   "claim": "Delt ordinær barnetrygd er 2012 kroner per maned per forelder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Ordinær barnetrygd: full sats 2 012 kr/mnd; delt sats per forelder 1 006 kr/mnd."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "sameqty",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2012:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "COMPONENT",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-082",
+   "split": "hidden",
+   "claim": "Full utvidet barnetrygd er 1286 kroner per maned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utvidet barnetrygd: full sats 2 572 kr/mnd; delt sats 1 286 kr/mnd."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "sameqty",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:1286:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-083",
+   "split": "hidden",
+   "claim": "Full utvidet barnetrygd er 2572 kroner per maned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utvidet barnetrygd: full sats 2 572 kr/mnd; delt sats 1 286 kr/mnd."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "sameqty",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2572:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-084",
+   "split": "hidden",
+   "claim": "Summen av delt ordinær og delt utvidet er 2200 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "1 006 + 1 286 = 2 292 kroner i maneden."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "sameqty",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2200:NOK:AGGREGATE",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "AGGREGATE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-085",
+   "split": "hidden",
+   "claim": "Delt ordinær barnetrygd er 1006 kroner i maneden per forelder.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Ved delt fast bosted deles barnetrygden likt: 1 006 kroner per forelder."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "sameqty",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:1006:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "COMPONENT",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-086",
+   "split": "hidden",
+   "claim": "Totalt mottar forelderen 2200 kroner i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "1 006 + 1 286 = 2 292 kroner i maneden."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "aggcomp",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2200:NOK:AGGREGATE",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "AGGREGATE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-087",
+   "split": "hidden",
+   "claim": "Totalt mottar forelderen 2292 kroner i maneden.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "1 006 + 1 286 = 2 292 kroner i maneden."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "aggcomp",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2292:NOK:AGGREGATE",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "AGGREGATE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-088",
+   "split": "hidden",
+   "claim": "Delt utvidet barnetrygd er 2292 kroner per maned.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Utvidet barnetrygd: full sats 2 572 kr/mnd; delt sats 1 286 kr/mnd. Totalt 2 292 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "aggcomp",
+   "kb_ref": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+   "quantity_identity": "MONEY:2292:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "COMPONENT",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-089",
+   "split": "hidden",
+   "claim": "Grensen for fritak fra innkreving er 367400 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fritak ved formue under 367 400 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "ENTAILS",
+   "critical": false,
+   "group": "aggcomp",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "MONEY:367400:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  },
+  {
+   "case_id": "T90-090",
+   "split": "hidden",
+   "claim": "Grensen for fritak fra innkreving er 300000 kroner.",
+   "evidence": [
+    {
+     "span_id": "S1",
+     "text": "Fritak ved formue under 367 400 kroner."
+    }
+   ],
+   "compound": false,
+   "rel": "CONTRADICTS",
+   "critical": true,
+   "group": "aggcomp",
+   "kb_ref": "53-kildedokumentasjon-okonomi.md",
+   "quantity_identity": "MONEY:300000:NOK",
+   "temporal_applicability": "CURRENT_MATCH",
+   "quantity_status": "CURRENT",
+   "comparator_applicable": false,
+   "comparator_relation": null,
+   "aggregate_component_role": "STANDALONE",
+   "supporting_spans": [
+    "S1"
+   ]
+  }
+ ]
+}

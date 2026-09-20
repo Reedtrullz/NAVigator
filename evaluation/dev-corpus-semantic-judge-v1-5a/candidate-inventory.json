@@ -1,0 +1,76 @@
+{
+  "artifact": "V1.5A CANDIDATE INVENTORY",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_5A-MODEL-SELECTION",
+  "inventoried_date": "2026-09-11",
+  "no_candidate_executed_during_inventory": true,
+  "provider_scope": "commandcode-auth local proxy http://127.0.0.1:10100/v1 (65 live model ids observed 2026-09-11)",
+  "authorization_policy": {
+    "user_authorized_names": [
+      "Ling 3.0 Flash Sante",
+      "LongCat 2.0",
+      "Laguna S 2.1",
+      "MiMo V2.5",
+      "MiMo V2.5 Pro"
+    ],
+    "forbidden": [
+      "GPT-5.5",
+      "models explicitly forbidden in AGENTS.md",
+      "silent escalation beyond user-authorized scope"
+    ]
+  },
+  "authorized_name_mapping": [
+    {
+      "display_name": "MiMo V2.5",
+      "wire_id": "command-code/xiaomi/mimo-v2.5",
+      "provider": "commandcode-auth",
+      "status": "FROZEN_V1_4_BASELINE_DO_NOT_RERUN"
+    },
+    {
+      "display_name": "MiMo V2.5 Pro",
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "provider": "commandcode-auth",
+      "status": "AUTHORIZED_TESTABLE"
+    },
+    {
+      "display_name": "LongCat 2.0",
+      "wire_id": "command-code/meituan/LongCat-2.0:free",
+      "provider": "commandcode-auth",
+      "status": "AUTHORIZED_TESTABLE"
+    },
+    {
+      "display_name": "Ling 3.0 Flash Sante",
+      "wire_id": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "provider": "commandcode-auth",
+      "evidence": "wire id present in live /v1/models after user amendment (presence-only check)",
+      "status_original_2026_09_11_pre_amendment": "NOT_AVAILABLE_ON_COMMANDCODE",
+      "status": "AUTHORIZED_TESTABLE_AMENDED_2026_09_11"
+    },
+    {
+      "display_name": "Laguna S 2.1",
+      "wire_id": "command-code/poolside/laguna-s-2.1-free",
+      "provider": "commandcode-auth",
+      "evidence": "wire id present in live /v1/models after user amendment (presence-only check)",
+      "status_original_2026_09_11_pre_amendment": "NOT_AVAILABLE_ON_COMMANDCODE",
+      "status": "AUTHORIZED_TESTABLE_AMENDED_2026_09_11"
+    }
+  ],
+  "other_commandcode_models_observed_not_authorized": [
+    "command-code/deepseek/deepseek-v4.1-flash",
+    "command-code/deepseek/deepseek-v4-flash-vision-exp",
+    "command-code/Qwen/Qwen3.8-Max-0902",
+    "command-code/Qwen/Qwen3.8-Flash",
+    "command-code/Qwen/Qwen3.8-27B",
+    "command-code/zai-org/GLM-5.3",
+    "command-code/z-ai/glm-5.3-flash",
+    "command-code/google/gemini-3.8-flash",
+    "command-code/meta/muse-spark-1.3",
+    "command-code/meta/muse-spark-1.3-contributor",
+    "command-code/tencent/hy4-preview",
+    "command-code/gpt-5.6-luna"
+  ],
+  "amendment_2026_09_11": {
+    "artifact": "authorization-amendment.json",
+    "user_verbatim_recorded": true,
+    "second_authorization_received_after_freeze": true
+  }
+}

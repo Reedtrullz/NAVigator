@@ -1,0 +1,63 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-ARCH-V1_6C1-INFORMATION-FLOW-REPAIR",
+  "status": "V1_6C1_INFORMATION_FLOW_NOT_SUPPORTED",
+  "scope": "semantic_judge_information_flow_only",
+  "boundary_rule_expansion_allowed": false,
+  "v1_6a5_allowed": false,
+  "v1_6a4_patch_allowed": false,
+  "semantic_contract_change_allowed": false,
+  "gold_change_allowed": false,
+  "judge_label_change_allowed": false,
+  "information_packet_change_allowed": true,
+  "new_model_search_allowed": false,
+  "model_screening_allowed": false,
+  "fresh_official_validation_allowed": false,
+  "product_runtime_changes_allowed": false,
+  "full_sut_allowed": false,
+  "prior_terminal_statuses": {
+    "v1_6a3": "V1_6A3_BOUNDARY_PRECLASSIFIER_READY",
+    "v1_6a4": "V1_6A4_NOT_READY",
+    "v1_6b": "V1_6B_NO_JUDGE_QUALIFIES"
+  },
+  "frozen_engine_shas": {
+    "v1_6a4_engine": "22a5f61c38b991611b636d24d9a6765f90aa25cf9cc616c5fa0964a770ac5cee",
+    "v1_6a3_engine": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+    "v1_4_judge_core": "ad7f0fda0557fc74b7e337359635fd6d5f3bdda803251bd9dd49cb801be9bdc2"
+  },
+  "created_utc": "2026-09-12T00:00:00Z",
+  "gpt_5_5_allowed": false,
+  "subagents_used": 0,
+  "terminal_reason": "Paired A/B on 92 burned V1.6B judge rows: NEW packet arm 78/92 vs OLD 79/92; improvement gate failed (abs -1.09pp, rel -7.69%); uncertainty dimension regressed -7.14pp. Safety gates passed (critical FN 0, safety forbidden FN 0, valid rate 1.0, evidence validity 1.0).",
+  "terminal_artifacts": [
+    "paired-comparison.json",
+    "architecture-decision.md",
+    "final-report.md",
+    "failure-cluster-report.json",
+    "information-attribution.json",
+    "token-latency-report.json",
+    "complexity-report.json",
+    "semantic-residual-packet-v1-manifest.json"
+  ],
+  "post_terminal_diagnostics": [
+    {
+      "artifact": "failure-cluster-root-cause.md",
+      "row_digest": "failure-row-digest.json",
+      "type": "DIAGNOSTIC_BURNED_DATA_ONLY",
+      "status_after": "V1_6C1_INFORMATION_FLOW_NOT_SUPPORTED",
+      "hypotheses_frozen": [
+        "M1 critical abstention recall",
+        "M2 compound uncertainty PARTIAL semantics",
+        "M3 forbidden paraphrase equivalence",
+        "M4 packet anchoring on non-route dimensions"
+      ],
+      "changes_made": "none - diagnosis only"
+    },
+    {
+      "artifact": "next-stage-design-brief-v1-6c2.md",
+      "draft_prompt": "next-task-draft-prompt-v1-6c2.md",
+      "type": "DRAFT_NOT_AUTHORIZED",
+      "key_evidence": "A3 replay: abstains on 13/14 failure rows (ab-failure-rows-a3-replay.json); V1.6A.4 terminal NOT_READY confirmed; bottleneck is judge capacity M1/M2/M3",
+      "changes_made": "none - draft documents only"
+    }
+  ]
+}

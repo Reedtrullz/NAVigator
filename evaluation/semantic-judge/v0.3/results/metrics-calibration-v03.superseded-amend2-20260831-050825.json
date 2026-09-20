@@ -1,0 +1,242 @@
+{
+ "results_file": "v0.3/results/v03-results-calibration-A-judge-a-gpt-5.5.json",
+ "n_rows": 84,
+ "n_graded": 84,
+ "n_run_errors": 0,
+ "run_error_ids": [],
+ "accuracy": 0.8095,
+ "macro_f1": 0.8025,
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 0.957,
+   "recall": 1.0,
+   "f1": 0.978,
+   "support": 22
+  },
+  "CONTRADICTED": {
+   "precision": 0.634,
+   "recall": 0.963,
+   "f1": 0.765,
+   "support": 27
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.45,
+   "f1": 0.621,
+   "support": 20
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 1.0,
+   "recall": 0.733,
+   "f1": 0.846,
+   "support": 15
+  }
+ },
+ "confusion": {
+  "CONTRADICTED": {
+   "CONTRADICTED": 26,
+   "SUPPORTED": 1
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "INSUFFICIENT_EVIDENCE": 11,
+   "CONTRADICTED": 4
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 9,
+   "CONTRADICTED": 11
+  },
+  "SUPPORTED": {
+   "SUPPORTED": 22
+  }
+ },
+ "group_stats": {
+  "injection": {
+   "n": 4,
+   "correct": 4,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "legal": {
+   "n": 32,
+   "correct": 24,
+   "binary_fp": 1,
+   "critical_fp": 0
+  },
+  "local": {
+   "n": 17,
+   "correct": 16,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "numeric": {
+   "n": 19,
+   "correct": 15,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "safety": {
+   "n": 4,
+   "correct": 3,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "temporal": {
+   "n": 8,
+   "correct": 6,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "binary": {
+  "unsupported_total": 62,
+  "fp": 1,
+  "fp_rate": 0.0161
+ },
+ "high_conf_errors": 6,
+ "misses": [
+  {
+   "id": "CAL027",
+   "expected": "CONTRADICTED",
+   "got": "SUPPORTED",
+   "confidence": 0.99,
+   "group": "legal",
+   "high_conf": true,
+   "reason": ""
+  },
+  {
+   "id": "CAL028",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL045",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL047",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "numeric",
+   "high_conf": true,
+   "reason": ""
+  },
+  {
+   "id": "CAL051",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.94,
+   "group": "legal",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL053",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.92,
+   "group": "numeric",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL054",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "group": "legal",
+   "high_conf": true,
+   "reason": ""
+  },
+  {
+   "id": "CAL055",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "local",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL056",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "numeric",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL058",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.92,
+   "group": "legal",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL059",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "safety",
+   "high_conf": true,
+   "reason": ""
+  },
+  {
+   "id": "CAL060",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "group": "legal",
+   "high_conf": true,
+   "reason": ""
+  },
+  {
+   "id": "CAL068",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "numeric",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL074",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.86,
+   "group": "legal",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL075",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "temporal",
+   "high_conf": false,
+   "reason": ""
+  },
+  {
+   "id": "CAL076",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "group": "temporal",
+   "high_conf": true,
+   "reason": ""
+  }
+ ]
+}

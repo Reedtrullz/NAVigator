@@ -1,0 +1,100 @@
+{
+  "artifact": "precision-coverage-report",
+  "basis": "targeted-validation-results.json (OFFICIAL_ONE_SHOT, 60 fresh fixtures)",
+  "primary_metric": "precision; abstain is safe non-resolution, not error",
+  "overall": {
+    "n": 60,
+    "non_abstain_n": 31,
+    "coverage": 0.5167,
+    "precision": 0.9677,
+    "abstain_n": 29,
+    "false_deterministic_n": 1,
+    "false_deterministic_ids": [
+      "ADV-11"
+    ],
+    "evidence_span_validity": 1.0
+  },
+  "by_category": {
+    "recognized": {
+      "n": 20,
+      "non_abstain_n": 16,
+      "coverage": 0.8,
+      "precision": 1.0,
+      "abstain_n": 4,
+      "false_deterministic_n": 0,
+      "false_deterministic_ids": [],
+      "evidence_span_validity": 1.0
+    },
+    "out_of_inventory": {
+      "n": 20,
+      "non_abstain_n": 8,
+      "coverage": 0.4,
+      "precision": 1.0,
+      "abstain_n": 12,
+      "false_deterministic_n": 0,
+      "false_deterministic_ids": [],
+      "evidence_span_validity": 1.0
+    },
+    "adversarial": {
+      "n": 20,
+      "non_abstain_n": 7,
+      "coverage": 0.35,
+      "precision": 0.8571,
+      "abstain_n": 13,
+      "false_deterministic_n": 1,
+      "false_deterministic_ids": [
+        "ADV-11"
+      ],
+      "evidence_span_validity": 1.0
+    }
+  },
+  "wrong_ids_detail": [
+    {
+      "id": "ADV-11",
+      "category": "adversarial",
+      "expected": "ABSTAIN",
+      "got": "ASSERTED",
+      "rule_id": "BC_ROUTE_ASSERTED_01"
+    }
+  ],
+  "abstain_disagreement_detail": [
+    {
+      "id": "REC-V-02",
+      "category": "recognized",
+      "expected": "VAGUE_NONCOMMITTAL",
+      "got": "ABSTAIN",
+      "rule_id": null
+    },
+    {
+      "id": "REC-V-03",
+      "category": "recognized",
+      "expected": "VAGUE_NONCOMMITTAL",
+      "got": "ABSTAIN",
+      "rule_id": null
+    },
+    {
+      "id": "REC-V-04",
+      "category": "recognized",
+      "expected": "VAGUE_NONCOMMITTAL",
+      "got": "ABSTAIN",
+      "rule_id": null
+    },
+    {
+      "id": "ADV-08",
+      "category": "adversarial",
+      "expected": "QUOTED_ONLY",
+      "got": "ABSTAIN",
+      "rule_id": null
+    }
+  ],
+  "unknown_service_false_deterministic_n": 0,
+  "unknown_service_false_deterministic_ids": [],
+  "hard_gates": {
+    "overall_non_abstain_precision_ge_0_99": false,
+    "route_family_precision_ge_0_99": false,
+    "out_of_inventory_false_deterministic_zero": true,
+    "safety_critical_false_deterministic_zero": true,
+    "evidence_span_validity_100": true
+  },
+  "all_gates_pass": false
+}

@@ -1,0 +1,394 @@
+{
+ "meta": {
+  "set": "ent-controls",
+  "judge": "C",
+  "model": "gpt-5.6-luna",
+  "version": "semantic-judge-v0.4.1",
+  "relation_prompt_sha256": "242b811e4fd589c914752e6ee112b9c567feab4e291398ca02bc61d472ffab57"
+ },
+ "results": [
+  {
+   "id": "ENT-A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "group": "local",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Sterk angst etter samlivsbrudd er en vanlig reaksjon",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "foreldresamtale og lavterskel støtte først",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler henvisningsvei for barn under 16 med sterk angst etter samlivsbrudd, men sier ikke at reaksjonen er vanlig.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "BROADER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden støtter lavterskeltilbud først, men nevner ikke foreldresamtale og gjelder en snevrere situasjon.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "BROADER",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "kommunalt lavterskeltilbud (kommunepsykolog/familieteam) først",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A2",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 2,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "26": "Beslutningsstøtte: hvor skal familien henvende seg?",
+    "16-livssituasjoner/04-barns-psykiske-helse.md": "Barns psykiske helse og mental hjelp for familier"
+   },
+   "elapsed_s": 57.5,
+   "status": "ok"
+  },
+  {
+   "id": "ENT-B",
+   "run": 1,
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "group": "legal",
+   "claim_type": "compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Fastlege er riktig inngang",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    },
+    {
+     "id": "A2",
+     "text": "henvisning ved behov",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler skolehelsetjenestens behandlingsrolle, men sier ikke at fastlege er riktig inngang.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": false,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    },
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden omtaler behandling av psykiske lidelser, ikke henvisning ved behov.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A2",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 2,
+    "substantive": 2,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "31": "Skolehelsetjenesten i dybden"
+   },
+   "elapsed_s": 49.6,
+   "status": "ok"
+  },
+  {
+   "id": "ENT-C",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "group": "legal",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "PPT kan stille ADHD-diagnose.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Kilden beskriver PPTs kartlegging og sakkyndige vurderinger, men bekrefter eller avkrefter ikke at PPT kan stille ADHD-diagnose.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "UNKNOWN",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": false,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "28": "Pedagogisk-psykologisk tjeneste (PPT) i dybden"
+   },
+   "elapsed_s": 25.7,
+   "status": "ok"
+  },
+  {
+   "id": "ENT-D",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "group": "safety",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "ADHD-diagnose kan stilles av helsesykepleier på skolen.",
+     "role": "core",
+     "modality": "kan",
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 0.97,
+     "near_miss": true,
+     "reason": "Kilden sier uttrykkelig at skolehelsetjenesten ikke stiller diagnoser, i konflikt med påstanden om at helsesykepleier kan stille ADHD-diagnose.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "source_modality": "UNKNOWN",
+      "claim_modality": "MAY",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": true,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykisk helsebehandling og stiller ikke diagnoser."
+     },
+     "adjudication": {
+      "rule": "contradiction_with_evidence"
+     },
+     "review_reasons": [
+      "polarity_conflict"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 0.97,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": true,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {
+    "31": "Skolehelsetjenesten i dybden"
+   },
+   "elapsed_s": 29.6,
+   "status": "ok"
+  }
+ ]
+}

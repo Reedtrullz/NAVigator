@@ -1,0 +1,35 @@
+{
+  "artifact": "tdd_red_result_v2_4",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_4-ROOT-RESOLUTION-REPAIR",
+  "TDD_SEQUENCE_DEVIATION": true,
+  "tdd_sequence_note": "Permanent history flag: RED was reconstructed after the patch already existed (tests and fix landed in one patch), so this was NOT genuine test-first. RED was re-observed honestly by temporarily removing the only new V2.4 production artifact (runtime/discovery_v2/roots_v24.py), leaving the historical lineage byte-unchanged, and re-running the tests against the pre-fix lineage. No historical file was modified at any point. Owner ruling 2026-09-09: not candidate-disqualifying; defect independently proven by certification and subsequent regressions; frozen candidate, scoring basis, and holdout data unaffected.",
+  "red_run": {
+    "command": "python3 -m unittest runtime.discovery_v2.tests_v24",
+    "state": "runtime/discovery_v2/roots_v24.py removed (pre-fix lineage)",
+    "red_exit_code": 1,
+    "result": "FAILED (errors=4)",
+    "failure": "ModuleNotFoundError: No module named 'runtime.discovery_v2.roots_v24'"
+  },
+  "red_assertion_level": {
+    "command": "canonical_roots('Raelingen') from runtime/discovery_v2/roots.py (historical, SHA e2ee31eece7eeabcdb5886e8436ec26f3a7a6c511120ab156182323cbabdf0bf)",
+    "expected_root": "https://ralingen.bedreinnsats.no/",
+    "expected_root_present": false,
+    "forbidden_root": "https://ralingen.bedinnsats.no/",
+    "forbidden_root_produced": true,
+    "actual_roots": [
+      "https://www.raelingen.kommune.no/",
+      "https://raelingen.kommune.no/",
+      "https://www.ralingen.kommune.no/",
+      "https://ralingen.kommune.no/",
+      "https://ralingen.bedinnsats.no/"
+    ],
+    "failure_reason": "expected canonical root missing from historical resolver output; forbidden bedinnsats root produced (the proven defect)"
+  },
+  "green_run": {
+    "command": "python3 -m unittest runtime.discovery_v2.tests_v24",
+    "state": "runtime/discovery_v2/roots_v24.py restored (new lineage)",
+    "green_exit_code": 0,
+    "result": "OK - 4/4"
+  },
+  "historical_roots_sha_unchanged": true
+}

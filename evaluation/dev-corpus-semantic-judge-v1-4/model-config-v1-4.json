@@ -1,0 +1,43 @@
+{
+  "config_id": "MODEL-CONFIG-V1_4",
+  "status": "FROZEN",
+  "frozen_at": "2026-09-10",
+  "model": "command-code/xiaomi/mimo-v2.5",
+  "provider": "commandcode-auth local proxy",
+  "endpoint": "http://127.0.0.1:10100/v1/chat/completions",
+  "temperature": 0,
+  "max_tokens": 32768,
+  "max_tokens_classification": "PREREGISTERED_COMPLETION_HEADROOM_LIMIT (V1.3M history: 120 failed, raised to 2000 mid-task; V1.4 preregisters 32768; not a semantic parameter)",
+  "retry_policy": {
+    "schema_invalid_retry_max": 1,
+    "http_429_5xx_retry": "single technical retry after 30s, same max_tokens",
+    "finish_reason_length": "TRANSPORT_CAPACITY_FAILURE, no semantic score, no operator rerun",
+    "substantive_retry": "FORBIDDEN"
+  },
+  "timeout_seconds": 300,
+  "prompt_sha256": "b17596419cfa30d16ccec8e98af40595e63411661d65b8273cada83013dbc9a3",
+  "judge_core_sha256": "ad7f0fda0557fc74b7e337359635fd6d5f3bdda803251bd9dd49cb801be9bdc2",
+  "contract_sha256": "f545b54b3295323fde8131d048778c13354b711344cb2076eef217551952e141",
+  "schema_sha256": "b85acbed5af9227532a99dcc6d792815eb9fbfa7875d539d39435b525dd5180f",
+  "model_calibration_fixtures_sha256": "25db25a6bdc0393286c393c4dcef5d0cbbf31590e7dee12710875fa4cc24782b",
+  "official_validation_fixtures_sha256": "9e60aca6a38d84ff48aa5985f7f0b258cb7934aedf9701de8d4e415582cbdf1c",
+  "official_validation_gold_sha256": "c859a851e84957a5a30a296315080ef88ba4f8e39c60a8c5e83669760f7194dc",
+  "official_artifact_sha_registration": "config completion recorded before official run; all frozen parameters (model, temperature, max_tokens, prompt, judge_core, retry policy) unchanged",
+  "auth": "Bearer from ~/.codex/auth.json at runtime only; never printed, persisted, or hashed",
+  "prompt_iterations": {
+    "preregistered_max": 3,
+    "iteration_1": {
+      "prompt_sha256": "96cdbd064f2c382df53010035eac781f8b57e60b27b461a504c0a6959f53e65b",
+      "outcome": "INVALID_HARNESS_WIRING_BUG: DIMENSION_INSTRUCTIONS were not included in messages; model never received per-dimension contract. Results void, not a prompt iteration."
+    },
+    "iteration_2": {
+      "prompt_sha256": "c1bcbc64549b7d1fbf9688665909e5de125896d4ffae51da7a5f373534ebcadf",
+      "outcome": "24/24 schema OK, 0 transport failures, overall 19/24 = 0.7917; uncertainty 7/12"
+    },
+    "iteration_3_final": {
+      "prompt_sha256": "b17596419cfa30d16ccec8e98af40595e63411661d65b8273cada83013dbc9a3",
+      "outcome": "24/24 schema OK, 0 transport failures, overall 22/24 = 0.9167; FROZEN for official validation"
+    },
+    "note": "calibration data BURNED; fixtures not reusable for official validation"
+  }
+}

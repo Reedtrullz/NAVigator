@@ -1,0 +1,64 @@
+{
+  "version": "relation-metrics-v2",
+  "frozen": true,
+  "frozen_at": "2026-09-06",
+  "metric_separation_note": "Four independent counters. None may be redefined or substituted mid-task. The previous atom-to-product-level unsound-counter redefinition (boundary task) is documented in ../rc3-1-support-boundary/train-comparison.json and remains historical.",
+  "metrics": {
+    "ATOM_RELATION_ACCURACY": {
+      "definition": "exact correct semantic relation / all expected claim atoms (single-atom cases count one atom; compound cases count each expected atom separately)",
+      "target": ">=0.95 on fresh suite"
+    },
+    "PRODUCT_AGGREGATION_ACCURACY": {
+      "definition": "top-level aggregated compound verdict == expected rel / all compound cases (diagnostic; not a section 34 gate)",
+      "target": "informational"
+    },
+    "SUPPORT_BOUNDARY_PRECISION": {
+      "definition": "eligible proofs on COMPATIBLE cases / all eligible proofs on the frozen 80-case boundary suite",
+      "target": ">=0.99 (spec 32)"
+    },
+    "PROOF_ELIGIBILITY_ACCURACY": {
+      "definition": "atoms where (relation==ENTAILS AND boundary==BOUNDARY_COMPATIBLE) matches the expected auto-support-eligibility label / all labeled atoms",
+      "target": "diagnostic"
+    },
+    "MACRO_F1": {
+      "definition": "unweighted mean of per-class F1 over ENTAILS, CONTRADICTS, PARTIAL, RELATED_BUT_INSUFFICIENT, AMBIGUOUS on the fresh relation suite",
+      "target": ">=0.93"
+    },
+    "ENTAILS_PRECISION": {
+      "definition": "correct ENTAILS predictions / all ENTAILS predictions (fresh suite)",
+      "target": ">=0.99"
+    },
+    "CONTRADICTS_PRECISION": {
+      "definition": "correct CONTRADICTS predictions / all CONTRADICTS predictions (fresh suite)",
+      "target": ">=0.99"
+    },
+    "CRITICAL_FALSE_ENTAILS": {
+      "definition": "ENTAILS predictions on critical-flagged cases whose expected relation is not ENTAILS",
+      "target": 0
+    },
+    "CRITICAL_FALSE_CONTRADICTS": {
+      "definition": "CONTRADICTS predictions on critical-flagged cases whose expected relation is not CONTRADICTS",
+      "target": 0
+    },
+    "INSUFFICIENT_RECALL": {
+      "definition": "correct RELATED_BUT_INSUFFICIENT predictions / all expected RELATED_BUT_INSUFFICIENT atoms",
+      "target": ">=0.90"
+    }
+  },
+  "subgroup_metrics": {
+    "negation_relation_accuracy": { "target": ">=0.95" },
+    "modality_relation_accuracy": { "target": ">=0.95" },
+    "condition_exception_relation_accuracy": { "target": ">=0.95" },
+    "actor_scope_relation_accuracy": { "target": ">=0.95" },
+    "numeric_temporal_relation_accuracy": { "target": ">=0.90" }
+  },
+  "boundary_safety_gates_spec32": {
+    "FALSE_AUTO_SUPPORT_BOUNDARY": { "target": 0 },
+    "support_boundary_precision": { "target": ">=0.99" },
+    "entailed_support_recall": { "target": ">=0.85" },
+    "unsound_eligible_support_proofs": { "target": 0 }
+  },
+  "vocabulary": ["ENTAILS", "CONTRADICTS", "PARTIAL", "RELATED_BUT_INSUFFICIENT", "AMBIGUOUS"],
+  "non_relation_labels": ["AUTO_SUPPORTED", "AUTO_CONTRADICTED", "REVIEW_REQUIRED", "ABSTAIN_INSUFFICIENT", "BOUNDARY_COMPATIBLE", "BOUNDARY_BLOCKED", "BOUNDARY_UNRESOLVED", "UNRELATED"],
+  "allowed_dimension_values": ["MATCH", "LICENSED_ENTAILMENT", "MISMATCH", "UNKNOWN", "NOT_APPLICABLE"]
+}

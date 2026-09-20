@@ -1,0 +1,61 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "task_family": "measurement-v3",
+  "status": "CLOSED",
+  "terminal_status": "MEASUREMENT_V3_REMEASURE_WAVE_1_COMPLETE",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "created_utc": "2026-09-16T11:02:20Z",
+  "branch": "A_CONSENSUS_COMPARATOR_IMPLEMENTATION_DEFECT",
+  "measurement_contract_changed": false,
+  "new_llm_calls": 0,
+  "semantic_observations_changed": false,
+  "sut_rerun": false,
+  "predictions_changed": false,
+  "gold_changed": false,
+  "upstream_lineage_untouched": true,
+  "comparator_replay": {
+    "packets": 4,
+    "corrected_rule_consensus": 4,
+    "whole_object_consensus": 0,
+    "derived_verdicts": {
+      "PKT-ESC-DIS-118": "PRESENT",
+      "PKT-ESC-ROUT-026-F01": "ABSENT",
+      "PKT-ESC-ROUT-031-F01": "ABSENT",
+      "PKT-ESC-ROUT-037": "ABSENT"
+    }
+  },
+  "final_authority_mix": {
+    "TOTAL": 600,
+    "DETERMINISTIC": 508,
+    "LLM_REVIEWED": 88,
+    "LLM_ADJUDICATED": 4,
+    "HUMAN_REVIEWED": 0,
+    "PENDING": 0
+  },
+  "terminal_aggregates": {
+    "HARD_FAIL_RATE_AUTHORITATIVE": 0.415,
+    "NON_PASS_RATE_AUTHORITATIVE": 0.5068,
+    "APPLICABLE_DENOMINATOR": 588,
+    "PASS": 290,
+    "FAIL": 244,
+    "UNRESOLVED": 18,
+    "DEGRADED": 36,
+    "ABSENT_OR_NOT_APPLICABLE": 12
+  },
+  "hashes_txt_sha256": "5a08f59d7b249f5be0b669327d9cac036d0f5cb2389b31d56c94a1beae14f679",
+  "comparator_repair_freeze_manifest_sha256": "e3d651054fa473bcdf7168b57dc630fe61eb2f447e8228228a6b74d777b88479",
+  "input_integrity_all_checks_pass": true,
+  "freeze_manifest_all_pins_verified": true,
+  "terminal_manifest_sha256": "1f4aac89aa90ef2e5b7e2da2455249633cf2d2c12c7856c64b202a5e45e5e7c1",
+  "terminal_manifest_sha256_subject": "complete-wave1-measurement-results.json",
+  "lock_self_sha256_note": "recorded externally in the session report; a lock cannot contain its own hash",
+  "hard_stop": [
+    "no new LLM reviews",
+    "no human reviews",
+    "no SUT changes",
+    "no RC-04/05/06 implementation",
+    "no fresh holdout",
+    "no deploy",
+    "next owner decision uses the complete frozen Wave-1 delta"
+  ]
+}

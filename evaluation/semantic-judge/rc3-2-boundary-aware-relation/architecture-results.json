@@ -1,0 +1,1648 @@
+{
+ "provenance": {
+  "python": "3.14.6",
+  "engine_sha256": "16d4fdbf34afe1ca460c6ea2c43b2937dc1cc4c7ace21c4da6324520a28b2f20",
+  "boundary_sha256": "9200aa9033bb25eaa63dcb23552f814b0e079accff86b97c48c3ef026343fc1e",
+  "suite_sha256": "81b25913c74e8ee8079cf0f109b8f516b538e7b5b9c63873a0252580b37fc129",
+  "contract_sha256": "e7955e3da88fc6c83907903bd20514cd3e6022473716a602df73dee490dc44b5",
+  "schema_sha256": "574e01c95a85073cb81f3e9f17b43951e114e6bde875857d55746439786db920",
+  "metrics_sha256": "5c95164301a82583468956f9a66870e74f9c3eae62ac383d5e80151e22724e63"
+ },
+ "fresh_suite": {
+  "metrics": {
+   "atom_decisions": 179,
+   "atom_relation_accuracy": 0.514,
+   "macro_f1": 0.4693,
+   "entails_precision": 0.8033,
+   "contradicts_precision": 0.5833,
+   "insufficient_recall": 0.7826,
+   "critical_false_entails": 5,
+   "critical_false_contradicts": 0,
+   "per_class": {
+    "ENTAILS": {
+     "precision": 0.8033,
+     "recall": 0.5052,
+     "f1": 0.6203
+    },
+    "CONTRADICTS": {
+     "precision": 0.5833,
+     "recall": 0.2059,
+     "f1": 0.3044
+    },
+    "PARTIAL": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": null
+    },
+    "RELATED_BUT_INSUFFICIENT": {
+     "precision": 0.3495,
+     "recall": 0.7826,
+     "f1": 0.4832
+    },
+    "AMBIGUOUS": {
+     "precision": null,
+     "recall": 0.0,
+     "f1": null
+    },
+    "UNRELATED": {
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "subgroup_accuracy": {
+    "actor_scope": 0.7,
+    "compound": 0.4727,
+    "condition_exception": 0.6,
+    "condition_topup": 0.5,
+    "exception": 0.4,
+    "modality_strength": 0.6333,
+    "negation_polarity": 0.35,
+    "temporal_numeric_locality": 0.4118
+   },
+   "confusion_matrix": {
+    "AMBIGUOUS->PARTIAL": 1,
+    "CONTRADICTS->CONTRADICTS": 7,
+    "CONTRADICTS->ENTAILS": 5,
+    "CONTRADICTS->RELATED_BUT_INSUFFICIENT": 22,
+    "ENTAILS->CONTRADICTS": 3,
+    "ENTAILS->ENTAILS": 49,
+    "ENTAILS->PARTIAL": 1,
+    "ENTAILS->RELATED_BUT_INSUFFICIENT": 44,
+    "PARTIAL->RELATED_BUT_INSUFFICIENT": 1,
+    "RELATED_BUT_INSUFFICIENT->CONTRADICTS": 2,
+    "RELATED_BUT_INSUFFICIENT->ENTAILS": 7,
+    "RELATED_BUT_INSUFFICIENT->PARTIAL": 1,
+    "RELATED_BUT_INSUFFICIENT->RELATED_BUT_INSUFFICIENT": 36
+   }
+  },
+  "errors": [
+   {
+    "case_id": "BA-006",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-011",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-015",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-016",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-017",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "modality_strength",
+    "critical": true
+   },
+   {
+    "case_id": "BA-019",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R15b-universal-vs-restriction",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-024",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "modality_strength",
+    "critical": true
+   },
+   {
+    "case_id": "BA-025",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-026",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-027",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-030",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R15b-universal-vs-restriction",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "modality_strength",
+    "critical": false
+   },
+   {
+    "case_id": "BA-031",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-032",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-033",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-034",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-044",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-046",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "PARTIAL",
+    "rule": "R26c-product-row-unresolved",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-048",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-049",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-051",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "BA-052",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "BA-057",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "BA-058",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "BA-060",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "BA-064",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "BA-071",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-072",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "negation_polarity",
+    "critical": false
+   },
+   {
+    "case_id": "BA-073",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-074",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "negation_polarity",
+    "critical": false
+   },
+   {
+    "case_id": "BA-075",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-077",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-081",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-083",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "negation_polarity",
+    "critical": false
+   },
+   {
+    "case_id": "BA-085",
+    "atom": 1,
+    "expected": "AMBIGUOUS",
+    "got": "PARTIAL",
+    "rule": "R26b-uten-object-unresolved",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "negation_polarity",
+    "critical": false
+   },
+   {
+    "case_id": "BA-086",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "negation_polarity",
+    "critical": false
+   },
+   {
+    "case_id": "BA-087",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-088",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "negation_polarity",
+    "critical": true
+   },
+   {
+    "case_id": "BA-090",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "negation_polarity",
+    "critical": false
+   },
+   {
+    "case_id": "BA-093",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "temporal_numeric_locality",
+    "critical": false
+   },
+   {
+    "case_id": "BA-094",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": true
+   },
+   {
+    "case_id": "BA-095",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS",
+    "rule": "R23-shared-number",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "temporal_numeric_locality",
+    "critical": true
+   },
+   {
+    "case_id": "BA-097",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": true
+   },
+   {
+    "case_id": "BA-098",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": false
+   },
+   {
+    "case_id": "BA-099",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": true
+   },
+   {
+    "case_id": "BA-101",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS",
+    "rule": "R23-shared-number",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "temporal_numeric_locality",
+    "critical": false
+   },
+   {
+    "case_id": "BA-104",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": false
+   },
+   {
+    "case_id": "BA-105",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": true
+   },
+   {
+    "case_id": "BA-106",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "temporal_numeric_locality",
+    "critical": false
+   },
+   {
+    "case_id": "BA-108",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-110",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS",
+    "rule": "R23-shared-number",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-111",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-111",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-112",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-113",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-113",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-115",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R14-quantifier-unresolved",
+    "boundary_overall": "BOUNDARY_COMPATIBLE",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-117",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R15b-universal-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-118",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-120",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-120",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-121",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-123",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-124",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-125",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-125",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-126",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-126",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-127",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-127",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-128",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "exception",
+    "critical": true
+   },
+   {
+    "case_id": "BA-129",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-130",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-131",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-134",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "exception",
+    "critical": true
+   },
+   {
+    "case_id": "BA-137",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "exception",
+    "critical": false
+   },
+   {
+    "case_id": "BA-139",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "condition_topup",
+    "critical": false
+   },
+   {
+    "case_id": "BA-143",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-143",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-144",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-144",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-145",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-145",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-146",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-147",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "BA-149",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R28-boundary-unresolved",
+    "boundary_overall": "BOUNDARY_UNRESOLVED",
+    "group": "exception",
+    "critical": true
+   },
+   {
+    "case_id": "BA-150",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "PARTIAL",
+    "rule": "R26d-universal-vs-alternative",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "exception",
+    "critical": true
+   },
+   {
+    "case_id": "BA-151",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "RELATED_BUT_INSUFFICIENT",
+    "rule": "R27-boundary-blocked",
+    "boundary_overall": "BOUNDARY_BLOCKED",
+    "group": "exception",
+    "critical": true
+   }
+  ],
+  "critical_false_entails_rows": [
+   {
+    "case_id": "BA-077",
+    "atom": 1,
+    "expected": "CONTRADICTS"
+   },
+   {
+    "case_id": "BA-087",
+    "atom": 1,
+    "expected": "CONTRADICTS"
+   },
+   {
+    "case_id": "BA-095",
+    "atom": 1,
+    "expected": "CONTRADICTS"
+   },
+   {
+    "case_id": "BA-099",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "BA-149",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   }
+  ],
+  "critical_false_contradicts_rows": []
+ },
+ "dimension_baseline": {
+  "gold_dimension_state_distribution": {
+   "actor|ACTOR_UNRESOLVED": 1,
+   "actor|DIFFERENT_ACTOR": 9,
+   "actor|LICENSED_ACTOR_EQUIVALENCE": 1,
+   "actor|SAME_ACTOR": 12,
+   "clause_coverage|EXACT_MATCH": 1,
+   "clause_coverage|PARTIAL_OVERLAP": 4,
+   "condition|CONDITION_MISSING": 15,
+   "condition|EXACT_MATCH": 7,
+   "condition|RELEVANT_BUT_UNRESOLVED": 1,
+   "exception|EXACT_MATCH": 6,
+   "exception|EXCEPTION_CONFLICT": 11,
+   "modality|DEONTIC_OPPOSITION": 2,
+   "modality|EXACT_MATCH": 7,
+   "modality|NOT_APPLICABLE": 2,
+   "modality|SOURCE_STRONGER_THAN_CLAIM": 5,
+   "modality|SOURCE_WEAKER_THAN_CLAIM": 13,
+   "numeric_quantity|NOT_APPLICABLE": 1,
+   "numeric_quantity|NUMERIC_COMPATIBLE": 13,
+   "numeric_quantity|NUMERIC_CONFLICT": 7,
+   "polarity|EXACT_MATCH": 27,
+   "polarity|EXPLICIT_CONFLICT": 23,
+   "polarity|PARTIAL_OVERLAP": 1,
+   "polarity|RELEVANT_BUT_UNRESOLVED": 2,
+   "scope|SCOPE_COMPATIBLE": 3,
+   "scope|SCOPE_CONFLICT": 8,
+   "temporal|RELEVANT_BUT_UNRESOLVED": 1,
+   "temporal|TEMPORAL_COMPATIBLE": 8,
+   "temporal|TEMPORAL_CONFLICT": 4
+  },
+  "relation_errors_total": 87,
+  "relation_errors_with_gold_conflict_dim": 36
+ },
+ "collapse_diagnostic": {
+  "relation_errors": 87,
+  "error_groups": 24,
+  "collapsed_groups": 9,
+  "BOUNDARY_INFORMATION_COLLAPSE_RATE": 0.1034
+ },
+ "burned_train": {
+  "n": 124,
+  "relation_correct": 55,
+  "relation_accuracy": 0.4435,
+  "atom_relation_accuracy": 0.3313,
+  "rows": [
+   {
+    "case_id": "RC31-0003",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0004",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0005",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0007",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0008",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0010",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0011",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0013",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0014",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0015",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0016",
+    "expected": "PARTIAL",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0017",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0018",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0022",
+    "expected": "AMBIGUOUS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0023",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0024",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0025",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0026",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0028",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0030",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0031",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0032",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0034",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0035",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0036",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0037",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0038",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0039",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0042",
+    "expected": "CONTRADICTS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0044",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0046",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0050",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0051",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0052",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0054",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0056",
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0057",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0058",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0059",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0060",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0061",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0064",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0065",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0066",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0068",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0069",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0070",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0071",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0072",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0073",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0075",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0076",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0078",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0079",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0080",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0082",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0084",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0086",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0087",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0089",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0091",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0093",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0094",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0096",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0099",
+    "expected": "CONTRADICTS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0102",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0104",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0105",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0107",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0110",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0111",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0112",
+    "expected": "UNRELATED",
+    "got": "UNRELATED"
+   },
+   {
+    "case_id": "RC31-0113",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0114",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0116",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0117",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0119",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0120",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0122",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0123",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0124",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0126",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0127",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0129",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0130",
+    "expected": "CONTRADICTS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0131",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0132",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0133",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0134",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0135",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0136",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0137",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0138",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0140",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0142",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0143",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0144",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0147",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0148",
+    "expected": "PARTIAL",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0149",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0150",
+    "expected": "PARTIAL",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0151",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0152",
+    "expected": "AMBIGUOUS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0153",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0154",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0155",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0156",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0160",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0162",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0163",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0166",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0169",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0170",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0171",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0173",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0174",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0175",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0176",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0177",
+    "expected": "PARTIAL",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0178",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0179",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0181",
+    "expected": "ENTAILS",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0183",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0184",
+    "expected": "PARTIAL",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   }
+  ]
+ }
+}

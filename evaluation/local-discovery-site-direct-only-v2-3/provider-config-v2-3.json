@@ -1,0 +1,39 @@
+{
+  "runtime": "discovery_v2_3",
+  "external_search_required": false,
+  "providers": [
+    "site_direct"
+  ],
+  "site_direct": {
+    "root_rule": "canonical_roots(municipality) via SiteDirectProviderV23 (new-lineage subclass; frozen SiteDirectProvider untouched)",
+    "root_candidates": [
+      "https://www.<slug>.kommune.no/",
+      "https://<slug>.kommune.no/",
+      "https://www.<slug-ae-compressed>.kommune.no/",
+      "https://<slug-ae-compressed>.kommune.no/",
+      "https://<slug-ae-compressed>.bedreinnsats.no/ (only after all kommune.no variants fail; still keyword+official-domain gated)"
+    ],
+    "registry_corroboration": "Brreg Enhetsregisteret (canonical identity/homepage registry; not a service-URL lookup)",
+    "navigation_levels": [1, 2],
+    "sitemap_level": 3,
+    "max_urls_per_municipality": 16,
+    "nav_keywords_frozen": true
+  },
+  "render_fallback": {
+    "enabled": true,
+    "engine": "headless chrome --headless=new --dump-dom",
+    "virtual_time_budget_ms": 12000,
+    "timeout_s": 45,
+    "max_renders_per_municipality": 4,
+    "spa_shell_contract": "(200, '') from bounded fetch",
+    "fail_closed": true
+  },
+  "fetch": {
+    "max_response_bytes": 2097152,
+    "timeout_s": 15,
+    "retries": 0
+  },
+  "external_backends": {},
+  "phantom_fallback": false,
+  "notes": "No Brave/Tavily provider is constructed in V2.3 paths. ExternalSearchProvider/CompositeDiscoveryProvider abstractions preserved for historical use. URL budget 16 lives in the V2.3 subclass only; frozen V2 default 8 remains byte-identical in runtime/discovery_v2/providers.py (V2.1 snapshot SHA 54b38921...83806a)."
+}

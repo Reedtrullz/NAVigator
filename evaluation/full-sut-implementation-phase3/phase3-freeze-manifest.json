@@ -1,0 +1,189 @@
+{
+  "artifact": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-3 freeze",
+  "frozen_at": "2026-09-14",
+  "phase2_manifest_sha256": "f47b997d90b82c6c2bd7ecd387fc91d2783109d6374afb8429d9ae77ebd59cff",
+  "measurement_v3_sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+  "output_schema_changed": false,
+  "product_llm_calls": 0,
+  "architecture": {
+    "planner": "S9 runtime/sut/phase3/planner.py",
+    "renderer": "S10 runtime/sut/phase3/render.py",
+    "finalizer": "S11 runtime/sut/phase3/finalize.py"
+  },
+  "gates": {
+    "unit": "PASS 134/134",
+    "phase3_runner": "PASS 7/7",
+    "phase1_runner_regression": "PASS 15/15",
+    "phase2_regression": "PASS 22/22",
+    "phase3_integration": "PASS 15/15",
+    "structural_120": "PASS 120/120, 0 crashes, 0 gold leakage",
+    "determinism_replay": "PASS 120/120 byte-identical",
+    "security": "PASS",
+    "product_evaluator_imports": 0
+  },
+  "schema_pins": {
+    "runtime/sut/schemas/sut-input.schema.json": {
+      "matches_phase2_pin": true,
+      "sha256": "f05150057107ae7a832f6807d526db9f04e73b0a0a100305b6b962ff5a68296d"
+    },
+    "runtime/sut/schemas/decision-context.schema.json": {
+      "matches_phase2_pin": true,
+      "sha256": "3d51ee5b731050c229f06198c1e36377d8b7a644b3b8a78ae587366c51d7cf0a"
+    },
+    "runtime/sut/schemas/sut-output.schema.json": {
+      "matches_phase2_pin": true,
+      "sha256": "7d3c02284a5b1887caf484919c52db6b45b96b0af4e2711db8b7bce48afb2089"
+    }
+  },
+  "structural_run": {
+    "attempted": 120,
+    "crashes": 0,
+    "schema_valid": 120,
+    "gold_leakage": 0,
+    "merged_report": "evaluation/full-sut-implementation-phase3/runs/structural-120-run.json",
+    "label": "BURNED_DEV_RUN"
+  },
+  "terminal_status": "FULL_SUT_PHASE_3_READY",
+  "files": [
+    {
+      "path": "evaluation/full-sut-implementation-phase3/README.md",
+      "sha256": "411c06ad842632cc3520f7fa686aa63a10e4c3df89ae628d035f64148b4e5fac"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/analytics-scorer-fix-report.json",
+      "sha256": "ad3e5bc257c8311040b4cb866fbdf7ad932457f7f1db20e78a035943e9f2610d"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/answer-plan-contract.json",
+      "sha256": "1c3b7be8e5e78e0e97ff2e6488649dcdf1d546b0cfcf49a34eff30b9fb31a826"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/baseline-integrity.json",
+      "sha256": "ab6a43065b0902db78955920190ecb02e7f7c3d6abf7524163cb00200920dd63"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/determinism-report.json",
+      "sha256": "568b3be931ae9ef33b085eb5ff26605d7dc23d8830f9901e374aee0abe922da6"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/dev-fixtures.json",
+      "sha256": "c268afa6c870053094e73f2273b11258e8a7c5c29212a347ae53d281350e5eed"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/fail-closed-rendering-report.json",
+      "sha256": "90efa608de240c3526f7bee8e7017d4bad22a840333de29d19a3a2ced9814c78"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/final-report.md",
+      "sha256": "4839e1690179ffa737dc9becba5f860a83a7f3de810ed23b3c2dde8db22a1c57"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/gold-leak-audit.json",
+      "sha256": "9797d12b58f29b8fd72f172d472a010ae5a3af1c4103ae0867a6652800b26e7d"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/integration-fixtures.json",
+      "sha256": "3a655646ad9ca7cceaa01d8d3781ad494b7a05676335e9b21b75fe436c388238"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/integration-test-results.json",
+      "sha256": "40edef8fa3faa12b4d31484fce4f3c8f9fc47e1574ec8c8d7979ef882e848e11"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/phase3-design-lock.md",
+      "sha256": "8cd7ca9bcc54cfdad4b0273dd4afad825510d64329fad569c46d46efc7bca5c5"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/phase3-freeze-manifest.json",
+      "sha256": "445a401a9f46b4fcee151c4e025ab8b72e24744c067b42a1f34cfded6915222d"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/provenance-rendering-report.json",
+      "sha256": "adbd5253012cd6201b7acc79a376130e5ca47138ea57645f4c596d2fb271755a"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/regression-test-results.json",
+      "sha256": "29d72792725c601272d04bcbc899ab4ed4ad6fb5806588bf4207f667b14a0a32"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/rendering-contract.md",
+      "sha256": "43891c7612d74804445047cc99aeba80082a1df19ffda5aa8ae986b5c96f0718"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/runs/performance-diagnostics.json",
+      "sha256": "c80baecc43f90d8bfdfb594ab38e230c143ada772b87532c595588f2108f731d"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/runs/predictions-phase3-replay.json",
+      "sha256": "08de386eac6e78beabb2a2f3d1d3b4011b40a4514963da162e9e5de9bd7decbe"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/runs/structural-120-run.json",
+      "sha256": "975a1dfc34ad1be334b8ef8f52b64e89e373e9146c7d199d7b1710615343b09e"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/safety-rendering-report.json",
+      "sha256": "993904f148600f7d243b5ea3ac3e3ad4b85e3ee58eae3c55e465c04b4e2e0842"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/security-report.json",
+      "sha256": "df4fe72744744d29f8d3465768c68b04611e280f32cd1ee67f89d60533f97eb5"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/structural-120-report.json",
+      "sha256": "044de9cf16b3c4fbe523e7055a02df40e92edcc59cd37713a1b9200e6fad28e6"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/test_integration_phase3.py",
+      "sha256": "801b920a339963db50034a13e65ff1483d25c5f28ad030a015fb79a309902334"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/uncertainty-wording-report.json",
+      "sha256": "5ea2cb42dd00052e3fa0735edec86b5612963d0dde0a709754589b0b6bb1e369"
+    },
+    {
+      "path": "evaluation/full-sut-implementation-phase3/unit-test-results.json",
+      "sha256": "4c4c464a1e618e27961fe79509ef61b3a4c976646820ee3998dc08370af19244"
+    },
+    {
+      "path": "runtime/sut/phase3/__init__.py",
+      "sha256": "69c8bade3738d610b7d20535e3860cfb6db16373f5e188c969247d415623d69d"
+    },
+    {
+      "path": "runtime/sut/phase3/finalize.py",
+      "sha256": "965790bc394dd955f9a54ff13802ee50d2918ecd365ca69af823a590bf34ee9b"
+    },
+    {
+      "path": "runtime/sut/phase3/pipeline.py",
+      "sha256": "ee0b2d552c77f6aa77db3d399bdddf1ebe4ddfb44ffe70d67d004afecbe79239"
+    },
+    {
+      "path": "runtime/sut/phase3/planner.py",
+      "sha256": "02f151558083d7f255d43aa9b84f390bd745d03f6718540cfd228d6dd71ca913"
+    },
+    {
+      "path": "runtime/sut/phase3/render.py",
+      "sha256": "8f551b3dc7178b103bca9a543b8634450f1986921cf9473dfd4f8ab4a559c3ad"
+    },
+    {
+      "path": "runtime/sut/phase3/test_phase3.py",
+      "sha256": "d93a3563841fa7e5ee199a27c6acceb7a2d76070fff91c123030691d3e4e2875"
+    },
+    {
+      "path": "runtime/sut/schemas/COPY-MANIFEST.json",
+      "sha256": "f0eab9311db940138a7075266f7dd4cca099d2d2feff30996a2665657f434906"
+    },
+    {
+      "path": "runtime/sut/schemas/decision-context.schema.json",
+      "sha256": "3d51ee5b731050c229f06198c1e36377d8b7a644b3b8a78ae587366c51d7cf0a"
+    },
+    {
+      "path": "runtime/sut/schemas/sut-input.schema.json",
+      "sha256": "f05150057107ae7a832f6807d526db9f04e73b0a0a100305b6b962ff5a68296d"
+    },
+    {
+      "path": "runtime/sut/schemas/sut-output.schema.json",
+      "sha256": "7d3c02284a5b1887caf484919c52db6b45b96b0af4e2711db8b7bce48afb2089"
+    }
+  ]
+}

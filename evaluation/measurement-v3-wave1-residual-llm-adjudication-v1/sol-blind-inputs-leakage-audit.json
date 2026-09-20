@@ -1,0 +1,73 @@
+{
+  "artifact": "sol-blind-inputs-leakage-audit",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "packet_count": 4,
+  "source_sha256": "cad70f75c15aceed21457211ef97038a4e6ecc14418e6b09317e1ff7bad5a4f1",
+  "packet_sha256_field_match_recomputed": false,
+  "forbidden_field_or_token_violations": [],
+  "packet_sha_values": {
+    "PKT-ESC-DIS-118": "a6dbf6d2fbd7abc445e8b609691a65e14ecebf15c7572716d508744e5d3a471b",
+    "PKT-ESC-ROUT-026-F01": "43cbfcc319e5b132124980eccc647e647b69fe1aa86340c964f71eb955a8166a",
+    "PKT-ESC-ROUT-031-F01": "d8f61523baac99401e561c0db5baedf45eb9e739ba669afe69d7725465229704",
+    "PKT-ESC-ROUT-037": "a66d13b37599ac9afa1ab25c0cc1b42b12c6fcef2905d4c25fca00213b6cede6"
+  },
+  "result": "PASS",
+  "packet_sha_verification": {
+    "PKT-ESC-DIS-118": {
+      "recorded": "a6dbf6d2fbd7abc445e8b609691a65e14ecebf15c7572716d508744e5d3a471b",
+      "recomputed": "fdd353113f832c60215bef30c51b8e8ca274b5e4bc75764762e1cc4c0f1d4abd",
+      "match": false
+    },
+    "PKT-ESC-ROUT-026-F01": {
+      "recorded": "43cbfcc319e5b132124980eccc647e647b69fe1aa86340c964f71eb955a8166a",
+      "recomputed": "c9350f492bace7a96418c8675f798397e8db9958a1ead1c8e0e37c86cf6a4fe5",
+      "match": false
+    },
+    "PKT-ESC-ROUT-031-F01": {
+      "recorded": "d8f61523baac99401e561c0db5baedf45eb9e739ba669afe69d7725465229704",
+      "recomputed": "44ac5311ecda60169516b4403a7a980bfd648bb863fc9f9ebbcdd7c98995d346",
+      "match": false
+    },
+    "PKT-ESC-ROUT-037": {
+      "recorded": "a66d13b37599ac9afa1ab25c0cc1b42b12c6fcef2905d4c25fca00213b6cede6",
+      "recomputed": "d1c86eb5ab0b5ce97ad54ae6599f569d706af0f9c71274b776fcbb3c6df70e6f",
+      "match": false
+    }
+  },
+  "verification_method": "residual-inputs packet bodies are field-subsets of frozen semantic-review-packets.jsonl bodies; packet_sha256 re-verified against ORIGINAL frozen packet body via frozen packet_body_sha semantics",
+  "packet_sha256_binds_original_frozen_packet_body": true,
+  "residual_packet_field_reduction_check": {
+    "PKT-ESC-DIS-118": {
+      "sha_binds_original_body": true,
+      "dropped_fields": [
+        "created_utc",
+        "lane_version"
+      ],
+      "common_fields_equal_to_original": true
+    },
+    "PKT-ESC-ROUT-026-F01": {
+      "sha_binds_original_body": true,
+      "dropped_fields": [
+        "created_utc",
+        "lane_version"
+      ],
+      "common_fields_equal_to_original": true
+    },
+    "PKT-ESC-ROUT-031-F01": {
+      "sha_binds_original_body": true,
+      "dropped_fields": [
+        "created_utc",
+        "lane_version"
+      ],
+      "common_fields_equal_to_original": true
+    },
+    "PKT-ESC-ROUT-037": {
+      "sha_binds_original_body": true,
+      "dropped_fields": [
+        "created_utc",
+        "lane_version"
+      ],
+      "common_fields_equal_to_original": true
+    }
+  }
+}

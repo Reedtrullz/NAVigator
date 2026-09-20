@@ -1,0 +1,65 @@
+{
+  "artifact": "candidate_certification_v2_3",
+  "certification_task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-V2_3-CANDIDATE-CERTIFICATION",
+  "certification_timestamp": "2026-09-09T17:35:00Z",
+  "candidate": "LOCAL-DISCOVERY-RUNTIME-V2_3",
+  "candidate_manifest_sha256": "b4567824f054af811f4c944daa8455d3a4b29e11b7916ebb9561d98061fe1af2",
+  "protocol_sha256": "fb533d99d473a3382e2d2c52dfe72d117ceae6f07b4c1736243d3a533fff99ca",
+  "provider_config_sha256": "51ee5b28f62fea423e0f83bfb28eaa3ebe652ea91aefad7ed2ddbbbe2a714586",
+  "integrity_adjudication": "RESTORED_WITHOUT_CANDIDATE_CONTAMINATION",
+  "benchmark_deviation": {
+    "original_gate": "FAIL_108_OF_117 (preserved)",
+    "original_success": "108/117",
+    "adjudicated_external_source_unavailable": 0,
+    "runtime_internal_failures": 9
+  },
+  "availability_adjudication": "RUNTIME_FAILURE_OR_UNRESOLVED for all nine Raelingen queries (see source-availability-results.json)",
+  "replay_result": {
+    "clean_process_re_run": "22/22 route matches",
+    "critical_false_no_route": 0,
+    "unsupported_fully_verified": 0
+  },
+  "test_result": "130/130 (V1 49, V2 27, V2.1 19, V2.2 20, V2.3 15)",
+  "live_burned_result": {
+    "attempted": 13,
+    "complete": 12,
+    "incomplete": 1,
+    "runtime_internal_failures": 0,
+    "critical_false_no_route": 0,
+    "unsupported_fully_verified": 0,
+    "provenance_complete_for_authorizing_assertions": "12/12 COMPLETE runs",
+    "reproduction": "all 13 execution_status and route_state identical to the frozen historical run"
+  },
+  "external_search_calls": 0,
+  "external_credential_required": false,
+  "fresh_municipalities_used": 0,
+  "certification_gates": {
+    "candidate_integrity_19_of_19": "PASS",
+    "historical_restoration": "PASS",
+    "protocol_unchanged": "PASS",
+    "provider_config_unchanged": "PASS",
+    "test_suites_130_of_130": "PASS",
+    "replay_22_of_22": "PASS",
+    "live_burned_attempts_13_of_13": "PASS",
+    "complete_or_adjudicated_source_unavailable_13_of_13": "FAIL (Raelingen: incomplete and adjudicated as runtime defect, not source-unavailable)",
+    "runtime_internal_failures_0": "FAIL (9 adjudicated in the historical benchmark; 0 in certification re-runs)",
+    "critical_false_no_route_0": "FAIL (9 benchmark-level false no-route outcomes on an available source; 0 at route level)",
+    "unsupported_fully_verified_0": "PASS",
+    "provenance_completeness_100_percent": "PASS (for authorizing assertions)",
+    "external_search_calls_0": "PASS",
+    "fresh_municipalities_0": "PASS"
+  },
+  "root_cause_of_failure": {
+    "defect": "runtime/discovery_v2/roots.py constructs the platform root as https://<slug>.bedinnsats.no/ while its own docstring, the frozen provider-config-v2-3.json, and the benchmark gold domain all specify bedreinnsats.no",
+    "evidence": "probe-evidence-raw.json, probe-evidence-nav.json (gold host up: DNS stable x2, root 200/176590 B, sitemap 200, gold PDF 200/2022924 B; frozen nav-link logic returns 2 keyword-passing links on the gold root)",
+    "classification": "runtime implementation defect in the frozen candidate (not external source unavailability)"
+  },
+  "terminal_status": "V2_3_CERTIFICATION_FAIL_RUNTIME_CHANGE_REQUIRED",
+  "status_rationale": "Section 27 prescribes this status once the certification finds a runtime implementation defect; it is not repaired in this task. The alternative Section 29 label FAIL_SOURCE_ADJUDICATION describes the failed gate, but the defect is the established root cause, so the Section 27 status is the single terminal status.",
+  "required_next_lineage": "V2.4 (new lineage, separate task); this candidate must not enter fresh evaluation",
+  "deviations_preserved": {
+    "V2_3_ORIGINAL_BENCHMARK_GATE": "FAIL_108_OF_117",
+    "HISTORICAL_WRITE_INCIDENT": true,
+    "EVALUATION_HARNESS_INCIDENT": true
+  }
+}

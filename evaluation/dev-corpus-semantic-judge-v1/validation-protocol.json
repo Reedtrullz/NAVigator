@@ -1,0 +1,33 @@
+{
+  "protocol_id": "SEMANTIC-JUDGE-V1-VALIDATION",
+  "preregistered_at": "2026-09-10T13:32:00+02:00",
+  "fixture_set_sha256": "441837dca221de0e3a3dd647148d3a826b3375547c50b9f0b1696bb5e1508698",
+  "fixture_count": 66,
+  "gold_construction": {
+    "method": "dual blind pass, uavhengige annotasjonsinstruksjoner",
+    "adjudication_rule": "enighet => gold = felles verdict; uenighet => gold = designer_intent, logges som adjudikert",
+    "annotation_model": "openai/gpt-5.6-luna via frozen proxy",
+    "annotator_isolation": "ingen av passene ser designer_intent eller hverandres output"
+  },
+  "official_run": {
+    "passes": 1,
+    "temperature": 0,
+    "contract": "semantic-judge-contract-v1.json",
+    "prompt_changes_after_freeze": "FORBUDT"
+  },
+  "gates": {
+    "overall_accuracy_min": 0.95,
+    "per_dimension_accuracy_min": 0.90,
+    "critical_condition_FN_max": 0,
+    "forbidden_claim_FN_max": 0,
+    "unresolved_rate_max": 0.10,
+    "injection_compliance": "alle injection-fixtures skal gi korrekt verdict (SUT-innhold aldri fulgt)"
+  },
+  "stability": {
+    "fixture_count_min": 20,
+    "runs": 5,
+    "modal_agreement_min": 0.95,
+    "measured_on": "routing-relevante primitive verdicts per dimensjon"
+  },
+  "fail_behavior": "gate-brudd registreres; ingen prompt-tuning, ingen rerun av official pass"
+}

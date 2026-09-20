@@ -1,0 +1,40 @@
+{
+  "artifact": "comparator-repair-freeze-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-CONSENSUS-COMPARATOR-REPAIR-V1",
+  "created_utc": "2026-09-16T10:57:50Z",
+  "llm_calls": 0,
+  "freeze_scope": "Branch A comparator repair artifacts; upstream artifacts remain pinned in input-integrity.json",
+  "freeze_vs_derivation_ordering": "build_comparator_replay.py computed and validated the corrected-rule comparator result in memory first, then invoked the frozen judge_core_v2_13.derive_final kernel, then wrote both artifacts in a single pass; the derivation consumed comparator entries that are byte-identical to the frozen semantic-consensus-comparison.json; no observation changed before or after freeze",
+  "pins": {
+    "input-integrity.json": {
+      "sha256": "84c7050e54ff7d79fdfe5242d2da9cfbd3bd69a36effe023e14de6c75be1f3e6"
+    },
+    "consensus-rule-provenance.json": {
+      "sha256": "57cddd02c34d358ff9c48f564b605c8d54bb949b7d276f5a90b0c5dbaff86406"
+    },
+    "consensus-rule-analysis.md": {
+      "sha256": "e7788f36bc8aa0e6a8146b97663c4a6d54da382db188e053801c8b6c30702980"
+    },
+    "field-authority-map.json": {
+      "sha256": "cc98524acf742892600654daf8ae00d96eb3d0be8f82b265becf6c39da2fd72b"
+    },
+    "comparator-repair-record.json": {
+      "sha256": "df0af14e5e05a4f71ecb9dc308216888e49304b7959bde8b2f631272f7b7d68e"
+    },
+    "semantic-consensus-comparison.json": {
+      "sha256": "3c299ae0f1c5b4190a418572aebe287a3f6d2fe1069d9bcb485788195ab8d01e"
+    },
+    "derived-residual-results.json": {
+      "sha256": "8c71ca3139360b5ebf071b479e20645543a857cdc65a5bc4ee18c74f14c3dab3"
+    },
+    "complete-wave1-measurement-results.json": {
+      "sha256": "1f4aac89aa90ef2e5b7e2da2455249633cf2d2c12c7856c64b202a5e45e5e7c1"
+    },
+    "complete-wave1-aggregate-metrics.json": {
+      "sha256": "fa42af08cb5bdb35bae28ce640a14dc45682192ffc13abbd2e93cbc9b70e06e4"
+    },
+    "updated-baseline-transition-matrix.json": {
+      "sha256": "edc814685b692ee9bab564d29fe3b7599c1c371636177f20a82d84ff08a5faeb"
+    }
+  }
+}

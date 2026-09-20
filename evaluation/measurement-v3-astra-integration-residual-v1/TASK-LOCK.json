@@ -1,0 +1,61 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-INTEGRATION-AND-RESIDUAL-ADJUDICATION-V1",
+  "status": "TERMINAL",
+  "created_utc": "2026-09-16T00:00:00Z",
+  "owner_authorization": "explicit owner authorization (astra integration + residual adjudication v1)",
+  "model_invariant": {
+    "ASTRA_REASONING_EFFORT": "LOW",
+    "ASTRA_MEDIUM_CALLS": 0,
+    "ASTRA_HIGH_CALLS": 0,
+    "ASTRA_MAX_CALLS": 0,
+    "escalation_on_hard_cases": "forbidden",
+    "if_low_not_enforceable": "STOP ASTRA_LOW_REASONING_NOT_ENFORCEABLE"
+  },
+  "immutable_lineages": [
+    "evaluation/measurement-v3-burned-baseline-v1",
+    "evaluation/dev-corpus-v1-1-repair",
+    "evaluation/measurement-v3-human-review-batch-2-repaired",
+    "evaluation/measurement-v3-astra-review-batch-1"
+  ],
+  "integrity_flags": {
+    "SUT_RERUN": false,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "REVIEW_PACKETS_CHANGED": false,
+    "MEASUREMENT_CONTRACT_CHANGED": false,
+    "AI_RESULTS_MISREPRESENTED_AS_HUMAN": false
+  },
+  "no_third_pass": true,
+  "no_majority_vote": true,
+  "gpt_5_5_allowed": false,
+  "subagent_cap": 2,
+  "terminal_status": "MEASUREMENT_V3_BURNED_BASELINE_RESIDUAL_HUMAN_ADJUDICATION_REQUIRED",
+  "closed_utc": "2026-09-16",
+  "terminal": {
+    "authoritative_total": "598/600 (99.67%)",
+    "pending_human_adjudication": [
+      "ROUT-025::forbidden:01",
+      "ROUT-066::forbidden:01"
+    ],
+    "deterministic": 526,
+    "llm_reviewed": 64,
+    "llm_adjudicated": 8,
+    "human_reviewed": 0,
+    "case_coverage": "118/120 fully authoritative (ROUT-025, ROUT-066 pending)",
+    "review_freeze_manifest_sha256": "108fef5664311432f8b8a1232e734097653bd7730f7baf0c1f9faf0139e071e4",
+    "review_freeze_order": "REVIEW_OBSERVATIONS_FROZEN_BEFORE_FINAL_SCORE_DERIVATION",
+    "derivation_core": "judge_core_v2_13.py (frozen, unmodified, mechanical)",
+    "third_automated_pass_executed": false,
+    "invalid_packets_repaired": false,
+    "model_invariant_verified": "all records model=gpt-6-astra reasoning_effort=low; MEDIUM/HIGH/MAX=0",
+    "baseline_label": "BURNED_DEV_BASELINE_ONLY",
+    "interpretation_boundary": "LLM consensus is model-consistency evidence only, not human validation or certification",
+    "next_task": "human adjudication of 2 pending packets via human-residual-adjudication-packets.json, then mechanical derivation via frozen judge_core_v2_13.derive_final",
+    "next_task_starts_automatically": false,
+    "hashes_txt_file": "hashes.txt",
+    "hashes_pin_count": 22,
+    "hashes_txt_sha256": "3a3013b62a024962f6702b6c8287e42900249d52e2fc378524f049d48bd888e3",
+    "freeze_pins_verified": "19/19 OK (baseline convention: data artifacts pinned; TASK-LOCK, final-report, hashes.txt, run_adjudication.py excluded from pins)",
+    "task_lock_final_sha256_self_reference": "not_applicable_lock_is_hashed_in_hashes_txt"
+  }
+}

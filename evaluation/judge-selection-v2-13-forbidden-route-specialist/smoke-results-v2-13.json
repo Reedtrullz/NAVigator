@@ -1,0 +1,54 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_13-FORBIDDEN-ROUTE-SPECIALIST",
+  "purpose": "transport smoke: auth, model identity, schema, evidence span",
+  "smokes": [
+    {
+      "candidate": "deepseek",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 1.91,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "mimo",
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 31.35,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "ling",
+      "model": "command-code/inclusionai-ling-3.0-flash-sante:free",
+      "auth": "PASS",
+      "http_status": 200,
+      "schema_valid": true,
+      "evidence_span_transport": "PASS",
+      "verdict": "PRESENT",
+      "latency_s": 1.94,
+      "retries": 0,
+      "error": null
+    },
+    {
+      "candidate": "laguna",
+      "model": "command-code/poolside-laguna-s-2.1-free",
+      "auth": "FAIL",
+      "http_status": null,
+      "schema_valid": false,
+      "evidence_span_transport": "FAIL",
+      "verdict": null,
+      "latency_s": 30.81,
+      "retries": 1,
+      "error": "HTTP 502"
+    }
+  ]
+}

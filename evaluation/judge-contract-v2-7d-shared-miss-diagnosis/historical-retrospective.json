@@ -1,0 +1,39 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_7D-SHARED-MISS-DIAGNOSIS",
+  "classification": "BURNED_RETROSPECTIVE",
+  "historical_data_status": "V2.7 burned set remains burned; no rescoring, no gold changes, no model reruns",
+  "rows": [
+    {
+      "ids": [
+        "UNC-46",
+        "UNC-47"
+      ],
+      "verdict": "HISTORICAL_GOLD_QUESTIONABLE",
+      "rationale": "gold UNRESOLVED was unreachable through the frozen judge-core table for CONTRADICTORY_LIMITATION behavior; models answering PARTIAL per the frozen table were scored wrong by their own contract"
+    },
+    {
+      "ids": [
+        "UNC-48",
+        "UNC-49"
+      ],
+      "verdict": "GENUINELY_AMBIGUOUS_UNDER_CONTRACT",
+      "rationale": "two defensible readings exist under frozen text; realized UNC-A1/UNC-A2 ambiguity"
+    },
+    {
+      "ids": [
+        "ROUTE-22",
+        "ROUTE-23"
+      ],
+      "verdict": "CONSISTENT_WITH_CONTRACT_MODEL_BIAS",
+      "rationale": "hedged-positive routes are human-stable ACCEPTABLE on fresh set; model shared misses were verdict-level errors"
+    },
+    {
+      "ids": [
+        "FORB-13"
+      ],
+      "verdict": "CONSISTENT_WITH_CONTRACT_MODEL_ERROR",
+      "rationale": "paraphrase boundary human-stable on fresh set; model match-judgment error, FORB-A1 noted as future calibration item"
+    }
+  ],
+  "no_retroactive_repair": true
+}

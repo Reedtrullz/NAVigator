@@ -1,0 +1,319 @@
+{
+ "meta": {
+  "set": "minimal-pairs-supplement",
+  "judge": "C",
+  "model": "gpt-5.6-luna",
+  "version": "semantic-judge-v0.4.1",
+  "decompose_prompt_sha256": "072a24b107d99bc5e616201be72834c8a22327ff797e581e101aeb06395b2b64",
+  "relation_prompt_sha256": "2206ddf6fb3aaa4d3430638ba30772049277cf5d26526c9c08e906ab704d6c20",
+  "generated": "2026-08-31T23:31:57.642121+00:00"
+ },
+ "results": [
+  {
+   "id": "MP-014A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "negation pair A: source and claim agree on the negated statement",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er ikke skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": [
+      "ikke"
+     ]
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "SUPPORTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden bekrefter ordrett samme negative påstand om barnetrygd.",
+     "relation": {
+      "relation": "supports",
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "n/a",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": true,
+      "source_explicitly_negates": false,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "Barnetrygd er ikke skattepliktig.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "support_from_affirmed_negation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "SUPPORTED",
+   "confidence": 1.0,
+   "review_flag": false,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "SUPPORTED",
+   "counts": {
+    "supported": 1,
+    "contradicted": 0,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 35.2,
+   "status": "ok"
+  },
+  {
+   "id": "MP-014B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "negation",
+   "focus": null,
+   "note": "negation pair B: same source, claim flips the negation; only dimension changed vs MP-014A",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Barnetrygd er skattepliktig.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "CONTRADICTED",
+     "confidence": 1.0,
+     "near_miss": false,
+     "reason": "Kilden gjelder samme påstand, men avviser eksplisitt at barnetrygd er skattepliktig.",
+     "relation": {
+      "relation": "contradicts",
+      "relation_type": "EXPLICIT_NEGATION",
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "conflict",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": true,
+      "temporal_closure": null
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Barnetrygd er ikke skattepliktig."
+     },
+     "adjudication": {
+      "rule": "contradiction_with_evidence"
+     },
+     "review_reasons": [
+      "polarity_conflict"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "CONTRADICTED",
+   "confidence": 1.0,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient": 0,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 24.9,
+   "status": "ok"
+  },
+  {
+   "id": "MP-015A",
+   "run": 1,
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "temporal pair A: soknad before the cutoff follows the old rules",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Soknad om overgangsstonad sendt 15.06.2026 folger de gamle reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "15.06.2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Soknaden er sendt 15.06.2026, altså før skjæringsdatoen 01.07.2026.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": true
+     },
+     "evidence": {
+      "support": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026.",
+      "contradiction": ""
+     },
+     "adjudication": {
+      "rule": "contradiction_without_evidence"
+     },
+     "review_reasons": [
+      "temporal_conflict"
+     ],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 34.5,
+   "status": "ok"
+  },
+  {
+   "id": "MP-015B",
+   "run": 1,
+   "expected": "CONTRADICTED",
+   "dimension": "temporal",
+   "focus": null,
+   "note": "temporal pair B: only the date changes vs MP-015A; soknad after the cutoff follows the new rules, so 'gamle regler' conflicts",
+   "claim_type": "single",
+   "atoms": [
+    {
+     "id": "A1",
+     "text": "Soknad om overgangsstonad sendt 15.07.2026 folger de gamle reglene.",
+     "role": "core",
+     "modality": null,
+     "numbers": [],
+     "dates": [
+      "15.07.2026"
+     ],
+     "negations": []
+    }
+   ],
+   "atom_results": [
+    {
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "confidence": 0.9,
+     "near_miss": false,
+     "reason": "Søknaden er sendt 15.07.2026, altså etter skjæringsdatoen 01.07.2026; kilden angir derfor at nye regler gjelder.",
+     "relation": {
+      "relation": null,
+      "relation_type": null,
+      "source_modality": "UNKNOWN",
+      "claim_modality": "UNKNOWN",
+      "modality_relation": "UNKNOWN",
+      "numeric_relation": "n/a",
+      "negation_relation": "same",
+      "locality_relation": "UNKNOWN",
+      "scope_relation": "SAME",
+      "enumeration": "UNKNOWN",
+      "same_subject": true,
+      "same_predicate": true,
+      "source_explicitly_affirms": false,
+      "source_explicitly_negates": false,
+      "temporal_closure": true
+     },
+     "evidence": {
+      "support": "",
+      "contradiction": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026."
+     },
+     "adjudication": {
+      "rule": "no_explicit_affirmation"
+     },
+     "review_reasons": [],
+     "atom_id": "A1",
+     "status": "ok"
+    }
+   ],
+   "verdict": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "review_flag": true,
+   "safety_block": false,
+   "near_miss": false,
+   "fusion": "REVIEW_REQUIRED",
+   "counts": {
+    "supported": 0,
+    "contradicted": 0,
+    "insufficient": 1,
+    "substantive": 1,
+    "safety_unsupported": false
+   },
+   "aggregator": "aggregate-v0.3-compatible",
+   "decompose_status": "ok",
+   "judge_status": "ok",
+   "doc_titles": {},
+   "elapsed_s": 38.0,
+   "status": "ok"
+  }
+ ]
+}

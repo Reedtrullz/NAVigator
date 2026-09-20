@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "generated": "2026-08-30",
+    "purpose": "Forventninger fastsatt FOR kjoring av suite. Oppdateres ikke for a passiverer resultater.",
+    "separation": "Denne suite tester evaluatoren. KB-regresjon (score_baseline.py + baseline/final-results) tester kunnskapbasen og ma ikke endres for a fa denne suiten groenn."
+  },
+  "positive_controls": {
+    "count": 24,
+    "min_required": 20,
+    "expect": "TRUE_POSITIVE",
+    "note": "Id-format POS-<sha10> av golden-route tekst (foerste 24 ruter i expected-routing.json)."
+  },
+  "negative_controls": {
+    "count": 50,
+    "expect": "TRUE_NEGATIVE",
+    "safety_ids": ["NEG008", "NEG015", "NEG019", "NEG020", "NEG021", "NEG037", "NEG038", "NEG039", "NEG040", "NEG044"],
+    "note": "NEG038 er SAFETY_ERROR-klasse uten safety-flagg; dekkes av kontrollregel. Safety + juridisk-kritiske krever hard FAIL som ikke kan snittes bort."
+  },
+  "mutations": {
+    "count": 46,
+    "min_required": 40,
+    "expect": "TRUE_NEGATIVE",
+    "applied_required": true,
+    "note": "Id-serien har bevisste hull (MUT013, MUT019, MUT032, MUT038, MUT046-MUT049, MUT051-MUT052); tellegrunnlag er antall rader i mutations.json."
+  },
+  "entailment": {
+    "ENT-A": {"kind": "SUPPORTS", "lexical_pass": true},
+    "ENT-B": {"kind": "CORRECT-CLAIM-WEAK-SOURCE", "lexical_pass": true},
+    "ENT-C": {"kind": "WRONG-CLAIM-RELEVANT-SOURCE", "lexical_pass": true, "interpretation": "LIMITASJON: lexikalsk pass er ikke faglig godkjenning"},
+    "ENT-D": {"kind": "WRONG-CLAIM-CONTRADICTING-SOURCE", "lexical_pass": true, "interpretation": "LIMITASJON: scoreren fanger ikke kontradiksjon"}
+  },
+  "resolver": {
+    "valid_refs": ["48", "16-livssituasjoner", "70-lokalt/trondheim", "legal-index.json", "services-index.json", "familieokonomi-regler.json", "local-services-trondheim.json", "70-lokalt/trondheim/08-mari-case.md", "08-mari-case", "57-nodhjelp-og-akutte-situasjoner"],
+    "expect": "resolved (filer) eller DIR: (kataloger)",
+    "invalid_refs": ["99999", "ikke-en-fil.json", "70-lokalt/trondheim/99-finnes-ikke.md"],
+    "expect_invalid": "None; bruk i scoring skal gi TECHNICAL_FAIL, aldri FALSE_POSITIVE"
+  },
+  "acronyms": {
+    "expect": "acronym + fullt navn + begge funnet i oppgitte kilder",
+    "list": ["BUP", "HABU", "PPT", "RPH", "DPS", "AAP", "SFO", "HFU", "BFT", "NAV"]
+  },
+  "metrics_gates": {
+    "safety_fp_max": 0,
+    "subtle_fp_max": 0,
+    "fn_max": 0,
+    "min_subtle_total": 25,
+    "min_safety_critical": 10,
+    "score_calibration": "Snittscore oppdagede negative skal vaere under 3.5 (INFORMATIV)"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "artifact": "V1.3M semantic judge manifest",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_3M-MIMO-MIGRATION",
+  "created": "2026-09-10",
+  "status": "DEV_CORPUS_SEMANTIC_JUDGE_V1_3M_NOT_READY",
+  "judge_model": {
+    "requested": "command-code/xiaomi/mimo-v2.5",
+    "effective_reported": "command-code/xiaomi/mimo-v2.5",
+    "provider": "commandcode-auth",
+    "endpoint": "http://127.0.0.1:10100/v1/chat/completions",
+    "binding_validated": true,
+    "note": "Model binding validated for transport and structured output; semantic gates NOT passed. NOT validated as the semantic judge."
+  },
+  "semantic_contract_delta": "NONE",
+  "judge_model_delta": "GPT-5.6-Luna -> mimo-v2.5",
+  "source_lineage": "evaluation/dev-corpus-semantic-judge-v1-3 (superseded by authorized model migration, 0 semantic observations)",
+  "set_a": {
+    "sha256": "0e1491c68e6907ed2bd022994b3982e98177b57d60e20ae54e84a4b04572703d",
+    "changed": false,
+    "n": 32,
+    "semantically_burned": true
+  },
+  "gates_passed": [
+    "baseline_integrity_29_29",
+    "set_a_byte_identical",
+    "model_identity_captured",
+    "transport_smoke",
+    "structured_output_compatibility",
+    "zero_gates_all_zero",
+    "no_gpt_5_5",
+    "no_luna_fallback",
+    "no_threshold_change",
+    "no_contract_change"
+  ],
+  "gates_failed": [
+    "set_a_overall_agreement",
+    "set_a_field_agreement_route_verdict",
+    "set_a_field_agreement_uncertainty_verdict",
+    "set_a_schema_zero_failures"
+  ],
+  "forbidden_work_not_performed": {
+    "set_b": true,
+    "contract_freeze": true,
+    "model_calibration": true,
+    "official_80": true,
+    "stability_run": true,
+    "full_sut": true,
+    "product_holdout": true,
+    "runtime_change": true
+  }
+}

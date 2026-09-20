@@ -1,0 +1,3255 @@
+{
+ "meta": {
+  "engine": "quote-aligner-deterministic-v0.2",
+  "stage": "hybrid-gated-coverage",
+  "gate": "auto_gate.py v0.1"
+ },
+ "summary": {
+  "minimal-pairs": {
+   "n": 48,
+   "auto_decided": 22,
+   "auto_coverage": 0.4583,
+   "auto_supported": 14,
+   "auto_supported_correct": 14,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 8,
+   "auto_contradicted_correct": 8,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 26
+  },
+  "minimal-pairs-supplement": {
+   "n": 4,
+   "auto_decided": 3,
+   "auto_coverage": 0.75,
+   "auto_supported": 1,
+   "auto_supported_correct": 1,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 2,
+   "auto_contradicted_correct": 2,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 1
+  },
+  "contra-insuff": {
+   "n": 69,
+   "auto_decided": 31,
+   "auto_coverage": 0.4493,
+   "auto_supported": 0,
+   "auto_supported_correct": 0,
+   "auto_supported_precision": null,
+   "auto_contradicted": 31,
+   "auto_contradicted_correct": 31,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 38
+  },
+  "modality": {
+   "n": 30,
+   "auto_decided": 16,
+   "auto_coverage": 0.5333,
+   "auto_supported": 10,
+   "auto_supported_correct": 10,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 6,
+   "auto_contradicted_correct": 6,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 14
+  },
+  "actor-scope": {
+   "n": 30,
+   "auto_decided": 7,
+   "auto_coverage": 0.2333,
+   "auto_supported": 6,
+   "auto_supported_correct": 6,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 1,
+   "auto_contradicted_correct": 1,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 23
+  },
+  "locality": {
+   "n": 20,
+   "auto_decided": 4,
+   "auto_coverage": 0.2,
+   "auto_supported": 4,
+   "auto_supported_correct": 4,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 0,
+   "auto_contradicted_correct": 0,
+   "auto_contradicted_precision": null,
+   "review_routed": 16
+  },
+  "diagnostic-20": {
+   "n": 20,
+   "auto_decided": 9,
+   "auto_coverage": 0.45,
+   "auto_supported": 4,
+   "auto_supported_correct": 4,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 5,
+   "auto_contradicted_correct": 5,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 11
+  },
+  "novel-40": {
+   "n": 40,
+   "auto_decided": 11,
+   "auto_coverage": 0.275,
+   "auto_supported": 8,
+   "auto_supported_correct": 8,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 3,
+   "auto_contradicted_correct": 3,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 29
+  },
+  "ent": {
+   "n": 4,
+   "auto_decided": 1,
+   "auto_coverage": 0.25,
+   "auto_supported": 0,
+   "auto_supported_correct": 0,
+   "auto_supported_precision": null,
+   "auto_contradicted": 1,
+   "auto_contradicted_correct": 1,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 3
+  },
+  "calibration": {
+   "n": 84,
+   "auto_decided": 14,
+   "auto_coverage": 0.1667,
+   "auto_supported": 1,
+   "auto_supported_correct": 1,
+   "auto_supported_precision": 1.0,
+   "auto_contradicted": 13,
+   "auto_contradicted_correct": 13,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 70
+  },
+  "holdout-v2-burned": {
+   "n": 40,
+   "auto_decided": 3,
+   "auto_coverage": 0.075,
+   "auto_supported": 0,
+   "auto_supported_correct": 0,
+   "auto_supported_precision": null,
+   "auto_contradicted": 3,
+   "auto_contradicted_correct": 3,
+   "auto_contradicted_precision": 1.0,
+   "review_routed": 37
+  }
+ },
+ "rows": [
+  {
+   "id": "MP-001A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-001B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-002A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-002B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-003A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-003B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-004A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-004B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-005A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-005B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-006A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-006B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-007A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-007B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-008A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-008B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-009A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-009B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-010A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-010B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-011A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-011B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-012A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-012B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-013A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-013B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-014A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-014B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-015A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-015B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-016A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-016B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-017A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-017B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-018A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-018B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-019A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-019B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-020A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-020B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-021A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-021B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-022A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-022B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-023A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-023B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-024A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-024B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs"
+  },
+  {
+   "id": "MP-014A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "minimal-pairs-supplement"
+  },
+  {
+   "id": "MP-014B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs-supplement"
+  },
+  {
+   "id": "MP-015A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "minimal-pairs-supplement"
+  },
+  {
+   "id": "MP-015B",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "minimal-pairs-supplement"
+  },
+  {
+   "id": "CI-001",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-002",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-003",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-004",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-005",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-006",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-007",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-008",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-009",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-010",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-011",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-012",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-013",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-014",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-015",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-016",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-017",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-018",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-019",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-020",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-021",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-022",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-023",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-024",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_numeric_conflict",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-025",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-026",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-027",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-028",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-029",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-030",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-031",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-032",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-033",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-034",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-035",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-036",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-037",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-038",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-039",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-040",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-041",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-042",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-043",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-044",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-045",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-046",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-047",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-048",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-049",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-050",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-051",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-052",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-053",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-054",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-055",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-056",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-057",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-058",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-059",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-060",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-060B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-061",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-062",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-063",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-064",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-065",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-066",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-067",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "CI-068",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "contra-insuff"
+  },
+  {
+   "id": "MOD-01",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-02",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-03",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-04",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-05",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-06",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-07",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-08",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-09",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-10",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-11",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-12",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-13",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-14",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-15",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-16",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-17",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-18",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-19",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_weak_span:score=0.50",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-20",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-21",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-22",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-23",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-24",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-25",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-26",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-27",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-28",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "modality"
+  },
+  {
+   "id": "MOD-29",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "modality"
+  },
+  {
+   "id": "MOD-30",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "modality"
+  },
+  {
+   "id": "ACT-01",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-02",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-03",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-04",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-05",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-06",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-07",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-08",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-09",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-10",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-11",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-12",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-13",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-14",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-15",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-16",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-17",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-18",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-19",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-20",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-21",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-22",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-23",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-24",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-25",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-26",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-27",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-28",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-29",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "actor-scope"
+  },
+  {
+   "id": "ACT-30",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "actor-scope"
+  },
+  {
+   "id": "LOC-01",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "locality"
+  },
+  {
+   "id": "LOC-02",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-03",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-04",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-05",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "locality"
+  },
+  {
+   "id": "LOC-06",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-07",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-08",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-09",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "locality"
+  },
+  {
+   "id": "LOC-10",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-11",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-12",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-13",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-14",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-15",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-16",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "locality"
+  },
+  {
+   "id": "LOC-17",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-18",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-19",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "LOC-20",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "locality"
+  },
+  {
+   "id": "D20-M1",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-M2",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-M3",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-M4",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-M5",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-L1",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-L2",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-L3",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-L4",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-L5",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-A1",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-A2",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-A3",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-A4",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-A5",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-C1",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-C2",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-C3",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-C4",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "D20-C5",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "diagnostic-20"
+  },
+  {
+   "id": "N-S1",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S2",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S3",
+   "expected": "SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:cost_axis_opposition",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S4",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S5",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S6",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S7",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S8",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S9",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-S10",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-A1",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-A2",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-A3",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-A4",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-A5",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-A6",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-L1",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-L2",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-L3",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-L4",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-L5",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-L6",
+   "expected": "SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-C1",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-C2",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-C3",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-C4",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-C5",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-C6",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-R1",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-R2",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-R3",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-R4",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-R5",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-R6",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-O1",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-O2",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-O3",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-O4",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "novel-40"
+  },
+  {
+   "id": "N-O5",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "N-O6",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "novel-40"
+  },
+  {
+   "id": "ENT-A",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "ent"
+  },
+  {
+   "id": "ENT-B",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "ent"
+  },
+  {
+   "id": "ENT-C",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "ent"
+  },
+  {
+   "id": "ENT-D",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "ent"
+  },
+  {
+   "id": "CAL001",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL002",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL003",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL004",
+   "expected": "SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL005",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL006",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL007",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL008",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL009",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL010",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL011",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL012",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL013",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL014",
+   "expected": "SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL015",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL016",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL017",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL018",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "AUTO_SUPPORTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL019",
+   "expected": "SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL020",
+   "expected": "SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL021",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL022",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL023",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL024",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL025",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL026",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL027",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL028",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL029",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL030",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL031",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL032",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL033",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL034",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL035",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL036",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL037",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL038",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL039",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL040",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL041",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL042",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL043",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL044",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "engine_review_flag",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL045",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL046",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL047",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL048",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL049",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL050",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL051",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL052",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL053",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL054",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL055",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL056",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL057",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL058",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL059",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL060",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL061",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL062",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL063",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL064",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL065",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL066",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "universal_quantifier_support",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL067",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL068",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL069",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL070",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "support_undercovered:2",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL071",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL072",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL073",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "first_person_locality_unverified",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL074",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL075",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL076",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL077",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL078",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL079",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL080",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "calibration"
+  },
+  {
+   "id": "CAL086",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL087",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "engine_review_flag",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL088",
+   "expected": "SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "calibration"
+  },
+  {
+   "id": "CAL089",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "calibration"
+  },
+  {
+   "id": "HOL001",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_numeric_conflict",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL002",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL003",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL004",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL005",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL006",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_numeric_conflict",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL007",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL008",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "engine_review_flag",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL009",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL010",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL011",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL012",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL013",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL014",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_numeric_conflict",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL015",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "engine_review_flag",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL016",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL017",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL018",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL019",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL020",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "compound_claim",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL021",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL022",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL023",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL024",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL025",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "PARTIALLY_SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL026",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL027",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL028",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "engine_review_flag",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL029",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "AUTO_CONTRADICTED",
+   "gate_reason": null,
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL030",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "causal_claim",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL031",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL032",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL033",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL034",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL035",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL036",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "CONTRADICTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "engine_review_flag",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL037",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL038",
+   "expected": "CONTRADICTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL039",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "INSUFFICIENT_EVIDENCE",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "set": "holdout-v2-burned"
+  },
+  {
+   "id": "HOL040",
+   "expected": "PARTIALLY_SUPPORTED",
+   "raw_verdict": "SUPPORTED",
+   "category": "REVIEW_ROUTE",
+   "gate_reason": "numeric_support_binding",
+   "set": "holdout-v2-burned"
+  }
+ ]
+}

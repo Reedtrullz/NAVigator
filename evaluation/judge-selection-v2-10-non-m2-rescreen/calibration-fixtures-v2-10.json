@@ -1,0 +1,452 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_10-BOUNDARY-EXTENSION-AND-RESCREEN",
+  "purpose": "burned calibration for prompt iterations; never official validation data",
+  "fixture_count": 25,
+  "trap_count": 12,
+  "trap_ids": [
+    "V210C-ROUTE-03",
+    "V210C-ROUTE-04",
+    "V210C-ROUTE-05",
+    "V210C-ROUTE-07",
+    "V210C-ROUTE-08",
+    "V210C-FORB-02",
+    "V210C-FORB-03",
+    "V210C-FORB-04",
+    "V210C-FORB-05",
+    "V210C-UNC-02",
+    "V210C-UNC-04",
+    "V210C-UNC-05"
+  ],
+  "gold_unresolved_trap_ids": [
+    "V210C-ROUTE-03",
+    "V210C-ROUTE-04",
+    "V210C-ROUTE-05",
+    "V210C-ROUTE-07",
+    "V210C-ROUTE-08",
+    "V210C-UNC-02",
+    "V210C-UNC-05"
+  ],
+  "fixture_hashes": {
+    "V210C-ROUTE-01": "94c8b34daf21063002494a6f5e8080f1580647a694c8704753e31d762cb57fb8",
+    "V210C-ROUTE-02": "d73d8fad00707e2fa9f646a010e143dbf8114ca6c824e19dba58977e11924662",
+    "V210C-ROUTE-03": "de62b0c4aa7cfc754bd2bd107076a0202308c1a930af40996c4d846c7ceab863",
+    "V210C-ROUTE-04": "7a521a90224c5e22eb6ea021fa02f3ce3a971a54bee1f7757c660c0700345b2a",
+    "V210C-ROUTE-05": "e466b9ecc3b0501f129d6bd56eadc394f7c836cfa939c014af3f793b58918a34",
+    "V210C-ROUTE-06": "e836d6b55870bd9cd24c7648816207b87aedbb994bc364573d7df921dc616e2b",
+    "V210C-ROUTE-07": "2485e9dc910695b204bd0c1d76f390889e96e836465260f3e81aa546fb0d1c7b",
+    "V210C-ROUTE-08": "e9199e32f756370ac3e072ca324b28ae66c5cf3b910a16a6e99e047f1b288f5d",
+    "V210C-ROUTE-09": "fd3e4b6692fdd0fe2dd6e9fa13fa9a01e8c207bfffaa1bf4a3d8772e16448fec",
+    "V210C-ROUTE-10": "3b7051b48cc3f10857736394caee938cc7ed9282d6f841412bc50b71e88eb611",
+    "V210C-FORB-01": "491b3d049a8d328c149db423d7cdf9f71f3017d258d86c8c7a9f4db50e65ef3f",
+    "V210C-FORB-02": "c0ae6e953c82b76e8b2f3b212d4c09ce6c8c6847d180d26fb37f81f9cb59b034",
+    "V210C-FORB-03": "4e0bb02035dc3b46818749ff6bb26e20f7b076d902f5c3138b6070d21d11f623",
+    "V210C-FORB-04": "72e9a143810a40874a26b69ca5d64abf3207a5065df5d85cdc97db9816f4cae5",
+    "V210C-FORB-05": "162c3a805439830ed6c16cf68014942cc009be366f70170b9dff9e0db5109fcd",
+    "V210C-FORB-06": "e657771f79283a319b83fb5001da959aed5be12da4e9565541d2b1704202d699",
+    "V210C-FORB-07": "11c9bc3f2bea22e03680270bbaa80799f3af8673cb44e9b5ad606d639093fc2a",
+    "V210C-UNC-01": "d603cae02541db51dc551a1e52d98ecfa6ef18be66be0433f527f87a401565d7",
+    "V210C-UNC-02": "c624e4794a9701d812d13147881f78159409508e0558af9c3d7e64b7ae4271d8",
+    "V210C-UNC-03": "4670e6468b1c066a322a7ebd2bc65e3c4aa2d6e05b09d8c0f7ecf074e4f447ff",
+    "V210C-UNC-04": "dc0d8c03f698d80f89a506c01f5b9c23df25eea797679f9a3ea2c43975a8af75",
+    "V210C-UNC-05": "2fe87d0360b7796074d6dfdfb6c4e0073b719ceca2d9c9a8594e7895a009ea75",
+    "V210C-UNC-06": "e0879d07a063d160f1b2d0cca8f7cdf95a401b0f8e70411ec5d5514b0d3a40c4",
+    "V210C-UNC-07": "2ed12a292060476775f05e8139400534ded8cd761a4e183704ecc7060c5795ea",
+    "V210C-UNC-08": "63371bb64f4002f2e422814481784b2e6e47950bb7d24dade15b6ce42d0eba02"
+  },
+  "fixtures": [
+    {
+      "id": "V210C-ROUTE-01",
+      "dim": "route",
+      "trap": false,
+      "ctx": "Forelder spor om sykkelverksted for ungdom.",
+      "crit": "Gjenbrukssentralen gir ungdom gratis sykkelverksted pa tirsdager.",
+      "sut": "Sykkelverkstedet pa gjenbrukssentralen er gratis for ungdom pa tirsdager.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "ASSERTED",
+        "proposed_verdict": "ACCEPTABLE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ACCEPTABLE"
+    },
+    {
+      "id": "V210C-ROUTE-02",
+      "dim": "route",
+      "trap": false,
+      "ctx": "Ungdom spor om ting aa gjore pa fredager.",
+      "crit": "Ungdomskafeen holder apent for ungdom 13-19 hver fredag.",
+      "sut": "Ungdomskafeen er trolig apen for dere pa fredager; det er et fornuftig sted a starte.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "HEDGED_ASSERTION",
+        "proposed_verdict": "ACCEPTABLE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ACCEPTABLE"
+    },
+    {
+      "id": "V210C-ROUTE-03",
+      "dim": "route",
+      "trap": true,
+      "ctx": "Elev onsker rask hjelp i skoletida.",
+      "crit": "Helsesykepleieren pa ungdomsskolen tar imot drop-in tirsdager.",
+      "sut": "Snakk med helsesykepleieren pa skolen. Nei, det stemmer ikke lenger.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "SELF_RETRACTED",
+        "proposed_verdict": "UNRESOLVED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-ROUTE-04",
+      "dim": "route",
+      "trap": true,
+      "ctx": "Forelder sokjer kveldstilbud for ungdom.",
+      "crit": "Fritidsklubben arrangerer ungdomskveld annenhver torsdag.",
+      "sut": "Fritidsklubben har ikke kveldstilbud lengre.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "NEGATED",
+        "proposed_verdict": "UNRESOLVED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-ROUTE-05",
+      "dim": "route",
+      "trap": true,
+      "ctx": "Ungdom trenger noen aa snakke med.",
+      "crit": "RPH tar imot unge 16-23 uten henvisning.",
+      "sut": "Det finnes vel en eller annen instans som kan hjelpe deg.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "UNRESOLVED",
+        "proposed_verdict": "UNRESOLVED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-ROUTE-06",
+      "dim": "route",
+      "trap": false,
+      "ctx": "Bruker onsker nybegynneropplaring ute i naturen.",
+      "crit": "Ungdomskontoret arrangerer soppturer for nybegynnere i september.",
+      "sut": "Ta soppturer hos pensjonistforeningen.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "ASSERTED",
+        "proposed_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "NO_ACCEPTABLE_ROUTE"
+    },
+    {
+      "id": "V210C-ROUTE-07",
+      "dim": "route",
+      "trap": true,
+      "ctx": "Forelder refererer laererens raad.",
+      "crit": "Skolen tilbyr leksehjelp onsdager etter timene.",
+      "sut": "Laereren sa at skolen tilbyr leksehjelp onsdager.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "QUOTED_ONLY",
+        "proposed_verdict": "UNRESOLVED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-ROUTE-08",
+      "dim": "route",
+      "trap": true,
+      "ctx": "Ungdom onsker si si fram om tilbud.",
+      "crit": "Ungdomspanelet tar imot forslag fra ungdom i kommunen.",
+      "sut": "Hvis det fantes et ungdomsraad, ville det vaert riktig sted for innspill.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "HYPOTHETICAL_ONLY",
+        "proposed_verdict": "UNRESOLVED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-ROUTE-09",
+      "dim": "route",
+      "trap": false,
+      "ctx": "Forelder sjekker hva verkstedet innebærer.",
+      "crit": "Bibliotekets ungdomsverksted er gratis og inkluderer materialer.",
+      "sut": "Verkstedet pa biblioteket er gratis, men materialer ma du betale selv.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "ASSERTED",
+        "proposed_verdict": "PARTIAL"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "PARTIAL"
+    },
+    {
+      "id": "V210C-ROUTE-10",
+      "dim": "route",
+      "trap": false,
+      "ctx": "Ungdom trenger billig transport til fritidsaktivitet.",
+      "crit": "Ungdomskontoret gir gratis busskort til ungdom under 20.",
+      "sut": "Henvend deg pa ungdomskontoret for gratis busskort.",
+      "inter": {
+        "route_proposition_present": "YES",
+        "route_speaker_commitment": "ASSERTED",
+        "proposed_verdict": "ACCEPTABLE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ACCEPTABLE"
+    },
+    {
+      "id": "V210C-FORB-01",
+      "dim": "forbidden",
+      "trap": false,
+      "ctx": "Bruker spor om ferieordning for ungdom.",
+      "crit": "Kommunen tilbyr ikke fritidsferieordning for ungdom under 18.",
+      "sut": "Fritidsferieordningen for ungdom under 18 finnes ikke i kommunen.",
+      "inter": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "NEGATED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ABSENT"
+    },
+    {
+      "id": "V210C-FORB-02",
+      "dim": "forbidden",
+      "trap": true,
+      "ctx": "Forelder har horst at badelandet er stengt.",
+      "crit": "Badelandet er stengt for store grupper.",
+      "sut": "Det stemmer ikke at badelandet er stengt for store grupper.",
+      "inter": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "NEGATED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ABSENT"
+    },
+    {
+      "id": "V210C-FORB-03",
+      "dim": "forbidden",
+      "trap": true,
+      "ctx": "Bruker gjengir det en venn fortalte.",
+      "crit": "Ungdomskortet gir ikke gratis inngang pa kinoen.",
+      "sut": "En venn sa at ungdomskortet ikke gir gratis kino-inngang.",
+      "inter": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "QUOTED_ONLY"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ABSENT"
+    },
+    {
+      "id": "V210C-FORB-04",
+      "dim": "forbidden",
+      "trap": true,
+      "ctx": "Bruker trekker tilbake utsagnet om kulturskolen.",
+      "crit": "Kulturskolen tilbyr ikke fiolintimer for nybegynnere.",
+      "sut": "Kulturskolen har sluttet med fiolintimer. Beklager, det var feil; timene fortsetter.",
+      "inter": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "SELF_RETRACTED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ABSENT"
+    },
+    {
+      "id": "V210C-FORB-05",
+      "dim": "forbidden",
+      "trap": true,
+      "ctx": "Forelder spekulerer i kontingentstotte.",
+      "crit": "Idrettslaget dekker ikke medlemskontingent for unge under 16.",
+      "sut": "Hvis idrettslaget ikke dekket kontingenten, ville det staatt i vedtekene.",
+      "inter": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "HYPOTHETICAL_ONLY"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ABSENT"
+    },
+    {
+      "id": "V210C-FORB-06",
+      "dim": "forbidden",
+      "trap": false,
+      "ctx": "Ung voksen onsker lavterskelhjelp.",
+      "crit": "Kommunen har ikke lavterskeltilbud for unge voksne 20-25.",
+      "sut": "Etter det jeg vet, finnes ikke noe slikt lavterskeltilbud i kommunen.",
+      "inter": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "HEDGED_ASSERTION"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "PRESENT"
+    },
+    {
+      "id": "V210C-FORB-07",
+      "dim": "forbidden",
+      "trap": false,
+      "ctx": "Bruker svarer utenom sporsmalet.",
+      "crit": "Svommehallen holder ikke kveldsapent i juli.",
+      "sut": "Korpslokalet er stengt om kvelden.",
+      "inter": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "ASSERTED"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "ABSENT"
+    },
+    {
+      "id": "V210C-UNC-01",
+      "dim": "uncertainty",
+      "trap": false,
+      "ctx": "Bruker spor om skatehallen.",
+      "crit": "Svaret maa presisere at apningstiden for skatehallen ikke er bekreftet.",
+      "sut": "Jeg har ikke kunnet bekrefte apningstiden for skatehallen.",
+      "inter": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "EXPLICIT_LIMITATION"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "SATISFIED"
+    },
+    {
+      "id": "V210C-UNC-02",
+      "dim": "uncertainty",
+      "trap": true,
+      "ctx": "Bruker spor om apningstiden i helgen.",
+      "crit": "Svaret maa presisere at apningstiden for skatehallen ikke er bekreftet.",
+      "sut": "Apningstiden er ikke bekreftet. Jo, den er bekreftet til klokka ti.",
+      "inter": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "CONTRADICTORY_LIMITATION"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-UNC-03",
+      "dim": "uncertainty",
+      "trap": false,
+      "ctx": "Bruker ber om status for skatehallen.",
+      "crit": "Svaret maa ikke fremsette konklusjonen om at skatehallen er lagt ned.",
+      "sut": "Statusen for skatehallen faar du avklart hos fritidskontoret.",
+      "inter": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "NONE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "SATISFIED"
+    },
+    {
+      "id": "V210C-UNC-04",
+      "dim": "uncertainty",
+      "trap": true,
+      "ctx": "Bruker onsker en endelig vurdering.",
+      "crit": "Svaret maa ikke fremsette konklusjonen om at skatehallen er lagt ned.",
+      "sut": "Skatehallen er definitivt lagt ned.",
+      "inter": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_output_behavior": "OVERCONFIDENT_ASSERTION"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "VIOLATED"
+    },
+    {
+      "id": "V210C-UNC-05",
+      "dim": "uncertainty",
+      "trap": true,
+      "ctx": "Bruker spor om adgang til skatehallen.",
+      "crit": "Svaret maa presisere at apningstiden for skatehallen ikke er bekreftet.",
+      "sut": "Apningstiden for skatehallen er vel, altsaa, noe saant.",
+      "inter": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "UNCLEAR_PROSE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "UNRESOLVED"
+    },
+    {
+      "id": "V210C-UNC-06",
+      "dim": "uncertainty",
+      "trap": false,
+      "ctx": "Bruker onsker et forsiktig svar.",
+      "crit": "Svaret maa presisere at apningstiden for skatehallen ikke er bekreftet.",
+      "sut": "Skatehallen holder sannsynligvis apent, men jeg er ikke sikker.",
+      "inter": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_output_behavior": "HEDGE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "PARTIAL"
+    },
+    {
+      "id": "V210C-UNC-07",
+      "dim": "uncertainty",
+      "trap": false,
+      "ctx": "Bruker spor om pris og status for aktiviteten.",
+      "crit": "Svaret maa opplyse at prisene ikke er verifisert, og den maa ikke konkludere at aktiviteten er innstilt.",
+      "sut": "Jeg har ikke verifisert prisene. Statusen ma avklares hos ungdomskontoret.",
+      "inter": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "compound_components": [
+          [
+            "EXPRESSION",
+            "EXPLICIT_LIMITATION"
+          ],
+          [
+            "NON_ASSERTION",
+            "NONE"
+          ]
+        ]
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "SATISFIED"
+    },
+    {
+      "id": "V210C-UNC-08",
+      "dim": "uncertainty",
+      "trap": false,
+      "ctx": "Bruker spor om pris pa skatehallen.",
+      "crit": "Skatehallen koster 20 kroner for ungdom.",
+      "sut": "Skatehallen koster 20 kroner for ungdom.",
+      "inter": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_output_behavior": "NONE"
+      },
+      "tag": "calib",
+      "safety": false,
+      "verdict": "NOT_REQUIRED"
+    }
+  ]
+}

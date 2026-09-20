@@ -1,0 +1,47 @@
+{
+  "task_id": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-1",
+  "status": "TERMINAL",
+  "spec": "evaluation/full-sut-architecture-v1/next-task-phase1.md",
+  "spec_sha256": "91d85301171b965f2af84ec8480f5368b60db67ba550affc60b49e6bd88a14c8",
+  "authoritative_architecture": "evaluation/full-sut-architecture-v1",
+  "architecture_status": "FULL_SUT_ARCHITECTURE_V1_READY",
+  "measurement_baseline": {
+    "manifest": "evaluation/measurement-v3-combined-freeze/v3-manifest.json",
+    "sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+    "status": "MEASUREMENT_V3_COMBINED_FREEZE_READY"
+  },
+  "gate0": {
+    "verified_at": "2026-09-14",
+    "v3_manifest_sha_match": true,
+    "v3_pins_verified": 22,
+    "architecture_files": 32,
+    "adr_count": 6,
+    "architecture_task_lock": "TERMINAL/FULL_SUT_ARCHITECTURE_V1_READY",
+    "historical_writes_since_2026-09-14T07:40": 0,
+    "disk_free_gib": 65
+  },
+  "scope": [
+    "runtime/sut package (schemas, context, pipeline skeleton S1-S11)",
+    "frozen seed data files",
+    "evaluation/full-sut-implementation/sut_runner (loader + harness)",
+    "unit tests per next-task-phase1.md"
+  ],
+  "forbidden": [
+    "phase2_business_logic",
+    "scoring_in_runner",
+    "gold_in_predictions",
+    "changes_to_measurement_v3_or_scorer_or_discovery_runtimes",
+    "llm_stages",
+    "live_discovery",
+    "deployment",
+    "gpt_5_5"
+  ],
+  "terminal_status": "FULL_SUT_PHASE_1_READY",
+  "terminal_at": "2026-09-14",
+  "freeze": {
+    "candidate_hashes": "phase1-freeze/hashes.txt",
+    "manifest": "phase1-freeze/phase1-freeze-manifest.json",
+    "acceptance_run": "runs/20260914T0830Z-phase1-freeze"
+  },
+  "gpt_5_5_allowed": false
+}

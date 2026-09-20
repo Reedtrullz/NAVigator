@@ -1,0 +1,91 @@
+{
+  "artifact": "input-integrity",
+  "task_id": "NAV-EXPLORE-POST-WAVE2-P0-ROUTING-WAVE3-SCOPE-GATE-V1",
+  "verification_method": "sha256_recompute_from_disk",
+  "all_pins_match": true,
+  "pins": [
+    {
+      "name": "wave2_measurement_freeze_manifest",
+      "path": "evaluation/measurement-v3-remeasure-repair-wave-2/wave2-measurement-freeze-manifest.json",
+      "expected_sha256": "f5e0a0193d9ddb4da7046ba9719c0d52dafa2982eee1bcac6c11393d5391fc30",
+      "observed_sha256": "f5e0a0193d9ddb4da7046ba9719c0d52dafa2982eee1bcac6c11393d5391fc30",
+      "match": true
+    },
+    {
+      "name": "wave2_candidate_manifest",
+      "path": "evaluation/full-sut-repair-wave-2-v1/repaired-sut-manifest.json",
+      "expected_sha256": "8369e21309d7b53413bb6ab93ba7e0983769e707ca7680803237edc1a39ee22e",
+      "observed_sha256": "8369e21309d7b53413bb6ab93ba7e0983769e707ca7680803237edc1a39ee22e",
+      "match": true
+    },
+    {
+      "name": "wave2_combined_measurement_results",
+      "path": "evaluation/measurement-v3-remeasure-repair-wave-2/wave2-combined-measurement-results.json",
+      "expected_sha256": "005eaebf901a3cf491d67a60738a28ca6ee30e531db47f4069bab2bb2e4b30e3",
+      "observed_sha256": "005eaebf901a3cf491d67a60738a28ca6ee30e531db47f4069bab2bb2e4b30e3",
+      "match": true
+    },
+    {
+      "name": "wave1_combined_measurement_results",
+      "path": "evaluation/measurement-v3-remeasure-repair-wave-1/wave1-combined-measurement-results.json",
+      "expected_sha256": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+      "observed_sha256": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+      "match": true
+    },
+    {
+      "name": "original_baseline_results",
+      "path": "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json",
+      "expected_sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+      "observed_sha256": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+      "match": true
+    },
+    {
+      "name": "judge_core_v2_13",
+      "path": "evaluation/judge-selection-v2-13-forbidden-route-specialist/judge_core_v2_13.py",
+      "expected_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+      "observed_sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+      "match": true
+    },
+    {
+      "name": "corpus_manifest",
+      "path": "evaluation/dev-corpus-v1-1-repair/manifest.json",
+      "expected_sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17",
+      "observed_sha256": "0df5c956e8a5d340b90df91d6c0ccb689dccc9a6700b252b7c602c3047cfca17",
+      "match": true
+    }
+  ],
+  "wave2_hashcheck": {
+    "ok_count": 25,
+    "failed_count": 1,
+    "failed_files": [
+      "TASK-LOCK.json (Wave-2)"
+    ],
+    "note": "Wave-2 hashes.txt marks its own TASK-LOCK.json FAILED because the lock was closed post-freeze; documented deviation from the Wave-2 task itself, not artifact drift. All 25 other pins OK."
+  },
+  "wave2_coverage": {
+    "TOTAL_CRITERIA": 600,
+    "DETERMINISTIC": 506,
+    "LLM_REVIEWED": 90,
+    "LLM_ADJUDICATED": 3,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_LLM_ADJUDICATION": 1,
+    "AUTHORITATIVE_TOTAL": 599,
+    "AUTHORITATIVE_PCT": 99.83
+  },
+  "wave2_state_expectations": {
+    "PASS": 317,
+    "FAIL": 218,
+    "UNRESOLVED": 16,
+    "DEGRADED": 36,
+    "PENDING": 1,
+    "HARD_FAIL": 0,
+    "improved_criteria": 31,
+    "regressed_criteria": 9
+  },
+  "route_state": "PASS 0/108 (W2)",
+  "constraints_respected": {
+    "read_only": true,
+    "no_resample_ROUT026": true,
+    "pending_carried_as": "PENDING_LLM_ADJUDICATION"
+  }
+}

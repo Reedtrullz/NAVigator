@@ -1,0 +1,1259 @@
+{
+  "artifact": "burned-v1-4-diagnostic-replay",
+  "replay_type": "BURNED_DIAGNOSTIC_REPLAY",
+  "purpose": "Diagnostic replay of the frozen V1.6A pre-classifier over the burned V1.4 official fixtures to estimate judge-call reduction and check preregistered boundary probes. Not certification evidence.",
+  "source": "../dev-corpus-semantic-judge-v1-4/official-validation-fixtures.json (100 fixtures)",
+  "engine_sha256": "ccd30e7f7fae7e9090c9de443372b15bf3d2341cb447d800c1d55058f6f2c467",
+  "criterion_mode": "text_only; V1.4 gold_criterion is prose, engine expects structured criterion dict, so criterion was passed as None (engine default). OVERCONFIDENT_ASSERTION cannot fire in this mode.",
+  "families": {
+    "route_correctness": {
+      "n": 25,
+      "deterministically_resolved": 10,
+      "coverage": 0.4,
+      "label_distribution": {
+        "VAGUE_NONCOMMITTAL": 4,
+        "ASSERTED": 3,
+        "NEGATED": 1,
+        "SELF_RETRACTED": 1,
+        "HYPOTHETICAL_ONLY": 1
+      }
+    },
+    "required_uncertainty": {
+      "n": 25,
+      "deterministically_resolved": 25,
+      "coverage": 1.0,
+      "label_distribution": {
+        "NONE": 18,
+        "EXPLICIT_LIMITATION": 4,
+        "HEDGE": 3
+      }
+    }
+  },
+  "judge_call_reduction_estimate": {
+    "boundary_dimension_fixtures": 50,
+    "deterministically_resolved": 35,
+    "boundary_resolved_no_judge_call": 35,
+    "still_judge_required": 15,
+    "estimated_judge_call_reduction_pct": 70.0,
+    "non_boundary_fixtures": 50,
+    "non_boundary_note": "critical_condition and forbidden_claim fixtures have no matching preclassifier dimension; they remain judge-required in this estimate.",
+    "integration_note": "In production the judge has structured criteria (required_limitations). The 18 text-only NONE classifications on required_uncertainty fixtures would then become OVERCONFIDENT_ASSERTION (still deterministic, still no boundary judge call), so the 70% reduction estimate is directionally conservative for the uncertainty family. Route-family abstains (15/25) remain judge-required by design (precision-first)."
+  },
+  "preregistered_probes": [
+    {
+      "id": "C-09",
+      "outcomes": {
+        "v1_4_dimension": "critical_condition",
+        "route_label": "ABSTAIN",
+        "route_abstained": true,
+        "uncertainty_label": "NONE",
+        "uncertainty_abstained": false,
+        "scope_label": "ABSTAIN",
+        "scope_abstained": true
+      },
+      "expected_direction": "boundary state (e.g. HEDGE/EXPLICIT_LIMITATION/ABSTAIN), never SYSTEM_ENDORSED or triggered-critical"
+    },
+    {
+      "id": "C-15",
+      "outcomes": {
+        "v1_4_dimension": "critical_condition",
+        "route_label": "ABSTAIN",
+        "route_abstained": true,
+        "uncertainty_label": "ABSTAIN",
+        "uncertainty_abstained": true,
+        "scope_label": "ABSTAIN",
+        "scope_abstained": true
+      },
+      "expected_direction": "boundary state (e.g. HEDGE/SELF_RETRACTED/ABSTAIN), never SYSTEM_ENDORSED or triggered-critical"
+    },
+    {
+      "id": "R-12",
+      "outcomes": {
+        "v1_4_dimension": "route_correctness",
+        "route_label": "VAGUE_NONCOMMITTAL",
+        "route_abstained": false,
+        "uncertainty_label": "NONE",
+        "uncertainty_abstained": false,
+        "scope_label": "ABSTAIN",
+        "scope_abstained": true
+      },
+      "expected_direction": "VAGUE_NONCOMMITTAL or ABSTAIN, never NO_ACCEPTABLE / a positive committed route"
+    }
+  ],
+  "results": [
+    {
+      "id": "C-01",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-02",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-03",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-04",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "NEGATED",
+      "scope_abstained": false
+    },
+    {
+      "id": "C-05",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-06",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-07",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-08",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-09",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-10",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-11",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-12",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-13",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-14",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-15",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "ABSTAIN",
+      "uncertainty_abstained": true,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-16",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-17",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-18",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-19",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "NEGATED",
+      "scope_abstained": false
+    },
+    {
+      "id": "C-20",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-21",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-22",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-23",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-24",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "C-25",
+      "v1_4_dimension": "critical_condition",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-01",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-02",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-03",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-04",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-05",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-06",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-07",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-08",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "NEGATED",
+      "scope_abstained": false
+    },
+    {
+      "id": "F-09",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-10",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-11",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-12",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-13",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-14",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-15",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-16",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-17",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-18",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-19",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-20",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-21",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-22",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-23",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-24",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "F-25",
+      "v1_4_dimension": "forbidden_claim",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-01",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ASSERTED",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-02",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-03",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-04",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-05",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "NEGATED",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-06",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "SELF_RETRACTED",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "RETRACTED",
+      "scope_abstained": false
+    },
+    {
+      "id": "R-07",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-08",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-09",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-10",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-11",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-12",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-13",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-14",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-15",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "ABSTAIN",
+      "uncertainty_abstained": true,
+      "scope_label": "HYPOTHETICAL",
+      "scope_abstained": false
+    },
+    {
+      "id": "R-16",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "HYPOTHETICAL_ONLY",
+      "route_abstained": false,
+      "uncertainty_label": "ABSTAIN",
+      "uncertainty_abstained": true,
+      "scope_label": "HYPOTHETICAL",
+      "scope_abstained": false
+    },
+    {
+      "id": "R-17",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "HEDGE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-18",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "VAGUE_NONCOMMITTAL",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-19",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-20",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-21",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ASSERTED",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-22",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-23",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ASSERTED",
+      "route_abstained": false,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-24",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "R-25",
+      "v1_4_dimension": "route_correctness",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-01",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-02",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-03",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-04",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-05",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-06",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-07",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-08",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-09",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-10",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-11",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-12",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-13",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "HEDGE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-14",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-15",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-16",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-17",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-18",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-19",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "HEDGE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-20",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "EXPLICIT_LIMITATION",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-21",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-22",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "HEDGE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-23",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-24",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    },
+    {
+      "id": "U-25",
+      "v1_4_dimension": "required_uncertainty",
+      "route_label": "ABSTAIN",
+      "route_abstained": true,
+      "uncertainty_label": "NONE",
+      "uncertainty_abstained": false,
+      "scope_label": "ABSTAIN",
+      "scope_abstained": true
+    }
+  ],
+  "probe_interpretation": {
+    "C-09": "No boundary dimension emitted a critical trigger (preclassifier cannot emit critical verdicts); route/scope abstained, uncertainty NONE is a cross-dimension observation only.",
+    "C-15": "Full abstain across all three dimensions; judge required. Matches expected direction.",
+    "R-12": "VAGUE_NONCOMMITTAL on route: exactly the preregistered desired outcome (no positive committed route, never NO_ACCEPTABLE-eligible)."
+  },
+  "historical_miss_analysis": {
+    "v1_4_verdict_misses": 17,
+    "v1_4_schema_failures": 2,
+    "miss_ids": [
+      "C-03",
+      "C-09",
+      "C-15",
+      "F-10",
+      "F-20",
+      "R-04",
+      "R-10",
+      "R-12",
+      "R-16",
+      "R-18",
+      "R-24",
+      "U-10",
+      "U-13",
+      "U-16",
+      "U-20",
+      "U-22",
+      "U-24"
+    ],
+    "schema_failure_ids": [
+      "C-01",
+      "C-20"
+    ],
+    "boundary_resolved_by_preclassifier": [
+      "R-12",
+      "R-16",
+      "R-18",
+      "U-10",
+      "U-13",
+      "U-16",
+      "U-20",
+      "U-22",
+      "U-24"
+    ],
+    "n_boundary_resolved": 9,
+    "still_judge_required": [
+      "C-01",
+      "C-03",
+      "C-09",
+      "C-15",
+      "C-20",
+      "F-10",
+      "F-20",
+      "R-04",
+      "R-10",
+      "R-24"
+    ],
+    "n_still_judge_required": 10,
+    "note": "critical_condition and forbidden_claim misses have no boundary dimension and remain judge-required; of the 12 route/uncertainty misses, 9 would have received a deterministic boundary label contradicting the model assertion, and 3 remain judge-required.",
+    "per_case": {
+      "C-01": {
+        "v1_4_outcome": "SCHEMA_FAILURE",
+        "gold_verdict": null,
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "C-03": {
+        "v1_4_outcome": "UNRESOLVED",
+        "gold_verdict": "TRIGGERED",
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "C-09": {
+        "v1_4_outcome": "TRIGGERED",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "C-15": {
+        "v1_4_outcome": "TRIGGERED",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "C-20": {
+        "v1_4_outcome": "SCHEMA_FAILURE",
+        "gold_verdict": null,
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "F-10": {
+        "v1_4_outcome": "ABSENT",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "F-20": {
+        "v1_4_outcome": "ABSENT",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": null,
+        "preclassifier_resolved": false
+      },
+      "R-04": {
+        "v1_4_outcome": "ACCEPTABLE",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "ABSTAIN",
+        "preclassifier_resolved": false
+      },
+      "R-10": {
+        "v1_4_outcome": "NO_ACCEPTABLE_ROUTE",
+        "gold_verdict": "PARTIAL",
+        "preclassifier_label": "ABSTAIN",
+        "preclassifier_resolved": false
+      },
+      "R-12": {
+        "v1_4_outcome": "NO_ACCEPTABLE_ROUTE",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "VAGUE_NONCOMMITTAL",
+        "preclassifier_resolved": true
+      },
+      "R-16": {
+        "v1_4_outcome": "UNRESOLVED",
+        "gold_verdict": "PARTIAL",
+        "preclassifier_label": "HYPOTHETICAL_ONLY",
+        "preclassifier_resolved": true
+      },
+      "R-18": {
+        "v1_4_outcome": "ACCEPTABLE",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "VAGUE_NONCOMMITTAL",
+        "preclassifier_resolved": true
+      },
+      "R-24": {
+        "v1_4_outcome": "NO_ACCEPTABLE_ROUTE",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "ABSTAIN",
+        "preclassifier_resolved": false
+      },
+      "U-10": {
+        "v1_4_outcome": "SATISFIED",
+        "gold_verdict": "PARTIAL",
+        "preclassifier_label": "NONE",
+        "preclassifier_resolved": true
+      },
+      "U-13": {
+        "v1_4_outcome": "SATISFIED",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "HEDGE",
+        "preclassifier_resolved": true
+      },
+      "U-16": {
+        "v1_4_outcome": "VIOLATED",
+        "gold_verdict": "PARTIAL",
+        "preclassifier_label": "NONE",
+        "preclassifier_resolved": true
+      },
+      "U-20": {
+        "v1_4_outcome": "SATISFIED",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "EXPLICIT_LIMITATION",
+        "preclassifier_resolved": true
+      },
+      "U-22": {
+        "v1_4_outcome": "PARTIAL",
+        "gold_verdict": "UNRESOLVED",
+        "preclassifier_label": "HEDGE",
+        "preclassifier_resolved": true
+      },
+      "U-24": {
+        "v1_4_outcome": "SATISFIED",
+        "gold_verdict": "PARTIAL",
+        "preclassifier_label": "NONE",
+        "preclassifier_resolved": true
+      }
+    }
+  }
+}

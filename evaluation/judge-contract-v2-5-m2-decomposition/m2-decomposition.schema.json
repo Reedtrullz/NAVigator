@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Semantic judge V2.5 M2 decomposition intermediate-state",
+  "description": "Intermediate sub-fields for the M2 critical_condition dimension. Final five-value state is derived deterministically via deterministic-derivation-table.json. Final labels and their meanings are unchanged from the frozen V2.2 contract.",
+  "type": "object",
+  "required": [
+    "trigger_support",
+    "non_trigger_support",
+    "evidence_conflict",
+    "evidence_sufficiency",
+    "evidence_spans",
+    "note"
+  ],
+  "properties": {
+    "trigger_support": {
+      "description": "Does the answer put the trigger condition forward as holding? PRESENT requires >= 1 verbatim evidence span.",
+      "enum": ["PRESENT", "ABSENT", "UNRESOLVED"]
+    },
+    "non_trigger_support": {
+      "description": "Does the answer put forward exclusion/negation of the condition (positive textual exclusion)? PRESENT requires >= 1 verbatim evidence span.",
+      "enum": ["PRESENT", "ABSENT", "UNRESOLVED"]
+    },
+    "evidence_conflict": {
+      "description": "Do competing readings of the condition's applicability coexist? Conflict is never inferred from hedging alone (frozen L73).",
+      "enum": ["YES", "NO", "UNRESOLVED"]
+    },
+    "evidence_sufficiency": {
+      "description": "Does the answer contain the information the criterion needs for classification, including the trivially-decidable case where it plainly does not address the condition?",
+      "enum": ["SUFFICIENT", "INSUFFICIENT", "UNRESOLVED"]
+    },
+    "evidence_spans": {
+      "description": "Verbatim spans from the SUT answer. Required exactly when trigger_support=PRESENT or non_trigger_support=PRESENT. No invented spans; absence is never evidenced by an invented span.",
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "note": {
+      "description": "Short snake_case note, as in the frozen V2.2 intermediate schema.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "anyOf": [
+          {"properties": {"trigger_support": {"const": "PRESENT"}}},
+          {"properties": {"non_trigger_support": {"const": "PRESENT"}}}
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence_spans": {"minItems": 1}
+        }
+      }
+    }
+  ]
+}

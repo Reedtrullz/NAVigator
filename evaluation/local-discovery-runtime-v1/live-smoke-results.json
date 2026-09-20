@@ -1,0 +1,68 @@
+{
+  "artifact": "live_smoke_runtime_v1",
+  "fetch_layer_all_technical_success": true,
+  "fetch_layer_results": [
+    {
+      "content_sha256": "e2ddeb8b1797d806",
+      "content_words": 5951,
+      "fetch_layer_technical_success": true,
+      "http_code_note": "success",
+      "http_fetch_status": "success",
+      "municipality": "Etnedal",
+      "service_extractor_extracted": true,
+      "spa_detected": false,
+      "url": "https://www.etnedal.kommune.no/tjenester/familie-helse-og-omsorg/psykisk-helsearbeid/"
+    },
+    {
+      "content_sha256": "9901f500b4f3528a",
+      "content_words": 2704,
+      "fetch_layer_technical_success": true,
+      "http_code_note": "success",
+      "http_fetch_status": "success",
+      "municipality": "Bamble",
+      "service_extractor_extracted": true,
+      "spa_detected": false,
+      "url": "https://www.bamble.kommune.no/helse-og-mestring/psykisk-helse-og-rusomsorg/bamblehjelpa/"
+    },
+    {
+      "content_sha256": "b8e92bdae86212fb",
+      "content_words": 0,
+      "fetch_layer_technical_success": true,
+      "http_code_note": "RENDER_REQUIRED",
+      "http_fetch_status": "render_required",
+      "municipality": "Raelingen",
+      "service_extractor_extracted": false,
+      "spa_detected": true,
+      "url": "https://www.ralingen.kommune.no/artikkel/lavterskel-psykisk-helsehjelp"
+    }
+  ],
+  "generated_at": "2026-09-09",
+  "scope": "Bounded technical smoke: live fetch layer exercised directly on 3 known official URLs; live search layer attempted and blocked by provider-side bot protection. Transport-level success only, NOT route correctness.",
+  "search_layer": {
+    "attempts": [
+      {
+        "provider": "duckduckgo_html",
+        "result": "anomaly/blocked error page (236 bytes)"
+      },
+      {
+        "provider": "duckduckgo_lite",
+        "result": "same error page"
+      },
+      {
+        "provider": "mojeek",
+        "result": "captcha challenge"
+      },
+      {
+        "provider": "searx.be",
+        "result": "browser verification required"
+      },
+      {
+        "provider": "paulgo.io",
+        "result": "HTTP 429"
+      }
+    ],
+    "note": "No search backend reachable without bot-evasion measures; evasion is prohibited by security doctrine, so the search layer is reported blocked rather than worked around. Replay mode fully covers the discovery flow.",
+    "status": "SEARCH_PROVIDER_UNAVAILABLE"
+  },
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-PROTOTYPE-V1"
+}

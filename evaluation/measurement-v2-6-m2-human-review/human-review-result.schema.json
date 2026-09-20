@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "human-review-result-v2-6",
+  "title": "M2 human reviewer structured output",
+  "type": "object",
+  "required": ["packet_id", "case_id", "reviewer_id", "contract_version", "reviewed_utc", "judgment"],
+  "additionalProperties": false,
+  "properties": {
+    "packet_id": {"type": "string"},
+    "case_id": {"type": "string"},
+    "reviewer_id": {"type": "string", "minLength": 1},
+    "contract_version": {"const": "m2-decomposition-v2-5"},
+    "reviewed_utc": {"type": "string"},
+    "judgment": {
+      "type": "object",
+      "required": ["trigger_support", "non_trigger_support", "evidence_conflict", "evidence_sufficiency", "evidence_spans"],
+      "additionalProperties": false,
+      "properties": {
+        "trigger_support": {"enum": ["PRESENT", "ABSENT", "UNRESOLVED"]},
+        "non_trigger_support": {"enum": ["PRESENT", "ABSENT", "UNRESOLVED"]},
+        "evidence_conflict": {"enum": ["YES", "NO", "UNRESOLVED"]},
+        "evidence_sufficiency": {"enum": ["SUFFICIENT", "INSUFFICIENT", "UNRESOLVED"]},
+        "evidence_spans": {"type": "array", "items": {"type": "string"}},
+        "note": {"type": "string"}
+      }
+    }
+  }
+}

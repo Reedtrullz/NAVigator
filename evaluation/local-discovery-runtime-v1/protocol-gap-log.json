@@ -1,0 +1,42 @@
+{
+  "gaps": [
+    {
+      "area": "search-provider",
+      "disposition": "DOCUMENTED_BLOCKED",
+      "finding": "Live HTTP search backends (DuckDuckGo HTML/Lite, Mojeek, searx.be, paulgo.io) are behind bot protection from this host; runtime search layer returns empty results rather than fabricating.",
+      "id": "GAP-001",
+      "runtime_change": "None; provider is pluggable and replay mode covers discovery flow."
+    },
+    {
+      "area": "rendering",
+      "disposition": "DOCUMENTED",
+      "finding": "SPA pages (e.g. article-style sites) return RENDER_REQUIRED; no headless renderer is integrated in this prototype.",
+      "id": "GAP-002",
+      "runtime_change": "render_required path exists and is counted; execution_status becomes DISCOVERY_INCOMPLETE rather than a false no-service result."
+    },
+    {
+      "area": "self-referral-boundary",
+      "disposition": "DOCUMENTED_BOUNDARY",
+      "finding": "Historical auditor classification maps intake-connected phone with later assessment to CONDITIONAL, while runtime maps phone_connected to YES per the frozen generalization doctrine.",
+      "id": "GAP-003",
+      "runtime_change": "None; boundary recorded in access-regression-results.json."
+    },
+    {
+      "area": "fixture-completeness",
+      "disposition": "CLASSIFIED_FIXTURE_INCOMPLETE",
+      "finding": "Four T-target cells and one replay cell (Askoy D) lack the evidence sentences captured during original research (eligibility text, drop-in schedule, school intake context, separate adult contact page).",
+      "id": "GAP-004",
+      "runtime_change": "None; runtime generalized correctly where fixtures contain equivalent evidence."
+    },
+    {
+      "area": "closing-hours",
+      "disposition": "FUTURE_WORK",
+      "finding": "Nynorsk closing-hours token (kontor tid paa skolene analog) is context-dependent and was not encoded as a marker; school-intake evidence for T9 remains fixture-side.",
+      "id": "GAP-005",
+      "runtime_change": "None."
+    }
+  ],
+  "generated_at": "2026-09-09",
+  "protocol_modifications": 0,
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-PROTOTYPE-V1"
+}

@@ -1,0 +1,36 @@
+{
+  "audit": "leakage-audit-afk-prep-v1",
+  "canonical_term_count": 9,
+  "self_scan_exclusion_recorded": true,
+  "self_excluded_file": "leakage_audit.py",
+  "cockpit_scope": {
+    "review-cockpit.html": [],
+    "cockpit_server.py": [],
+    "session-chunks.json": []
+  },
+  "docs_scope": {
+    "report-templates.md": [],
+    "post-review-runbook.md": [],
+    "packet-mechanical-qc.json": [],
+    "review-burden-report.json": [],
+    "authoritative-integrity.json": [],
+    "README.md": [],
+    "final-report.md": []
+  },
+  "exclusions": {
+    "negative-test-matrix.json": "deliberate negative-test artifact; contains a forbidden term only as validator-rejection evidence",
+    "leakage-audit.json": "audit output artifact; records the zero-gate metric names itself",
+    "frozen_output_anomalies.py": "read-only diagnostics script; engineering artifact, not owner-facing review content",
+    "frozen-output-mechanical-anomalies.json": "read-only diagnostics report; contains excerpts of frozen SUT text for triage only",
+    "leakage_audit.py": "audit script self-scan exclusion; terms constructed dynamically"
+  },
+  "non_recorded_exclusions": [],
+  "unscanned_engineering_files": [],
+  "EXPECTED_VERDICT_VISIBLE": 0,
+  "FINAL_GOLD_VERDICT_VISIBLE": 0,
+  "HISTORICAL_MODEL_VERDICT_VISIBLE": 0,
+  "AI_SEMANTIC_SUGGESTION_VISIBLE": 0,
+  "cockpit_zero_hits": true,
+  "docs_zero_hits": true,
+  "PASS": true
+}

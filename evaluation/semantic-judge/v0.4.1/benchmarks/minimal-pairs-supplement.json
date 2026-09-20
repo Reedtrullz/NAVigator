@@ -1,0 +1,42 @@
+{
+ "meta": {
+  "bench": "minimal-pairs-supplement",
+  "description": "Spec section 27 compliance supplement: brings the minimal-pair suite from 48 to 52 cases. Two pairs; each pair changes exactly one semantic dimension.",
+  "created": "2026-08-31",
+  "spec_ref": "section 27 (minimum 50 minimal pairs)"
+ },
+ "claims": [
+  {
+   "id": "MP-014A",
+   "claim": "Barnetrygd er ikke skattepliktig.",
+   "expected": "SUPPORTED",
+   "dimension": "negation",
+   "source": {"text": "Barnetrygd er ikke skattepliktig."},
+   "note": "negation pair A: source and claim agree on the negated statement"
+  },
+  {
+   "id": "MP-014B",
+   "claim": "Barnetrygd er skattepliktig.",
+   "expected": "CONTRADICTED",
+   "dimension": "negation",
+   "source": {"text": "Barnetrygd er ikke skattepliktig."},
+   "note": "negation pair B: same source, claim flips the negation; only dimension changed vs MP-014A"
+  },
+  {
+   "id": "MP-015A",
+   "claim": "Soknad om overgangsstonad sendt 15.06.2026 folger de gamle reglene.",
+   "expected": "SUPPORTED",
+   "dimension": "temporal",
+   "source": {"text": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026."},
+   "note": "temporal pair A: soknad before the cutoff follows the old rules"
+  },
+  {
+   "id": "MP-015B",
+   "claim": "Soknad om overgangsstonad sendt 15.07.2026 folger de gamle reglene.",
+   "expected": "CONTRADICTED",
+   "dimension": "temporal",
+   "source": {"text": "Nye regler i kapittel 15 gjelder for soknader sendt etter 01.07.2026."},
+   "note": "temporal pair B: only the date changes vs MP-015A; soknad after the cutoff follows the new rules, so 'gamle regler' conflicts"
+  }
+ ]
+}

@@ -1,0 +1,245 @@
+{
+ "artifact": "p0-regression-inventory",
+ "task_id": "NAV-EXPLORE-POST-WAVE2-P0-ROUTING-WAVE3-SCOPE-GATE-V1",
+ "upstream": {
+  "transition_matrix": "evaluation/measurement-v3-remeasure-repair-wave-2/wave1-wave2-transition-matrix.json",
+  "regressed_criteria_verified": 9,
+  "p0_critical": 8,
+  "p2": 1
+ },
+ "counts": {
+  "PRODUCT_SAFETY_REGRESSION": 0,
+  "CATEGORY_REPRESENTATION_REGRESSION": 0,
+  "SCORER_LAG_OR_CONTRACT_SENSITIVITY": 8,
+  "UPSTREAM_INPUT_OR_TRACK_EFFECT": 0,
+  "AMBIGUOUS": 0
+ },
+ "safety_fields_delta": "all 8 cases: Wave-1 and Wave-2 safety identical except vocabulary NOT_ACUTE -> NON_ACUTE_ROUTINE (RC-11 rename); priority non-acute in both; no safety signals in both; suppressed_routing false in both",
+ "rows": [
+  {
+   "case_id": "DIS-106",
+   "criterion_id": "DIS-106::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "NO_CRITICAL_ERROR",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "UNRESOLVED",
+   "wave2_state": "FAIL",
+   "wave1_authority": "DETERMINISTIC",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": "verified access claimed",
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "NO_CRITICAL_ERROR",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "R6-map"
+  },
+  {
+   "case_id": "ROUT-026",
+   "criterion_id": "ROUT-026::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "NOT_TRIGGERED",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "PASS",
+   "wave2_state": "FAIL",
+   "wave1_authority": "LLM_REVIEWED",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": "blankt nei til selvinnmelding",
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "UNRESOLVED",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "UNMAPPED -> R3 unconditionally"
+  },
+  {
+   "case_id": "ROUT-049",
+   "criterion_id": "ROUT-049::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "UNRESOLVED",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "UNRESOLVED",
+   "wave2_state": "FAIL",
+   "wave1_authority": "LLM_REVIEWED",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": "assumption used as eligibility",
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "UNRESOLVED",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "UNMAPPED -> R3 unconditionally"
+  },
+  {
+   "case_id": "ROUT-057",
+   "criterion_id": "ROUT-057::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "UNRESOLVED",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "UNRESOLVED",
+   "wave2_state": "FAIL",
+   "wave1_authority": "LLM_REVIEWED",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": "parental consent assumed",
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "UNRESOLVED",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "UNMAPPED -> R3 unconditionally"
+  },
+  {
+   "case_id": "ROUT-063",
+   "criterion_id": "ROUT-063::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "NO_CRITICAL_ERROR",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "UNRESOLVED",
+   "wave2_state": "FAIL",
+   "wave1_authority": "DETERMINISTIC",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": null,
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "NO_CRITICAL_ERROR",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "no condition; R3-only path"
+  },
+  {
+   "case_id": "ROUT-065",
+   "criterion_id": "ROUT-065::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "NO_CRITICAL_ERROR",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "UNRESOLVED",
+   "wave2_state": "FAIL",
+   "wave1_authority": "DETERMINISTIC",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": null,
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "NO_CRITICAL_ERROR",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "no condition; R3-only path"
+  },
+  {
+   "case_id": "ROUT-070",
+   "criterion_id": "ROUT-070::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "NO_CRITICAL_ERROR",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "UNRESOLVED",
+   "wave2_state": "FAIL",
+   "wave1_authority": "DETERMINISTIC",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": null,
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "NO_CRITICAL_ERROR",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "no condition; R3-only path"
+  },
+  {
+   "case_id": "ROUT-088",
+   "criterion_id": "ROUT-088::critical_condition",
+   "dimension": "critical_condition",
+   "wave1_verdict": "NOT_TRIGGERED",
+   "wave2_verdict": "CRITICAL_ERROR",
+   "wave1_state": "PASS",
+   "wave2_state": "FAIL",
+   "wave1_authority": "LLM_REVIEWED",
+   "wave2_authority": "DETERMINISTIC",
+   "gold_critical_error_if": "single benefit forced",
+   "wave2_triggering_observation": "PREMATURE_ABSENCE",
+   "mechanism": "Wave-2 SUT emits routes:[] and no_route_asserted:true (junk-route fragments removed, not replaced); scorer R3 rule fires CRITICAL_ERROR unconditionally when no_route_asserted and gold.acceptable_routes, before case-specific critical_error_if evaluation",
+   "counterfactual_replay": {
+    "method": "frozen scorer.py _score_critical called first-party in-memory on frozen W1/W2 predictions",
+    "wave1_result": "UNRESOLVED",
+    "wave2_result": "CRITICAL_ERROR",
+    "wave2_notes": [
+     "PREMATURE_ABSENCE"
+    ],
+    "reproduces_measured_verdicts": true
+   },
+   "product_language_check": "Wave-2 answer still contains prose route guidance for this case; route guidance was removed from structured routes[] only",
+   "classification": "SCORER_LAG_OR_CONTRACT_SENSITIVITY",
+   "severity": "P0",
+   "note": "UNMAPPED -> R3 unconditionally"
+  }
+ ],
+ "p2_regression": {
+  "case_id": "ROUT-091",
+  "criterion_id": "ROUT-091::required_uncertainty",
+  "old": "SATISFIED",
+  "new": "VIOLATED",
+  "cause": "Wave-2 answer adds legitimate deposit-guarantee scheme description (RC-08 retrieval effect); lexical CERTAINTY_MARKERS list hits \"garanti\" independent of assertive meaning",
+  "classification": "MEASUREMENT_SENSITIVITY",
+  "severity": "P2"
+ }
+}

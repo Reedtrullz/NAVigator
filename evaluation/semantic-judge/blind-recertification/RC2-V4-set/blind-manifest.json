@@ -1,0 +1,97 @@
+{
+ "set_version": "NAV-EXPLORE-RC2-BLIND-V4",
+ "created": "2026-09-04",
+ "task_id": "NAV-EXPLORE-RC2-BLIND-V4-FIREWALL-RESEAL",
+ "release_candidate": "NAV-EXPLORE-EVALUATOR-RC2",
+ "rc2_status": "FROZEN_DEVELOPMENT_CANDIDATE",
+ "origin": "V3-unseen: blind-cases.json byte-identical to RC2-V3-set (same 160 CORE + 122 reserve, no case content changes)",
+ "pool_size": 282,
+ "n_core": 160,
+ "n_reserve": 122,
+ "blind_cases_sha256": "ad4fc1008063e52fb004fcdf5a3e48c2ca0277c7cf6dd9251b04d43c3e29a36d",
+ "answer_key_sealed_sha256": "65f72b170cb200b804cf817c32aaf42e9166a20ed002777a5d9f5e71b99fd80d",
+ "construction_audit_sealed_sha256": "5be70e666493d3a6e000b89418a8064099f03ee797ece3365840acb7a7646ff3",
+ "encryption": {
+  "algorithm": "AES-256-GCM",
+  "key": "memory-only, delivered once to owner",
+  "answer_key_aad": "UTF-8 bytes of the blind-cases.json SHA-256 hex string; envelope associated_data field is urlsafe-b64 of those same hex-string bytes",
+  "construction_audit_aad": "exact ASCII bytes construction-audit:v1, fresh nonce, separate envelope; envelope associated_data field is urlsafe-b64 of that ASCII string",
+  "decrypt_reverification": "2026-09-04 in-memory: answer key decrypts with AAD blind-cases-hex; 160 cases; final/criticality/flags/rationale/annotation_status complete; 62/62 compound with complete atoms; construction audit decrypts with AAD construction-audit:v1"
+},
+ "core_class_distributions": {
+  "semantic": {
+   "CONTRADICTED": 40,
+   "INSUFFICIENT_EVIDENCE": 40,
+   "PARTIALLY_SUPPORTED": 41,
+   "SUPPORTED": 39
+  },
+  "proof_safe": {
+   "CONTRADICTED": 40,
+   "INSUFFICIENT_EVIDENCE": 26,
+   "REVIEW_REQUIRED": 55,
+   "SUPPORTED": 39
+  },
+  "product_expected_action": {
+   "ABSTAIN_INSUFFICIENT": 26,
+   "AUTO_CONTRADICTED": 40,
+   "AUTO_SUPPORTED": 39,
+   "REVIEW_REQUIRED": 55
+  }
+ },
+ "core_flag_counts": {
+  "actor": 99,
+  "age_legal": 20,
+  "compound": 62,
+  "cond_exc": 42,
+  "legal": 89,
+  "locality": 38,
+  "modality": 132,
+  "multi_span": 31,
+  "numeric": 92,
+  "safety": 20,
+  "temporal": 82
+},
+ "subgroup_note": "12 preregistered subgroups map to 11 case flags (safety, legal, numeric, temporal, locality, modality, actor, cond_exc, compound, multi_span, age_legal) plus the label-derived insufficiency class (final semantic_truth INSUFFICIENT_EVIDENCE); membership computable from sealed+public metadata without manual case selection",
+ "criticality": {
+  "rule": "critical iff final_flags intersect {safety, age_legal}; documented deterministic rule, 40 critical / 120 standard",
+  "critical": 40,
+  "standard": 120,
+  "complete": "160/160"
+ },
+ "atoms": {
+  "compound_core": 62,
+  "compound_with_complete_atoms": 62,
+  "total_atoms": 141,
+  "atom_annotation_statuses": {
+   "adjudicated_structural": 9,
+   "adjudicated": 10,
+   "agreed": 43
+  }
+ },
+ "annotation_agreement": {
+  "method": "claim-text matched atom pairs across independent pass1/pass2",
+  "semantic_truth": "120/125 = 0.96",
+  "proof_safe": "117/125 = 0.936",
+  "structural_divergence": "9 cases with different atom counts (split/merge artifacts), adjudicated to canonical atom sets",
+  "gate": "semantic >= 0.90 PASS"
+ },
+ "top_level_consistency": {
+  "method": "deterministic aggregation of adjudicated atoms per contract v3 slot mapping, compared with V3 top-level",
+  "inconsistencies": 1,
+  "top_level_relabels": 1,
+  "relabel_details": "sealed in construction-audit bundle (spec 26: expected verdict not in public metadata)",
+  "gate": "1/160 = 0.625% < 5% STOP threshold: PASS"
+ },
+ "leakage": {
+  "per_case_label_files_remaining": 0,
+  "incidental_files": 8,
+  "inventory": "label-leakage-inventory.json + leakage-audit.md"
+ },
+ "rc2_hash_verification": {
+  "before_seal": "ALL_OK (10/10 entries)",
+  "after_seal": "ALL OK (10/10 entries), post-seal re-verified 2026-09-04"
+ },
+ "rc2_executed_on_blind_set": false,
+ "firewall_status": "SEALED_AND_FIREWALLED",
+ "construction_qa": "v4_qa.py + qa-tests/test_v4_qa.py (see construction-qa-report.md)"
+}

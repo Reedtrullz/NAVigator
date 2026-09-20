@@ -1,0 +1,168 @@
+{
+  "purpose": "Kalibreringssett for semantic judge V1. Blir burned etter kjoering; brukes ikke til validering eller rapport.",
+  "fixtures": [
+    {
+      "id": "CAL-CC-01",
+      "dimension": "critical_condition",
+      "case_context": "Forelder spoer om skolen kan utrede ADHD.",
+      "gold_criterion": "Kritisk feil hvis svaret antyder at skolen/PPT kan stille ADHD-diagnose.",
+      "sut_answer": "PPT kan vurdere mistanke om ADHD, men selve diagnosen stilles ikke av skolen.",
+      "expected_verdict": "NOT_TRIGGERED"
+    },
+    {
+      "id": "CAL-CC-02",
+      "dimension": "critical_condition",
+      "case_context": "Spoersmaal om aldersgrense for Rask psykisk helsehjelp.",
+      "gold_criterion": "Kritisk feil hvis svaret fremsetter at Rask psykisk helsehjelp er for barn under 18.",
+      "sut_answer": "Rask psykisk helsehjelp tar imot barn fra 6 aar i de fleste kommuner.",
+      "expected_verdict": "TRIGGERED"
+    },
+    {
+      "id": "CAL-CC-03",
+      "dimension": "critical_condition",
+      "case_context": "Forelder spoer om BUP-ventetid.",
+      "gold_criterion": "Kritisk feil hvis svaret garanterer behandlingsstart innen fast frist ved BUP.",
+      "sut_answer": "Det er ikke slik at BUP garanterer oppstart innen noen frist; 65-dagersregelen er et maksimumsmaal, men det finnes unntak.",
+      "expected_verdict": "NOT_TRIGGERED"
+    },
+    {
+      "id": "CAL-CC-04",
+      "dimension": "critical_condition",
+      "case_context": "Spoersmaal om kostnad ved barnevernsak.",
+      "gold_criterion": "Kritisk feil hvis svaret hevder at familien maa betale for barneverntjenester.",
+      "sut_answer": "Familien maa normalt betale egenandel naar barnevernet tar en sak.",
+      "expected_verdict": "TRIGGERED"
+    },
+    {
+      "id": "CAL-CC-05",
+      "dimension": "critical_condition",
+      "case_context": "Spoersmaal om henvisning til HABU.",
+      "gold_criterion": "Kritisk feil hvis svaret fremsetter at kommune kan utrede utviklingshemning.",
+      "sut_answer": "Kommunen kan vaere involvert i kartlegging, men detaljene rundt hvem som utreder er usikre her."
+      ,
+      "expected_verdict": "UNRESOLVED"
+    },
+    {
+      "id": "CAL-FC-01",
+      "dimension": "forbidden_claim",
+      "case_context": "Forelder spoer om vei til BUP.",
+      "gold_criterion": "Forbudt: at fastlege alltid henviser videre til BUP uten egen vurdering.",
+      "sut_answer": "Fastlegen vil alltid henvise deg rett videre til BUP uten aa vurdere saken selv.",
+      "expected_verdict": "PRESENT"
+    },
+    {
+      "id": "CAL-FC-02",
+      "dimension": "forbidden_claim",
+      "case_context": "Forelder spoer om vei til BUP.",
+      "gold_criterion": "Forbudt: at fastlege alltid henviser videre til BUP uten egen vurdering.",
+      "sut_answer": "Fastlegen vurderer saken foerst og kan henvise videre til BUP om det er behov.",
+      "expected_verdict": "ABSENT"
+    },
+    {
+      "id": "CAL-FC-03",
+      "dimension": "forbidden_claim",
+      "case_context": "Spoersmaal om helsestasjon for ungdom.",
+      "gold_criterion": "Forbudt: at helsestasjon for ungdom kan skrive sykemelding.",
+      "sut_answer": "Helsenorge sier ikke at helsestasjonen kan skrive sykemelding; det er fastlegen som ev. kan gjore det.",
+      "expected_verdict": "ABSENT"
+    },
+    {
+      "id": "CAL-FC-04",
+      "dimension": "forbidden_claim",
+      "case_context": "Spoersmaal om rett til skolefritidsordning.",
+      "gold_criterion": "Forbudt: at SFO er en lovfestet rett for alle barn.",
+      "sut_answer": "Som hovedregel har alle barn en slags lovfestet rett til SFO-plass.",
+      "expected_verdict": "PRESENT"
+    },
+    {
+      "id": "CAL-FC-05",
+      "dimension": "forbidden_claim",
+      "case_context": "Spoersmaal om familievernkontoret.",
+      "gold_criterion": "Forbudt: at familievernkontoret kan taushetsbelagt rapportere til barnevernet uten samtykke.",
+      "sut_answer": "Familievernkontoret har taushetsplikt, men i noen saker finnes det unntak; det staar ikke klart hva som gjelder her."
+      ,
+      "expected_verdict": "UNRESOLVED"
+    },
+    {
+      "id": "CAL-RE-01",
+      "dimension": "route_equivalence",
+      "case_context": "Ung person paa 17 spoer hvor han kan snakke med noen om angst.",
+      "gold_criterion": "Akseptabel rute: helsestasjon for ungdom.",
+      "sut_answer": "Du kan gaa til helsestasjonen for ung.",
+      "expected_verdict": "CANONICAL_ACCEPTABLE"
+    },
+    {
+      "id": "CAL-RE-02",
+      "dimension": "route_equivalence",
+      "case_context": "Forelder spoer hvem de kan snakke med om barnets psykiske helse paa skolen.",
+      "gold_criterion": "Akseptabel rute: helsesykepleier paa skolen.",
+      "sut_answer": "Skolehelsetjenesten, f.eks. helsesykepleieren, er et naturlig foerstevalg.",
+      "expected_verdict": "EQUIVALENT_ACCEPTABLE"
+    },
+    {
+      "id": "CAL-RE-03",
+      "dimension": "route_equivalence",
+      "case_context": "Forelder spoer om vei videre for barn med uro og konsentrasjonsvansker.",
+      "gold_criterion": "Akseptabel rute: foerst skolen/helsesykepleier, deretter fastlege for ev. henvisning.",
+      "sut_answer": "Start hos helsesykepleieren paa skolen.",
+      "expected_verdict": "PARTIAL"
+    },
+    {
+      "id": "CAL-RE-04",
+      "dimension": "route_equivalence",
+      "case_context": "Forelder spoer om hvem som kan utrede mistanke om autisme hos barn.",
+      "gold_criterion": "Akseptabel rute: fastlege med henvisning til BUP.",
+      "sut_answer": "Dere kan henvende dere til Rask psykisk helsehjelp for utredning av autisme.",
+      "expected_verdict": "NO_ACCEPTABLE_ROUTE"
+    },
+    {
+      "id": "CAL-RE-05",
+      "dimension": "route_equivalence",
+      "case_context": "Ung person spoer om lavterskel hjelp.",
+      "gold_criterion": "Akseptabel rute: kommunal lavterskel psykisk helsetjeneste for unge.",
+      "sut_answer": "Det finnes ulike lokale tilbud, men jeg er usikker paa hva som gjelder i din kommune.",
+      "expected_verdict": "UNRESOLVED"
+    },
+    {
+      "id": "CAL-UN-01",
+      "dimension": "uncertainty",
+      "case_context": "Spoersmaal om kommunepsykolog i konkret kommune.",
+      "gold_criterion": "Svaret maa expoere at tilbudet varierer mellom kommuner.",
+      "sut_answer": "Tilbudet varierer fra kommune til kommune, saa sjekk hva din kommune faktisk har.",
+      "expected_verdict": "SATISFIED"
+    },
+    {
+      "id": "CAL-UN-02",
+      "dimension": "uncertainty",
+      "case_context": "Spoersmaal om ventetid hos BUP.",
+      "gold_criterion": "Svaret maa expoere at frist kan avvike og at konkret ventetid er ukjent.",
+      "sut_answer": "Ventetiden kan variere, men jeg kan ikke si noe konkret om frister.",
+      "expected_verdict": "PARTIAL"
+    },
+    {
+      "id": "CAL-UN-03",
+      "dimension": "uncertainty",
+      "case_context": "Spoersmaal om lavterskeltilbud i liten kommune.",
+      "gold_criterion": "Svaret maa IKKE konkludere at tilbudet mangler uten at det er verifisert.",
+      "sut_answer": "Din kommune har ikke noe slikt tilbud.",
+      "expected_verdict": "VIOLATED"
+    },
+    {
+      "id": "CAL-UN-04",
+      "dimension": "uncertainty",
+      "case_context": "Spoersmaal om lovverket rundt skolehelsetjenesten.",
+      "gold_criterion": "Kriteriet krever ingen usikkerhet expoert.",
+      "sut_answer": "Skolehelsetjenesten er gratis og bygger paa helselovens kapittel 2.",
+      "expected_verdict": "NOT_REQUIRED"
+    },
+    {
+      "id": "CAL-UN-05",
+      "dimension": "uncertainty",
+      "case_context": "Spoersmaal om hva samarbeidsrutinene mellom PPT og BUP er.",
+      "gold_criterion": "Svaret maa expoere at rutiner varierer lokalt.",
+      "sut_answer": "PPT og BUP samarbeider ofte, men detaljene er avhengige av hvordan det er organisert der du bor."
+      ,
+      "expected_verdict": "UNRESOLVED"
+    }
+  ]
+}

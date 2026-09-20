@@ -1,0 +1,26 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_2-TWO-MECHANISM-OPERATIONALIZATION",
+  "max_iterations": 2,
+  "iterations_used": 2,
+  "iterations": [
+    {
+      "iteration": 1,
+      "trigger": "4/4 initial HTTP-200 responses rejected by validator: model returned flat per-dimension schema with top-level evidence_spans/note, exactly as the frozen dimension instructions specify; validator required an unwritten intermediate envelope",
+      "change": "parser only: accept flat per-dimension schema; envelope form remains accepted for compatibility; no prompt, schema, derivation, or label change",
+      "prompt_sha_before": "9a20e9b241b9084be6299fd3ba778c63e41d1a8b35067840675ee443f4f335e5",
+      "prompt_sha_after": "9a20e9b241b9084be6299fd3ba778c63e41d1a8b35067840675ee443f4f335e5",
+      "selfcheck": "PASS"
+    }
+    ,
+    {
+      "iteration": 2,
+      "trigger": "M1-01 rerun: transport OK, flat schema OK, span check rejected model's correct verbatim Norwegian quote because calibration fixtures were authored ASCII-only while norm() expands a->aa one-way; asymmetric normalization",
+      "change": "parser/normalizer only: narrow symmetric diacritic folding (aa/ae/oe) as second-step equivalence in _check_spans only; strict matching still primary; no prompt, schema, derivation, or label change",
+      "accepted_limitation": "aa/ae/oe-expanded minimal pairs can merge during span verification; confined to controlled fixture corpus",
+      "prompt_sha_before": "9a20e9b241b9084be6299fd3ba778c63e41d1a8b35067840675ee443f4f335e5",
+      "prompt_sha_after": "9a20e9b241b9084be6299fd3ba778c63e41d1a8b35067840675ee443f4f335e5",
+      "selfcheck": "PASS"
+    }
+  ],
+  "note": "Aborted first attempt (M1-01..M1-04, all transport-OK/schema-fail) archived as calibration-attempt-1.json; no semantic outputs were scored from it."
+}

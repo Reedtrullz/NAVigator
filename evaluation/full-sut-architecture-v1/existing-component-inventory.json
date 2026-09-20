@@ -1,0 +1,232 @@
+{
+  "inventory_version": "1",
+  "verified_utc": "2026-09-14",
+  "status_legend": {
+    "FROZEN_PRODUCT": "Production-side component, frozen lineage, callable as-is.",
+    "PRODUCT_DATA": "Product-side data artifact (knowledge), not code.",
+    "EVALUATOR": "Evaluator-side component; must not become a runtime dependency.",
+    "MISSING": "No component exists in the repo; must be built."
+  },
+  "components": [
+    {
+      "name": "user_query_intake",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "sut-input/v1 reception (planned runtime/sut/pipeline.py)",
+      "inputs": "user query, profile, location/timestamp context",
+      "outputs": "normalized input to S1",
+      "dependencies": ["sut-input.schema.json"],
+      "classification": "missing",
+      "notes": "No product intake exists; corpus loader is the evaluation-side stand-in."
+    },
+    {
+      "name": "intent_scenario_parsing",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned runtime/sut/decompose.py",
+      "inputs": "normalized query + safety state",
+      "outputs": "problem tracks",
+      "dependencies": ["decision-context.schema.json"],
+      "classification": "missing",
+      "notes": "No decomposition logic exists; planned deterministic in Phases 1-3."
+    },
+    {
+      "name": "safety_detection_routing",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned runtime/sut/safety.py",
+      "inputs": "normalized query, profile",
+      "outputs": "safety priority + signals + suppression flag",
+      "dependencies": ["data/safety-triage-rules-v1.json (planned)", "knowledge artifacts 26/45/57 (validated content source)"],
+      "classification": "missing",
+      "notes": "Safety KNOWLEDGE is validated in artifacts; safety CODE does not exist. Rules file is new frozen data."
+    },
+    {
+      "name": "legal_factual_knowledge_retrieval",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned runtime/sut/knowledge.py",
+      "inputs": "track sub-utterance",
+      "outputs": "KnowledgeEvidence spans",
+      "dependencies": ["data/knowledge-index-v1.json (planned)", "repo markdown artifacts (PRODUCT_DATA)"],
+      "classification": "missing",
+      "notes": "Artifacts exist as data (00-75); retrieval/index layer must be built."
+    },
+    {
+      "name": "local_discovery_runtime",
+      "path": "runtime/discovery/",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "run_discovery(protocol, input_data, fixtures=None, mode='replay') via orchestrator.py; CLI runtime/discovery/cli.py",
+      "inputs": "protocol JSON, municipality, age, need, mode",
+      "outputs": "discovery result conforming to data/local-discovery-runtime-result-v1.schema.json (route_state, execution_status, provenance_graph, evidence, terminal_state)",
+      "dependencies": ["runtime/discovery/security.py", "runtime/discovery/classification.py", "runtime/discovery/engine.py", "runtime/discovery/protocol.py", "runtime/discovery/providers.py"],
+      "classification": "production-ready",
+      "notes": "V1 frozen. V2.x candidates in runtime/discovery_v2/ are frozen evaluation lineages; adapter pins one target."
+    },
+    {
+      "name": "discovery_result_schema",
+      "path": "data/local-discovery-runtime-result-v1.schema.json",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "schema document",
+      "inputs": "discovery result JSON",
+      "outputs": "validation contract (route_state/execution_status/terminal_state enums)",
+      "dependencies": [],
+      "classification": "production-ready",
+      "notes": "Canonical enums reused by epistemic-state-contract.md."
+    },
+    {
+      "name": "discovery_security",
+      "path": "runtime/discovery/security.py",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "validate_url(url) -> raises InvalidUrlError",
+      "inputs": "candidate URL",
+      "outputs": "accept/reject (SSRF, private ranges, scheme)",
+      "dependencies": [],
+      "classification": "production-ready",
+      "notes": "Reused for every adapter URL; security-architecture.md."
+    },
+    {
+      "name": "provenance_structures_discovery",
+      "path": "runtime/discovery/classification.py",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "EvidenceLedger, ProvenanceGraph, AccessClassifier",
+      "inputs": "fetched pages, classification rules",
+      "outputs": "evidence records + provenance graph + access classification",
+      "dependencies": ["runtime/discovery/security.py"],
+      "classification": "production-ready",
+      "notes": "Discovery-scoped; pipeline-level provenance (P-records) is new planned structure reusing this graph."
+    },
+    {
+      "name": "schema_validator_pattern",
+      "path": "runtime/discovery/schema.py",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "stdlib JSON subset validator",
+      "inputs": "schema + JSON document",
+      "outputs": "valid/invalid + errors",
+      "dependencies": [],
+      "classification": "production-ready",
+      "notes": "Pattern reused for runtime/sut/schemas.py; no new dependency."
+    },
+    {
+      "name": "municipal_routing_logic",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned runtime/sut/routes.py",
+      "inputs": "tracks + evidence + discovery results + profile",
+      "outputs": "candidate routes with epistemic states",
+      "dependencies": ["data/rules-v1.json (planned)", "knowledge adapter (planned)", "discovery adapter (planned)"],
+      "classification": "missing",
+      "notes": "Routing KNOWLEDGE validated in artifacts 26/28b/28c/45; no executable logic exists."
+    },
+    {
+      "name": "uncertainty_epistemic_states",
+      "path": "data/local-discovery-runtime-result-v1.schema.json",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "canonical enums",
+      "inputs": "route states",
+      "outputs": "FULLY_VERIFIED / ACCESS_PARTIAL / EXISTENCE_ONLY / UNVERIFIED; execution COMPLETE / DISCOVERY_INCOMPLETE",
+      "dependencies": [],
+      "classification": "production-ready",
+      "notes": "Product-side epistemic vocabulary frozen; contract doc maps setters."
+    },
+    {
+      "name": "answer_composition",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned runtime/sut/answer.py",
+      "inputs": "answer plan from DecisionContext",
+      "outputs": "user-facing answer + rendered blocks",
+      "dependencies": ["decision-context.schema.json"],
+      "classification": "missing",
+      "notes": "No composition/rendering exists."
+    },
+    {
+      "name": "discovery_cli_entrypoints",
+      "path": "runtime/discovery/cli.py (+ runtime/discovery_v2/cli_v24.py, cli_v25.py)",
+      "status": "FROZEN_PRODUCT",
+      "callable_interface": "python -m runtime.discovery.cli ...; python -m runtime.discovery_v2.cli_v24 --municipality ...",
+      "inputs": "municipality, protocol, mode",
+      "outputs": "discovery result JSON",
+      "dependencies": ["runtime/discovery/orchestrator.py"],
+      "classification": "prototype",
+      "notes": "CLI entrypoints exist for discovery only; no end-to-end SUT entrypoint."
+    },
+    {
+      "name": "human_review_hooks",
+      "path": "evaluation/measurement-v3-combined-freeze/",
+      "status": "EVALUATOR",
+      "callable_interface": "M2 lane, uncertainty lane, generic V2.15 lane (frozen)",
+      "inputs": "sut_output text + case metadata",
+      "outputs": "human-review records",
+      "dependencies": [],
+      "classification": "evaluator-only",
+      "notes": "Measurement mechanism, not product runtime. Product human review not a requirement (ADR-004)."
+    },
+    {
+      "name": "corpus_loader",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned evaluation/full-sut-implementation/sut_runner/loader.py",
+      "inputs": "dev-corpus-v1 case files",
+      "outputs": "gold-stripped SUT inputs",
+      "dependencies": ["sut-input.schema.json"],
+      "classification": "missing",
+      "notes": "Gap report names this as missing; Phase 1 deliverable, evaluator-side."
+    },
+    {
+      "name": "execution_runner",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned evaluation/full-sut-implementation/sut_runner/run.py",
+      "inputs": "corpus file, SUT entrypoint, mode",
+      "outputs": "frozen predictions + run log + manifest",
+      "dependencies": ["corpus_loader (planned)", "pipeline (planned)"],
+      "classification": "missing",
+      "notes": "Phase 1 deliverable."
+    },
+    {
+      "name": "dev_corpus_scorer",
+      "path": "evaluation/dev-corpus-scorer-v1/scorer.py",
+      "status": "EVALUATOR",
+      "callable_interface": "score_case(case, raw_answer, capabilities, judge)",
+      "inputs": "case (with gold), raw_answer, capabilities",
+      "outputs": "scored dimensions (safety/critical/forbidden/route/uncertainty/evidence)",
+      "dependencies": [],
+      "classification": "evaluator-only",
+      "notes": "FROZEN contract v1. Raw-answer field requirements drive sut-output/v1."
+    },
+    {
+      "name": "measurement_v3_combined",
+      "path": "evaluation/measurement-v3-combined-freeze/combined_measurement_v3.py",
+      "status": "EVALUATOR",
+      "callable_interface": "run_item(item) routing to scorer/M2/semantic lanes; combined_report(results)",
+      "inputs": "items with case, raw_answer, capabilities",
+      "outputs": "combined measurement report + provenance checks",
+      "dependencies": ["dev_corpus_scorer"],
+      "classification": "evaluator-only",
+      "notes": "FROZEN baseline; consumed after prediction freeze."
+    },
+    {
+      "name": "persistence_cache",
+      "path": null,
+      "status": "MISSING",
+      "callable_interface": "planned: run-directory persistence only in Phases 1-3",
+      "inputs": "prediction files",
+      "outputs": "frozen run artifacts",
+      "dependencies": ["execution_runner (planned)"],
+      "classification": "missing",
+      "notes": "No product cache in Phases 1-3; freshness semantics via freshness_class on provenance. Cache + revalidation policy is a later concern once live discovery is productized."
+    },
+    {
+      "name": "knowledge_artifacts",
+      "path": "repo root (00-75) + subfolders (01-16, 70)",
+      "status": "PRODUCT_DATA",
+      "callable_interface": "read-only data; consumed via knowledge adapter",
+      "inputs": "none",
+      "outputs": "legal/factual/routing knowledge, gap registers, source documentation",
+      "dependencies": [],
+      "classification": "production-ready",
+      "notes": "The validated product knowledge base; indexed, never hardcoded into logic."
+    }
+  ]
+}

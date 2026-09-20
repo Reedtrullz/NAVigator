@@ -1,0 +1,83 @@
+{
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "status": "CLOSED",
+  "task_family": "measurement-v3-residual-adjudication",
+  "created_utc": "2026-09-16",
+  "owner_authorization": "explicit owner authorization (wave 1 residual llm adjudication + metric consistency v1, 2026-09-16)",
+  "owner_amendment": "gpt-5.6-sol restricted to reasoning_effort LOW only (2026-09-16)",
+  "upstream_terminal_state": "MEASUREMENT_V3_REMEASURE_WAVE_1_RESIDUAL_ADJUDICATION_REQUIRED",
+  "upstream_lineage": "evaluation/measurement-v3-remeasure-repair-wave-1/",
+  "scope": [
+    "accounting check A: explain 526 -> 508 DETERMINISTIC ownership transition mechanically",
+    "accounting check B: reconcile failure-rate definitions with distinct canonical names",
+    "blind dual-pass gpt-5.6-sol adjudication of exactly 4 frozen residual packets",
+    "mechanical derivation of 4 residual results via frozen judge_core_v2_13",
+    "freeze complete 600/600 wave-1 remeasurement if all four resolve",
+    "recompute aggregates and transition matrix from completed results"
+  ],
+  "hard_constraints": {
+    "SUT_RERUN": false,
+    "SOURCE_CHANGES": 0,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "PACKETS_CHANGED": false,
+    "ASTRA_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "SOL_REASONING_EFFORT": "LOW",
+    "SOL_MEDIUM_CALLS": 0,
+    "SOL_HIGH_CALLS": 0,
+    "SOL_MAX_CALLS": 0,
+    "THIRD_PASS_ALLOWED": false,
+    "MAJORITY_VOTE_ALLOWED": false,
+    "NEW_PROVIDER_SETUP_ALLOWED": false,
+    "MONEY_SPEND_ALLOWED": false,
+    "FRESH_HOLDOUT_ALLOWED": false,
+    "TUNING_ALLOWED": false,
+    "AI_RESULTS_MISREPRESENTED_AS_HUMAN": false,
+    "HUMAN_REVIEWED_RESULTS": 0
+  },
+  "expected_residual_ids": [
+    "DIS-118",
+    "ROUT-026",
+    "ROUT-031",
+    "ROUT-037"
+  ],
+  "secondary_model": {
+    "model": "gpt-5.6-sol",
+    "availability_rule": "only if already reachable through authorized local stack; no install, no new credentials, no spend",
+    "unavailable_terminal": "SECONDARY_LLM_ADJUDICATOR_UNAVAILABLE",
+    "fallback_to_astra_forbidden": true
+  },
+  "terminal_statuses": [
+    "MEASUREMENT_V3_REMEASURE_WAVE_1_COMPLETE",
+    "MEASUREMENT_V3_REMEASURE_WAVE_1_SECONDARY_RESIDUAL_PENDING",
+    "MEASUREMENT_V3_REMEASURE_WAVE_1_ACCOUNTING_INVALID",
+    "SECONDARY_LLM_ADJUDICATOR_UNAVAILABLE",
+    "WAVE1_MEASUREMENT_OWNERSHIP_INCONSISTENCY"
+  ],
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "terminal_status": "MEASUREMENT_V3_REMEASURE_WAVE_1_SECONDARY_RESIDUAL_PENDING",
+  "closed_utc": "2026-09-16",
+  "terminal_summary": {
+    "sol_availability": "AVAILABLE",
+    "sol_calls": 8,
+    "sol_transport_retries": 0,
+    "sol_records_valid": 8,
+    "consensus_rule": "whole-object A==B (frozen)",
+    "adjudicated": 0,
+    "pending": 4,
+    "primitive_agreement": "criterion_semantic_match + speaker_commitment identical 4/4; rationale text differed",
+    "completed_results_artifact": "wave1-remeasurement-complete-after-secondary-residual.json",
+    "coverage": "508 DET / 88 LLM_REVIEWED / 0 ADJ / 0 HUMAN / 4 PENDING / 600",
+    "authoritative_denominator": 584,
+    "HARD_FAIL_RATE_AUTHORITATIVE": 0.4161,
+    "NON_PASS_RATE_AUTHORITATIVE": 0.5086,
+    "SUT_RERUN": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "PACKETS_CONTENT_CHANGED": false,
+    "upstream_artifacts_untouched": true
+  },
+  "terminal_manifest_sha256": "71a0b22441d69924226bf7835dc441df1b779e76dfbfff7fc867010c96c017fd"
+}

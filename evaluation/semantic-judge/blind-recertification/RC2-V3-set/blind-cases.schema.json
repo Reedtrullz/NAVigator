@@ -1,0 +1,79 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NAV-EXPLORE-RC2-BLIND-V3 public blind cases",
+  "type": "object",
+  "required": [
+    "set_version",
+    "created",
+    "cases"
+  ],
+  "properties": {
+    "set_version": {
+      "const": "NAV-EXPLORE-RC2-BLIND-V3"
+    },
+    "created": {
+      "type": "string",
+      "format": "date"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 140,
+      "maxItems": 160,
+      "items": {
+        "$ref": "#/definitions/case"
+      }
+    }
+  },
+  "definitions": {
+    "case": {
+      "type": "object",
+      "required": [
+        "case_id",
+        "claim",
+        "sources"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^RC2B-[0-9]{4}$"
+        },
+        "provenance": {
+          "enum": [
+            "V2_REUSED_UNSEEN_BY_RC2",
+            "V3_SPEC17_NEW"
+          ]
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "source_id",
+              "kb_ref",
+              "text"
+            ],
+            "properties": {
+              "source_id": {
+                "type": "string"
+              },
+              "kb_ref": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "lines": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "task_id": "NAV-EXPLORE-SEMANTIC-REVIEWER-COST-QUALIFICATION-V1",
+  "task_family": "semantic-reviewer-evaluation",
+  "status": "NO_LOW_COST_MODEL_QUALIFIES",
+  "owner_authorization": {
+    "source": "attachment 2bcd85e7-a0a8-4e87-b984-435b8d16a1b1",
+    "granted": true
+  },
+  "upstream_terminal_state": "MEASUREMENT_V3_REMEASURE_WAVE_4_COMPLETE",
+  "upstream_freeze": {
+    "lineage": "evaluation/measurement-v3-remeasure-wave-4-quota-resume-v1",
+    "freeze_manifest_sha256_prefix": "30abe921d5d79a49e2827aa6da8c80cb1d5214646062434d376928d279a54fab"
+  },
+  "scope": [
+    "reference_corpus_construction",
+    "benchmark_freeze",
+    "transport_calibration",
+    "semantic_screening",
+    "full_dual_pass_qualification",
+    "stability_testing",
+    "cascade_simulation",
+    "proposed_router_freeze"
+  ],
+  "hard_rules": {
+    "NEW_ASTRA_CALLS": 0,
+    "NEW_SOL_CALLS": 0,
+    "LONGCAT_CALLS": 0,
+    "GPT_5_5_CALLS": 0,
+    "LUNA_ROUTINE_FANOUT": false,
+    "router_activation_allowed": false,
+    "product_changes_allowed": false,
+    "gold_changes_allowed": false,
+    "semantic_contract_changes_allowed": false,
+    "fresh_cases_consumed": 0,
+    "historical_measurements_mutable": false
+  },
+  "reference_target_semantics": "AGREEMENT_WITH_FROZEN_AUTHORITATIVE_SEMANTIC_REFERENCE_NOT_HUMAN_GROUND_TRUTH",
+  "primary_screening_pool": [
+    "openrouter/nvidia-nemotron-3-ultra:free",
+    "openrouter/nex-agi-nex-n2.5-pro:free",
+    "openrouter/google-gemma-4-31b-it:free",
+    "command-code/xiaomi-mimo-v2.5-pro",
+    "openrouter/thinkingmachines-inkling:free"
+  ],
+  "max_candidates_per_lane_after_screening": 2,
+  "terminal_states": [
+    "LOW_COST_REVIEWER_QUALIFIED",
+    "LOW_COST_REVIEWER_PARTIALLY_QUALIFIED",
+    "NO_LOW_COST_MODEL_QUALIFIES",
+    "LOW_COST_REVIEWER_QUALIFICATION_INVALID"
+  ],
+  "created_utc": "2026-09-18T00:00:00Z",
+  "terminal": {
+    "terminal_status": "NO_LOW_COST_MODEL_QUALIFIES",
+    "terminated_utc": "2026-09-18T21:45:00Z",
+    "valid_experimental_outcome": true,
+    "screening_survivors": 0,
+    "stages_completed": [
+      "reference_corpus_construction",
+      "benchmark_freeze",
+      "transport_calibration",
+      "semantic_screening"
+    ],
+    "stages_not_started_no_survivors": [
+      "full_dual_pass_qualification",
+      "stability_testing",
+      "cascade_simulation",
+      "proposed_router_freeze"
+    ],
+    "screening_summary": {
+      "nemotron-3-ultra": {"ok_rows": 5, "classification": "CHRONIC_429_CREDIT_EXHAUSTION"},
+      "nex-n2.5-pro": {"ok_rows": 48, "classification": "EPISODIC_TIMEOUTS", "near_miss": true},
+      "gemma-4-31b-it": {"ok_rows": 16, "classification": "CHRONIC_429_CREDIT_EXHAUSTION"},
+      "mimo-v2.5-pro": {"ok_rows": 32, "classification": "NO_TRANSPORT_FAILURES_INVALID_OUTPUT_DOMINANT"},
+      "inkling": {"ok_rows": 0, "classification": "TRANSPORT_NOT_VERIFIED_ROUTE_RESTRICTED"}
+    },
+    "gates_modified_after_outputs": false,
+    "best_of_bad_selection_attempted": false,
+    "astra_calls": 0,
+    "sol_calls": 0,
+    "fresh_cases_consumed": 0,
+    "historical_measurements_mutated": false,
+    "frozen_artifacts_manifest": "hashes.txt",
+    "report": "final-report.md",
+    "hard_stop": "router activation, prompt tuning, retry with other routes, and any product change require a new owner-authorized task"
+  }
+}

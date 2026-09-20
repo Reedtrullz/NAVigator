@@ -1,0 +1,40 @@
+{
+ "artifact": "baseline-integrity",
+ "task_id": "NAV-EXPLORE-MEASUREMENT-V3-BURNED-BASELINE-V1",
+ "phase3": {
+  "manifest_sha256": "485ecbe5d6957c4c8a34e37ac17986e1fe7a827aa6b7e819cb011924fcabfdce",
+  "manifest_self_reference_excluded": true,
+  "terminal_status": "FULL_SUT_PHASE_3_READY",
+  "files_total": 35,
+  "sha_mismatches_excluding_self": 0,
+  "bad": [],
+  "gold_leak_audit": {
+   "gold_visible_to_sut": 0,
+   "method": "loader strip_gold(case) executed for all 120 burned dev cases before pipeline execution; structural run report counts gold_leak=0 per corpus and totals",
+   "corpora": {
+    "safety": 0,
+    "routing": 0,
+    "discovery_adversarial": 0
+   },
+   "note": "SUT execution received gold-stripped cases only; gold fields (acceptable_routes, forbidden_claims, required_uncertainty, required_evidence_fields, critical_error_if) never entered the pipeline."
+  }
+ },
+ "measurement_v3": {
+  "manifest_sha256": "331310497a6630dcefc2990079593eed048b9dc4808e8800b0b94b73cb9847c7",
+  "status": "MEASUREMENT_V3_COMBINED_FREEZE_READY",
+  "engine_version": "combined-measurement-v3",
+  "pinned_artifacts_total": 22,
+  "pinned_sha_mismatches": 0,
+  "bad": []
+ },
+ "dev_corpus": {
+  "manifest_sha256": "9c265731e6e17ea54844b6db646dac4abe1901e49ee1c5ce56c3ec081db177ef",
+  "case_total_verified": 120,
+  "data_status": "BURNED_DEVELOPMENT_ONLY",
+  "gold_model_sha256": "994ab1885b81d85a378ad3744930c2b9fc11cfe3e9dbc6df7bfa65f729949804"
+ },
+ "verdict": "PASS",
+ "gold_visible_to_frozen_sut_execution": 0,
+ "historical_writes": 0,
+ "verified_utc": "2026-09-14T00:00:00Z"
+}

@@ -1,0 +1,124 @@
+{
+  "artifact": "combined-aggregate-metrics",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-ASTRA-INTEGRATION-AND-RESIDUAL-ADJUDICATION-V1",
+  "created_utc": "2026-09-15T22:51:02Z",
+  "baseline_label": "BURNED_DEV_BASELINE_ONLY",
+  "interpretation_boundary": "Dual-pass Astra agreement and adjudication consensus are MODEL CONSISTENCY EVIDENCE only; not human validation, certification, or generalization evidence.",
+  "criterion_level_coverage": {
+    "TOTAL_CRITERIA": 600,
+    "DETERMINISTIC": 526,
+    "LLM_REVIEWED": 64,
+    "LLM_ADJUDICATED": 8,
+    "HUMAN_REVIEWED": 0,
+    "PENDING_HUMAN_ADJUDICATION": 2,
+    "AUTHORITATIVE_TOTAL": 598,
+    "AUTHORITATIVE_PCT": 99.67
+  },
+  "case_level_coverage": {
+    "total_cases": 120,
+    "fully_authoritative_cases": 118,
+    "cases_with_pending_criteria": 2,
+    "pending_case_ids": [
+      "ROUT-025",
+      "ROUT-066"
+    ],
+    "coverage_pct": 98.33
+  },
+  "per_dimension": {
+    "critical_condition": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "CRITICAL_ERROR": 110,
+        "NOT_TRIGGERED": 4,
+        "TRIGGERED": 1,
+        "UNRESOLVED": 5
+      },
+      "note": "mixed-authority verdict vocabulary; deterministic dimension verdicts unchanged from frozen baseline"
+    },
+    "forbidden_claim": {
+      "total_criteria": 120,
+      "authoritative": 118,
+      "pending": 2,
+      "verdict_distribution": {
+        "ABSENT": 59,
+        "CLAIM_ABSENT_TAKEN": 53,
+        "CLAIM_PRESENT": 3,
+        "PRESENT": 3
+      },
+      "note": "mixed-authority verdict vocabulary; deterministic dimension verdicts unchanged from frozen baseline"
+    },
+    "route_correctness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NO_ACCEPTABLE_ROUTE": 108
+      },
+      "note": "mixed-authority verdict vocabulary; deterministic dimension verdicts unchanged from frozen baseline"
+    },
+    "required_uncertainty": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "NOT_REQUIRED": 83,
+        "PARTIAL": 34,
+        "SATISFIED": 1,
+        "VIOLATED": 2
+      },
+      "note": "mixed-authority verdict vocabulary; deterministic dimension verdicts unchanged from frozen baseline"
+    },
+    "evidence_completeness": {
+      "total_criteria": 120,
+      "authoritative": 120,
+      "pending": 0,
+      "verdict_distribution": {
+        "0.0": 38,
+        "1.0": 82
+      },
+      "note": "mixed-authority verdict vocabulary; deterministic dimension verdicts unchanged from frozen baseline"
+    }
+  },
+  "pending_criteria": [
+    "ROUT-025::forbidden:01",
+    "ROUT-066::forbidden:01"
+  ],
+  "residual_packets": {
+    "count": 10,
+    "by_dimension": {
+      "critical_condition": [
+        "PKT-ESC-DIS-109",
+        "PKT-ESC-ROUT-085"
+      ],
+      "forbidden_claim": [
+        "PKT-ESC-DIS-109-F01",
+        "PKT-ESC-DIS-118",
+        "PKT-ESC-ROUT-021-F02",
+        "PKT-ESC-ROUT-025",
+        "PKT-ESC-ROUT-038-F02",
+        "PKT-ESC-ROUT-041",
+        "PKT-ESC-ROUT-063",
+        "PKT-ESC-ROUT-066"
+      ]
+    },
+    "ids": [
+      "PKT-ESC-DIS-109",
+      "PKT-ESC-DIS-109-F01",
+      "PKT-ESC-DIS-118",
+      "PKT-ESC-ROUT-021-F02",
+      "PKT-ESC-ROUT-025",
+      "PKT-ESC-ROUT-038-F02",
+      "PKT-ESC-ROUT-041",
+      "PKT-ESC-ROUT-063",
+      "PKT-ESC-ROUT-066",
+      "PKT-ESC-ROUT-085"
+    ]
+  },
+  "not_computable_until_human_review": [
+    "final verdict for ROUT-025::forbidden:01",
+    "final verdict for ROUT-066::forbidden:01",
+    "case-level completion for ROUT-025 and ROUT-066"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "registry_id": "BOUNDARY-RULES-V1_6A",
+  "status": "FROZEN",
+  "frozen_at": "2026-09-11",
+  "freeze_evidence": "unit suite 64/64 GREEN; classifier frozen for official validation",
+  "evaluation_order": "all rules run; highest priority wins; distinct labels inside the top priority group yield ABSTAIN_CONFLICT; no rule firing yields ABSTAIN_NO_HIGH_PRECISION_RULE",
+  "rules": [
+    { "rule_id": "BC_ROUTE_QUOTE_CONFLICT_01", "dimension": "route_commitment", "priority": 65, "label": "ABSTAIN_CONFLICT", "predicate": "quote/attribution scope AND route term AND explicit system adoption marker", "abstain_condition": "fires as ABSTAIN_CONFLICT" },
+    { "rule_id": "BC_ROUTE_QUOTED_01", "dimension": "route_commitment", "priority": 60, "label": "QUOTED_ONLY", "predicate": "quote/attribution marker («, sier at, skriver at, oppgir at, ifølge) AND route term" },
+    { "rule_id": "BC_ROUTE_SELF_RETRACTED_01", "dimension": "route_commitment", "priority": 50, "label": "SELF_RETRACTED", "predicate": "retraction marker (nei,, trekker tilbake, korrigere meg, kan jeg ikke stå inne for, det stemmer ikke) AND route term" },
+    { "rule_id": "BC_ROUTE_NEGATED_01", "dimension": "route_commitment", "priority": 40, "label": "NEGATED", "predicate": "negation marker in the same clause as a route term" },
+    { "rule_id": "BC_ROUTE_HYPOTHETICAL_01", "dimension": "route_commitment", "priority": 30, "label": "HYPOTHETICAL_ONLY", "predicate": "conditional marker (hvis, dersom, i tilfeller der, kunne være, være en mulighet, vurderes) AND route term" },
+    { "rule_id": "BC_ROUTE_HEDGED_01", "dimension": "route_commitment", "priority": 20, "label": "HEDGED_ASSERTION", "predicate": "hedge marker (ser ut til, trolig, sannsynligvis, antakelig, kan tenkes) AND route term" },
+    { "rule_id": "BC_ROUTE_ASSERTED_01", "dimension": "route_commitment", "priority": 10, "label": "ASSERTED", "predicate": "assertion marker (riktig sted/inngang/rute, riktig første kontakt, bør kontakte/kontaktes, henvis, anbefaler) AND route term" },
+    { "rule_id": "BC_ROUTE_VAGUE_01", "dimension": "route_commitment", "priority": 5, "label": "VAGUE_NONCOMMITTAL", "predicate": "NO route term AND vague help/support marker (hjelp, hjelpe, støtte, muligheter)" },
+    { "rule_id": "UNC_CONTRADICTORY_01", "dimension": "uncertainty_behavior", "priority": 50, "label": "CONTRADICTORY_LIMITATION", "predicate": "limitation marker AND strong certainty marker (helt sikkert, garanterer, garantert, utvetydig)" },
+    { "rule_id": "UNC_PARTIAL_01", "dimension": "uncertainty_behavior", "priority": 45, "label": "PARTIAL_LIMITATION", "predicate": "limitation marker AND (partitive scope 'én av'/'en av' OR 'men' + verified-part marker)" },
+    { "rule_id": "UNC_EXPLICIT_01", "dimension": "uncertainty_behavior", "priority": 40, "label": "EXPLICIT_LIMITATION", "predicate": "limitation marker (ikke kunnet verifisere, ikke verifisert, mangler informasjon, kunne ikke bekrefte, uavklart, ikke sjekket)" },
+    { "rule_id": "UNC_OVERCONFIDENT_01", "dimension": "uncertainty_behavior", "priority": 35, "label": "OVERCONFIDENT_ASSERTION", "predicate": "criterion.required_limitations present AND no limitation marker AND no hedge marker", "abstain_condition": "never fires from generic strong wording without structured criterion" },
+    { "rule_id": "UNC_HEDGE_01", "dimension": "uncertainty_behavior", "priority": 30, "label": "HEDGE", "predicate": "hedge marker" },
+    { "rule_id": "UNC_NONE_01", "dimension": "uncertainty_behavior", "priority": 10, "label": "NONE", "predicate": "no limitation, hedge, or conditional marker AND no criterion.required_limitations" },
+    { "rule_id": "BC_SCOPE_RETRACTED_01", "dimension": "assertion_scope", "priority": 55, "label": "RETRACTED", "predicate": "retraction marker" },
+    { "rule_id": "BC_SCOPE_NEGATED_01", "dimension": "assertion_scope", "priority": 50, "label": "NEGATED", "predicate": "condition negation marker (kan ikke fastslå, ikke påvist)" },
+    { "rule_id": "BC_SCOPE_USER_REPORTED_01", "dimension": "assertion_scope", "priority": 41, "label": "USER_REPORTED", "predicate": "user attribution marker (du sier, du forteller, du oppgir)" },
+    { "rule_id": "BC_SCOPE_THIRD_PARTY_01", "dimension": "assertion_scope", "priority": 40, "label": "THIRD_PARTY_QUOTED", "predicate": "third-party attribution marker (sier at, oppgir at, skriver at, ifølge)" },
+    { "rule_id": "BC_SCOPE_HYPOTHETICAL_01", "dimension": "assertion_scope", "priority": 30, "label": "HYPOTHETICAL", "predicate": "conditional or hedged-tendency marker (hvis, dersom, kan i noen tilfeller, oppstå)" },
+    { "rule_id": "BC_SCOPE_SYSTEM_ENDORSED_01", "dimension": "assertion_scope", "priority": 20, "label": "SYSTEM_ENDORSED", "predicate": "direct condition assertion marker (er i akutt fare, foreligger, viser tegn på)" }
+  ],
+  "amendments": [
+    "amendment 3 (bounded bugfix, pre-official): quote markers += 'rapporterer at'; new BC_SCOPE_NEGATED_02 priority 50: endorsement marker negated within its own sentence -> NEGATED; BC_ROUTE_VAGUE_01 unchanged (fires on no-route-term + vague markers regardless of hedge)"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "source": "raw-responses-run1-v2.jsonl",
+  "n": 57,
+  "errors": 0,
+  "critical_condition": {
+    "n": 35,
+    "exact": 17,
+    "accuracy": 0.4857,
+    "confusion": {
+      "INSUFFICIENT_TO_DECIDE": {
+        "INSUFFICIENT_TO_DECIDE": 11,
+        "CLEAR_TRIGGER_SUPPORT": 1
+      },
+      "CLEAR_TRIGGER_SUPPORT": {
+        "INSUFFICIENT_TO_DECIDE": 2,
+        "CLEAR_TRIGGER_SUPPORT": 3
+      },
+      "CLEAR_NON_TRIGGER_SUPPORT": {
+        "INSUFFICIENT_TO_DECIDE": 8,
+        "CLEAR_NON_TRIGGER_SUPPORT": 2
+      },
+      "AMBIGUOUS_OR_CONFLICTING": {
+        "CLEAR_TRIGGER_SUPPORT": 4,
+        "INSUFFICIENT_TO_DECIDE": 3,
+        "AMBIGUOUS_OR_CONFLICTING": 1
+      }
+    },
+    "high_confidence_errors_ge08": [
+      {
+        "case_id": "ESC-ROUT-030",
+        "gold": "CLEAR_TRIGGER_SUPPORT",
+        "pred": "INSUFFICIENT_TO_DECIDE",
+        "confidence": 0.81,
+        "probabilities": {
+          "AMBIGUOUS_OR_CONFLICTING": 0.01,
+          "UNRESOLVED": 0.0,
+          "INSUFFICIENT_TO_DECIDE": 0.85,
+          "CLEAR_NON_TRIGGER_SUPPORT": 0.1,
+          "CLEAR_TRIGGER_SUPPORT": 0.04
+        }
+      },
+      {
+        "case_id": "ESC-ROUT-036",
+        "gold": "CLEAR_NON_TRIGGER_SUPPORT",
+        "pred": "INSUFFICIENT_TO_DECIDE",
+        "confidence": 0.88,
+        "probabilities": {
+          "UNRESOLVED": 0.01,
+          "CLEAR_NON_TRIGGER_SUPPORT": 0.05,
+          "INSUFFICIENT_TO_DECIDE": 0.9,
+          "CLEAR_TRIGGER_SUPPORT": 0.04,
+          "AMBIGUOUS_OR_CONFLICTING": 0.0
+        }
+      }
+    ],
+    "mean_confidence": 0.569
+  },
+  "forbidden_claim": {
+    "criterion_semantic_match": {
+      "n": 22,
+      "exact": 20,
+      "accuracy": 0.9091,
+      "confusion": {
+        "NO_MATCH": {
+          "NO_MATCH": 10
+        },
+        "MATCH": {
+          "MATCH": 10,
+          "NO_MATCH": 2
+        }
+      },
+      "high_confidence_errors_ge08": [],
+      "mean_confidence": 0.732
+    },
+    "speaker_commitment": {
+      "n": 22,
+      "exact": 16,
+      "accuracy": 0.7273,
+      "confusion": {
+        "UNRESOLVED": {
+          "UNRESOLVED": 7,
+          "NEGATED": 3
+        },
+        "ASSERTED": {
+          "ASSERTED": 6
+        },
+        "NEGATED": {
+          "NEGATED": 3,
+          "ASSERTED": 3
+        }
+      },
+      "high_confidence_errors_ge08": [
+        {
+          "case_id": "ESC-ROUT-026",
+          "gold": "UNRESOLVED",
+          "pred": "NEGATED",
+          "confidence": 0.97,
+          "probabilities": {
+            "ASSERTED": 0.0,
+            "UNRESOLVED": 0.02,
+            "NEGATED": 0.98
+          }
+        },
+        {
+          "case_id": "ESC-ROUT-021",
+          "gold": "UNRESOLVED",
+          "pred": "NEGATED",
+          "confidence": 0.88,
+          "probabilities": {
+            "ASSERTED": 0.01,
+            "NEGATED": 0.92,
+            "UNRESOLVED": 0.07
+          }
+        }
+      ],
+      "mean_confidence": 0.585
+    },
+    "pair": {
+      "n": 22,
+      "pair_exact": 14,
+      "pair_accuracy": 0.6364
+    }
+  }
+}

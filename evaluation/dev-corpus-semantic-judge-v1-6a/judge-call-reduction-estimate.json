@@ -1,0 +1,35 @@
+{
+  "artifact": "judge-call-reduction-estimate",
+  "basis": "burned-v1-4-diagnostic-replay.json (frozen engine, 100 burned V1.4 fixtures)",
+  "engine_sha256": "ccd30e7f7fae7e9090c9de443372b15bf3d2341cb447d800c1d55058f6f2c467",
+  "boundary_dimension_fixtures": 50,
+  "deterministically_resolved_no_judge_call": 35,
+  "still_judge_required": 15,
+  "reduction_pct_boundary_fixtures": 70.0,
+  "reduction_pct_all_v1_4_fixtures": 35.0,
+  "per_family": {
+    "route_correctness": {
+      "n": 25,
+      "resolved": 10,
+      "coverage": 0.4,
+      "abstain_is_safe": true
+    },
+    "required_uncertainty": {
+      "n": 25,
+      "resolved": 25,
+      "coverage": 1.0,
+      "integration_note": "with structured criteria, NONE classifications become OVERCONFIDENT_ASSERTION; still deterministic"
+    },
+    "critical_condition": {
+      "n": 25,
+      "resolved": 0,
+      "note": "no preclassifier dimension; judge-required"
+    },
+    "forbidden_claim": {
+      "n": 25,
+      "resolved": 0,
+      "note": "no preclassifier dimension; judge-required"
+    }
+  },
+  "caveat": "BURNED_DIAGNOSTIC_REPLAY estimate; not certification evidence and not measured on fresh data."
+}

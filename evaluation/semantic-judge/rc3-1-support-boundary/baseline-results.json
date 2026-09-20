@@ -1,0 +1,24 @@
+{
+  "incident": {
+    "type": "ACCIDENTAL_OVERWRITE",
+    "description": "Original pre-implementation boundary baseline was overwritten on 2026-09-07 when the RC3.2 agent ran ../rc3-1-support-boundary/run_boundary.py with its default output path. The original content is not recoverable byte-for-byte.",
+    "reconstruction": "HEADLINE_ONLY",
+    "source_of_facts": "rc3-1-support-boundary/README.md line 66: baseline-results.json pre-implementation run FALSE=27, precision 0.5345",
+    "reconstructed_at": "2026-09-07"
+  },
+  "provenance": {
+    "engine_sha256": "unknown-original-pre-boundary-repair-engine",
+    "note": "Original engine (sha 4bd2845fac3535fb per RC3.2 source-integrity-report.md lineage) predates boundary repair; candidate engine sha 16d4... lineage documented in candidate-boundary/manifest.json (c4bc7186..., boundary 6ebc2429...)."
+  },
+  "headline_metrics_only": {
+    "FALSE_AUTO_SUPPORT_BOUNDARY": 27,
+    "support_boundary_precision": 0.5345
+  },
+  "full_content": "LOST_ACCIDENTAL_OVERWRITE",
+  "post_repair_reference": {
+    "file": "rc3-2-boundary-aware-relation/boundary-regression.json",
+    "engine_sha256_prefix": "c4bc71862febf517",
+    "FALSE_AUTO_SUPPORT_BOUNDARY": 0,
+    "support_boundary_precision": 1.0
+  }
+}

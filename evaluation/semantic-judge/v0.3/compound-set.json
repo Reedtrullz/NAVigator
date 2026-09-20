@@ -1,0 +1,788 @@
+{
+ "meta": {
+  "version": "v0.3-compound-set",
+  "generated": "2026-08-30",
+  "n_cases": 30,
+  "note": "Pure aggregator-tester (ingen LLM). Kjor med compound_test.py."
+ },
+ "cases": [
+  {
+   "id": "CMP-001",
+   "description": "alle stottet",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-002",
+   "description": "sup core + near-miss contra core (CAL047-shape, co-equal)",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": true,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-003",
+   "description": "sup + vanlig contra (1-1)",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-004",
+   "description": "sup + insuf compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-005",
+   "description": "sup + insuf single",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [],
+   "expected_verdict": "INSUFFICIENT_EVIDENCE",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-006",
+   "description": "alle insuf",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "INSUFFICIENT_EVIDENCE",
+   "expected_review_flag": true,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-007",
+   "description": "alle contra",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "CONTRADICTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-008",
+   "description": "sup + contra + insuf",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-009",
+   "description": "2sup + 1contra",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": true,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-010",
+   "description": "2sup core + near-miss contra core (majority supported)",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "CONTRADICTED",
+     "near_miss": true,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-011",
+   "description": "1sup + 2contra",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "CONTRADICTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-012",
+   "description": "3sup",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-013",
+   "description": "2sup + insuf compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-014",
+   "description": "1sup + 1ins compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-015",
+   "description": "core sup + framing insuf",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "framing",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-016",
+   "description": "contra + insuf",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "CONTRADICTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-017",
+   "description": "HOL026-monster: context sup + core near-miss contra (head decides)",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "CONTRADICTED",
+     "near_miss": true,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "context",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "context",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "CONTRADICTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-018",
+   "description": "context sup + core contra (HOL008-shape, head decides)",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "context",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "CONTRADICTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-019",
+   "description": "conditional atom stottet",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-020",
+   "description": "safety stottet",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [
+    "safety"
+   ],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-021",
+   "description": "safety insuf => safety_block",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [
+    "safety"
+   ],
+   "expected_verdict": "INSUFFICIENT_EVIDENCE",
+   "expected_review_flag": true,
+   "expected_safety_block": true
+  },
+  {
+   "id": "CMP-022",
+   "description": "low conf 0.7 => review",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.7
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.7
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": true,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-023",
+   "description": "high conf alt stottet",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.97
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.96
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-024",
+   "description": "sup conf 0.8 => review",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.8
+    },
+    {
+     "id": "A2",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.8
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": true,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-025",
+   "description": "insuf review",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.9
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.9
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [
+    "safety"
+   ],
+   "expected_verdict": "INSUFFICIENT_EVIDENCE",
+   "expected_review_flag": true,
+   "expected_safety_block": false,
+   "note": "corrected 30.08.2026: compound-test flags-safety without explicit safety-role atom cannot hard-fail per aggregation-spec rule 1; review comes from verdict != SUPPORTED"
+  },
+  {
+   "id": "CMP-026",
+   "description": "single contra",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [],
+   "expected_verdict": "CONTRADICTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-027",
+   "description": "near_miss-merk på SUPPORTED ignoreres",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": true,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-028",
+   "description": "framing contra ignoreres",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "framing",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "single",
+   "flags": [],
+   "expected_verdict": "SUPPORTED",
+   "expected_review_flag": false,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-029",
+   "description": "context sup + context insuf compound",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "context",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "context",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  },
+  {
+   "id": "CMP-030",
+   "description": "sup + insuf + contra 1-1",
+   "atoms": [
+    {
+     "id": "A1",
+     "verdict": "SUPPORTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A2",
+     "verdict": "INSUFFICIENT_EVIDENCE",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    },
+    {
+     "id": "A3",
+     "verdict": "CONTRADICTED",
+     "near_miss": false,
+     "role": "core",
+     "confidence": 0.95
+    }
+   ],
+   "claim_type": "compound",
+   "flags": [],
+   "expected_verdict": "PARTIALLY_SUPPORTED",
+   "expected_review_flag": null,
+   "expected_safety_block": false
+  }
+ ]
+}

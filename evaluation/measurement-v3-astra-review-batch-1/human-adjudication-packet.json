@@ -1,0 +1,101 @@
+{
+  "artifact": "optional-human-adjudication-set",
+  "note": "LLM_REVIEW_DISAGREEMENT and INVALID_MODEL_REVIEW cases only; no AI decisions populate verdicts",
+  "count": 10,
+  "cases": [
+    {
+      "packet_id": "PKT-ESC-DIS-109",
+      "reason": "LLM_REVIEW_DISAGREEMENT",
+      "differing_fields": [
+        "critical_evidence_state"
+      ],
+      "astra_a": {
+        "critical_evidence_state": "INSUFFICIENT_TO_DECIDE"
+      },
+      "astra_b": {
+        "critical_evidence_state": "CLEAR_NON_TRIGGER_SUPPORT"
+      }
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-085",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_A"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-DIS-109-F01",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_B"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-DIS-118",
+      "reason": "LLM_REVIEW_DISAGREEMENT",
+      "differing_fields": [
+        "criterion_semantic_match",
+        "speaker_commitment"
+      ],
+      "astra_a": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "UNRESOLVED"
+      },
+      "astra_b": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "ASSERTED"
+      }
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-021-F02",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_B"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-025",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_A"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-038-F02",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_B"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-041",
+      "reason": "LLM_REVIEW_DISAGREEMENT",
+      "differing_fields": [
+        "criterion_semantic_match",
+        "speaker_commitment"
+      ],
+      "astra_a": {
+        "criterion_semantic_match": "MATCH",
+        "speaker_commitment": "NEGATED"
+      },
+      "astra_b": {
+        "criterion_semantic_match": "NO_MATCH",
+        "speaker_commitment": "UNRESOLVED"
+      }
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-063",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_A"
+      ]
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-066",
+      "reason": "INVALID_MODEL_REVIEW",
+      "detail": [
+        "ASTRA_A"
+      ]
+    }
+  ]
+}

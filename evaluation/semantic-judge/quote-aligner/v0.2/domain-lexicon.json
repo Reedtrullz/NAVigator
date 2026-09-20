@@ -1,0 +1,410 @@
+{
+  "meta": {
+    "purpose": "Generic NAV/public-service domain lexicon for quote-aligner v0.2 lexical normalization. No testcase IDs. Every entry carries rationale per spec section 36.",
+    "task_id": "SEMANTIC-JUDGE-LEXICAL-COVERAGE-REPAIR",
+    "polarity_model": "Concept-level polarity: same concept + same polarity = support-compatible; opposite polarity = contradiction candidate. Predicate stays, polarity is a field (spec section 6).",
+    "language": [
+      "nb",
+      "nn"
+    ],
+    "version": "0.2.0-iteration-A"
+  },
+  "concepts": [
+    {
+      "concept": "free_of_charge",
+      "positive_forms": [
+        "gratis",
+        "kostnadsfritt",
+        "kostnadsfri",
+        "ingen kostnad",
+        "ingen gebyr",
+        "gebyrfri",
+        "uten kostnad"
+      ],
+      "negative_forms": [
+        "koster",
+        "kostnad",
+        "gebyr",
+        "pris",
+        "betaler",
+        "maa betale",
+        "ma betale",
+        "betale leie",
+        "egenandel"
+      ],
+      "generic": true,
+      "rationale": "Free/pay axis recurs across service-cost claims; both directions needed."
+    },
+    {
+      "concept": "requires_referral",
+      "positive_forms": [
+        "krever henvisning",
+        "henvisning er nodvendig",
+        "maa henvises",
+        "ma henvises",
+        "kan bare tas inn etter henvisning"
+      ],
+      "negative_forms": [
+        "krever ikke henvisning",
+        "uten henvisning",
+        "kan kontaktes direkte",
+        "egenhenvendelse er mulig",
+        "kan ta direkte kontakt",
+        "direkte kontakt",
+        "ingen henvisning"
+      ],
+      "generic": true,
+      "rationale": "Referral axis; negative forms include direct-contact paraphrases (spec sections 5, 13)."
+    },
+    {
+      "concept": "can_still_diagnose",
+      "positive_forms": [
+        "stiller diagnose",
+        "stiller diagnoser",
+        "kan stille diagnose",
+        "diagnostiserer"
+      ],
+      "negative_forms": [
+        "stiller ikke diagnoser",
+        "stiller ikke diagnose",
+        "diagnostiserer ikke"
+      ],
+      "generic": true,
+      "rationale": "Diagnostic-competence axis; assessment (utrede) is intentionally NOT part of this concept (spec section 8)."
+    },
+    {
+      "concept": "provides_treatment",
+      "positive_forms": [
+        "gir behandling",
+        "behandler",
+        "behandling",
+        "terapi",
+        "gir terapi",
+        "yter psykisk helsebehandling"
+      ],
+      "negative_forms": [
+        "gir ikke behandling",
+        "behandler ikke",
+        "yter ikke behandling"
+      ],
+      "generic": true,
+      "rationale": "Treatment axis; terapi is a form of behandling for support, not for contradiction."
+    },
+    {
+      "concept": "signature_required",
+      "positive_forms": [
+        "skal underskrives",
+        "skal signeres",
+        "skal vaere undertegnet",
+        "maa underskrives",
+        "underskrives av",
+        "signeres av"
+      ],
+      "negative_forms": [
+        "kan sendes uten signatur",
+        "uten signatur",
+        "uten underskrift",
+        "signatur ikke nodvendig"
+      ],
+      "generic": true,
+      "rationale": "Signature axis (claim 'uten signatur' vs source 'skal vaere undertegnet')."
+    },
+    {
+      "concept": "automatic_decision",
+      "positive_forms": [
+        "automatisk",
+        "alltid innvilges",
+        "innvilges automatisk",
+        "gir automatisk",
+        "automatisk rett"
+      ],
+      "negative_forms": [
+        "individuell vurdering",
+        "ingen automatisk rett",
+        "krever soknad og vurdering",
+        "skjonnsmessig",
+        "etter individuell vurdering"
+      ],
+      "generic": true,
+      "rationale": "Automatic/discretionary axis (spec sections 10, 12)."
+    },
+    {
+      "concept": "activity_requirement",
+      "positive_forms": [
+        "forutsetter aktivitetskrav",
+        "aktivitetskravet",
+        "arbeidsrettet registrert"
+      ],
+      "negative_forms": [
+        "uten aktivitetskrav",
+        "ikke aktivitetskrav"
+      ],
+      "generic": true,
+      "rationale": "Benefit-condition axis; opposite polarity on same benefit is contradiction."
+    },
+    {
+      "concept": "duration_criterion",
+      "positive_forms": [
+        "varig",
+        "varig nedsatt arbeidsevne"
+      ],
+      "negative_forms": [
+        "midlertidig",
+        "midlertidig sykdom"
+      ],
+      "generic": true,
+      "rationale": "Permanent vs temporary eligibility criteria."
+    }
+  ],
+  "synonym_groups": [
+    {
+      "group": "ordning_regel",
+      "members": [
+        "ordning",
+        "ordningen",
+        "regel",
+        "regelen",
+        "tilbud",
+        "tilbudet"
+      ],
+      "rationale": "Scheme/rule subject synonyms (spec section 8)."
+    },
+    {
+      "group": "sign",
+      "members": [
+        "signeres",
+        "underskrives",
+        "undertegnes",
+        "signere",
+        "underskrive",
+        "hovedhenviser"
+      ],
+      "rationale": "Signing predicate synonyms; hovedhenviser actor identity."
+    },
+    {
+      "group": "contact",
+      "members": [
+        "kontakte",
+        "kontakter",
+        "ta direkte kontakt",
+        "direkte kontakt",
+        "egenhenvendelse"
+      ],
+      "rationale": "Direct-contact paraphrases."
+    },
+    {
+      "group": "assess",
+      "members": [
+        "utreder",
+        "undersoker",
+        "kartlegger",
+        "foretar undersokelse",
+        "undersokelse",
+        "utredning"
+      ],
+      "rationale": "Assessment predicate paraphrases (compound predicate part-matching)."
+    },
+    {
+      "group": "treat",
+      "members": [
+        "behandler",
+        "gir behandling",
+        "terapi",
+        "gir terapi"
+      ],
+      "rationale": "Treatment paraphrases; terapi is support-side of behandling."
+    },
+    {
+      "group": "provide",
+      "members": [
+        "gir",
+        "tilbyr",
+        "yter",
+        "har"
+      ],
+      "rationale": "Provision verbs; 'har lege som gir X' grounds staff performing X."
+    },
+    {
+      "group": "cost_pay",
+      "members": [
+        "koster",
+        "betaler",
+        "ma betale",
+        "maa betale",
+        "kostnad"
+      ],
+      "rationale": "Pay-side paraphrases."
+    },
+    {
+      "group": "vanlig_normalt",
+      "members": [
+        "vanligvis",
+        "normalt",
+        "vanlig",
+        "normal",
+        "som hovedregel"
+      ],
+      "rationale": "Hedge modifiers, support-neutral (spec section 11)."
+    },
+    {
+      "group": "reduce",
+      "members": [
+        "reduseres",
+        "reduserer",
+        "avkortes",
+        "avkorter"
+      ],
+      "rationale": "Reduction predicate paraphrases (feriepenger/AAP axis)."
+    },
+    {
+      "group": "svar_within",
+      "members": [
+        "faar svar",
+        "får svar",
+        "svaret",
+        "svare",
+        "saksbehandlingstid",
+        "behandles innen"
+      ],
+      "rationale": "Response-time paraphrases (claim side vs source side)."
+    },
+    {
+      "group": "perform",
+      "members": [
+        "foreta",
+        "foretar",
+        "utfører",
+        "utfoerer",
+        "gir helseundersokelse",
+        "gir helseundersøkelse",
+        "foreta helseundersøkelse",
+        "foreta helseundersokelse"
+      ],
+      "rationale": "Perform/undertake predicate paraphrases (staff grounding)."
+    }
+  ],
+  "actor_aliases": [
+    {
+      "subset": "fastlege",
+      "superset": "lege",
+      "relation": "role_specialization",
+      "rationale": "Fastlege is a lege with a role; subset, never disjoint."
+    },
+    {
+      "subset": "foreldre",
+      "superset": "familier",
+      "relation": "member_of_group",
+      "rationale": "Parents are families; supports subset claims."
+    },
+    {
+      "subset": "foreldre",
+      "superset": "par og familier",
+      "relation": "member_of_group",
+      "rationale": "Enumeration membership."
+    },
+    {
+      "subset": "helsesykepleier",
+      "superset": "skolehelsetjenesten",
+      "relation": "staff_of",
+      "rationale": "School health service staff; institutional membership."
+    },
+    {
+      "subset": "lege",
+      "superset": "skolehelsetjenesten",
+      "relation": "staff_of",
+      "rationale": "School health service employs doctors."
+    },
+    {
+      "subset": "psykolog",
+      "superset": "bup",
+      "relation": "staff_of",
+      "rationale": "BUP staff includes psychologists."
+    },
+    {
+      "subset": "lege",
+      "superset": "bup",
+      "relation": "staff_of",
+      "rationale": "BUP staff includes doctors."
+    },
+    {
+      "subset": "barnevernsleder",
+      "superset": "barnevern",
+      "relation": "role_of_service",
+      "rationale": "Role belongs to child-welfare service."
+    },
+    {
+      "subset": "kommunepsykolog",
+      "superset": "kommunen",
+      "relation": "staff_of",
+      "rationale": "Municipal psychologist is municipal staff."
+    }
+  ],
+  "disjoint_actors": [
+    {
+      "a": "barn",
+      "b": "familier",
+      "rationale": "Child is not the family unit; support must not fire across this pair (recipient-scope guard)."
+    },
+    {
+      "a": "barn",
+      "b": "foreldre",
+      "rationale": "Child vs parents distinct beneficiaries."
+    },
+    {
+      "a": "skolen",
+      "b": "foreldre",
+      "rationale": "Payer-scope guard: who must pay differs."
+    },
+    {
+      "a": "nav",
+      "b": "husbanken",
+      "rationale": "Distinct administrative bodies for the same application predicate."
+    },
+    {
+      "a": "ppt",
+      "b": "bup",
+      "rationale": "Educational vs specialist health service."
+    }
+  ],
+  "hedge_modifiers": [
+    "normalt",
+    "vanligvis",
+    "vanlig",
+    "normal",
+    "ofte",
+    "som hovedregel"
+  ],
+  "universal_markers": [
+    "alle",
+    "alltid",
+    "automatisk",
+    "samtlige",
+    "hver",
+    "enhver"
+  ],
+  "special_case_markers": [
+    "saerlige tilfeller",
+    "særlige tilfeller",
+    "i saerlige",
+    "spesielle tilfeller",
+    "unntaksvis"
+  ],
+  "discretion_markers": [
+    "individuell vurdering",
+    "ingen automatisk rett",
+    "ikke automatisk",
+    "krever soknad og vurdering"
+  ],
+  "exception_markers": [
+    "unnta",
+    "unntak",
+    "gjelder ikke",
+    "kan unnta",
+    "kan unntas",
+    "fritak fra"
+  ],
+  "length_check": {
+    "max_phrase_len": 80,
+    "rationale": "Spec section 35: benchmark-specific long phrases must not enter runtime lexicon; runner validates all form strings against this cap."
+  }
+}

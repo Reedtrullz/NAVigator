@@ -1,0 +1,37 @@
+{
+  "artifact": "tdd-red-result",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A1-ABSTAIN-REPAIR",
+  "tdd_order": "RED executed against the byte-identical frozen V1.6A engine copy before any production change",
+  "command": "python3 run_unit_tests.py --phase RED",
+  "fixtures_total": 72,
+  "passed": 69,
+  "failed": 3,
+  "failing_fixture_ids": [
+    "FIX-ABSTAIN-01",
+    "FIX-CE-03",
+    "FIX-CE-04"
+  ],
+  "red_fixture": {
+    "id": "FIX-ABSTAIN-01",
+    "expected_label": "ABSTAIN",
+    "actual_label": "VAGUE_NONCOMMITTAL",
+    "rule_id": "BC_ROUTE_VAGUE_01"
+  },
+  "counterexample_fixture_state": {
+    "FIX-CE-03": {
+      "expected": "QUOTED_ONLY",
+      "actual": "VAGUE_NONCOMMITTAL",
+      "rule_id": "BC_ROUTE_VAGUE_01"
+    },
+    "FIX-CE-04": {
+      "expected": "HYPOTHETICAL_ONLY",
+      "actual": "VAGUE_NONCOMMITTAL",
+      "rule_id": "BC_ROUTE_VAGUE_01"
+    }
+  },
+  "historical_fixture_failures": [],
+  "genuine_red": true,
+  "frozen_unit_fixtures_sha256_pre_fix": "a25512effbb897e44ebdf143bf4c4bd187173e615b51891468b20b5504cae9b4",
+  "engine_sha256_at_red": "ccd30e7f7fae7e9090c9de443372b15bf3d2341cb447d800c1d55058f6f2c467",
+  "note": "The two counterexample failures are also RED evidence: independent grounding rules do not fire for unknown nouns in the frozen engine. The full expected GREEN state is defined in regression-tests.json."
+}

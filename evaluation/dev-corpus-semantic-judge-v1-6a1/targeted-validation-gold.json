@@ -1,0 +1,624 @@
+{
+  "artifact": "targeted-validation-gold",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A1-ABSTAIN-REPAIR",
+  "frozen_before_execution": true,
+  "gold_source": "frozen boundary-label-contract.json (contract id BOUNDARY-PRECLASSIFIER-V1_6A) and frozen rule-registry predicates; no classifier output consulted during gold authoring",
+  "annotation_provenance": "INTRA_ANNOTATOR_REPEATABILITY (two passes by the same single curator; dual-pass labels reconciled before freeze)",
+  "annotation_provenance_note": "not INDEPENDENT_INTER_ANNOTATOR_AGREEMENT",
+  "n_total": 60,
+  "n_recognized": 20,
+  "n_out_of_inventory": 20,
+  "n_adversarial": 20,
+  "unresolved_fixture_ambiguities": 0,
+  "gold": [
+    {
+      "id": "REC-A-01",
+      "category": "recognized",
+      "linguistic_mode": "asserted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "ASSERTED",
+      "rationale": "inventory noun helsesykepleier + assertion marker riktig første kontakt",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-A-02",
+      "category": "recognized",
+      "linguistic_mode": "asserted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "ASSERTED",
+      "rationale": "inventory noun familievernkontor + adoption marker bør kontakte",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-A-03",
+      "category": "recognized",
+      "linguistic_mode": "asserted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "ASSERTED",
+      "rationale": "inventory phrase rask psykisk helsehjelp + assertion marker kan kontaktes",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-A-04",
+      "category": "recognized",
+      "linguistic_mode": "asserted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "ASSERTED",
+      "rationale": "inventory noun bup + assertion marker henvise",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-H-01",
+      "category": "recognized",
+      "linguistic_mode": "hedged",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "inventory noun helsestasjon + hedge marker kanskje",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-H-02",
+      "category": "recognized",
+      "linguistic_mode": "hedged",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "inventory noun familieteam + hedge marker ser ut til",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-H-03",
+      "category": "recognized",
+      "linguistic_mode": "hedged",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "inventory noun psykisk helsetjeneste + hedge marker trolig",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-H-04",
+      "category": "recognized",
+      "linguistic_mode": "hedged",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HEDGED_ASSERTION",
+      "rationale": "hedge marker det er mulig and assertion marker kan kontaktes co-occur; frozen V1.6A convention (CMT-H-01..03) resolves hedge(20) over asserted(10) as single top-priority winner HEDGED_ASSERTION, no tie",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-V-01",
+      "category": "recognized",
+      "linguistic_mode": "vague",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "ABSTAIN",
+      "rationale": "inventory noun present so BC_ROUTE_VAGUE_01 cannot fire; no assert/hedge/conditional/quote marker fires; contract-derived NO_HIGH_PRECISION_RULE abstention (convention cross-check vs V1.6A VU-family)",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "contract_derived_cross_checked"
+    },
+    {
+      "id": "REC-V-02",
+      "category": "recognized",
+      "linguistic_mode": "vague",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "rationale": "inventory noun familievernkontor + vague marker hjelp",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-V-03",
+      "category": "recognized",
+      "linguistic_mode": "vague",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "rationale": "inventory noun barnevern + vague marker støtte",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-V-04",
+      "category": "recognized",
+      "linguistic_mode": "vague",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "VAGUE_NONCOMMITTAL",
+      "rationale": "inventory noun helsesykepleier + vague marker hjelp",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Q-01",
+      "category": "recognized",
+      "linguistic_mode": "quoted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "inventory noun helsesykepleier + attribution marker ifølge",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Q-02",
+      "category": "recognized",
+      "linguistic_mode": "quoted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "inventory noun fastlege + attribution marker sier at",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Q-03",
+      "category": "recognized",
+      "linguistic_mode": "quoted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "inventory noun familieteam + attribution marker skriver at",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Q-04",
+      "category": "recognized",
+      "linguistic_mode": "quoted",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "inventory noun dps + quote marks and attribution marker ifølge",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Y-01",
+      "category": "recognized",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "inventory noun fastlege + conditional marker hvis (convention matches V1.6A VR-HY-05)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Y-02",
+      "category": "recognized",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "inventory noun kommunepsykolog + conditional markers dersom and mulighet",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Y-03",
+      "category": "recognized",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "inventory noun barnevern + conditional framing være en mulighet",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "REC-Y-04",
+      "category": "recognized",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "RECOGNIZED",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "inventory noun skolehelsetjeneste + conditional framing i tilfeller der and vurderes",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-A-01",
+      "category": "out_of_inventory",
+      "linguistic_mode": "asserted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun gjeldsrådgivningssenteret + assertion marker; unknown-service rule abstains over asserted pathway",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-A-02",
+      "category": "out_of_inventory",
+      "linguistic_mode": "asserted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun rus-kontoret + adoption marker bør kontakte; unknown-service rule abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-A-03",
+      "category": "out_of_inventory",
+      "linguistic_mode": "asserted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun foreldresenteret + assertion marker kan kontaktes; unknown-service rule abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-A-04",
+      "category": "out_of_inventory",
+      "linguistic_mode": "asserted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun ungdomssenteret + assertion marker henvise; unknown-service rule abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-H-01",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hedged",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun sosialkontoret + hedge wording; hedge alone cannot override unknown-service abstention",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-H-02",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hedged",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun krisesenteret + hedge wording ser ut til; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-H-03",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hedged",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun oppfølgingsteamet + hedge wording trolig; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-H-04",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hedged",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun boligsosialkontoret + hedge wording det er mulig; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-V-01",
+      "category": "out_of_inventory",
+      "linguistic_mode": "vague",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun sosialkontoret + vague marker hjelp (VR-H-08 defect class); unknown-service rule abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-V-02",
+      "category": "out_of_inventory",
+      "linguistic_mode": "vague",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun ungdomssenteret + vague marker støtte; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-V-03",
+      "category": "out_of_inventory",
+      "linguistic_mode": "vague",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun krisesenteret + vague wording hjelper; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-V-04",
+      "category": "out_of_inventory",
+      "linguistic_mode": "vague",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun rus-kontoret + vague marker muligheter; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Q-01",
+      "category": "out_of_inventory",
+      "linguistic_mode": "quoted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown noun grounded by independent high-precision attribution rule (ifølge)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Q-02",
+      "category": "out_of_inventory",
+      "linguistic_mode": "quoted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown noun grounded by independent high-precision attribution rule (sier at)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Q-03",
+      "category": "out_of_inventory",
+      "linguistic_mode": "quoted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown noun grounded by independent high-precision attribution rule (ifølge)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Q-04",
+      "category": "out_of_inventory",
+      "linguistic_mode": "quoted",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown noun grounded by independent high-precision attribution rule (oppgir at)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Y-01",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun grounded by independent high-precision conditional rule (hvis)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Y-02",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun grounded by independent conditional rule (dersom + mulighet)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Y-03",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun grounded by independent conditional rule (være en mulighet)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "OOI-Y-04",
+      "category": "out_of_inventory",
+      "linguistic_mode": "hypothetical",
+      "service_recognition": "OUT_OF_INVENTORY",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun grounded by independent conditional rule (i tilfeller der)",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-01",
+      "category": "adversarial",
+      "linguistic_mode": "plausible_invented_hedged",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "plausible invented service name + vague help language; no inventory hit; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-02",
+      "category": "adversarial",
+      "linguistic_mode": "plausible_invented_asserted",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "plausible invented service name + adoption marker; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-03",
+      "category": "adversarial",
+      "linguistic_mode": "generic_noun",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "bare generic service noun + vague marker; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-04",
+      "category": "adversarial",
+      "linguistic_mode": "organization_like",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "organization-like noun trygdekontoret + vague marker; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-05",
+      "category": "adversarial",
+      "linguistic_mode": "compound",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "compound service noun kriseteamet + vague marker støtte; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-06",
+      "category": "adversarial",
+      "linguistic_mode": "capitalization_allcaps",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "all-caps unknown noun + vague wording; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-07",
+      "category": "adversarial",
+      "linguistic_mode": "capitalization_sentence_mid",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun + conditional framing vurderes",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-08",
+      "category": "adversarial",
+      "linguistic_mode": "punctuation_quoted",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown quoted service + attribution marker opplyser at",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-09",
+      "category": "adversarial",
+      "linguistic_mode": "punctuation_colon",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown noun + vague marker hjelp; no independent grounding rule present",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-10",
+      "category": "adversarial",
+      "linguistic_mode": "known_adjacent_unknown_vague",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "known service adjacent to unknown noun, vague wording; inventory hit exists so unknown rule does not fire but vague rule requires no-route, so no high-precision rule fires",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-11",
+      "category": "adversarial",
+      "linguistic_mode": "known_adjacent_unknown_asserted",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "initial assertion reading rejected during QA: first sentence asserts fastlege (inventory) but unknown-noun sentence carries only vague wording; whole-text resolution still requires the unknown noun sentence to resolve, no high-precision rule fires for it; conservative pre-execution resolution ABSTAIN",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "contract_derived_cross_checked"
+    },
+    {
+      "id": "ADV-12",
+      "category": "adversarial",
+      "linguistic_mode": "multiple_candidates_vague",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "multiple unknown candidate nouns + vague wording; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-13",
+      "category": "adversarial",
+      "linguistic_mode": "multiple_candidates_quoted",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "multiple quoted unknown services inside quote marks",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-14",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_negation",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun with no independent grounding rule; BC_ROUTE_UNKNOWN_SERVICE_01 abstains (same frozen-rule class as OOI-A-01..04)",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-15",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_retraction",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown service noun with no independent grounding rule; retraction predicate requires inventory route term; BC_ROUTE_UNKNOWN_SERVICE_01 abstains (same frozen-rule class as OOI-A-01..04)",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-16",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_hypothetical",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun + independent conditional rule",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-17",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_quoted_attribution",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown noun + independent attribution rule",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-18",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_quote_plus_hedge",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "QUOTED_ONLY",
+      "rationale": "unknown noun + quote marks; quoted grounding outranks hedge",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-19",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_vague_support",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "ABSTAIN",
+      "rationale": "unknown noun + vague marker støtte; abstains",
+      "expected_abstain_behavior": "ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    },
+    {
+      "id": "ADV-20",
+      "category": "adversarial",
+      "linguistic_mode": "unknown_hypothetical_possibility",
+      "service_recognition": "ADVERSARIAL",
+      "expected_label": "HYPOTHETICAL_ONLY",
+      "rationale": "unknown noun + conditional framing kunne være en mulighet",
+      "expected_abstain_behavior": "NON_ABSTAIN_EXPECTED",
+      "gold_provenance": "direct_frozen_precedent"
+    }
+  ],
+  "label_distribution": {
+    "ASSERTED": 4,
+    "HEDGED_ASSERTION": 4,
+    "ABSTAIN": 26,
+    "VAGUE_NONCOMMITTAL": 3,
+    "QUOTED_ONLY": 12,
+    "HYPOTHETICAL_ONLY": 11
+  },
+  "pre_execution_qa_pass": "gold-qa-pass.json"
+}

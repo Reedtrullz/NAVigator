@@ -1,0 +1,87 @@
+{
+  "probed_before_route_freeze": true,
+  "probes": {
+    "R1-nemotron-3-super": {
+      "openrouter/nvidia-nemotron-3-super:free": {
+        "status": "HTTP_400",
+        "error": "{\"error\":{\"message\":\"Provider error 400: nvidia-nemotron-3-super:free is not a valid model ID\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+      },
+      "openrouter/nvidia/nemotron-3-super:free": {
+        "status": "HTTP_400",
+        "error": "{\"error\":{\"message\":\"Provider error 400: nvidia/nemotron-3-super:free is not a valid model ID\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+      }
+    },
+    "R2-laguna-s-2.1": {
+      "command-code/poolside-laguna-s-2.1-free": {
+        "status": "OK",
+        "elapsed_s": 2.7,
+        "sample": "ok",
+        "usage_keys": [
+          "completion_tokens",
+          "completion_tokens_details",
+          "prompt_tokens",
+          "prompt_tokens_details",
+          "total_tokens"
+        ]
+      },
+      "command-code/poolside/laguna-s-2.1-free": {
+        "status": "OK",
+        "elapsed_s": 1.7,
+        "sample": "ok",
+        "usage_keys": [
+          "completion_tokens",
+          "completion_tokens_details",
+          "prompt_tokens",
+          "prompt_tokens_details",
+          "total_tokens"
+        ]
+      }
+    },
+    "R3-ling-3.0-flash-sante": {
+      "command-code/inclusionai-ling-3.0-flash-sante:free": {
+        "status": "OK",
+        "elapsed_s": 1.7,
+        "sample": "ok",
+        "usage_keys": [
+          "completion_tokens",
+          "completion_tokens_details",
+          "prompt_tokens",
+          "prompt_tokens_details",
+          "total_tokens"
+        ]
+      },
+      "command-code/inclusionai/ling-3.0-flash-sante:free": {
+        "status": "OK",
+        "elapsed_s": 1.1,
+        "sample": "ok",
+        "usage_keys": [
+          "completion_tokens",
+          "completion_tokens_details",
+          "prompt_tokens",
+          "prompt_tokens_details",
+          "total_tokens"
+        ]
+      }
+    },
+    "R4-gemma-4-26b-a4b-it": {
+      "openrouter/google-gemma-4-26b-a4b-it:free": {
+        "status": "HTTP_429",
+        "error": "{\"error\":{\"message\":\"Provider error 429: Provider returned error\",\"type\":\"rate_limit_error\",\"param\":null,\"code\":\"rate_limit_exceeded\"}}"
+      },
+      "openrouter/google/gemma-4-26b-a4b-it:free": {
+        "status": "HTTP_429",
+        "error": "{\"error\":{\"message\":\"Provider error 429: Provider returned error\",\"type\":\"rate_limit_error\",\"param\":null,\"code\":\"rate_limit_exceeded\"}}"
+      }
+    },
+    "R5-inkling-small": {
+      "openrouter/thinkingmachines-inkling-small:free": {
+        "status": "HTTP_403",
+        "error": "{\"error\":{\"message\":\"Provider error 403: thinkingmachines/inkling-small:free is only available on agentic harnesses. Try plugging it into a coding agent or productivity app listed on https://openroute"
+      },
+      "openrouter/thinkingmachines/inkling-small:free": {
+        "status": "HTTP_403",
+        "error": "{\"error\":{\"message\":\"Provider error 403: thinkingmachines/inkling-small:free is only available on agentic harnesses. Try plugging it into a coding agent or productivity app listed on https://openroute"
+      }
+    }
+  }
+}

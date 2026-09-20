@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "decision-context-v1",
+  "title": "DecisionContext",
+  "description": "Canonical internal state carried through the SUT pipeline stages S1-S11.",
+  "type": "object",
+  "required": [
+    "input",
+    "safety",
+    "tracks",
+    "candidate_routes",
+    "evidence",
+    "provenance",
+    "claim_states",
+    "epistemic_states",
+    "failures",
+    "answer_plan"
+  ],
+  "properties": {
+    "input": {
+      "description": "The normalized sut-input/v1 object (S1 output).",
+      "type": "object"
+    },
+    "safety": {
+      "type": "object",
+      "required": ["priority", "signals", "suppressed_routing"],
+      "properties": {
+        "priority": {
+          "enum": ["ACUTE_RISK_NOW", "URGENT_NOT_ACUTE", "NOT_ACUTE", "TRIAGE_FAILED"]
+        },
+        "signals": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "suppressed_routing": {"type": "boolean"},
+        "rule_file_sha256": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "tracks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["track_id", "domain", "sub_utterance", "status"],
+        "properties": {
+          "track_id": {"type": "string", "pattern": "^T[0-9]+$"},
+          "domain": {
+            "enum": [
+              "mental_health", "housing", "financial_support", "child_safety",
+              "education", "employment", "legal_rights", "general"
+            ]
+          },
+          "sub_utterance": {"type": "string"},
+          "status": {
+            "enum": ["PENDING", "RESOLVED", "NO_ROUTE", "FAILED"]
+          },
+          "needs_local_discovery": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "candidate_routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["track_id", "label", "epistemic_state", "provenance_ids"],
+        "properties": {
+          "track_id": {"type": "string"},
+          "label": {"type": "string"},
+          "epistemic_state": {"$ref": "#/$defs/epistemicState"},
+          "provenance_ids": {"type": "array", "items": {"type": "string"}},
+          "eligibility_rule_ids": {"type": "array", "items": {"type": "string"}},
+          "referral_required": {"type": ["boolean", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "description": "Flat map keyed by required-evidence-field vocabulary.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["value", "provenance_ids"],
+        "properties": {
+          "value": {},
+          "provenance_ids": {"type": "array", "items": {"type": "string"}},
+          "conflict_with": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/provenanceRecord"}
+    },
+    "claim_states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "kind", "provenance_ids"],
+        "properties": {
+          "text": {"type": "string"},
+          "kind": {
+            "enum": [
+              "LEGAL_REQUIREMENT", "SERVICE_EXISTENCE", "ACCESS_CONDITION",
+              "CONTACT_DETAIL", "COST_INFO", "UNCERTAINTY", "GENERAL_INFO"
+            ]
+          },
+          "provenance_ids": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "epistemic_states": {
+      "type": "object",
+      "required": ["top_level", "per_route"],
+      "properties": {
+        "top_level": {"$ref": "#/$defs/epistemicState"},
+        "per_route": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "state"],
+            "properties": {
+              "label": {"type": "string"},
+              "state": {"$ref": "#/$defs/epistemicState"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "failures": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/failureRecord"}
+    },
+    "answer_plan": {
+      "type": "object",
+      "required": ["blocks", "no_route_asserted", "presented_as_complete"],
+      "properties": {
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["order", "kind"],
+            "properties": {
+              "order": {"type": "integer"},
+              "kind": {
+                "enum": [
+                  "SAFETY_INSTRUCTION", "PRIMARY_ROUTE", "SECONDARY_ROUTE",
+                  "UNCERTAINTY", "PROVENANCE_LIST", "FAILURE_NOTICE", "INFO"
+                ]
+              },
+              "track_id": {"type": ["string", "null"]},
+              "route_label": {"type": ["string", "null"]},
+              "span_refs": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "no_route_asserted": {"type": "boolean"},
+        "presented_as_complete": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "epistemicState": {
+      "enum": ["FULLY_VERIFIED", "ACCESS_PARTIAL", "EXISTENCE_ONLY", "UNVERIFIED"]
+    },
+    "provenanceRecord": {
+      "type": "object",
+      "required": ["id", "source_type", "source_ref", "verified_at", "freshness_class"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^P[0-9]+$"},
+        "source_type": {
+          "enum": [
+            "KNOWLEDGE_ARTIFACT", "DISCOVERY_PAGE", "RULE_REGISTRY",
+            "STRUCTURED_SOURCE", "ERROR_STATE"
+          ]
+        },
+        "source_ref": {"type": "string"},
+        "retrieved_at": {"type": ["string", "null"]},
+        "verified_at": {"type": "string"},
+        "claim_supported": {"type": "string"},
+        "evidence_span": {"type": ["string", "null"]},
+        "authority_level": {
+          "enum": ["LAW", "NATIONAL_GUIDANCE", "MUNICIPAL_SOURCE", "INTERNAL_DOC", "UNKNOWN"]
+        },
+        "freshness_class": {
+          "enum": ["CURRENT", "STALE", "NEEDS_REVALIDATION", "POINT_IN_TIME"]
+        },
+        "conflicts_with": {"type": "array", "items": {"type": "string"}},
+        "chain_parent_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "failureRecord": {
+      "type": "object",
+      "required": ["stage", "state", "message"],
+      "properties": {
+        "stage": {
+          "enum": [
+            "input_normalization", "safety_triage", "decomposition",
+            "knowledge_retrieval", "local_discovery", "route_reasoning",
+            "evidence_aggregation", "epistemic_assignment", "answer_planning",
+            "answer_rendering", "output_emission"
+          ]
+        },
+        "state": {"enum": ["SUCCESS", "PARTIAL", "RECOVERABLE", "TERMINAL"]},
+        "message": {"type": "string"},
+        "detail": {"type": "object"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-EXTERNAL-BACKEND-SELECTION-V2_2-RESTART-2",
+  "artifact": "provider_failure_simulations",
+  "executed_at": "2026-09-09",
+  "suite": "runtime/discovery_v2/tests_v22.py (20/20 OK)",
+  "modes_tested": {
+    "401_auth_failure": "AUTH_REQUIRED (never NO_RESULTS)",
+    "403_challenge": "BOT_BLOCKED (never NO_RESULTS)",
+    "429_rate_limit": "RATE_LIMITED (never NO_RESULTS)",
+    "transport_failure_status_0": "PROVIDER_UNAVAILABLE (never NO_RESULTS)",
+    "5xx": "PROVIDER_UNAVAILABLE (never NO_RESULTS)",
+    "timeout_exception": "TIMEOUT (never NO_RESULTS)",
+    "malformed_json_200": "INVALID_RESPONSE (never NO_RESULTS)",
+    "missing_results_list_200": "INVALID_RESPONSE (never NO_RESULTS)",
+    "legitimate_empty_200": "NO_RESULTS (correct semantics)",
+    "missing_credential": "AUTH_REQUIRED via HTTP 401 transport mapping (fail closed)"
+  },
+  "false_failure_no_results": 0,
+  "root_cause_fixed_in_budget": "parser ran before status classification in first pass; error bodies (non-JSON) shadowed real HTTP status. Fix: parse only 2xx payloads after transport/HTTP classification. One general fix, no per-case patches."
+}

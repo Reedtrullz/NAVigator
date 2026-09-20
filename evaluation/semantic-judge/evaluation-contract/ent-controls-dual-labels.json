@@ -1,0 +1,99 @@
+{
+ "schema": "evaluation-contract-dual-labels-v1",
+ "task_id": "SEMANTIC-JUDGE-EVALUATION-CONTRACT-REDESIGN",
+ "provenance": "ent-controls-set.json + ent-controls-expected.json + first-hand KB verification (ENT-A: 26-beslutningsstotte-hvor-henvende-seg.md line 32)",
+ "cases": [
+  {
+   "case_id": "ENT-A",
+   "set": "ent-controls",
+   "kind": "SUPPORTS",
+   "claim": "Sterk angst etter samlivsbrudd er en vanlig reaksjon; foreldresamtale og lavterskel støtte først.",
+   "source_text": "Barn (under 16) med sterk angst/depresjon etter samlivsbrudd: fastlege eller kommunalt lavterskeltilbud (kommunepsykolog/familieteam) først; BUP ved alvorlige/samlete symptomer.",
+   "kb_ref": [
+    "26",
+    "16-livssituasjoner/04-barns-psykiske-helse.md"
+   ],
+   "original_benchmark_label": "SUPPORTED",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "required_inference": "RULE_PLUS_CONDITION"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT",
+    "reason": "doctrine proof bounds"
+   },
+   "mismatch_taxonomy": "EVIDENCE_MISSING",
+   "annotation_status": "CONFIRMED",
+   "justification": "foreldresamtale premise absent from source (verified KB 26 line 32); semantic support needs RULE_PLUS_CONDITION the source does not license"
+  },
+  {
+   "case_id": "ENT-B",
+   "set": "ent-controls",
+   "kind": "CORRECT-CLAIM-WEAK-SOURCE",
+   "claim": "Fastlege er riktig inngang; henvisning ved behov.",
+   "source_text": "Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykisk helsebehandling.",
+   "kb_ref": [
+    "31"
+   ],
+   "original_benchmark_label": "INSUFFICIENT_EVIDENCE",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "doctrine proof bounds"
+   },
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "justification": "source is about school health service, not fastlege as entry point; plausible claim but no evidence"
+  },
+  {
+   "case_id": "ENT-C",
+   "set": "ent-controls",
+   "kind": "WRONG-CLAIM-RELEVANT-SOURCE",
+   "claim": "PPT kan stille ADHD-diagnose.",
+   "source_text": "PPT kartlegger pedagogiske behov og gir sakkyndige vurderinger. BUP utreder psykiske lidelser/nevroutviklingsforstyrrelser.",
+   "kb_ref": [
+    "28"
+   ],
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "required_inference": "NO_OPERATOR"
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "doctrine proof bounds"
+   },
+   "mismatch_taxonomy": "EXPECTED_LABEL_OVERREACH",
+   "annotation_status": "CONFIRMED",
+   "justification": "source names PPT functions without excluding diagnosis; CONTRA would require closed-world exhaustiveness",
+   "legacy_expected": "CONTRADICTED",
+   "legacy_outcome": "old gate PASS (engine auto-CONTRADICTED scored correct); preserved as historical regression finding",
+   "current_contract_note": "semantic INSUFFICIENT (no valid exclusion premise); proof INSUFFICIENT; product REVIEW if engine cannot prove - auto-CONTRADICTED is forbidden without proof"
+  },
+  {
+   "case_id": "ENT-D",
+   "set": "ent-controls",
+   "kind": "WRONG-CLAIM-CONTRADICTING-SOURCE",
+   "claim": "ADHD-diagnose kan stilles av helsesykepleier på skolen.",
+   "source_text": "Skolehelsetjenesten er ikke et behandlingstilbud for psykiske lidelser; den yter ikke psykisk helsebehandling og stiller ikke diagnoser.",
+   "kb_ref": [
+    "31"
+   ],
+   "original_benchmark_label": "CONTRADICTED",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "required_inference": "EXPLICIT_NEGATION"
+   },
+   "proof_safe": {
+    "label": "CONTRADICTED",
+    "reason": "doctrine proof bounds"
+   },
+   "mismatch_taxonomy": "NONE",
+   "annotation_status": "CONFIRMED",
+   "justification": "source explicitly negates diagnosis by school health service; direct contradiction"
+  }
+ ]
+}

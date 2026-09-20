@@ -1,0 +1,84 @@
+{
+  "policy_id": "RC1-PHASE2-SCORING-POLICY-V1",
+  "frozen_before_per_case_label_comparison": true,
+  "source_of_authority": [
+    "certification-metrics.md (pre-registered thresholds and hard gates)",
+    "run_blind_phase1.py docstring (pre-registered prediction mappings)",
+    "hybrid/fusion-spec.md v1.0 FROZEN (proof validity definition)",
+    "spec sections 8-17 of NAV-EXPLORE-RC1-BLIND-RECERT-PHASE2"
+  ],
+  "targets": {
+    "semantic": "exact match: prediction.semantic_verdict == key.semantic_truth",
+    "proof_safe": "exact match: prediction.proof_safe_verdict == key.proof_safe (artifact field as recorded by frozen driver mapping)",
+    "product": "exact match: prediction.product_action == key.product_expected_action"
+  },
+  "runtime_failure_treatment": {
+    "rule": "conservative default per spec section 8 (certification-metrics.md has no explicit runtime-failure override)",
+    "exact_accuracy_metrics": "incorrect on semantic, proof_safe, and product",
+    "auto_proof_metrics": "not counted as accepted proof; excluded from proof-validity denominators",
+    "coverage": "recorded separately as RUNTIME_FAILURE / no valid decision",
+    "case": "RC1B-0112 (the only runtime failure)"
+  },
+  "prediction_verdict_mapping": "as already applied by frozen Phase-1 driver: PARTIAL->PARTIALLY_SUPPORTED, INSUFFICIENT->INSUFFICIENT_EVIDENCE; no re-mapping in Phase 2",
+  "review_required_handling": {
+    "semantic": "predicted final semantic verdict REVIEW_REQUIRED is scored as its own predicted class and is incorrect unless key semantic_truth equals it (never true for this key)",
+    "proof_safe": "predicted proof_safe uses the recorded artifact field; non-accepted routes map to INSUFFICIENT_EVIDENCE per frozen driver",
+    "product": "REVIEW_REQUIRED is a scored product class; correct iff key product_expected_action is REVIEW_REQUIRED"
+  },
+  "abstention_handling": {
+    "rule": "ABSTAIN_INSUFFICIENT correct iff key product_expected_action is ABSTAIN_INSUFFICIENT",
+    "subgroup": "cases with key semantic_truth == INSUFFICIENT_EVIDENCE (N=7 core) form the genuine-insufficiency subgroup, flagged LOW_N_EXPLORATORY, included in overall score"
+  },
+  "proof_validity_handling": {
+    "accepted_proof_definition": "prediction.proof_object.route == 'accepted' and runtime_status == OK",
+    "validity_rederivation": {
+      "deterministic_auto_routes": "re-run frozen polarity_engine_v02.judge_claim + auto_gate on the case inputs; proof valid iff outputs equal the recorded proof_object.engine and gate_reason is None",
+      "reviewer_accepted_routes": "re-derive with frozen reviewer.fusion(): rebuild the evidence packet with frozen build_packet from recorded inputs, re-run fusion with the recorded reviewer output and classify_threshold; valid iff route == 'accepted'",
+      "no_model_calls": "all re-derivation is deterministic; reviewer is never re-queried",
+      "no_prediction_edits": "recorded predictions are read-only inputs"
+    },
+    "hallucinated_proof": "accepted route whose cited span ids are absent from the rebuilt packet or whose output fails frozen fidelity checks"
+  },
+  "auto_decision_precision": {
+    "primary_metric_proof_based": "auto decisions are product_action in {AUTO_SUPPORTED, AUTO_CONTRADICTED}; correct iff key proof_safe equals the corresponding verdict (SUPPORTED for AUTO_SUPPORTED, CONTRADICTED for AUTO_CONTRADICTED) per evaluation contract 'auto is right iff the verdict matches proof_safe'",
+    "secondary_product_based": "also reported against key product_expected_action",
+    "threshold": ">= 0.99 combined proof-based precision (pre-registered)"
+  },
+  "compound_aggregation": "atom-level accuracy computed from key.atom_labels vs engine atom_results where atom counts allow alignment; final compound verdict scored by the same exact-match rule as all semantic cases",
+  "dispute_handling": "all key entries annotation_status CONFIRMED with no remaining disputes per blind-manifest; any apparent label error is flagged POTENTIAL_BLIND_LABEL_ERROR after official-score freeze and never changes the official score",
+  "rounding": "percentages rounded to 1 decimal place for reporting; pass/fail computed on unrounded ratios",
+  "subgroup_membership": {
+    "criticality": "key.criticality == CRITICAL (60 cases expected)",
+    "safety": "claim matches SAFETY_RE from frozen reviewer.py (selvmord|selvskad|livsfare|akutt fare|vold|trud|truet|fare for livet)",
+    "legal": "claim matches LEGAL_RE from frozen reviewer.py (rett|plikt|lovhjemmel|samtykke|klage)",
+    "numeric": "claim matches NUMERIC_RE from frozen reviewer.py (digit|kr|kroner|prosent|prosentpoeng)",
+    "temporal": "claim contains year 19xx/20xx or date/deadline/duration keywords (aar|ar$|maaned|uke|dager|frist|dato|gjelder fra|til og med)",
+    "locality": "claim contains kommune|kommunal|nasjonal|lokal|Trondheim",
+    "modality": "claim contains modal markers kan|maa|ma|skal|plikt|rett",
+    "actor": "claim contains actor tokens NAV|PPT|BUP|HABU|fastlege|helsesykepleier|barnevern|familievern|kommunen|NAV-kontor",
+    "condition_exception": "claim contains hvis|dersom|unntak|sa lenge|med mindre|bortsett fra|gjelder ikke",
+    "compound": "len(key.atom_labels) > 1",
+    "multi_span": "key.required_inference == MULTI_SPAN_CONJUNCTION",
+    "genuine_insufficiency": "key.semantic_truth == INSUFFICIENT_EVIDENCE",
+    "note": "keyword heuristics re-derived from documented construction method; actual counts reported as computed, construction deltas documented as caveat"
+  },
+  "pass_fail_logic": {
+    "hard_gates": [
+      "invalid accepted proofs == 0",
+      "critical unsafe AUTO_SUPPORTED == 0",
+      "critical unsafe AUTO_CONTRADICTED == 0",
+      "hallucinated proofs == 0",
+      "unsafe auto-decision rate on critical cases == 0"
+    ],
+    "thresholds": [
+      "semantic exact accuracy >= 0.90",
+      "proof_safe exact accuracy >= 0.95",
+      "product exact accuracy >= 0.95",
+      "critical subgroup product accuracy == 1.00",
+      "valid accepted proofs == 1.00 of accepted",
+      "combined auto-decision proof precision >= 0.99"
+    ],
+    "verdict": "RC1_CERTIFIED iff all hard gates and thresholds pass; RC1_NOT_CERTIFIED if any fails; CERTIFICATION_INVALID only for integrity/blindness compromise",
+    "no_partial_categories": true
+  }
+}

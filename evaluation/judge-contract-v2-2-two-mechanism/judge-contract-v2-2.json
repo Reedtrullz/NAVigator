@@ -1,0 +1,48 @@
+{
+  "contract": "judge-contract-v2-2",
+  "task_id": "NAV-EXPLORE-JUDGE-CONTRACT-V2_2-TWO-MECHANISM-OPERATIONALIZATION",
+  "status": "FROZEN_CONTRACT_DEVELOPMENT",
+  "base_lineage": "semantic-judge-v1-4 (V1.4 semantics unchanged; labels, verdict meanings, and derivation authority preserved)",
+  "mechanisms": {
+    "M1_hedged_assertion_evaluability": {
+      "source": "assertion-observation-contract.md + deterministic-derivation-tables.json",
+      "rule": "MATCH + ASSERTED|HEDGED_ASSERTION -> PRESENT; MATCH + QUOTED|HYPOTHETICAL|NEGATED|SELF_RETRACTED -> ABSENT; MATCH + NONCOMMITTAL|UNRESOLVED -> UNRESOLVED; NO_MATCH -> ABSENT; match-UNRESOLVED -> UNRESOLVED; claim truth irrelevant"
+    },
+    "M2_unresolved_first_class": {
+      "source": "critical-evidence-contract.md + deterministic-derivation-tables.json",
+      "rule": "CLEAR_TRIGGER_SUPPORT -> TRIGGERED; CLEAR_NON_TRIGGER_SUPPORT -> NOT_TRIGGERED; AMBIGUOUS|INSUFFICIENT|UNRESOLVED -> UNRESOLVED; AMBIGUOUS_CRITICAL_FORCED_BINARY = 0"
+    }
+  },
+  "prompt_sha256": "9a20e9b241b9084be6299fd3ba778c63e41d1a8b35067840675ee443f4f335e5",
+  "schema_sha256": "d4c3d1a247a177e95a1414e8566306980c6e37992b5d4095cd962b39867de43e",
+  "derivation_tables_sha256": "ad0f60af34e28df8741f42240dc3ce0317b927f002e8b9ee09640ec649dd1c85",
+  "judge_core_sha256": "5d5bbf9db626e43b4a4195e7549b1adcf050bf1aeba1a8bdb6e4d50fab80e0af",
+  "model": {
+    "reference_judge": "command-code/xiaomi/mimo-v2.5-pro",
+    "provider": "commandcode-auth local proxy 127.0.0.1:10100",
+    "temperature": 0,
+    "max_tokens": 32768,
+    "technical_retries": 1
+  },
+  "calibration": {
+    "fixtures": "calibration-fixtures.json",
+    "fixtures_sha256": "b0be9958f15a4d4248f7bf982bffb944a6029cc87bbba048781c3bc7ea89aec0",
+    "results": "calibration-results.json",
+    "results_sha256": "6fc47a38292b8491cd5d763c202869f0899dd011cbbcefba3eaafbec9bb52a57",
+    "iterations": 2,
+    "iterations_log": "calibration-iterations.json",
+    "iterations_sha256": "d5627d3ecc30f2d1a8595ccdaa458f9e2c67d87cc384b0ba0a1c285e23d13b46",
+    "summary": {"overall": 0.7708, "m1": 0.8333, "m2": 0.7083, "valid_structured_rate": 0.9792},
+    "interpretation": "calibration is prompt/schema/mapping validation, not a model-accuracy gate; residual cells are model observations and instrument (fixture-text) defects, recorded for official-set design"
+  },
+  "clarification_iterations": [
+    {"iteration": 1, "scope": "parser: accept flat per-dimension schema as instructed; envelope accepted for compatibility"},
+    {"iteration": 2, "scope": "span validator: narrow symmetric diacritic folding as second-step match; accepted minimal-pair limitation documented"}
+  ],
+  "known_instrument_defects": [
+    "M2-24 fixture text corrupted ASCII ('flger' for 'foelger'): quote-anchored answer unmatchable; cell not model-evaluable",
+    "M2-14 fixture text corrupted ASCII ('gr' for 'goer'): model missed intended conflicting-signal reading; cell contaminated by instrument",
+    "policy: such defects are recorded and excluded-eligible only as instrument exclusions in official-set design; no fixture edits after results"
+  ],
+  "freeze_statement": "prompt, schema, derivation tables, parser, model config, validation metrics, and official fixture generation rules are frozen from this point; official validation follows spec sections 27-36"
+}

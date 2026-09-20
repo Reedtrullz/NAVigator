@@ -1,0 +1,170 @@
+{
+  "artifact": "negative-test-matrix",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-HUMAN-REVIEW-BATCH-2-AFK-PREP-V1",
+  "synthetic_only": true,
+  "real_packet_ids_used": 0,
+  "cases": [
+    {
+      "case": "unknown_packet_id",
+      "injected": "unknown_packet_id",
+      "failed_closed": true,
+      "first_error": "unknown packet ID: PKT-SYN-NOPE",
+      "parse_errors": []
+    },
+    {
+      "case": "wrong_packet_sha",
+      "injected": "wrong_packet_sha",
+      "failed_closed": true,
+      "first_error": "packet SHA mismatch for PKT-SYN-CRIT-1: bound to different packet body",
+      "parse_errors": []
+    },
+    {
+      "case": "invalid_enum",
+      "injected": "invalid_enum",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "missing_required_enum",
+      "injected": "missing_required_enum",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "evidence_span_not_present",
+      "injected": "evidence_span_not_present",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "evidence_span_from_forbidden_location",
+      "injected": "evidence_span_from_forbidden_location",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "duplicate_review",
+      "injected": "duplicate_review",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "wrong_reviewer",
+      "injected": "wrong_reviewer",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got REVIEWER-02",
+      "parse_errors": []
+    },
+    {
+      "case": "wrong_contract_version",
+      "injected": "wrong_contract_version",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "unexpected_field",
+      "injected": "unexpected_field",
+      "failed_closed": true,
+      "first_error": "unexpected field(s): model_verdict",
+      "parse_errors": []
+    },
+    {
+      "case": "missing_packet_in_set",
+      "injected": "missing_packet_in_set",
+      "failed_closed": true,
+      "first_error": "wrong reviewer_id: expected OWNER-01, got SYNTHETIC-REVIEWER",
+      "parse_errors": []
+    },
+    {
+      "case": "duplicate_packet_in_set",
+      "injected": "duplicate_packet_in_set",
+      "failed_closed": true,
+      "first_error": "review order corruption: sequence differs from frozen order",
+      "parse_errors": []
+    },
+    {
+      "case": "review_order_corruption",
+      "injected": "review_order_corruption",
+      "failed_closed": true,
+      "first_error": "review order corruption: sequence differs from frozen order",
+      "parse_errors": []
+    },
+    {
+      "case": "review_order_transposition",
+      "injected": "review_order_transposition",
+      "failed_closed": true,
+      "first_error": "review order corruption: sequence differs from frozen order",
+      "parse_errors": []
+    },
+    {
+      "case": "attempt_bind_to_batch1_packet",
+      "injected": "attempt_bind_to_batch1_packet",
+      "failed_closed": true,
+      "first_error": "packet SHA mismatch for PKT-SYN-CRIT-1: bound to different packet body",
+      "parse_errors": []
+    },
+    {
+      "case": "attempt_bind_to_superseded_criterion_packet",
+      "injected": "attempt_bind_to_superseded_criterion_packet",
+      "failed_closed": true,
+      "first_error": "packet SHA mismatch for PKT-SYN-CRIT-1: bound to different packet body",
+      "parse_errors": []
+    },
+    {
+      "case": "malformed_jsonl",
+      "failed_closed": true,
+      "first_error": "malformed JSONL: Unterminated string starting at: line 1 column 33 (char 32)",
+      "parse_errors": [
+        {
+          "line": 1,
+          "error": "malformed JSONL: Unterminated string starting at: line 1 column 33 (char 32)",
+          "truncated_row_suspected": true
+        }
+      ]
+    },
+    {
+      "case": "truncated_last_row",
+      "failed_closed": true,
+      "first_error": "malformed JSONL: Unterminated string starting at: line 1 column 48 (char 47)",
+      "parse_errors": [
+        {
+          "line": 1,
+          "error": "malformed JSONL: Unterminated string starting at: line 1 column 48 (char 47)",
+          "truncated_row_suspected": true
+        }
+      ]
+    }
+  ],
+  "cases_total": 18,
+  "all_failed_closed": true,
+  "verdict": "PASS",
+  "synthetic_e2e": {
+    "verdict": "PASS",
+    "synthetic_packets": 5,
+    "synthetic_reviews": 5,
+    "derived": 5,
+    "steps": [
+      {
+        "step": "schema+evidence validation",
+        "valid": 5,
+        "invalid": 0
+      },
+      {
+        "step": "frozen lane derive_final",
+        "derived": 5
+      },
+      {
+        "step": "assemble+aggregate+freeze+hash-verify",
+        "pins": 2,
+        "hash_reverify": true
+      }
+    ],
+    "note": "ran only on SYN-* packets and temp dir; zero authoritative writes"
+  }
+}

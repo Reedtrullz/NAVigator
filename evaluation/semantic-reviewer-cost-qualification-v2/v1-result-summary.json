@@ -1,0 +1,49 @@
+{
+  "source": "V1 screening-results.json + owner spec section 2",
+  "v1_terminal_status": "NO_LOW_COST_MODEL_QUALIFIES",
+  "screening_summary": {
+    "nemotron-3-ultra": {
+      "wire_id": "RouteOpen/nemotron-3-ultra-550b-a55b",
+      "rows": 90,
+      "status_counts": {
+        "OK": 5,
+        "INVALID_MODEL_REVIEW": 1,
+        "TRANSPORT_ERROR": 84
+      }
+    },
+    "nex-n2.5-pro": {
+      "wire_id": "openrouter/nex-agi/nex-n2.5-pro:free",
+      "rows": 90,
+      "status_counts": {
+        "INVALID_MODEL_REVIEW": 38,
+        "OK": 48,
+        "TRANSPORT_ERROR": 4
+      }
+    },
+    "gemma-4-31b-it": {
+      "wire_id": "openrouter/google/gemma-4-31b-it:free",
+      "rows": 90,
+      "status_counts": {
+        "TRANSPORT_ERROR": 73,
+        "OK": 16,
+        "INVALID_MODEL_REVIEW": 1
+      }
+    },
+    "mimo-v2.5-pro": {
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "rows": 90,
+      "status_counts": {
+        "OK": 32,
+        "INVALID_MODEL_REVIEW": 37,
+        "INVALID_JSON": 21
+      }
+    }
+  },
+  "historical_assessment": {
+    "nemotron-3-ultra": "operationally failed: 429/402-heavy availability",
+    "nex-n2.5-pro": "strongest semantic near-miss; substantial INVALID_MODEL_REVIEW count",
+    "gemma-4-31b-it": "operationally failed: chronic 429",
+    "mimo-v2.5-pro": "schema/output problems plus one critical wrong-direction error; NOT retested in V2",
+    "inkling": "route unavailable / 403"
+  }
+}

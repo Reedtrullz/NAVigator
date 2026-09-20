@@ -1,0 +1,1568 @@
+{
+ "provenance": {
+  "python": "3.14.6",
+  "engine_sha256": "c4bc71862febf51783e2e48550f899746f9a6d0cb00f03a84d084edcd8fdce37",
+  "suite_sha256": "040694e8cd2519e3bcb9109c9e4f4f17d9f1314bf868fa5e60d6e9ec52d21d3a",
+  "contract_sha256": "6c092eec3d99b81f1279c363dfad6aa06579e7216d906a0b8a4999c341bb53f2",
+  "metrics_sha256": "18f4c8b93e217f53313fd53cdc89ce3c2e0292cc13db535a5136c3680c72a352",
+  "lattice_sha256": "a5af67a16a8441380afe7e95a44db154707e76e22697bd30582a1009e9eb31d9"
+ },
+ "fresh_suite": {
+  "metrics": {
+   "atom_decisions": 188,
+   "atom_relation_accuracy": 0.5319,
+   "macro_f1": 0.4428,
+   "entails_precision": 0.9032,
+   "contradicts_precision": 0.463,
+   "insufficient_recall": 0.1136,
+   "critical_false_entails": 3,
+   "critical_false_contradicts": 9,
+   "per_class": {
+    "ENTAILS": {
+     "precision": 0.9032,
+     "recall": 0.7,
+     "f1": 0.7887
+    },
+    "CONTRADICTS": {
+     "precision": 0.463,
+     "recall": 0.6757,
+     "f1": 0.5495
+    },
+    "PARTIAL": {
+     "precision": 0.8667,
+     "recall": 0.5,
+     "f1": 0.6342
+    },
+    "RELATED_BUT_INSUFFICIENT": {
+     "precision": 1.0,
+     "recall": 0.1136,
+     "f1": 0.204
+    },
+    "AMBIGUOUS": {
+     "precision": 0.0192,
+     "recall": 1.0,
+     "f1": 0.0377
+    },
+    "UNRELATED": {
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "subgroup_accuracy": {
+    "actor_scope": 0.5,
+    "compound": 0.5902,
+    "condition_exception": 0.15,
+    "modality": 0.6,
+    "negation": 0.56,
+    "numeric_temporal": 0.6296
+   },
+   "confusion_matrix": {
+    "AMBIGUOUS->AMBIGUOUS": 1,
+    "CONTRADICTS->AMBIGUOUS": 10,
+    "CONTRADICTS->CONTRADICTS": 25,
+    "CONTRADICTS->ENTAILS": 1,
+    "CONTRADICTS->PARTIAL": 1,
+    "ENTAILS->AMBIGUOUS": 21,
+    "ENTAILS->CONTRADICTS": 3,
+    "ENTAILS->ENTAILS": 56,
+    "PARTIAL->AMBIGUOUS": 4,
+    "PARTIAL->CONTRADICTS": 7,
+    "PARTIAL->ENTAILS": 2,
+    "PARTIAL->PARTIAL": 13,
+    "RELATED_BUT_INSUFFICIENT->AMBIGUOUS": 16,
+    "RELATED_BUT_INSUFFICIENT->CONTRADICTS": 19,
+    "RELATED_BUT_INSUFFICIENT->ENTAILS": 3,
+    "RELATED_BUT_INSUFFICIENT->PARTIAL": 1,
+    "RELATED_BUT_INSUFFICIENT->RELATED_BUT_INSUFFICIENT": 5
+   }
+  },
+  "errors": [
+   {
+    "case_id": "RR-001",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-010",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-014",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-020",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-021",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-022",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-025",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "negation",
+    "critical": false
+   },
+   {
+    "case_id": "RR-026",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": false
+   },
+   {
+    "case_id": "RR-028",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-029",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-030",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-031",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-032",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-035",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-037",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-037",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-051",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-052",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": true
+   },
+   {
+    "case_id": "RR-054",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "ENTAILS",
+    "rule": "R23-shared-number",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-057",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-059",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "PARTIAL",
+    "rule": "R26b-uten-object-unresolved",
+    "group": "negation",
+    "critical": true
+   },
+   {
+    "case_id": "RR-060",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-061",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-062",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-063",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": true
+   },
+   {
+    "case_id": "RR-065",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "modality",
+    "critical": true
+   },
+   {
+    "case_id": "RR-066",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-067",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-068",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-069",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-070",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-071",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-072",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-073",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-074",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-076",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R15b-universal-vs-restriction",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-077",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": true
+   },
+   {
+    "case_id": "RR-078",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": true
+   },
+   {
+    "case_id": "RR-080",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": false
+   },
+   {
+    "case_id": "RR-081",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-082",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-083",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-086",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "numeric_temporal",
+    "critical": false
+   },
+   {
+    "case_id": "RR-087",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-090",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-091",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-092",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-093",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R15-universal-vs-discretionary",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-094",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-094",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-095",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-096",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-096",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-097",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-098",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-106",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": true
+   },
+   {
+    "case_id": "RR-107",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-108",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-109",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-110",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-111",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-112",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "ENTAILS",
+    "rule": "R25-coverage",
+    "group": "actor_scope",
+    "critical": true
+   },
+   {
+    "case_id": "RR-113",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-116",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R15-universal-vs-discretionary",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-117",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R15-universal-vs-discretionary",
+    "group": "actor_scope",
+    "critical": false
+   },
+   {
+    "case_id": "RR-121",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "negation",
+    "critical": false
+   },
+   {
+    "case_id": "RR-125",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": false
+   },
+   {
+    "case_id": "RR-126",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "PARTIAL",
+    "rule": "R26b-uten-object-unresolved",
+    "group": "negation",
+    "critical": true
+   },
+   {
+    "case_id": "RR-127",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": false
+   },
+   {
+    "case_id": "RR-130",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "negation",
+    "critical": true
+   },
+   {
+    "case_id": "RR-131",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "modality",
+    "critical": true
+   },
+   {
+    "case_id": "RR-132",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS",
+    "rule": "R15b-universal-vs-restriction",
+    "group": "modality",
+    "critical": true
+   },
+   {
+    "case_id": "RR-135",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "modality",
+    "critical": false
+   },
+   {
+    "case_id": "RR-136",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": true
+   },
+   {
+    "case_id": "RR-137",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-138",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-139",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "condition_exception",
+    "critical": true
+   },
+   {
+    "case_id": "RR-140",
+    "atom": 1,
+    "expected": "PARTIAL",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "condition_exception",
+    "critical": false
+   },
+   {
+    "case_id": "RR-147",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-148",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS",
+    "rule": "R27-boundary-blocked",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-150",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-150",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-153",
+    "atom": 2,
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-154",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-154",
+    "atom": 2,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-155",
+    "atom": 1,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-155",
+    "atom": 2,
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   },
+   {
+    "case_id": "RR-157",
+    "atom": 1,
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS",
+    "rule": "R28-boundary-unresolved",
+    "group": "compound",
+    "critical": false
+   }
+  ],
+  "critical_false_entails_rows": [
+   {
+    "case_id": "RR-066",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-069",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-112",
+    "atom": 1,
+    "expected": "PARTIAL"
+   }
+  ],
+  "critical_false_contradicts_rows": [
+   {
+    "case_id": "RR-065",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-067",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-068",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-076",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-077",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-078",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-130",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-131",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RR-132",
+    "atom": 1,
+    "expected": "RELATED_BUT_INSUFFICIENT"
+   }
+  ]
+ },
+ "burned_train": {
+  "n": 124,
+  "relation_correct": 64,
+  "relation_accuracy": 0.5161,
+  "atom_relation_accuracy": 0.3675,
+  "unsound_eligible_support_atoms": 8,
+  "rows": [
+   {
+    "case_id": "RC31-0003",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0004",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0005",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0007",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0008",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0010",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0011",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0013",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0014",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0015",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0016",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0017",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0018",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0022",
+    "expected": "AMBIGUOUS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0023",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0024",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0025",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0026",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0028",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0030",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0031",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0032",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0034",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0035",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0036",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0037",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0038",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0039",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0042",
+    "expected": "CONTRADICTS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0044",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0046",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0050",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0051",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0052",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0054",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0056",
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0057",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0058",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0059",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0060",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0061",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0064",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0065",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0066",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0068",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0069",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0070",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0071",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0072",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0073",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0075",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0076",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0078",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0079",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0080",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0082",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0084",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0086",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0087",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0089",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0091",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0093",
+    "expected": "RELATED_BUT_INSUFFICIENT",
+    "got": "RELATED_BUT_INSUFFICIENT"
+   },
+   {
+    "case_id": "RC31-0094",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0096",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0099",
+    "expected": "CONTRADICTS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0102",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0104",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0105",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0107",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0110",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0111",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0112",
+    "expected": "UNRELATED",
+    "got": "UNRELATED"
+   },
+   {
+    "case_id": "RC31-0113",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0114",
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0116",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0117",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0119",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0120",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0122",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0123",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0124",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0126",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0127",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0129",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0130",
+    "expected": "CONTRADICTS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0131",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0132",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0133",
+    "expected": "PARTIAL",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0134",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0135",
+    "expected": "CONTRADICTS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0136",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0137",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0138",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0140",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0142",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0143",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0144",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0147",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0148",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0149",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0150",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0151",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0152",
+    "expected": "AMBIGUOUS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0153",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0154",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0155",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0156",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0160",
+    "expected": "ENTAILS",
+    "got": "ENTAILS"
+   },
+   {
+    "case_id": "RC31-0162",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0163",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0166",
+    "expected": "ENTAILS",
+    "got": "CONTRADICTS"
+   },
+   {
+    "case_id": "RC31-0169",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0170",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0171",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0173",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0174",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0175",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0176",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0177",
+    "expected": "PARTIAL",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0178",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0179",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0181",
+    "expected": "ENTAILS",
+    "got": "PARTIAL"
+   },
+   {
+    "case_id": "RC31-0183",
+    "expected": "ENTAILS",
+    "got": "AMBIGUOUS"
+   },
+   {
+    "case_id": "RC31-0184",
+    "expected": "PARTIAL",
+    "got": "AMBIGUOUS"
+   }
+  ]
+ }
+}

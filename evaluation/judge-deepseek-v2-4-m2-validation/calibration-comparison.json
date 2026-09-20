@@ -1,0 +1,62 @@
+{
+  "artifact": "calibration-comparison.json",
+  "task_id": "NAV-EXPLORE-JUDGE-DEEPSEEK-V2_4-M2-CALIBRATION-FRESH-VALIDATION",
+  "candidate_model": "opencode-go/deepseek-v4.1-flash",
+  "frozen_fixtures_sha": "84e28f08619502e3f7287aebb8f2215a6b53619ea440560a5f9f2a266172276c",
+  "frozen_gold_sha": "aed6d59fa6cf57a637db3f761c70149220e0a5d3ed4730a71d9143f039ab0de1",
+  "max_iterations_allowed": 2,
+  "iterations": [
+    {
+      "iteration": 0,
+      "prompt_sha": "9a20e9b241b9084be6299fd3ba778c63e41d1a8b35067840675ee443f4f335e5",
+      "prompt_sha_matches_frozen_v2_2": true,
+      "results_sha": "a5ac262eab00d7f5a7e3a94c3412bab1ad32f84f04b98e0903f8cf0101db0377",
+      "overall_accuracy": 0.7,
+      "m2_amb_unresolved": "7/18",
+      "m2_insufficient_unresolved": "0/6",
+      "m2_clear_correct": "12/12",
+      "critical_false_negatives": 0,
+      "m1_hedged_correct": "12/12",
+      "control_correct": "11/12",
+      "valid_structured_rate": 0.9667,
+      "derivation_consistency": 1.0
+    },
+    {
+      "iteration": 1,
+      "prompt_sha": "e036a7841e60f0d03cf2fab3fec463a23dc0c15f4e204c500b504d8f0587bad4",
+      "results_sha": "b10ca4111a63f03d91b75b7d52d1d1b3b6785a8ef583b704ab98bae0416b63e3",
+      "overall_accuracy": 0.8333,
+      "m2_amb_unresolved": "11/18",
+      "m2_insufficient_unresolved": "5/6",
+      "m2_clear_correct": "11/12",
+      "critical_false_negatives": 0,
+      "m1_hedged_correct": "12/12",
+      "control_correct": "11/12",
+      "valid_structured_rate": 1.0,
+      "derivation_consistency": 1.0
+    },
+    {
+      "iteration": 2,
+      "prompt_sha": "72e099601f76ce1e17d4a30ff6a35e0cf98d4b55010aa7aec47fe08103a54c10",
+      "results_sha": "ca307e61b2407e10a7e71062aa325fd3dbf80b27d3ba587e92d0746e3ad64e30",
+      "overall_accuracy": 0.8167,
+      "m2_amb_unresolved": "8/18",
+      "m2_insufficient_unresolved": "6/6",
+      "m2_clear_correct": "12/12",
+      "critical_false_negatives": 0,
+      "m1_hedged_correct": "12/12",
+      "control_correct": "11/12",
+      "valid_structured_rate": 1.0,
+      "derivation_consistency": 1.0
+    }
+  ],
+  "best_iteration": 1,
+  "best_iteration_gates_pass": false,
+  "failing_gates_on_best_iteration": [
+    "m2_ambiguous_unresolved >= 0.90 (actual 0.611)",
+    "m2_insufficient_unresolved >= 0.90 (actual 0.833)",
+    "m2_clear_correct >= 0.95 (actual 0.917)"
+  ],
+  "persistent_failure_mode": "Forced-binary collapse on gold-UNRESOLVED critical_condition cases; prompt-level mechanism clarification improved but never met the 0.90 gates in two iterations.",
+  "terminal_status": "V2_4_DEEPSEEK_CALIBRATION_NOT_READY"
+}

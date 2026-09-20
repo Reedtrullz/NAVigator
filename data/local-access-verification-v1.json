@@ -1,0 +1,748 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-ACCESS-DISCOVERY-PROTOCOL-V1",
+  "layer_type": "UPDATE_LAYER",
+  "created_at": "2026-09-09",
+  "parent_artifacts": [
+    "data/municipal-mental-health-sample-v1.json",
+    "data/18-23-local-routing-gap-v1.json",
+    "data/access-unclear-targets-v1.json"
+  ],
+  "target_count": 9,
+  "targets": [
+    {
+      "target_id": "T1",
+      "kommune": "Alta",
+      "kommunenummer": "2021",
+      "ssb_sentralitetsklasse": 4,
+      "service_name": "Psykisk helse og rus (voksentilbud, fire tjenester)",
+      "service_category": "voksen psykisk helse og rus",
+      "existing_source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus",
+      "target_age_text": "Personer over 18 år",
+      "covers_age_19": true,
+      "covers_age_22": true,
+      "existing_access_fields": {
+        "direct_access": [
+          "DIRECT_PHONE"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "yes"
+      },
+      "why_access_unclear": "Inntaksløp per tjeneste er ikke detaljert; Tjenestekontor (hverdager 08:30-15:00) dokumentert som veiledningsinngang.",
+      "existing_evidence_quote": "Psykisk helse og rus gir ulike hjelpetilbud til deg over 18 år ... Virksomheten består av fire tjenester: Lavterskeltjenesten, Samtaletjenesten, ROP oppfølgingstjenesten og Boligtjenesten. For veiledning - ta kontakt med Tjenestekontoret",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "DIRECT_PHONE"
+        ],
+        "existing_source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "DIRECT_PHONE",
+          "DIRECT_EMAIL"
+        ],
+        "self_referral": "CONDITIONAL",
+        "self_referral_note": "Direkte kontakt via Tjenestekontoret er dokumentert som veiledningsinngang; inntak per tjeneste (Lavterskeltjenesten, Samtaletjenesten, ROP, Bolig) er ikke detaljert publisert.",
+        "route_confidence": "ROUTE_FULLY_VERIFIED"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "For veiledning - ta kontakt med Tjenestekontoret vårt. Kontaktinformasjon får du ved å trykke her",
+          "source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        },
+        {
+          "quote": "E-post: tjenestekontoret@alta.kommune.no ... Avdelingsleder Tjenestekontor Jorunn Sleveland Nordholm ... Telefon: 90 24 32 61",
+          "source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/tjenestekontor",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "NAVIGATION_LINK"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": true,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "ACCESS_VERIFIED",
+        "inspected_urls": [
+          "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus",
+          "https://www.alta.kommune.no/tjenester/helse-og-omsorg/tjenestekontor"
+        ],
+        "edges": [
+          {
+            "from": "psykisk-helse-og-rus",
+            "relation": "link (Kontaktinformasjon får du ved å trykke her)",
+            "to": "tjenestekontor"
+          }
+        ],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "https://www.alta.kommune.no (footer Tlf 78 45 50 00)",
+            "reason": "generelt sentralbord, ikke tjenestekoblet (protokollregel ACCESS-E2)"
+          }
+        ]
+      }
+    },
+    {
+      "target_id": "T2",
+      "kommune": "Alta",
+      "kommunenummer": "2021",
+      "ssb_sentralitetsklasse": 4,
+      "service_name": "Lavterskelteam",
+      "service_category": "lavterskel psykisk helse (voksne)",
+      "existing_source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus/lavterskelteam",
+      "target_age_text": "Voksne, lavterskel psykisk helse",
+      "covers_age_19": true,
+      "covers_age_22": true,
+      "existing_access_fields": {
+        "direct_access": [
+          "DIRECT_PHONE"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "yes"
+      },
+      "why_access_unclear": "Kontortid publisert; eksplisitt beskrivelse av inntakskriterier mangler på siden.",
+      "existing_evidence_quote": "E-post: lavterskelpsykiskhelse@alta.kommune.no Avdelingsleder: Renathe Aspeli Simonsen ... Mob: 418 78 928",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "DIRECT_PHONE"
+        ],
+        "existing_source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus/lavterskelteam"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "DIRECT_PHONE",
+          "DIRECT_EMAIL"
+        ],
+        "self_referral": "YES",
+        "self_referral_note": "Eksplisitt: «Du trenger ingen henvisning»; digital kartlegging danner grunnlag for avklaringssamtale.",
+        "route_confidence": "ROUTE_FULLY_VERIFIED"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Du trenger ingen henvisning, og en digital kartlegging danner grunnlaget for en avklaringssamtale og videre oppfølging.",
+          "source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus/lavterskelteam",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        },
+        {
+          "quote": "Mob: 475 19 058 (bemannet man, ons, fre kl. 09.00-11.00 og 13.00-14.00) E-post: lavterskelpsykiskhelse@alta.kommune.no",
+          "source_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus/lavterskelteam",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": false,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "ACCESS_VERIFIED",
+        "inspected_urls": [
+          "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus/lavterskelteam"
+        ],
+        "edges": [],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "https://www.alta.kommune.no (footer Tlf 78 45 50 00)",
+            "reason": "generelt sentralbord (ACCESS-E2)"
+          }
+        ]
+      }
+    },
+    {
+      "target_id": "T3",
+      "kommune": "Steinkjer",
+      "kommunenummer": "5421",
+      "ssb_sentralitetsklasse": 4,
+      "service_name": "Kommunepsykologen",
+      "service_category": "kommunepsykolog (systemrettet)",
+      "existing_source_url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/",
+      "target_age_text": "Ikke publisert",
+      "covers_age_19": "unknown",
+      "covers_age_22": "unknown",
+      "existing_access_fields": {
+        "direct_access": [
+          "UNCLEAR"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "no"
+      },
+      "why_access_unclear": "Tynn side; rolle/inntak ikke beskrevet. Telt som systemrettet tilbud, ikke brukt som hovedbevis.",
+      "existing_evidence_quote": "Kommunen har en kommunepsykolog som er lokalisert på rådhuset i 3.etg.",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "UNCLEAR"
+        ],
+        "existing_source_url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "OTHER_PROFESSIONAL_REFERRAL",
+          "DIRECT_EMAIL"
+        ],
+        "self_referral": "NO",
+        "self_referral_note": "Lukket negativt: tjenesten har per i dag ikke kapasitet til avklaringssamtaler/behandling av pasienter; e-post er kontaktvei for kommunepsykologens veiledningsrolle.",
+        "route_confidence": "ROUTE_EXISTENCE_ONLY"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Det er for tiden ikke kapasitet til å tilby avklaringssamtaler og/eller behandling av pasienter. Kommunepsykologen innehar klinisk vurderingskompetanse, og bidrar primært med veiledning av annet helsepersonell i kommunen.",
+          "source_url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/",
+          "source_page_last_updated": "2025-09-30",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        },
+        {
+          "quote": "Ønsker du kontakt med kommunepsykologen, send e-post til: Trude Hoff",
+          "source_url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/",
+          "source_page_last_updated": "2025-09-30",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": false,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "REFERRAL_VERIFIED",
+        "inspected_urls": [
+          "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/"
+        ],
+        "edges": [],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "Steinkjer kommune footer Telefon 74 16 90 00",
+            "reason": "generelt sentralbord (ACCESS-E2)"
+          }
+        ]
+      }
+    },
+    {
+      "target_id": "T4",
+      "kommune": "Ulstein",
+      "kommunenummer": "1573",
+      "ssb_sentralitetsklasse": 4,
+      "service_name": "Teneste for psykisk helse og rus",
+      "service_category": "voksen psykisk helse og rus (vedtaksbasert)",
+      "existing_source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/",
+      "target_age_text": "Ingen aldersgrense publisert («oppfølging av unge personar»)",
+      "covers_age_19": true,
+      "covers_age_22": true,
+      "existing_access_fields": {
+        "direct_access": [
+          "DIRECT_PHONE"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "yes"
+      },
+      "why_access_unclear": "Tverrfaglig team; kontakt via sentralbord 70 01 75 00 / navngitte ansatte. Vedtaksbasert; hverken «rask» hjelp eller eksplisitt aldersgrense er publisert.",
+      "existing_evidence_quote": "Tenesta er eit lågterskeltilbod ... Med fokus på førebygging gir teamet også oppfølging av unge personar. ... det vert skrive vedtak på timetal og innhald i hjelpe",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "DIRECT_PHONE"
+        ],
+        "existing_source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "APPLICATION_FORM",
+          "DIRECT_PHONE",
+          "GP_REFERRAL",
+          "OTHER_PROFESSIONAL_REFERRAL"
+        ],
+        "self_referral": "YES",
+        "self_referral_note": "Innbygger kan selv søke via kommunalt skjema eller ringe tjenesten; hjelpeomfang vedtas etter kartleggingssamtale (vedtaksbasert).",
+        "route_confidence": "ROUTE_FULLY_VERIFIED"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Korleis søke om dette tenestetilbodet? Bruk skjema for helse- og omsorgstenester. Du kan også ringe Margaret Bjerkvik ... Eit anna alternativ er at fastlegen din eller ein annan instans sender skriftleg tilvising. Når kan du vente svar? Søknader vert fortløpande behandla.",
+          "source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/",
+          "source_page_last_updated": "2026-04-23",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "evidence_edges": [
+        {
+          "type": "APPLICATION_FORM",
+          "url": "https://skjema.ulstein.kommune.no/skjema/ULS097/Sknad_om_helse_og_omsorgsteneste_",
+          "discovered_via": "NAVIGATION_LINK",
+          "inspected": false,
+          "note": "Form-URL hentet fra tjenestesidens lenketekst «skjema for helse- og omsorgstenester»; eksistens er bevist av tjenestesidens eksplisitte tekst."
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": true,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "ACCESS_VERIFIED",
+        "inspected_urls": [
+          "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/"
+        ],
+        "edges": [
+          {
+            "from": "teneste-for-psykisk-helse-og-rus",
+            "relation": "link (skjema for helse- og omsorgstenester)",
+            "to": "skjema.ulstein.kommune.no ULS097"
+          }
+        ],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "Ulstein sentralbord 70 01 75 00",
+            "reason": "generelt sentralbord (ACCESS-E2); tjenestekoblet telefon finnes via navngitt ansatt"
+          }
+        ]
+      }
+    },
+    {
+      "target_id": "T5",
+      "kommune": "Ulstein",
+      "kommunenummer": "1573",
+      "ssb_sentralitetsklasse": 4,
+      "service_name": "Kommunepsykolog (interkommunal Ulstein/Sande)",
+      "service_category": "kommunepsykolog (interkommunal, systemrettet)",
+      "existing_source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/kommunepsykolog/",
+      "target_age_text": "Systemrettet",
+      "covers_age_19": "unknown",
+      "covers_age_22": "unknown",
+      "existing_access_fields": {
+        "direct_access": [
+          "UNCLEAR"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "no"
+      },
+      "why_access_unclear": "Ikke dokumentert som behandlingstilbud for enkeltinnbyggere.",
+      "existing_evidence_quote": "Ulstein og Sande samarbeider om ei interkommunal psykologteneste. ... Hovudoppgåva ... er førebygging og helsefremmande arbeid. ... rettleiing og systemarbeid",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "UNCLEAR"
+        ],
+        "existing_source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/kommunepsykolog/"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "OTHER_PROFESSIONAL_REFERRAL"
+        ],
+        "self_referral": "NO",
+        "self_referral_note": "Lukket negativt: tenesta er systemrettet (førebygging, rettleiing til tilsette, systemarbeid); ingen pasientinntak dokumentert.",
+        "route_confidence": "ROUTE_EXISTENCE_ONLY"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Hovudoppgåva til kommunepsykologtenesta er førebygging og helsefremmande arbeid. Vi hjelper kommunen i spørsmål om psykisk helse i alle tenester ... Kommunepsykologen tilbyr rettleiing og fagstøtte til tilsette og faggrupper i kommunen.",
+          "source_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/kommunepsykolog/",
+          "source_page_last_updated": "2026-04-23",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "intermunicipal_provenance": {
+        "resident_municipality": [
+          "Ulstein",
+          "Sande"
+        ],
+        "host_municipality": null,
+        "service_operator": "Ulstein og Sande interkommunal psykologteneste (psykologspesialist og psykolog)",
+        "eligibility_evidence": "Ulstein og Sande samarbeider om ei interkommunal psykologteneste.",
+        "access_evidence": "Rettleiing og fagstøtte til tilsette og faggrupper i kommunen; ingen individuell inngang publisert."
+      },
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": false,
+        "level_3": false,
+        "level_4": true,
+        "level_5": false,
+        "terminal_state": "REFERRAL_VERIFIED",
+        "inspected_urls": [
+          "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/kommunepsykolog/"
+        ],
+        "edges": [],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "Ulstein sentralbord 70 01 75 00",
+            "reason": "generelt sentralbord (ACCESS-E2)"
+          }
+        ]
+      }
+    },
+    {
+      "target_id": "T6",
+      "kommune": "Ørland",
+      "kommunenummer": "5042",
+      "ssb_sentralitetsklasse": 5,
+      "service_name": "Ambulant ungdomsteam",
+      "service_category": "ambulant ungdomsteam (steg 2)",
+      "existing_source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/",
+      "target_age_text": "Barn og unge 10-20 år",
+      "covers_age_19": true,
+      "covers_age_22": false,
+      "existing_access_fields": {
+        "direct_access": [
+          "UNCLEAR"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "no"
+      },
+      "why_access_unclear": "Steg 2-tilbud etter forsøkte lavere nivåer.",
+      "existing_evidence_quote": "Målgruppen for teamet er barn og unge mellom 10 til 20 år, hvor tjenestene familieterapi og ungdomslos er forsøkt uten at det har ført til ønsket endring.",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "UNCLEAR"
+        ],
+        "existing_source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "DIRECT_PHONE",
+          "DIRECT_EMAIL",
+          "OTHER_PROFESSIONAL_REFERRAL"
+        ],
+        "self_referral": "CONDITIONAL",
+        "self_referral_note": "Direkte kontakt er dokumentert («kan Ambulant ungdomsteam kontaktes»), men tjenesten er steg 2: forutsetter at Ungdomslos og Familieteam er forsøkt.",
+        "route_confidence": "ROUTE_FULLY_VERIFIED"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Hvis disse tjenestene allerede er forsøkt, med liten til ingen forbedring kan Ambulant ungdomsteam kontaktes. ... Ta kontakt med ambulant ungdomsteam ... Dorte Beate Solvik Leder (helse og omsorg) ... Mobil 90 89 85 04 ... Nina Anita Loeng Mjelde Fagleder BUF team ... Mobil 47 68 22 36",
+          "source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": false,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "ACCESS_VERIFIED",
+        "inspected_urls": [
+          "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/"
+        ],
+        "edges": [],
+        "queries": [],
+        "rejected": []
+      }
+    },
+    {
+      "target_id": "T7",
+      "kommune": "Ørland",
+      "kommunenummer": "5042",
+      "ssb_sentralitetsklasse": 5,
+      "service_name": "Helsestasjon for ungdom",
+      "service_category": "helsestasjon for ungdom",
+      "existing_source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/lege-og-helsetjenester/helsestasjonen/helsestasjon-for-ungdom/",
+      "target_age_text": "Ungdom fra 13 år (ingen øvre grense publisert)",
+      "covers_age_19": true,
+      "covers_age_22": "unknown",
+      "existing_access_fields": {
+        "direct_access": [
+          "UNCLEAR"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "no"
+      },
+      "why_access_unclear": "Inngang (drop-in/time) ikke spesifisert på siden.",
+      "existing_evidence_quote": "Helsestasjon for ungdom (HFU) Gratis tilbud til ungdommer fra 13 år.",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "UNCLEAR"
+        ],
+        "existing_source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/lege-og-helsetjenester/helsestasjonen/helsestasjon-for-ungdom/"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "DIRECT_DROPIN",
+          "DIRECT_PHONE"
+        ],
+        "self_referral": "YES",
+        "self_referral_note": "Publiserte drop-in-åpningstider (fast datoformat, to ukers rytme) + tjenestekoblet telefon.",
+        "route_confidence": "ROUTE_FULLY_VERIFIED"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Åpningstider HFU 26. august: kl.14:30 - 17:30 09. september: kl. 14:30 - 17:30 ... 16. desember: kl. 14:30 - 17:30",
+          "source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/lege-og-helsetjenester/helsestasjonen/helsestasjon-for-ungdom/",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        },
+        {
+          "quote": "HFU finner du i helsestasjonens lokaler, Ørland Medisinske senter, inngang A, 2. etasje. Kontakt oss Telefon til helsestasjon: 72 51 97 80",
+          "source_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/lege-og-helsetjenester/helsestasjonen/helsestasjon-for-ungdom/",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": false,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "ACCESS_VERIFIED",
+        "inspected_urls": [
+          "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/lege-og-helsetjenester/helsestasjonen/helsestasjon-for-ungdom/"
+        ],
+        "edges": [],
+        "queries": [],
+        "rejected": []
+      }
+    },
+    {
+      "target_id": "T8",
+      "kommune": "Askvoll",
+      "kommunenummer": "1432",
+      "ssb_sentralitetsklasse": 6,
+      "service_name": "Psykisk helse- og rusteneste for vaksne",
+      "service_category": "voksen psykisk helse og rus (lavterskel)",
+      "existing_source_url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/",
+      "target_age_text": "Vaksne (ingen eksplisitt aldersgrense publisert)",
+      "covers_age_19": true,
+      "covers_age_22": true,
+      "existing_access_fields": {
+        "direct_access": [
+          "DIRECT_PHONE"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "yes"
+      },
+      "why_access_unclear": "Direkte kontakt via navngitte ansatte (psykisk helsearbeider 41 62 13 03, psykiatrisk sjukepleiar 93 06 64 23), kontor Sentrumsgarden. Inntakskriterier/inngangsprosessen ikke publisert.",
+      "existing_evidence_quote": "Psykisk helse- og rusteneste i Askvoll er ei teneste til deg som av ulike årsaker har det vanskeleg. ... Tilbodet er gratis og vi har teieplikt. ... Ved samtale, rettleie deg å meistre kvardagen",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "DIRECT_PHONE"
+        ],
+        "existing_source_url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/"
+      },
+      "after": {
+        "access_clear": "yes",
+        "canonical_access_methods": [
+          "DIRECT_PHONE"
+        ],
+        "self_referral": "YES",
+        "self_referral_note": "Eksplisitt på foreldresiden: «Du treng ikkje tilvising for å få hjelp»; navngitte ansattes telefoner er tjenestekoblet kontakt.",
+        "route_confidence": "ROUTE_FULLY_VERIFIED"
+      },
+      "outcome": "RESOLVED",
+      "evidence": [
+        {
+          "quote": "Psykisk helse- og rusteneste for vaksne er eit gratis lågterskeltilbod for unge og vaksne over 18 år. Du treng ikkje tilvising for å få hjelp.",
+          "source_url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/",
+          "source_page_last_updated": null,
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "NAVIGATION_LINK"
+        },
+        {
+          "quote": "Linda Kvalheim Psykisk helsearbeider ... Telefon 41 62 13 03 Connie Aven Psykiatrisk sjukepleiar ... Telefon 93 06 64 23 Sidsel Fænn Kongsvik Ruskonsulent ... Telefon 57 73 45 10 Mobil 48 00 41 48",
+          "source_url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/",
+          "source_page_last_updated": "2026-06-19",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": true,
+        "level_3": false,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "ACCESS_VERIFIED",
+        "inspected_urls": [
+          "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/",
+          "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/"
+        ],
+        "edges": [
+          {
+            "from": "psykisk-helse-og-rusteneste (foreldreside)",
+            "relation": "navigation",
+            "to": "psykisk-helse-og-rusteneste-for-vaksne"
+          }
+        ],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "Askvoll footer Ring oss: 57 73 07 00",
+            "reason": "generelt sentralbord (ACCESS-E2)"
+          }
+        ]
+      }
+    },
+    {
+      "target_id": "T9",
+      "kommune": "Hasvik",
+      "kommunenummer": "5614",
+      "ssb_sentralitetsklasse": 6,
+      "service_name": "Helsesykepleier (helsestasjon/skolehelsetjeneste)",
+      "service_category": "helsesykepleier (helsestasjon/skolehelsetjeneste)",
+      "existing_source_url": "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsestasjon",
+      "target_age_text": "Barn og unge 0-20 år",
+      "covers_age_19": true,
+      "covers_age_22": false,
+      "existing_access_fields": {
+        "direct_access": [
+          "OTHER_PROFESSIONAL"
+        ],
+        "pub_info_access_clear": "no",
+        "pub_info_contact_clear": "yes"
+      },
+      "why_access_unclear": "Skolehelsetjenesten: samtaler med elever, henvise videre ved behov.",
+      "existing_evidence_quote": "Helsesykepleier Jobber med barn og unge i alderen 0-20 år.",
+      "source_provenance": {
+        "source_file": "data/18-23-local-routing-gap-v1.json",
+        "retrieved_date": "2026-09-08"
+      },
+      "before": {
+        "access_clear": "no",
+        "existing_access_model": [
+          "OTHER_PROFESSIONAL"
+        ],
+        "existing_source_url": "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsestasjon"
+      },
+      "after": {
+        "access_clear": "partial",
+        "canonical_access_methods": [
+          "DIRECT_DROPIN",
+          "DIRECT_PHONE"
+        ],
+        "self_referral": "CONDITIONAL",
+        "self_referral_note": "Skoleelever: direkte kontakt via helsesykepleiers kontortid på skolene. Ikke-skolegående 19-åring: eksplisitt bokingsvei ikke publisert; legekontor/helsesekretær (78 45 25 00) er dokumentert kontakt-/bockingskanal for helsestasjonspersonell, og helsesykepleiers telefon er publisert på FFR-sidens ansattliste.",
+        "route_confidence": "ROUTE_ACCESS_PARTIAL"
+      },
+      "outcome": "PARTIALLY_RESOLVED",
+      "evidence": [
+        {
+          "quote": "Skolehelsetjenesten ... Helsesykepleier har kontortid på alle skolene i kommunen. Skolehelsetjenesten tilbyr: ... Samtaler med elever, individuelt eller i grupper ... kan henvise eleven videre ved behov.",
+          "source_url": "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsestasjon",
+          "source_page_last_updated": "2023-03-01",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        },
+        {
+          "quote": "Hasvik Legestasjon Telefon: 78 45 25 00 ... Jordmor ... time bestilles via legekontoret",
+          "source_url": "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsestasjon",
+          "source_page_last_updated": "2023-03-01",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "KNOWN_PAGE_CONTENT"
+        },
+        {
+          "quote": "Helsesykepleier: Ragnhild Torkildsen Telefon: 78 45 25 56",
+          "source_url": "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsetjenester/rus-og-psykiatri/psykisk-helse",
+          "source_page_last_updated": "2023-02-16",
+          "retrieved_date": "2026-09-09",
+          "discovered_via": "NAVIGATION_LINK"
+        }
+      ],
+      "search_log": {
+        "level_0": true,
+        "level_1": true,
+        "level_2": true,
+        "level_3": true,
+        "level_4": false,
+        "level_5": false,
+        "terminal_state": "PUBLIC_DATA_EXHAUSTED",
+        "inspected_urls": [
+          "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsestasjon",
+          "https://hasvik.kommune.no/tjenester/helse-og-omsorg/helsetjenester/rus-og-psykiatri/psykisk-helse",
+          "https://hasvik.kommune.no/tjenester/helse-og-omsorg"
+        ],
+        "edges": [
+          {
+            "from": "helsestasjon",
+            "relation": "related link (Familie, Forebygging og Rehabilitering (FFR))",
+            "to": "rus-og-psykiatri/psykisk-helse (FFR)"
+          }
+        ],
+        "queries": [],
+        "rejected": [
+          {
+            "url": "https://hasvik.kommune.no/sitemap.xml",
+            "reason": "tomt/ikke tilgjengelig (0 bytes)"
+          }
+        ]
+      }
+    }
+  ]
+}

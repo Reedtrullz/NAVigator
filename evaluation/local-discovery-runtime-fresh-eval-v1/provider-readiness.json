@@ -1,0 +1,163 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-FRESH-EVAL-V1",
+  "phase": "E1_PROVIDER_READINESS_ATTEMPT_2",
+  "executed_at": "2026-09-09T03:40:57Z",
+  "attempt_1_note": "INVALID: 4/5 fetch URLs were operator-constructed from truncated display and 404ed; discarded, no holdout data touched. Search 1/5 observed with rapid sequential queries.",
+  "data_class": "BURNED_DEVELOPMENT_ONLY (targets from local-access-verification-v1)",
+  "method_note": "5s spacing between search queries (rate respect, no identity rotation, no captcha handling). Empty SERPs classified via raw-response diagnostics.",
+  "search_tests": [
+    {
+      "query": "Alta psykisk helse",
+      "result_count": 0,
+      "provider_id": "http_search",
+      "classification": "BOT_BLOCK_PAGE",
+      "raw_head": "<!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <li",
+      "usable": false,
+      "burned_reference": "Alta",
+      "sample": []
+    },
+    {
+      "query": "Steinkjer rask psykisk helsehjelp",
+      "result_count": 0,
+      "provider_id": "http_search",
+      "classification": "BOT_BLOCK_PAGE",
+      "raw_head": "<!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <li",
+      "usable": false,
+      "burned_reference": "Steinkjer",
+      "sample": []
+    },
+    {
+      "query": "Ulstein psykisk helse kontakt",
+      "result_count": 0,
+      "provider_id": "http_search",
+      "classification": "BOT_BLOCK_PAGE",
+      "raw_head": "<!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <li",
+      "usable": false,
+      "burned_reference": "Ulstein",
+      "sample": []
+    },
+    {
+      "query": "Orland kommunepsykolog",
+      "result_count": 0,
+      "provider_id": "http_search",
+      "classification": "BOT_BLOCK_PAGE",
+      "raw_head": "<!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <li",
+      "usable": false,
+      "burned_reference": "Orland",
+      "sample": []
+    },
+    {
+      "query": "Askvoll psykisk helse rus",
+      "result_count": 0,
+      "provider_id": "http_search",
+      "classification": "BOT_BLOCK_PAGE",
+      "raw_head": "<!-- <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <li",
+      "usable": false,
+      "burned_reference": "Askvoll",
+      "sample": []
+    }
+  ],
+  "fetch_tests": [
+    {
+      "url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus",
+      "status": "success",
+      "http_method": "http_get",
+      "content_bytes": 70168,
+      "content_sha256": "3a2bd768111c95bf4dd869c1be412c5deeea2ec79e4e1813426b8e44665b02a6",
+      "final_url": "https://www.alta.kommune.no/tjenester/helse-og-omsorg/psykisk-helse/psykisk-helse-og-rus",
+      "rendered_fallback": false,
+      "error": null,
+      "retrieved_at": "2026-09-09T03:40:55Z",
+      "security_guard": {
+        "validated": true,
+        "official_domain": true
+      },
+      "usable": true
+    },
+    {
+      "url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/",
+      "status": "success",
+      "http_method": "http_get",
+      "content_bytes": 56132,
+      "content_sha256": "902f8d0767db0c905d8911329bbbb1f349a927c37adb863c63a565a8adab1963",
+      "final_url": "https://www.steinkjer.kommune.no/tjenester/helse-omsorg-og-sosiale-tjenester/helsetjenester/legetjenester/kommunepsykologen/",
+      "rendered_fallback": false,
+      "error": null,
+      "retrieved_at": "2026-09-09T03:40:55Z",
+      "security_guard": {
+        "validated": true,
+        "official_domain": true
+      },
+      "usable": true
+    },
+    {
+      "url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/",
+      "status": "success",
+      "http_method": "http_get",
+      "content_bytes": 55166,
+      "content_sha256": "4367cd6cf607ecd3f341fe90e1b686eff78f663a57e6b642a2deeb2d0c7f806d",
+      "final_url": "https://www.ulstein.kommune.no/tenester/helse-og-omsorg/tenester-til-heimebuande/psykisk-helse-og-rus/teneste-for-psykisk-helse-og-rus/",
+      "rendered_fallback": false,
+      "error": null,
+      "retrieved_at": "2026-09-09T03:40:55Z",
+      "security_guard": {
+        "validated": true,
+        "official_domain": true
+      },
+      "usable": true
+    },
+    {
+      "url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/",
+      "status": "success",
+      "http_method": "http_get",
+      "content_bytes": 64554,
+      "content_sha256": "b042c455709d4b0a03eb219f5bcfc97acfddd4aecb4d917d89fe4ef08d5268b9",
+      "final_url": "https://www.orland.kommune.no/vare-tjenester/helse-omsorg-og-sosiale-tjenester/psykisk-helse-og-rus/psykisk-helse/psykisk-helse-ungdom/",
+      "rendered_fallback": false,
+      "error": null,
+      "retrieved_at": "2026-09-09T03:40:56Z",
+      "security_guard": {
+        "validated": true,
+        "official_domain": true
+      },
+      "usable": true
+    },
+    {
+      "url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/",
+      "status": "success",
+      "http_method": "http_get",
+      "content_bytes": 64624,
+      "content_sha256": "c0ad1a02af25cc7333e8d17bc92cd28329a7c540ccd909c660e2fe3ff6d8613b",
+      "final_url": "https://www.askvoll.kommune.no/tenestene-vare/helse-og-omsorg/psykisk-helse-og-rusteneste/psykisk-helse-og-rusteneste-for-vaksne/",
+      "rendered_fallback": false,
+      "error": null,
+      "retrieved_at": "2026-09-09T03:40:57Z",
+      "security_guard": {
+        "validated": true,
+        "official_domain": true
+      },
+      "usable": true
+    }
+  ],
+  "summary": {
+    "search_pass": 0,
+    "search_total": 5,
+    "bot_block_classifications": 5,
+    "genuine_empty_serps": 0,
+    "fetch_pass": 5,
+    "fetch_total": 5,
+    "provenance_registered": true,
+    "security_guards_pass": true,
+    "gate": "FAIL"
+  },
+  "attempt_1_summary": {
+    "search_pass": 1,
+    "search_total": 5,
+    "fetch_pass": 1,
+    "fetch_total": 5,
+    "search_bot_blocked_systematic": false,
+    "provenance_registered": true,
+    "security_guards_pass": true,
+    "gate": "FAIL"
+  }
+}

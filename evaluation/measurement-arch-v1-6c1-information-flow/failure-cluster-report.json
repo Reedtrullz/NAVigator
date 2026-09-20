@@ -1,0 +1,270 @@
+{
+  "artifact": "failure-cluster-report.json",
+  "n_failure_rows": 16,
+  "aggregate_clusters": {
+    "HEDGED_SUT": {
+      "n": 7,
+      "ids": [
+        "C-27",
+        "C-29",
+        "F-26",
+        "R-11",
+        "R-13",
+        "R-26",
+        "U-19"
+      ]
+    },
+    "MULTI_ROUTE": {
+      "n": 2,
+      "ids": [
+        "R-11",
+        "R-13"
+      ]
+    },
+    "NEGATION_PRESENT_IN_SUT": {
+      "n": 7,
+      "ids": [
+        "C-28",
+        "C-30",
+        "F-23",
+        "F-26",
+        "R-13",
+        "U-14",
+        "U-23"
+      ]
+    },
+    "NEW_REGRESSION": {
+      "n": 3,
+      "ids": [
+        "C-27",
+        "F-08",
+        "U-14"
+      ]
+    },
+    "NEW_REPAIR": {
+      "n": 2,
+      "ids": [
+        "F-02",
+        "R-11"
+      ]
+    },
+    "SAFETY_CRITICAL": {
+      "n": 4,
+      "ids": [
+        "C-27",
+        "C-28",
+        "C-29",
+        "C-30"
+      ]
+    },
+    "UNCERTAINTY_DIMENSION": {
+      "n": 3,
+      "ids": [
+        "U-14",
+        "U-19",
+        "U-23"
+      ]
+    },
+    "UNCHANGED_FAILURE": {
+      "n": 11,
+      "ids": [
+        "C-28",
+        "C-29",
+        "C-30",
+        "F-09",
+        "F-23",
+        "F-26",
+        "F-27",
+        "R-13",
+        "R-26",
+        "U-19",
+        "U-23"
+      ]
+    }
+  },
+  "rows": [
+    {
+      "id": "C-27",
+      "dimension": "critical_condition",
+      "gold": "UNRESOLVED",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "NOT_TRIGGERED",
+      "clusters": [
+        "NEW_REGRESSION",
+        "HEDGED_SUT",
+        "SAFETY_CRITICAL"
+      ]
+    },
+    {
+      "id": "C-28",
+      "dimension": "critical_condition",
+      "gold": "UNRESOLVED",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "NOT_TRIGGERED",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "NEGATION_PRESENT_IN_SUT",
+        "SAFETY_CRITICAL"
+      ]
+    },
+    {
+      "id": "C-29",
+      "dimension": "critical_condition",
+      "gold": "UNRESOLVED",
+      "old_verdict": "TRIGGERED",
+      "new_verdict": "TRIGGERED",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "HEDGED_SUT",
+        "SAFETY_CRITICAL"
+      ]
+    },
+    {
+      "id": "C-30",
+      "dimension": "critical_condition",
+      "gold": "UNRESOLVED",
+      "old_verdict": "NOT_TRIGGERED",
+      "new_verdict": "NOT_TRIGGERED",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "NEGATION_PRESENT_IN_SUT",
+        "SAFETY_CRITICAL"
+      ]
+    },
+    {
+      "id": "F-02",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "old_verdict": "UNRESOLVED",
+      "new_verdict": "PRESENT",
+      "clusters": [
+        "NEW_REPAIR"
+      ]
+    },
+    {
+      "id": "F-08",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "old_verdict": "PRESENT",
+      "new_verdict": "ABSENT",
+      "clusters": [
+        "NEW_REGRESSION"
+      ]
+    },
+    {
+      "id": "F-09",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "old_verdict": "ABSENT",
+      "new_verdict": "ABSENT",
+      "clusters": [
+        "UNCHANGED_FAILURE"
+      ]
+    },
+    {
+      "id": "F-23",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "old_verdict": "ABSENT",
+      "new_verdict": "ABSENT",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "NEGATION_PRESENT_IN_SUT"
+      ]
+    },
+    {
+      "id": "F-26",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "old_verdict": "ABSENT",
+      "new_verdict": "ABSENT",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "NEGATION_PRESENT_IN_SUT",
+        "HEDGED_SUT"
+      ]
+    },
+    {
+      "id": "F-27",
+      "dimension": "forbidden_claim",
+      "gold": "PRESENT",
+      "old_verdict": "ABSENT",
+      "new_verdict": "ABSENT",
+      "clusters": [
+        "UNCHANGED_FAILURE"
+      ]
+    },
+    {
+      "id": "R-11",
+      "dimension": "route_correctness",
+      "gold": "UNRESOLVED",
+      "old_verdict": "NO_ACCEPTABLE_ROUTE",
+      "new_verdict": "UNRESOLVED",
+      "clusters": [
+        "NEW_REPAIR",
+        "HEDGED_SUT",
+        "MULTI_ROUTE"
+      ]
+    },
+    {
+      "id": "R-13",
+      "dimension": "route_correctness",
+      "gold": "ACCEPTABLE",
+      "old_verdict": "PARTIAL",
+      "new_verdict": "PARTIAL",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "NEGATION_PRESENT_IN_SUT",
+        "HEDGED_SUT",
+        "MULTI_ROUTE"
+      ]
+    },
+    {
+      "id": "R-26",
+      "dimension": "route_correctness",
+      "gold": "NO_ACCEPTABLE_ROUTE",
+      "old_verdict": "ACCEPTABLE",
+      "new_verdict": "UNRESOLVED",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "HEDGED_SUT"
+      ]
+    },
+    {
+      "id": "U-14",
+      "dimension": "required_uncertainty",
+      "gold": "PARTIAL",
+      "old_verdict": "PARTIAL",
+      "new_verdict": "VIOLATED",
+      "clusters": [
+        "NEW_REGRESSION",
+        "NEGATION_PRESENT_IN_SUT",
+        "UNCERTAINTY_DIMENSION"
+      ]
+    },
+    {
+      "id": "U-19",
+      "dimension": "required_uncertainty",
+      "gold": "UNRESOLVED",
+      "old_verdict": "VIOLATED",
+      "new_verdict": "SATISFIED",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "HEDGED_SUT",
+        "UNCERTAINTY_DIMENSION"
+      ]
+    },
+    {
+      "id": "U-23",
+      "dimension": "required_uncertainty",
+      "gold": "PARTIAL",
+      "old_verdict": "SATISFIED",
+      "new_verdict": "SATISFIED",
+      "clusters": [
+        "UNCHANGED_FAILURE",
+        "NEGATION_PRESENT_IN_SUT",
+        "UNCERTAINTY_DIMENSION"
+      ]
+    }
+  ]
+}

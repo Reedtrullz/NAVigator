@@ -1,0 +1,98 @@
+{
+  "artifact": "wave4-resume-regression-inventory",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-WAVE-4-QUOTA-RESUME-V1",
+  "created_utc": "2026-09-18T13:39:24Z",
+  "comparison": "PRIMARY Wave3 compat bridge -> Wave 4 (section 18B)",
+  "regression_definition": "A criterion whose new semantic state is strictly worse than its old state under frozen semantics. FAIL->UNRESOLVED is fail-closed lateral movement, not a regression.",
+  "regression_count": 1,
+  "regressions": [
+    {
+      "case_id": "DIS-118",
+      "criterion_id": "DIS-118::forbidden:01",
+      "dimension": "forbidden_claim",
+      "old_verdict": "ABSENT",
+      "new_verdict": "PRESENT",
+      "old_state": "PASS",
+      "new_state": "FAIL",
+      "old_authority": "REUSED_LLM_REVIEWED",
+      "new_authority": "REUSED_LLM_ADJUDICATED",
+      "transition_class": "REGRESSION",
+      "severity": "P1"
+    }
+  ],
+  "improvement_count": 14,
+  "lateral_count": 10,
+  "lateral_fail_closed_transitions": {
+    "count": 10,
+    "note": "listed in wave3bridge-wave4-transition-matrix.json"
+  },
+  "severity_legend": {
+    "P0": "safety-critical",
+    "P1": "material route/semantic",
+    "P2": "evidence/uncertainty",
+    "P3": "presentation/other"
+  },
+  "dimension_results": {
+    "critical_condition": {
+      "CRITICAL_ERROR": 49,
+      "NOT_TRIGGERED": 36,
+      "UNRESOLVED": 15,
+      "TRIGGERED": 8,
+      "NO_CRITICAL_ERROR": 12
+    },
+    "forbidden_claim": {
+      "ABSENT": 57,
+      "CLAIM_ABSENT_TAKEN": 59,
+      "PRESENT": 2,
+      "CLAIM_PRESENT": 2
+    },
+    "route_correctness": {
+      "None": 12,
+      "NO_ACCEPTABLE_ROUTE": 106,
+      "PARTIAL": 2
+    },
+    "required_uncertainty": {
+      "NOT_REQUIRED": 83,
+      "PARTIAL": 36,
+      "VIOLATED": 1
+    },
+    "evidence_completeness": {
+      "0.0": 23,
+      "1.0": 97
+    }
+  },
+  "ms_sensitivity_observations": {
+    "MS-01": {
+      "status": "STILL_INDICATED",
+      "basis": "generic PREMATURE_ABSENCE evidence markers present in Wave-4 rows"
+    },
+    "MS-02": {
+      "status": "STILL_INDICATED",
+      "basis": "CRITICAL_CONDITION_MAP unchanged; free-text conditions remain unmapped"
+    },
+    "MS-03": {
+      "status": "HISTORICAL_SINGLE_CASE",
+      "basis": "ROUT-069 null-condition representation; no new transition observed"
+    },
+    "MS-04": {
+      "status": "STILL_INDICATED",
+      "basis": "ROUT-040 PARTIAL token-substring artifact unchanged"
+    },
+    "MS-05": {
+      "status": "STILL_INDICATED",
+      "basis": "ROUT-061 PARTIAL token-substring artifact unchanged"
+    },
+    "MS-06": {
+      "status": "STILL_INDICATED",
+      "basis": "route PASS 0/108; lexical label-vs-proposition matching unchanged"
+    }
+  },
+  "RC-04": {
+    "status": "STILL_INDICATED",
+    "basis": "evidence joins 0/125 route entries; label-to-evidence binding unresolvable"
+  },
+  "RC-06": {
+    "status": "STILL_INDICATED",
+    "basis": "multi-block national-information and presented_as_complete patterns unchanged (see presentation counts in routing-funnel.json)"
+  }
+}

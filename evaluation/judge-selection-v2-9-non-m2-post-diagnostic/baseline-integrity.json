@@ -1,0 +1,38 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_9-NON-M2-POST-DIAGNOSTIC-SCREENING",
+  "verified_utc": "2026-09-13T23:20:00+02:00",
+  "sha_method": "shasum -a 256 over file bytes unless noted as embedded-canonical",
+  "pins": {
+    "draft_spec": {"path": "evaluation/judge-selection-v2-9-draft/TASK-SPEC-DRAFT.md", "sha256": "a5819c8c8c64f34c0591e49ca85df2f1288c6cffb2d318557e153e31b98851fc", "match": true},
+    "gate_evaluator": {"path": "eval_gates_v2_9.py", "sha256": "baedee4891be9c59f641e56e36dad4086b1b1f8d65998b9e73ae350789a8821a", "match": true},
+    "prompt_freeze_doc": {"path": "prompt-freeze-v2-9.json", "sha256": "67d5392e385f06a7a307f980b6fb8ccc6781cb74489ae70ce35d999aba0ff105", "frozen_prompt_sha256_inside": "a36cb9efc794b850c59a41780ed13fc3a144fbe08bf4b1bf1ffb920cbed7ded6"},
+    "judge_core": {"path": "judge_core_v2_9.py", "sha256": "f9c36e88ab47495cc0df18a8b2f3fc54ce886dce48bc1654e61506044315c912"}
+  },
+  "embedded_sha_reverification": {
+    "method": "derive_labels_v2_9.py _sha256_obj: canonical JSON, sort_keys, separators=(,), ensure_ascii=False",
+    "screening_gold": {"embedded": "613aea2ac250d632d91a83726f1d9af05de349b451e624c62564b352cba73536", "recomputed_match": true},
+    "deterministic_prepass": {"embedded": "c36e5221dbfb988dd431a79ab053b425af7555a55ef8e9ba37f8d12bfbf01253", "recomputed_match": true}
+  },
+  "fixture_integrity": {
+    "fixture_count": 180,
+    "dimension_counts": {"forbidden": 60, "route": 60, "uncertainty": 60},
+    "m2_fixtures": 0,
+    "repair_subset": 24,
+    "traps": 20,
+    "deterministic_resolved": 80,
+    "semantic_residual": 100,
+    "collision_count": 0,
+    "historical_texts_checked": 4340,
+    "u7e_gold_consistency": "PASS"
+  },
+  "historical_writes": 0,
+  "historical_lineages_touched": [],
+  "secret_handling": "Bearer token read from auth.json at call time only; never printed, persisted, hashed, or logged. Secret-leak QA PASS.",
+  "official_run": {
+    "one_shot": true,
+    "reruns": 0,
+    "substantive_retries": 0,
+    "transport_failures": [{"candidate": "mimo", "id": "V29-ROUTE-36", "treatment": "invalid row per frozen policy; no rerun"}],
+    "runner_exit": 0
+  }
+}

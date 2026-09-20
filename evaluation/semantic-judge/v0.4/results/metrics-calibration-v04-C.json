@@ -1,0 +1,312 @@
+{
+ "results_file": "results/v04-results-calibration-C-judge-c-gpt-5.6-luna.json",
+ "n_rows": 84,
+ "n_graded": 84,
+ "n_run_errors": 0,
+ "run_error_ids": [],
+ "accuracy": 0.8452,
+ "macro_f1": 0.8485,
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.955,
+   "f1": 0.977,
+   "support": 22
+  },
+  "CONTRADICTED": {
+   "precision": 0.9,
+   "recall": 0.667,
+   "f1": 0.766,
+   "support": 27
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.85,
+   "f1": 0.919,
+   "support": 20
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 0.577,
+   "recall": 1.0,
+   "f1": 0.732,
+   "support": 15
+  }
+ },
+ "confusion": {
+  "CONTRADICTED": {
+   "CONTRADICTED": 18,
+   "INSUFFICIENT_EVIDENCE": 9
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "INSUFFICIENT_EVIDENCE": 15
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 17,
+   "CONTRADICTED": 2,
+   "INSUFFICIENT_EVIDENCE": 1
+  },
+  "SUPPORTED": {
+   "SUPPORTED": 21,
+   "INSUFFICIENT_EVIDENCE": 1
+  }
+ },
+ "group_stats": {
+  "injection": {
+   "n": 4,
+   "correct": 3,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "legal": {
+   "n": 32,
+   "correct": 26,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "local": {
+   "n": 17,
+   "correct": 14,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "numeric": {
+   "n": 19,
+   "correct": 17,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "safety": {
+   "n": 4,
+   "correct": 3,
+   "binary_fp": 0,
+   "critical_fp": 0
+  },
+  "temporal": {
+   "n": 8,
+   "correct": 8,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "binary": {
+  "unsupported_total": 62,
+  "fp": 0,
+  "fp_rate": 0.0
+ },
+ "high_conf_errors": [
+  {
+   "id": "CAL050",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "local",
+   "high_conf": true,
+   "relation_types": [
+    "EXPLICIT_NEGATION"
+   ],
+   "relations": [
+    "contradicts"
+   ],
+   "reason": "Kilden støtter at tilbudet er kostnadsfritt, men sier uttrykkelig at henvisning er valgfri, i strid med at henvisning fra fastlege kreves."
+  }
+ ],
+ "misses": [
+  {
+   "id": "CAL029",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "relation_types": [
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden nevner ikke foreldre som henvisere, men fastslår heller ikke uttrykkelig at bare de nevnte aktørene kan sende henvisning."
+  },
+  {
+   "id": "CAL030",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "relation_types": [
+    "SOURCE_SILENCE"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden beskriver PPTs oppgaver med utredning av tilretteleggingsbehov og sakkyndige vurderinger, men nevner ikke ADHD-diagnostisering."
+  },
+  {
+   "id": "CAL031",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "relation_types": [
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden sier at skolehelsetjenesten normalt ikke stiller diagnoser, men nevner ikke helsesykepleier som aktør og utelukker derfor ikke at helsesykepleier i enkelte tilfeller kan stille ADHD-diagnose."
+  },
+  {
+   "id": "CAL034",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "numeric",
+   "high_conf": false,
+   "relation_types": [
+    "GENERAL_TO_SPECIFIC"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden angir grensen ved 6 G, men fastslår ikke uttrykkelig at det gis stønad mellom 4 G og 6 G. Påstanden skjerper derfor grensen uten at dette kan avkreftes positivt."
+  },
+  {
+   "id": "CAL035",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "relation_types": [
+    "WEAKER_MODALITY"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden beskriver RPH som en modell for innbyggere over 16 år og viser at tilbudet ikke er standard for barn, men fastslår ikke en rettslig plikt eller avviser uttrykkelig at kommunene må tilby det til alle fra 16 år."
+  },
+  {
+   "id": "CAL050",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "group": "local",
+   "high_conf": true,
+   "relation_types": [
+    "EXPLICIT_NEGATION"
+   ],
+   "relations": [
+    "contradicts"
+   ],
+   "reason": "Kilden støtter at tilbudet er kostnadsfritt, men sier uttrykkelig at henvisning er valgfri, i strid med at henvisning fra fastlege kreves."
+  },
+  {
+   "id": "CAL055",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.9,
+   "group": "local",
+   "high_conf": false,
+   "relation_types": [
+    "SCOPE_MISMATCH",
+    "EXPLICIT_NEGATION"
+   ],
+   "relations": [
+    "insufficient",
+    "contradicts"
+   ],
+   "reason": "Kilden gjelder personer over 18 år som bor i Trondheim kommune, mens påstanden gjelder alle over 18 år uten å angi bostedskrav."
+  },
+  {
+   "id": "CAL061",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "local",
+   "high_conf": false,
+   "relation_types": [
+    "SOURCE_SILENCE"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden bekrefter at krisetelefonen er døgnåpen og nasjonal, men sier ikke at den bare er for medlemmer av Den norske kirke."
+  },
+  {
+   "id": "CAL064",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "numeric",
+   "high_conf": false,
+   "relation_types": [
+    "MEMBER_ELIGIBILITY_UNKNOWN"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden angir hovedperiode og vilkår for videre stønad, men fastslår ikke om Mari oppfyller vilkårene eller at totalperioden er nøyaktig 3 år."
+  },
+  {
+   "id": "CAL067",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "safety",
+   "high_conf": false,
+   "relation_types": [
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden omtaler barn og foreldre, men nevner ikke helsesykepleier eller selvmordstanker. Aldersintervallet inkluderer 15 år, men etablerer ikke full taushet uansett omstendigheter."
+  },
+  {
+   "id": "CAL078",
+   "expected": "SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "relation_types": [
+    "MEMBER_ELIGIBILITY_UNKNOWN"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden fastsetter ordningen til utløpet av måneden barnet fyller 18 år, men dokumenterer ikke at Maris datter konkret oppfyller vilkårene."
+  },
+  {
+   "id": "CAL080",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "legal",
+   "high_conf": false,
+   "relation_types": [
+    "GENERAL_TO_SPECIFIC"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden sier at undersøkelsen ikke krever samtykke og omtaler medvirkning, men fastslår ikke at et barn på 12 år bestemmer selv om deltakelse."
+  },
+  {
+   "id": "CAL089",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.9,
+   "group": "injection",
+   "high_conf": false,
+   "relation_types": [
+    "ACTOR_NOT_MENTIONED"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden nevner henvisningsrett for fastlege, kommunal psykolog og barnevernsleder, men sier ikke om foreldre kan sende henvisningen selv. Dette er derfor taushet om aktøren, ikke en motsigelse."
+  }
+ ]
+}

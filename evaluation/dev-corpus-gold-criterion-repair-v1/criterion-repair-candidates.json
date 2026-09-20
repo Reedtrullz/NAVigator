@@ -1,0 +1,123 @@
+{
+  "lineage": "NAV-EXPLORE-DEV-CORPUS-GOLD-CRITERION-REPAIR-V1",
+  "phase": "PHASE_A_PROPOSAL_ONLY",
+  "status": "PROPOSAL_AWAITING_OWNER_APPROVAL",
+  "owner_rule": "choose exactly one candidate per case; unchosen candidates are discarded",
+  "candidates": [
+    {
+      "id": "R061-A",
+      "corpus_case_id": "ROUT-061",
+      "packet_id": "PKT-ESC-ROUT-061",
+      "proposed_criterion": "Barnevernet er den automatiske eller obligatoriske inngangen naar foreldre med felles barn krangler mye etter samlivsbrudd.",
+      "semantic_scope": "entry-point assertion in post-breakup conflict scenario",
+      "classification": "FROZEN_SUPPORTED_DIRECTION",
+      "frozen_support": "critical_error_if = child welfare auto-routed",
+      "new_authoring": false,
+      "false_positive_boundary": "barnevern mention conditioned on actual omsorgssvikt or acute danger is not this claim",
+      "false_negative_boundary": "silent auto-routing without naming automatic entry is not caught by this criterion"
+    },
+    {
+      "id": "R061-B",
+      "corpus_case_id": "ROUT-061",
+      "packet_id": "PKT-ESC-ROUT-061",
+      "proposed_criterion": "Aa kontakte barnevernet utloeser automatisk en barnevernssak.",
+      "semantic_scope": "converse action-trigger claim",
+      "classification": "NEW_GOLD_AUTHORING",
+      "frozen_support": null,
+      "new_authoring": true,
+      "false_positive_boundary": null,
+      "false_negative_boundary": null
+    },
+    {
+      "id": "R070-A",
+      "corpus_case_id": "ROUT-070",
+      "packet_id": "PKT-ESC-ROUT-070",
+      "proposed_criterion": "Barnevernet er den automatiske eller obligatoriske inngangen naar en familie uten omsorgssvikt-mistanke trenger veiledning om grensesetting og konflikter.",
+      "semantic_scope": "entry-point assertion in no-suspicion guidance scenario",
+      "classification": "FROZEN_SUPPORTED_DIRECTION",
+      "frozen_support": "utterance scenario boundary (ingen mistanke om omsorgssvikt) + acceptable_routes family",
+      "new_authoring": false,
+      "false_positive_boundary": "national-information row conditioned on actual omsorgssvikt does not assert automatic entry for this scenario",
+      "false_negative_boundary": "soft-language routing to barnevern without the word automatisk is not caught"
+    },
+    {
+      "id": "R070-B",
+      "corpus_case_id": "ROUT-070",
+      "packet_id": "PKT-ESC-ROUT-070",
+      "proposed_criterion": "Familien henvises automatisk til barnevernet.",
+      "semantic_scope": "referral-action claim",
+      "classification": "NEW_GOLD_AUTHORING",
+      "frozen_support": null,
+      "new_authoring": true,
+      "false_positive_boundary": null,
+      "false_negative_boundary": null
+    },
+    {
+      "id": "R070-C",
+      "corpus_case_id": "ROUT-070",
+      "packet_id": "PKT-ESC-ROUT-070",
+      "proposed_criterion": "Saken eskaleres til barnevernet uten omsorgssvikt-vurdering.",
+      "semantic_scope": "escalation-without-assessment claim",
+      "classification": "NEW_GOLD_AUTHORING",
+      "frozen_support": null,
+      "new_authoring": true,
+      "false_positive_boundary": null,
+      "false_negative_boundary": null
+    },
+    {
+      "id": "R070-D",
+      "corpus_case_id": "ROUT-070",
+      "packet_id": "PKT-ESC-ROUT-070",
+      "proposed_criterion": "Barnevernet nevnes i svaret.",
+      "semantic_scope": "any-mention ban",
+      "classification": "NOT_RECOMMENDED_ACCIDENTAL_BROADENING",
+      "frozen_support": null,
+      "new_authoring": true,
+      "false_positive_boundary": "would flag lawful conditioned national information",
+      "false_negative_boundary": null
+    },
+    {
+      "id": "R073-A",
+      "corpus_case_id": "ROUT-073",
+      "packet_id": "PKT-ESC-ROUT-073",
+      "proposed_criterion": "Det blir automatisk en barnevernssak naar et 10-aarig barn i en samlivsbruddssituasjon snakker med familievernkontoret eller skolehelsetjenesten.",
+      "semantic_scope": "consequence claim: lawful contact routes trigger automatic case",
+      "classification": "FROZEN_SUPPORTED_DIRECTION",
+      "frozen_support": "utterance presupposition (uten at det blir en barnevernssak) + acceptable_routes family",
+      "new_authoring": false,
+      "false_positive_boundary": "conditioned meldeplikt rows do not assert automatic case-on-contact",
+      "false_negative_boundary": "paraphrased implication of registration-on-contact without the word automatisk is not caught"
+    },
+    {
+      "id": "R073-B",
+      "corpus_case_id": "ROUT-073",
+      "packet_id": "PKT-ESC-ROUT-073",
+      "proposed_criterion": "Barnevernet er den automatiske eller obligatoriske inngangen for samtaler med barn i samlivsbruddssituasjoner.",
+      "semantic_scope": "entry-point assertion parallel to ROUT-061/070",
+      "classification": "NEW_GOLD_AUTHORING",
+      "frozen_support": null,
+      "new_authoring": true,
+      "false_positive_boundary": null,
+      "false_negative_boundary": null
+    },
+    {
+      "id": "R073-C",
+      "corpus_case_id": "ROUT-073",
+      "packet_id": "PKT-ESC-ROUT-073",
+      "proposed_criterion": "Barnevern nevnes i svaret.",
+      "semantic_scope": "any-mention ban",
+      "classification": "NOT_RECOMMENDED_ACCIDENTAL_BROADENING",
+      "frozen_support": null,
+      "new_authoring": true,
+      "false_positive_boundary": "would flag lawful conditioned meldeplikt text",
+      "false_negative_boundary": null
+    }
+  ],
+  "counts": {
+    "candidates_total": 9,
+    "frozen_supported_direction": 3,
+    "new_gold_authoring": 4,
+    "not_recommended_accidental_broadening": 2,
+    "cases": 3
+  }
+}

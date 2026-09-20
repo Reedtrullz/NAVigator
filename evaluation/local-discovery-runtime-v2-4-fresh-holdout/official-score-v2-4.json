@@ -1,0 +1,367 @@
+{
+  "artifact": "official-score-v2-4",
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-RUNTIME-V2_4-FRESH-HOLDOUT",
+  "frozen_at": "2026-09-09",
+  "frozen_before_error_analysis": true,
+  "scoring_basis": "mechanical-score-v2-4.json evaluated against frozen runtime-eval-metrics-v2-4.json and route-equivalence-contract-v2-4.md",
+  "hashes": {
+    "runtime_predictions_sha256": "dea6c21567c75751a1d1fc668a7a2e51fd37e77a581cfcf7e7a6b410b8b31fda",
+    "audit_reference_sha256": "6b2ff2fbd9ae6631527f7a6a92697c358c9793186d38e403ce21ae617eacb720",
+    "mechanical_score_sha256": "af3d356351d57952973366dfb9dd3e3e17913cde5ef91568f777622049830ae8",
+    "metrics_contract_sha256": "d2cc893bc6b93f5141f8a2e05d7e5c6c8d777e01cd92f3c62e971d3d775f3629",
+    "route_equivalence_contract_sha256": "9c2c53992a46ae7105a760f0dc9f1db3ec9b61e1073684f174e177d4a1ffa38e",
+    "failure_policy_sha256": "cb10e4be4321511b70dc3b48f7b7ccd055f0e11a4176fe062ed9ec965a98264d",
+    "sample_sha256": "714f9b1b10bbea40d814943df18bf076631948ccbd74f96a5c8a4cecd8b82e45",
+    "candidate_manifest_sha256": "6f7e7ab3fe5f1576a5ca03f9509aa5fd06928b607cebc462702ca1e3ec393a2d"
+  },
+  "hard_metric_results": {
+    "execution_completeness": {
+      "complete": 24,
+      "gate": ">=29/30",
+      "pass": false
+    },
+    "route_recovery": {
+      "recovered": 24,
+      "denominator": 30,
+      "ratio": 0.8,
+      "gate": ">=0.90",
+      "pass": false
+    },
+    "critical_false_no_route": {
+      "cells": [],
+      "count": 0,
+      "gate": "=0",
+      "pass": true
+    },
+    "noncritical_no_route_incomplete_cells": {
+      "cells": [
+        "1120-C",
+        "1120-D",
+        "1144-C",
+        "1144-D",
+        "1146-C",
+        "1146-D"
+      ],
+      "count": 6,
+      "note": "DISCOVERY_INCOMPLETE cells excluded from false-no-route per section 48; counted against execution completeness"
+    },
+    "fully_verified_precision": {
+      "confirmed": 3,
+      "denominator": 10,
+      "ratio": 0.3,
+      "gate": ">=0.95",
+      "pass": false,
+      "rule": "FV cell confirmed iff at least one FV-marked service is on an exact audit-cited page with audit-confirmed age eligibility, non-empty access overlap, and audit relevance"
+    },
+    "unsupported_fully_verified": {
+      "cells": [
+        "1122-C",
+        "1122-D",
+        "1124-C",
+        "1124-D",
+        "1151-D",
+        "3103-C",
+        "3103-D"
+      ],
+      "count": 7,
+      "gate": "=0",
+      "pass": false
+    },
+    "access_precision": {
+      "confirmed": 8,
+      "denominator": 15,
+      "ratio": 0.5333,
+      "gate": ">=0.95",
+      "pass": false,
+      "rule": "only access assertions on exact audit-cited pages are evaluable by the blind audit; tokens normalized (direct_ prefix stripped); UNCLEAR excluded"
+    },
+    "provenance_completeness": {
+      "with_provenance": 10,
+      "denominator": 10,
+      "gate": "=1.00",
+      "pass": true
+    },
+    "epistemic_state_accuracy": {
+      "correct": 3,
+      "denominator": 30,
+      "ratio": 0.1,
+      "gate": ">=0.90",
+      "pass": false,
+      "classes": {
+        "correct": 3,
+        "overclaim": 7,
+        "underclaim_access_documented": 14,
+        "underclaim_audit_resolved": 6
+      }
+    },
+    "materially_overconfident_outputs": {
+      "cells": [
+        {
+          "cell_id": "1101-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1101-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1108-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1108-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1111-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1111-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1119-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1119-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1121-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1121-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1133-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1133-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1134-C",
+          "flags": [
+            "certain_access_wording"
+          ]
+        },
+        {
+          "cell_id": "1134-D",
+          "flags": [
+            "certain_access_wording"
+          ]
+        }
+      ],
+      "count": 14,
+      "gate": "=0",
+      "pass": false,
+      "rule": "mechanical wording checks: certain-access wording on EXISTENCE_ONLY, unhedged no-offer claims, verified wording without evidence"
+    },
+    "audit_unresolved_cells": []
+  },
+  "pass_gates": [
+    {
+      "gate": "candidate_integrity",
+      "value": "PASS",
+      "pass": true,
+      "source": "candidate-integrity.json (result=PASS; manifest SHA verified)"
+    },
+    {
+      "gate": "runtime_readiness_before_sample",
+      "value": "PASS",
+      "pass": true,
+      "source": "capability-readiness.json (result=PASS)"
+    },
+    {
+      "gate": "class1_exclusion_documented",
+      "value": "PASS",
+      "pass": true,
+      "source": "TASK-LOCK/registry; FRESH_CLASS_1_POOL=0 preregistered"
+    },
+    {
+      "gate": "fresh_sample_15_of_15",
+      "value": 15,
+      "pass": true,
+      "source": "runtime-fresh-sample-v2-4.json (sample_size=15)"
+    },
+    {
+      "gate": "distribution_3_3_3_3_3_classes_2_6",
+      "value": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "pass": true,
+      "source": "runtime-fresh-sample-v2-4.json"
+    },
+    {
+      "gate": "previously_researched_selected",
+      "value": 0,
+      "pass": true,
+      "source": "exposure registry: all selected UNSEEN or INCIDENTAL_MENTION_ONLY"
+    },
+    {
+      "gate": "sample_substitutions",
+      "value": 0,
+      "pass": true,
+      "source": "sample-freeze.json (SAMPLE_SUBSTITUTIONS=0)"
+    },
+    {
+      "gate": "runtime_attempts",
+      "value": "30/30",
+      "pass": true,
+      "source": "runtime-predictions-v2-4.json (cells_attempted=30)"
+    },
+    {
+      "gate": "complete_discovery",
+      "value": "24/30",
+      "gate_spec": ">=29/30",
+      "pass": false,
+      "source": "mechanical-score execution_completeness"
+    },
+    {
+      "gate": "predictions_frozen_before_audit",
+      "value": "PASS",
+      "pass": true,
+      "source": "runtime-predictions-v2-4.json status_marker + audit blindness_note"
+    },
+    {
+      "gate": "audit_cells",
+      "value": "30/30",
+      "pass": true,
+      "source": "audit-reference-v2-4.json (cells_total=30, unresolved=0)"
+    },
+    {
+      "gate": "route_recovery",
+      "value": 24,
+      "denominator": 30,
+      "gate_spec": ">=0.90",
+      "pass": false,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "fully_verified_precision",
+      "value": 3,
+      "denominator": 10,
+      "gate_spec": ">=0.95",
+      "pass": false,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "access_precision",
+      "value": 8,
+      "denominator": 15,
+      "gate_spec": ">=0.95",
+      "pass": false,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "unsupported_fully_verified",
+      "value": 7,
+      "gate_spec": "=0",
+      "pass": false,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "critical_false_no_route",
+      "value": 0,
+      "gate_spec": "=0",
+      "pass": true,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "provenance_completeness",
+      "value": 10,
+      "denominator": 10,
+      "gate_spec": "=1.00",
+      "pass": true,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "epistemic_state_accuracy",
+      "value": 3,
+      "denominator": 30,
+      "gate_spec": ">=0.90",
+      "pass": false,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "materially_overconfident_outputs",
+      "value": 14,
+      "gate_spec": "=0",
+      "pass": false,
+      "source": "mechanical-score"
+    },
+    {
+      "gate": "external_search_calls",
+      "value": 0,
+      "gate_spec": "=0",
+      "pass": true,
+      "source": "no external provider on V2.4 site-direct-only path"
+    },
+    {
+      "gate": "historical_writes_this_task",
+      "value": 0,
+      "gate_spec": "=0",
+      "pass": true,
+      "source": "historical-integrity.json (historical_writes_this_task=0)"
+    }
+  ],
+  "gates_passed_count": 14,
+  "gates_failed": [
+    "complete_discovery",
+    "route_recovery",
+    "fully_verified_precision",
+    "access_precision",
+    "unsupported_fully_verified",
+    "epistemic_state_accuracy",
+    "materially_overconfident_outputs"
+  ],
+  "gates_failed_count": 7,
+  "deviations_preserved": [
+    {
+      "id": "H5_OPERATOR_KILL_1146_C",
+      "summary": "Frozen process for 1146-C was killed at 175s by operator polling bookkeeping error, before frozen 900s wrapper timeout. No runtime output existed and no evidence was consumed before the kill; one identical authorized rerun executed only that cell. Preserved permanently in h5-kill-deviation.json.",
+      "counts_as": "documented operator deviation; not a protocol integrity break; not treated as runtime failure"
+    },
+    {
+      "id": "H5_CRASH_RESUME_SKIPS",
+      "summary": "Batch runner log shows SKIP existing output lines during crash-resume; each cell retained exactly one official execution.",
+      "counts_as": "informational"
+    }
+  ],
+  "no_post_score_rerun": true,
+  "no_denominator_rewrite": true,
+  "mismatch_analysis_written_after_this_freeze": true
+}

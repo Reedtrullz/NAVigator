@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local service discovery protocol V1",
+  "type": "object",
+  "required": ["protocol_id", "task_id", "levels", "query_family_templates", "access_evidence_rules", "stop_states", "canonical_access_taxonomy", "false_no_match_rule", "uncertainty_outputs"],
+  "properties": {
+    "protocol_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "created_at": {"type": "string"},
+    "based_on": {"type": "string"},
+    "purpose": {"type": "string"},
+    "source_hierarchy": {"type": "array", "items": {"type": "string"}},
+    "levels": {"type": "array", "minItems": 6, "items": {"type": "object", "required": ["id", "name", "definition"], "properties": {"id": {"type": "integer"}, "name": {"type": "string"}, "definition": {"type": "string"}, "queries": {"type": "array"}, "provenance": {"type": "string"}, "note": {"type": "string"}, "satisfaction_note": {"type": "string"}}}},
+    "query_family_templates": {"type": "array", "minItems": 9, "items": {"type": "string"}},
+    "query_family_note": {"type": "string"},
+    "access_evidence_rules": {"type": "object", "required": ["ACCESS-E1", "ACCESS-E2", "ACCESS-E3", "ACCESS-E4", "ACCESS-E5"]},
+    "service_state_model": {"type": "object"},
+    "route_confidence_model": {"type": "object"},
+    "stop_states": {"type": "array", "minItems": 3, "items": {"type": "object", "required": ["state", "meaning"], "properties": {"state": {"type": "string"}, "meaning": {"type": "string"}}}},
+    "discovery_techniques": {"type": "array", "minItems": 7, "items": {"type": "string"}},
+    "search_log_requirements": {"type": "object"},
+    "canonical_access_taxonomy": {"type": "array", "minItems": 12, "items": {"type": "string"}},
+    "false_no_match_rule": {"type": "object", "required": ["rule"]},
+    "uncertainty_outputs": {"type": "object", "required": ["VERIFIED_ROUTE", "SERVICE_FOUND_ACCESS_UNCLEAR", "NO_VERIFIED_ROUTE_AFTER_PROTOCOL"]},
+    "out_of_scope": {"type": "array", "items": {"type": "string"}}
+  }
+}

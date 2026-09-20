@@ -1,0 +1,26 @@
+{
+  "artifact": "V1.6B BURNED DATA REGISTRY",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6B-RESCREEN",
+  "burned_sets": [
+    {
+      "name": "V1.6B screening fixtures (120)",
+      "sha256": "66acbfbd73fcf86feeb9d04ccb8d937a0f460be29a3bfe492767e27278924851",
+      "burn_reason": "Both candidates executed one-shot against the full set; scores observed.",
+      "reuse_policy": "No reuse as validation data in any future task; variants/near-copies also barred."
+    },
+    {
+      "name": "V1.6B screening gold (120)",
+      "sha256": "47eda52c4f6185d5ed3760c42701928ad4c90032f006506af2c788de05a8e981",
+      "burn_reason": "Gold consumed by the completed one-shot screen."
+    },
+    {
+      "name": "V1.6B diagnostic targets (R-12, R-16, R-18)",
+      "burn_reason": "Observed during screening; all three matched expected A3 handling."
+    }
+  ],
+  "prohibited_uses": [
+    "RC/holdout certification",
+    "threshold derivation",
+    "prompt tuning target"
+  ]
+}

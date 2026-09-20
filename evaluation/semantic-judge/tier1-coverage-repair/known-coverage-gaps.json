@@ -1,0 +1,85 @@
+{
+  "schema": "known-coverage-gaps-v1",
+  "task_id": "SEMANTIC-JUDGE-TIER1-COVERAGE-REPAIR",
+  "n": 7,
+  "note": "All seven SHOULD_ALREADY_AUTO_DECIDE cases from review-annotation/review-final-dual-labels.json. Evidence spans quoted verbatim from the frozen claims map.",
+  "cases": [
+    {
+      "case_id": "CAL011",
+      "claim": "Trondheimshjelpa er et lavterskeltilbud som man kan kontakte uten henvisning.",
+      "evidence": "Trondheimshjelpa er et lavterskeltilbud til gravide, barn, ungdom og familier i Trondheim. Gratis, ingen henvisning.",
+      "semantic_truth": "SUPPORTED",
+      "proof_safe": "SUPPORTED",
+      "product_expected_action": "AUTO_SUPPORTED",
+      "expected_existing_path": "DIRECT_ASSERTION on requires_referral (uten henvisning -> ingen henvisning), premise S2 (fragment chained to bound sentence S1)",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "No valid proof: requires_referral negative form 'ingen henvisning' missing from lexicon; fragment sentence S2 has no own actor."
+    },
+    {
+      "case_id": "CAL014",
+      "claim": "Familievernkontoret kan kontaktes direkte uten henvisning, og det er gratis.",
+      "evidence": "Familier, par og enkelt kan henvende seg direkte; henvisning er valgfri. Ingen henvisning, ingen aldersgrense for foreldre, ingen kostnad.",
+      "semantic_truth": "SUPPORTED",
+      "proof_safe": "SUPPORTED",
+      "product_expected_action": "AUTO_SUPPORTED",
+      "expected_existing_path": "DIRECT_ASSERTION on requires_referral (double-negative forms 'ingen henvisning'/'ingen kostnad' lexed positive), premise S3",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "No valid proof: 'ingen henvisning' and 'ingen kostnad' read as negative (cost-bearing/referral-requiring) instead of positive free/direct forms."
+    },
+    {
+      "case_id": "CAL034",
+      "claim": "Det er ingen barnetilsynsst\u00f8nad ved pensjonsgivende inntekt over 4 G.",
+      "evidence": "Barnetilsyn (\u00a7 15-10): 64 prosent av dokumenterte utgifter; ingen st\u00f8nad ved pensjonsgivende inntekt over 6 G (819 294 kr per \u00e5r).",
+      "semantic_truth": "CONTRADICTED",
+      "proof_safe": "CONTRADICTED",
+      "product_expected_action": "AUTO_CONTRADICTED",
+      "expected_existing_path": "NUMERIC_CONFLICT on same-unit G bounds (4 G vs 6 G exclusion thresholds), premise S2",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "No valid proof: '4 G' not lexed as G unit (G tokenized as standalone letter, not unit); dummy subject 'Det er' has no lexical actor."
+    },
+    {
+      "case_id": "HOL006",
+      "claim": "Full overgangsst\u00f8nad utgj\u00f8r 2,48 ganger grunnbel\u00f8pet per \u00e5r, som tilsvarer 25 603 kroner per m\u00e5ned f\u00f8r skatt.",
+      "evidence": "Satsbestemmelsen er uendret: 2,25 ganger grunnbel\u00f8pet per \u00e5r. G er 136 549 kr fra 1.5.2026, og NAV angir full overgangsst\u00f8nad til 25 603 kr per m\u00e5ned f\u00f8r skatt.",
+      "semantic_truth": "CONTRADICTED",
+      "proof_safe": "CONTRADICTED",
+      "product_expected_action": "AUTO_CONTRADICTED",
+      "expected_existing_path": "NUMERIC_CONFLICT on same-unit multiplier bounds (2,48 ganger G vs 2,25 ganger G), premise S1",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "No valid proof: 'ganger grunnbel\u00f8pet' multiplier unit not lexed; multiplier-vs-component comparison is a compound numeric gate the operator intentionally abstains on."
+    },
+    {
+      "case_id": "HOL014",
+      "claim": "Barnetilsynssatsene fra 1. januar 2026 er 4 895 kroner per m\u00e5ned for ett barn og 6 585 kroner for to barn.",
+      "evidence": "1 barn 4 895 kr/mnd (58 740/\u00e5r), 2 barn 6 385 (76 620), 3+ 7 237 (86 844); 64 prosent dekning; 6 G-grense 819 294 kr.",
+      "semantic_truth": "CONTRADICTED",
+      "proof_safe": "CONTRADICTED",
+      "product_expected_action": "AUTO_CONTRADICTED",
+      "expected_existing_path": "NUMERIC_CONFLICT on same-unit kr/month bounds (6 585 vs 6 385), premise S1",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "No valid proof: source-side space-formatted thousands separator not lexed ('6 385' tokenized as two values); unknown date-axis comparability blocks cross-sentence binding."
+    },
+    {
+      "case_id": "LOC-13",
+      "claim": "BUP Trondheim har oppstart innen 65 virkedager.",
+      "evidence": "BUP i Trondheim: oppstart innen 65 virkedager ved innvilgelse.",
+      "semantic_truth": "SUPPORTED",
+      "proof_safe": "SUPPORTED",
+      "product_expected_action": "AUTO_SUPPORTED",
+      "expected_existing_path": "DIRECT_ASSERTION, verbatim numeric/duration premise S1 ('innen 65 virkedager' both sides)",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "Engine yields SUPPORTED, but hybrid numeric_support_binding guard refuses multiword-actor equality ('BUP i Trondheim'); guard must not be relaxed (also gates CAL021/CAL023 engine misfires)."
+    },
+    {
+      "case_id": "MOD-14",
+      "claim": "Det er frivillig \u00e5 delta i unders\u00f8kelsen.",
+      "evidence": "Deltakelsen er frivillig.",
+      "semantic_truth": "SUPPORTED",
+      "proof_safe": "SUPPORTED",
+      "product_expected_action": "AUTO_SUPPORTED",
+      "expected_existing_path": "DIRECT_ASSERTION on a participation-voluntariness concept ('frivillig' both sides), premise S1",
+      "current_runtime_result": "REVIEW_REQUIRED (hybrid final)",
+      "current_review_reason": "No lexicon concept for voluntary participation ('frivillig' unbound); dummy-subject claim ('Det er') cannot bind actor to 'Deltakelsen'; near-verbatim support would need a new rescue doctrine."
+    }
+  ]
+}

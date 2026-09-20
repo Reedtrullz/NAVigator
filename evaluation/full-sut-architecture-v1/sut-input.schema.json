@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sut-input-v1",
+  "title": "SUTInput",
+  "description": "Canonical SUT input. Gold-free by contract; the loader strips gold before construction.",
+  "type": "object",
+  "required": ["case_id", "user_query", "profile"],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Opaque identity for the harness. The SUT does not interpret it.",
+      "pattern": "^[A-Z0-9_-]+$"
+    },
+    "user_query": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "age": {"type": "integer", "minimum": 0, "maximum": 120},
+        "role": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "description": "Free-form caller context. Never contains gold or scorer metadata.",
+      "additionalProperties": true
+    },
+    "location_context": {
+      "type": "object",
+      "properties": {
+        "municipality": {"type": "string"},
+        "fylke": {"type": "string"},
+        "kommunenummer": {"type": "string", "pattern": "^[0-9]{4}$"}
+      },
+      "additionalProperties": false
+    },
+    "timestamp_context": {
+      "type": "object",
+      "properties": {
+        "executed_at": {
+          "type": "string",
+          "description": "ISO 8601 UTC timestamp used for freshness computation.",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

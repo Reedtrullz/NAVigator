@@ -1,0 +1,132 @@
+{
+ "results_file": "results/v04-results-holdout-v2-A-judge-a-gpt-5.5.json",
+ "n_rows": 80,
+ "n_graded": 80,
+ "n_run_errors": 0,
+ "run_error_ids": [],
+ "accuracy": 0.95,
+ "macro_f1": 0.95,
+ "per_class": {
+  "SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.95,
+   "f1": 0.974,
+   "support": 20
+  },
+  "CONTRADICTED": {
+   "precision": 0.905,
+   "recall": 0.95,
+   "f1": 0.927,
+   "support": 20
+  },
+  "PARTIALLY_SUPPORTED": {
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.947,
+   "support": 20
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "precision": 0.909,
+   "recall": 1.0,
+   "f1": 0.952,
+   "support": 20
+  }
+ },
+ "confusion": {
+  "CONTRADICTED": {
+   "CONTRADICTED": 19,
+   "INSUFFICIENT_EVIDENCE": 1
+  },
+  "INSUFFICIENT_EVIDENCE": {
+   "INSUFFICIENT_EVIDENCE": 20
+  },
+  "PARTIALLY_SUPPORTED": {
+   "PARTIALLY_SUPPORTED": 18,
+   "CONTRADICTED": 2
+  },
+  "SUPPORTED": {
+   "SUPPORTED": 19,
+   "INSUFFICIENT_EVIDENCE": 1
+  }
+ },
+ "group_stats": {
+  "none": {
+   "n": 80,
+   "correct": 76,
+   "binary_fp": 0,
+   "critical_fp": 0
+  }
+ },
+ "binary": {
+  "unsupported_total": 60,
+  "fp": 0,
+  "fp_rate": 0.0
+ },
+ "high_conf_errors": [],
+ "misses": [
+  {
+   "id": "HV2-023",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.78,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "MUTUALLY_EXCLUSIVE_VALUE",
+    "MUTUALLY_EXCLUSIVE_VALUE"
+   ],
+   "relations": [
+    "contradicts",
+    "contradicts"
+   ],
+   "reason": "Kilden oppgir at undersøkelsen kan ha total utvidelse til 6 måneder, som er uforenlig med en ubetinget frist på senest 3 måneder."
+  },
+  {
+   "id": "HV2-031",
+   "expected": "PARTIALLY_SUPPORTED",
+   "got": "CONTRADICTED",
+   "confidence": 0.89,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "EXPLICIT_NEGATION",
+    "SCOPE_MISMATCH"
+   ],
+   "relations": [
+    "contradicts",
+    "insufficient"
+   ],
+   "reason": "Påstanden sier at overgangsstønad ikke teller i Husbankens inntektsgrunnlag, mens kilden sier at den regnes med."
+  },
+  {
+   "id": "HV2-042",
+   "expected": "CONTRADICTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.78,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "SCOPE_MISMATCH"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden sier bare behandling for innbyggere over 16 år og nevner ikke RPH i kommunen eller barn fra 12 år; aldersangivelsen er ikke en eksplisitt eksklusjon."
+  },
+  {
+   "id": "HV2-049",
+   "expected": "SUPPORTED",
+   "got": "INSUFFICIENT_EVIDENCE",
+   "confidence": 0.86,
+   "group": null,
+   "high_conf": false,
+   "relation_types": [
+    "SOURCE_SILENCE"
+   ],
+   "relations": [
+    "insufficient"
+   ],
+   "reason": "Kilden oppgir adressen, men nevner ikke Familievernkontoret eller en tydelig arvet referent som knytter adressen til kontoret."
+  }
+ ]
+}

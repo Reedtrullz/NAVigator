@@ -1,0 +1,73 @@
+{
+  "artifact": "burned-v1-6a2-80-regression-v1-6a3",
+  "run_type": "BURNED_REGRESSION_ONLY",
+  "basis": "80 burned official V1.6A.2 fixtures (BURNED_BOUNDARY_DIAGNOSTIC_DATA)",
+  "engine_sha256": "21047fdaaaa4cc28fca1d4f075a922555e742ca2022d7059be22036694f2563b",
+  "fixtures": 80,
+  "accounting": {
+    "strict": {
+      "note": "disputed fixtures counted as false deterministics",
+      "non_abstain_n": 31,
+      "abstain_n": 49,
+      "correct_n": 27,
+      "false_deterministic_n": 4,
+      "precision": 0.871,
+      "evidence_span_validity": 1.0
+    },
+    "dispute_aware": {
+      "note": "4 registered gold disputes excluded from denominator per frozen repair-hypothesis; disclosed, not tuned",
+      "excluded_ids": [
+        "OFF-SAME-17",
+        "OFF-SCOPE-08",
+        "OFF-SCOPE-09",
+        "OFF-SCOPE-16"
+      ],
+      "non_abstain_n": 27,
+      "abstain_n": 49,
+      "correct_n": 27,
+      "false_deterministic_n": 0,
+      "precision": 1.0,
+      "evidence_span_validity": 1.0
+    }
+  },
+  "disputes": {
+    "OFF-SAME-17": {
+      "expected": "SELF_RETRACTED",
+      "label": "NEGATED",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_NEGATED_01"
+    },
+    "OFF-SCOPE-08": {
+      "expected": "ABSTAIN",
+      "label": "QUOTED_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_QUOTED_01"
+    },
+    "OFF-SCOPE-09": {
+      "expected": "ASSERTED",
+      "label": "HYPOTHETICAL_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_HYPOTHETICAL_01"
+    },
+    "OFF-SCOPE-16": {
+      "expected": "ABSTAIN",
+      "label": "QUOTED_ONLY",
+      "abstained": false,
+      "rule_id": "BC_ROUTE_QUOTED_01"
+    }
+  },
+  "false_deterministic_ids_dispute_aware": [],
+  "false_deterministic_ids_strict": [
+    "OFF-SAME-17",
+    "OFF-SCOPE-08",
+    "OFF-SCOPE-09",
+    "OFF-SCOPE-16"
+  ],
+  "hard_gates_dispute_aware": {
+    "overall_precision_ge_0_99": true,
+    "false_deterministic_zero": true,
+    "evidence_span_validity_100": true
+  },
+  "note": "Gate basis is dispute-aware per frozen repair-hypothesis (frozen pre-implementation); strict accounting disclosed alongside.",
+  "all_gates_pass": true
+}

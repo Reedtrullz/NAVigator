@@ -1,0 +1,97 @@
+{
+  "source": "raw-responses-run1.jsonl",
+  "n": 57,
+  "errors": 0,
+  "critical_condition": {
+    "n": 35,
+    "exact": 13,
+    "accuracy": 0.3714,
+    "confusion": {
+      "INSUFFICIENT_TO_DECIDE": {
+        "CLEAR_TRIGGER_SUPPORT": 6,
+        "CLEAR_NON_TRIGGER_SUPPORT": 4,
+        "INSUFFICIENT_TO_DECIDE": 2
+      },
+      "CLEAR_TRIGGER_SUPPORT": {
+        "CLEAR_NON_TRIGGER_SUPPORT": 2,
+        "CLEAR_TRIGGER_SUPPORT": 3
+      },
+      "CLEAR_NON_TRIGGER_SUPPORT": {
+        "CLEAR_NON_TRIGGER_SUPPORT": 8,
+        "CLEAR_TRIGGER_SUPPORT": 2
+      },
+      "AMBIGUOUS_OR_CONFLICTING": {
+        "CLEAR_TRIGGER_SUPPORT": 8
+      }
+    },
+    "high_confidence_errors_ge08": [],
+    "mean_confidence": 0.51
+  },
+  "forbidden_claim": {
+    "criterion_semantic_match": {
+      "n": 22,
+      "exact": 20,
+      "accuracy": 0.9091,
+      "confusion": {
+        "NO_MATCH": {
+          "NO_MATCH": 10
+        },
+        "MATCH": {
+          "MATCH": 10,
+          "NO_MATCH": 2
+        }
+      },
+      "high_confidence_errors_ge08": [],
+      "mean_confidence": 0.74
+    },
+    "speaker_commitment": {
+      "n": 22,
+      "exact": 15,
+      "accuracy": 0.6818,
+      "confusion": {
+        "UNRESOLVED": {
+          "UNRESOLVED": 7,
+          "NEGATED": 3
+        },
+        "ASSERTED": {
+          "ASSERTED": 5,
+          "NEGATED": 1
+        },
+        "NEGATED": {
+          "NEGATED": 3,
+          "ASSERTED": 3
+        }
+      },
+      "high_confidence_errors_ge08": [
+        {
+          "case_id": "ESC-ROUT-026",
+          "gold": "UNRESOLVED",
+          "pred": "NEGATED",
+          "confidence": 0.96,
+          "probabilities": {
+            "UNRESOLVED": 0.03,
+            "NEGATED": 0.97,
+            "ASSERTED": 0.0
+          }
+        },
+        {
+          "case_id": "ESC-ROUT-021",
+          "gold": "UNRESOLVED",
+          "pred": "NEGATED",
+          "confidence": 0.9,
+          "probabilities": {
+            "UNRESOLVED": 0.06,
+            "ASSERTED": 0.01,
+            "NEGATED": 0.93
+          }
+        }
+      ],
+      "mean_confidence": 0.595
+    },
+    "pair": {
+      "n": 22,
+      "pair_exact": 13,
+      "pair_accuracy": 0.5909
+    }
+  }
+}

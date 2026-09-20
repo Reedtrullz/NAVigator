@@ -1,0 +1,24 @@
+{
+ "artifact": "archived_challenge_regression",
+ "executed_at": "2026-09-09",
+ "fixture_count": 1,
+ "fixtures": [
+  {
+   "id": "FIXTURE-001",
+   "path": "evaluation/local-discovery-provider-v2-1/fixtures/brave-429-challenge-001.html",
+   "sha256": "7007522f2940989d85b62dd5f22edc1e6895c028146959fc6389a1223dc9aba4",
+   "sha_matches_meta": true,
+   "bytes": 73731,
+   "marker_first_pos": 17276,
+   "classify_200_result": "BOT_BLOCKED",
+   "classify_429_result": "RATE_LIMITED",
+   "old_implementation_would_report": "NO_RESULTS (exit-0-as-HTTP-200 + 5000-char marker head)",
+   "false_NO_RESULTS_now": 0
+  }
+ ],
+ "live_correlation": {
+  "note": "5 burned-technical-query probes on 2026-09-09 returned HTTP 200 challenge pages (different block mode than the archived 429); all 5 classified BOT_BLOCKED with challenge_detected=true and full transport metadata",
+  "evidence": "provider-readiness-v2-1.json external_brave.queries"
+ },
+ "overall": "PASS"
+}

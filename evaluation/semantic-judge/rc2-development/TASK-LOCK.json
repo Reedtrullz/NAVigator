@@ -1,0 +1,39 @@
+{
+  "task_id": "NAV-EXPLORE-RC2-ROOT-CAUSE-REPAIR",
+  "task_family": "semantic-judge",
+  "component": "post-blind-root-cause-repair",
+  "status": "COMPLETED",
+  "source_release_candidate": "NAV-EXPLORE-EVALUATOR-RC1",
+  "forbidden_tasks": [
+    "rc1-score-rewrite",
+    "blind-v1-recertification",
+    "new-blind-set",
+    "live-dialog",
+    "nav-research",
+    "municipal-research",
+    "kb-tuning",
+    "gpt-5.5"
+  ]
+  ,
+  "completion": {
+    "completed_date": "2026-09-03",
+    "constraints_honored": {
+      "rc1_artifacts_untouched": true,
+      "burned_usage_tagged": "BURNED_BLIND_V1_DEVELOPMENT_ONLY",
+      "max_claim": "RC2_READY_FOR_NEW_BLIND_SET",
+      "no_new_blind_set": true,
+      "no_live_dialog": true,
+      "no_nav_research": true,
+      "no_kb_tuning": true,
+      "no_case_id_runtime_code": true,
+      "no_gpt_5_5_subagents": true
+    },
+    "verification": {
+      "rc2_regressions": "37/37 (twice, deterministic)",
+      "shadow_runner": "run twice, byte-identical output",
+      "rc1_parity": "official 79/79/44 reproduced",
+      "manifest_hashes": "10/10 verified via shasum -a 256 -c"
+    },
+    "freeze_manifest": "release-candidate/RC2/RC2-manifest.json"
+  }
+}

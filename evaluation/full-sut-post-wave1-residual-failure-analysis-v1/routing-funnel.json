@@ -1,0 +1,24 @@
+{
+  "artifact": "post-wave1-routing-funnel",
+  "task_id": "NAV-EXPLORE-FULL-SUT-POST-WAVE1-RESIDUAL-FAILURE-ANALYSIS-V1",
+  "funnel": {
+    "total_cases": 120,
+    "route_not_applicable_no_gold_routes": 12,
+    "cases_requiring_route_evaluation": 108,
+    "no_structured_route_empty_array": 88,
+    "structured_route_produced": 20,
+    "junk_only_routes": 8,
+    "usable_route_content_after_junk_filter": 12,
+    "route_case_with_provenance_url": 0,
+    "route_case_without_provenance_url": 12,
+    "rendered_answer_mentions_gold_route_token": 9,
+    "rendered_answer_misses_gold_route_token": 3,
+    "route_criteria_pass": 0
+  },
+  "structured_vs_semantic": {
+    "ROUTE_STRUCTURE_VALID": 12,
+    "ROUTE_SEMANTICS_CORRECT": 0,
+    "note": "Structure = non-junk route content exists. Semantics = route matches frozen acceptable service family. Structural success (20/108 emit something) masks near-total semantic failure (0/108 PASS)."
+  },
+  "provenance": "Recomputed from frozen Wave-1 predictions and gold via build_analysis.py pins."
+}

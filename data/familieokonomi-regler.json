@@ -1,0 +1,453 @@
+{
+  "metadata": {
+    "title": "Familieokonomi what-if rutingmodell",
+    "formal": "Beslutningsstotte og ruting. Erstatter IKKE NAVs offisielle beregningsmotor.",
+    "sist_verifisert": "2026-08-30",
+    "sats_gyldig_fra": "2026-07-01",
+    "kilder": {
+      "nav_bb": "https://www.nav.no/barnebidrag (oppdatert 25.08.2026)",
+      "nav_forskudd": "https://www.nav.no/bidragsforskudd",
+      "nav_saer": "https://www.nav.no/saerbidrag",
+      "rundskriv": "https://lovdata.no/nav/rundskriv/v1-55-02",
+      "bnl": "LOV-1981-04-08-7 kap. 8",
+      "bil": "LOV-2005-04-29-20",
+      "husbanken_bostotte": "https://www.husbanken.no/person/bostotte/ (lest 30.08.2026)",
+      "nav_sosialhjelp": "https://www.nav.no/okonomisk-sosialhjelp (oppdatert 26.08.2026, lest 30.08.2026)",
+      "sotjl": "LOV-2009-12-18-131",
+      "husleieloven": "LOV-1999-03-26-17",
+      "nav_overgangsstonad": "https://www.nav.no/overgangsstonad-enslig (lest 30.08.2026)",
+      "ftl_15": "LOV-2026-06-12-27 + LOV-1997-02-28-19 kap 15 (lest 30.08.2026)",
+      "for1361": "FOR-2026-06-25-1361 overgangsforskrift (Lovdata fulltekst, lest 30.08.2026)"
+    },
+    "hull": [
+      "samvaersklasse-grenser: NAVs kalkulator bestemmer; ikke offisielt tabellfestet",
+      "forskudd ved bidrag lavere enn forskuddssats: ikke verifisert",
+      "overgangsforskrift FOR-2026-06-25-1361 verifisert 30.08.2026 (fil 68); scenario G nytt barn: tolkningsrom aapent (fil 69, punkt 2.9)"
+    ]
+  },
+  "ruting_regler": [
+    {
+      "id": "r1_barnebidrag_fast_hos_en",
+      "hvis": {
+        "bosted": "fast_hos_en_forelder"
+      },
+      "da": {
+        "vurder_barnebidrag": true,
+        "vurder_samvaersfradrag": "hvis_samvar_over_2_dager_per_mnd"
+      },
+      "kilde": "nav_bb + bnl kap. 8",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r2_samvar_terskel",
+      "hvis": {
+        "gjennomfort_samvar": "mer_enn_2_dager_per_mnd"
+      },
+      "da": {
+        "samvaersfradrag_relevant": true,
+        "klasse": "fastsettes_av_samvaersalkulator",
+        "samvar_uten_overnatting": "klasse_1"
+      },
+      "kilde": "nav_bb + rundskriv punkt 4",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r3_ikke_betalt",
+      "hvis": {
+        "barnebidrag_betales": false,
+        "inkreving_aktivert": true
+      },
+      "da": {
+        "vurder_bidragsforskudd": true,
+        "inkreving": "Skatteetaten: purring 10. i folgende maned, varsel tvangsinnkreving, utleggstrekk"
+      },
+      "kilde": "nav_forskudd + nav_bb + bil par. 5, 7, 8",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r4_delt_fast_bosted",
+      "hvis": {
+        "bosted": "delt_fast_bosted_bnl_par_36"
+      },
+      "da": {
+        "barnebidrag": "netto_bidrag_hvis_inntektsforskjell_over_50_prosent_andel",
+        "samvaersfradrag": "som_hovedregel_nei",
+        "barnetrygd": "delt_ordinar_1006_kr_per_forelder_hver",
+        "barnetrygd_utvidet_delt": "1286_kr_per_forelder_hvis_utvidet_vilkar_oppfylt"
+      },
+      "kilde": "nav_bb + rundskriv kap. 2 + bnl par. 36",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r5_avtale_ikke_fulgt",
+      "hvis": {
+        "delt_fast_bosted_avtalt": true,
+        "faktisk_omsorg": "en_part_betydelig_mindre"
+      },
+      "da": {
+        "beregnes_som": "fast_hos_en_forelder",
+        "samvaersfradrag": "etter_faktisk_gjennomfort_samvar"
+      },
+      "kilde": "nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r6_endringsterskel",
+      "hvis": {
+        "soknad_endring": true
+      },
+      "da": {
+        "krav": "ny_beregning_gir_endring_over_12_prosent",
+        "hovedregel": "fremover_i_tid"
+      },
+      "kilde": "nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r7_barnets_inntekt",
+      "hvis": {
+        "barnets_arsinntekt_over": 62400
+      },
+      "da": {
+        "barnet_selvforsorget": true,
+        "bidrag": "ikke_paalegges"
+      },
+      "hvis_og": {
+        "barnets_arsinntekt_over": 208000
+      },
+      "kilde": "nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r8_saerbidrag",
+      "hvis": {
+        "nodvendig_ekstra_utgift_over": 2080
+      },
+      "da": {
+        "vurder_saerbidrag": true,
+        "frist": "1_ar_etter_utgiften",
+        "barnets_inntekt_terskler": [
+          60300,
+          201000
+        ]
+      },
+      "kilde": "nav_saer",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r9_forskudd_alder_18",
+      "hvis": {
+        "barn_alder": ">=18"
+      },
+      "da": {
+        "bidragsforskudd": "aldri",
+        "barnebidrag": "kun_under_videregaende_barnet_soker_selv"
+      },
+      "kilde": "nav_forskudd + nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r10_reisekostnader",
+      "hvis": {
+        "samvar_reisekostnad": true
+      },
+      "da": {
+        "hovedregel": "forholdsmessig_etter_inntekt",
+        "annet": "kan_avtales",
+        "nav_fastsetter": "fa_tilfeller",
+        "nav_krever_ikke_inn": true
+      },
+      "kilde": "nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r11_gebyr",
+      "hvis": {
+        "nav_fastsetter_eller_endrer": true
+      },
+      "da": {
+        "gebyr_per_part": 1345,
+        "fritak_bruttoinntekt_under": 367400
+      },
+      "kilde": "nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r12_maks_tak",
+      "hvis": {
+        "barnebidrag_beregnet": true
+      },
+      "da": {
+        "maks_5_6_av_underholdskostnad": true,
+        "maks_25_prosent_av_bruttoinntekt": true,
+        "aldri_over_bidragsevne": true
+      },
+      "kilde": "nav_bb",
+      "sist_verifisert": "2026-08-29"
+    },
+    {
+      "id": "r13_bostotte_lav_inntekt_hoye_boutgifter",
+      "hvis": {
+        "lav_inntekt": true,
+        "hoye_boutgifter_relatert_til_inntekt": true
+      },
+      "da": {
+        "vurder_bostotte": true,
+        "kontakt": "kommunens bostottekontor (Husbanken)",
+        "soknadsfrist": "25. i maneden for folgende maneds stonad",
+        "minsteutbetaling_mnd": 61
+      },
+      "kilde": "husbanken_bostotte + 55-bostotte-i-dybden.md",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r14_sosialhjelp_livsopphold",
+      "hvis": {
+        "ingen_penger_til_livsopphold": true
+      },
+      "da": {
+        "vurder_okonomisk_sosialhjelp": "sotjl par. 18",
+        "barnetrygd_ikke_medregnet": true,
+        "kontakt": "NAV/kommunens sosialtjeneste"
+      },
+      "kilde": "nav_sosialhjelp + sotjl par. 18 + 56-okonomisk-sosialhjelp-i-dybden.md",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r15_ingen_bolig_i_natt",
+      "hvis": {
+        "ingen_bolig_i_natt": true
+      },
+      "da": {
+        "midlertidig_botilbud": "sotjl par. 27, kommunen er forpliktet",
+        "kontakt": "NAV/kommunens sosialtjeneste, apent dognet"
+      },
+      "kilde": "nav.no/midlertidig-botilbud (04.07.2025) + sotjl par. 27 + 59-midlertidig-botilbud-og-kommunal-bolig.md",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r16_depositum_uten_egne_midler",
+      "hvis": {
+        "depositum_ikke_dekket_av_egne_midler": true
+      },
+      "da": {
+        "alternativ_1": "Nav-garanti (vanlig)",
+        "alternativ_2": "stotte til sperret depositumskonto",
+        "alternativ_3": "kommunale ordninger, kommunalt skjonn"
+      },
+      "kilde": "nav_sosialhjelp + 58-boligtrygghet-depositum-utkastelse.md",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r17_stromstenging_truet",
+      "hvis": {
+        "stromstenging_truet": true
+      },
+      "da": {
+        "vurder_okonomisk_sosialhjelp": "sotjl par. 18/19, akutt",
+        "vurder_bostotte": "strom er del av boutgifter",
+        "kontakt": "NAV/kommunens sosialtjeneste"
+      },
+      "kilde": "nav_sosialhjelp + 57-nodhjelp-og-akutte-situasjoner.md",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r18_husleierestanse",
+      "hvis": {
+        "husleierestanse": true
+      },
+      "da": {
+        "vurder_sosialhjelp": "sotjl par. 19 skjonnsmessig",
+        "vurder_bostotte": true,
+        "varsel": "husleieloven par. 9-11: utleier kan varsle sosialtjenesten om mislighold; begjaering om tvangsfravikelse bor tidligst fremsettes 2 uker etter varslet",
+        "protest_skriftlig": "husleieloven par. 9-8, innen 1 maned"
+      },
+      "kilde": "husleieloven par. 9-7/9-8/9-11 + sotjl par. 19 + 58-boligtrygghet-depositum-utkastelse.md",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r19_overgangsstonad_nye_saker",
+      "hvis": {
+        "ny_soeker_enslig_forsorger_etter_2026_07_01": true
+      },
+      "da": {
+        "hovedperiode": "til utlopet av maneden barnet fyller 14 mnd (pluss inntil 2 mnd foer foedsel)",
+        "forlengelse_sykdom": "inntil +24 mnd ved forbigaaende sykdom (legeerklæring), i direkte tilknytning til loepende periode",
+        "saerlig_tilsyn": "til utlopet av maneden barnet fyller 18 ar; todeling: legedokumentert tilstand + dokumentert arbeidsforhindring; ikke rett hvis andre kan ta vare på barnet",
+        "oppsigelsesforbud": "ingen stoenad hvis arbeidsforhold sagt opp uten rimelig grunn siste 6 mnd foer soeknad",
+        "ikke_rutes_etter": "36 mnd / 8 ars-grense / aktivitetsplikt / skolepenger / tillegsstonader (avviklet for nye saker)"
+      },
+      "kilde": "ftl 15-5 + fil 63/64/65",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r20_overgangsstonad_gamle_saker",
+      "hvis": {
+        "mottaker_stoenad_per_2026_06_30": true
+      },
+      "da": {
+        "regelverk": "gamle regler videreføres; NAV: ingen som mottar i dag mister noe",
+        "hovedperiode": "inntil 36 mnd; avbrudd maks 12 mnd; avbrudd foer 1.7.2026 regnes ikke med",
+        "utvidelser": "utdanning inntil 2 ar (3 ar ved 3+ barn eller enslig under 18), til barnet fyller 8 ar; saerlig tilsyn til 18 ar; ikke-varig sykdom inntil +2 ar (maks til barnet fyller 10 ar); +6 mnd ved ventet oppstart; +6 mnd arbeidssoker under 50 prosent",
+        "overgangsfase": "FORSKRIFT VERIFISERT: FOR-2026-06-25-1361 par. 1 omfatter vedtak/soknad/omgjort avslag/forlengelse foer 1.7.2026; par. 13: stonadsperioder loeper ikke ut over 30.06.2031; par. 14: forskriften opphoerer 01.07.2031; endret ved FOR-2026-08-17-1633"
+      },
+      "kilde": "nav.no/overgangsstonad-enslig + FOR-2026-06-25-1361 + fil 63/68",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r21_overgangsstonad_klage",
+      "hvis": {
+        "vedtak_overgangsstoenad": "avslag eller uenighet"
+      },
+      "da": {
+        "klage": "Nav-enheten som skrev vedtaket (ca 10 ukers saksbehandling)",
+        "klageinstans": "Nav klageinstans (ca 3 mnd)",
+        "anke": "etter klageinstansens vedtak; § 21-12 gir anke til Trygderetten; NAV-tabell oppgir anke til Nav klageinstans ca 2 mnd",
+        "frister": "staar i vedtaket"
+      },
+      "kilde": "nav.no + ftl 21-12 + fil 64",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r22_barnetilsyn_15_10",
+      "hvis": {
+        "enslig_forsorger_i_arbeid_barnetilsyn": true
+      },
+      "da": {
+        "under_14_mnd": "tilsyn overlates til andre pga arbeid; uavhengig av overgangsstoenad",
+        "14_mnd_til_18_ar": "vesentlig mer tilsyn enn jevnaldrende, unvanlig arbeidstid, eller inntil 1 ar ved medlemmets forbigaaende sykdom",
+        "dekning": "64 prosent av dokumenterte utgifter, inntil Stortingets satser (verifisert 30.08.2026): 1 barn 4 895 kr/mnd (58 740/ar), 2 barn 6 385 (76 620), 3+ 7 237 (86 844) fra 01.01.2026; AAP/dagpenger/sykepenger m.m. teller i 6 G-vurderingen",
+        "inntektsgrense": "ingen stoenad ved pensjonsgivende inntekt over 6 G (819 294 kr/ar)",
+        "supplement": "omsorgsdager (10/15, dobling ved aleneomsorg, ekstra dager ved kronisk sykdom til 18 ar) og pleiepenger (spesialisthelsetjeneste, kontinuerlig pleiebehov)"
+      },
+      "kilde": "ftl 15-10 + nav.no/pleiepenger-barn + nav.no/omsorgspenger + nav.no/barnetilsyn-enslig + fil 66/68",
+      "sist_verifisert": "2026-08-30"
+    },
+    {
+      "id": "r23_overgangsstonad_hvilket_regelverk",
+      "hvis": {
+        "enslig_forsorger": true,
+        "sporsmal": "hvilket_regelverk_gjelder"
+      },
+      "da": {
+        "regler": [
+          "mottok stonad eller barnetilsyn per 30.06.2026 med periode ut over 1.7.2026 -> overgangsregelverk (FOR-1361 par. 1 bokstav a)",
+          "soknad dato < 2026-07-01 OG vilkar oppfylt -> overgangsregelverk (par. 1 bokstav b)",
+          "avslag omgjort etter 1.7.2026 med virkningsdato for 1.7.2026 -> overgangsregelverk (par. 1 bokstav c)",
+          "vedtak som kan utvides/forlenges etter gamle § 15-8 andre, fjerde og femte ledd -> overgangsregelverk (par. 1 bokstav d)",
+          "ellers -> nytt regelverk (ftl kap. 15 fra 1.7.2026)"
+        ],
+        "maks_periode": "stonadsperioder etter forskriften loeper ikke ut over 30.06.2031 (par. 13); forskriften opphoerer 01.07.2031 (par. 14)",
+        "scenario_g_nytt_barn": "ikke fullt rutet; tolkningsrom, se fil 69 punkt 2.9"
+      },
+      "kilde": "FOR-2026-06-25-1361 par. 1, 13, 14 (Lovdata fulltekst, lest 30.08.2026)",
+      "sist_verifisert": "2026-08-30"
+    }
+  ],
+  "nokkelsatser_2026_07_01": {
+    "underholdskostnad_forbruk": {
+      "0-5": 5870,
+      "6-10": 7523,
+      "11-14": 8789,
+      "15+": 9764
+    },
+    "boutgifter_barnet": 3811,
+    "barnetrygd": {
+      "ordinar": 2012,
+      "utvidet_per_ar": 30864,
+      "delt_ordinar_per_forelder_per_mnd": 1006,
+      "delt_utvidet_per_forelder_per_mnd": 1286,
+      "smabarnstillegg_per_ar": 8544,
+      "utvidet_gyldig_fra": "2026-02-01"
+    },
+    "samvaersfradrag": {
+      "klasse_1": {
+        "0-5": 386,
+        "6-10": 510,
+        "11-14": 627,
+        "15+": 696
+      },
+      "klasse_2": {
+        "0-5": 1277,
+        "6-10": 1690,
+        "11-14": 2078,
+        "15+": 2306
+      },
+      "klasse_3": {
+        "0-5": 3249,
+        "6-10": 3825,
+        "11-14": 4366,
+        "15+": 4684
+      },
+      "klasse_4": {
+        "0-5": 4078,
+        "6-10": 4801,
+        "11-14": 5481,
+        "15+": 5880
+      }
+    },
+    "bidragsforskudd": {
+      "forhoeyet_under_11": 2080,
+      "forhoeyet_over_11": 2600,
+      "ordinart": 1560,
+      "redusert": 1040,
+      "grense_forhoeyet": 388200,
+      "grense_maks_arsinntekt": 686400
+    },
+    "gebyr": {
+      "belop": 1345,
+      "fritak_under": 367400
+    },
+    "behandlingstid": {
+      "barnebidrag_mnd": 9,
+      "internasjonal_mnd": 8,
+      "forskudd_uker": 5
+    },
+    "overgangsstonad": {
+      "endringslov": "LOV-2026-06-12-27 (i kraft 2026-07-01, overgangsfase til 2031-06-30 iflg NAV)",
+      "grunnbeloep_g": 136549,
+      "g_gyldig_fra": "2026-05-01",
+      "full_per_ar": 307235,
+      "full_per_mnd_foer_skatt": 25603,
+      "avkortings_friinntekt_per_ar": 68274.5,
+      "avkortings_reduksjon_prosent": 45,
+      "nullpunkt_per_ar_ca": 751000,
+      "hovedperiode_mnd_nye_saker": 14,
+      "forlengelse_forbigaaende_sykdom_mnd_maks": 24,
+      "saerlig_tilsyn_grense_alder": 18,
+      "oppsigelsesforbud_mnd_foer_soeknad": 6,
+      "barnetilsyn_dekning_prosent": 64,
+      "barnetilsyn_inntektsgrense_6G_per_ar": 819294,
+      "etterbetaling_mnd_standard": 3,
+      "etterbetaling_mnd_sen_soknad": 5,
+      "gamle_regler_overgangssaker": {
+        "hovedperiode_mnd": 36,
+        "avbrudd_maks_mnd": 12,
+        "aldersgrense_barn_ar": 8,
+        "aktivitetsplikt_prosent": 50,
+        "aktivitetsplikt_barn_alder": "1-8"
+      }
+    }
+  },
+  "advarsel": "Bosteds- og samvarsordningen skal vurderes ut fra barnets beste, ikke optimalisering av NAV-ytelser. Rutingreglene er for beslutningsstotte, ikke eksakt beregning. Sosialhjelpssatser er veiledende; bostottesatser er deler av Husbankens beregningsmodell per 30.08.2026.",
+  "nokkelsatser_2026_01_01_sosialhjelp_veiledende": {
+    "enslig": 8300,
+    "ektepar_samboer": 13800,
+    "bofellesskap": 6950,
+    "barn_0_5": 4050,
+    "barn_6_10": 4150,
+    "barn_11_17": 5400,
+    "barnetrygd_ikke_medregnet": "sotjl par. 18 tredje ledd",
+    "notat": "Veiledende satser 01.01.2026; vurderes skjonnsmessig, ikke automatisk tildelt."
+  },
+  "nokkelsatser_bostotte_2026": {
+    "minsteutbetaling_mnd": 61,
+    "oppvarmingstillegg_mnd": 613,
+    "driftssats_ar": 14732,
+    "kapitalinntektsfribelop_ar": 6672,
+    "formuefribelop_leid_bolig": 333557,
+    "formuefribelop_eid_bolig_maks_formuesverdi": 700468,
+    "formuestillegg_prosent": 65,
+    "kilde": "husbanken.no, lest 30.08.2026"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "nemotron-3-ultra": {
+    "forbidden_claim": {
+      "rows": 53,
+      "invalid_reasons": {
+        "enum": 1
+      },
+      "field_level_disagreements_among_ok": {}
+    },
+    "critical_condition": {
+      "rows": 37,
+      "invalid_reasons": {},
+      "field_level_disagreements_among_ok": {}
+    }
+  },
+  "nex-n2.5-pro": {
+    "forbidden_claim": {
+      "rows": 53,
+      "invalid_reasons": {
+        "enum": 30,
+        "evidence": 4
+      },
+      "field_level_disagreements_among_ok": {
+        "forbidden_claim|criterion_semantic_match: NO_MATCH->MATCH": 5,
+        "forbidden_claim|speaker_commitment: UNRESOLVED->NEGATED": 3,
+        "forbidden_claim|speaker_commitment: UNRESOLVED->ASSERTED": 2
+      }
+    },
+    "critical_condition": {
+      "rows": 37,
+      "invalid_reasons": {
+        "evidence": 4
+      },
+      "field_level_disagreements_among_ok": {
+        "critical_condition|critical_evidence_state: AMBIGUOUS_OR_CONFLICTING->CLEAR_NON_TRIGGER_SUPPORT": 4,
+        "critical_condition|critical_evidence_state: AMBIGUOUS_OR_CONFLICTING->CLEAR_TRIGGER_SUPPORT": 2,
+        "critical_condition|critical_evidence_state: CLEAR_NON_TRIGGER_SUPPORT->INSUFFICIENT_TO_DECIDE": 2
+      }
+    }
+  },
+  "gemma-4-31b-it": {
+    "forbidden_claim": {
+      "rows": 53,
+      "invalid_reasons": {
+        "evidence": 1
+      },
+      "field_level_disagreements_among_ok": {}
+    },
+    "critical_condition": {
+      "rows": 37,
+      "invalid_reasons": {},
+      "field_level_disagreements_among_ok": {
+        "critical_condition|critical_evidence_state: CLEAR_NON_TRIGGER_SUPPORT->INSUFFICIENT_TO_DECIDE": 2,
+        "critical_condition|critical_evidence_state: AMBIGUOUS_OR_CONFLICTING->CLEAR_TRIGGER_SUPPORT": 1
+      }
+    }
+  },
+  "mimo-v2.5-pro": {
+    "forbidden_claim": {
+      "rows": 53,
+      "invalid_reasons": {
+        "enum": 21,
+        "unparseable_json": 16,
+        "enum+evidence": 1,
+        "evidence": 1
+      },
+      "field_level_disagreements_among_ok": {}
+    },
+    "critical_condition": {
+      "rows": 37,
+      "invalid_reasons": {
+        "evidence": 14,
+        "unparseable_json": 5
+      },
+      "field_level_disagreements_among_ok": {
+        "critical_condition|critical_evidence_state: CLEAR_TRIGGER_SUPPORT->INSUFFICIENT_TO_DECIDE": 1,
+        "critical_condition|critical_evidence_state: CLEAR_TRIGGER_SUPPORT->CLEAR_NON_TRIGGER_SUPPORT": 1,
+        "critical_condition|critical_evidence_state: AMBIGUOUS_OR_CONFLICTING->INSUFFICIENT_TO_DECIDE": 1,
+        "critical_condition|critical_evidence_state: CLEAR_NON_TRIGGER_SUPPORT->INSUFFICIENT_TO_DECIDE": 1,
+        "critical_condition|critical_evidence_state: INSUFFICIENT_TO_DECIDE->CLEAR_TRIGGER_SUPPORT": 1,
+        "critical_condition|critical_evidence_state: AMBIGUOUS_OR_CONFLICTING->CLEAR_TRIGGER_SUPPORT": 1,
+        "critical_condition|critical_evidence_state: AMBIGUOUS_OR_CONFLICTING->CLEAR_NON_TRIGGER_SUPPORT": 1
+      }
+    }
+  }
+}

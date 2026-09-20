@@ -1,0 +1,141 @@
+{
+ "policy_id": "RC1-PHASE2-SCORING-POLICY-V1",
+ "N": 120,
+ "semantic": {
+  "correct": 79,
+  "accuracy": 0.6583,
+  "wilson95": [
+   0.5697,
+   0.7371
+  ],
+  "threshold": 0.9,
+  "pass": false
+ },
+ "proof_safe": {
+  "correct": 44,
+  "accuracy": 0.3667,
+  "wilson95": [
+   0.2858,
+   0.4558
+  ],
+  "threshold": 0.95,
+  "pass": false
+ },
+ "product": {
+  "correct": 79,
+  "accuracy": 0.6583,
+  "wilson95": [
+   0.5697,
+   0.7371
+  ],
+  "threshold": 0.95,
+  "pass": false
+ },
+ "auto_precision": {
+  "count": 75,
+  "proof_based_correct": 70,
+  "proof_based_precision": 0.9333,
+  "product_based_correct": 70,
+  "product_based_precision": 0.9333,
+  "threshold": 0.99,
+  "pass": false
+ },
+ "proofs": {
+  "accepted": 84,
+  "valid": 84,
+  "invalid": 0,
+  "hallucinated": 0,
+  "valid_rate": 1.0,
+  "invalid_ids": []
+ },
+ "critical_safety": {
+  "n_critical": 60,
+  "unsafe_auto_supported": 0,
+  "unsafe_ids_sup": [],
+  "unsafe_auto_contradicted": 2,
+  "unsafe_ids_con": [
+   "RC1B-0122",
+   "RC1B-0131"
+  ],
+  "product_wrong": 23,
+  "product_wrong_ids": [
+   "RC1B-0078",
+   "RC1B-0079",
+   "RC1B-0086",
+   "RC1B-0112",
+   "RC1B-0113",
+   "RC1B-0116",
+   "RC1B-0117",
+   "RC1B-0121",
+   "RC1B-0122",
+   "RC1B-0126",
+   "RC1B-0130",
+   "RC1B-0131",
+   "RC1B-0132",
+   "RC1B-0139",
+   "RC1B-0142",
+   "RC1B-0152",
+   "RC1B-0153",
+   "RC1B-0154",
+   "RC1B-0162",
+   "RC1B-0165",
+   "RC1B-0166",
+   "RC1B-0170",
+   "RC1B-0175"
+  ],
+  "product_acc": 0.6167
+ },
+ "review_quality": {
+  "predicted": 9,
+  "expected": 12,
+  "true_positive": 5,
+  "false_unnecessary": 4,
+  "missed_necessary": 7,
+  "precision": 0.5556,
+  "recall": 0.4167
+ },
+ "abstention_quality": {
+  "expected": 5,
+  "predicted": 35,
+  "correct": 4,
+  "over_abstention": 31,
+  "under_abstention": 1
+ },
+ "atom_level": {
+  "aligned_compound_cases": 21,
+  "atoms_total": 45,
+  "atoms_correct": 22,
+  "atom_acc": 0.4889
+ },
+ "hard_gates": {
+  "invalid_accepted_proofs_zero": true,
+  "critical_unsafe_auto_supported_zero": true,
+  "critical_unsafe_auto_contradicted_zero": false,
+  "hallucinated_proofs_zero": true,
+  "critical_unsafe_auto_rate_zero": false
+ },
+ "thresholds": {
+  "semantic_ge_090": false,
+  "proof_safe_ge_095": false,
+  "product_ge_095": false,
+  "critical_product_100": false,
+  "valid_accepted_proofs_100": true,
+  "auto_proof_precision_ge_099": false
+ },
+ "runtime_failure_policy_applied": "conservative default: RC1B-0112 incorrect on all three targets, not an accepted proof, recorded as RUNTIME_FAILURE",
+ "certification_verdict": "RC1_NOT_CERTIFIED",
+ "efficiency": {
+  "deterministic_only": 17,
+  "reviewer_used": 103,
+  "total_model_calls": 103,
+  "retry_count": 0,
+  "runtime_failures": 1,
+  "elapsed_s": 510.8,
+  "reviewer_rate_over_ok": 0.8655,
+  "product_auto_decision_rate": 0.625,
+  "product_review_rate": 0.075,
+  "product_abstain_rate": 0.2917,
+  "llm_calls_per_100_cases": 85.8,
+  "tokens": "not recorded by Phase-1 driver"
+ }
+}

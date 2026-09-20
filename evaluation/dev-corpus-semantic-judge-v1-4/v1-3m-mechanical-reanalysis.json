@@ -1,0 +1,701 @@
+{
+  "artifact": "V1.3M Set A mechanical rescore under V1.4 agreement definition",
+  "marker": "BURNED_MECHANICAL_REANALYSIS_NOT_VALIDATION",
+  "model_calls": 0,
+  "historical_writes": 0,
+  "source_label_files": [
+    "evaluation/dev-corpus-semantic-judge-v1-3m/boundary-calibration-a-label1.json",
+    "evaluation/dev-corpus-semantic-judge-v1-3m/boundary-calibration-a-label2.json"
+  ],
+  "historical_frozen_full_row_agreement": {
+    "recorded_in_set-a-agreement.json": 0.0,
+    "definition": "raw serialized-row equality including free-text note",
+    "recomputed": false
+  },
+  "v1_4_agreement": {
+    "free_text_note_affects_label_agreement": false,
+    "valid_pairs": 29,
+    "error_rows": 3,
+    "overall_full_semantic_agreement_valid_rows": 0.8276,
+    "overall_full_semantic_agreement_error_inclusive": 0.75,
+    "route": {
+      "route_commitment": {
+        "agree": 13,
+        "n": 15,
+        "rate": 0.8667
+      },
+      "route_verdict": {
+        "agree": 13,
+        "n": 15,
+        "rate": 0.8667
+      },
+      "full_semantic": {
+        "agree": 13,
+        "n": 15,
+        "rate": 0.8667
+      }
+    },
+    "uncertainty": {
+      "uncertainty_requirement_mode": {
+        "agree": 13,
+        "n": 14,
+        "rate": 0.9286
+      },
+      "uncertainty_verdict": {
+        "agree": 11,
+        "n": 14,
+        "rate": 0.7857
+      },
+      "full_semantic": {
+        "agree": 11,
+        "n": 14,
+        "rate": 0.7857
+      }
+    },
+    "note_only_mismatch_rows": 24
+  },
+  "zero_gates_recount": {
+    "self_retracted_no_acceptable": 0,
+    "vague_no_acceptable": 0,
+    "non_assertion_not_required": 0,
+    "note": "recounted from label pairs; all hold"
+  },
+  "designer_intent_diagnostic": {
+    "pass1_matches": 23,
+    "pass2_matches": 18,
+    "n": 29,
+    "note": "diagnostic only; the designer-intent mismatches (BRT-07/08/15/16, BUN-02, BUN-14) motivated the V1.4 contract redesign"
+  },
+  "rows": [
+    {
+      "id": "BRT-01",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass2": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-02",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "pass2": {
+        "route_commitment": "POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-03",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-04",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "NO_ACCEPTABLE_ROUTE"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-05",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-06",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-07",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": false,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BRT-08",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "NEGATED",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": false,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BRT-09",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-10",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": false,
+        "route_verdict": false
+      },
+      "semantic_fields_agree": false,
+      "note_only_mismatch": false,
+      "pass1": {
+        "route_commitment": "QUOTED_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BRT-11",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": false,
+        "route_verdict": false
+      },
+      "semantic_fields_agree": false,
+      "note_only_mismatch": false,
+      "pass1": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "PARTIAL"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BRT-12",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "HYPOTHETICAL_ONLY",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-13",
+      "dimension": "route_commitment_calibration",
+      "error": true,
+      "error_detail": "'NoneType' object has no attribute 'strip'",
+      "semantic_fields_agree": null
+    },
+    {
+      "id": "BRT-14",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "route_commitment": "VAGUE_UNIDENTIFIABLE",
+        "route_verdict": "UNRESOLVED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BRT-15",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass1_matches_designer_intent": false,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BRT-16",
+      "dimension": "route_commitment_calibration",
+      "error": false,
+      "fields": {
+        "route_commitment": true,
+        "route_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass2": {
+        "route_commitment": "HEDGED_POSITIVE_ASSERTION",
+        "route_verdict": "ACCEPTABLE"
+      },
+      "pass1_matches_designer_intent": false,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BUN-01",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": false,
+        "uncertainty_verdict": false
+      },
+      "semantic_fields_agree": false,
+      "note_only_mismatch": false,
+      "pass1": {
+        "uncertainty_requirement_mode": "NONE",
+        "uncertainty_verdict": "NOT_REQUIRED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BUN-02",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass1_matches_designer_intent": false,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BUN-03",
+      "dimension": "uncertainty_mode_calibration",
+      "error": true,
+      "error_detail": "'NoneType' object has no attribute 'strip'",
+      "semantic_fields_agree": null
+    },
+    {
+      "id": "BUN-04",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "EXPLICIT_LIMITATION",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-05",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-06",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-07",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-08",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-09",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": false
+      },
+      "semantic_fields_agree": false,
+      "note_only_mismatch": false,
+      "pass1": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "UNRESOLVED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "NON_ASSERTION_CONSTRAINT",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BUN-10",
+      "dimension": "uncertainty_mode_calibration",
+      "error": true,
+      "error_detail": "Expecting value: line 1 column 1 (char 0)",
+      "semantic_fields_agree": null
+    },
+    {
+      "id": "BUN-11",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-12",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "SATISFIED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-13",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": false
+      },
+      "semantic_fields_agree": false,
+      "note_only_mismatch": false,
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "PARTIAL"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BUN-14",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": false,
+      "pass2_matches_designer_intent": false
+    },
+    {
+      "id": "BUN-15",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    },
+    {
+      "id": "BUN-16",
+      "dimension": "uncertainty_mode_calibration",
+      "error": false,
+      "fields": {
+        "uncertainty_requirement_mode": true,
+        "uncertainty_verdict": true
+      },
+      "semantic_fields_agree": true,
+      "note_only_mismatch": true,
+      "pass1": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass2": {
+        "uncertainty_requirement_mode": "COMPOUND",
+        "uncertainty_verdict": "VIOLATED"
+      },
+      "pass1_matches_designer_intent": true,
+      "pass2_matches_designer_intent": true
+    }
+  ]
+}

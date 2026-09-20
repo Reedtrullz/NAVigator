@@ -1,0 +1,85 @@
+{
+  "artifact": "wave3-routing-funnel",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-3",
+  "created_utc": "2026-09-16T22:45:00Z",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "basis": {
+    "wave3_measurement_freeze": "wave3-measurement-freeze-manifest.json (2026-09-16T21:51:31Z)",
+    "wave3_structural_diagnostics": "evaluation/full-sut-repair-wave-3-v1/structural-replay-diagnostics.json",
+    "wave2_reference_funnel": "measurement-v3-remeasure-repair-wave-2/routing-funnel.json (recomputed here from frozen W2 replay)"
+  },
+  "wave2": {
+    "route_criteria_total": 120,
+    "route_evaluated": 108,
+    "not_applicable": 12,
+    "structured_route_cases": 20,
+    "structured_route_entries": 24,
+    "distinct_route_labels": 14,
+    "no_route_asserted_cases": 100,
+    "label_to_evidence_binding_resolvable_cases": 0,
+    "evidence_supported_targets": 0,
+    "route_pass": 0,
+    "route_fail": 108,
+    "partial_route": 0
+  },
+  "wave3": {
+    "route_criteria_total": 120,
+    "route_evaluated": 108,
+    "not_applicable": 12,
+    "structured_route_cases": 24,
+    "structured_route_cases_all_120": 28,
+    "structured_route_entries": 39,
+    "distinct_route_labels": 24,
+    "no_route_asserted_cases": 92,
+    "not_applicable_cases_with_route_emitters": [
+      "DIS-096",
+      "ROUT-029",
+      "ROUT-053",
+      "ROUT-059"
+    ],
+    "stage_counts": {
+      "R0": 84,
+      "R1": 9,
+      "R3": 11,
+      "R5": 4
+    },
+    "partial_route_cases": [
+      "ROUT-040",
+      "ROUT-061"
+    ],
+    "partial_route": 2,
+    "label_to_evidence_binding_resolvable_cases": 0,
+    "evidence_supported_targets": 0,
+    "route_pass": 0,
+    "route_fail": 108
+  },
+  "funnel_note": "Wave-3 endpoint unchanged: 0 route PASS, 108 route FAIL (106 NO_ACCEPTABLE_ROUTE, 2 PARTIAL). RC-04..RC-06 retrieval work moved the emission funnel (20 to 24 emitters, 24 to 39 entries, 14 to 24 distinct labels; no_route_asserted 100 to 92) but did not move binding: evidence.route_evidence remains keyed by R-codes, not route labels, so 0/24 emitter cases have a resolvable label-to-evidence mapping.",
+  "partial_mechanism_note": "Both Wave-3 PARTIAL verdicts are lexical token-substring artifacts of the frozen scorer gate: ROUT-040 'NAV' matches inside a NEGATED gold clause and ROUT-061 'Familievernkontoret' matches the gold label token without committing to the gold first-line reading. They are structural-but-lexical, not semantic route passes.",
+  "product_diagnostics": {
+    "artifact": "product-diagnostics",
+    "source": "frozen phase-3 official predictions (per-family files)",
+    "attempted": 120,
+    "execution_status_distribution": {
+      "SUCCESS": 120
+    },
+    "runtime_crashes": 0,
+    "terminal_failures": 0,
+    "recoverable_failures": 104,
+    "failure_state_distribution": {
+      "RECOVERABLE": 104
+    },
+    "presented_as_complete_with_failures": 104,
+    "no_route_asserted_n": 92,
+    "safety_tracks_n": 129,
+    "claims_total": 625,
+    "provenance_entries_total": 625,
+    "provenance_linked_claims": 369,
+    "epistemic_state_distribution": {
+      "EXISTENCE_ONLY": 104,
+      "UNVERIFIED": 16
+    },
+    "discovery_invoked_n": null,
+    "latency_ms_frozen_phase3": null,
+    "note": "counts from frozen prediction files; latency from frozen phase-3 performance-diagnostics.json"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "artifact": "v2-15-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V2_15-SEMANTIC-HUMAN-REVIEW-FALLBACK",
+  "campaign": "NAV-EXPLORE-AFK-MEASUREMENT-SYSTEM-CAMPAIGN",
+  "campaign_stage": "2F",
+  "terminal_status": "SEMANTIC_HUMAN_REVIEW_FALLBACK_READY",
+  "created_utc": "2026-09-14",
+  "model_calls": 0,
+  "historical_lineage_writes": 0,
+  "authority_model": "no automated semantic verdicts before human review; mechanical final derivation via frozen judge_core_v2_13.derive_final",
+  "dimension_contracts": {
+    "critical_condition": "semantic-judge-contract-v1-4",
+    "forbidden_claim": "semantic-judge-contract-v1-4",
+    "route_correctness": "semantic-judge-contract-v1-4",
+    "required_uncertainty": "semantic-judge-contract-v2-7e"
+  },
+  "gates": {
+    "dev_workflow_60": true,
+    "fresh_workflow_120": true,
+    "fail_closed_probes_8": true,
+    "deterministic_rerun_stable": true,
+    "leakage": true,
+    "provenance": true,
+    "process": true
+  },
+  "results": {
+    "dev_workflow": {
+      "n": 60,
+      "pass": 60,
+      "fail": 0
+    },
+    "fresh_workflow": {
+      "n": 120,
+      "per_dimension": {
+        "critical_condition": 30,
+        "forbidden_claim": 30,
+        "route_correctness": 30,
+        "required_uncertainty": 30
+      },
+      "probes": 8
+    }
+  },
+  "audits": {
+    "leakage-audit.json": true,
+    "provenance-audit.json": true,
+    "process-audit.json": true
+  },
+  "file_hashes": {
+    "TASK-LOCK.json": "c8db819895f62a76a62b3c4d18e7e0e0ed671f89d3f49b3fcff61ada51a3c427",
+    "README.md": "ec9c062086261db1a319e3fb0b3c022654d355822285d983f713622f37915a38",
+    "final-report.md": "4ea2f58d08d922c6aded8ff5b8b147ae21e01b2076de0e135b242b307be79908",
+    "baseline-integrity.json": "a5bb573844422fa1cb6c2eaccf96cbb9f4796b9d18d4cac7d7f0ba0a8efbfb44",
+    "v2-15-contract-pins.json": "294cff82fcc00c33846c5db8144d48f0103a8b01adb9e21d0f4c087f122d3dfd",
+    "review_lane_semantic_v2_15.py": "5ba5ad693a329054e59fc6bfd1d346fbd784e9d3bd7b79cdaf8e383914c86e7c",
+    "gen_workflow_fixtures_v2_15.py": "05a037c428afd88a26150d16c483edc7518432148050f57426002443260bff6f",
+    "workflow-test-fixtures.json": "d08ba72f9e65d9539e31e2ea87b5db52a6f1d3b035261afb73f0d4339e3912a7",
+    "run_workflow_tests_v2_15.py": "1f32c4d0294632429a695c3e1816904d3ad14acea6bf95c6896841f073ce9cd2",
+    "workflow-test-results.json": "30840fbfd978788ad5ca348d22c92d792557b1dcc5a85d11cffb69b2bad29cb5",
+    "gen_fresh_workflow_fixtures_v2_15.py": "5b1eb1fe93c9fef3e6da27f29158309f03805743931613380403c3e5f3ab3fc2",
+    "fresh-workflow-fixtures.json": "2428e16328aa5956364ffd331306d0518a9abd910ffaba9d54badd291f5cd3dd",
+    "run_fresh_workflow_v2_15.py": "90e0a2a29f06a5dd7fb849f4a6ff6ad40049effef6eaa86519e2bdcecd4554fa",
+    "fresh-workflow-results.json": "f2956fbce9bf6d4a0de9496420dc937af441937142b53eaea591a202fe06a0cf",
+    "run_audits_v2_15.py": "5e3125be9c2cc96164541c06fba42278441869a4284dd69e38dd876e53dc3b43",
+    "leakage-audit.json": "eeb31872d584c76cd276078f62e39b41a456a5a5732d13310ec9adbbbb611d24",
+    "provenance-audit.json": "fea6c712fa408f88344e428bce4133a8307e0ce106d7713edb907f2a3f66f828",
+    "process-audit.json": "199760e3981177d955614c97cda318f237674b5bf78762ab8ed77340a7755338"
+  }
+}

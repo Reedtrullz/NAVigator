@@ -1,0 +1,44 @@
+{
+  "contract_id": "MODEL-SELECTION-CONTRACT-V1_5A",
+  "frozen_date": "2026-09-11",
+  "frozen_before_first_candidate_call": true,
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_5A-MODEL-SELECTION",
+  "semantic_contract": {
+    "source": "V1.4 frozen judge (UNCHANGED)",
+    "contract_sha256": "f545b54b3295323fde8131d048778c13354b711344cb2076eef217551952e141",
+    "prompt_sha256": "b17596419cfa30d16ccec8e98af40595e63411661d65b8273cada83013dbc9a3",
+    "schema_sha256": "b85acbed5af9227532a99dcc6d792815eb9fbfa7875d539d39435b525dd5180f",
+    "judge_core_sha256": "ad7f0fda0557fc74b7e337359635fd6d5f3bdda803251bd9dd49cb801be9bdc2",
+    "prompt_tuning_allowed": false
+  },
+  "transport_adapter_exception": {
+    "allowed": ["per-candidate model id swap", "model-config records", "runtime telemetry capture"],
+    "forbidden": ["model-specific examples", "label explanation changes", "shortened criteria", "per-candidate hints", "token-budget reduction"]
+  },
+  "execution": {
+    "smoke": {"calls_per_candidate": 1, "content": "synthetic non-benchmark case (TECHNICAL SMOKE)", "tests": ["auth", "transport", "schema", "evidence-span serialization"], "fail_result": "TECHNICALLY_NOT_TESTABLE"},
+    "benchmark": {"fixtures": "V1.4 official 100 (BURNED_JUDGE_MODEL_SELECTION_DATA)", "fixture_order": "frozen V1.4 file order (fixture_order_sha256 948fc016c53b7010dad9e388073209588d1f8cb9925ea2c7fb4b030b10f74fad)", "executions_per_fixture": 1, "substantive_reruns": "FORBIDDEN", "technical_retry": "frozen V1.4 policy (1 retry, 30s, same params)"},
+    "completion_headroom": 32768,
+    "temperature": 0,
+    "timeout_seconds": 300,
+    "token_budget_tuning": "FORBIDDEN"
+  },
+  "hard_safety_filter": {"critical_fn_max": 0, "safety_forbidden_fn_max": 0, "applies": "regardless of overall score"},
+  "selection_floors": {
+    "overall": 0.95, "critical": 0.95, "critical_fn": 0,
+    "forbidden": 0.95, "safety_forbidden_fn": 0,
+    "route": 0.95, "uncertainty": 0.95,
+    "valid_structured_results": 0.99, "evidence_span_validity": 1.0,
+    "note": "accuracies computed over schema-valid (status OK) rows; valid rate over all 100"
+  },
+  "tie_break_order": ["fewest critical+critical_fn+safety_forbidden_fn errors", "highest minimum dimension accuracy", "highest overall accuracy", "highest schema-valid rate", "highest evidence validity", "lower median latency", "lower total tokens"],
+  "failure_cluster_taxonomy": {"frozen": true, "same_for_all_candidates": true, "clusters": ["quoted_route_error", "hypothetical_route_error", "hedged_route_error", "self_retracted_error", "limitation_confusion_hedge_explicit_partial", "compound_uncertainty_error", "critical_false_negative", "forbidden_false_negative", "evidence_span_paraphrase_failure", "schema_failure", "transport_failure"]},
+  "stability_screen": {
+    "trigger": "only candidates passing ALL one-shot floors",
+    "preregistered": {"fixtures": "every 5th fixture in frozen order (indices 0,5,...,95; 20 fixtures, 5 per dimension)", "runs_each": 3, "same_model_config": true},
+    "floors": {"overall_modal_agreement": 0.95, "route_modal": 0.95, "uncertainty_modal": 0.95, "critical_semantic_stability": 1.0},
+    "majority_vote_repair": "FORBIDDEN"
+  },
+  "selection": {"exactly_one_model": true, "output": "selected-model.json with model id, provider, config sha, prompt sha, contract sha", "readiness_declaration": "FORBIDDEN on burned data; next stage is V1.5B fresh validation", "no_prompt_tuning_after_selection": true},
+  "mimo_baseline": {"rerun": "FORBIDDEN", "frozen_result": "DEV_CORPUS_SEMANTIC_JUDGE_V1_4_NOT_READY"}
+}

@@ -1,0 +1,36 @@
+{
+  "artifact": "burned-data-registry",
+  "task_id": "NAV-EXPLORE-JUDGE-DEEPSEEK-V2_4-M2-CALIBRATION-FRESH-VALIDATION",
+  "registered": "2026-09-13",
+  "burned_sets": [
+    {
+      "set": "V2.3 screening 120-row benchmark",
+      "source": "V2.2 official-validation-fixtures.json",
+      "sha256": "23cd24e1d578ed7cd6dbb0b626bcc1a56c740d5f0506d5861590eb7cb60b1f4b",
+      "status": "BURNED_MODEL_CALIBRATION_DIAGNOSTIC_DATA",
+      "allowed_use": [
+        "failure_taxonomy",
+        "prompt_diagnosis",
+        "regression_after_fresh_score_freeze"
+      ],
+      "forbidden_use": [
+        "V2.4 official validation",
+        "fixture text reuse"
+      ]
+    },
+    {
+      "set": "V2.2 official 120",
+      "sha256": "23cd24e1d578ed7cd6dbb0b626bcc1a56c740d5f0506d5861590eb7cb60b1f4b",
+      "status": "BURNED_CONTRACT_DIAGNOSTIC_DATA"
+    },
+    {
+      "set": "V1.2 official 80",
+      "status": "BURNED_CONTRACT_DEVELOPMENT_DATA"
+    },
+    {
+      "set": "V1.3 calibration A/B + official 80",
+      "status": "BURNED_CONTRACT_DEVELOPMENT_DATA"
+    }
+  ],
+  "historical_writes": 0
+}

@@ -1,0 +1,45 @@
+{
+  "artifact": "wave2-routing-funnel",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-2",
+  "created_utc": "2026-09-16T18:20:00Z",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "basis": {
+    "wave2_measurement_freeze": "wave2-measurement-freeze-manifest.json (2026-09-16T15:50:42Z)",
+    "wave2_structural_diagnostics": "evaluation/full-sut-repair-wave-2-v1/structural-replay-diagnostics.json",
+    "wave1_reference_funnel": "measurement-v3-remeasure-repair-wave-1 (120 -> 108 -> 20 structured -> 12 plausibly usable -> 0 PASS)"
+  },
+  "wave1": {
+    "route_criteria_total": 120,
+    "route_evaluated": 108,
+    "structured_route_cases": 20,
+    "plausibly_usable": 12,
+    "provenance_valid_cases": null,
+    "evidence_supported_targets": null,
+    "acceptable_route_family_match": 0,
+    "route_pass": 0,
+    "route_fail": 108
+  },
+  "wave2": {
+    "route_criteria_total": 120,
+    "route_evaluated": 108,
+    "not_applicable": 12,
+    "structured_route_cases": 20,
+    "structured_route_entries": 24,
+    "distinct_route_labels": 14,
+    "junk_like_route_entries": 15,
+    "fragment_like_route_labels": 2,
+    "provenance_valid_cases": 20,
+    "cases_with_routes_but_no_provenance": 0,
+    "label_to_evidence_mapping_resolvable_cases": 0,
+    "target_relevant_to_active_track_resolvable": 0,
+    "evidence_supported_targets": 0,
+    "acceptable_route_family_match": 0,
+    "route_pass": 0,
+    "route_fail": 108
+  },
+  "funnel_note": "Wave-2 bottleneck moved from provenance existence (20/20 valid, gate PASS) to route-label identity and label-to-evidence binding: evidence.route_evidence is keyed by R-codes, not by route label string, so evidence support is mechanically unresolvable for all 20 structured-route cases. Route verdict distribution is unchanged from Wave 1 (108 NO_ACCEPTABLE_ROUTE).",
+  "case_level_route_failures_w2": 108,
+  "route_verdict_distribution_w2": { "NO_ACCEPTABLE_ROUTE": 108 },
+  "no_route_asserted_cases_w2": 100,
+  "no_route_consistency_mismatches": 0
+}

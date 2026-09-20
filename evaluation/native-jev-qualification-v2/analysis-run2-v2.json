@@ -1,0 +1,141 @@
+{
+  "source": "raw-responses-run2-v2.jsonl",
+  "n": 57,
+  "errors": 0,
+  "critical_condition": {
+    "n": 35,
+    "exact": 16,
+    "accuracy": 0.4571,
+    "confusion": {
+      "INSUFFICIENT_TO_DECIDE": {
+        "INSUFFICIENT_TO_DECIDE": 11,
+        "CLEAR_TRIGGER_SUPPORT": 1
+      },
+      "CLEAR_TRIGGER_SUPPORT": {
+        "INSUFFICIENT_TO_DECIDE": 2,
+        "CLEAR_TRIGGER_SUPPORT": 2,
+        "CLEAR_NON_TRIGGER_SUPPORT": 1
+      },
+      "CLEAR_NON_TRIGGER_SUPPORT": {
+        "INSUFFICIENT_TO_DECIDE": 7,
+        "CLEAR_TRIGGER_SUPPORT": 1,
+        "CLEAR_NON_TRIGGER_SUPPORT": 2
+      },
+      "AMBIGUOUS_OR_CONFLICTING": {
+        "CLEAR_TRIGGER_SUPPORT": 4,
+        "INSUFFICIENT_TO_DECIDE": 2,
+        "AMBIGUOUS_OR_CONFLICTING": 1,
+        "CLEAR_NON_TRIGGER_SUPPORT": 1
+      }
+    },
+    "high_confidence_errors_ge08": [
+      {
+        "case_id": "ESC-ROUT-030",
+        "gold": "CLEAR_TRIGGER_SUPPORT",
+        "pred": "INSUFFICIENT_TO_DECIDE",
+        "confidence": 0.8,
+        "probabilities": {
+          "AMBIGUOUS_OR_CONFLICTING": 0.01,
+          "CLEAR_TRIGGER_SUPPORT": 0.05,
+          "CLEAR_NON_TRIGGER_SUPPORT": 0.09,
+          "INSUFFICIENT_TO_DECIDE": 0.85,
+          "UNRESOLVED": 0.0
+        }
+      },
+      {
+        "case_id": "ESC-SAF-018",
+        "gold": "CLEAR_NON_TRIGGER_SUPPORT",
+        "pred": "INSUFFICIENT_TO_DECIDE",
+        "confidence": 0.8,
+        "probabilities": {
+          "CLEAR_TRIGGER_SUPPORT": 0.05,
+          "INSUFFICIENT_TO_DECIDE": 0.85,
+          "UNRESOLVED": 0.0,
+          "CLEAR_NON_TRIGGER_SUPPORT": 0.1,
+          "AMBIGUOUS_OR_CONFLICTING": 0.0
+        }
+      },
+      {
+        "case_id": "ESC-ROUT-036",
+        "gold": "CLEAR_NON_TRIGGER_SUPPORT",
+        "pred": "INSUFFICIENT_TO_DECIDE",
+        "confidence": 0.86,
+        "probabilities": {
+          "CLEAR_NON_TRIGGER_SUPPORT": 0.06,
+          "CLEAR_TRIGGER_SUPPORT": 0.04,
+          "UNRESOLVED": 0.01,
+          "INSUFFICIENT_TO_DECIDE": 0.89,
+          "AMBIGUOUS_OR_CONFLICTING": 0.0
+        }
+      }
+    ],
+    "mean_confidence": 0.577
+  },
+  "forbidden_claim": {
+    "criterion_semantic_match": {
+      "n": 22,
+      "exact": 20,
+      "accuracy": 0.9091,
+      "confusion": {
+        "NO_MATCH": {
+          "NO_MATCH": 10
+        },
+        "MATCH": {
+          "MATCH": 10,
+          "NO_MATCH": 2
+        }
+      },
+      "high_confidence_errors_ge08": [],
+      "mean_confidence": 0.71
+    },
+    "speaker_commitment": {
+      "n": 22,
+      "exact": 15,
+      "accuracy": 0.6818,
+      "confusion": {
+        "UNRESOLVED": {
+          "UNRESOLVED": 7,
+          "NEGATED": 3
+        },
+        "ASSERTED": {
+          "ASSERTED": 5,
+          "NEGATED": 1
+        },
+        "NEGATED": {
+          "NEGATED": 3,
+          "ASSERTED": 3
+        }
+      },
+      "high_confidence_errors_ge08": [
+        {
+          "case_id": "ESC-ROUT-026",
+          "gold": "UNRESOLVED",
+          "pred": "NEGATED",
+          "confidence": 0.96,
+          "probabilities": {
+            "NEGATED": 0.98,
+            "ASSERTED": 0.0,
+            "UNRESOLVED": 0.02
+          }
+        },
+        {
+          "case_id": "ESC-ROUT-021",
+          "gold": "UNRESOLVED",
+          "pred": "NEGATED",
+          "confidence": 0.9,
+          "probabilities": {
+            "UNRESOLVED": 0.06,
+            "NEGATED": 0.9400000000000001,
+            "ASSERTED": 0.0
+          }
+        }
+      ],
+      "mean_confidence": 0.588
+    },
+    "pair": {
+      "n": 22,
+      "pair_exact": 13,
+      "pair_accuracy": 0.5909
+    }
+  }
+}

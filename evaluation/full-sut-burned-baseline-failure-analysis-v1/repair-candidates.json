@@ -1,0 +1,115 @@
+{
+  "artifact": "repair-candidates",
+  "task_id": "NAV-EXPLORE-FULL-SUT-BURNED-BASELINE-FAILURE-ANALYSIS-V1",
+  "created_utc": "2026-09-16T02:02:54+02:00",
+  "status": "PROPOSALS_ONLY_NOT_IMPLEMENTED",
+  "read_only_analysis": true,
+  "anti_overfit_rules": [
+    "No runtime logic may reference burned case IDs.",
+    "No burned-corpus literal strings in runtime code.",
+    "No tuning against individual expected verdicts.",
+    "Any candidate that can only be justified as making a specific case pass is marked OVERFIT_RISK and excluded."
+  ],
+  "candidates": [
+    {
+      "id": "RC-01",
+      "title": "Extend sut-input/v1 profile schema for known extended profile fields",
+      "families": [
+        "F3_INPUT_SCHEMA_REJECTION (cross-cutting into F1, F2)"
+      ],
+      "sut_stage": "input normalization / sut-input-v1 schema module",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "9 EXECUTION_FAILED cases; removes failure-path contamination from 5 safety-priority mismatches and 4 route failures",
+      "change": "Accept the extended profile fields emitted by the corpus harness (context, household_children, non-integer age forms) as schema-valid optional fields, or normalize them before validation; keep fail-closed rejection for genuinely unknown fields.",
+      "regression_risk": "LOW. Schema widening must remain bounded to fields the harness actually emits.",
+      "min_tests": "Schema round-trip tests for each extended field type; fail-closed test that a truly unknown field still rejects; rerun of structural execution smoke across all 3 families."
+    },
+    {
+      "id": "RC-02",
+      "title": "Refine safety triage classifier to emit the full frozen priority class set",
+      "families": [
+        "F1_SAFE_TRIAGE_COLLAPSE"
+      ],
+      "sut_stage": "safety triage classifier",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "19 SAFETY_PRIORITY_MISMATCH criteria (14 on SUCCESS cases, 5 already unblocked by RC-01)",
+      "change": "Replace the single default ACUTE_RISK_NOW path with explicit class distinction between acute-risk, acute-somatic, psychosis-suspect, abuse-disclosure, third-party risk, non-acute concern, and system-precedence classes, with fail-safe ordering: when the class cannot be determined, escalate to the more urgent safe default rather than a specific one.",
+      "regression_risk": "MEDIUM. Must not introduce under-escalation: unknown cases must fall back to the safest urgent class, never to a calmer one.",
+      "min_tests": "Class-level tests derived from class definitions (not case IDs): at least one synthetic fixture per priority class for both classification and safe-fallback behavior; explicit under-escalation canary (non-acute-looking input that must still reach emergency route when acute markers appear)."
+    },
+    {
+      "id": "RC-03",
+      "title": "Populate structured routes and provenance from the answer-assembly layer",
+      "families": [
+        "F2_PREMATURE_ABSENCE_NO_ROUTE",
+        "F4_PROVENANCE_EVIDENCE_GAPS"
+      ],
+      "sut_stage": "answer assembly / structured contract population (downstream of discovery and rendering)",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "up to 108 route_correctness FAIL + 88 PREMATURE_ABSENCE critical FAIL + up to 38 evidence DEGRADED rows; largest breadth",
+      "change": "Emit structured routes/provenance objects from the same content the prose renderer already receives, instead of leaving routes=[] and no_route_asserted=true; provenance entries must link only to actually retrieved sources (no fabricated URLs); the no-offers disclaimer must be emitted only when a real empty search result exists.",
+      "regression_risk": "MEDIUM. Extraction from prose can create wrong structured routes if done ad hoc; route objects must be validated against retrieval output, not free text.",
+      "min_tests": "Integration tests asserting structured routes match retrieval results for synthetic queries; provenance linking tests (no fabricated URLs); regression that EXECUTION_FAILED cases still never assert routes."
+    },
+    {
+      "id": "RC-04",
+      "title": "Emit uncertainty fields on the failure path",
+      "families": [
+        "F6_UNCERTAINTY_UNDER_EXPRESSION (2 VIOLATED)"
+      ],
+      "sut_stage": "failure-path output builder",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "2 uncertainty VIOLATED on EXECUTION_FAILED cases; prevents future loss when executions fail",
+      "change": "When execution fails before the answer layer, still emit known epistemic limitations (e.g. age unknown, severity unknown) from the input profile into uncertainty_expressed.",
+      "regression_risk": "LOW.",
+      "min_tests": "Unit test: EXECUTION_FAILED path with known profile gaps produces non-empty uncertainty_expressed."
+    },
+    {
+      "id": "RC-05",
+      "title": "Evidence field completeness assembly",
+      "families": [
+        "F4_PROVENANCE_EVIDENCE_GAPS"
+      ],
+      "sut_stage": "evidence assembly",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "38 evidence_completeness<1.0 rows (safety 17, discovery 11, routing 10)",
+      "change": "Ensure required_evidence_fields from the SUT contract (safety_priority, route provenance) are populated from real computation results rather than left as empty objects.",
+      "regression_risk": "LOW-MEDIUM. Must not fabricate evidence to satisfy completeness.",
+      "min_tests": "Contract-level tests that each required evidence field is populated when the corresponding computation succeeds."
+    },
+    {
+      "id": "RC-06",
+      "title": "Renderer cleanup: deduplication, cross-domain filter, meta-text suppression",
+      "families": [
+        "F7_PRESENTATION_NOISE"
+      ],
+      "sut_stage": "answer renderer / content selection",
+      "deterministic": true,
+      "new_model_authority": false,
+      "expected_scope": "0 frozen criteria; 98 answers with repeated national blocks, 23 with cross-domain material, 1 with evaluation meta-text",
+      "change": "Deduplicate repeated national-information blocks, suppress cross-domain content not matching the query domain, and remove any internal status/protocol strings from user-facing answers.",
+      "regression_risk": "LOW. Purely presentational; must not remove domain-relevant content.",
+      "min_tests": "Renderer tests: one national block per topic; cross-domain fixture filtered; no internal status tokens in output."
+    }
+  ],
+  "excluded_overfit_risks": [
+    {
+      "candidate": "Special-case negation handling inside forbidden-claim matching scoped to a single burned case pattern",
+      "reason": "Would be a measurement-contract change targeting one observed false positive; general negation-scope repair belongs to the measurement lineage and requires separate owner authorization.",
+      "marker": "OVERFIT_RISK if implemented as case-specific"
+    },
+    {
+      "candidate": "Any case-id or literal-string conditional in runtime code",
+      "reason": "Prohibited by anti-overfit rules; none proposed."
+    }
+  ],
+  "measurement_side_notes": [
+    "The 5 critical UNRESOLVED rows are frozen-contract fail-closed behavior for unmapped conditions, not SUT defects; extending the deterministic condition map is a measurement-contract change requiring separate authorization.",
+    "The suspected ROUT-042 negation false positive is a frozen-deterministic-rule sensitivity; no gold change and no measurement change proposed in this lineage."
+  ]
+}

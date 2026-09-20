@@ -1,0 +1,30 @@
+{
+  "artifact": "sol-review-config",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "LOW",
+  "reasoning_effort_enforcement": "hard; MEDIUM/HIGH/MAX forbidden (owner amendment 2026-09-16, mirrors Astra LOW precedent)",
+  "transport": "local proxy http://127.0.0.1:10100/v1/chat/completions",
+  "auth": "bearer token from existing auth store; never printed, logged, or persisted in artifacts",
+  "passes": [
+    "SOL-A",
+    "SOL-B"
+  ],
+  "blindness": "B must not see A; neither pass may see historical verdicts, gold outcomes, or prior model results",
+  "response_format": {
+    "type": "json_object"
+  },
+  "retry_policy": "ONE technical transport retry only; schema-invalid or semantically disagreeing output is NOT retried",
+  "no_web": true,
+  "review_order_source": "residual-inputs.json packet order (frozen upstream lineage)",
+  "availability_probe": {
+    "artifact": "sol-presence-probe.json",
+    "status": "AVAILABLE",
+    "note": "probe payload initially malformed (missing word json in messages for json_object mode); control confirmed identical behavior for both Sol and Astra so availability verdict uses corrected probe only"
+  },
+  "astra_call_accounting": {
+    "ASTRA_ADJUDICATION_CALLS": 0,
+    "note": "single gpt-6-astra availability control probe executed 2026-09-16 as transport diagnostic only; no packet content sent, no adjudication performed"
+  },
+  "prompt_contract_source": "frozen run_residual_adjudication.py contract wording via run_astra_review.py CRIT_CONTRACT/FORB_CONTRACT; identical blind-input structure; only model/effort differ"
+}

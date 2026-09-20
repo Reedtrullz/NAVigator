@@ -1,0 +1,104 @@
+{
+  "artifact": "accounting-audit",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-WAVE1-RESIDUAL-LLM-ADJUDICATION-V1",
+  "created_utc": "2026-09-16",
+  "method": "recounted directly from raw criterion rows in both frozen baseline artifacts using frozen semantic_state mapping from build_baseline_comparison.py; no summary-file numbers propagated",
+  "check_A": {
+    "question": "old DETERMINISTIC=526 -> wave1 DETERMINISTIC=508: explain 18-row ownership transition mechanically",
+    "answer": "exactly 18 criteria rows moved DETERMINISTIC -> LLM_REVIEWED across 17 cases; no measurement source/config changed; 508 is valid",
+    "mechanism": "dev-corpus-scorer-v1 emits CRITICAL_CONDITION_UNMAPPED (condition not in _CONDITION_LOOKUP) and/or PARAPHRASE_NOT_DETERMINISTICALLY_MATCHED + SEMANTIC_JUDGE_STUB (partial token overlap on forbidden claim); combined_measurement_v3 ESCALATION_NOTES routes these to GENERIC_LANE_V2_15",
+    "moved_rows": [
+      "ROUT-022::critical_condition",
+      "ROUT-026::critical_condition",
+      "ROUT-031::critical_condition",
+      "ROUT-032::critical_condition",
+      "ROUT-039::critical_condition",
+      "ROUT-047::critical_condition",
+      "ROUT-049::critical_condition",
+      "ROUT-052::critical_condition",
+      "ROUT-057::critical_condition",
+      "ROUT-066::critical_condition",
+      "ROUT-068::critical_condition",
+      "ROUT-072::critical_condition",
+      "ROUT-078::forbidden:01",
+      "ROUT-087::forbidden:01",
+      "ROUT-088::critical_condition",
+      "ROUT-088::forbidden:01",
+      "SAF-009::forbidden:01",
+      "SAF-019::forbidden:01"
+    ],
+    "moved_row_count": 18,
+    "full_transition_matrix": {
+      "DETERMINISTIC -> DETERMINISTIC": 508,
+      "DETERMINISTIC -> LLM_REVIEWED": 18,
+      "LLM_ADJUDICATED -> LLM_REVIEWED": 9,
+      "LLM_ADJUDICATED -> PENDING_HUMAN_ADJUDICATION": 1,
+      "LLM_REVIEWED -> LLM_REVIEWED": 61,
+      "LLM_REVIEWED -> PENDING_HUMAN_ADJUDICATION": 3
+    }
+  },
+  "check_B": {
+    "question": "reconcile failure-rate definitions with distinct canonical names",
+    "rates": {
+      "OLD_HARD_FAIL_RATE": {
+        "value": 0.4507,
+        "definition": "FAIL-only / applicable = 265/588 under frozen scorer semantics"
+      },
+      "WAVE1_HARD_FAIL_RATE_AUTHORITATIVE": {
+        "value": 0.4161,
+        "definition": "FAIL-only / applicable = 243/584 (4 rows now PENDING)"
+      },
+      "OLD_NON_PASS_RATE": {
+        "value": 0.517,
+        "definition": "1 - PASS/applicable = 1 - 284/588"
+      },
+      "WAVE1_NON_PASS_RATE_AUTHORITATIVE": {
+        "value": 0.5086,
+        "definition": "1 - PASS/applicable = 1 - 287/584"
+      },
+      "FAILURE_ANALYSIS_HEADLINE_HARD_FAIL_RATE": {
+        "value": 0.3861,
+        "definition": "227/588; legacy triage counting; DEFINITION_INCONSISTENT_WITH_FROZEN_SCORER (excluded 38 evidence_completeness=0.0 rows from FAIL)"
+      }
+    },
+    "note": "38.61% vs 45.07% and 51.70% vs 51.19% were different definitions and stale denominators, not measurement drift"
+  },
+  "open_item_1": {
+    "question": "old baseline LLM_ADJUDICATED=10 vs handoff cross-tab 8",
+    "resolution": "recount from rows: 10 LLM_ADJUDICATED rows in provenance-corrected baseline; wave1 transition = 9 -> LLM_REVIEWED + 1 -> PENDING_HUMAN_ADJUDICATION (DIS-118 forbidden_claim); handoff 8 was a miscount",
+    "chatgpt_residual_rows": [
+      "ROUT-025::forbidden_claim",
+      "ROUT-066::forbidden_claim",
+      "DIS-118::forbidden_claim",
+      "ROUT-038::forbidden_claim",
+      "ROUT-041::forbidden_claim",
+      "ROUT-063::forbidden_claim",
+      "ROUT-085::critical_condition",
+      "DIS-109::critical_condition",
+      "DIS-109::forbidden_claim",
+      "ROUT-021::forbidden_claim"
+    ]
+  },
+  "open_item_2": {
+    "question": "failure-analysis 227/72 vs wave1 state_delta 265/34",
+    "resolution": "frozen semantic_state maps evidence_completeness verdict 0.0 -> FAIL (38 rows); failure-analysis headline treated them as DEGRADED: 265-38=227 FAIL, 34+38=72 DEGRADED-equivalent; frozen scorer semantics are authoritative"
+  },
+  "open_item_3": {
+    "question": "wave1-effect-analysis state_delta.new_states_authoritative sums 571 vs denominator 588 (17-row gap)",
+    "resolution": "two arithmetic defects in effect-analysis summary: (1) UNRESOLVED carried as 5 (old value) instead of 18 = 5 UNRESOLVED->UNRESOLVED + 13 FAIL->UNRESOLVED; (2) denominator kept at 588 despite 4 rows moving to PENDING (applicable = 584); 13+4 = 17 gap; raw-row truth: PASS 287, FAIL 243, DEGRADED 36, UNRESOLVED 18, ABSENT_OR_NOT_APPLICABLE 16, total 600",
+    "corrected_wave1_states": {
+      "PASS": 287,
+      "FAIL": 243,
+      "DEGRADED": 36,
+      "UNRESOLVED": 18,
+      "ABSENT_OR_NOT_APPLICABLE": 16
+    },
+    "corrected_applicable": 584
+  },
+  "result": "ACCOUNTING_CHECKS_PASS",
+  "source_artifact_shas": {
+    "evaluation/measurement-v3-final-authority-provenance-repair-v1/combined-measurement-results-complete-provenance-corrected.json": "e73bbb86e0514a59f36e21b382a8a95922b7f4924d5e1d4686438437948861cf",
+    "evaluation/measurement-v3-remeasure-repair-wave-1/wave1-combined-measurement-results.json": "4f407672bd6c63c545d67547ff99f07c2ce143d1a56fbf8ce9af085e8888fbb7",
+    "evaluation/measurement-v3-remeasure-repair-wave-1/build_baseline_comparison.py": "635bb2acbfdfad109ce7c3e70db8e6a000151724474b68d29014a3c1ee4cc11c"
+  }
+}

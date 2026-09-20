@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "adjudication-v2-6",
+  "title": "M2 adjudication record",
+  "type": "object",
+  "required": ["case_id", "contract_version", "reviewer_a", "reviewer_b", "adjudicated", "final_judgment", "adjudication_note"],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {"type": "string"},
+    "contract_version": {"const": "m2-decomposition-v2-5"},
+    "reviewer_a": {"type": "string"},
+    "reviewer_b": {"type": "string"},
+    "adjudicated_utc": {"type": "string"},
+    "adjudicated": {"type": "boolean", "const": true},
+    "final_judgment": {
+      "type": "object",
+      "required": ["trigger_support", "non_trigger_support", "evidence_conflict", "evidence_sufficiency", "evidence_spans"],
+      "additionalProperties": false,
+      "properties": {
+        "trigger_support": {"enum": ["PRESENT", "ABSENT", "UNRESOLVED"]},
+        "non_trigger_support": {"enum": ["PRESENT", "ABSENT", "UNRESOLVED"]},
+        "evidence_conflict": {"enum": ["YES", "NO", "UNRESOLVED"]},
+        "evidence_sufficiency": {"enum": ["SUFFICIENT", "INSUFFICIENT", "UNRESOLVED"]},
+        "evidence_spans": {"type": "array", "items": {"type": "string"}},
+        "note": {"type": "string"}
+      }
+    },
+    "adjudication_note": {"type": "string"},
+    "model_outputs_visible_to_adjudicator": {"type": "boolean", "const": false}
+  }
+}

@@ -1,0 +1,800 @@
+{
+  "artifact": "route-binding-classification",
+  "task_id": "NAV-EXPLORE-POST-WAVE3-P0-RC04-BINDING-WAVE4-SCOPE-GATE-V1",
+  "created": "2026-09-17",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "basis": "Frozen Wave-3 predictions per entry (39 route entries over 28 emitting cases), structural-replay-diagnostics.json, SUT source trace in route-evidence-binding-dataflow.md",
+  "unit": "route entry (one route object / one emitted label occurrence); distinct-label rollup included",
+  "primary_counts": {
+    "B0_NO_EVIDENCE_CANDIDATE": 0,
+    "B1_EVIDENCE_EXISTS_NOT_LINKED": 0,
+    "B2_WRONG_EVIDENCE_LINKED": 0,
+    "B3_LABEL_DERIVED_AFTER_BINDING": 0,
+    "B4_SERVICE_IDENTITY_LOST": 16,
+    "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY": 23,
+    "B6_TRACK_BINDING_MISMATCH": 0,
+    "B7_ACCESS_PATH_BINDING_MISSING": 0,
+    "B8_CONDITION_BINDING_MISSING": 0,
+    "B9_MEASUREMENT_EXTRACTION_GAP": 0,
+    "B10_OTHER": 0
+  },
+  "distinct_label_counts": {
+    "total": 24,
+    "service_identity_labels": 14,
+    "fragment_or_meta_labels": 10,
+    "B4": 10,
+    "B5": 14
+  },
+  "secondary_flags": {
+    "B9_MEASUREMENT_EXTRACTION_GAP": "applies to all 39 entries: binding exists in evidence.route_evidence but scorer consumes labels only, so measurement cannot observe any binding",
+    "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY": "applies to the 16 B4 entries"
+  },
+  "primary_class_rule": "B5 when the route label is a genuine service identity (label born with evidence_refs on the same route object; only the serialized shape separates them). B4 when the label itself is not a service identity (heading/meta/fragment text selected as service_type at route construction), because no route-target identity exists to bind evidence to.",
+  "b3_rejection_note": "B3_LABEL_DERIVED_AFTER_BINDING is rejected: labels and evidence_refs are created together in build_route_candidates before serialization; the serialized form drops the join key.",
+  "entries": [
+    {
+      "family": "routing",
+      "case_id": "ROUT-024",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Psykisk helseutredning",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-029",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Diagnostisk utredning (nevropsykiatrisk)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-032",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Ikke en ensartet tjeneste.",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D001"
+      ],
+      "provenance_ids": [
+        "P-K001"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-038",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP/PHBU",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-039",
+      "route_id": "R-EDUCATION-K01",
+      "label": "kommunal helsetjeneste",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D001"
+      ],
+      "provenance_ids": [
+        "P-K001"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-040",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "NAV",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-040",
+      "route_id": "R-MENTAL_HEALTH-K02",
+      "label": "Bærum",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-041",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP/PHBU",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-042",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP/PHBU",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-052",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Ikke en ensartet tjeneste.",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D002"
+      ],
+      "provenance_ids": [
+        "P-K002"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-052",
+      "route_id": "R-MENTAL_HEALTH-K02",
+      "label": "Helsesykepleier i hoyere utdanning (studenthelsetjeneste)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-053",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Helsesykepleier i hoyere utdanning (studenthelsetjeneste)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-054",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Rask psykisk helsehjelp (RPH)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-059",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP (spesialisthelsetjenesten)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-061",
+      "route_id": "R-LEGAL_RIGHTS-K01",
+      "label": "Familievernkontoret",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D002"
+      ],
+      "provenance_ids": [
+        "P-K002"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-064",
+      "route_id": "R-CHILD_SAFETY-K02",
+      "label": "Psykisk helsevern for voksne (DPS)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D008"
+      ],
+      "provenance_ids": [
+        "P-K008"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-064",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Barnevernet (akutt)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-065",
+      "route_id": "R-CHILD_SAFETY-K01",
+      "label": "Barnevernet (akutt)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D008"
+      ],
+      "provenance_ids": [
+        "P-K008"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-066",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Barn kan motta samtaler",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-067",
+      "route_id": "R-CHILD_SAFETY-K01",
+      "label": "ikke hensiktsmessige",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D001"
+      ],
+      "provenance_ids": [
+        "P-K001"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-068",
+      "route_id": "R-CHILD_SAFETY-K01",
+      "label": "Meldeplikt",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D007"
+      ],
+      "provenance_ids": [
+        "P-K007"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-068",
+      "route_id": "R-CHILD_SAFETY-K02",
+      "label": "Barnevernet (akutt)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D008"
+      ],
+      "provenance_ids": [
+        "P-K008"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-068",
+      "route_id": "R-EDUCATION-K03",
+      "label": "Praktisk betydning for skolehelse",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D011"
+      ],
+      "provenance_ids": [
+        "P-K011"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-072",
+      "route_id": "R-EMPLOYMENT-K02",
+      "label": "Praktisk betydning for skolehelse",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D006"
+      ],
+      "provenance_ids": [
+        "P-K006"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-072",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "URL",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-073",
+      "route_id": "R-CHILD_SAFETY-K01",
+      "label": "Skolehelsetjenesten",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D001"
+      ],
+      "provenance_ids": [
+        "P-K001"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-073",
+      "route_id": "R-LEGAL_RIGHTS-K02",
+      "label": "Barn kan motta samtaler",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D006"
+      ],
+      "provenance_ids": [
+        "P-K006"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-073",
+      "route_id": "R-LEGAL_RIGHTS-K03",
+      "label": "Skolehelsetjenesten",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D007"
+      ],
+      "provenance_ids": [
+        "P-K007",
+        "P-K001"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-075",
+      "route_id": "R-CHILD_SAFETY-K02",
+      "label": "Familievernkontor",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D008"
+      ],
+      "provenance_ids": [
+        "P-K008"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-075",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "ikke hensiktsmessige",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D002"
+      ],
+      "provenance_ids": [
+        "P-K002"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-083",
+      "route_id": "R-EMPLOYMENT-K01",
+      "label": "URL",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D006"
+      ],
+      "provenance_ids": [
+        "P-K006"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "routing",
+      "case_id": "ROUT-089",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP (spesialisthelsetjenesten)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "safety",
+      "case_id": "SAF-009",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "NAV",
+      "label_class": "FRAGMENT",
+      "evidence_ids": [
+        "E-D001"
+      ],
+      "provenance_ids": [
+        "P-K001"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "safety",
+      "case_id": "SAF-012",
+      "route_id": "R-CHILD_SAFETY-K01",
+      "label": "Foreldreansvar bestemmer samtykke",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D002"
+      ],
+      "provenance_ids": [
+        "P-K002"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "safety",
+      "case_id": "SAF-012",
+      "route_id": "R-CHILD_SAFETY-K02",
+      "label": "Akutt fare",
+      "label_class": "META",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B4_SERVICE_IDENTITY_LOST",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP",
+        "LABEL_FRAGMENT_NOT_SERVICE_IDENTITY"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "discovery",
+      "case_id": "DIS-096",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "Kommunepsykolog/kommunalt lavterskeltilbud",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "discovery",
+      "case_id": "DIS-112",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP (spesialisthelsetjenesten)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D002"
+      ],
+      "provenance_ids": [
+        "P-K002"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "discovery",
+      "case_id": "DIS-112",
+      "route_id": "R-MENTAL_HEALTH-K02",
+      "label": "Kommunalt psykisk helse- og lavterskeltilbud",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D003"
+      ],
+      "provenance_ids": [
+        "P-K003"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    },
+    {
+      "family": "discovery",
+      "case_id": "DIS-119",
+      "route_id": "R-MENTAL_HEALTH-K01",
+      "label": "BUP (spesialisthelsetjenesten)",
+      "label_class": "SERVICE",
+      "evidence_ids": [
+        "E-D004"
+      ],
+      "provenance_ids": [
+        "P-K004"
+      ],
+      "primary_failure": "B5_ROUTE_OBJECT_COPIES_PROVENANCE_ONLY",
+      "secondary_flags": [
+        "B9_MEASUREMENT_EXTRACTION_GAP"
+      ],
+      "join_key_in_serialized_routes_list": false,
+      "note": "evidence_refs and provenance_refs attached to the same route object pre-serialization; join key (route_id) absent from labels list"
+    }
+  ],
+  "hard_invariants": {
+    "SOURCE_CHANGED": false,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false
+  }
+}

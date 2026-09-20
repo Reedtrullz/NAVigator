@@ -1,0 +1,36 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-EXTERNAL-BACKEND-SELECTION-V2_2-RESTART-2",
+  "artifact": "frozen_benchmark_freeze",
+  "data_class": "BURNED_MUNICIPALITIES_ONLY",
+  "frozen_at": "2026-09-09T09:47",
+  "frozen_before": "any live external call in this run",
+  "corpus_source": "evaluation/local-discovery-provider-arch-v2/benchmark-corpus.json",
+  "corpus_sha256": "40b0b9c3b0b915a71b36866b182c04ef00b4774569bfadea2414c61e9bee29f2",
+  "queries": 117,
+  "municipalities": 13,
+  "municipality_list": ["Raelingen", "Drammen", "Fredrikstad", "Askoy", "Bamble", "Birkenes", "Bjerkreim", "Alstahaug", "Etnedal", "Aure", "Balsfjord", "Alta", "Hasvik"],
+  "centrality_classes_present": [1, 2, 3, 4, 6],
+  "coverage": {
+    "simple_commune_web": 3,
+    "nested_service_pages": 7,
+    "spa_or_render_case": 1,
+    "helsestasjon_case": 2,
+    "negative_no_obvious_result": 2
+  },
+  "normalized_result_limit": 10,
+  "norway_context": {"country": "norway", "language": "no"},
+  "domain_modes_frozen": ["GENERAL", "OFFICIAL_DOMAIN_CONSTRAINED"],
+  "mode_policy": "both modes run per candidate; no post-hoc per-case switching; mode selection not used to tune queries",
+  "site_direct_baseline_source": "evaluation/local-discovery-provider-arch-v2/site-direct-results.json (frozen V2 artifact, same 117 queries, recall 1.0 gold-domain, 0.9846 official-domain precision)",
+  "site_direct_rerun_policy": "rerun only if V2 artifact cannot be trusted as same-corpus baseline; otherwise reused byte-frozen",
+  "no_query_tuning": "queries used verbatim from frozen corpus; no rewriting, no provider-specific variants",
+  "gates_preregistered": {
+    "query_execution_rate_min": 0.95,
+    "relevant_target_recall_min": 0.90,
+    "bot_block_rate_max": 0.0,
+    "false_failure_no_results_max": 0,
+    "structured_contract": "PASS required",
+    "secret_handling": "PASS required"
+  },
+  "selection_priority_frozen": ["relevant_target_recall", "query_execution_reliability", "official_domain_precision", "incremental_recovery_over_site_direct", "operational_simplicity", "latency_cost_secondary"]
+}

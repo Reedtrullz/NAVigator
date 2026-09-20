@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "semantic-residual-packet-v1",
+  "title": "V1.6C.1 Semantic Residual Packet v1",
+  "type": "object",
+  "required": ["packet_version", "dimension", "source_text", "criterion", "clause_spans", "a3", "deterministic_evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "packet_version": {"const": "semantic-residual-packet-v1"},
+    "dimension": {"enum": ["critical_condition", "forbidden_claim", "route_correctness", "required_uncertainty"]},
+    "source_text": {"type": "string", "minLength": 1},
+    "criterion": {"type": "string", "minLength": 1},
+    "case_context": {"type": "string"},
+    "clause_spans": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/span"}
+    },
+    "route_candidates": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "quote_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "negation_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "retraction_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "hedge_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "assertion_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "conditional_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "attribution_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "vague_spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "a3": {
+      "type": "object",
+      "description": "Frozen A3 classify() output, embedded verbatim (route_candidates inventory flag stripped upstream).",
+      "required": ["route_commitment", "uncertainty_behavior"],
+      "additionalProperties": true,
+      "properties": {
+        "route_commitment": {"type": "object"},
+        "uncertainty_behavior": {"type": "object"},
+        "assertion_scope": {"type": "object"}
+      }
+    },
+    "deterministic_evidence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "description": "A3 evidence_span texts that exist verbatim in source_text."
+    }
+  },
+  "$defs": {
+    "span": {
+      "type": "object",
+      "required": ["start", "end", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1},
+        "text": {"type": "string", "minLength": 1},
+        "clause_index": {"type": "integer", "minimum": 0},
+        "provenance": {"type": "string", "pattern": "^a3_[a-z_]+$"}
+      }
+    }
+  }
+}

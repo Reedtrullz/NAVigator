@@ -1,0 +1,37 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-EXTERNAL-BACKEND-SELECTION-V2_2-RESTART-2",
+  "task_family": "local-discovery-provider",
+  "authoritative_design": "evaluation/local-discovery-external-backend-v2-2/backend-selection-contract-restart.md",
+  "prior_status": "BACKEND_SELECTION_BLOCKED_BY_CREDENTIALS (restart-1 stopped correctly at Gate 0)",
+  "status": "CLOSED_TERMINAL",
+  "terminal_status": "NO_EXTERNAL_BACKEND_MEETS_V2_2_GATES",
+  "status_history": [
+    {"status": "CLOSED_TERMINAL", "at": "2026-09-09T09:29", "value": "BACKEND_SELECTION_BLOCKED_BY_CREDENTIALS", "reason": "both credentials missing at Gate 0"},
+    {"status": "ACTIVE", "at": "2026-09-09T09:47", "reason": "user placed authorized TAVILY_API_KEY in .env.local (mode 0600); Gate 0 green; contract resumed per user instruction"},
+    {"status": "CLOSED_TERMINAL", "at": "2026-09-09T10:45", "value": "NO_EXTERNAL_BACKEND_MEETS_V2_2_GATES", "reason": "Tavily GENERAL-mode preregistered gates failed: execution 87.18% < 95%, recall 80.34% < 90%; eligible_backends empty; no selection, no V2.2 integration, no candidate freeze (deliberate non-fabrication)"}
+  ],
+  "frozen_at": "2026-09-09",
+  "gate0_rule_applied": "single-credential rule: at least one testable external candidate required to proceed; missing candidates marked NOT_TESTABLE_NO_AUTHORIZED_CREDENTIAL",
+  "candidates": {
+    "brave_search_api": "NOT_TESTABLE_NO_AUTHORIZED_CREDENTIAL",
+    "tavily_search_api": "TESTABLE_CREDENTIAL_AVAILABLE_ENV_LOCAL"
+  },
+  "credential_channel": ".env.local (project-local ignored secret config; mode 0600; value never printed/logged)",
+  "stop_reason": "NO_EXTERNAL_BACKEND_MEETS_V2_2_GATES",
+  "accounts_created": 0,
+  "keys_generated": 0,
+  "fresh_municipalities_used": 0,
+  "historical_files_modified": 0,
+  "subagents_used": 0,
+  "gpt_5_5_allowed": false,
+  "gates": {
+    "gate0_integrity": "PASS",
+    "gate0_single_credential_rule": "PASS_TAVILY_TESTABLE",
+    "gate0_stop_applied": false,
+    "official_benchmark_executed": true,
+    "backend_eligibility": "FAIL_TAVILY_EXECUTION_AND_RECALL",
+    "final_selection": "NONE_NO_ELIGIBLE_BACKEND",
+    "v2_2_integration": "NOT_RUN_NO_ELIGIBLE_BACKEND",
+    "candidate_freeze": "NOT_RUN_NO_ELIGIBLE_BACKEND"
+  }
+}

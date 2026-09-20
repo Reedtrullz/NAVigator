@@ -1,0 +1,50 @@
+{
+  "artifact": "residual-leakage-audit",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-2",
+  "base_audit_sha256": "02e789d03c43e8cc92fd714e1025ba7fb704f5fff4ac2476f4aabb6a03a2b80f",
+  "residual_ids": [
+    "PKT-ESC-DIS-109",
+    "PKT-ESC-ROUT-026",
+    "PKT-ESC-ROUT-066-F01",
+    "PKT-ESC-SAF-012"
+  ],
+  "per_packet": [
+    {
+      "packet_id": "PKT-ESC-DIS-109",
+      "criterion_id": "DIS-109::critical_condition",
+      "expected_verdict_hit": false,
+      "prior_meta_hits": {}
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-026",
+      "criterion_id": "ROUT-026::forbidden:01",
+      "expected_verdict_hit": false,
+      "prior_meta_hits": {}
+    },
+    {
+      "packet_id": "PKT-ESC-ROUT-066-F01",
+      "criterion_id": "ROUT-066::forbidden:01",
+      "expected_verdict_hit": false,
+      "prior_meta_hits": {}
+    },
+    {
+      "packet_id": "PKT-ESC-SAF-012",
+      "criterion_id": "SAF-012::forbidden:01",
+      "expected_verdict_hit": false,
+      "prior_meta_hits": {}
+    }
+  ],
+  "hard_flags": {
+    "EXPECTED_VERDICT_VISIBLE": 0,
+    "PRIOR_WAVE1_RESULT_VISIBLE": 0,
+    "PRIOR_BASELINE_RESULT_VISIBLE": 0,
+    "PRIOR_MODEL_RESULT_VISIBLE": 0,
+    "EXPECTED_REPAIR_EFFECT_VISIBLE": 0
+  },
+  "hard_flags_pass": true,
+  "all_residual_clean": true,
+  "notes": [
+    "mechanical filter of semantic-review-leakage-audit per_packet to residual set",
+    "residual packets entering Sol adjudication were leakage-clean before adjudication"
+  ]
+}

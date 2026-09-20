@@ -1,0 +1,32 @@
+{
+  "artifact": "structural-replay-results",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-3-V1",
+  "created_utc": "2026-09-16T18:55:34Z",
+  "replay_contract": "one full 120-case gold-blind structural replay per frozen candidate (spec section 29); max 2 candidate attempts",
+  "attempts": [
+    {
+      "candidate_version": "v1",
+      "runs_dir": "runs/structural-120-replay-v1/",
+      "official": true,
+      "predictions": 120,
+      "execution_status_counts": {"SUCCESS": 120},
+      "execution_failed_case_ids": [],
+      "crashes": 0,
+      "input_hard_failures": 0,
+      "schema_valid_outputs": 120,
+      "determinism": "independent full rerun into runs/determinism-check-v1/; 120/120 prediction files byte-identical (SHA-256)",
+      "gates_overall": "PASS",
+      "disposition": "official Wave-3 structural replay for the frozen v1 candidate; no second candidate attempt needed"
+    }
+  ],
+  "gate_policy": "v1 is the official and only Wave-3 replay; candidate_attempts_max=2 with 1 used, standing",
+  "gold_exposed_to_product": false,
+  "measurement_v3_scoring_run": false,
+  "expected_verdicts_used": false,
+  "historical_phase3_predictions_mutated": false,
+  "predictions_manifest_sha256": {
+    "routing": "4cbaa0da5b5cd0ae2c8dc81c67d5517048c8cc6a1ac5c29136e35b0bf10832bc",
+    "safety": "b8b4c2a7a9c0bed84e6f6ffa4ba5e52e0ece024e9fde3acd0a5cf7118c15daa3",
+    "discovery_adversarial": "7ea0c4a48f5880bf6d5749c4c3708d6044b58ca0be3e87e3259560507a9830fa"
+  }
+}

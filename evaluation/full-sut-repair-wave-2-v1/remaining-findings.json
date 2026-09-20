@@ -1,0 +1,52 @@
+{
+  "artifact": "wave-2-remaining-findings",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-2-V1",
+  "status_basis": "Structural replay + engineering judgment only. No Measurement V3 run was authorized in this task; per-criterion improvement counts are EXPECTATIONS, not measurements.",
+  "expected_improvements_not_measured": [
+    {
+      "family": "PW1-R1 route-target selection (108 criteria)",
+      "expected_effect": "RC-07/RC-08 restore CURRENT-reference retrieval and service-concept route targets; route criteria expected to improve substantially. Not verified: semantic acceptability is a measurement result.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "family": "PW1-R4 retrieval contamination (6 forbidden + 75 claim pollution + 104 polluted answers)",
+      "expected_effect": "RC-08 domain scoping + RC-07 CURRENT-first slot ordering remove cross-track and snapshot leakage from all three output layers.",
+      "confidence": "HIGH"
+    },
+    {
+      "family": "PW1-R5 evidence attachment (38 criteria)",
+      "expected_effect": "RC-10 populates route_evidence/claim_evidence with resolved provenance; the 15 NO_PROVENANCE_ENTRIES cases additionally depend on RC-08 restoring retrievable records.",
+      "confidence": "HIGH for attachment mechanism; MEDIUM for the 15 upstream cases"
+    },
+    {
+      "family": "PW1-R3 safety vocabulary (19 criteria)",
+      "expected_effect": "RC-11 emits the fine 12-class at top level; exact-category matches expected to improve without triage-direction change.",
+      "confidence": "HIGH for mechanism; category-string acceptability is a measurement result"
+    },
+    {
+      "family": "PW1-R2 premature absence (69 criteria)",
+      "expected_effect": "Largely downstream of route/retrieval emptiness; RC-07/RC-08 may convert many without derivation-side changes. RC-09 remains deferred.",
+      "confidence": "LOW-MEDIUM"
+    },
+    {
+      "family": "PW1-R7 uncertainty wording (36 PARTIAL)",
+      "expected_effect": "Downstream of route absence; may improve via RC-07. RC-12 wording repair remains deferred per analysis.",
+      "confidence": "LOW"
+    }
+  ],
+  "known_remaining_defects": [
+    "SAF-008: the only case with wrong collapsed urgency LEVEL in Wave 1; RC-11 changes emission vocabulary, not triage logic, so this is NOT expected to change.",
+    "ROUT-042 forbidden residual: LABEL_SENSITIVITY_KNOWN per post-Wave-1 analysis; excluded from repair sizing.",
+    "18 UNRESOLVED review-lane rows (12 LLM_REVIEWED + 6 NO_CRITICAL_ERROR state semantics): measurement-lane state, not an observed product mechanism family.",
+    "Renderer dedup (RC-06 presentation noise) deferred; upstream scoping should reduce duplication volume, rendering itself untouched.",
+    "Grounded route-target extraction remains lexical; names without digits that are not service concepts could still slip through. Documented ceiling of RC-07 R2 guard.",
+    "Discovery/local route path unchanged; only national path was in scope."
+  ],
+  "deferred_candidates": [
+    "RC-09 premature-absence guard (re-derive after Wave-2 re-measurement)",
+    "RC-12 uncertainty wording repair (re-derive after Wave-2 re-measurement)",
+    "RC-06 renderer dedup"
+  ],
+  "measurement_v3_run_in_this_task": false,
+  "next_step": "Owner-authorized Measurement V3 re-measurement of the frozen Wave-2 candidate."
+}

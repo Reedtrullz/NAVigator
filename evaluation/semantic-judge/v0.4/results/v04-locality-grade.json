@@ -1,0 +1,101 @@
+{
+ "bench": "locality",
+ "n": 20,
+ "accuracy": 0.65,
+ "confusion": {
+  "CONTRADICTED->CONTRADICTED": 1,
+  "INSUFFICIENT_EVIDENCE->CONTRADICTED": 3,
+  "INSUFFICIENT_EVIDENCE->INSUFFICIENT_EVIDENCE": 9,
+  "SUPPORTED->INSUFFICIENT_EVIDENCE": 4,
+  "SUPPORTED->SUPPORTED": 3
+ },
+ "per_dimension": {
+  "same locality": {
+   "n": 2,
+   "ok": 2
+  },
+  "local to national": {
+   "n": 2,
+   "ok": 2
+  },
+  "other locality": {
+   "n": 1,
+   "ok": 1
+  },
+  "price vs free same locality": {
+   "n": 1,
+   "ok": 1
+  },
+  "universal coverage": {
+   "n": 3,
+   "ok": 3
+  },
+  "same locality address": {
+   "n": 1,
+   "ok": 0
+  },
+  "other locality address": {
+   "n": 1,
+   "ok": 1
+  },
+  "national rule local instance": {
+   "n": 1,
+   "ok": 0
+  },
+  "local variation": {
+   "n": 1,
+   "ok": 0
+  },
+  "national option": {
+   "n": 1,
+   "ok": 0
+  },
+  "option vs mandate": {
+   "n": 1,
+   "ok": 1
+  },
+  "same locality deadline": {
+   "n": 1,
+   "ok": 0
+  },
+  "comparison": {
+   "n": 1,
+   "ok": 1
+  },
+  "local instance": {
+   "n": 1,
+   "ok": 1
+  },
+  "uniformity": {
+   "n": 1,
+   "ok": 0
+  },
+  "mandate": {
+   "n": 1,
+   "ok": 0
+  }
+ },
+ "high_confidence_errors": [
+  {
+   "id": "LOC-10",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "relation": "EXPLICIT_NEGATION"
+  },
+  {
+   "id": "LOC-18",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.98,
+   "relation": "EXPLICIT_NEGATION"
+  },
+  {
+   "id": "LOC-20",
+   "expected": "INSUFFICIENT_EVIDENCE",
+   "got": "CONTRADICTED",
+   "confidence": 0.99,
+   "relation": "EXPLICIT_DISCRETION_CONFLICT"
+  }
+ ]
+}

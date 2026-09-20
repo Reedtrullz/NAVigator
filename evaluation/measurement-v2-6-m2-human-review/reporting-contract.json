@@ -1,0 +1,36 @@
+{
+  "artifact": "reporting-contract-v2-6",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V2_6-M2-HUMAN-REVIEW-LANE",
+  "created_utc": "2026-09-13T10:58:11Z",
+  "required_report_fields": [
+    "AUTOMATED_JUDGE_ACCURACY",
+    "AUTOMATED_JUDGE_COVERAGE",
+    "HUMAN_REVIEWED_CRITERIA",
+    "HUMAN_REVIEW_PENDING",
+    "HUMAN_REVIEW_DISAGREEMENTS",
+    "FINAL_COMBINED_MEASUREMENT_COMPLETENESS"
+  ],
+  "score_bucket_separation": {
+    "automatically_scored": "scored end-to-end by deterministic scorer and/or validated automated judge lane without human input",
+    "human_reviewed": "M2 critical-condition criteria adjudicated via the human review lane",
+    "unresolved": "criteria neither automated nor human-resolved at report time",
+    "execution_failed": "criteria lost to runtime/transport failure"
+  },
+  "forbidden": [
+    "Reporting automated accuracy that includes human-reviewed M2 cases.",
+    "Reporting automated accuracy = 100% when M2 cases were decided by humans.",
+    "Mixing the six required fields into a single blended accuracy.",
+    "Marketing HUMAN_REVIEW_M2 results as model safety accuracy."
+  ],
+  "m2_reporting_label": "HUMAN_REVIEW_M2",
+  "coverage_metrics": {
+    "AUTOMATED_SCORING_COVERAGE": "share of criteria scored authoritatively by automation, per dimension; M2 semantic coverage is 0% authoritative automated while this architecture holds",
+    "HUMAN_REVIEW_M2_COVERAGE": "share of M2 critical-condition criteria routed to and resolved by the human lane"
+  },
+  "cost_fields": [
+    "human_review_count",
+    "adjudication_count",
+    "automated_call_count_avoided"
+  ],
+  "cost_note": "No human-time estimates without data."
+}

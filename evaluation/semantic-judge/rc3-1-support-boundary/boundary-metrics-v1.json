@@ -1,0 +1,26 @@
+{
+  "version": "boundary-metrics-v1",
+  "frozen": true,
+  "frozen_at": "2026-09-05",
+  "metrics": {
+    "FALSE_AUTO_SUPPORT_BOUNDARY": {
+      "definition": "candidate proofs that would authorize AUTO_SUPPORTED while at least one relevant boundary dimension is MISMATCH or UNKNOWN",
+      "target": 0
+    },
+    "support_boundary_precision": {
+      "definition": "semantically sound AUTO_SUPPORTED-eligible proofs / all AUTO_SUPPORTED-eligible proofs",
+      "target": ">=0.99",
+      "critical_subset_target": 1.0
+    },
+    "entailed_support_recall": {
+      "definition": "genuinely entailed support propositions correctly marked AUTO_SUPPORTED-eligible / all genuinely entailed support propositions in the dev set",
+      "target": ">=0.85"
+    },
+    "negation_boundary_accuracy": { "target": ">=0.95" },
+    "modality_boundary_accuracy": { "target": ">=0.95" },
+    "condition_exception_boundary_accuracy": { "target": ">=0.95" },
+    "actor_scope_boundary_accuracy": { "target": ">=0.95" }
+  },
+  "overall_boundary_rule": "BOUNDARY_COMPATIBLE iff all relevant dimensions are MATCH, LICENSED_ENTAILMENT, or NOT_APPLICABLE; any MISMATCH or UNKNOWN blocks AUTO_SUPPORTED (fail closed).",
+  "allowed_dimension_values": ["MATCH", "LICENSED_ENTAILMENT", "MISMATCH", "UNKNOWN", "NOT_APPLICABLE"]
+}

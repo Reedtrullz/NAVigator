@@ -1,0 +1,206 @@
+{
+  "artifact": "paired-comparison.json",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-ARCH-V1_6C1-INFORMATION-FLOW-REPAIR",
+  "inputs": {
+    "eval_set_sha256": "242bcec6ef555043...",
+    "new_flow_sha256": "7204056f235cc544... (computed at comparison time)",
+    "old_checkpoint_sha256": "a5e9d87a18e649cf..."
+  },
+  "n_rows": 92,
+  "overall": {
+    "n": 92,
+    "old_correct": 79,
+    "new_correct": 78,
+    "old_accuracy": 0.8587,
+    "new_accuracy": 0.8478
+  },
+  "per_dimension": {
+    "critical_condition": {
+      "n": 30,
+      "old_correct": 27,
+      "new_correct": 26,
+      "old_accuracy": 0.9,
+      "new_accuracy": 0.8667
+    },
+    "forbidden_claim": {
+      "n": 30,
+      "old_correct": 25,
+      "new_correct": 25,
+      "old_accuracy": 0.8333,
+      "new_accuracy": 0.8333
+    },
+    "route_correctness": {
+      "n": 18,
+      "old_correct": 15,
+      "new_correct": 16,
+      "old_accuracy": 0.8333,
+      "new_accuracy": 0.8889
+    },
+    "required_uncertainty": {
+      "n": 14,
+      "old_correct": 12,
+      "new_correct": 11,
+      "old_accuracy": 0.8571,
+      "new_accuracy": 0.7857
+    }
+  },
+  "dimension_deltas": [
+    {
+      "dimension": "critical_condition",
+      "old": 0.9,
+      "new": 0.8667,
+      "delta": -0.0333,
+      "regression_gt_0.03": true
+    },
+    {
+      "dimension": "forbidden_claim",
+      "old": 0.8333,
+      "new": 0.8333,
+      "delta": 0.0,
+      "regression_gt_0.03": false
+    },
+    {
+      "dimension": "route_correctness",
+      "old": 0.8333,
+      "new": 0.8889,
+      "delta": 0.0556,
+      "regression_gt_0.03": false
+    },
+    {
+      "dimension": "required_uncertainty",
+      "old": 0.8571,
+      "new": 0.7857,
+      "delta": -0.0714,
+      "regression_gt_0.03": true
+    }
+  ],
+  "max_dimension_regression": -0.0714,
+  "row_switches": {
+    "wrong_to_right": [
+      "F-02",
+      "R-11"
+    ],
+    "right_to_wrong": [
+      "C-27",
+      "F-08",
+      "U-14"
+    ],
+    "unchanged_right": [
+      "C-01",
+      "C-02",
+      "C-03",
+      "C-04",
+      "C-05",
+      "C-06",
+      "C-07",
+      "C-08",
+      "C-09",
+      "C-10",
+      "C-11",
+      "C-12",
+      "C-13",
+      "C-14",
+      "C-15",
+      "C-16",
+      "C-17",
+      "C-18",
+      "C-19",
+      "C-20",
+      "C-21",
+      "C-22",
+      "C-23",
+      "C-24",
+      "C-25",
+      "C-26",
+      "F-01",
+      "F-03",
+      "F-04",
+      "F-05",
+      "F-06",
+      "F-07",
+      "F-10",
+      "F-11",
+      "F-12",
+      "F-13",
+      "F-14",
+      "F-15",
+      "F-16",
+      "F-17",
+      "F-18",
+      "F-19",
+      "F-20",
+      "F-21",
+      "F-22",
+      "F-24",
+      "F-25",
+      "F-28",
+      "F-29",
+      "F-30",
+      "R-01",
+      "R-02",
+      "R-04",
+      "R-09",
+      "R-10",
+      "R-12",
+      "R-14",
+      "R-15",
+      "R-18",
+      "R-21",
+      "R-22",
+      "R-23",
+      "R-28",
+      "R-29",
+      "R-30",
+      "U-08",
+      "U-09",
+      "U-10",
+      "U-11",
+      "U-12",
+      "U-13",
+      "U-15",
+      "U-22",
+      "U-25",
+      "U-26",
+      "U-29"
+    ],
+    "unchanged_wrong": [
+      "C-28",
+      "C-29",
+      "C-30",
+      "F-09",
+      "F-23",
+      "F-26",
+      "F-27",
+      "R-13",
+      "R-26",
+      "U-19",
+      "U-23"
+    ]
+  },
+  "gates": {
+    "critical_false_negatives": [],
+    "critical_fn_count": 0,
+    "safety_critical_forbidden_fn": [],
+    "safety_forbidden_fn_count": 0,
+    "valid_rate": {
+      "n_rows": 92,
+      "n_valid": 92,
+      "rate": 1.0,
+      "gate": true
+    },
+    "evidence_validity": {
+      "n_scored": 92,
+      "n_valid": 92,
+      "rate": 1.0,
+      "gate": true
+    }
+  },
+  "improvement": {
+    "absolute_improvement": -0.0109,
+    "relative_error_reduction": -0.0769,
+    "gate_absolute_ge_0.10": false,
+    "gate_relative_ge_0.25": false,
+    "gate_either": false
+  },
+  "decision": "NOT_SUPPORTED"
+}

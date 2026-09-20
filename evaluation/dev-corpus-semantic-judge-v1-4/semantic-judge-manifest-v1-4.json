@@ -1,0 +1,63 @@
+{
+  "artifact": "V1.4 SEMANTIC JUDGE MANIFEST",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_4-BOUNDARY-AGREEMENT-REPAIR",
+  "terminal_status": "DEV_CORPUS_SEMANTIC_JUDGE_V1_4_NOT_READY",
+  "generated_utc": "2026-09-11T05:45:00Z",
+  "judge": {
+    "model": "command-code/xiaomi/mimo-v2.5",
+    "provider": "commandcode-auth local proxy",
+    "prompt_sha256": "b17596419cfa30d16ccec8e98af40595e63411661d65b8273cada83013dbc9a3",
+    "judge_core_sha256": "ad7f0fda0557fc74b7e337359635fd6d5f3bdda803251bd9dd49cb801be9bdc2",
+    "temperature": 0,
+    "max_tokens": 32768
+  },
+  "hashes": {
+    "TASK-LOCK.json": "1a58fa91442a1870e9c8ea01ed72588fbd2c0941d90a662dcf00652561cc823f",
+    "semantic-judge-contract-v1-4.json": "f545b54b3295323fde8131d048778c13354b711344cb2076eef217551952e141",
+    "semantic-judge-result-v1-4.schema.json": "b85acbed5af9227532a99dcc6d792815eb9fbfa7875d539d39435b525dd5180f",
+    "model-config-v1-4.json": "563f7a77c91b439e6f93e41290613b95cae3992ce904a2ddfce7056052c31389",
+    "boundary-calibration-a.json": "a82e0c17e7de19482d2e6431fac45315c82f3820fcf31e3dc335be791e2c6ba9",
+    "calibration-a-agreement.json": "1ae02ccb255af505e3bb7c804fec0f3ac5d7f11fd40da0808db08bf7304731dc",
+    "official-validation-fixtures.json": "9e60aca6a38d84ff48aa5985f7f0b258cb7934aedf9701de8d4e415582cbdf1c",
+    "human-label-pass1.json": "9ca93f41e5b2849cf3279c52b5a32ad5db5276d5cd58583bf6a6b8d6f41dfcf8",
+    "human-label-pass2.json": "af9d4dd444bc3157a1f82a2a7528a78621f541f677fe098e97f64d831e5b3c33",
+    "annotation-agreement.json": "e0dd70d2c9d97d1c2becc171284c885d6c732346ee38423132468f610ae0a682",
+    "official-validation-gold.json": "c859a851e84957a5a30a296315080ef88ba4f8e39c60a8c5e83669760f7194dc",
+    "official-validation-results.json": "e03381fc76a68f69c3b593f6302d28cfd0b35edfc0030e8479767d0ff4699d11",
+    "transport-report.json": "9b7b3e9df217acd3c6c768d407bb0e0b5dfdfe63d8538a4f1769452cfb7ab951",
+    "token-usage-report.json": "dc7a2a39ca1d37fc7fafcf67aace69f4d93a82465d2c8c98547c96c920514d46",
+    "build_official_fixtures_v1_4.py": "f81f8efda5d304e6d7d2389a1e283605af0e35545096cf743c6e9cdbe1beac40",
+    "freeze_gold_v1_4.py": "0848dc4e2237b6b8a2739b74b36c1e4d3f5c209fe2b6012cf725f5d25df9f6d9",
+    "run_official_validation_v1_4.py": "57e81e9bbbaf57935972194faba739fea204456860699b0b34a7a0a01b38a72d",
+    "check_official_agreement.py": "9fe009f3e3d822ff55aabd7ccfb9497313d546cec9da9eae0a26b9e065f14621"
+  },
+  "human_stage": {
+    "boundary_calibration_a": {"n": 40, "all_agreements": 1.0, "pass": true},
+    "clarification_pass_used": false,
+    "calibration_b": "NOT_REQUIRED (A passed at 1.0; documented in final-report)",
+    "official_dual_pass": {"n": 100, "all_semantic_agreements": 1.0, "contract_violations": 0, "gold_frozen": true}
+  },
+  "official_model_validation": {
+    "run": "one-shot 2026-09-10T21:59:19Z",
+    "n": 100,
+    "status_ok": 98,
+    "schema_failures": 2,
+    "transport_failures": 0,
+    "finish_reason_length": 0,
+    "overall_verdict_accuracy": 0.8265,
+    "critical": 0.8696, "critical_fn": 1,
+    "forbidden": 0.92, "safety_forbidden_fn": 0,
+    "route": 0.76, "uncertainty": 0.76,
+    "evidence_span_validity": 1.0,
+    "deterministic_overrides": 0,
+    "false_acceptable_route": 0,
+    "stability_stage": "NOT_RUN (preempted by model gate failure)",
+    "combined_scorer_freeze": "NOT_PERFORMED (gates failed)"
+  },
+  "burned_data": {
+    "V1_3M_SET_A": "BURNED_MODEL_CONTRACT_DEVELOPMENT_DATA",
+    "V1_4_MODEL_CALIBRATION_24": "BURNED_MODEL_DEVELOPMENT_DATA",
+    "V1_2_OFFICIAL_80": "BURNED (inherited)",
+    "V1_4_OFFICIAL_100_GOLD": "GOLD (frozen; reusable only as sealed reference for future tasks)"
+  }
+}

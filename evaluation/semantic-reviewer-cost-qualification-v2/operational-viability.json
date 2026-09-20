@@ -1,0 +1,72 @@
+{
+  "stage": "TRANSPORT_CALIBRATION_V2_ASSESSED",
+  "assessment_basis": "19-row frozen TRANSPORT partition per candidate, incl. bounded recovery per frozen retry policy",
+  "candidates": {
+    "R1-nemotron-3-super": {
+      "operationally_viable": false,
+      "reason": "NOT_TESTABLE_NO_ROUTE: route absent from proxy catalog; probe HTTP_400 both forms; no fallback authorized in spec"
+    },
+    "R2-laguna-s-2.1": {
+      "operationally_viable": "PROVISIONAL",
+      "transport": {
+        "rows": 19,
+        "ok": 10,
+        "invalid_model_reviews": 6,
+        "invalid_json": 0,
+        "transport_errors_after_recovery": 3,
+        "recovery": {
+          "retried_502": 8,
+          "recovered": 1,
+          "recaptured_invalid_json": 1
+        }
+      },
+      "note": "Intermittent provider capacity 502s; recovered majority on single retry. Proceeds to screening; chronic failure would be operational disqualifier per section 8."
+    },
+    "R3-ling-3.0-flash-sante": {
+      "operationally_viable": "PROVISIONAL",
+      "transport": {
+        "rows": 19,
+        "ok": 7,
+        "invalid_model_reviews": 12,
+        "invalid_json": 0,
+        "transport_errors": 0,
+        "recovery": {
+          "recaptured_invalid_json": 13,
+          "recovered": 13
+        }
+      },
+      "note": "Transport-sound. 12 semantic INVALID_MODEL_REVIEW rows are diagnostic only at this stage (transport calibration does not qualify semantically); screening decides."
+    },
+    "R4-gemma-4-26b-a4b-it": {
+      "operationally_viable": false,
+      "transport": {
+        "rows": 19,
+        "ok": 0,
+        "transport_errors": 19,
+        "http_429_events": 38
+      },
+      "reason": "Chronic 429 (100% of rows, both attempts): operational disqualifier per section 8"
+    },
+    "R5-inkling-small": {
+      "operationally_viable": false,
+      "transport": {
+        "rows": 19,
+        "ok": 0,
+        "transport_errors": 19,
+        "http_403_events": 19
+      },
+      "reason": "Hard 403 (access restriction) on every call: operational disqualifier"
+    }
+  },
+  "transport_fixes_applied": {
+    "json_mode_fallback_on_400_422": "inherited from V1 harness",
+    "fence_strip_output_parsing": "applied during recovery/recapture; allowed transport fix class (output parsing); no prompt or semantic change",
+    "502_single_retry": "per frozen retry policy (max 1 technical retry)",
+    "no_retry_402_403": "per frozen retry policy"
+  },
+  "screening_candidates": [
+    "R2-laguna-s-2.1",
+    "R3-ling-3.0-flash-sante"
+  ],
+  "raw_sample_preservation_note": "V1 harness stored raw[:300] which truncated fenced payloads; V2 recapture stored full raw. Screening harness will persist full raw to avoid truncation artifacts."
+}

@@ -1,0 +1,48 @@
+{
+  "deployment_allowed": false,
+  "fresh_product_holdout_allowed": false,
+  "measurement_v3_changes_allowed": false,
+  "phase1_changes_allowed": false,
+  "phase2_changes_allowed": false,
+  "product_llm_calls_allowed": false,
+  "scope": "answer_planning_rendering_and_end_to_end_sut_closure",
+  "semantic_scoring_allowed": false,
+  "status": "TERMINAL",
+  "sut_output_schema_changes_allowed": false,
+  "task_id": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-3",
+  "authorization": "EXPLICIT OWNER AUTHORIZATION - FULL SUT IMPLEMENTATION PHASE 3",
+  "source_baseline": "NAV-EXPLORE-FULL-SUT-IMPLEMENTATION-PHASE-2 (FULL_SUT_PHASE_2_READY)",
+  "phase2_task_lock": {
+    "path": "evaluation/full-sut-implementation-phase2/TASK-LOCK.json",
+    "status": "TERMINAL",
+    "terminal_status": "FULL_SUT_PHASE_2_READY",
+    "frozen": true
+  },
+  "terminal_statuses": [
+    "FULL_SUT_PHASE_3_READY",
+    "FULL_SUT_PHASE_3_NOT_READY",
+    "PHASE_3_OUTPUT_SCHEMA_GAP_REQUIRES_OWNER_DECISION",
+    "FULL_SUT_PHASE_3_INVALID"
+  ],
+  "terminal_status": "FULL_SUT_PHASE_3_READY",
+  "terminal_evidence": {
+    "final_report": "evaluation/full-sut-implementation-phase3/final-report.md",
+    "freeze_manifest": "evaluation/full-sut-implementation-phase3/phase3-freeze-manifest.json",
+    "gates": {
+      "unit": "134/134 OK",
+      "phase3_runner": "7/7 OK",
+      "phase1_regression": "15/15 OK",
+      "phase2_regression": "22/22 OK",
+      "integration": "15/15 OK, all hard gates PASS",
+      "structural_120": "120/120, 0 crashes, 0 gold leakage",
+      "determinism": "120/120 byte-identical",
+      "security": "PASS"
+    },
+    "measurement_scoring_run": false,
+    "fresh_product_holdout": false,
+    "deployment": false,
+    "closed_at": "2026-09-14",
+    "freeze_manifest_sha256": "485ecbe5d6957c4c8a34e37ac17986e1fe7a827aa6b7e819cb011924fcabfdce",
+    "freeze_manifest_files": 35
+  }
+}

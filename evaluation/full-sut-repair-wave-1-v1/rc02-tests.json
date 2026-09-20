@@ -1,0 +1,23 @@
+{
+  "artifact": "rc02-tests",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-1-V1",
+  "created_utc": "2026-09-16T02:00:00Z",
+  "rc": "RC-02 safety/triage granularity repair",
+  "test_files": [
+    "runtime/sut/test_safety_granularity.py"
+  ],
+  "test_count": 9,
+  "per_file_counts": {
+    "runtime/sut/test_safety_granularity.py": 9
+  },
+  "key_mechanisms": [
+    "12-class vocabulary preserved; collapsed priority (ACUTE_RISK_NOW/URGENT_NOT_ACUTE/NOT_ACUTE) carried in safety_priority",
+    "finalize() emits nested safety_class plus collapsed priority",
+    "acute invariant tests: acute class untouched; under-escalation canaries",
+    "triage-failure default stays fail-closed"
+  ],
+  "deterministic_authority_preserved": true,
+  "full_suite": {"passed": 167, "failed": 0},
+  "result": "PASS",
+  "full_suite_ref": "regression-results.json"
+}

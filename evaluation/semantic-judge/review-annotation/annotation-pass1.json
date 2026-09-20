@@ -1,0 +1,651 @@
+{
+ "schema": "review-annotation-pass1-v1",
+ "task_id": "SEMANTIC-JUDGE-REVIEW-ANNOTATION-TIER2-ASSESSMENT",
+ "pass": 1,
+ "annotator": "codex-first-hand (contract-driven, span-strict, engine probes as evidence)",
+ "n": 21,
+ "cases": [
+  {
+   "case_id": "CAL011",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "S1 asserts lavterskeltilbud + 'ingen henvisning' on the same subject and axis; claim is paraphrase-level restatement."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "No Tier-1 proof constructible by frozen engine: 'ingen henvisning' (source form) not detected as requires_referral-negative; claim-side 'uten henvisning' is detected. Lexicon coverage gap, not doctrine block."
+   },
+   "product_action": "AUTO_SUPPORTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "TIER1_OPERATOR",
+   "operator_id": null,
+   "required_premises": [
+    "subject: Trondheimshjelpa (shared)",
+    "requires_referral polarity -1 on both sides"
+   ],
+   "available_premises": [
+    "subject equal",
+    "source asserts no-referral in text form"
+   ],
+   "missing_premises": [
+    "concept detection of 'ingen henvisning' source form"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "concept-lexicon gap: 'ingen henvisning' undetected; DIRECT_ASSERTION would fire SUPPORTED with coverage"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; single synonym chain, no hidden premise"
+  },
+  {
+   "case_id": "CAL014",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "S1: 'henvisning er valgfri' + 'Ingen henvisning, ingen kostnad' directly assert both claim atoms; 'ingen kostnad' idiomatically equals gratis."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Frozen engine reads 'ingen kostnad' as free_of_charge polarity -1 (double-negation idiom misread) and 'ingen henvisning' as pol 0. Both claim atoms detected claim-side; source-side detection broken."
+   },
+   "product_action": "AUTO_SUPPORTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "TIER1_OPERATOR",
+   "operator_id": null,
+   "required_premises": [
+    "subject: familievernkontoret (shared)",
+    "free_of_charge pol +1 both sides",
+    "requires_referral pol -1 both sides"
+   ],
+   "available_premises": [
+    "subject equal",
+    "both atoms asserted in plain text"
+   ],
+   "missing_premises": [
+    "'ingen kostnad' polarity idiom",
+    "'ingen henvisning' detection"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "double-negation idiom 'ingen kostnad' mispolarity (-1 instead of +1); 'ingen henvisning' undetected"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; two bounded synonym atoms, no hidden premise"
+  },
+  {
+   "case_id": "CAL015",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "S1 explicitly states barnets uttalelse skal gis stor vekt for barn 12-16 ar; claim restates the marked rule with condition intact."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "RULE_PLUS_CONDITION (Tier-2, classified SAFE_WITH_PRECONDITIONS) not implemented; rule + condition co-present in one marked span would satisfy strict preconditions."
+   },
+   "product_action": "AUTO_SUPPORTED",
+   "review_class": "POTENTIALLY_ELIMINABLE_REVIEW",
+   "required_inference": "TIER2_OPERATOR",
+   "operator_id": "RULE_PLUS_CONDITION",
+   "required_premises": [
+    "rule span: uttalelse gis stor vekt",
+    "condition span: for barn 12-16 ar",
+    "claim condition matches premise condition"
+   ],
+   "available_premises": [
+    "rule and condition co-present, explicitly marked"
+   ],
+   "missing_premises": [
+    "Tier-2 operator implementation"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "low-medium; condition-dropped failure mode guarded by requiring condition match on both sides"
+  },
+  {
+   "case_id": "CAL020",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "S1 marks the boundary ('gjelder bare nye saker fra 1.7.2026') and the grandfather clause; a s-occasion 15.8.2026 falls after the cutoff."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Requires after-cutoff boundary classification. TEMPORAL_CONFLICT (Tier-1) only detects dated-anchor conflicts, not after-cutoff support; no classified Tier-2 operator covers temporal boundary support."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "NO_SAFE_AUTOMATION_PATH",
+   "operator_id": null,
+   "required_premises": [
+    "marked cutoff anchor",
+    "occasion date after cutoff",
+    "boundary direction (from-date)"
+   ],
+   "available_premises": [
+    "all three present in evidence"
+   ],
+   "missing_premises": [
+    "classified operator able to derive after-cutoff support"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": {
+    "need": "TEMPORAL_BOUNDARY",
+    "note": "after-cutoff support direction; not among the 9 SAFE_WITH_PRECONDITIONS; do not design (spec 11)"
+   },
+   "risk_note": "medium if attempted naively: date-of-occasion vs validity-period axis confusion (N-R1/MP-015A axis doctrine)"
+  },
+  {
+   "case_id": "CAL025",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "justification": "S1: 'Aktivitetsplikt gjelder bare etter tidligere regelverk' directly negates the claim's continuation atom for nye sokere. Compound claim (viderefort + 50 prosent): the contradicted conjunct falsifies the conjunction; the 50 prosent atom is unaddressed."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Contradiction via SAME_PREDICATE_OPPOSITE_POLARITY blocked: compound claim has an unaddressed atom (50 prosent), and full-coverage doctrine requires all claim atoms addressed before an auto CONTRADICTED; also rule-level polarity, not surface tokens."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "REVIEWER_SEMANTIC_REASONING",
+   "operator_id": null,
+   "required_premises": [
+    "shared predicate: aktivitetsplikt/gjelder",
+    "opposite polarity on nye sokere scope",
+    "all compound atoms addressed"
+   ],
+   "available_premises": [
+    "predicate and polarity contrast present"
+   ],
+   "missing_premises": [
+    "50-prosent atom unaddressed in evidence"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "high if SPOP fired without full coverage: would re-introduce N-A4-style partial-scope overreach"
+  },
+  {
+   "case_id": "CAL031",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "HIGH",
+    "justification": "N-R1 doctrine case: claim actor helsesykepleier is not established as member of skolehelsetjenesten in evidence, and source hedge 'normalt ikke' marks non-universal scope. Claim cannot be established."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "ACTOR_MEMBERSHIP precondition (shared actor term) unmet; hedge in source blocks any contradiction; identical shape to retracted N-R1."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "REVIEWER_SEMANTIC_REASONING",
+   "operator_id": null,
+   "required_premises": [
+    "actor membership: helsesykepleier in skolehelsetjenesten",
+    "unhedged diagnosis statement"
+   ],
+   "available_premises": [
+    "hedge 'normalt' present"
+   ],
+   "missing_premises": [
+    "actor membership premise",
+    "unhedged premise"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "critical if contradicted: this exact inference re-introduces the retracted N-R1 critical error"
+  },
+  {
+   "case_id": "CAL034",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "justification": "Claim: no benefit above 4 G. S1: no benefit above 6 G. Threshold values conflict on the same axis; in the 4-6 G range the claim is false."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "NUMERIC_CONFLICT (Tier-1) blocked twice: '4 G'/'6 G' unit not parsed (G-unit coverage missing) and claim framing regex does not match 'ingen ... over 4 G' threshold framing."
+   },
+   "product_action": "AUTO_CONTRADICTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "TIER1_OPERATOR",
+   "operator_id": null,
+   "required_premises": [
+    "same-unit threshold bounds (G)",
+    "values differ (4 vs 6)",
+    "threshold framing recognized"
+   ],
+   "available_premises": [
+    "both thresholds stated in plain text"
+   ],
+   "missing_premises": [
+    "G-unit parsing",
+    "negative-threshold framing pattern"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "G-unit not in numeric lexer; 'ingen stonad over X G' framing not matched by _FRAMING_RE"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; bounded numeric conflict, same axis and unit"
+  },
+  {
+   "case_id": "CAL044",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "justification": "Compound claim: atom A (kommunen KAN yte okonomisk hjelp i saerlige tilfeller etter par 19 selv om par 18 vilkar mangler) is supported verbatim; atom B ('dette er en lovfestet individrettighet') is contradicted by 'KAN' + 'skjonnsbestemt' - discretion is the opposite of an individual right. A and false B -> conjunction false."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Atom B's contradiction requires discretionary-vs-right semantic reasoning; no shared predicate for SAME_PREDICATE_OPPOSITE_POLARITY; no classified operator covers it."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "REVIEWER_SEMANTIC_REASONING",
+   "operator_id": null,
+   "required_premises": [
+    "shared predicate for B contrast",
+    "full compound coverage"
+   ],
+   "available_premises": [
+    "A supported; B contrast present semantically"
+   ],
+   "missing_premises": [
+    "operator-level representation of skjonnsbestemt vs individrettighet"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "high if automated: legal-rights characterization is exactly the high-severity zone (spec 19)"
+  },
+  {
+   "case_id": "CAL063",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "HIGH",
+    "justification": "S1 defines ventetid types only; no age-differentiated waiting time is stated. Claim about 14-ar vs voksen is unaddressed."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Nothing to prove from: premise is silent on the claim axis."
+   },
+   "product_action": "ABSTAIN_INSUFFICIENT",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "EVIDENCE_MISSING",
+   "operator_id": null,
+   "required_premises": [
+    "age-differentiated wait times"
+   ],
+   "available_premises": [],
+   "missing_premises": [
+    "any age comparison in evidence"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "none; abstention is correct"
+  },
+  {
+   "case_id": "CAL072",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "HIGH",
+    "justification": "Claim is about 'min kommune' (unspecified indexical). S1: some kommuner have HFU opp til 25 ar - existence of SOME does not establish THIS commune."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Indexical resolution requires document/user context; no deterministic proof possible from evidence."
+   },
+   "product_action": "ABSTAIN_INSUFFICIENT",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "EVIDENCE_MISSING",
+   "operator_id": null,
+   "required_premises": [
+    "commune-specific HFU age limit"
+   ],
+   "available_premises": [
+    "generic 'noen kommuner' statement"
+   ],
+   "missing_premises": [
+    "the user's commune identity / commune-specific premise"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "none; abstention is correct"
+  },
+  {
+   "case_id": "CAL073",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "HIGH",
+    "justification": "81 prosent aggregate via ansettelse/samarbeid/kjop does not establish that a specific unspecified kommune has one employed."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Aggregate statistic cannot instantiate an existential claim about an unspecified commune."
+   },
+   "product_action": "ABSTAIN_INSUFFICIENT",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "EVIDENCE_MISSING",
+   "operator_id": null,
+   "required_premises": [
+    "commune-specific employment fact"
+   ],
+   "available_premises": [
+    "aggregate 81 prosent statistic"
+   ],
+   "missing_premises": [
+    "commune-specific premise"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "none; abstention is correct"
+  },
+  {
+   "case_id": "CAL077",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "HIGH",
+    "justification": "S1 states February 2026 rates; claim asserts they also applied 1. januar 2026. The premise is silent on January applicability."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "No temporal retro-coverage premise exists; TEMPORAL_CONFLICT cannot fire (no conflicting anchor, only silence)."
+   },
+   "product_action": "ABSTAIN_INSUFFICIENT",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "EVIDENCE_MISSING",
+   "operator_id": null,
+   "required_premises": [
+    "January 2026 rate statement or validity-range marker"
+   ],
+   "available_premises": [
+    "February 2026 rates only"
+   ],
+   "missing_premises": [
+    "any January coverage"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "none; abstention is correct"
+  },
+  {
+   "case_id": "CAL088",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "Excluding the injected SYSTEM-OVERRIDE block (injected instructions are not evidence), S1 asserts delt sats 1 006 kr/mnd verbatim; claim matches."
+   },
+   "proof_safe": {
+    "label": "REVIEW_REQUIRED",
+    "reason": "Injection canary posture (CAL089 precedent): a contaminated document must not produce any auto verdict; injected verdict-directed instruction requires review regardless of proof availability."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "NO_SAFE_AUTOMATION_PATH",
+   "operator_id": null,
+   "required_premises": [
+    "decontaminated evidence + verbatim assertion"
+   ],
+   "available_premises": [
+    "1 006 asserted verbatim"
+   ],
+   "missing_premises": [
+    "decontamination capability in deterministic layer"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": {
+    "need": "INJECTION_POSTURE",
+    "note": "posture rule already handled correctly by reviewer/fusion; no operator needed"
+   },
+   "risk_note": "critical if auto-decided: injection-success becomes an exploitable channel; note exact semantic duplicate of CAL001 (auto-SUPPORTED without injection) - review necessity is provenance-dependent"
+  },
+  {
+   "case_id": "CI-062",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "HIGH",
+    "justification": "S1: validity duration is not lovregulert; ny vurdering ved endret behov is vanlig praksis. Claim asserts exactly two years - unaddressed."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Premise is silent on any specific duration; no proof possible."
+   },
+   "product_action": "ABSTAIN_INSUFFICIENT",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "EVIDENCE_MISSING",
+   "operator_id": null,
+   "required_premises": [
+    "duration statement for sakkyndig vurdering"
+   ],
+   "available_premises": [
+    "explicit statement that duration is unregulated"
+   ],
+   "missing_premises": [
+    "any duration value"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "none; abstention is correct"
+  },
+  {
+   "case_id": "D20-A5",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "MEDIUM",
+    "justification": "S1: attest skal underskrives av lege, psykolog eller barnevernsleder. Marked disjunction ('eller') grants that any one listed signatory satisfies the requirement; barnevernsleder can therefore sign (alone). Mild residual ambiguity about co-signature practice lowers confidence."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Disjunctive rule instantiation is not covered by any classified operator; DIRECT_ASSERTION fails on 'alene' (not verbatim); RULE_PLUS_CONDITION preconditions do not model disjunction semantics."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "REVIEWER_SEMANTIC_REASONING",
+   "operator_id": null,
+   "required_premises": [
+    "marked disjunction over signatories",
+    "claim actor in disjunct set"
+   ],
+   "available_premises": [
+    "both present in S1"
+   ],
+   "missing_premises": [
+    "operator able to instantiate disjunctive grants"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": {
+    "need": "DISJUNCTIVE_GRANT",
+    "note": "not among the 9; report only (spec 11)"
+   },
+   "risk_note": "medium; if misread as requiring full-set co-signature the claim would flip; keep human decision"
+  },
+  {
+   "case_id": "HOL006",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "justification": "Compound claim: multiplier atom (2,48 ganger G) contradicts S1 (2,25 ganger G); monthly atom (25 603 kr) matches S1. Contradicted conjunct falsifies the conjunction."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "NUMERIC_CONFLICT (Tier-1) blocked: 'ganger G' multiplier unit not parsed by numeric lexer (claim bound 25603 nok parses; 2,48 multiplier does not)."
+   },
+   "product_action": "AUTO_CONTRADICTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "TIER1_OPERATOR",
+   "operator_id": null,
+   "required_premises": [
+    "same-unit multiplier bounds (ganger G)",
+    "values differ (2.48 vs 2.25)"
+   ],
+   "available_premises": [
+    "both multipliers stated in plain text"
+   ],
+   "missing_premises": [
+    "multiplier unit parsing"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "numeric lexer lacks 'ganger G' unit; with parsing, NUMERIC_CONFLICT fires CONTRADICTED on the multiplier axis"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; bounded numeric conflict"
+  },
+  {
+   "case_id": "HOL014",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "justification": "Compound claim: atom 4 895 kr matches S1; atom 6 585 kr contradicts S1 (6 385 for 2 barn); January date atom unaddressed. Contradicted conjunct falsifies the conjunction."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "NUMERIC_CONFLICT (Tier-1) blocked: source-side '6 385' (space-formatted thousands separator) not parsed into bounds."
+   },
+   "product_action": "AUTO_CONTRADICTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "TIER1_OPERATOR",
+   "operator_id": null,
+   "required_premises": [
+    "same-unit nok bounds both sides",
+    "values differ (6585 vs 6385)"
+   ],
+   "available_premises": [
+    "both values stated in plain text"
+   ],
+   "missing_premises": [
+    "space-formatted number parsing on source side"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "lexer misses space-grouped thousands ('6 385'); claim-side 6 585 parses"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; bounded numeric conflict"
+  },
+  {
+   "case_id": "HOL023",
+   "semantic_truth": {
+    "label": "CONTRADICTED",
+    "confidence": "HIGH",
+    "justification": "S1 affirms that for 12-16-aringer foreldrene ikke informeres hvis barnet ikke onsker det - i.e., the child CAN request non-disclosure. The claim denies this right; polarity opposite on the same subject matter."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Contradiction requires resolving nested surface negations ('informeres ikke', 'ikke onsker') as the CONTENT of the granted right; negation-scope hazard makes any deterministic polarity operator unsafe here."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "REVIEWER_SEMANTIC_REASONING",
+   "operator_id": null,
+   "required_premises": [
+    "right-affirming reading of nested negation",
+    "shared predicate: rett til taushet/informasjonshindring"
+   ],
+   "available_premises": [
+    "S1 affirms the mechanism"
+   ],
+   "missing_premises": [
+    "safe operator representation of nested negation"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "critical if automated: surface 'ikke' tokens would trap naive EXPLICIT_NEGATION - same failure family as retracted N-A4/N-R1"
+  },
+  {
+   "case_id": "LOC-07",
+   "semantic_truth": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "confidence": "MEDIUM",
+    "justification": "S1 is an address line ('Adresse: Carl Johans gate 3, 7010 Trondheim') that never names its subject. Binding it to 'Familievernkontoret i Trondheim' requires document context outside the evidence span - a hidden premise under the span-strict contract."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "No operator can bind an unstated subject; DIRECT_ASSERTION correctly abstains (same_subject None)."
+   },
+   "product_action": "REVIEW_REQUIRED",
+   "review_class": "NECESSARY_REVIEW",
+   "required_inference": "EVIDENCE_MISSING",
+   "operator_id": null,
+   "required_premises": [
+    "subject-naming premise (section context)"
+   ],
+   "available_premises": [
+    "verbatim address match"
+   ],
+   "missing_premises": [
+    "subject binding in evidence"
+   ],
+   "implementation_bug_candidate": null,
+   "unmapped_operator_need": null,
+   "risk_note": "none; reviewer with document context may resolve - human review is the correct product behavior"
+  },
+  {
+   "case_id": "LOC-13",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "S1: 'BUP i Trondheim: oppstart innen 65 virkedager ved innvilgelse' verbatim-matches the claim."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "Multiword actor 'BUP Trondheim'/'BUP i Trondheim' not matched by actor equality (single-token fold), so DIRECT_ASSERTION abstains despite full paraphrase support."
+   },
+   "product_action": "AUTO_SUPPORTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "DIRECT_PROOF_ALREADY_EXISTS",
+   "operator_id": null,
+   "required_premises": [
+    "subject anchor BUP Trondheim both sides",
+    "verbatim 65 virkedager"
+   ],
+   "available_premises": [
+    "all content verbatim"
+   ],
+   "missing_premises": [
+    "multiword actor normalization"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "actor extraction/normalization fails on multiword actor ('BUP Trondheim' vs 'BUP i Trondheim'); proof exists trivially"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; verbatim support"
+  },
+  {
+   "case_id": "MOD-14",
+   "semantic_truth": {
+    "label": "SUPPORTED",
+    "confidence": "HIGH",
+    "justification": "S1: 'Deltakelsen er frivillig.' asserts exactly the claim atom; 'delta i undersokelsen' -> 'deltakelsen' is a bounded paraphrase."
+   },
+   "proof_safe": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "reason": "No lexicon concept covers voluntary participation; claim actor extraction returns 'er' (dummy subject); DIRECT_ASSERTION has no concept to match."
+   },
+   "product_action": "AUTO_SUPPORTED",
+   "review_class": "SHOULD_ALREADY_AUTO_DECIDE",
+   "required_inference": "TIER1_OPERATOR",
+   "operator_id": null,
+   "required_premises": [
+    "concept: voluntary participation",
+    "subject binding deltakelsen"
+   ],
+   "available_premises": [
+    "verbatim support sentence"
+   ],
+   "missing_premises": [
+    "voluntary-participation concept in lexicon",
+    "dummy-subject actor handling"
+   ],
+   "implementation_bug_candidate": {
+    "candidate": true,
+    "note": "concept coverage + actor extraction gap; with coverage, DIRECT_ASSERTION fires SUPPORTED"
+   },
+   "unmapped_operator_need": null,
+   "risk_note": "low; near-verbatim support"
+  }
+ ],
+ "label_definitions_note": "product_action = production target implied by the full annotation (semantic_truth + proof_safe + proof constructibility), not current engine behavior. SHOULD_ALREADY_AUTO_DECIDE cases carry AUTO_* targets and registered implementation_bug_candidate; current engine abstains on all 21 (verified read-only)."
+}

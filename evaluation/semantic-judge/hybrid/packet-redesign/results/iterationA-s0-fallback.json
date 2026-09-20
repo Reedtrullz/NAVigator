@@ -1,0 +1,1754 @@
+{
+ "meta": {
+  "stage": "packet-v2.1-iteration-A",
+  "s0_mode": "fallback",
+  "max_spans": 6,
+  "dry_run": false,
+  "prompt_meta": {
+   "prompt_sha": "7377d10307e2fb7d",
+   "model": "openai/gpt-5.6-luna",
+   "temperature": 0,
+   "max_tokens": 300,
+   "packet_schema": "packet-v2.1"
+  },
+  "elapsed_s": 232.5
+ },
+ "summary": {
+  "minimal-pairs": {
+   "n": 48,
+   "auto": 22,
+   "review": 26,
+   "packet_only": 0,
+   "decided": 45,
+   "correct": 39,
+   "selective_accuracy": 0.8667,
+   "auto_supported": 14,
+   "auto_supported_fp": 0,
+   "auto_contra": 8,
+   "auto_contra_fp": 0,
+   "review_required": 3,
+   "fidelity_failed": 0
+  },
+  "minimal-pairs-supplement": {
+   "n": 4,
+   "auto": 3,
+   "review": 1,
+   "packet_only": 0,
+   "decided": 4,
+   "correct": 3,
+   "selective_accuracy": 0.75,
+   "auto_supported": 1,
+   "auto_supported_fp": 0,
+   "auto_contra": 2,
+   "auto_contra_fp": 0,
+   "review_required": 0,
+   "fidelity_failed": 0
+  },
+  "novel-40": {
+   "n": 40,
+   "auto": 11,
+   "review": 29,
+   "packet_only": 0,
+   "decided": 37,
+   "correct": 27,
+   "selective_accuracy": 0.7297,
+   "auto_supported": 8,
+   "auto_supported_fp": 0,
+   "auto_contra": 3,
+   "auto_contra_fp": 0,
+   "review_required": 3,
+   "fidelity_failed": 0
+  },
+  "ent": {
+   "n": 4,
+   "auto": 1,
+   "review": 3,
+   "packet_only": 0,
+   "decided": 4,
+   "correct": 2,
+   "selective_accuracy": 0.5,
+   "auto_supported": 0,
+   "auto_supported_fp": 0,
+   "auto_contra": 1,
+   "auto_contra_fp": 0,
+   "review_required": 0,
+   "fidelity_failed": 0
+  }
+ },
+ "rows": [
+  {
+   "id": "MP-001A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-001B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 70,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "modal_scope_mismatch"
+  },
+  {
+   "id": "MP-002A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-002B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-003A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 80,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_quote_support"
+  },
+  {
+   "id": "MP-003B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 85,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_inflation_unverified"
+  },
+  {
+   "id": "MP-004A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-004B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 72,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "no_direct_support"
+  },
+  {
+   "id": "MP-005A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-005B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:exhaustive_list_exclusion",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 2,
+   "approx_packet_tokens": 115,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1",
+      "S2"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "teacher_not_authorized_signatory"
+  },
+  {
+   "id": "MP-006A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-006B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 3,
+   "approx_packet_tokens": 135,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "exclusivity_contradicted"
+  },
+  {
+   "id": "MP-007A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 2,
+   "approx_packet_tokens": 112,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.92,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_numeric_support"
+  },
+  {
+   "id": "MP-007B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-008A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "PARTIAL",
+   "gate_reason": "not_a_proof:PARTIALLY_SUPPORTED",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 3,
+   "approx_packet_tokens": 208,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S2"
+     ],
+     "confidence": 0.97,
+     "route": "accepted"
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S3"
+     ],
+     "confidence": 0.97,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_quote_support"
+  },
+  {
+   "id": "MP-008B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-009A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "REVIEW_REQUIRED",
+   "path": "review",
+   "route": "human_review_flag",
+   "n_spans": 1,
+   "approx_packet_tokens": 65,
+   "atom_results": [],
+   "reason_code": "scope_mismatch"
+  },
+  {
+   "id": "MP-009B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:incompatible_dates",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 65,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "incompatible_dates"
+  },
+  {
+   "id": "MP-010A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-010B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 93,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "claim_stronger_than_source"
+  },
+  {
+   "id": "MP-011A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-011B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "PARTIAL",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 69,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "PARTIAL",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "partial_atom_coverage"
+  },
+  {
+   "id": "MP-012A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 84,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_entailment"
+  },
+  {
+   "id": "MP-012B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 85,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "insufficient_scope_and_duration"
+  },
+  {
+   "id": "MP-013A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-013B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "final": "REVIEW_REQUIRED",
+   "path": "review",
+   "route": "human_review_flag",
+   "n_spans": 1,
+   "approx_packet_tokens": 77,
+   "atom_results": [],
+   "reason_code": "different_subject_matter"
+  },
+  {
+   "id": "MP-014A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 77,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.78,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_mismatch"
+  },
+  {
+   "id": "MP-014B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-015A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "REVIEW_REQUIRED",
+   "path": "review",
+   "route": "human_review_flag",
+   "n_spans": 1,
+   "approx_packet_tokens": 88,
+   "atom_results": [],
+   "reason_code": "scope_mismatch"
+  },
+  {
+   "id": "MP-015B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-016A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 3,
+   "approx_packet_tokens": 155,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "missing_new_child_condition"
+  },
+  {
+   "id": "MP-016B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 67,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.99,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "no_candidate_evidence"
+  },
+  {
+   "id": "MP-017A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-017B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-018A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-018B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 75,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "no_direct_support"
+  },
+  {
+   "id": "MP-019A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 3,
+   "approx_packet_tokens": 106,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.85,
+     "route": "below_threshold"
+    }
+   ],
+   "reason_code": "joint_support"
+  },
+  {
+   "id": "MP-019B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 3,
+   "approx_packet_tokens": 104,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "predicate_mismatch"
+  },
+  {
+   "id": "MP-020A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-020B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-021A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-021B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 70,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "insufficient_scope"
+  },
+  {
+   "id": "MP-022A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-022B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 75,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.99,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "claim_stronger_than_source"
+  },
+  {
+   "id": "MP-023A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-023B",
+   "set": "minimal-pairs",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-024A",
+   "set": "minimal-pairs",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 64,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_support"
+  },
+  {
+   "id": "MP-024B",
+   "set": "minimal-pairs",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "PARTIAL",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 71,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "PARTIAL",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "free_but_referral_requirement_unresolved"
+  },
+  {
+   "id": "MP-014A",
+   "set": "minimal-pairs-supplement",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-014B",
+   "set": "minimal-pairs-supplement",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "MP-015A",
+   "set": "minimal-pairs-supplement",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 84,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.65,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "old_rules_not_directly_stated"
+  },
+  {
+   "id": "MP-015B",
+   "set": "minimal-pairs-supplement",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-S1",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-S2",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "support_undercovered:2",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 74,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.85,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_action_support"
+  },
+  {
+   "id": "N-S3",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:cost_axis_opposition",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 68,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_cost_free_statement"
+  },
+  {
+   "id": "N-S4",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "support_undercovered:2",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 68,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.6,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_mismatch"
+  },
+  {
+   "id": "N-S5",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 75,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.7,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "open_status_not_explicit"
+  },
+  {
+   "id": "N-S6",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 71,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_support"
+  },
+  {
+   "id": "N-S7",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-S8",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 78,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_support"
+  },
+  {
+   "id": "N-S9",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "REVIEW_REQUIRED",
+   "path": "review",
+   "route": "human_review_flag",
+   "n_spans": 1,
+   "approx_packet_tokens": 65,
+   "atom_results": [],
+   "reason_code": "scope_mismatch"
+  },
+  {
+   "id": "N-S10",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 74,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_span_support"
+  },
+  {
+   "id": "N-A1",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-A2",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:concept_opposition:free_of_charge",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 62,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_contradiction"
+  },
+  {
+   "id": "N-A3",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 73,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_does_not_resolve_claim"
+  },
+  {
+   "id": "N-A4",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-A5",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 73,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "contradicts_exclusive_claim"
+  },
+  {
+   "id": "N-A6",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 69,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.99,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "opposite_cost_claim"
+  },
+  {
+   "id": "N-L1",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "support_undercovered:2",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 73,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_quote_support"
+  },
+  {
+   "id": "N-L2",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 76,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.85,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "requirement_not_established"
+  },
+  {
+   "id": "N-L3",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 66,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.92,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "predicate_grounding_unverified"
+  },
+  {
+   "id": "N-L4",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 74,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.62,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_not_fully_covered"
+  },
+  {
+   "id": "N-L5",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 75,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.96,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_span_support"
+  },
+  {
+   "id": "N-L6",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": "weak_contra_rule:neg_object_conflict",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 86,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.95,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_paraphrase"
+  },
+  {
+   "id": "N-C1",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-C2",
+   "set": "novel-40",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 63,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "insufficient_scope_and_subject"
+  },
+  {
+   "id": "N-C3",
+   "set": "novel-40",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "support_undercovered:2",
+   "final": "REVIEW_REQUIRED",
+   "path": "review",
+   "route": "human_review_flag",
+   "n_spans": 1,
+   "approx_packet_tokens": 76,
+   "atom_results": [],
+   "reason_code": "insufficient_scope_and_acute_detail"
+  },
+  {
+   "id": "N-C4",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "weak_support_rule:support_lexical_rescue",
+   "final": "REVIEW_REQUIRED",
+   "path": "review",
+   "route": "human_review_flag",
+   "n_spans": 1,
+   "approx_packet_tokens": 90,
+   "atom_results": [],
+   "reason_code": "modal_scope_mismatch"
+  },
+  {
+   "id": "N-C5",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 74,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.65,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "missing_referral_condition"
+  },
+  {
+   "id": "N-C6",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "numeric_support_binding",
+   "final": "SUPPORTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 75,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "SUPPORTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "direct_quote_support"
+  },
+  {
+   "id": "N-R1",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-R2",
+   "set": "novel-40",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 67,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "actor_mismatch"
+  },
+  {
+   "id": "N-R3",
+   "set": "novel-40",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "CONTRADICTED",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 66,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "CONTRADICTED",
+     "evidence_span_ids": [
+      "S1"
+     ],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "wrong_administrator"
+  },
+  {
+   "id": "N-R4",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-R5",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-R6",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-O1",
+   "set": "novel-40",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 65,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "universal_scope_unverified"
+  },
+  {
+   "id": "N-O2",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-O3",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 67,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.85,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_not_determined"
+  },
+  {
+   "id": "N-O4",
+   "set": "novel-40",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": null,
+   "final": "SUPPORTED",
+   "path": "auto"
+  },
+  {
+   "id": "N-O5",
+   "set": "novel-40",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 68,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "not_a_proof_of_universal_claim"
+  },
+  {
+   "id": "N-O6",
+   "set": "novel-40",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 69,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.98,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "partitive_not_universal"
+  },
+  {
+   "id": "ENT-A",
+   "set": "ent",
+   "expected": "SUPPORTED",
+   "engine_verdict": "SUPPORTED",
+   "gate_reason": "compound_claim",
+   "final": "PARTIAL",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 5,
+   "approx_packet_tokens": 298,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.2,
+     "route": "accepted"
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "PARTIAL",
+     "evidence_span_ids": [
+      "S2"
+     ],
+     "confidence": 0.93,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "partial_support_missing_parent_conversation"
+  },
+  {
+   "id": "ENT-B",
+   "set": "ent",
+   "expected": "INSUFFICIENT",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 1,
+   "approx_packet_tokens": 100,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.0,
+     "route": "accepted"
+    },
+    {
+     "atom_id": "A2",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.0,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "no_candidate_evidence"
+  },
+  {
+   "id": "ENT-C",
+   "set": "ent",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "CONTRADICTED",
+   "gate_reason": null,
+   "final": "CONTRADICTED",
+   "path": "auto"
+  },
+  {
+   "id": "ENT-D",
+   "set": "ent",
+   "expected": "CONTRADICTED",
+   "engine_verdict": "INSUFFICIENT",
+   "gate_reason": "not_a_proof:INSUFFICIENT_EVIDENCE",
+   "final": "INSUFFICIENT",
+   "path": "review",
+   "route": "aggregated",
+   "n_spans": 3,
+   "approx_packet_tokens": 153,
+   "atom_results": [
+    {
+     "atom_id": "A1",
+     "verdict": "INSUFFICIENT",
+     "evidence_span_ids": [],
+     "confidence": 0.65,
+     "route": "accepted"
+    }
+   ],
+   "reason_code": "scope_mismatch_insufficient"
+  }
+ ],
+ "totals": {
+  "n": 96,
+  "decided": 90,
+  "correct": 71,
+  "selective_accuracy": 0.7889,
+  "auto": 37,
+  "review": 59,
+  "llm_calls": 59,
+  "review_rate": 0.6146,
+  "fidelity_failures": 0,
+  "auto_supported_fp": 0,
+  "auto_contra_fp": 0
+ }
+}

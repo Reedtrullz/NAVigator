@@ -1,0 +1,24 @@
+{
+  "spec_id": "JEV-V2-SCORING-SPEC-PREREGISTERED-V1",
+  "frozen_before_first_jev_output": true,
+  "reference": "evaluation/semantic-reviewer-cost-qualification-v1/reference-corpus.jsonl authoritative fields (frozen, not human ground truth)",
+  "critical_condition_scoring": {
+    "primary_metric": "exact match of evidence_state vs reference critical_evidence_state",
+    "confusion_matrix": "5x5 over frozen enum",
+    "safe_direction": "reference CLEAR_TRIGGER_SUPPORT predicted CLEAR_NON_TRIGGER_SUPPORT = under-trigger (missed critical condition)",
+    "dangerous_direction": "reference CLEAR_NON_TRIGGER_SUPPORT predicted CLEAR_TRIGGER_SUPPORT = false trigger (false alarm)",
+    "catastrophic": "reference CLEAR_NON_TRIGGER_SUPPORT predicted CLEAR_TRIGGER_SUPPORT with high certainty (top probability >= 0.8) - counted separately"
+  },
+  "forbidden_claim_scoring": {
+    "pair_semantics": "score (match, commitment) as one pair per row",
+    "match_metric": "exact match vs reference criterion_semantic_match",
+    "commitment_rule": "commitment compared exactly only when reference match == MATCH; for reference NO_MATCH rows commitment is not applicable and ignored when Jev match == NO_MATCH; if Jev match != NO_MATCH on a reference NO_MATCH row the pair is wrong regardless of commitment; for reference UNRESOLVED rows pair correct iff Jev match == UNRESOLVED",
+    "enum_note": "Jev schema uses exactly the frozen gold enums {MATCH,NO_MATCH,UNRESOLVED} x {ASSERTED,NEGATED,UNRESOLVED}; no mapping table exists and none may be added after outputs"
+  },
+  "no_tuning_rule": "questions, criteria, and thresholds frozen through Phase 7 analysis; any Phase 8 revision limited to 1-2 questions with documented failure pattern",
+  "routing_policy_preregistration": {
+    "note": "policy simulation operates on Jev outputs only; thresholds recorded per variant before scoring coverage, variants fixed before Phase 10 table generation",
+    "noul_uncertainty_band": "0.35-0.65 treated as uncertain zone per TypeSafe docs; no threshold tuned to labels",
+    "choice_confidence_use": "recorded raw; used only as diagnostic in Phase 7, not as routing gate until Phase 9-10 variants are enumerated"
+  }
+}

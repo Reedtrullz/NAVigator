@@ -1,0 +1,40 @@
+{
+  "artifact": "V1.6B CANDIDATE SHORTLIST (PREREGISTERED BEFORE EXECUTION)",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6B-RESCREEN",
+  "preregistered_before_execution": true,
+  "shortlist": [
+    {
+      "order": 1,
+      "candidate_key": "longcat-2-0-free",
+      "model": "command-code/meituan/LongCat-2.0:free",
+      "provider": "commandcode-auth",
+      "v1_5a_rationale": "strongest overall semantic result among tested candidates (0.866); critical/forbidden hard-zero gates passed; route 0.84, uncertainty 0.7727; 3 transport failures (429-class) disclosed"
+    },
+    {
+      "order": 2,
+      "candidate_key": "mimo-v2-5-pro",
+      "model": "command-code/xiaomi/mimo-v2.5-pro",
+      "provider": "commandcode-auth",
+      "v1_5a_rationale": "100/100 transport-valid; strongest transport baseline; safety hard-zero gates passed; overall 0.84, uncertainty 0.72"
+    }
+  ],
+  "excluded_not_rerun": [
+    {
+      "display_name": "Ling 3.0 Flash Sante",
+      "wire_id": "command-code/inclusionai/ling-3.0-flash-sante:free",
+      "reason": "valid-rate failure in V1.5A (80/100 status_ok, 13 transport + 7 schema failures)"
+    },
+    {
+      "display_name": "Laguna S 2.1",
+      "wire_id": "command-code/poolside/laguna-s-2.1-free",
+      "reason": "severe valid-rate/429 failure in V1.5A (15/100 status_ok, 81 transport failures)"
+    },
+    {
+      "display_name": "MiMo V2.5 (baseline)",
+      "wire_id": "command-code/xiaomi/mimo-v2.5",
+      "reason": "frozen V1.4 baseline; DO_NOT_RERUN"
+    }
+  ],
+  "new_model_inventory_performed": false,
+  "candidate_substitution_allowed": false
+}

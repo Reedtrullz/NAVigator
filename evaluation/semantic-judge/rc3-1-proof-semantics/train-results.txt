@@ -1,0 +1,77 @@
+cases=124 correct=105 accuracy=0.8468
+per-class (correct/total):
+  AMBIGUOUS: 2/2 = 1.000
+  CONTRADICTS: 20/31 = 0.645
+  ENTAILS: 69/72 = 0.958
+  PARTIAL: 10/14 = 0.714
+  RELATED_BUT_INSUFFICIENT: 3/4 = 0.750
+  UNRELATED: 1/1 = 1.000
+confusion (expected -> predicted):
+  AMBIGUOUS: {'AMBIGUOUS': 2}
+  CONTRADICTS: {'ENTAILS': 9, 'CONTRADICTS': 20, 'RELATED_BUT_INSUFFICIENT': 2}
+  ENTAILS: {'ENTAILS': 69, 'CONTRADICTS': 2, 'PARTIAL': 1}
+  PARTIAL: {'PARTIAL': 10, 'ENTAILS': 2, 'RELATED_BUT_INSUFFICIENT': 2}
+  RELATED_BUT_INSUFFICIENT: {'RELATED_BUT_INSUFFICIENT': 3, 'CONTRADICTS': 1}
+  UNRELATED: {'UNRELATED': 1}
+per-flag:
+  actor: 78/90 = 0.867
+  compound: 40/45 = 0.889
+  condition: 14/15 = 0.933
+  exception: 5/5 = 1.000
+  modality: 36/41 = 0.878
+  negation: 16/29 = 0.552
+  numeric: 39/43 = 0.907
+  scope: 7/7 = 1.000
+  temporal: 3/4 = 0.750
+compounds=43 count_exact=42/43 boundary_exact=37/43
+missing_atoms=1 extra_atoms=0
+decomposition misses:
+  RC31-0064: expected 2 got 1 matched 1
+  RC31-0130: expected 2 got 2 matched 1
+  RC31-0144: expected 2 got 2 matched 1
+  RC31-0163: expected 2 got 2 matched 1
+  RC31-0171: expected 2 got 2 matched 1
+  RC31-0184: expected 2 got 2 matched 1
+stability_100=True
+unsound_auto=40 invalid_auto_ungrounded=0
+false_entails_top=11 false_contradicts_top=3
+  unsound ('RC31-0004', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0010', 'A1', 'CONTRADICTS', 'R15b-universal-vs-restriction')
+  unsound ('RC31-0013', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0016', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0016', 'A2', 'CONTRADICTS', 'R14-quantifier-bound')
+  unsound ('RC31-0023', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0030', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0031', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0050', 'A1', 'CONTRADICTS', 'R15b-universal-vs-restriction')
+  unsound ('RC31-0050', 'A2', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0056', 'A1', 'ENTAILS', 'R23-shared-number')
+  unsound ('RC31-0080', 'A1', 'CONTRADICTS', 'R15-universal-vs-discretionary')
+  unsound ('RC31-0099', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0105', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0116', 'A1', 'CONTRADICTS', 'R15b-universal-vs-restriction')
+  unsound ('RC31-0122', 'A1', 'ENTAILS', 'R25-coverage')
+  unsound ('RC31-0129', 'A2', 'CONTRADICTS', 'R17-negation-flip')
+  unsound ('RC31-0131', 'A1', 'ENTAILS', 'R19-requirement-object')
+  unsound ('RC31-0131', 'A2', 'CONTRADICTS', 'R05-deadline-day')
+  unsound ('RC31-0133', 'A1', 'ENTAILS', 'R23-shared-number')
+wrong cases:
+  RC31-0004 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0010 exp=ENTAILS got=CONTRADICTS atoms=['CONTRADICTS:R15b-universal-vs-restriction']
+  RC31-0013 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0023 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0030 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0031 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0056 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R23-shared-number']
+  RC31-0080 exp=RELATED_BUT_INSUFFICIENT got=CONTRADICTS atoms=['CONTRADICTS:R15-universal-vs-discretionary']
+  RC31-0099 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0105 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0110 exp=CONTRADICTS got=RELATED_BUT_INSUFFICIENT atoms=['RELATED_BUT_INSUFFICIENT:R26-coverage-mid']
+  RC31-0114 exp=CONTRADICTS got=RELATED_BUT_INSUFFICIENT atoms=['RELATED_BUT_INSUFFICIENT:R26-coverage-mid']
+  RC31-0116 exp=ENTAILS got=CONTRADICTS atoms=['CONTRADICTS:R15b-universal-vs-restriction']
+  RC31-0122 exp=CONTRADICTS got=ENTAILS atoms=['ENTAILS:R25-coverage']
+  RC31-0129 exp=ENTAILS got=PARTIAL atoms=['ENTAILS:R25-coverage', 'CONTRADICTS:R17-negation-flip']
+  RC31-0143 exp=PARTIAL got=ENTAILS atoms=['ENTAILS:R25-coverage', 'ENTAILS:R25-coverage']
+  RC31-0148 exp=PARTIAL got=RELATED_BUT_INSUFFICIENT atoms=['RELATED_BUT_INSUFFICIENT:R26-coverage-mid', 'ENTAILS:R25-coverage']
+  RC31-0174 exp=PARTIAL got=ENTAILS atoms=['ENTAILS:R25-coverage', 'ENTAILS:R25-coverage']
+  RC31-0177 exp=PARTIAL got=RELATED_BUT_INSUFFICIENT atoms=['ENTAILS:R25-coverage', 'RELATED_BUT_INSUFFICIENT:R26-coverage-mid']

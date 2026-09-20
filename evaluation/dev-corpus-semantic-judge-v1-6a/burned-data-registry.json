@@ -1,0 +1,40 @@
+{
+  "artifact": "V1.6A BURNED DATA REGISTRY",
+  "task_id": "NAV-EXPLORE-DEV-CORPUS-SEMANTIC-JUDGE-V1_6A-BOUNDARY-PRECLASSIFIER",
+  "registered_date": "2026-09-11",
+  "burned_sets": [
+    {
+      "name": "V1.4 official validation fixtures (100)",
+      "path": "evaluation/dev-corpus-semantic-judge-v1-4/official-validation-fixtures.json",
+      "sha256": "9e60aca6a38d84ff48aa5985f7f0b258cb7934aedf9701de8d4e415582cbdf1c",
+      "classification": "BURNED_MODEL_SELECTION_DATA",
+      "allowed_use": [
+        "failure taxonomy",
+        "boundary examples",
+        "counterexamples",
+        "mechanical replay"
+      ],
+      "forbidden_use": [
+        "fresh validation for V1.6A",
+        "threshold optimization",
+        "certification"
+      ]
+    },
+    {
+      "name": "V1.5A candidate results (4 models x 100)",
+      "path": "evaluation/dev-corpus-semantic-judge-v1-5a/candidate-results.json",
+      "sha256": "5e1a69f76dabebbcbb620ee7cc7bab9bc46be0ed12058763e93950dd49d934f4",
+      "classification": "BURNED_MODEL_SELECTION_DATA",
+      "allowed_use": [
+        "failure profiling",
+        "boundary examples",
+        "diagnostic replay"
+      ],
+      "forbidden_use": [
+        "fresh validation",
+        "model selection claims"
+      ]
+    }
+  ],
+  "v1_6a_reuse_policy": "unit fixtures and fresh validation fixtures MUST NOT reuse text from V1-V1.5 corpora"
+}

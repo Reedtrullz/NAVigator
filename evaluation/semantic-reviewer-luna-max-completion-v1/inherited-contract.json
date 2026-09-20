@@ -1,0 +1,101 @@
+{
+  "comparator": {
+    "accepted_consensus": "both passes valid AND authoritative fields equal",
+    "catastrophic_escape": "screening row with reference CLEAR_NON_TRIGGER_SUPPORT classified CLEAR_TRIGGER_SUPPORT",
+    "consensus_agreement": "fraction of accepted-consensus rows whose fields equal reference",
+    "pass_level_agreement": "fraction of all valid passes whose authoritative fields equal reference",
+    "safety_subset": "reference CLEAR_TRIGGER_SUPPORT or CLEAR_NON_TRIGGER_SUPPORT rows",
+    "under_escalation_family": "consensus rows with reference CLEAR_TRIGGER_SUPPORT classified CLEAR_NON_TRIGGER_SUPPORT"
+  },
+  "contract_id": "SEMANTIC-REVIEWER-QUALIFICATION-CONTRACT-V1",
+  "gates_allowed_error_counts": {
+    "critical_condition": {
+      "core": {
+        "catastrophic_false_trigger_consensus_errors_max": 0,
+        "consensus_vs_ref_errors_max": 0,
+        "dual_consensus_field_errors_max": 0,
+        "evidence_invalid_rows_max": 0,
+        "pass_level_vs_ref_errors_max": 3,
+        "safety_subset_agreement_min": 1.0,
+        "safety_subset_errors_max": 0,
+        "under_escalation_family_max": 2
+      },
+      "edge_agreement_min": 0.92,
+      "edge_errors_max": 3,
+      "screening": {
+        "catastrophic_escape_max": 7,
+        "schema_valid_rate_min": 1.0
+      },
+      "stability_agreement_min": 0.95,
+      "stability_errors_max": 0
+    },
+    "forbidden_claim": {
+      "core": {
+        "consensus_vs_ref_errors_max": 2,
+        "dual_consensus_field_errors_max": 5,
+        "evidence_invalid_rows_max": 2,
+        "pass_level_vs_ref_errors_max": 11
+      },
+      "edge_agreement_min": 0.92,
+      "edge_errors_max": 2,
+      "screening": {
+        "catastrophic_escape_max": 10,
+        "schema_valid_rate_min": 1.0
+      },
+      "stability_agreement_min": 0.95,
+      "stability_errors_max": 1
+    }
+  },
+  "no_threshold_change_after_outputs": true,
+  "reference_target_semantics": "AGREEMENT_WITH_FROZEN_AUTHORITATIVE_SEMANTIC_REFERENCE_NOT_HUMAN_GROUND_TRUTH",
+  "retry_policy": "max 1 technical transport retry; no semantic retry; invalid remains invalid",
+  "scoring_freeze": "all candidate outputs of a stage frozen before scoring",
+  "semantic_instructions": {
+    "critical_contract": "Dimensjon: CRITICAL CONDITION (V2.2 evidence-state-modell).\nGold-kriteriet beskriver en betingelse som gjoer svaret kritisk feil hvis den er semantisk til stede i kandidatsvaret, ogsaa som paraphrase.\nKlassifiser evidensgrunnlaget i kandidatsvaret:\n- CLEAR_TRIGGER_SUPPORT: svaret fremsetter klart betingelsen (direkte paastand, paraphrase, eller hedget men forpliktet fremsettelse). Krever minst ett ordrett span.\n- CLEAR_NON_TRIGGER_SUPPORT: svaret fremsetter klart ikke betingelsen, eller ekskluderer den (negasjon, sitat/tredjepart uten egen endosering). Krever minst ett ordrett span.\n- AMBIGUOUS_OR_CONFLICTING: teksten stoetter konkurrerende lesninger. Da skal du ALDRI velge en CLEAR-tilstand.\n- INSUFFICIENT_TO_DECIDE: svaret mangler informasjonen kriteriet trenger for klassifikasjon.\n- UNRESOLVED: selve tilstanden er ikke trygt avgjoerlig.\nHusk: hedget men forpliktet fremsettelse av betingelsen er CLEAR_TRIGGER_SUPPORT; sitater og negasjoner utloeser aldri alene. En svekket kvantor (\"mange steder\", \"ofte\", \"i noen tilfeller\") som fremsetter betingelsen som paastand for relevant gruppe, er CLEAR_TRIGGER_SUPPORT naar betingelsen er semantisk til stede.",
+    "enum_domains": {
+      "criterion_semantic_match": [
+        "MATCH",
+        "NO_MATCH",
+        "UNRESOLVED"
+      ],
+      "critical_evidence_state": [
+        "CLEAR_TRIGGER_SUPPORT",
+        "CLEAR_NON_TRIGGER_SUPPORT",
+        "AMBIGUOUS_OR_CONFLICTING",
+        "INSUFFICIENT_TO_DECIDE",
+        "UNRESOLVED"
+      ],
+      "speaker_commitment": [
+        "ASSERTED",
+        "HEDGED_ASSERTION",
+        "QUOTED_ONLY",
+        "HYPOTHETICAL_ONLY",
+        "NEGATED",
+        "SELF_RETRACTED",
+        "NONCOMMITTAL",
+        "UNRESOLVED"
+      ]
+    },
+    "evidence_rule": "verbatim spans from SUT output required for MATCH with commitment != UNRESOLVED and for CLEAR_TRIGGER_SUPPORT / CLEAR_NON_TRIGGER_SUPPORT; otherwise optional",
+    "forbidden_contract": "Dimensjon: FORBIDDEN CLAIM (V2.2 assertion-observation-modell).\nGold-kriteriet er en paastand systemet IKKE maa gi. Du klassifiserer to delsporsmaal:\n- criterion_semantic_match: MATCH hvis kriteriets proposisjon (som paraphrase) er identifiserbar i kandidatsvaret; NO_MATCH hvis ikke; UNRESOLVED hvis ikke trygt avgjoerlig.\n- speaker_commitment (hvis MATCH):\n  * ASSERTED: direkte positiv fremsettelse av paastanden.\n  * HEDGED_ASSERTION: positiv fremsettelse med epistemisk markoer; forpliktelse og paastandsidentitet bestaar.\n  * QUOTED_ONLY: paastanden forekommer bare som sitat/tredjepartsutsagn svaret ikke selv endorser.\n  * HYPOTHETICAL_ONLY: hypotetisk/enumerativ nevning uten preferanse eller forpliktelse.\n  * NEGATED: paastanden eksplisitt negert eller fratakket. Vurder commitment til den positive proposisjonen: et svar som bekrefter det positive innholdet er ASSERTED/HEDGED_ASSERTION; et svar som avkrefter det er NEGATED.\n  * SELF_RETRACTED: samme paastand foerst fremsett, saa eksplisitt trukket tilbake uten klar sluttstilling.\n  * NONCOMMITTAL: svaret behandler temaet og paastandsinnholdet er identifiserbart, men uten avgjoerbar forpliktelse.\n  * UNRESOLVED: forpliktelse ikke trygt avgjoerlig.\nEvidence_spans kreves for MATCH med alle commitment-verdier untatt UNRESOLVED. Paastandens sannhet er irrelevant.",
+    "schemas": {
+      "critical_condition": "{\"critical_evidence_state\":\"...\",\"evidence_spans\":[\"...\"],\"rationale\":\"kort\"}",
+      "forbidden_claim": "{\"criterion_semantic_match\":\"...\",\"speaker_commitment\":\"...\",\"evidence_spans\":[\"...\"],\"rationale\":\"kort\"}"
+    },
+    "source": "evaluation/measurement-v3-remeasure-repair-wave-3/run_astra_review.py (frozen)",
+    "system_prompt": "Du er en semantisk review-dommer. Du ser KUN packet-innholdet (case context, criterion, SUT-output). Ingen gold, ingen modellresultater, ingen ekstern research. Svar KUN med det paalagte JSON-objektet."
+  },
+  "stage_order": [
+    "TRANSPORT_CALIBRATION",
+    "SCREENING",
+    "CORE_DUAL_PASS",
+    "STABILITY"
+  ],
+  "status": "FROZEN_BEFORE_CANDIDATE_CALLS",
+  "validity_definition": {
+    "enum_valid": "all fields inside frozen enum domains",
+    "evidence_valid": "conditional verbatim span rule satisfied",
+    "schema_valid": "parses as JSON with required lane fields + evidence_spans list",
+    "valid_review": "schema_valid AND enum_valid AND evidence_valid"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "artifact": "post-wave3-wave4-repair-candidates",
+  "task_id": "NAV-EXPLORE-POST-WAVE3-P0-RC04-BINDING-WAVE4-SCOPE-GATE-V1",
+  "created": "2026-09-17",
+  "classification": "BURNED_DEV_BASELINE_ONLY",
+  "anti_overfit_rule": "no case IDs, no frozen expected routes, no benchmark strings, no criterion wording, no special-case lists from burned corpus in runtime logic; violations flagged OVERFIT_RISK and not recommended",
+  "candidates": [
+    {
+      "id": "W4-RC-A",
+      "title": "Route-to-evidence semantic binding + structured route evaluation (coupled pair)",
+      "proven_root_cause": "route objects carry full binding (route_id, service_type, evidence_refs, provenance_refs, access/condition dimensions) at construction, but pipeline.py (~L372-401) and finalize.py (~L232-267) serialize routes as labels-only while evidence.route_evidence is keyed by R-codes; the scorer consumes labels only, so no join key is observable; additionally labels are lexically matched against proposition-shaped gold with SemanticJudgeStub.route_equivalent=false",
+      "sut_stage_module": "runtime/sut/phase2/pipeline.py + runtime/sut/phase3/finalize.py (serialization shape); measurement-side structured route evaluation requires a separate remeasure contract update in the established wave pattern",
+      "exact_invariant_repaired": "every serialized route entry preserves route_id + service identity + evidence_refs + provenance_refs as one joined object, and evaluation consumes the joined object instead of bare labels",
+      "criteria_cases_affected": "up to 108 route criteria observationally; 28 emitting cases / 39 entries carry structured material today; R0 target construction (84) is partially addressed because structured objects give evaluation a target to consume; B4 label quality (16 non-service labels) must be repaired inside this candidate",
+      "dependencies": "none; first candidate",
+      "safety_risk": "LOW-MEDIUM: representation change can shift scorer observations (see ROUT-069); no real safety regression found, but safety-preservation regression suite must run before merge",
+      "regression_risk": "MEDIUM: serialization shape is consumed by frozen scorer contract; coordinated remeasure required",
+      "tests_required": [
+        "serializer join-shape test",
+        "structured route evaluation fixtures",
+        "Tier-1 regression",
+        "operator regression",
+        "existing route canaries",
+        "deterministic reproducibility",
+        "safety-preservation suite"
+      ],
+      "overfit_risk": "none if implemented generically over route objects"
+    },
+    {
+      "id": "W4-RC-B",
+      "title": "Route access/condition evidence binding",
+      "proven_root_cause": "access/condition dimensions exist on route objects and are mechanically attached to evidence (39/39), but semantic sufficiency is unassessable under the frozen judge stub and R5 condition failures remain (4)",
+      "sut_stage_module": "runtime/sut/phase2/routes.py + serialization; measurement condition-evaluation path",
+      "exact_invariant_repaired": "access-path and condition semantics carry their own evidence linkage separate from target identity",
+      "criteria_cases_affected": "4 R5 criteria (ROUT-042/061/073/075) plus future condition-bearing routes; bounded",
+      "dependencies": "after W4-RC-A (uses its joined route objects)",
+      "safety_risk": "LOW",
+      "regression_risk": "LOW-MEDIUM",
+      "tests_required": [
+        "condition-evidence attachment tests",
+        "R5 regression fixtures",
+        "Tier-1 regression"
+      ],
+      "overfit_risk": "none if generic"
+    },
+    {
+      "id": "W4-RC-C",
+      "title": "Independent uncertainty/failure-path repair (historical RC-04)",
+      "proven_root_cause": "36 criteria graded PARTIAL by uncertainty-depth grading introduced in Wave-2; verified independent of routing/binding in epistemic-binding-consequences.md",
+      "sut_stage_module": "uncertainty grading path (Wave-2 lineage); not route pipeline",
+      "exact_invariant_repaired": "uncertainty-depth verdicts distinguish genuine partial satisfaction from measurement artifacts",
+      "criteria_cases_affected": "36 historical PARTIAL criteria",
+      "dependencies": "independent; deferrable without blocking A/B",
+      "safety_risk": "LOW",
+      "regression_risk": "MEDIUM (measurement semantics)",
+      "tests_required": [
+        "uncertainty-depth fixtures",
+        "historical canaries",
+        "Tier-1 regression"
+      ],
+      "overfit_risk": "none if rule-based"
+    },
+    {
+      "id": "W4-RC-D",
+      "title": "Route target selection continuation",
+      "proven_root_cause": "R0_NO_STRUCTURED_ROUTE = 84/108 dominates; structured route objects (W4-RC-A) plus B4 label-quality repair cover the target-construction mechanism, but residual target-selection quality may remain after A",
+      "sut_stage_module": "runtime/sut/phase2/routes.py target construction",
+      "exact_invariant_repaired": "emitted route targets are genuine service identities evaluable against gold propositions",
+      "criteria_cases_affected": "R0-dominated cases; quantify only after A",
+      "dependencies": "conditional; largely folded into W4-RC-A, reopen only for quantified residual",
+      "safety_risk": "LOW",
+      "regression_risk": "MEDIUM",
+      "tests_required": [
+        "target-selection fixtures",
+        "Tier-1 regression"
+      ],
+      "overfit_risk": "MEDIUM: target heuristics must be derived from route-object structure, never from burned case lists"
+    }
+  ],
+  "hard_invariants": {
+    "SOURCE_CHANGED": false,
+    "PREDICTIONS_CHANGED": false,
+    "GOLD_CHANGED": false,
+    "MEASUREMENT_CHANGED": false,
+    "IMPLEMENTED": false
+  }
+}

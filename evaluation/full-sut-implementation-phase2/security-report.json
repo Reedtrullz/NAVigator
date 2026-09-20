@@ -1,0 +1,35 @@
+{
+  "blocked": {
+    "hosts": [
+      "localhost",
+      "127.0.0.1",
+      "0.0.0.0",
+      "[::1]"
+    ],
+    "max_url_len": 2048,
+    "ranges": [
+      "10/8",
+      "172.16/12",
+      "192.168/16",
+      "169.254/16",
+      "127/8",
+      "100.64/10",
+      "::1",
+      "fc00::/7",
+      "fe80::/10"
+    ],
+    "schemes": [
+      "http",
+      "https only"
+    ]
+  },
+  "injection": {
+    "discovery": "exception detail data-only test added this phase",
+    "knowledge": "prompt injection is data only (existing test)"
+  },
+  "phase2_adapter": "replay-only, originates no fetches; all discovery URLs flow through frozen runtime validators",
+  "redirect_constraints": "frozen V1 runtime (official-domain validation)",
+  "result": "PASS",
+  "secrets": "no secrets in outputs (phase1 runner test); PRODUCT_LLM_CALLS=0",
+  "ssrf": "runtime/discovery/security.py validate_url enforced in frozen V1 runtime at orchestrator+engine fetch boundaries"
+}

@@ -1,0 +1,110 @@
+{
+  "task_id": "NAV-EXPLORE-LOCAL-DISCOVERY-EXTERNAL-BACKEND-SELECTION-V2_2-RESTART-2",
+  "artifact": "backend_comparison_official",
+  "frozen_at": "2026-09-09T10:32",
+  "data_class": "BURNED_MUNICIPALITIES_ONLY",
+  "corpus_sha256": "40b0b9c3b0b915a71b36866b182c04ef00b4774569bfadea2414c61e9bee29f2",
+  "queries": 117,
+  "modes": {
+    "GENERAL": {
+      "role": "gate-bearing (preregistered)",
+      "rows_file": "tavily-general-rows.json"
+    },
+    "OFFICIAL_DOMAIN_CONSTRAINED": {
+      "role": "diagnostic (preregistered: cannot rescue GENERAL failure)",
+      "rows_file": "tavily-official_domain_constrained-rows.json"
+    }
+  },
+  "candidates": {
+    "SITE_DIRECT_ONLY": {
+      "source": "frozen V2 artifact evaluation/local-discovery-provider-arch-v2/site-direct-results.json",
+      "execution_rate": 1.0,
+      "relevant_target_recall_gold_domain": 1.0,
+      "official_domain_precision_mean": 0.9846,
+      "bot_block_rate": 0.0,
+      "provider_error_rate": 0.0,
+      "median_latency_ms": 345
+    },
+    "BRAVE_SEARCH_API": {
+      "status": "NOT_TESTABLE_NO_AUTHORIZED_CREDENTIAL",
+      "benchmarked": false
+    },
+    "TAVILY_SEARCH_API": {
+      "benchmarked": true,
+      "mode_metrics": {
+        "GENERAL": {
+          "query_execution_rate": 0.8718,
+          "raw_counts": {
+            "success": 102,
+            "no_results": 15,
+            "other": 0
+          },
+          "relevant_target_recall_gold_domain": 0.8034,
+          "gold_url_exact_rate": 0.3932,
+          "official_domain_precision_mean": 0.3596,
+          "bot_block_rate": 0.0,
+          "rate_limit_failure_rate": 0.0,
+          "provider_error_rate": 0.0,
+          "median_latency_ms": 1247
+        },
+        "OFFICIAL_DOMAIN_CONSTRAINED": {
+          "query_execution_rate": 0.641,
+          "raw_counts": {
+            "success": 75,
+            "no_results": 42,
+            "other": 0
+          },
+          "relevant_target_recall_gold_domain": 0.641,
+          "gold_url_exact_rate": 0.3504,
+          "official_domain_precision_mean": 0.641,
+          "bot_block_rate": 0.0,
+          "rate_limit_failure_rate": 0.0,
+          "provider_error_rate": 0.0,
+          "median_latency_ms": 1658
+        }
+      },
+      "gate_evaluation_preregistered": {
+        "gate_mode": "GENERAL",
+        "query_execution_rate": {
+          "value": 0.8718,
+          "threshold": 0.95,
+          "pass": false
+        },
+        "relevant_target_recall": {
+          "value": 0.8034,
+          "threshold": 0.9,
+          "pass": false
+        },
+        "bot_block_rate": {
+          "value": 0.0,
+          "threshold": 0.0,
+          "pass": true
+        },
+        "false_failure_no_results": {
+          "value": 0,
+          "threshold": 0,
+          "pass": true
+        },
+        "structured_contract": {
+          "value": "PASS (20/20 adapter tests; canonical statuses; transport metadata)",
+          "pass": true
+        },
+        "secret_handling": {
+          "value": "PASS (SECRET_LEAK_SCAN=0 over 30 files; no key in any artifact/log)",
+          "pass": true
+        }
+      },
+      "gates_passed": true,
+      "gates_failed": [
+        "query_execution_rate",
+        "relevant_target_recall"
+      ],
+      "eligible": false,
+      "incremental_target_recovery_over_site_direct": "0/117 (both modes)",
+      "structural_relationship": "site-direct covers 117/117 municipalities; every Tavily gold-domain hit is a subset of site-direct hits"
+    }
+  },
+  "selection_rule": "frozen (recall > execution > precision > incremental > simplicity > latency); no threshold changes",
+  "eligible_backends": [],
+  "selected_backend": null
+}

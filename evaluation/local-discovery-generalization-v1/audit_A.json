@@ -1,0 +1,458 @@
+{
+  "task_role": "audit_A",
+  "date": "2026-09-09",
+  "municipalities": [
+    {
+      "kommune": "Rælingen",
+      "kommunenummer": "3224",
+      "queries_used": [
+        "Rælingen kommune psykisk helse voksne lavterskel psykisk helsetjeneste",
+        "Rælingen kommune rask psykisk helsehjelp over 18 henvisning",
+        "site:ralingen.kommune.no psykisk helse rus voksne kontakt",
+        "site:ralingen.kommune.no helsestasjon for ungdom 20 psykisk helse",
+        "Rælingen kommune \"Rælingshjelpa\" psykisk helse",
+        "Rælingen kommune \"Prate\" drop-in psykisk helse",
+        "Rælingen kommune \"Psykisk helse og avhengighet\" kontakt",
+        "Rælingen kommune \"Helsestasjon for ungdom\" åpningstid",
+        "site:ralingen.kommune.no \"Helsestasjon for ungdom\" \"25\"",
+        "site:ralingen.kommune.no \"Helsestasjon for ungdom\" \"drop-in\"",
+        "site:ralingen.kommune.no \"psykisk helsetjeneste\" \"henvendelsesskjema\"",
+        "site:ralingen.kommune.no \"psykisk helse\" \"voksne\"",
+        "Rælingen rask psykisk helsehjelp site:napha.no OR site:helsedirektoratet.no",
+        "Rælingen kommune kommunepsykolog psykisk helse voksne selvhenvisning",
+        "Rælingen kommune lavterskel psykisk helse unge voksne",
+        "Rælingen kommune helse psykisk helse 18 år kontakt selv"
+      ],
+      "services_found": [
+        {
+          "name": "Avdeling psykisk helse og avhengighet",
+          "target_group": "Voksne innbyggere med psykiske vansker/lidelser og/eller avhengighetsproblematikk.",
+          "age_coverage": "18 år og oppover",
+          "access_model": "Direkte egenkontakt er uttrykkelig beskrevet for personer over 18; henvendelser til vedtaksfestede tjenester går hovedsakelig via tjenestekontoret.",
+          "contact": "Psykisk helse og avhengighet: 48 16 75 15.",
+          "evidence": {
+            "url": "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/frav%C3%A6rsveileder-revidert-2017.pdf",
+            "verbatim_quote": "Avdelingen har ansvar for tjenester til innbyggere fra 18 og oppover med behov for helsetjenester fra kommunen som følge av psykiske vansker eller lidelser og/eller avhengighetsproblematikk. ... Henvendelser til avdeling psykisk helse og avhengighet går i hovedsak gjennom tjenestekontoret for helse og omsorg (THO) som saksbehandler søknader om vedtaksfestede tjenester. ... Psykisk helse og avhengighet 48 16 75 15 ... Ungdom over 18 år kan selv ta kontakt.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Henvendelsesskjema psykisk helsetjeneste / Tjenestekontoret for helse og omsorg",
+          "target_group": "Personer som søker kommunale helse- og omsorgstjenester; nøyaktig aldersavgrensning er ikke oppgitt i skjemaet.",
+          "age_coverage": "UNCLEAR",
+          "access_model": "Søknad/henvendelsesskjema; detaljert selvhenvisningsflyt er ikke publisert på samme side.",
+          "contact": "Tjenestekontoret: 64 80 20 96; kommunen viser til eget henvendelsesskjema for psykisk helsetjeneste.",
+          "evidence": {
+            "url": "https://api.skjema.no/ralingen/templates/pdf/123461/nb",
+            "verbatim_quote": "Tjenester som saksbehandles ved tjenestekontoret for helse og omsorg: ... psykisk helsetjeneste, ambulerende psykisk helsetjeneste, rustjeneste ... Kommunen har i tillegg andre lavterskeltjenester. Benytt egne søknadskjemaer for ... henvendelsesskjema psykisk helsetjeneste ... Kontaktinformasjon ... Telefon: 64 80 20 96",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Kontakt Avdeling psykisk helse og avhengighet direkte som innbygger over 18 år; oppgi moderate psykiske plager og be om vurdering av kommunalt tilbud.",
+        "selected_service": "Avdeling psykisk helse og avhengighet",
+        "eligibility": "Dokumentert for innbyggere fra 18 år og oppover med psykiske vansker/lidelser; 19-åringen faller innenfor aldersbeskrivelsen.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "48 16 75 15. Alternativt Tjenestekontoret 64 80 20 96 og kommunens henvendelsesskjema for psykisk helsetjeneste.",
+        "evidence_strength": "MEDIUM",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Fastlegen skal hjelpe deg med å få kontakt med psykisk helsetjeneste og andre tilbud i kommunen eller henvise til psykolog eller psykiater, behandling ved et distriktspsykiatrisk senter eller ved sykehus.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/frav%C3%A6rsveileder-revidert-2017.pdf",
+          "verbatim_quote": "Avdelingen har ansvar for tjenester til innbyggere fra 18 og oppover med behov for helsetjenester fra kommunen som følge av psykiske vansker eller lidelser og/eller avhengighetsproblematikk. ... Ungdom over 18 år kan selv ta kontakt.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Ruten er dokumentert i en eldre kommunal veileder, mens kommunens nyere søknads-PDF bekrefter at psykisk helsetjeneste og et eget henvendelsesskjema finnes. Dagens offentlige side dokumenterer ikke en tydelig Rask psykisk helsehjelp-rute eller oppdatert drop-in-informasjon."
+      },
+      "scenario_D": {
+        "best_documented_route": "Kontakt Avdeling psykisk helse og avhengighet direkte på 48 16 75 15 og be om rask/lavterskel vurdering; bruk Tjenestekontoret/henvendelsesskjema dersom tjenesten ber om formell søknad.",
+        "selected_service": "Avdeling psykisk helse og avhengighet",
+        "eligibility": "Dokumentert for innbyggere fra 18 år og oppover; 22-åringen faller innenfor aldersbeskrivelsen.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "48 16 75 15. Alternativt Tjenestekontoret 64 80 20 96 og kommunens henvendelsesskjema for psykisk helsetjeneste.",
+        "evidence_strength": "MEDIUM",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Kommunen du bor i har en rekke tilbud om behandling og støtte til personer som trenger psykisk helsehjelp, og til deres pårørende. For å få et slikt tilbud kan du kontakte fastlegen din eller kommunen.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://ralingen.bedreinnsats.no/wp-content/uploads/sites/24/2019/10/frav%C3%A6rsveileder-revidert-2017.pdf",
+          "verbatim_quote": "Kurs i hasjavvenning tilbys som lavterskeltilbud. ... Ungdom over 18 år kan selv ta kontakt.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "En nyere kommunal PDF sier at kommunen har andre lavterskeltjenester og eget henvendelsesskjema, men oppgir ikke offentlig en oppdatert RPH-side, ventetid eller drop-in for unge voksne. Derfor er ruten dokumentert, men ikke like sterkt som i kommunene med eksplisitt RPH-side."
+      },
+      "missing_query_concepts": [
+        "Oppdatert Rask psykisk helsehjelp-status for Rælingen",
+        "Eksakt aldersgrense og åpningstid for Rælingen helsestasjon for ungdom",
+        "Aktuell digital selvhenvisningslenke for voksen psykisk helse",
+        "Eventuelt interkommunalt tilbud for unge voksne"
+      ],
+      "general_notes": "Offentlige treff var svakt indeksert på kommunens hoveddomene. Rælingen-ruten bygger derfor på kommunal BTI-veileder og kommunalt søknadsskjema; publiseringsalder og dagens operative detaljer bør behandles som usikre inntil kommunen selv publiserer en oppdatert tjenesteside."
+    },
+    {
+      "kommune": "Fredrikstad",
+      "kommunenummer": "3107",
+      "queries_used": [
+        "site:fredrikstad.kommune.no psykisk helse voksne rask psykisk helsehjelp Fredrikstad",
+        "Fredrikstad kommune psykisk helse unge voksne RPH selvhenvisning 19 22"
+      ],
+      "services_found": [
+        {
+          "name": "Rask psykisk helsehjelp",
+          "target_group": "Innbyggere med milde til moderate former for angst, depresjon, søvnvansker og/eller begynnende rusproblematikk.",
+          "age_coverage": "Fra fylte 16 år; må bo i Fredrikstad kommune.",
+          "access_model": "Direkte egenkontakt uten legehenvisning via henvendelsesskjema eller telefon.",
+          "contact": "Henvendelsesskjema; mottakstelefon 40 43 30 67, bemannet mandag og torsdag kl. 10-11; Jens Wilhelmsensgate 1, 1671 Kråkerøy.",
+          "evidence": {
+            "url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+            "verbatim_quote": "Rask psykisk helsehjelp (RPH) er et korttids behandlingstilbud for innbyggere i Fredrikstad kommune med milde til moderate former for angst, depresjon, søvnvansker og/eller begynnende rusproblematikk. ... Rask psykisk helsehjelp er gratis, og du trenger ikke henvisning fra lege. ... Du må være fylt 16 år og bo i Fredrikstad kommune. ... Du henvender deg til oss ved å fylle ut dette skjema ... Trenger du hjelp til å fylle ut kontaktskjema, kan du ringe vår mottakstelefon på nr: 40 43 30 67. Telefonen er bemannet: Mandag og torsdag fra kl. 10 - 11.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Fredrikstadhjelpa",
+          "target_group": "Personer over 18 år med utfordringer innen psykisk helse, livskriser, identitet, rus og avhengighet.",
+          "age_coverage": "Over 18 år",
+          "access_model": "Direkte kontakt på telefon; siden beskriver ikke legehenvisning som krav.",
+          "contact": "69 30 68 70; vakttelefon 474 79 847; hverdager kl. 09-15.",
+          "evidence": {
+            "url": "https://cms.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/fredrikstadhjelpa/",
+            "verbatim_quote": "Fredrikstadhjelpa er et helsetilbud til deg som er over 18 år, som sliter med utfordringer blant annet innen psykisk helse, livskriser, identitet, LGBTQIA+, rus og avhengighet. ... Ring oss på Telefon 69 30 68 70. Vakttelefon 474 79 847. Våre åpningstider er hverdager fra kl. 09.00-15.00.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ta direkte kontakt med Rask psykisk helsehjelp via kommunens henvendelsesskjema eller mottakstelefon for kartleggingssamtale.",
+        "selected_service": "Rask psykisk helsehjelp",
+        "eligibility": "19 år er over aldersgrensen på 16 år; moderate psykiske plager faller innenfor tjenestens beskrevne målgruppe når de gjelder angst, depresjon, søvn eller begynnende rusproblematikk.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Henvendelsesskjema; 40 43 30 67 mandag og torsdag kl. 10-11.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Fastlegen din kan gi deg behandling for milde psykiske plager og henvise deg videre ved behov.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+          "verbatim_quote": "Tilbudet starter med en kartleggingssamtale over telefon, og blir enige om veien videre sammen med deg. ... Ta direkte kontakt med oss selv ved å fylle ut henvendelsesskjema nederst på siden her, eller nå oss via helsesykepleier/ elevtjenesten på skolen.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Kommunens siden ble oppdatert 30. juni 2026. Tilbudet er ikke akutt, og kommunen oppgir at den har stor pågang og etterstreber kontakt innen tre til fire uker."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ta direkte kontakt med Rask psykisk helsehjelp via henvendelsesskjema eller mottakstelefon og be om kartleggingssamtale; dette er den tydeligste dokumenterte lavterskelruten.",
+        "selected_service": "Rask psykisk helsehjelp",
+        "eligibility": "22 år er over aldersgrensen på 16 år; kommunen beskriver tilbudet som korttidstilbud for milde til moderate plager.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Henvendelsesskjema; 40 43 30 67 mandag og torsdag kl. 10-11.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Kommunen du bor i har en rekke tilbud om behandling og støtte til personer som trenger psykisk helsehjelp, og til deres pårørende. For å få et slikt tilbud kan du kontakte fastlegen din eller kommunen.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.fredrikstad.kommune.no/tjenester/helse/psykisk-helse-og-rus/rask-psykisk-helsehjelp/",
+          "verbatim_quote": "Rask psykisk helsehjelp er gratis, og du trenger ikke henvisning fra lege. ... Du må være fylt 16 år og bo i Fredrikstad kommune.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "RPH er den beste matchen for ønsket om rask/lavterskel hjelp, men publisert kontaktmål er tre til fire uker på grunn av stor pågang."
+      },
+      "missing_query_concepts": [
+        "Ventetid utover kommunens publiserte 3-4 uker",
+        "Eventuelle særskilte aldersregler for 19- og 22-åringer utover 16+-regelen",
+        "Eventuelt interkommunalt tilbud eller studenttilbud med kortere tilgang"
+      ],
+      "general_notes": "Fredrikstad har den tydeligste dokumentasjonen i settet: eksplisitt RPH, 16+-grense, moderat-plage-målgruppe og direkte selvkontakt."
+    },
+    {
+      "kommune": "Askøy",
+      "kommunenummer": "4627",
+      "queries_used": [
+        "site:askoy.kommune.no psykisk helse voksne lavterskel Askøy kommune",
+        "Askøy kommune Origo unge voksne 19 22 selvhenvisning psykisk helse",
+        "Askøy kommune psykisk helse voksne lavterskel",
+        "Askøy kommune Origo psykisk helse rus kontakt",
+        "Askøy kommune psykisk helsetjeneste unge voksne",
+        "Askøy kommune rask psykisk helsehjelp",
+        "Askøy kommune helsestasjon for ungdom psykisk helse 20 25"
+      ],
+      "services_found": [
+        {
+          "name": "Origo Askøy - livsmestring, psykisk helse og rus",
+          "target_group": "Origo oppgir tilbud for alle aldersgrupper; kontakt-siden skiller mellom barn/unge og voksne over 24 år.",
+          "age_coverage": "For barn, unge og foreldre er egenkontakt uttrykkelig tillatt. For voksne over 24 år ønsker Origo fortrinnsvis henvisning. 19- og 22-åringer ligger derfor i den dokumenterte unge-kategorien, men siden angir ikke en eksplisitt øvre aldersgrense for alle tilbud.",
+          "access_model": "Direkte egenkontakt for barn/unge; fastlegehenvisning foretrekkes for voksne over 24 år.",
+          "contact": "56 15 86 99; mandag-fredag kl. 09-14; Nygjerdet 4, 5300 Kleppestø.",
+          "evidence": {
+            "url": "https://www.askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+            "verbatim_quote": "Ofte er det nyttig å ta kontakt med oss i samarbeid med noen du allerede er i kontakt med, for eksempel helsesykepleier eller fastlege. Men du er også velkommen til å ta kontakt med oss på egen hånd. ... For voksne over 24 år ønsker vi fortrinnsvis henvisning fra fra fastlege eller spesialisthelsetjeneste for oppfølging i Origo. ... Du kan ringe oss på telefon 56 15 86 99. Telefontid mandag-fredag: klokken 09.00-14.00.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Origo - assistert selvhjelp og individuell oppfølging",
+          "target_group": "Voksne med milde til moderate symptomer/plager; tilbudet omfatter assistert selvhjelp og åtte målrettede samtaler.",
+          "age_coverage": "KID-kurset krever over 18 år; øvrige tilbudsgrenser må avklares av Origo.",
+          "access_model": "Kartlegging og oppstartssamtale; generell kontaktflyt via Origo.",
+          "contact": "Origo: 56 15 86 99, hverdager 09-14.",
+          "evidence": {
+            "url": "https://www.askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/psykisk-helsetilbud-til-voksne",
+            "verbatim_quote": "Assistert selvhjelp er tilpasset for deg som har milde til moderate symptomer på vanlige psykiske lidelser, og er en dokumentert effektiv behandling for utfordringer som stress, angst, depresjon, selvfølelse og søvnproblemer. ... Før oppstart gjennomføres en kartlegging og en oppstartssamtale med fagpersonen som skal følge deg opp. ... Vi tilbyr 8 individuelle målrettede samtaler.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Kontakt Origo direkte på telefon 56 15 86 99 og be om vurdering av riktig tilbud for en 19-åring med moderate plager; egenkontakt er uttrykkelig åpnet for unge.",
+        "selected_service": "Origo Askøy - livsmestring, psykisk helse og rus",
+        "eligibility": "Origo beskriver psykiske plager hos barn og ungdom og har en egen kontaktflyt der unge kan ta kontakt på egen hånd. Den eksakte øvre aldersgrensen for denne flyten er ikke oppgitt; 19 år er derfor en rimelig, men eksplisitt merket, aldersslutning.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "56 15 86 99, mandag-fredag kl. 09-14; Nygjerdet 4, 5300 Kleppestø.",
+        "evidence_strength": "MEDIUM",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Fastlegen skal hjelpe deg med å få kontakt med psykisk helsetjeneste og andre tilbud i kommunen eller henvise til psykolog eller psykiater, behandling ved et distriktspsykiatrisk senter eller ved sykehus.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/hvordan-ta-kontakt-med-origo",
+          "verbatim_quote": "For barn, unge og foreldre ... du er også velkommen til å ta kontakt med oss på egen hånd. ... Egenhenvisning for barn, unge og foreldre kan sendes på dette skjema, så vil vi ta kontakt med deg innen kort tid.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Askøy har ikke en offentlig side som eksplisitt heter Rask psykisk helsehjelp i treffene. Origo er den best dokumenterte lokale inngangen; ved behov for psykologoppfølging sier samme side at fastlegehenvisning må foreligge."
+      },
+      "scenario_D": {
+        "best_documented_route": "Kontakt Origo direkte på 56 15 86 99 for avklaring av riktig lavterskeltilbud, inkludert assistert selvhjelp eller individuell oppfølging; 22-åringen er under siden oppgitte 24-årsskille.",
+        "selected_service": "Origo Askøy - livsmestring, psykisk helse og rus",
+        "eligibility": "Origo har tilbud som dekker milde til moderate plager, og kontakt-siden sier at henvisning fortrinnsvis gjelder voksne over 24 år. For 22 år er direkte kontakt derfor best dokumentert, men den eksakte aldersgrensen for hvert enkelt tilbud er ikke samlet i én regel.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "56 15 86 99, mandag-fredag kl. 09-14; Nygjerdet 4, 5300 Kleppestø.",
+        "evidence_strength": "MEDIUM",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Kommunen du bor i har en rekke tilbud om behandling og støtte til personer som trenger psykisk helsehjelp, og til deres pårørende. For å få et slikt tilbud kan du kontakte fastlegen din eller kommunen.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.askoy.kommune.no/tjenester/helse-og-mestring/tjenestetilbud-fysisk-og-psykisk-helse/psykisk-helse/psykisk-helsetilbud-til-voksne",
+          "verbatim_quote": "Assistert selvhjelp er tilpasset for deg som har milde til moderate symptomer på vanlige psykiske lidelser ... Det kan også være til hjelp i ventetiden til annen oppfølging. ... Vi tilbyr 8 individuelle målrettede samtaler.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Ruten er direkte, men ikke en eksplisitt tidsfristet RPH-rute. Ved ønske om psykologoppfølging må fastlegehenvisning avklares med Origo."
+      },
+      "missing_query_concepts": [
+        "Eksplisitt Rask psykisk helsehjelp-side for Askøy",
+        "Eksakt øvre aldersgrense for Origo sin unge-/voksenflyt mellom 19 og 24 år",
+        "Publisert ventetid for Origo-vurdering",
+        "Drop-in eller rask kontakt for voksne utover telefon og henvisningsskjema"
+      ],
+      "general_notes": "Askøy har bred Origo-dokumentasjon og et tydelig aldersskille ved 24 år. For scenariene 19 og 22 er direkte kontakt den beste dokumenterte tolkningen, men aldersslutningen bør beholdes som usikkerhet fordi kommunen ikke formulerer en eksplisitt 18-24-regel på kontaktsiden."
+    },
+    {
+      "kommune": "Birkenes",
+      "kommunenummer": "4216",
+      "queries_used": [
+        "site:birkenes.kommune.no psykisk helse voksne lavterskel Birkenes kommune",
+        "Birkenes kommune psykisk helse voksne selvhenvisning lavterskel",
+        "Birkenes kommune rask psykisk helsehjelp",
+        "Birkenes kommune psykisk helse voksne kontakt henvisning"
+      ],
+      "services_found": [
+        {
+          "name": "Avdeling for psykisk helse og rus / Psykisk helse for voksne",
+          "target_group": "Personer som bor hjemme og har psykiske plager/lidelser og/eller rusavhengighet; tilbudet inkluderer tidlig hjelp, mestringskurs og kortvarig samtalerekke/individuell oppfølging.",
+          "age_coverage": "Over 18 år og bosatt i Birkenes kommune.",
+          "access_model": "Både henvisning og digital selvhenvisning; telefon og papirskjema er også publisert.",
+          "contact": "Digitalt selvhenvisningsskjema; 95 00 36 52 hverdager kl. 09-15; Ressurssenteret.",
+          "evidence": {
+            "url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+            "verbatim_quote": "Vi ønsker å gi deg hjelp på et tidlig tidspunkt, før utfordringene blir større og mer omfattende. ... Kortvarig samtalerekke / individuell oppfølging ... Du må være over 18 år og bo i Birkenes kommune ... Henvisning fra fastlege eller andre instanser. ... Fyll ut vårt digitale selvhenvisningsskjema ... Ta kontakt ved å ringe oss på tlf.: 95 00 36 52 (hverdager 09-15) ... Etter mottatt henvisning vil du bli kontaktet via SMSeller HelseNorge, normalt innen 3 uker.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Fyll ut Birkenes sitt digitale selvhenvisningsskjema for psykisk helse og rus, eller ring 95 00 36 52 i telefontiden.",
+        "selected_service": "Avdeling for psykisk helse og rus / Psykisk helse for voksne",
+        "eligibility": "19 år oppfyller kravet om å være over 18 år og bosatt i Birkenes; uro, stress, depresjon, angst og andre psykiske plager er uttrykkelig listet.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Digitalt selvhenvisningsskjema; 95 00 36 52 hverdager kl. 09-15; papirskjema ved Ressurssenteret.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Fastlegen din kan gi deg behandling for milde psykiske plager og henvise deg videre ved behov.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+          "verbatim_quote": "Du må være over 18 år og bo i Birkenes kommune ... Streve med uro, søvn, tristhet, stress, bekymring, slitenhet, depresjon, angst eller avhengighet, sinne, lav selvfølelse eller andre psykiske plager ... Fyll ut vårt digitale selvhenvisningsskjema.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Dette er en sterk dokumentert kommunal rute for moderate, ikke-akutte plager. Kommunen oppgir normalt kontakt innen tre uker etter mottatt henvisning."
+      },
+      "scenario_D": {
+        "best_documented_route": "Bruk digital selvhenvisning eller ring Birkenes psykisk helse og rus direkte; dette er kommunens publiserte lavterskel/egenkontakt-inngang for voksne.",
+        "selected_service": "Avdeling for psykisk helse og rus / Psykisk helse for voksne",
+        "eligibility": "22 år oppfyller alderskravet; tilbudet omfatter tidlig hjelp, mestringskurs og kortvarig individuell oppfølging.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Digitalt selvhenvisningsskjema; 95 00 36 52 hverdager kl. 09-15; papirskjema ved Ressurssenteret.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Kommunen du bor i har en rekke tilbud om behandling og støtte til personer som trenger psykisk helsehjelp, og til deres pårørende. For å få et slikt tilbud kan du kontakte fastlegen din eller kommunen.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.birkenes.kommune.no/innhold/helse-og-velferd/psykisk-helse-for-voksne/",
+          "verbatim_quote": "Vi ønsker å gi deg hjelp på et tidlig tidspunkt, før utfordringene blir større og mer omfattende. ... Henvisning fra fastlege eller andre instanser. ... Fyll ut vårt digitale selvhenvisningsskjema ... Ta kontakt ved å ringe oss på tlf.: 95 00 36 52 (hverdager 09-15).",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Ingen separat RPH-side ble funnet, men kommunens egen tjeneste har selvhenvisning, tidlig hjelp og kortvarig oppfølging. Publisert normal respons er innen tre uker."
+      },
+      "missing_query_concepts": [
+        "Separat Rask psykisk helsehjelp-tjeneste eller RPH-navn",
+        "Drop-in eller raskere kontakt enn normalt tre uker",
+        "Eksakt digital skjema-URL og eventuelle aldersregler mellom 18 og 25 år"
+      ],
+      "general_notes": "Birkenes har én svært tydelig kommunal voksenrute med både målgruppe og selvhenvisning dokumentert på samme side."
+    },
+    {
+      "kommune": "Alstahaug",
+      "kommunenummer": "1820",
+      "queries_used": [
+        "site:alstahaug.kommune.no psykisk helse voksne lavterskel Alstahaug kommune",
+        "Alstahaug kommune rask psykisk helsehjelp psykisk helse voksne",
+        "Alstahaug kommune psykisk helsetjeneste voksne egensøknad lavterskel",
+        "Alstahaug kommune psykisk helse rus voksne kontakt henvisning",
+        "Alstahaug kommune tildelingskontoret psykiske helsetjenester uten henvisning"
+      ],
+      "services_found": [
+        {
+          "name": "Psykisk helsetjeneste for voksne",
+          "target_group": "Personer som bor eller midlertidig oppholder seg i kommunen, primært over 18 år, med psykiske helsehjelpsbehov, livskrise eller sterkt belastet livssituasjon.",
+          "age_coverage": "Primært over 18 år",
+          "access_model": "Direkte kontakt eller via fastlege; individuelt tilpasset tjeneste etter enkeltvedtak på bakgrunn av egensøknad.",
+          "contact": "75 07 52 15 eller 468 49 969; mandag-fredag kl. 08-15.30.",
+          "evidence": {
+            "url": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/psykisk-helse--og-rustjeneste/psykisk-helsetjeneste",
+            "verbatim_quote": "Mennesker som bor og midlertidig oppholder seg i kommunen, primært over fylte 18 år. Du kan ta kontakt direkte eller via fastlege. ... Individuelt tilpasset tjeneste etter enkeltvedtak på bakgrunn av egensøknad. ... Tjenesten er gratis. ... Tlf: 75 07 52 15 ... Mobil: 468 49 969 ... Mandag-fredag fra kl. 08-15.30",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Tildelingskontoret - psykiske helsetjenester",
+          "target_group": "Alle som har behov for helse- og omsorgstjenester fra Alstahaug kommune.",
+          "age_coverage": "Alle kan henvende seg; ingen eksplisitt aldersgrense publisert.",
+          "access_model": "Direkte henvendelse og søknad uten legehenvisning.",
+          "contact": "75 07 56 00, mandag-fredag kl. 10-14; digitalt eller papirbasert søknad.",
+          "evidence": {
+            "url": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/soke-helse--og-omsorgstjenester/tildelingskontoret",
+            "verbatim_quote": "Alle kan henvende seg og det er ikke nødvendig med henvisning fra lege eller andre for å ta kontakt. ... Psykiske helsetjenester ... Beskriv hva du trenger hjelp til, så vurderer vi hvilken tjeneste som passer best for deg. ... Tlf: 75 07 56 00 ... Mandag-fredag fra kl. 10-14",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Kontakt Psykisk helsetjeneste for voksne direkte på 75 07 52 15 eller 468 49 969 og be om vurdering; egensøknad er uttrykkelig beskrevet.",
+        "selected_service": "Psykisk helsetjeneste for voksne",
+        "eligibility": "19 år oppfyller tjenestens primære aldersbeskrivelse over 18 år; moderate plager kan beskrives ved direkte henvendelse, men siden prioriterer også langvarige/sammensatte behov og livskriser.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "75 07 52 15 eller 468 49 969, mandag-fredag kl. 08-15.30.",
+        "evidence_strength": "STRONG",
+        "fallback": "Tildelingskontoret kan kontaktes uten legehenvisning på 75 07 56 00. Kilde: https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/soke-helse--og-omsorgstjenester/tildelingskontoret — sitat: \"Alle kan henvende seg og det er ikke nødvendig med henvisning fra lege eller andre for å ta kontakt.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.alstahaug.kommune.no/tjenester/helse-og-velferd/psykisk-helse--og-rustjeneste/psykisk-helsetjeneste",
+          "verbatim_quote": "Mennesker som bor og midlertidig oppholder seg i kommunen, primært over fylte 18 år. Du kan ta kontakt direkte eller via fastlege. ... Individuelt tilpasset tjeneste etter enkeltvedtak på bakgrunn av egensøknad.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Tjenesten er tydelig tilgjengelig uten fastlegehenvisning, men den publiserte målgruppen fremhever langvarige/sammensatte behov og livskriser. Ved moderate plager kan Tildelingskontoret være en nøytral inngang dersom tjenesten må avklare riktig nivå."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ring Psykisk helsetjeneste for voksne direkte i åpningstiden for å be om lavterskel vurdering; bruk Tildelingskontoret dersom du trenger søknads-/tildelingsavklaring.",
+        "selected_service": "Psykisk helsetjeneste for voksne",
+        "eligibility": "22 år er over tjenestens primære aldersgrense på 18 år; direkte kontakt og egensøknad er publisert.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Psykisk helsetjeneste: 75 07 52 15 eller 468 49 969 kl. 08-15.30. Tildelingskontoret: 75 07 56 00 kl. 10-14.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Fastlegen skal hjelpe deg med å få kontakt med psykisk helsetjeneste og andre tilbud i kommunen eller henvise til psykolog eller psykiater, behandling ved et distriktspsykiatrisk senter eller ved sykehus.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.alstahaug.kommune.no/psykisk-helse-og-rustjeneste.596297.no.html",
+          "verbatim_quote": "Dersom du opplever problemer knyttet til rus eller psykisk helse, er det i kommunen flere instanser du kan kontakte for å få hjelp og støtte videre ... Familie og pårørende kan også ta kontakt da dette er et lavterskeltilbud. ... Mandag-fredag fra kl 09-15",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Kommunen beskriver overordnet psykisk helse- og rustjeneste som lavterskel, mens voksen-siden dokumenterer den konkrete direkte kontakten. Ingen separat aktuell RPH-side ble funnet."
+      },
+      "missing_query_concepts": [
+        "Separat Rask psykisk helsehjelp-side eller korttidsprogram for milde/moderate plager",
+        "Digital selvhenvisning eller drop-in for unge voksne",
+        "Publisert ventetid og vurderingsfrist",
+        "Detaljert aldersgrense utover primært over 18 år"
+      ],
+      "general_notes": "Alstahaug har både direkte voksenkontakt og et nyere Tildelingskontor som uttrykkelig tar imot alle uten legehenvisning. Den lokale voksenruten er derfor godt dokumentert, men ikke like spesifikt korttids-/RPH-avgrenset som Fredrikstad."
+    },
+    {
+      "kommune": "Aure",
+      "kommunenummer": "1576",
+      "queries_used": [
+        "site:aure.kommune.no psykisk helse voksne lavterskel Aure kommune",
+        "Aure kommune psykisk helse voksne psykisk helseteam rask psykisk helsehjelp",
+        "Aure kommune psykisk helsehjelp unge voksne selv ta kontakt lavterskel",
+        "Aure kommune rask psykisk helsehjelp psykisk helse rus vurderingssamtale",
+        "Aure kommune psykisk helse rus kontakt vurderingssamtale",
+        "Aure kommune kommunepsykolog psykisk helse voksne"
+      ],
+      "services_found": [
+        {
+          "name": "Psykisk helsehjelp - Psykisk helse og rus",
+          "target_group": "Barn, unge og voksne som opplever livskriser, psykiske helseutfordringer, psykisk sykdom og/eller rusproblematikk.",
+          "age_coverage": "Barn, unge og voksne; ingen øvre aldersgrense oppgitt.",
+          "access_model": "Direkte egenkontakt eller henvisning fra lege/andre instanser; vurderingssamtale/førstegangssamtale tilbys raskt.",
+          "contact": "Tanja Jørgenvåg 90 52 27 36; Carina Ulfsnes 90 14 72 56; Bjørn Hjelseth 91 59 07 95; Ingri Sæterbø Settemsdal 95 21 53 53.",
+          "evidence": {
+            "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+            "verbatim_quote": "Psykisk helse og rus er en del av det kommunale tjenestetilbudet til barn, unge og voksne. ... Tilbudet er for deg som opplever livskriser, psykiske helseutfordringer, psykisk sykdom og/ eller rusproblematikk. ... Du kan ta kontakt selv eller du kan henvises av lege eller andre instanser. Du vil raskt få tilbud om hjelp i form av en vurderingssamtale/ førstegangssamtale. ... Tjenesten er gratis.",
+            "retrieved_date": "2026-09-09"
+          }
+        },
+        {
+          "name": "Kommunalt lavterskeltilbud for psykisk helse og rus",
+          "target_group": "Barn, unge og voksne som opplever livskriser, psykiske helseutfordringer, psykisk sykdom eller rusproblematikk.",
+          "age_coverage": "Barn, unge og voksne",
+          "access_model": "Kommunalt lavterskeltilbud; kontaktflyt og aldersdetaljer må hentes fra psykisk helsehjelp-siden.",
+          "contact": "Aure kommune sentralbord 71 64 74 00; psykisk helsehjelp-siden publiserer direkte fagkontakter.",
+          "evidence": {
+            "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/jobb-i-helse-og-omsorgstjenesten/",
+            "verbatim_quote": "Tjeneste for psykisk helse og rus er et kommunalt lavterskel tilbud. Psykisk helse og rus gir psykisk helsehjelp til barn, unge og voksne som opplever livskriser, psykiske helseutfordringer, psykisk sykdom, eller rusproblematikk.",
+            "retrieved_date": "2026-09-09"
+          }
+        }
+      ],
+      "scenario_C": {
+        "best_documented_route": "Ta direkte kontakt med Psykisk helse og rus, helst med en av de publiserte fagkontaktene, og be om vurderingssamtale/førstegangssamtale.",
+        "selected_service": "Psykisk helsehjelp - Psykisk helse og rus",
+        "eligibility": "19 år omfattes av tjenestens eksplisitte målgruppe barn, unge og voksne; moderate psykiske helseutfordringer er uttrykkelig nevnt.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Tanja Jørgenvåg 90 52 27 36; Carina Ulfsnes 90 14 72 56; Bjørn Hjelseth 91 59 07 95; Ingri Sæterbø Settemsdal 95 21 53 53.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Fastlegen din kan gi deg behandling for milde psykiske plager og henvise deg videre ved behov.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+          "verbatim_quote": "Tilbudet er for deg som opplever livskriser, psykiske helseutfordringer, psykisk sykdom og/ eller rusproblematikk. ... Du kan ta kontakt selv eller du kan henvises av lege eller andre instanser. Du vil raskt få tilbud om hjelp i form av en vurderingssamtale/ førstegangssamtale.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Aure-siden oppgir rask vurderingssamtale, men publiserer ikke en numerisk ventetidsfrist."
+      },
+      "scenario_D": {
+        "best_documented_route": "Ta direkte kontakt med Psykisk helse og rus for en rask vurderingssamtale/førstegangssamtale; tjenesten er også omtalt som kommunalt lavterskeltilbud.",
+        "selected_service": "Psykisk helsehjelp - Psykisk helse og rus",
+        "eligibility": "22 år omfattes av tjenestens eksplisitte målgruppe voksne; egenkontakt er tillatt.",
+        "access_model": "DIRECT_SELF_CONTACT",
+        "self_referral": true,
+        "contact": "Tanja Jørgenvåg 90 52 27 36; Carina Ulfsnes 90 14 72 56; Bjørn Hjelseth 91 59 07 95; Ingri Sæterbø Settemsdal 95 21 53 53.",
+        "evidence_strength": "STRONG",
+        "fallback": "Fastlege ved behov for vurdering, hjelp til kommunal kontakt eller videre henvisning. Kilde: https://www.helsenorge.no/psykisk-helse/psykisk-helsehjelp-for-voksne/ — sitat: \"Kommunen du bor i har en rekke tilbud om behandling og støtte til personer som trenger psykisk helsehjelp, og til deres pårørende. For å få et slikt tilbud kan du kontakte fastlegen din eller kommunen.\" (hentet 2026-09-09).",
+        "evidence": {
+          "url": "https://www.aure.kommune.no/tjenester/helse-og-omsorg/psykisk-helse-og-rus/psykisk-helsehjelp/",
+          "verbatim_quote": "For å få tjenesten må du være bosatt eller oppholde deg i kommunen. Tjenesten er gratis. ... Du kan ta kontakt selv eller du kan henvises av lege eller andre instanser. Du vil raskt få tilbud om hjelp i form av en vurderingssamtale/ førstegangssamtale.",
+          "retrieved_date": "2026-09-09"
+        },
+        "notes": "Aure tilbyr den mest direkte egenkontakten i materialet etter Fredrikstad: målgruppe, gratis tjeneste og rask vurderingssamtale står på samme oppdaterte kommunale side."
+      },
+      "missing_query_concepts": [
+        "Separat Rask psykisk helsehjelp-side eller RPH-navn",
+        "Numerisk ventetidsmål utover formuleringen raskt",
+        "Digital selvhenvisning eller drop-in",
+        "Eventuelle aldersgrenser innen barn/unge/voksen-inndelingen"
+      ],
+      "general_notes": "Aure har en oppdatert kommunal side med direkte egenkontakt og rask vurderingssamtale. Et annet kommunalt dokument omtaler tjenesten eksplisitt som lavterskeltilbud."
+    }
+  ]
+}

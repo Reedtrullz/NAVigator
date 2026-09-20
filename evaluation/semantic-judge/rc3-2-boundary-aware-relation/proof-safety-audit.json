@@ -1,0 +1,24 @@
+{
+  "scope": "fresh-architecture-cases.json (152 cases, SHA 81b25913c74e8ee8079cf0f109b8f516b538e7b5b9c63873a0252580b37fc129), post-implementation",
+  "engine_sha256": "16d4fdbf34afe1ca460c6ea2c43b2937dc1cc4c7ace21c4da6324520a28b2f20",
+  "entails_verdicts": 47,
+  "entails_grounded": 47,
+  "entails_ungrounded": 0,
+  "entails_under_boundary_blocked": 0,
+  "entails_under_boundary_unresolved": 8,
+  "note": "The 8 unresolved-gate ENTAILS rows are relation-layer classifications, not auto-eligible support decisions; final eligibility requires BOUNDARY_COMPATIBLE plus structural validity plus grounded. The frozen boundary suite independently reports FALSE_AUTO_SUPPORT_BOUNDARY = 0 and unsound_eligible = 0 after the change.",
+  "frozen_boundary_suite": {
+    "FALSE_AUTO_SUPPORT_BOUNDARY": 0,
+    "support_boundary_precision": 1.0,
+    "entailed_support_recall": 0.972972972972973,
+    "unsound_eligible_support_proofs": 0
+  },
+  "critical_rows": {
+    "critical_false_entails": 5,
+    "critical_rows": ["BA-077", "BA-087", "BA-095", "BA-099", "BA-149"],
+    "critical_false_contradicts": 0,
+    "note": "BA-077/087/095 are R23/R25 numeric-coverage soundness gaps predating this task (documented, no case hacks); BA-099/BA-149 are 3-state gate collapse cases the rich layer classifies honestly but cannot fix without changing the frozen gate."
+  },
+  "hallucinated_proofs": 0,
+  "case_id_rules_in_runtime": 0
+}

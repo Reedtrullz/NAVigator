@@ -1,0 +1,40 @@
+{
+  "schema": "regression-results-v1",
+  "task_id": "SEMANTIC-JUDGE-TIER1-COVERAGE-REPAIR",
+  "run_order": [
+    "tier1-proof/test_tier1_operators.py",
+    "tier1-proof/run_gate.py",
+    "operator-regression/run_regression.py",
+    "quote-aligner/v0.2/check_regress.py",
+    "quote-aligner/v0.2/check_id_guard.py",
+    "quote-aligner/v0.2/check_determinism.py",
+    "score_baseline.py (KB regression)",
+    "evaluator-regression/run_evaluator_regression.py",
+    "scripts/qa_check.sh"
+  ],
+  "results": [
+    {"check": "tier1 coverage-fix unit tests", "result": "PASS 43/43", "note": "includes 10 new near-miss/positive checks"},
+    {"check": "tier1 full gate (389 rows)", "result": "PASS", "note": "moved review->auto: ACT-25, CAL011, CAL014, CAL034; retracted: N-A4, N-R1, ENT-C; new_invalid_proofs=[]; critical_auto_errors_after=[]"},
+    {"check": "operator regression", "result": "PASS 23/23", "note": "16 existing + 7 new (positives + near-misses for every landed fix)"},
+    {"check": "quote-aligner regression", "result": "REGRESSIONS: 0", "note": "7 documented residuals unchanged (engine-level, pre-existing)"},
+    {"check": "id_guard", "result": "0 violations", "note": "spec 14 hard gate"},
+    {"check": "determinism", "result": "identical_across_runs=true", "note": "5 runs over 225 cases after engine edits"},
+    {"check": "KB regression (score_baseline)", "result": "Total: 48 BESTATT: 48 DELVIS: 0 FEILET: 0", "note": "exit 0"},
+    {"check": "evaluator regression", "result": "acc=1.00 prec=1.00 rec=1.00 safety_FP=0", "note": "TP=24 TN=96 FP=0 FN=0"},
+    {"check": "qa_check.sh", "result": "OK: ingen kjente feilmnstre funnet.", "note": "repo-root script, exit 0"}
+  ],
+  "canaries": {
+    "ENT-C": "not auto-CONTRADICTED; retracted to REVIEW_REQUIRED (safe review)",
+    "N-A4": "retracted to REVIEW_REQUIRED (safe review)",
+    "N-R1": "retracted to REVIEW_REQUIRED (safe review)",
+    "ACT-25": "auto-SUPPORTED with valid DIRECT_ASSERTION proof (positive reference intact)"
+  },
+  "ent_a_d": {
+    "ENT-A": "INSUFFICIENT -> INSUFFICIENT (unchanged)",
+    "ENT-B": "INSUFFICIENT -> INSUFFICIENT (unchanged)",
+    "ENT-C": "CONTRADICTED(auto, invalid) -> REVIEW_REQUIRED (retracted)",
+    "ENT-D": "CONTRADICTED -> CONTRADICTED (unchanged)"
+  },
+  "json_validity": "all deliverable JSON files parsed with json.load during preparation",
+  "overall": "PASS - no safety regression detected"
+}

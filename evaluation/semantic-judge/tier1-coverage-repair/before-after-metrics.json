@@ -1,0 +1,48 @@
+{
+  "schema": "before-after-metrics-v1",
+  "task_id": "SEMANTIC-JUDGE-TIER1-COVERAGE-REPAIR",
+  "baseline": {
+    "source": "tier1-proof/results/baseline-metrics.json (frozen hybrid-eval v0.4.1 finals vs frozen dual contract)",
+    "n_rows": 389,
+    "auto_decisions": 121,
+    "review_finals": 27,
+    "necessary_reviews_dual": 1,
+    "unnecessary_reviews_dual": 5,
+    "invalid_accepted_proofs": 3,
+    "invalid_proof_ids": ["N-A4", "N-R1", "ENT-C"],
+    "unsafe_auto_supported_vs_doctrine": 0,
+    "unsafe_auto_contradicted_vs_doctrine": 0,
+    "semantic_accuracy_dual_rows": {"match": 45, "n": 80},
+    "product_exact_vs_legacy_expected": {"match": 317, "n": 389}
+  },
+  "after": {
+    "source": "tier1-proof/results/gate-results.json + operator-impact-summary.json after one implementation pass",
+    "n_rows": 389,
+    "auto_decisions": 122,
+    "review_finals": 27,
+    "necessary_reviews_dual": 1,
+    "unnecessary_reviews_dual": 5,
+    "invalid_accepted_proofs": 0,
+    "unsafe_auto_supported_vs_doctrine": 0,
+    "unsafe_auto_contradicted_vs_doctrine": 0,
+    "semantic_accuracy_dual_rows": {"match": 45, "n": 80},
+    "rows_moved_review_to_auto": [
+      {"id": "ACT-25", "from": "INSUFFICIENT/review", "to": "SUPPORTED/auto", "operator": "DIRECT_ASSERTION"},
+      {"id": "CAL011", "from": "REVIEW_REQUIRED/review", "to": "SUPPORTED/auto", "operator": "DIRECT_ASSERTION"},
+      {"id": "CAL014", "from": "REVIEW_REQUIRED/review", "to": "SUPPORTED/auto", "operator": "DIRECT_ASSERTION"},
+      {"id": "CAL034", "from": "REVIEW_REQUIRED/review", "to": "CONTRADICTED/auto", "operator": "NUMERIC_CONFLICT"}
+    ],
+    "rows_retracted_auto_to_review": [
+      {"id": "N-A4", "reason": "dual proof_safe=INSUFFICIENT, no valid Tier-1 proof"},
+      {"id": "N-R1", "reason": "dual proof_safe=INSUFFICIENT, no valid Tier-1 proof"},
+      {"id": "ENT-C", "reason": "dual proof_safe=INSUFFICIENT, no valid Tier-1 proof"}
+    ]
+  },
+  "product_decision_correctness": {
+    "definition": "auto right iff verdict == dual semantic truth; review right iff semantic/proof targets diverge (contract section)",
+    "correct_auto_additions": 4,
+    "false_auto_decisions": 0,
+    "unsafe_auto_supported": 0,
+    "unsafe_auto_contradicted": 0
+  }
+}

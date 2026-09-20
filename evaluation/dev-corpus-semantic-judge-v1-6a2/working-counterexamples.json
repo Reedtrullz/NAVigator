@@ -1,0 +1,105 @@
+{
+  "artifact": "working-counterexamples.json",
+  "purpose": "contract section 8 comparison set: mechanisms that already work correctly, contrasted with ADV-11 failure",
+  "rule_working_correctly": [
+    {
+      "id": "VR-A-01",
+      "text": "For denne typen henvendelse er fastlegen riktig inngang.",
+      "category": null,
+      "gold_expected": "ASSERTED",
+      "engine_label": "ASSERTED",
+      "engine_rule_id": "BC_ROUTE_ASSERTED_01",
+      "engine_abstained": false,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    },
+    {
+      "id": "VR-A-03",
+      "text": "Familievernkontoret er riktig sted for samtaler om samlivsproblemer.",
+      "category": null,
+      "gold_expected": "ASSERTED",
+      "engine_label": "ASSERTED",
+      "engine_rule_id": "BC_ROUTE_ASSERTED_01",
+      "engine_abstained": false,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    },
+    {
+      "id": "VR-A-06",
+      "text": "Jeg anbefaler rask psykisk helsehjelp for lett til middels psykiske plager.",
+      "category": null,
+      "gold_expected": "ASSERTED",
+      "engine_label": "ASSERTED",
+      "engine_rule_id": "BC_ROUTE_ASSERTED_01",
+      "engine_abstained": false,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    }
+  ],
+  "engine_correctly_abstains": [
+    {
+      "id": "VR-AB-02",
+      "text": "Nettsiden sier «Kontakt BUP», og jeg anbefaler BUP.",
+      "category": null,
+      "gold_expected": "ABSTAIN",
+      "engine_label": "ABSTAIN",
+      "engine_rule_id": "BC_ROUTE_QUOTE_CONFLICT_01",
+      "engine_abstained": true,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    },
+    {
+      "id": "VR-HY-05",
+      "text": "Hvis fastlegen vurderer det som nødvendig, kan BUP vurderes.",
+      "category": null,
+      "gold_expected": "HYPOTHETICAL_ONLY",
+      "engine_label": "HYPOTHETICAL_ONLY",
+      "engine_rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "engine_abstained": false,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    },
+    {
+      "id": "VR-HY-05",
+      "text": "Hvis fastlegen vurderer det som nødvendig, kan BUP vurderes.",
+      "category": null,
+      "gold_expected": "HYPOTHETICAL_ONLY",
+      "engine_label": "HYPOTHETICAL_ONLY",
+      "engine_rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "engine_abstained": false,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    }
+  ],
+  "multi_clause_multi_noun_in_burned_corpus": [
+    {
+      "id": "VR-HY-05",
+      "text": "Hvis fastlegen vurderer det som nødvendig, kan BUP vurderes.",
+      "category": null,
+      "gold_expected": "HYPOTHETICAL_ONLY",
+      "engine_label": "HYPOTHETICAL_ONLY",
+      "engine_rule_id": "BC_ROUTE_HYPOTHETICAL_01",
+      "engine_abstained": false,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    },
+    {
+      "id": "VR-AB-02",
+      "text": "Nettsiden sier «Kontakt BUP», og jeg anbefaler BUP.",
+      "category": null,
+      "gold_expected": "ABSTAIN",
+      "engine_label": "ABSTAIN",
+      "engine_rule_id": "BC_ROUTE_QUOTE_CONFLICT_01",
+      "engine_abstained": true,
+      "engine_correct": true,
+      "source": "evaluation/dev-corpus-semantic-judge-v1-6a (BURNED)"
+    }
+  ],
+  "corpus_coverage_finding": "Only 3 of 120 burned V1.6A fixtures contain two or more route/service noun candidates (VR-HY-05, VR-AB-02, VU-N-01) and none combines an operator in one clause with an out-of-inventory noun in another. Cross-clause operator grounding was therefore never exercised by the burned corpus, which is why the leak survived to the fresh targeted set.",
+  "comparison": {
+    "ADV-11_failure": "assertion operator in clause 0, unknown service noun in clause 1, engine emits ASSERTED because markers are output-scoped and unknown-noun guard is suppressed",
+    "VR-AB-02_working": "conflict between quoted noun and output-level assertion produces ABSTAIN_CONFLICT because both rules fire; conflict detection works when rules actually fire, but no rule exists for clause-local grounding of mixed propositions",
+    "VR-HY-05_working": "single-proposition conditional correctly HYPOTHETICAL_ONLY",
+    "mechanism_gap": "no rule requires the licensing operator and every grounded route/service noun to share one clause/proposition scope"
+  }
+}

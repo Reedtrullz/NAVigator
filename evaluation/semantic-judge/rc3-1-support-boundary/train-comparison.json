@@ -1,0 +1,34 @@
+{
+  "label": "BURNED_TRAIN_DIAGNOSTIC",
+  "note": "The 124 RC3.1 train cases are heavily used development data. They are diagnostic only and cannot alone prove readiness. No routing or reviewer tuning was done against them in this task.",
+  "metric_definition_change": "The unsound-eligible count was redefined during the bounded bugfix pass from atom level to product level, matching repo precedent (rc3-1-proof-semantics run_train.py false_entails_top) and section 62 AUTO_SUPPORTED product-action semantics. AUTO_SUPPORTED is authorized only for a top-level ENTAILS product where every atom is boundary-compatible; an entailed atom inside a PARTIAL or CONTRADICTS product never reaches auto-support. Counts before and after this redefinition are therefore not directly comparable.",
+  "baseline": {
+    "engine_sha256": "e7a6aafd806529b5213be74dc11c4083f31344955231b3fe4ad8d967b0d0bf98",
+    "relation_accuracy": 0.8467741935483871,
+    "relation_correct": 105,
+    "n": 124,
+    "unsound_eligible_count": 25,
+    "unsound_count_metric": "atom-level (original definition)",
+    "negation_subgroup_accuracy": 0.552
+  },
+  "final": {
+    "engine_sha256": "c4bc71862febf51783e2e48550f899746f9a6d0cb00f03a84d084edcd8fdce37",
+    "relation_accuracy": 0.5161290322580645,
+    "relation_correct": 64,
+    "n": 124,
+    "unsound_eligible_count": 0,
+    "unsound_count_metric": "product-level (redefined, see metric_definition_change)",
+    "outcome_shift": "The boundary layer fail-closes many previously-entailed train predictions. Most former ENTAILS outcomes now land in explicit non-auto states (PARTIAL or RELATED_BUT_INSUFFICIENT) instead of resolving to the expected relation class. This is the expected effect of §9 UNKNOWN/MISMATCH fail-closed semantics and is recorded as an accepted accuracy cost, not a regression in proof safety.",
+    "relation_accuracy_gate": "FAIL (0.5161 < 0.95). Per section 32 this does not fail the boundary repair itself; it blocks overall proof readiness.",
+    "negation_subgroup_accuracy": "not computed at train subgroup level in this task; fresh-suite negation accuracy is 1.0"
+  },
+  "fresh_suite_reference": {
+    "baseline_false_auto_support_boundary": 27,
+    "final_false_auto_support_boundary": 0,
+    "baseline_support_boundary_precision": 0.5344827586206896,
+    "final_support_boundary_precision": 1.0,
+    "baseline_entailed_support_recall": 0.7948717948717948,
+    "final_entailed_support_recall": 0.972972972972973
+  },
+  "result_file": "boundary-results.json"
+}

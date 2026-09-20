@@ -1,0 +1,27 @@
+{
+  "artifact": "post-wave1-routing-failure-classification",
+  "task_id": "NAV-EXPLORE-FULL-SUT-POST-WAVE1-RESIDUAL-FAILURE-ANALYSIS-V1",
+  "route_criteria_total_evaluable": 108,
+  "route_not_applicable": 12,
+  "classification": {
+    "A_NO_ROUTE_GENERATED": 88,
+    "A_NO_ROUTE_GENERATED_JUNK_ONLY": 8,
+    "B_WRONG_ROUTE_TARGET": 12
+  },
+  "distribution_note": "96/108 evaluable route criteria have no usable structured route: 88 have an empty routes array and 8 have only junk fragments. The remaining 12 produce content but no content matches the frozen acceptable route family.",
+  "categories_observed": ["A_NO_ROUTE_GENERATED", "B_WRONG_ROUTE_TARGET"],
+  "categories_not_observed": ["C_WRONG_ACCESS_PATH", "D_ROUTE_TOO_BROAD", "E_ROUTE_TOO_NARROW", "F_ROUTE_CONDITION_ERROR", "G_ROUTE_PROVENANCE_FAILURE", "H_EPISTEMIC_ROUTE_FAILURE", "I_RENDERER_ONLY"],
+  "unobserved_reason": "With 0/108 routes matching the acceptable family, downstream route-quality distinctions (access path, condition, provenance) are not separately observable at the criterion level. These categories remain defined and may appear once route-target selection is repaired.",
+  "A_NO_ROUTE_GENERATED_junk_examples": ["ROUT-022", "ROUT-031", "ROUT-039", "ROUT-047", "ROUT-057", "ROUT-068", "ROUT-069", "ROUT-072"],
+  "B_WRONG_ROUTE_TARGET_examples": ["DIS-106", "ROUT-026", "ROUT-032", "ROUT-049", "ROUT-052", "ROUT-063", "ROUT-065", "ROUT-066", "ROUT-070", "ROUT-073", "ROUT-088", "SAF-019"],
+  "B_example_routes": {
+    "DIS-106": "Ikke en ensartet tjeneste.",
+    "ROUT-026": "Barn kan motta samtaler",
+    "note": "Routes contain KB sentence fragments, not service targets. Same retrieval-contamination mechanism as observed in answers and claims."
+  },
+  "root_cause_confidence": "HIGH",
+  "observed_vs_hypothesis": {
+    "OBSERVED_FAILURE": "0/108 route criteria PASS; 96/108 produce no usable structured route; 12/108 produce non-matching content.",
+    "ROOT_CAUSE_HYPOTHESIS": "Route emission populates the routes field with KB fragments rather than service targets; route-target selection over the KB is not implemented or not reached. HIGH confidence from structural inspection of the 12 content routes; exact SUT stage isolation pending repair-wave analysis."
+  }
+}

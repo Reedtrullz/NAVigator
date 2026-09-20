@@ -1,0 +1,40 @@
+{
+  "artifact": "LANE-H-CHEAP-MODEL-DIAGNOSTIC-EXPORT-V1",
+  "task_id": "NAV-EXPLORE-LANE-H-CHEAP-MODEL-DIAGNOSTIC-V1",
+  "created_utc": "2026-09-20T00:53:57Z",
+  "classification": "OFFLINE_DIAGNOSTIC_EXPORT_ONLY; AI_PROPOSED_REFERENCE; NOT gold, NOT certification",
+  "source_task_diagnostic_complete": true,
+  "new_inference_calls": 0,
+  "frozen_artifacts_modified": false,
+  "addendum_original_report_unchanged": true,
+  "contents_sha256": {
+    "analysis-summary.json": "ee043be24679fa904f441cadfc29c6af4c5fc2bb76d948efe8bd16d5c2b198a6",
+    "dataset-frozen.jsonl": "f3e11e83f03b7ddd9203ffc82be8844dfa32238c39205e08d736c344b6e807a2",
+    "diagnostic-report.md": "e818281b4c2b9e0d35f241cf9f9acffa42217a0ed5e2190d27641f90a2f4bce9",
+    "disagreements-vs-ai-reference.jsonl": "56f81843b1df8386c60f9361df0f870e8bbdbd031bb79588ffc54a86f75b55df",
+    "fence-only-replay.jsonl": "4265f185cf03637a38445f80eb10a65858b96ca3bba593ae6bba1f30e459eecb",
+    "lane-h-ai-review-proposals-v1.jsonl": "8b1dad2c0c7cd643e2d19bd99cbca97373e895fa69326b2dd11aca8fff269bc2",
+    "lane-h-diagnostic-contract-view-v1.md": "11965d723659c6d449e1c4b3bb00961e308690edf8365fc5190962e11123cf5f",
+    "mimo-invalid-causes.jsonl": "cc51a280dcda3a0188353f809069ce92c0e6fe3aec2c95d4c35f1a789433efd5",
+    "offline-diagnostic-addendum.md": "25133c4037a77860345038c89f17b1b719c42358ab0683b8779a52d65d444703",
+    "per-row-comparison.jsonl": "a4d4b627705b1352ed4a6e11b4109df9e8b5a0d3f76be7409917b61ba73c4f45",
+    "results-deepseek.jsonl": "6bf78f3f6074b0c142befd2c027b6d4c6c339531dbd2f88f8ca3cd40a829f79c",
+    "results-mimo.jsonl": "22f366a9b6deaae96ea6788e2751a61be66438f8cddf2107570f77b4a85d9b99",
+    "run-manifest.json": "fad27195b04c9131a46e3bbb4561a8a2e421f349824912217fbfac0ef47aa69e"
+  },
+  "zip": {
+    "path": "lane-h-cheap-model-diagnostic-export-v1.zip",
+    "verification": "final SHA256 recorded in EXPORT-SHA256.txt sidecar next to the zip; a zip cannot contain its own hash"
+  },
+  "secret_scan": {
+    "pattern_scan_hits": 1,
+    "hits_are_real_secrets": false,
+    "note": "single hit is prose in diagnostic-report.md describing auth method (local proxy Bearer); no secret values present"
+  },
+  "unknowns": [
+    "underlying vendor identity behind B.AI proxy for DeepSeek route (no provider metadata persisted; marked UNKNOWN per owner instruction)"
+  ],
+  "revised_utc": "2026-09-20T01:40:22Z",
+  "revision_note": "rev2: D7 added to addendum (owner-side audit verification: modal-row report error, constant semantic_input_hash, manifest self-hash removed, SCR-103 cause wording); export-manifest self-hash entry removed because a manifest cannot contain its own pre-write hash; EXPORT-SHA256.txt sidecar remains the ZIP integrity anchor",
+  "hypothetical_replay_scoring_changed": false
+}

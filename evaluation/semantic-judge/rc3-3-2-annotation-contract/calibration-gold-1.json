@@ -1,0 +1,409 @@
+{
+ "set_id": "RC33-ANNOT-CONTRACT-CALIBRATION-1",
+ "gold": [
+  {
+   "case_id": "CC3-001",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2292 kroner i maneden fra NAV.",
+   "span_ids": [
+    "S54_ITEMS"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "SAME",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "2292 NOK",
+   "quantity_value_source": "2292 NOK",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states the exact example: 1006 + 1286 = 2292 kroner i maneden for this parent."
+  },
+  {
+   "case_id": "CC3-002",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2292 kroner i maneden fra NAV.",
+   "span_ids": [
+    "S54_TABLE"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "SAME",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "2292 NOK",
+   "quantity_value_source": "2292 NOK",
+   "role": "AGGREGATE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "REQUIRED",
+   "derived_quantity": {
+    "operands": [
+     "1006 NOK",
+     "1286 NOK"
+    ],
+    "operation": "ADD",
+    "value": "2292 NOK",
+    "provenance_span_ids": [
+     "S54_TABLE"
+    ],
+    "quantity_identity": "SAME",
+    "role": "AGGREGATE"
+   },
+   "rationale": "Component rates 1006 and 1286 are stated; their sum equals the claimed 2292."
+  },
+  {
+   "case_id": "CC3-003",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2392 kroner i maneden fra NAV.",
+   "span_ids": [
+    "S54_ITEMS"
+   ],
+   "semantic_relation": "CONTRADICTS",
+   "quantity_identity": "SAME",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "2392 NOK",
+   "quantity_value_source": "2292 NOK",
+   "role": "AGGREGATE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_WEAKER",
+   "arithmetic_duty": "REQUIRED",
+   "derived_quantity": {
+    "operands": [
+     "1006 NOK",
+     "1286 NOK"
+    ],
+    "operation": "ADD",
+    "value": "2292 NOK",
+    "provenance_span_ids": [
+     "S54_TABLE"
+    ],
+    "quantity_identity": "SAME",
+    "role": "AGGREGATE"
+   },
+   "rationale": "Stated components sum to 2292, which positively refutes the claimed 2392 total."
+  },
+  {
+   "case_id": "CC3-004",
+   "claim": "Delt utvidet barnetrygd er 1286 kroner per maned.",
+   "span_ids": [
+    "S54_TABLE"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "SAME",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "1286 NOK",
+   "quantity_value_source": "1286 NOK",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Rate table states delt utvidet barnetrygd 1 286 kr/mnd."
+  },
+  {
+   "case_id": "CC3-005",
+   "claim": "Delt utvidet barnetrygd er 1386 kroner per maned.",
+   "span_ids": [
+    "S54_TABLE"
+   ],
+   "semantic_relation": "CONTRADICTS",
+   "quantity_identity": "SAME",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "1386 NOK",
+   "quantity_value_source": "1286 NOK",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_WEAKER",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Rate table states 1286 kr/mnd for the same benefit, positively refuting 1386."
+  },
+  {
+   "case_id": "CC3-006",
+   "claim": "En forelder med delt ordinaer barnetrygd faar 1006 kroner i maneden, og utvidet barnetrygd er 1286 kroner i maneden.",
+   "span_ids": [
+    "S54_ITEM4"
+   ],
+   "semantic_relation": "PARTIAL",
+   "quantity_identity": "UNRESOLVED",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "1286 NOK",
+   "quantity_value_source": null,
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "First conjunct is stated verbatim; the evidence does not address the utvidet rate conjunct."
+  },
+  {
+   "case_id": "CC3-007",
+   "claim": "En forelder med delt ordinaer barnetrygd uten rett til utvidet barnetrygd faar 1206 kroner i maneden fra NAV.",
+   "span_ids": [
+    "S54_ITEM4"
+   ],
+   "semantic_relation": "CONTRADICTS",
+   "quantity_identity": "SAME",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "1206 NOK",
+   "quantity_value_source": "1006 NOK",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_WEAKER",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states this parent faar bare 1006 kroner i maneden, positively refuting 1206."
+  },
+  {
+   "case_id": "CC3-008",
+   "claim": "Meklingsattesten er gyldig i 12 maneder.",
+   "span_ids": [
+    "S34"
+   ],
+   "semantic_relation": "CONTRADICTS",
+   "quantity_identity": "SAME",
+   "quantity_type": "PERIOD",
+   "quantity_value_claim": "12 MONTH",
+   "quantity_value_source": "6 MONTH",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_WEAKER",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states attesten er gyldig i 6 maneder, positively refuting 12 maneder."
+  },
+  {
+   "case_id": "CC3-009",
+   "claim": "Etter obligatorisk mekling kan foreldre be om inntil 3 frivillige timer i tillegg.",
+   "span_ids": [
+    "S34"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "SAME",
+   "quantity_type": "PERIOD",
+   "quantity_value_claim": "3 HOUR",
+   "quantity_value_source": "3 HOUR",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states foreldrene kan deretter be om inntil 3 frivillige timer i tillegg."
+  },
+  {
+   "case_id": "CC3-010",
+   "claim": "Frivillige hjelpetiltak etter barnevernloven § 3-1 kan ikke iverksettes uten samtykke.",
+   "span_ids": [
+    "S39_31"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "NOT_APPLICABLE",
+   "quantity_type": "NOT_APPLICABLE",
+   "quantity_value_claim": null,
+   "quantity_value_source": null,
+   "role": "NOT_APPLICABLE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states at uten samtykke kan ikke § 3-1-tiltak iverksettes."
+  },
+  {
+   "case_id": "CC3-011",
+   "claim": "Barnevernet kan vedta tiltak uten samtykke nar vilkarene i § 3-1 er oppfylt og det er nodvendig for a sikre barnet tilfredsstillende omsorg eller beskyttelse.",
+   "span_ids": [
+    "S39_34"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "NOT_APPLICABLE",
+   "quantity_type": "NOT_APPLICABLE",
+   "quantity_value_claim": null,
+   "quantity_value_source": null,
+   "role": "NOT_APPLICABLE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states § 3-4 vedtak uten samtykke under nettopp disse vilkarene."
+  },
+  {
+   "case_id": "CC3-012",
+   "claim": "Klagefristen for PPT-vedtak er 6 uker fra mottak av vedtak.",
+   "span_ids": [
+    "S28"
+   ],
+   "semantic_relation": "CONTRADICTS",
+   "quantity_identity": "SAME",
+   "quantity_type": "PERIOD",
+   "quantity_value_claim": "6 WEEK",
+   "quantity_value_source": "3 WEEK",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_WEAKER",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states klagefrist 3 uker fra mottak av vedtak, positively refuting 6 uker."
+  },
+  {
+   "case_id": "CC3-013",
+   "claim": "PPT-vedtak kan klages innen 3 uker fra mottak av vedtak.",
+   "span_ids": [
+    "S28"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "SAME",
+   "quantity_type": "PERIOD",
+   "quantity_value_claim": "3 WEEK",
+   "quantity_value_source": "3 WEEK",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states klagefrist: 3 uker fra mottak av vedtak."
+  },
+  {
+   "case_id": "CC3-014",
+   "claim": "Barn og ungdom under 18 ar slipper egenandeler for helsetjenester omfattet av frikortordningen fra 01.08.2026.",
+   "span_ids": [
+    "S25"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "NOT_APPLICABLE",
+   "quantity_type": "NOT_APPLICABLE",
+   "quantity_value_claim": null,
+   "quantity_value_source": null,
+   "role": "NOT_APPLICABLE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states fritaket gjelder under 18 ar fra 01.08.2026; the age is population scope, not a compared quantity."
+  },
+  {
+   "case_id": "CC3-015",
+   "claim": "Barn og ungdom under 16 ar slipper egenandeler for helsetjenester omfattet av frikortordningen fra 01.08.2026.",
+   "span_ids": [
+    "S25"
+   ],
+   "semantic_relation": "CONTRADICTS",
+   "quantity_identity": "SAME",
+   "quantity_type": "AGE",
+   "quantity_value_claim": "16 YEAR",
+   "quantity_value_source": "18 YEAR",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_STRONGER",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence positively sets the threshold at under 18 ar for the same date, refuting an under-16 threshold."
+  },
+  {
+   "case_id": "CC3-016",
+   "claim": "Barn over 16 ar kan normalt selv gi samtykke til helsehjelp.",
+   "span_ids": [
+    "S41"
+   ],
+   "semantic_relation": "ENTAILS",
+   "quantity_identity": "NOT_APPLICABLE",
+   "quantity_type": "NOT_APPLICABLE",
+   "quantity_value_claim": null,
+   "quantity_value_source": null,
+   "role": "NOT_APPLICABLE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Evidence states barn over 16 ar kan normalt selv gi samtykke til helsehjelp."
+  },
+  {
+   "case_id": "CC3-017",
+   "claim": "Foreldre kan alltid samtykke pa vegne av barn over 16 ar til helsehjelp.",
+   "span_ids": [
+    "S41"
+   ],
+   "semantic_relation": "RELATED_BUT_INSUFFICIENT",
+   "quantity_identity": "NOT_APPLICABLE",
+   "quantity_type": "NOT_APPLICABLE",
+   "quantity_value_claim": null,
+   "quantity_value_source": null,
+   "role": "NOT_APPLICABLE",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Same topic, but the evidence addresses the child's own consent with modality normalt; it neither establishes nor refutes that foreldre alltid kan samtykke."
+  },
+  {
+   "case_id": "CC3-018",
+   "claim": "En forelder med delt fast bosted og innvilget delt utvidet barnetrygd faar totalt 2292 kroner i maneden fra NAV i 2024.",
+   "span_ids": [
+    "S54_EX"
+   ],
+   "semantic_relation": "RELATED_BUT_INSUFFICIENT",
+   "quantity_identity": "DIFFERENT",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "2292 NOK",
+   "quantity_value_source": "2292 NOK",
+   "role": "DIRECT",
+   "temporal_applicability": "HISTORICAL_ONLY",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Same topic and amount, but the rates apply from 1. februar 2026; the claim asserts the 2024 period, which the packet cannot establish."
+  },
+  {
+   "case_id": "CC3-019",
+   "claim": "Fra 01.01.2027 vil delt utvidet barnetrygd vaere 1286 kroner per maned.",
+   "span_ids": [
+    "S54_TABLE"
+   ],
+   "semantic_relation": "RELATED_BUT_INSUFFICIENT",
+   "quantity_identity": "DIFFERENT",
+   "quantity_type": "MONEY",
+   "quantity_value_claim": "1286 NOK",
+   "quantity_value_source": "1286 NOK",
+   "role": "DIRECT",
+   "temporal_applicability": "UNRESOLVED",
+   "comparator_applicable": false,
+   "comparator_relation": "NOT_APPLICABLE",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Current-rate evidence cannot establish which rate will apply on the future date 01.01.2027."
+  },
+  {
+   "case_id": "CC3-020",
+   "claim": "Meklingsattesten er gyldig i 6 maneder, og foreldre som skal til mekling motter minst to obligatoriske meklingsmoter.",
+   "span_ids": [
+    "S34"
+   ],
+   "semantic_relation": "PARTIAL",
+   "quantity_identity": "SAME",
+   "quantity_type": "COUNT",
+   "quantity_value_claim": "2 COUNT",
+   "quantity_value_source": "1 COUNT",
+   "role": "DIRECT",
+   "temporal_applicability": "APPLICABLE",
+   "comparator_applicable": true,
+   "comparator_relation": "SOURCE_WEAKER",
+   "arithmetic_duty": "NOT_APPLICABLE",
+   "derived_quantity": null,
+   "rationale": "Attest validity 6 maneder is established, but the evidence states minst 1 obligatorisk mote, leaving the second conjunct unestablished and in tension."
+  }
+ ]
+}

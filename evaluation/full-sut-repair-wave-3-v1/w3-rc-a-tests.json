@@ -1,0 +1,50 @@
+{
+  "artifact": "w3-rc-a-tests",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-3-V1",
+  "repair_code": "W3-RC-A",
+  "test_file": "runtime/sut/phase2/test_route_propositions.py",
+  "section_18_matrix": {
+    "01_clear_single_service_target": "test_01_single_service_target",
+    "02_target_plus_direct_access": "test_02_direct_access_path",
+    "03_target_plus_referral_path": "test_03_referral_path",
+    "04_age_conditioned_route": "test_04_age_conditioned_route",
+    "05_severity_conditioned_route": "test_05_severity_conditioned_candidate",
+    "06_acute_safety_route": "test_06_acute_safety_suppresses_routes",
+    "07_two_legitimate_parallel_routes": "test_07_two_parallel_routes",
+    "08_local_route": "test_08_local_route",
+    "09_national_route": "test_09_national_route",
+    "10_track_scoped_route": "test_10_track_scoped_routes",
+    "11_multi_track_independent_routes": "test_11_multi_track_independent_routes",
+    "12_insufficient_evidence_gap_record": "test_12_insufficient_evidence_gap_record",
+    "13_no_actionable_service": "test_13_no_actionable_service",
+    "14_access_path_uncertain_stays_unclear": "test_14_access_path_uncertain_stays_unclear",
+    "15_retrieval_failure": "test_15_retrieval_failure_no_routes",
+    "16_no_supported_route": "test_16_no_supported_route_rules_only",
+    "17_kb_fragment_not_target": "test_17_kb_fragment_not_a_target",
+    "18_section_heading_not_target": "test_18_section_heading_not_a_target",
+    "19_citation_source_name_not_target": "test_19_source_ref_scenario_row_not_a_target",
+    "20_survives_plan_render_finalize": "test_20_route_survives_plan_render_finalize"
+  },
+  "section_18_ceiling_case": {
+    "row_prefix_access_markers_outside_span": {
+      "test": "test_row_prefix_access_markers_outside_span",
+      "note": "documented ceiling: row prefix that still locates exactly one doc-26 row mints the route with self_referral=UNCLEAR when access cells fall outside the matched span; fix is contextual, not per-case"
+    }
+  },
+  "section_19_zero_gates": {
+    "ROUTE_WITHOUT_TRACK_BINDING": "test_route_without_track_binding_zero",
+    "STRUCTURED_ROUTE_WITHOUT_PROVENANCE": "test_structured_route_without_provenance_zero",
+    "RENDERED_ROUTE_WITHOUT_STRUCTURED_ROUTE": "test_rendered_route_without_structured_route_zero",
+    "SUPPORTED_ROUTE_LOST_BEFORE_FINAL_OUTPUT": "test_supported_route_lost_zero",
+    "RAW_KB_FRAGMENT_AS_ROUTE_TARGET": "test_fragment_heading_sourceref_never_targets",
+    "SECTION_HEADING_AS_ROUTE_TARGET": "test_fragment_heading_sourceref_never_targets",
+    "SOURCE_REF_AS_ROUTE_TARGET": "test_fragment_heading_sourceref_never_targets"
+  },
+  "known_acute_trigger_downgraded_gate": {
+    "KNOWN_ACUTE_TRIGGER_DOWNGRADED": {
+      "test": "test_06_acute_safety_suppresses_routes",
+      "note": "acute suppression path asserts KNOWN_ACUTE_TRIGGER_DOWNGRADED=0 at fixture level; safety.py unchanged in W3-RC-A"
+    }
+  },
+  "total_tests": 26
+}

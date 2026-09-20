@@ -1,0 +1,44 @@
+{
+  "artifact": "remaining-findings-wave3-v1",
+  "task_id": "NAV-EXPLORE-FULL-SUT-REPAIR-WAVE-3-V1",
+  "created_utc": "2026-09-16T18:55:34Z",
+  "findings": [
+    {
+      "id": "W3-RES-01",
+      "title": "len<4 fragment heuristic false-positives on 3-letter acronyms",
+      "observation": "W3 replay shows 4 fragment-like route labels vs 2 in Wave 2 under the same diagnostic rule: NAV (routing/ROUT-040, safety/SAF-009) and URL (routing/ROUT-072, routing/ROUT-083).",
+      "classification": "diagnostic-only heuristic false positive, not a gate and not a product regression: NAV is a legitimate 3-letter service acronym and these routes are new structured outputs that appeared because route construction now works; JUNK_ROUTE_PASS gate = 0 in both waves",
+      "disposition": "no runtime change in Wave 3; a future harness/contract task may add an explicit acronym allowlist (e.g. NAV) to the fragment diagnostic rule",
+      "wave2_comparison": "URL labels (ROUT-072, ROUT-083) are pre-existing Wave-2 lexical-fallback junk, unchanged in kind; ROUT-072 also dropped its former Hensikt heading fragment, an improvement"
+    },
+    {
+      "id": "W3-RES-02",
+      "title": "URL fragment labels from lexical fallback (pre-existing)",
+      "observation": "routing/ROUT-072 and routing/ROUT-083 carry URL route labels from the RC-07 quoted/bold lexical fallback.",
+      "classification": "pre-existing Wave-2 behavior, not a Wave-3 regression; structural-only observation",
+      "disposition": "deferred; candidate for a future lexical-fallback guard task if Measurement V3 shows semantic impact"
+    },
+    {
+      "id": "W3-RES-03",
+      "title": "family-law doc-26 section-8 table minting ceiling",
+      "observation": "structured extraction validates service names against a frozen header whitelist {instans, tjeneste, service}; doc-26 family-law rows live under a section-8 table whose header does not include a whitelisted identity term, so those rows cannot mint route targets.",
+      "classification": "deliberate fail-closed ceiling: header whitelist was frozen without tilbud because doc 25 commune tables would mint municipality names; extending it risks re-opening junk/fragment gates",
+      "disposition": "documented ceiling; any whitelist extension requires its own bounded task with header-safety analysis"
+    },
+    {
+      "id": "W3-RES-04",
+      "title": "row-prefix access-marker ceiling",
+      "observation": "self-referral hints are derived from positive self-contact markers and negative/positive outranking patterns at claim level; row cells whose access semantics are encoded only as row prefixes are not parsed.",
+      "classification": "bounded simplification, fail-closed to UNCLEAR access state which the spec explicitly allows",
+      "disposition": "no Wave-3 change; potential future bounded access-path extraction task"
+    },
+    {
+      "id": "W3-RES-05",
+      "title": "header whitelist frozen without tilbud",
+      "observation": "deliberate exclusion documented in w3-rc-a-design.md.",
+      "classification": "frozen design decision, prevents doc-25 commune-table minting",
+      "disposition": "recorded; revisit only with dedicated header-safety analysis"
+    }
+  ],
+  "zero_open_hard_gates": "all hard mechanism gates PASS; findings above are ceilings and diagnostics, not gate failures"
+}

@@ -1,0 +1,140 @@
+{
+  "task_id": "NAV-EXPLORE-JUDGE-SELECTION-V2_7_NON_M2_SCREENING",
+  "protocol": "one-shot frozen benchmark, 150 fixtures (FORB 50 / ROUTE 50 / UNC 50), 64 deterministic prepass / 86 semantic residual",
+  "gold_sha256": "98a12c15e17cf790babb3c7a84952bad684abfc64787ab04e6d781796e4d6716",
+  "gold_normalization": "scoring-side only: fixture gold NO_ACCEPTABLE read as contract-canonical NO_ACCEPTABLE_ROUTE (4 DeepSeek ROUTE rows affected)",
+  "candidates": {
+    "deepseek": {
+      "wire_id": "opencode-go/deepseek-v4.1-flash",
+      "combined_overall": 0.9267,
+      "by_dimension": {
+        "forbidden": 0.96,
+        "route": 0.94,
+        "uncertainty": 0.88
+      },
+      "residual": {
+        "forbidden": {
+          "n": 27,
+          "correct": 25,
+          "accuracy": 0.9259
+        },
+        "route": {
+          "n": 31,
+          "correct": 28,
+          "accuracy": 0.9032
+        },
+        "uncertainty": {
+          "n": 28,
+          "correct": 22,
+          "accuracy": 0.7857
+        },
+        "overall": 0.8721
+      },
+      "model_call_validity": {
+        "semantic_calls": 86,
+        "valid": 86,
+        "rate": 1.0
+      },
+      "safety_forbidden_false_negatives": 0,
+      "deterministic_overrides": 0,
+      "evidence_invalid_rows": 0,
+      "miss_n": 11,
+      "latency_s": {
+        "all_rows": {
+          "n": 150,
+          "mean": 2.63,
+          "max": 25.96
+        },
+        "residual_rows": {
+          "n": 86,
+          "mean": 4.58,
+          "max": 25.96
+        }
+      },
+      "gates": {
+        "overall_ge_095": "FAIL",
+        "forbidden_ge_095": "PASS",
+        "route_ge_095": "FAIL",
+        "uncertainty_ge_095": "FAIL",
+        "valid_ge_099": "PASS",
+        "evidence_100": "PASS",
+        "residual_overall_ge_090": "FAIL",
+        "residual_forbidden_ge_090": "PASS",
+        "residual_route_ge_090": "PASS",
+        "residual_uncertainty_ge_090": "FAIL",
+        "safety_fn_0": "PASS",
+        "deterministic_overrides_0": "PASS"
+      },
+      "all_one_shot_gates_pass": false
+    },
+    "mimo": {
+      "wire_id": "command-code/xiaomi/mimo-v2.5-pro",
+      "combined_overall": 0.88,
+      "by_dimension": {
+        "forbidden": 0.9,
+        "route": 0.84,
+        "uncertainty": 0.9
+      },
+      "residual": {
+        "forbidden": {
+          "n": 27,
+          "correct": 22,
+          "accuracy": 0.8148
+        },
+        "route": {
+          "n": 31,
+          "correct": 23,
+          "accuracy": 0.7419
+        },
+        "uncertainty": {
+          "n": 28,
+          "correct": 23,
+          "accuracy": 0.8214
+        },
+        "overall": 0.7907
+      },
+      "model_call_validity": {
+        "semantic_calls": 86,
+        "valid": 85,
+        "rate": 0.9884
+      },
+      "safety_forbidden_false_negatives": 1,
+      "deterministic_overrides": 0,
+      "evidence_invalid_rows": 0,
+      "miss_n": 17,
+      "latency_s": {
+        "all_rows": {
+          "n": 150,
+          "mean": 20.23,
+          "max": 100.61
+        },
+        "residual_rows": {
+          "n": 86,
+          "mean": 35.28,
+          "max": 100.61
+        }
+      },
+      "gates": {
+        "overall_ge_095": "FAIL",
+        "forbidden_ge_095": "FAIL",
+        "route_ge_095": "FAIL",
+        "uncertainty_ge_095": "FAIL",
+        "valid_ge_099": "FAIL",
+        "evidence_100": "PASS",
+        "residual_overall_ge_090": "FAIL",
+        "residual_forbidden_ge_090": "FAIL",
+        "residual_route_ge_090": "FAIL",
+        "residual_uncertainty_ge_090": "FAIL",
+        "safety_fn_0": "FAIL",
+        "deterministic_overrides_0": "PASS"
+      },
+      "all_one_shot_gates_pass": false
+    }
+  },
+  "qualifiers": [],
+  "selection": null,
+  "terminal_status": "V2_7_NO_NON_M2_JUDGE_QUALIFIES",
+  "stability_run": false,
+  "stability_reason": "spec section 35: stability only for candidates passing all one-shot gates; none qualified",
+  "screening_data_marked_burned": true
+}

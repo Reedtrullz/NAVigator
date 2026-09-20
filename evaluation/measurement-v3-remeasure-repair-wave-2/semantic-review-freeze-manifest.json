@@ -1,0 +1,98 @@
+{
+  "artifact": "semantic-review-freeze-manifest",
+  "task_id": "NAV-EXPLORE-MEASUREMENT-V3-REMEASURE-REPAIR-WAVE-2",
+  "frozen_utc": "2026-09-16T15:43:49Z",
+  "freeze_order": "SEMANTIC_OBSERVATIONS_FROZEN_BEFORE_GOLD_DERIVATION",
+  "purpose": "Section 21: prevent downstream gold/result knowledge from altering review observations",
+  "artifacts": [
+    {
+      "path": "astra-pass-a.jsonl",
+      "sha256": "4fdbd8f762cfd262b97b27b66bce3aa1aa5bb744c3cc74aef866a12d436a30e1"
+    },
+    {
+      "path": "astra-pass-b.jsonl",
+      "sha256": "73030d3a079903bedb89ca1dfbfb78244cde529c2a05f6b9f5028fd6faa388d5"
+    },
+    {
+      "path": "primary-review-validation.json",
+      "sha256": "dfa2878bc6329b7eaf6f1bb8176d0d4c7f7e2736aa709714438d83d7b6342841"
+    },
+    {
+      "path": "primary-consensus.json",
+      "sha256": "6eac155156672d4ee4e72a3e710618c8837906a035d7086476d8587a6c5dca8b"
+    },
+    {
+      "path": "residual-inputs.json",
+      "sha256": "3692ef506efbb235ffd7253dc4988ab5656d02686f958e5554a32aee531ea227"
+    },
+    {
+      "path": "sol-pass-a.jsonl",
+      "sha256": "f9d4dffaa291e3244c7301951c1a28da050add4019bb6a93e8f0083446a02aa8"
+    },
+    {
+      "path": "sol-pass-b.jsonl",
+      "sha256": "4f604dd0bc5d2abcbc555b533e269a569e0c5f857ea34fa27b389a0ea1c36dd0"
+    },
+    {
+      "path": "sol-transport-log.json",
+      "sha256": "10f6f83c8855cdaaa6435ed4d9e2eeeb86ffd9cdab4395115a24e9ea4f904dc8"
+    },
+    {
+      "path": "residual-validation.json",
+      "sha256": "081b7a02e044ddc8fb1b58c63ca62810b5b9c685b588da0fdc5ba20934a25cfc"
+    },
+    {
+      "path": "residual-consensus.json",
+      "sha256": "94fe4c470bb9c5c2a5ad877410f985d5d7627589f1345063af3b08ea36b718b3"
+    },
+    {
+      "path": "astra-config.json",
+      "sha256": "bdc6099533a9b3890ee42042577f53f85751383b853de59c1cba993f9fcfcdd2"
+    },
+    {
+      "path": "astra-transport-log.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "sol-config.json",
+      "sha256": "136a2023a73a186ab631b9370838b7d741908faf969526089b8c8dba52c05e51"
+    },
+    {
+      "path": "semantic-review-inputs-freeze-manifest.json",
+      "sha256": "4ebf9d2756a0473db60f42718f5a6eb1f0f82e72d32e9e1a57345898af5857bb"
+    },
+    {
+      "path": "authority-map.json",
+      "sha256": "ddffca5cc15c6eeaaf30fdffdeabb060225d381a3c927d4b24668d9730f3797b"
+    }
+  ],
+  "accepted_primary_observations": 90,
+  "accepted_adjudication_observations": 3,
+  "pending_residual_list": [
+    "PKT-ESC-ROUT-026"
+  ],
+  "authority_distribution": {
+    "DETERMINISTIC": 506,
+    "LLM_REVIEWED": 90,
+    "LLM_ADJUDICATED": 3,
+    "PENDING_LLM_ADJUDICATION": 1
+  },
+  "transport_provenance": {
+    "primary_transport_failures": 0,
+    "adjudication_transport_failures": 0,
+    "primary_model": "gpt-6-astra",
+    "primary_reasoning_effort": "low",
+    "residual_model": "gpt-5.6-sol",
+    "residual_reasoning_effort": "low"
+  },
+  "derivation_core": {
+    "module": "judge_core_v2_13.py",
+    "sha256": "66004e3038eb483040f9dad326661aa501e43680b8024a79994b22db51b02682",
+    "state": "FROZEN_UNMODIFIED"
+  },
+  "counts_at_freeze": {
+    "llm_reviewed": 90,
+    "llm_adjudicated": 3,
+    "pending": 1
+  }
+}
