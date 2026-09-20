@@ -16,7 +16,7 @@
   },
   "identity_corrections": [
     {"kommune": "Alta", "frozen_code": "2021", "ssb_code_2026": "5601", "fylke": "Finnmark"},
-    {"kommune": "Steinkjer", "frozen_code": "5421", "ssb_code_2026": "5006", "fylke": "Trondelag", "note": "5421 er Lierne i SSB 2026; frosset nummer og navn peker paa ulike kommuner."},
+    {"kommune": "Steinkjer", "frozen_code": "5421", "ssb_code_2026": "5006", "fylke": "Trondelag", "note": "5421 er ikke gyldig kode i SSB 2026-kodetabellen; frosset nummer peker paa ingen gyldig 2026-kommune. Tidligere notat om at 5421 var Lierne var feil (Lierne er 5042, verifisert mot SSB KLASS 131 20.09)."},
     {"kommune": "Farsund", "frozen_code": "4208", "ssb_code_2026": "4206", "fylke": "Agder"},
     {"kommune": "Ulstein", "frozen_code": "1573", "ssb_code_2026": "1516", "fylke": "More og Romsdal"},
     {"kommune": "Sor-Varanger", "frozen_code": "5620", "ssb_code_2026": "5605", "fylke": "Finnmark", "note": "Navn i frosset utvalg skrevet 'Sor-Varanger' (ASCII); SSB: 'Sor-Varanger' med bokmal-tegn."},
@@ -31,9 +31,11 @@
   "identity_corrections_summary": "Alle 12 frosne kommunenumre avviker fra SSB 2026-kodetabellen. Aarsaken til avviket er ikke dokumentert for samtlige; pre-2020-sammenslutning er ikke paavist for Tynset (3421->3427) og Hasvik (5614->5616). Alle 12 navn stemmer med SSB 2026. Kommuneidentitet (navn) er uendret; numrene korrigeres her.",
   "parent_dataset_reference_correction": {
     "task_lock_value": "data/municipality-sample.json",
-    "actual_dataset": "data/municipal-mental-health-sample-v1.json",
-    "evidence": "data/municipality-sample.json FINNES paa rotnivaa i repoet (tracked, 24 oppfoeringer, verifisert 2026-09-20 ved commit 4d911e2); TASK-LOCK-stien 'data/municipality-sample.json' er en pekefeil, ikke et bevis paa manglende fil. data/municipal-mental-health-sample-v1.json finnes ogsaa og oppgir artifact-id NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1, som TASK-LOCK-18-23-ROUTING-GAP.json siterer som parent_sample-navn.",
-    "disposition": "TASK-LOCK filen endres ikke; referanseavviket (sti sier 'data/' men fila ligger paa rotnivaa) dokumenteres her og i docs/status-og-laser.md."
+    "parent_selection_file": "municipality-sample.json",
+    "derived_service_dataset": "data/municipal-mental-health-sample-v1.json",
+    "evidence": "Parent-utvalgsfila ligger paa rotnivaa: municipality-sample.json (tracked, 24 oppfoeringer, verifisert 2026-09-20 ved commit 4d911e2); TASK-LOCK-stien 'data/municipality-sample.json' har feil mappe-prefiks, fila finnes. Det deriverte tjenesteobservasjons-datasettet er data/municipal-mental-health-sample-v1.json (artifact-id NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1, sitert i TASK-LOCK-18-23-ROUTING-GAP.json parent_sample-tekst). De to referansene har ulike roller og skal ikke byttes ut med hverandre.",
+    "consumer_check": "Sok 20.09 (rg over repo, unntatt denne fila) fant ingen kode- eller datamessig konsument av felta i denne blokken; feltomdoop er uten konsumentbrudd.",
+    "disposition": "TASK-LOCK filen endres ikke; referanseavviket (mappe-prefiks og sammenblanding av utvalgsfil vs. derivert datasett) dokumenteres her og i docs/status-og-laser.md."
   },
   "baseline_label_reconciliation": {
     "method": "Programmatisk sammenligning (python, 2026-09-20) av data/18-23-routing-target-sample.json mot tabellen i fil 72 seksjon 3 (regex-parse av markdown-tabellen), per scenario C og D for alle 12 kommuner.",

@@ -238,11 +238,19 @@ Register over feil funnet og korrigert under juridisk QA av kunnskapssenteret. A
 
 - Uavhengig plan-gjennomgang (rapport NAVigator-ny-revisjon-og-veikart-4d911e2.md) ga funn som er verifisert mot repoet ved commit 4d911e2; de smale korreksjonene er gjennomfoert her, ingen kode endret.
 - data/18-23-korrigeringsprotokoll-v1.json: parent-reference-evidens rettet (municipality-sample.json FINNES paa rotnivaa; TASK-LOCK-stien 'data/' var pekefeil, ikke manglende fil); udokumentert pre-2020-sammenslutning-generalisering fjernet/avgrenset; metodetekst korrigert (numre, ikke navn, slaatt opp).
-- data/verifikasjonsregister-v1.json V-004: overstrevet paastand korrigert - meklingsattest er ikke krevet for rettslig gyldig samvar/bosted-avtale (privatrettslig); attest gir tvangskraft via Statsforvalteren (BNL par. 55); samboer-mekling (BNL par. 51) beholdes. Kilde: fil 34 + Bufdir 20.09.2026.
+- data/verifikasjonsregister-v1.json V-004: overstrevet paastand korrigert - meklingsattest er ikke krevet for rettslig gyldig samvar/bosted-avtale (privatrettslig) og gir ikke i seg selv tvangskraft; Statsforvalteren kan vedta tvangsfullforelse naar begge foreldrene ber om det, gyldig attest legges frem, og avtalen fremst er til barnets beste (BNL par. 55); samboer-mekling (BNL par. 51) beholdes. Kilde: fil 34 + Bufdir 20.09.2026 (presisert samme dag etter gjennomgang).
 - runtime/README.md: faktisk inngang er runtime/sut/phase3/pipeline.py (importerer S1-S8 fra phase2/pipeline.py); fase-1-skjelett ikke inngang. 'Fabrikerte fasit'-formulering erstattet med de tre reelle V2.5-defektene (pages_fetched foer suksess-sjekk; COMPLETE ved pages_fetched > 0; eligibility paa teksttilstedevaerelse uten personsammenligning).
 - evaluation/README.md: wave-4 remeasure-rad lagt til (600/600 autoritative; 332 PASS / 193 FAIL; 108 ruter: 0 PASS, 106 NO_ACCEPTABLE_ROUTE, 2 PARTIAL, 12 NA; product-only 14 forbedringer / 1 regresjon) merket datert/ikke-blind/ikke produktkorrekthet.
 - docs/status-og-laser.md: parent-sample-rad rettet; 'komplette leselister'-paastand dempet; ny seksjon noterer foreldede sha256-pinner i data/knowledge-index-v1.json for fil 00/45 (ikke fikset - krever eier; runtime er fail-closed ved mismatch).
 - README.md: 'Komplett oversikt' dempet til maal C-avgrenset referansebase.
 - data/publiseringsprofil-v1.json: villedende etikett 'innhold_godkjent_saklig' erstattet med 'saklig_innhold_without_faglig_attest' (4 forekomster); distribution_gate forblir BLOCKED.
 - Ikke endret: data/knowledge-index-v1.json pinner, frosne filer, laaser, runtime-kode, evaluering. Ingen ny maaling, ingen modellkall, ingen eksport.
+- Dato: 20.09.2026.
+
+## Oppfolgingskorreksjon etter ny gjennomgang (20.09.2026)
+
+- V-004 presisert ytterligere: meklingsattest gir ikke i seg selv tvangskraft; tvangsfullforelse forutsetter begjaring fra begge foreldrene, gyldig attest og barnets beste-vurdering hos Statsforvalteren (BNL par. 55; Bufdir rundskriv 10/2021 og bufdir.no, hentet 20.09.2026).
+- data/18-23-korrigeringsprotokoll-v1.json: felt 'actual_dataset' omdopt til 'derived_service_dataset' og nytt felt 'parent_selection_file' (municipality-sample.json paa rotnivaa); konsument sok fant tom; Steinkjer-notat korrigert (5421 er ikke gyldig kode i SSB 2026; tidligere Lierne-paastand var feil - Lierne er 5042, verifisert mot KLASS 131 live 20.09).
+- docs/status-og-laser.md: 18-23-lasens ACTIVE-status forklares ikke lenger med reviewer-oppgavens human-gold-/kjoreport (den porten ligger i evaluation/reviewer-minimum-tier-fresh-batch-v1/TASK-LOCK.json); ny manifest-disposisjon: data/release-manifest-v1.json er historisk snapshot foer 6e1f78a, ikke rehashet, og er ikke bevis for naavaerende filinnhold.
+- Ingen manifest-rehash, ingen kodeendring, ingen ny maaling, ingen eksport.
 - Dato: 20.09.2026.
