@@ -6,8 +6,12 @@ låser.
 
 ## V1 replay (SUT-inngang for fasemålinger)
 
-- `runtime/sut/pipeline.py` med `runtime/sut/phase2/` er den faktiske
-  inngangen som evalueringskjøringene i `evaluation/` har brukt (V1-replay).
+- Faktisk inngang er `runtime/sut/phase3/pipeline.py` (fase-3-kjeden), som
+  importerer S1-S8 fra `runtime/sut/phase2/pipeline.py`; fase-1-skjelettet i
+  `runtime/sut/pipeline.py` implementerer ikke S4/S5/S6 og er ikke inngang.
+- Discovery (S5) går via `runtime/sut/phase2/discovery_adapter.py`, en tynn
+  wrapper over den frosne V1-orkestratoren
+  (`runtime/discovery/orchestrator.py`) i replay-modus.
 - Testmengde: `runtime/sut/test_*.py` (pipeline, schemas, sikkerhet,
   nasjonale ruter, normalisering, separasjon, evidens).
 - Kunnskapstilgang skjer via `runtime/sut/phase2/knowledge.py`; regler i
@@ -18,8 +22,11 @@ låser.
 `runtime/discovery_v2` / orchestrator V2.5 er en separat kjede og er **ikke**
 inngang for fase 3-målingene. Dokumenterte defekter (plan G05/G08/G09):
 
-1. `runtime/discovery_v2/orchestrator_v25.py` (linje ~128, 138, 172, 207):
-   fabrikerte fasit-/ruteelementer i discovery-stien.
+1. `runtime/discovery_v2/orchestrator_v25.py`: `pages_fetched` telles
+   før suksess-sjekk (linje ~138), og `COMPLETE` settes når
+   `pages_fetched > 0` (linje ~207) uavhengig av tjenesteresultat; alder/
+   målgruppe-eligibility baseres på teksttilstedeværelse uten
+   personsammenligning.
 2. `runtime/sut/phase2/knowledge.py` (`retrieve`, linje ~153): Mari-journal
    (`data/knowledge-index-v1.json`, klassifisert `SOURCE_DOCUMENTATION`)
    hentes uten privatport; journalfakta kan lekke i generell modus.

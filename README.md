@@ -1,8 +1,8 @@
 # NAV Kunnskapssenter
 
-**Komplett oversikt over NAV sine tjenester, ytelser og tiltak**
+**Oversikt over NAV sine tjenester, ytelser og tiltak**
 
-Dette kunnskapssenteret er en omfattende referansebase over alt NAV tilbyr, basert på offisiell informasjon fra nav.no. Dokumentasjonen er skrevet på norsk og organisert slik at den er både maskinlesbar og utforskbar for mennesker.
+Dette kunnskapssenteret er en referansebase basert på offisiell informasjon fra nav.no. Dekningen er begrenset (mål C, avgrenset referansebase) og ikke komplett. Dokumentasjonen er skrevet på norsk og organisert slik at den er både maskinlesbar og utforskbar for mennesker.
 
 ## Struktur
 

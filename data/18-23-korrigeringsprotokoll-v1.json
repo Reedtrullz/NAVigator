@@ -11,7 +11,7 @@
     "source": "SSB KLASS klassifikasjon 131 (Standard for kommuneinndeling), kodetabell gyldig fra 2026-01-01",
     "endpoint": "https://data.ssb.no/api/klass/v1/classifications/131/codes?from=2026-01-01",
     "checked_date": "2026-09-20",
-    "method": "Live API-henting; alle 12 kommunenavn slaatt opp mot kodetabellen.",
+    "method": "Live API-henting; alle 12 kommunenumre slaatt opp mot kodetabellen.",
     "limitation": "Sentralitetsklasse er ikke del av denne tabellen og er ikke re-verifisert her; frosne ssb_sentralitetsklasse-verdier forblir uendret og uverifisert av denne protokollen."
   },
   "identity_corrections": [
@@ -28,12 +28,12 @@
     {"kommune": "Bykle", "frozen_code": "4232", "ssb_code_2026": "4222", "fylke": "Agder"},
     {"kommune": "Hasvik", "frozen_code": "5614", "ssb_code_2026": "5616", "fylke": "Finnmark"}
   ],
-  "identity_corrections_summary": "Alle 12 frosne kommunenumre avviker fra SSB 2026-kodetabellen og er pre-2020-sammenslutningsnummer. Alle 12 navn stemmer med SSB 2026. Kommuneidentitet (navn) er uendret; numrene korrigeres her.",
+  "identity_corrections_summary": "Alle 12 frosne kommunenumre avviker fra SSB 2026-kodetabellen. Aarsaken til avviket er ikke dokumentert for samtlige; pre-2020-sammenslutning er ikke paavist for Tynset (3421->3427) og Hasvik (5614->5616). Alle 12 navn stemmer med SSB 2026. Kommuneidentitet (navn) er uendret; numrene korrigeres her.",
   "parent_dataset_reference_correction": {
     "task_lock_value": "data/municipality-sample.json",
     "actual_dataset": "data/municipal-mental-health-sample-v1.json",
-    "evidence": "data/municipality-sample.json finnes ikke i repo (404 ved commit ed156f1). data/municipal-mental-health-sample-v1.json finnes og oppgir selv artifact-id NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1, som TASK-LOCK-18-23-ROUTING-GAP.json siterer som parent_sample-navn.",
-    "disposition": "TASK-LOCK filen endres ikke; referanseavviket dokumenteres her og i docs/status-og-laser.md."
+    "evidence": "data/municipality-sample.json FINNES paa rotnivaa i repoet (tracked, 24 oppfoeringer, verifisert 2026-09-20 ved commit 4d911e2); TASK-LOCK-stien 'data/municipality-sample.json' er en pekefeil, ikke et bevis paa manglende fil. data/municipal-mental-health-sample-v1.json finnes ogsaa og oppgir artifact-id NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1, som TASK-LOCK-18-23-ROUTING-GAP.json siterer som parent_sample-navn.",
+    "disposition": "TASK-LOCK filen endres ikke; referanseavviket (sti sier 'data/' men fila ligger paa rotnivaa) dokumenteres her og i docs/status-og-laser.md."
   },
   "baseline_label_reconciliation": {
     "method": "Programmatisk sammenligning (python, 2026-09-20) av data/18-23-routing-target-sample.json mot tabellen i fil 72 seksjon 3 (regex-parse av markdown-tabellen), per scenario C og D for alle 12 kommuner.",

@@ -11,7 +11,7 @@ låser. Frosne filer, låsefiler og historiske resultater er uendret.
 | `TASK-LOCK.json` (NAV-EXPLORE-MUNICIPAL-MENTAL-HEALTH-SAMPLE-V1) | `ACTIVE` | 24-kommuners grunnutvalg, frosset 2026-09-08; ingen ny juss/BUP/evaluator | Eiers oppgave 18-23 er en **deltagrense** av dette utvalget; låsen forblir aktiv som råvarehus for de 24, men denne videreføringen berører bare de 12. Ingen nye kommuner åpnes. |
 | `TASK-LOCK-18-23-ROUTING-GAP.json` | `ACTIVE` | 12 kommuner, lokal rutingsleveranse; forbud mot ny juss/blindverk/kontakt | Står `ACTIVE` mens fil 72 omtaler arbeidet som `COMPLETE`. Avklaring: **fil 72s leveranse er komplett som dokument** (dyp research + rapport), men låsens egen lukkeport (menneskelig godkjenning av gold/run) ble aldri åpnet. Låsens status er derfor autoritativ; fil 72s `COMPLETE` gjelder leveranseinnhold, ikke låsestatus. Lås fikses ikke automatisk; enhver endring krever eier. |
 | `TASK-LOCK-LOCAL-ACCESS-DISCOVERY-V1.json` | `COMPLETE` | Tilgangsmodell/oppdagelsesprotokoll; parent_task = 18-23 | Konsistent: underoppgave fullført innenfor parent-låsens ACTIVE-ramme. Ingen konflikt. |
-| `parent_sample`-sti i 18-23-låsen | `data/municipality-sample.json` | — | **Pekefeil:** fila finnes ikke; korrekt datasett er `data/municipal-mental-health-sample-v1.json` (artifact-id stemmer med låsens sitat). Dokumentert i `data/18-23-korrigeringsprotokoll-v1.json`; låsefilen endres ikke. |
+| `parent_sample`-sti i 18-23-låsen | `data/municipality-sample.json` | — | **Sti-pekefeil, ikke manglende fil:** fila finnes på rotnivå (24 oppføringer, verifisert 20.09 ved commit 4d911e2); låsen skriver feilaktig `data/`-prefiks. Datasett i leveransen er `data/municipal-mental-health-sample-v1.json`. Dokumentert i `data/18-23-korrigeringsprotokoll-v1.json`; låsefilen endres ikke. |
 
 ## Komponentstatus (faktisk inngang, ikke versjonsnummer)
 
@@ -28,11 +28,21 @@ låser. Frosne filer, låsefiler og historiske resultater er uendret.
 
 ## Fil-/leselister
 
-Komplette fil- og leselister per nivå vedlikeholdes i `README.md` /
+Fil- og leselister per nivå samles i `README.md` /
 `INNHOLD.md` (innhold), `data/qa-log.md` (kontrollhistorikk) og
 `evaluation/README.md` (måleartefakter). Dette dokumentet peker, dupliserer
-ikke. Råresultater i `evaluation/` er metadata-/innholdslesing hver for seg;
+ikke; dekningen i pekerne er ikke verifisert komplett. Råresultater i
+`evaluation/` er metadata-/innholdslesing hver for seg;
 ingen er automatisk faglig attest for dagens innhold.
+
+## Kjent avvik: hash-pinner i kunnskapindeksen (notert 20.09, ikke fikset)
+
+`data/knowledge-index-v1.json` har foreldede sha256-pinner for
+`00-BESLUTNINGSTRE.md` (`f886cb95…`) og `45-beslutningstre-hvem-ringer-jeg.md`
+(`7624bffe…`); faktiske filer og `data/release-manifest-v1.json` har
+`9d1d4187…` henholdsvis `ca9048f0…`. `runtime/sut/phase2/knowledge.py` er
+fail-closed ved SHA-mismatch, så indeksen gir ikke usikret tilgang, men pins
+kan ikke fikses uten eierbeslutning (låsgrense).
 
 ## Lokal arbeidskopi
 

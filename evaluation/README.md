@@ -12,6 +12,7 @@ ingen ny måling er startet i denne etappen.
 | `evaluator-regression/` | Evaluator-selvkalibrering: positive/negative kontroller, mutasjoner, akronymer | TP=24, TN=96, FP=0, FN=0 (30.08) | Ikke SUT-kvalitet; den måler scorens egen diskriminering. |
 | `full-sut-implementation-phase2/-phase3/` | Strukturell 120-cases kjøring + replay mot V1 | Rapportert i respektive `final-report.md`/metrics | Ingen blindmåling; case er ikke uavhengig; resultater er datert. |
 | `full-sut-repair-wave-1..4-v1/` | Reparasjonsbølger mot V1-replay | Wave 4: se `final-report.md` | Defektene G05/G08/G09 er ikke fikset; wave-resultat gjelder V1-sti. |
+| `measurement-v3-remeasure-wave-4-quota-resume-v1/` | Remeasure av reparert V1-sti (600/600 autoritative kriterier, frosne dev-cases) | 332 PASS / 193 FAIL; 108 ruter vurdert: 0 PASS, 106 NO_ACCEPTABLE_ROUTE, 2 PARTIAL, 12 NA; product-only 14 forbedringer / 1 regresjon (rapportert i `final-report.md`) | Ikke produktkorrekthet for dagens innhold; frosne dev-cases, ikke blind; ingen ny måling er startet i denne etappen. |
 | `semantic-judge/` | Semantisk dommer-kalibrering/stabilitet (RC1-RC4-sett) | Rapportert per versjon i `results/` | Ikke fullstendig uavhengig re-sertifisering av juridiske påstander. |
 | `scenarios.json`, `expected-routing.json` | Case- og gulnrutedefinisjoner | S43 lukket 30.08 | Definisjoner er ikke bevis for runtime-atferd. |
 
