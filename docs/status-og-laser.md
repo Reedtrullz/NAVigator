@@ -72,3 +72,15 @@ kjernefiler (bl.a. 48, 51, 68 og data/legal-index.json). Telling med
 evaluation/. Konsekvens: generell distribusjon er BLOCKED til scrub-oppgavene
 som er listet i `data/publiseringsprofil-v1.json` (`pre_export_scrub`) er
 utført og re-auditeres. Ingen scrub er utført i denne etappen.
+
+## AP2 paastandskontrakt (UTKAST, 20.09, commitet)
+
+AP2 oppgaven (NAVIGATOR-C-PAASTANDSKONTRAKT-694D080-V1) er levert som
+UTKAST pa grenen codex/ap2-paastandskontrakt-694d080: kandidatspesifikk
+paastandskontrakt med 26 rader (14 BEHOLD / 9 BEGRENS / 2 KREVER_AP3 /
+1 UTELAT) i data/verifikasjonsregister-v2.json, skjema i
+data/verifikasjonsregister-v2.schema.json og dokumentasjon i
+docs/ap2-paastandskontrakt-v1.md. distribution_gate forblir BLOCKED;
+ingen profil-, runtime- eller eksportpakke-endring; ingen faglig
+godkjenning. AJV draft-07 og semantiske sjekker er kjort PASS,
+negativtester kjort pa kopier.

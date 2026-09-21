@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "verifikasjonsregister-v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "status",
+    "created",
+    "oppgave_id",
+    "purpose",
+    "kandidat",
+    "rules",
+    "klasser",
+    "paastand",
+    "non_claims"
+  ],
+  "properties": {
+    "artifact": { "type": "string" },
+    "status": { "type": "string" },
+    "created": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "oppgave_id": { "type": "string" },
+    "purpose": { "type": "string" },
+    "kandidat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pakke", "eksportmanifest_sha256", "kilde_baseline_commit", "merknad"],
+      "properties": {
+        "pakke": { "type": "string" },
+        "eksportmanifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "kilde_baseline_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "merknad": { "type": "string" }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "beviskilder", "manglende_felt", "disponering", "utelatelse"],
+      "properties": {
+        "scope": { "type": "string" },
+        "beviskilder": { "type": "string" },
+        "manglende_felt": { "type": "string" },
+        "disponering": { "type": "string" },
+        "utelatelse": { "type": "string" }
+      }
+    },
+    "klasser": {
+      "type": "array",
+      "minItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["d_klasse", "behandling", "paastands_ids", "notat"],
+        "properties": {
+          "d_klasse": { "type": "string", "pattern": "^P(1[0-5]|[1-9])$" },
+          "behandling": { "type": "string" },
+          "paastands_ids": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^PC-[0-9]{3}$" }
+          },
+          "notat": { "type": "string" }
+        }
+      }
+    },
+    "paastand": {
+      "type": "array",
+      "minItems": 26,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "parent_claim_id",
+          "d_class",
+          "v_refs",
+          "observed_text",
+          "occurrences",
+          "context",
+          "tema",
+          "maalgruppe",
+          "geografi",
+          "tidsperiode",
+          "kildetype",
+          "kilde",
+          "evidens",
+          "kontroll",
+          "disponering",
+          "disponering_begrunnelse",
+          "foreslaatt_ny_ordlyd",
+          "manglende_bevis",
+          "konsekvens",
+          "nykontroll"
+        ],
+        "properties": {
+          "claim_id": { "type": "string", "pattern": "^PC-[0-9]{3}$" },
+          "parent_claim_id": {
+            "anyOf": [
+              { "type": "null" },
+              { "type": "string", "pattern": "^PC-[0-9]{3}$" }
+            ]
+          },
+          "d_class": { "type": "string", "pattern": "^P(1[0-5]|[1-9])$" },
+          "v_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^V-[0-9]{3}$" }
+          },
+          "observed_text": { "type": "string", "minLength": 1 },
+          "occurrences": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fil", "sha256", "lokator"],
+              "properties": {
+                "fil": { "type": "string", "minLength": 1 },
+                "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                "lokator": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "context": { "type": "string", "minLength": 1 },
+          "tema": { "type": "string", "minLength": 1 },
+          "maalgruppe": { "type": "string", "minLength": 1 },
+          "geografi": { "type": "string", "minLength": 1 },
+          "tidsperiode": { "type": "string", "minLength": 1 },
+          "kildetype": {
+            "type": "string",
+            "enum": ["NATIONAL_GUIDANCE", "STATUTE", "LOCAL_SERVICE_FACT", "UKJENT"]
+          },
+          "kilde": { "type": "string", "minLength": 1 },
+          "evidens": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "referanse"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "LAGRET_REGEL",
+                  "LAGRET_KILDELESING",
+                  "KILDEHENVISNING_I_FIL",
+                  "TEKST_SITERT_I_FIL",
+                  "OBSERVERT_APEN_PUNKT",
+                  "OBSERVERT_KONFLIKT",
+                  "FROSSET_UTVALG"
+                ]
+              },
+              "referanse": { "type": "string", "minLength": 1 }
+            }
+          },
+          "kontroll": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["niva", "kontrollor", "dato"],
+            "properties": {
+              "niva": {
+                "type": "string",
+                "enum": ["LAGRET_KONTROLL", "AGENT_KRYSSKONTROLL", "IKKE_GJENNOMFORT", "UKJENT"]
+              },
+              "kontrollor": { "type": "string", "minLength": 1 },
+              "dato": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$|^UKJENT$"
+              }
+            }
+          },
+          "disponering": {
+            "type": "string",
+            "enum": [
+              "BEHOLD_SOM_KANDIDAT",
+              "BEGRENS",
+              "UTELAT_FRA_HANDLINGSSTOTTE",
+              "KREVER_AP3"
+            ]
+          },
+          "disponering_begrunnelse": { "type": "string", "minLength": 1 },
+          "foreslaatt_ny_ordlyd": { "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 1 }] },
+          "manglende_bevis": { "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 1 }] },
+          "konsekvens": { "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 1 }] },
+          "nykontroll": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "regel"],
+            "properties": {
+              "type": { "type": "string", "enum": ["eksisterende", "foreslaatt"] },
+              "regel": { "type": "string", "minLength": 1 }
+            }
+          },
+          "godkjenning": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["grunnlag"],
+            "properties": {
+              "grunnlag": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "non_claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

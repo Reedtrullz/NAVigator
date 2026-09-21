@@ -1,0 +1,1324 @@
+{
+  "artifact": "verifikasjonsregister-v2",
+  "status": "UTKAST",
+  "created": "2026-09-20",
+  "oppgave_id": "NAVIGATOR-C-PAASTANDSKONTRAKT-694D080-V1",
+  "purpose": "Kandidatspesifikk paastandskontrakt for eksportkandidat v1 revisjon1: kartlegging fra faktisk eksporttekst til bevis og foreslaatt disponering. Ikke ny faglig godkjenning og ingen publikasjonsprofil- eller runtime-aktivering.",
+  "kandidat": {
+    "pakke": "NAVIGATOR-EKSPORTKANDIDAT-V1-REVISJON1-MANIFEST",
+    "eksportmanifest_sha256": "63f3b7dd056e97e13dba08ee39d052ed2458786325e823a6d935ea5a2db7d720",
+    "kilde_baseline_commit": "694d080f5b1b7cc4bef18f8db0ab9c08038c2baf",
+    "merknad": "Eksportmanifest-hash og kildebaseline er separate referanser. V2 beskriver den leste eksportpakken, ikke en fremtidig etterfolgerkandidat."
+  },
+  "rules": {
+    "scope": "Enkeltpaastand i eksportteksten med stabil ID, forekomster, bevisstatus og foreslaatt disponering. Ikke et generelt gapregister.",
+    "beviskilder": "Kilde-URL, filhash, lagret etappekontroll, agentkrysskontroll og faglig godkjenning er forskjellige bevistyper og blandes ikke.",
+    "manglende_felt": "Manglende kildebevis, kontrollor eller kontrolldato registreres som UKJENT og fylles aldri med dagens dato eller antatt rolle.",
+    "disponering": "Disponeringsfeltet er agentforslag om behandling i naeste utgave, ikke godkjenning.",
+    "utelatelse": "UTELAT_FRA_HANDLINGSSTOTTE betyr at paastanden ikke er handlingsstoette i denne utgaven; sporsmaalet er dermed ikke loset."
+  },
+  "klasser": [
+    {
+      "d_klasse": "P1",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-001",
+        "PC-003",
+        "PC-004"
+      ],
+      "notat": "Akuttnumre med lagret kontroll 30.08 og agentkrysskontroll 20.09 (audit A)."
+    },
+    {
+      "d_klasse": "P2",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-002"
+      ],
+      "notat": "Barnevernvakt 116 111, samme kontrolkjede som P1."
+    },
+    {
+      "d_klasse": "P3",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-005"
+      ],
+      "notat": "Kilde-V-004 er korrigert i 6e1f78a/694d080; eksportens registerkopi har fortsatt gammel ordlyd. Fil 34s egen tekst er korrekt. Ikke ny gransking uten nytt substansfunn."
+    },
+    {
+      "d_klasse": "P4",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-006",
+        "PC-007"
+      ],
+      "notat": "Overgangstonad ny sokere, V-005."
+    },
+    {
+      "d_klasse": "P5",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-008",
+        "PC-009"
+      ],
+      "notat": "Satser og inntektsregler, V-006."
+    },
+    {
+      "d_klasse": "P6",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-010"
+      ],
+      "notat": "Lagret kontroll 30.08.2026, ikke resertifisert. Ny satskontroll ved utgivelse eller satsendring."
+    },
+    {
+      "d_klasse": "P7",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-011"
+      ],
+      "notat": "Henvisningsstoff adskilt: nasjonal henvisningsregel (V-007) og lokal RPH-alder (V-008, se P13). Dekning innenfor frosset 12-kommuners utvalg."
+    },
+    {
+      "d_klasse": "P8",
+      "behandling": "BEGRENS",
+      "paastands_ids": [
+        "PC-012"
+      ],
+      "notat": "Satser med nav.no-kilde oppgitt i fil 54, men ikke registerfort."
+    },
+    {
+      "d_klasse": "P9",
+      "behandling": "BEGRENS + KREVER_AP3",
+      "paastands_ids": [
+        "PC-013",
+        "PC-014"
+      ],
+      "notat": "Sats ikke registerfort; alder for smabarnstillegg er motsigelsesfunn (fil 54 vs 51) og krever AP3."
+    },
+    {
+      "d_klasse": "P10",
+      "behandling": "BEGRENS + KREVER_AP3",
+      "paastands_ids": [
+        "PC-015",
+        "PC-016",
+        "PC-017",
+        "PC-018"
+      ],
+      "notat": "Barnebidrag/forskudd/samvaersfradrag: kilder oppgitt i filene, ikke registerfort; skattpunkt delvis verifisert."
+    },
+    {
+      "d_klasse": "P11",
+      "behandling": "BEGRENS med dokumenterte statuttanker",
+      "paastands_ids": [
+        "PC-019",
+        "PC-020",
+        "PC-021"
+      ],
+      "notat": "Filer 55/56/58-60 er ikke med i pakken; 2b-matrisen gir ruting. Audit D rapporterer P11 som BEGRENSET/APEN (delvis apen); APEN+P11-radene i talloppsummeringen er dobbelttelling av P11, ikke en 16. klasse. Stl. SS 17-19/27 og husleieloven SS 9-7/9-8/9-11 er handlingsbaerende tekst uten registerdekning; ovrige 2b-frister (bostottefrister, depositum, radgiving) er ikke registrert som enkeltrader og folger klassens begrensning."
+    },
+    {
+      "d_klasse": "P12",
+      "behandling": "BEHOLD for kjerneankre",
+      "paastands_ids": [
+        "PC-022"
+      ],
+      "notat": "Registeret dekker V-004/V-005/V-006-kjerneankrene; ikke alle notater i legal-index."
+    },
+    {
+      "d_klasse": "P13",
+      "behandling": "BEGRENS (datert bakgrunn)",
+      "paastands_ids": [
+        "PC-023",
+        "PC-024"
+      ],
+      "notat": "Lokale Trondheim-opplysninger: historisk kontroll 30.08.2026, ikke frosset utvalg; ikke aktuell handlingsstoette for lokal bruk uten ny kontroll."
+    },
+    {
+      "d_klasse": "P14",
+      "behandling": "UTELAT_FRA_HANDLINGSSTOTTE",
+      "paastands_ids": [
+        "PC-025"
+      ],
+      "notat": "Filen 00 sier eksplisitt at detaljene ikke er verifisert. Uteles fordi underbygging mangler; sporsmaalet er ikke loset."
+    },
+    {
+      "d_klasse": "P15",
+      "behandling": "BEHOLD",
+      "paastands_ids": [
+        "PC-026"
+      ],
+      "notat": "LUKKET-punkt i fil 66 med NAV-kilde og lagret kontroll."
+    }
+  ],
+  "paastand": [
+    {
+      "claim_id": "PC-001",
+      "parent_claim_id": null,
+      "d_class": "P1",
+      "v_refs": [
+        "V-001",
+        "V-003"
+      ],
+      "observed_text": "1. **Er noen i umiddelbar fare?** 113 ved akutt fare for liv/helse (inkl. akutt selvmordsfare); legevakt 116 117 når det haster uten å være livstruende; politi 112 ved umiddelbar fare; krisesenter 116 006; barnevernvakt 116 111 når ingen trygg voksen kan overta omsorgen for barnet. Fil 42, 45, 57.",
+      "occurrences": [
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 10"
+        },
+        {
+          "fil": "45-beslutningstre-hvem-ringer-jeg.md",
+          "sha256": "848940fd444f9ba30b8e2bd02de2fc1ba2ce8041bcfd4ec7636df76e3320eaf2",
+          "lokator": "linje 29"
+        },
+        {
+          "fil": "45-beslutningstre-hvem-ringer-jeg.md",
+          "sha256": "848940fd444f9ba30b8e2bd02de2fc1ba2ce8041bcfd4ec7636df76e3320eaf2",
+          "lokator": "linje 5"
+        }
+      ],
+      "context": "Punktlisten i 45:29 har pil-syntaks med samme innhold som 00:10; 45:5 er statuslinje med samme numre. Alarmtelefonen for barn og unge 116 111 finnes som egen presisering i fil 26 linje 40.",
+      "tema": "Akuttnumre og umiddelbar fare",
+      "maalgruppe": "Alle",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Arvet fra etappekontroll 30.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no, helsenorge.no, 116111.no og Bufdir er referert i eksporttekst; lagret etappekontroll 30.08.2026",
+      "evidens": {
+        "type": "LAGRET_REGEL",
+        "referanse": "rules-v1.json R-EMERGENCY-113-116X"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret); agentkrysskontroll 20.09 (audit A: helsenorge.no/116111.no/bufdir.no, ingen faglig kontrollor attestert)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Innholdet samsvarer med lagret kontroll og agentkrysskontroll 20.09.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny agentkrysskontroll ved endring av akuttnumre eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-002",
+      "parent_claim_id": null,
+      "d_class": "P2",
+      "v_refs": [
+        "V-002"
+      ],
+      "observed_text": "barnevernvakt 116 111 når ingen trygg voksen kan overta omsorgen for barnet",
+      "occurrences": [
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 10, 18"
+        },
+        {
+          "fil": "45-beslutningstre-hvem-ringer-jeg.md",
+          "sha256": "848940fd444f9ba30b8e2bd02de2fc1ba2ce8041bcfd4ec7636df76e3320eaf2",
+          "lokator": "linje 19, 29"
+        }
+      ],
+      "context": "Vilkårsformuleringen i 00:10; fil 26:40 har Alarmtelefonen for barn og unge 116 111 (samtalestøtte/barnevernvakt for barn og unge).",
+      "tema": "Barnevernvakt",
+      "maalgruppe": "Barn og foresatte",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Arvet fra etappekontroll 30.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "116111.no og nasjonale nav-sider referert i eksporttekst; lagret etappekontroll 30.08.2026",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Vilkårsformulering samsvarer med V-002 og lagret kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved kildeendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-003",
+      "parent_claim_id": null,
+      "d_class": "P1",
+      "v_refs": [
+        "V-002"
+      ],
+      "observed_text": "**Akutt fare**: ring 112. Krisesenterlinjen: 116 006 (dognrundt). Politiet: 02800 (ikke-akutt).",
+      "occurrences": [
+        {
+          "fil": "42-vold-trusler-og-sikkerhet.md",
+          "sha256": "b98d2668ff82f6398268f7f84c4d1b868a27811037ad43c966f8be5cad5b404b",
+          "lokator": "linje 13"
+        },
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 10, 18"
+        },
+        {
+          "fil": "45-beslutningstre-hvem-ringer-jeg.md",
+          "sha256": "848940fd444f9ba30b8e2bd02de2fc1ba2ce8041bcfd4ec7636df76e3320eaf2",
+          "lokator": "linje 5"
+        }
+      ],
+      "context": "Fil 42 er skrevet med ASCII-iser (dognrundt); dette er filens ordlyd, ikke en transkripsjonsfeil. Numrene er konsistente med fil 00 og 45.",
+      "tema": "Vold, krisesenter og politi",
+      "maalgruppe": "Utsatte for vold eller trusler",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Arvet fra etappekontroll 30.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "Krisesentersekretariatet og nav-sider referert i eksporttekst; lagret etappekontroll 30.08.2026",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Numrene samsvarer med V-002 og lagret kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved kildeendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-004",
+      "parent_claim_id": null,
+      "d_class": "P1",
+      "v_refs": [
+        "V-001"
+      ],
+      "observed_text": "Mental Helse 116 123 som samtalestøtte",
+      "occurrences": [
+        {
+          "fil": "26-beslutningsstotte-hvor-henvende-seg.md",
+          "sha256": "4763ffbca216cdb7f2420e8a7cdc48f294860b1791836c47caf3844cfbbf82b4",
+          "lokator": "linje 31"
+        },
+        {
+          "fil": "45-beslutningstre-hvem-ringer-jeg.md",
+          "sha256": "848940fd444f9ba30b8e2bd02de2fc1ba2ce8041bcfd4ec7636df76e3320eaf2",
+          "lokator": "linje 5"
+        }
+      ],
+      "context": "Ingen faglig kontrollor attestert for 116 123-radene; agentkrysskontroll 20.09 (audit A) dekket helsenorge.no/116111.no/bufdir.no.",
+      "tema": "Mental Helse-hjelpelinjen",
+      "maalgruppe": "Voksne og unge",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Arvet fra etappekontroll 30.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "Mental Helse/nav.no referert i eksporttekst; lagret etappekontroll 30.08.2026",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Lagret kontroll dekker nummeret; ingen faglig kontrollor er attestert (se non_claims).",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved kildeendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-005",
+      "parent_claim_id": null,
+      "d_class": "P3",
+      "v_refs": [
+        "V-004"
+      ],
+      "observed_text": "Avtale om foreldreansvar, bosted og samvar kan fa **tvangskraft** ved vedtak fra Statsforvalteren naar begge ber om det, nar avtalen forst og fremst retter seg etter barnets beste, og gyldig meklingsattest legges fram (BNL § 55); tvangsfullforing folger BNL § 65 (fil 37).",
+      "occurrences": [
+        {
+          "fil": "34-mekling-og-foreldresamarbeidsavtale.md",
+          "sha256": "9b2aba68c5729f895e706a9ba804db3cba82d218d02b746e9e459909bd57d1c8",
+          "lokator": "linje 82"
+        },
+        {
+          "fil": "26-beslutningsstotte-hvor-henvende-seg.md",
+          "sha256": "4763ffbca216cdb7f2420e8a7cdc48f294860b1791836c47caf3844cfbbf82b4",
+          "lokator": "linje 128"
+        }
+      ],
+      "context": "BNL § 51: samboere med felles barn under 16 år skal møte til mekling ved samlivsbrudd. Fil 34s egen tekst er korrigert; eksportens registerkopi av V-004 har fortsatt gammel ordlyd.",
+      "tema": "Tvangskraft ved meklingsavtale",
+      "maalgruppe": "Foreldre i samlivsbrudd",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "BNL gjeldende ordlyd; attest-tolkning korrigert 20.09",
+      "kildetype": "STATUTE",
+      "kilde": "Lovdata (BNL §§ 55 og 65) og Bufdir, verifisert i 6e1f78a/694d080-korreksjonen",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 29.08.2026; attest-tolkning korrigert 20.09 mot fil 34 og Bufdir"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 29.08.2026 (lagret); attest-tolkning korrigert 20.09 mot fil 34 og Bufdir, ingen faglig kontrollor attestert",
+        "dato": "2026-09-20"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Fil 34s tekst samsvarer med korrigert V-004.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": "Eksportens registerkopi (data/verifikasjonsregister-v1.json) av V-004 har gammel ordlyd (Meklingsattest er krevet for rettslig gyldig avtale); overfores til AP5-endringsliste. Fil 34s egen tekst er korrekt.",
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved lovendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-006",
+      "parent_claim_id": null,
+      "d_class": "P4",
+      "v_refs": [
+        "V-005"
+      ],
+      "observed_text": "Overgangsstønad fra aleneomsorgen til utløpet av måneden barnet fyller 14 måneder, pluss inntil 2 måneder før fødsel. Forlengelse inntil 24 måneder i direkte tilknytning til løpende periode ved barnets forbigående sykdom (legeerklæring).",
+      "occurrences": [
+        {
+          "fil": "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+          "sha256": "676f366b5e2b2d8d7da2fc9660bb728315310c81803e120939e28b3aa1b9df20",
+          "lokator": "linje 34"
+        },
+        {
+          "fil": "64-overgangsstonad-nye-regler-i-dybden.md",
+          "sha256": "9ed9bafa8062ee9c96aeb002e16c5b7a3dbbd2c90773f51bc092369ba6899bcf",
+          "lokator": "linje 7, 15"
+        },
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 52, 56"
+        }
+      ],
+      "context": "Fil 63:34 er endringslovens ordlyd av § 15-5; fil 64 og 00 gir samme innhold. Oppsigelsesforbud og særlig tilsyn dekkes av PC-007.",
+      "tema": "Overgangsstønad hovedperiode og sykdomsforlengelse",
+      "maalgruppe": "Nye søkere med aleneomsorg",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "LOV-2026-06-12-27 (ikraft 01.07.2026)",
+      "kildetype": "STATUTE",
+      "kilde": "Lovdata (LOV-2026-06-12-27), verifisert 30.08.2026 ifølge fil 63 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Samsvarer med V-005 og lagret kontroll av endringsloven.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved lovendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-007",
+      "parent_claim_id": null,
+      "d_class": "P4",
+      "v_refs": [
+        "V-005"
+      ],
+      "observed_text": "Særlig tilsyn (funksjonshemming, sykdom eller store sosiale problemer) til utløpet av måneden barnet fyller 18 år: barnets tilstand dokumenteres av lege, og det kreves dokumentasjon på at medlemmet er forhindret fra å arbeide som følge av tilstanden.",
+      "occurrences": [
+        {
+          "fil": "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+          "sha256": "676f366b5e2b2d8d7da2fc9660bb728315310c81803e120939e28b3aa1b9df20",
+          "lokator": "linje 34"
+        },
+        {
+          "fil": "65-saerlig-tilsyn-dokumentasjon-aktorer.md",
+          "sha256": "cb15b784d536fb3eaf55125a8f096c713dc02e0e38fc32e7170d475955df93ea",
+          "lokator": "linje 11, 24"
+        },
+        {
+          "fil": "64-overgangsstonad-nye-regler-i-dybden.md",
+          "sha256": "9ed9bafa8062ee9c96aeb002e16c5b7a3dbbd2c90773f51bc092369ba6899bcf",
+          "lokator": "linje 24, 25, 26, 27"
+        }
+      ],
+      "context": "Fil 65:24 er NAVs supplerende praksisprofil; fil 64:27 noterer at formell diagnose ikke er nevnt som vilkår i lovteksten.",
+      "tema": "Særlig tilsyn til 18 år",
+      "maalgruppe": "Nye søkere med aleneomsorg",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "LOV-2026-06-12-27 (ikraft 01.07.2026)",
+      "kildetype": "STATUTE",
+      "kilde": "Lovdata (LOV-2026-06-12-27) og nav.no, verifisert 30.08.2026 ifølge fil 63/64/65 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Samsvarer med V-005 og lagret kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved lovendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-008",
+      "parent_claim_id": null,
+      "d_class": "P5",
+      "v_refs": [
+        "V-006"
+      ],
+      "observed_text": "Satsbestemmelsen er uendret: 2,25 ganger grunnbeløpet per år. G er 136 549 kr fra 1.5.2026, og NAV angir full overgangsstønad til 25 603 kr per måned før skatt.",
+      "occurrences": [
+        {
+          "fil": "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+          "sha256": "676f366b5e2b2d8d7da2fc9660bb728315310c81803e120939e28b3aa1b9df20",
+          "lokator": "linje 13"
+        },
+        {
+          "fil": "64-overgangsstonad-nye-regler-i-dybden.md",
+          "sha256": "9ed9bafa8062ee9c96aeb002e16c5b7a3dbbd2c90773f51bc092369ba6899bcf",
+          "lokator": "linje 39, 40, 41"
+        }
+      ],
+      "context": "Fil 64:42-43 har friinntekt 0,5 G = 68 274,50 kr per år og 45 prosent reduksjon (§ 15-9).",
+      "tema": "Overgangsstønad satser",
+      "maalgruppe": "Nye søkere med aleneomsorg",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "G per 1.5.2026",
+      "kildetype": "STATUTE",
+      "kilde": "Lovdata (ftrl § 15-7) og nav.no, verifisert 30.08.2026 ifølge fil 63/64 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Samsvarer med V-006 og lagret kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny satskontroll ved grunnbeløpsendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-009",
+      "parent_claim_id": null,
+      "d_class": "P5",
+      "v_refs": [
+        "V-006"
+      ],
+      "observed_text": "Ingen stønad når pensjonsgivende inntekt er over 6 G (819 294 kr per år med G = 136 549 kr). Etterbetaling av trygdeytelser skal ikke medregnes i inntektsgrunnlaget.",
+      "occurrences": [
+        {
+          "fil": "66-barnetilsyn-og-samspill-andre-ytelser.md",
+          "sha256": "ced319b25be8fc910a0edc9f0b3d1153d18643445d29d39d28cec492ee12fd58",
+          "lokator": "linje 15, 16"
+        },
+        {
+          "fil": "63-overgangsstonad-endringsloven-og-kapittel-15.md",
+          "sha256": "676f366b5e2b2d8d7da2fc9660bb728315310c81803e120939e28b3aa1b9df20",
+          "lokator": "linje 39"
+        }
+      ],
+      "context": "6 G-grensen og etterbetalingsregelen gjelder barnetilsyn (§ 15-10) i fil 66; 63:39 gjentar begge reglene for barnetilsyn.",
+      "tema": "Barnetilsyn inntektsregler",
+      "maalgruppe": "Nye søkere med aleneomsorg",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "LOV-2026-06-12-27; G per 1.5.2026",
+      "kildetype": "STATUTE",
+      "kilde": "Lovdata (ftrl § 15-10) og nav.no, verifisert 30.08.2026 ifølge fil 63/66 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Samsvarer med legal-index og lagret kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny satskontroll ved grunnbeløpsendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-010",
+      "parent_claim_id": null,
+      "d_class": "P6",
+      "v_refs": [
+        "V-006"
+      ],
+      "observed_text": "LUKKET: Barnetilsynssatser fra 01.01.2026 er verifisert fra NAVs side: 1 barn 4 895 kr/mnd (58 740/ar), 2 barn 6 385 (76 620), 3+ 7 237 (86 844); 64 prosent dekning; 6 G-grense 819 294 kr.",
+      "occurrences": [
+        {
+          "fil": "66-barnetilsyn-og-samspill-andre-ytelser.md",
+          "sha256": "ced319b25be8fc910a0edc9f0b3d1153d18643445d29d39d28cec492ee12fd58",
+          "lokator": "linje 82"
+        }
+      ],
+      "context": "LUKKET-punkt med NAV-kilde. Ikke resertifisert i AP2; ny satskontroll forut for utgivelse.",
+      "tema": "Barnetilsynssatser",
+      "maalgruppe": "Familier med barnetilsyn",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Satser fra 01.01.2026; kontroll 30.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no barnetilsyn, verifisert 30.08.2026 ifølge fil 66",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret), ikke resertifisert",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "LUKKET-status med NAV-kilde og lagret kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny satskontroll ved utgivelse eller satsendring."
+      }
+    },
+    {
+      "claim_id": "PC-011",
+      "parent_claim_id": null,
+      "d_class": "P7",
+      "v_refs": [
+        "V-007",
+        "V-008"
+      ],
+      "observed_text": "BUP er spesialisthelsetjeneste og dekker sondre del av Trondelag (St. Olavs opptaksomrade). BUP krever henvisning (NASJONAL RETTIGHET). Skill tre roller (St. Olavs, verifisert 30.08.2026):",
+      "occurrences": [
+        {
+          "fil": "70-lokalt/trondheim/04-bup-habu.md",
+          "sha256": "5574bfac4fdf2c05a866efbe5744a675925b75d908592eb2b5608d2582bd9660",
+          "lokator": "linje 7"
+        },
+        {
+          "fil": "70-lokalt/trondheim/04-bup-habu.md",
+          "sha256": "5574bfac4fdf2c05a866efbe5744a675925b75d908592eb2b5608d2582bd9660",
+          "lokator": "linje 9, 10"
+        },
+        {
+          "fil": "26-beslutningsstotte-hvor-henvende-seg.md",
+          "sha256": "4763ffbca216cdb7f2420e8a7cdc48f294860b1791836c47caf3844cfbbf82b4",
+          "lokator": "linje 36, 37, 38, 39"
+        }
+      ],
+      "context": "Fil 04:9-10: initierende aktorer (skolehelse, PPT, Trondheimshjelpa/BFT, fastlege) kan forberede sak, men den skriftlige henvisningen maa skrives/underskrives av lege, psykolog eller barnevernsleder. Frosne data er uendret.",
+      "tema": "BUP henvisning",
+      "maalgruppe": "Barn, unge og foresatte",
+      "geografi": "Sondre Trondelag (St. Olavs opptaksomrade); frosset utvalg 12 kommuner",
+      "tidsperiode": "Frosne data municipal-mental-health-sample-v1.json, uendret; identitetskontroll 20.09",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "St. Olavs (lokalt) og nasjonal henvisningsrett; frosne data municipal-mental-health-sample-v1.json (KILDE, ikke eksportforekomst)",
+      "evidens": {
+        "type": "FROSSET_UTVALG",
+        "referanse": "municipal-mental-health-sample-v1.json (finnes ikke i eksportpakken; frosne data er uendret)"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Kildekontroll 08.09 (lagret); identitetskontroll 20.09 (protokoll), ingen faglig kontrollor attestert",
+        "dato": "2026-09-08"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Nasjonal henvisningsregel er V-007-ankret; lokal rolle-inndeling er frosne data uendret.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": "Utenfor de 12 frosne kommunene gir eksporten ingen lokal ruting; lokalt innhold krever lokal kontroll for annen geografi.",
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny lokal kontroll ved endring av frosne data eller forut for lokal publisering."
+      }
+    },
+    {
+      "claim_id": "PC-012",
+      "parent_claim_id": null,
+      "d_class": "P8",
+      "v_refs": [],
+      "observed_text": "Ordinær barnetrygd 2 012 kr/mnd (1 006 kr/mnd per barn ved delt bosituasjon); Utvidet barnetrygd 2 572 kr/mnd (1 286 kr/mnd per barn ved delt bosituasjon).",
+      "occurrences": [
+        {
+          "fil": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+          "sha256": "860c3c82dcbf9b1f39dfbe9c913acf0994c3ed3530a5bf7f8233cdc505595451",
+          "lokator": "linje 14, 15"
+        }
+      ],
+      "context": "Satsene gjelder fra 01.02.2026 (fil 54:10). nav.no er oppgitt som kilde i filen, men raden er ikke registrert i V-registeret.",
+      "tema": "Barnetrygd satser",
+      "maalgruppe": "Foreldre med delt bosituasjon",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Satser fra 01.02.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no barnetrygd, oppgitt i fil 54; ikke registerfort",
+      "evidens": {
+        "type": "KILDEHENVISNING_I_FIL",
+        "referanse": "Fil 54 oppgir nav.no som kilde for satsene"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Satsene kan ikke brukes handlingsstoettende for denne utgaven uten registerkontroll.",
+      "foreslaatt_ny_ordlyd": "nav.no oppgir disse satsene per 01.02.2026 (ikke handlingsstoettende før registerkontroll)",
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Satskontroll mot nav.no og registrering i V-registeret forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-013",
+      "parent_claim_id": null,
+      "d_class": "P9",
+      "v_refs": [],
+      "observed_text": "småbarnstillegg (712 kr/mnd ved full overgangsstønad for barn 0 til 3 år)",
+      "occurrences": [
+        {
+          "fil": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+          "sha256": "860c3c82dcbf9b1f39dfbe9c913acf0994c3ed3530a5bf7f8233cdc505595451",
+          "lokator": "linje 53"
+        }
+      ],
+      "context": "Satsen 712 kr/mnd er konsistent med 8 544 kr/ar i fil 51:20, men aldersvilkåret (0-3 år) motsir fil 51 (Barn 1-5 ar); se PC-014.",
+      "tema": "Småbarnstillegg sats og vilkår",
+      "maalgruppe": "Foreldre med små barn",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Satser fra 01.02.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no barnetrygd/småbarnstillegg, oppgitt i filene; ikke registerfort",
+      "evidens": {
+        "type": "KILDEHENVISNING_I_FIL",
+        "referanse": "Fil 54 oppgir nav.no; fil 51:20 har 8 544 kr/ar og Barn 1-5 ar"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Satsen kan ikke brukes handlingsstoettende uten registerkontroll; aldersvilkåret krever AP3 (PC-014).",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": "Satsen er ikke registerfort; aldersvilkåret er motsigelsesfunn, se PC-014.",
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Satskontroll mot nav.no og registrering forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-014",
+      "parent_claim_id": null,
+      "d_class": "P9",
+      "v_refs": [],
+      "observed_text": "Fil 54:53: småbarnstillegg (712 kr/mnd ved full overgangsstønad for barn 0 til 3 år). Fil 51:20: Smabarnstillegg | 8 544 kr/ar | 01.02.2026 | Barn 1-5 ar; sokkes sammen med utvidet",
+      "occurrences": [
+        {
+          "fil": "54-delt-barnetrygd-ordinar-og-utvidet.md",
+          "sha256": "860c3c82dcbf9b1f39dfbe9c913acf0994c3ed3530a5bf7f8233cdc505595451",
+          "lokator": "linje 53"
+        },
+        {
+          "fil": "51-familieokonomi-etter-samlivsbrudd.md",
+          "sha256": "85c4de09c8f0de9e7698609dea38fe1d9d1134d7c7af97b89f007d1841b2614d",
+          "lokator": "linje 20"
+        }
+      ],
+      "context": "Satsen er konsistent (8 544/12 = 712), men vilkårene er motsigende: barn 0 til 3 år i fil 54 mot Barn 1-5 ar i fil 51. Gjeldende nav.no-vilkår er ikke kontrollert.",
+      "tema": "Småbarnstillegg aldersvilkår-motsigelse",
+      "maalgruppe": "Foreldre med små barn",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Satser fra 01.02.2026; begge filer",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "Gjeldende nav.no-vilkår er ikke kontrollert i AP2; UKJENT",
+      "evidens": {
+        "type": "OBSERVERT_KONFLIKT",
+        "referanse": "Fil 54:53 mot fil 51:20 innenfor samme eksportpakke"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "KREVER_AP3",
+      "disponering_begrunnelse": "Motsigelsen maa losest i kilden (nav.no) forut for handlingsstoette; eksporten kan ikke avgjore hvilket vilkår som er korrekt.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": "Gjeldende nav.no-vilkår (0-3 år vs 1-5 år) er ikke kontrollert; ingen faglig kontrollor attestert.",
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "AP3: kontroller mot nav.no og registrer aldersvilkåret i V-registeret."
+      }
+    },
+    {
+      "claim_id": "PC-015",
+      "parent_claim_id": null,
+      "d_class": "P10",
+      "v_refs": [],
+      "observed_text": "**Status**: Satser og grenser verifisert mot nav.no (barnebidrag-siden oppdatert 25.08.2026), rundskriv til barnelova kap. 8-9 (Lovdata v1-55-02) og bidragsforskudd-siden.",
+      "occurrences": [
+        {
+          "fil": "48-barnebidrag-i-dybden.md",
+          "sha256": "f876cc3d31eee1a00dd1defe22ee00743e22557f64399a30692fee632397c4d4",
+          "lokator": "linje 5"
+        },
+        {
+          "fil": "48-barnebidrag-i-dybden.md",
+          "sha256": "f876cc3d31eee1a00dd1defe22ee00743e22557f64399a30692fee632397c4d4",
+          "lokator": "linje 104, 105, 106"
+        }
+      ],
+      "context": "Statuslinjen (48:5) sier oppdatert 25.08.2026; detaljradene 104-106 er del av samme satsstatus. Ikke registrert i V-registeret.",
+      "tema": "Barnebidrag kildestatus",
+      "maalgruppe": "Foreldre i bidragssaker",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "nav.no-siden oppdatert 25.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no barnebidrag, oppgitt i fil 48; ikke registerfort",
+      "evidens": {
+        "type": "KILDEHENVISNING_I_FIL",
+        "referanse": "Fil 48:5 oppgir nav.no og Lovdata som kilder"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Opplysningene kan ikke brukes handlingsstoettende uten registerkontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Satskontroll mot nav.no og registrering forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-016",
+      "parent_claim_id": null,
+      "d_class": "P10",
+      "v_refs": [],
+      "observed_text": "Forhoyet forskudd | 2 080 | 2 600 | arsinntekt 388 200 eller lavere",
+      "occurrences": [
+        {
+          "fil": "50-bidragsforskudd-og-innkreving.md",
+          "sha256": "1809de1a080bc208d920274d9c6c056f3a888f1bf49bcd139f91f204b4a27c74",
+          "lokator": "linje 58, 59, 60"
+        }
+      ],
+      "context": "Tabell i 50:58-60; overskrift (Sats | Under 11 ar | Over 11 ar | Inntektsgrense) og ordinær forskuddsrad (50:59) er del av samme tabell. Ordinaer-rad dekkes av klassens BEGRENS-disponering, ikke egen rad; ikke oppfinn verdier.",
+      "tema": "Bidragsforskudd satser",
+      "maalgruppe": "Foreldre i bidragssaker",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Ikke datomerket i fil 50",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no bidragsforskudd, oppgitt i fil 50; ikke registerfort",
+      "evidens": {
+        "type": "KILDEHENVISNING_I_FIL",
+        "referanse": "Fil 50 oppgir nav.no som kilde"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Satstabellen kan ikke brukes handlingsstoettende uten registerkontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Satskontroll mot nav.no og registrering forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-017",
+      "parent_claim_id": null,
+      "d_class": "P10",
+      "v_refs": [],
+      "observed_text": "Fradragssatser per barnets alder, fra 1. juli 2026 (kr per maned):",
+      "occurrences": [
+        {
+          "fil": "49-samvaersfradrag-og-reisekostnader.md",
+          "sha256": "1ad9831aed80ee9150a252e9f1a07ff7cd3663521e21160c589cf2b9e6639132",
+          "lokator": "linje 36, 38, 39, 40, 41, 42, 43"
+        },
+        {
+          "fil": "49-samvaersfradrag-og-reisekostnader.md",
+          "sha256": "1ad9831aed80ee9150a252e9f1a07ff7cd3663521e21160c589cf2b9e6639132",
+          "lokator": "linje 28"
+        }
+      ],
+      "context": "Satstabellen i 49:38-43 har forbeholdet i 49:28: NAV publiserer ikke en offisiell tabell over nøyaktige netter per klasse; bruk kalkulatoren. Ikke registrert i V-registeret.",
+      "tema": "Samvaersfradrag satser",
+      "maalgruppe": "Foreldre i samværsaker",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Satser fra 1. juli 2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no samvaersfradrag, oppgitt i fil 49; ikke registerfort",
+      "evidens": {
+        "type": "KILDEHENVISNING_I_FIL",
+        "referanse": "Fil 49 oppgir nav.no som kilde; forbehold om manglende offisiell per-klasse tabell i 49:28"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Satstabellen kan ikke brukes handlingsstoettende uten registerkontroll.",
+      "foreslaatt_ny_ordlyd": "NAV publiserer ikke offisiell tabell over netter per klasse; bruk NAVs samvaersalkulator (merket satstabel, ingen per-klasse nøyaktighet)",
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Satskontroll mot nav.no og registrering forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-018",
+      "parent_claim_id": null,
+      "d_class": "P10",
+      "v_refs": [],
+      "observed_text": "4. DELVIS: Skatt på mottatt barnebidrag er kjernen verifisert (ikke skattepliktig mottaker, ikke fradrag for betaler); etterbetaling, særbidrag, over 18 år og forskudd er ikke separat verifisert (fil 69, punkt 2.3).",
+      "occurrences": [
+        {
+          "fil": "66-barnetilsyn-og-samspill-andre-ytelser.md",
+          "sha256": "ced319b25be8fc910a0edc9f0b3d1153d18643445d29d39d28cec492ee12fd58",
+          "lokator": "linje 85"
+        },
+        {
+          "fil": "69-kunnskapshullregister.md",
+          "sha256": "48a5e09c5e2428aadb5861b9506a3d9c4521e86ecd93021517a5e68c1007e5d7",
+          "lokator": "linje 35, 39, 40, 41, 42"
+        }
+      ],
+      "context": "Fil 69 punkt 2.3 (DELVIS LUKKET): kjernen er verifisert mot skatteloven §§ 5-42/5-43 og Skatteetaten (lest 30.08.2026); underspørsmålene (etterbetaling, særbidrag, over 18 år, forskudd) er ikke separat verifisert og rutes ikke.",
+      "tema": "Skatt på mottatt barnebidrag",
+      "maalgruppe": "Bidragsmottakere og bidragsbetalere",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Fil 69-kilder lest 30.08.2026; underspørsmål uavklart",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "Skatteetaten barnebidrag-side dokumentert lest 30.08.2026 i fil 69 punkt 2.3; underspørsmålene UKJENT",
+      "evidens": {
+        "type": "OBSERVERT_APEN_PUNKT",
+        "referanse": "Fil 66:85 med peker til fil 69 punkt 2.3 (DELVIS LUKKET)"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "KREVER_AP3",
+      "disponering_begrunnelse": "Underspørsmålene (etterbetaling, særbidrag, over 18 år, forskudd) maa verifiseres mot Skatteetaten forut for handlingsstoette.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": "Gjeldende Skatteetaten-status for etterbetaling, særbidrag, over 18 år og forskudd er ikke kontrollert i AP2.",
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "AP3: kontroller underspørsmålene mot Skatteetaten og registrer i V-registeret."
+      }
+    },
+    {
+      "claim_id": "PC-019",
+      "parent_claim_id": null,
+      "d_class": "P11",
+      "v_refs": [],
+      "observed_text": "3. Kan du ikke sokr digitalt, skal kontoret hjelpe deg. Du har rett til a fa opplysning, rad og veiledning uansett (stl. § 17).",
+      "occurrences": [
+        {
+          "fil": "57-nodhjelp-og-akutte-situasjoner.md",
+          "sha256": "cbbfc047a390cbe091294f841ed7240f08faaddd6ac618a83d720014f96038c8",
+          "lokator": "linje 23"
+        },
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 36, 37"
+        }
+      ],
+      "context": "Fil 57:38 (§ 18 stonad til livsopphold og § 19 stonad i sarlige tilfeller) holdes i kontekst og splittes ikke: samme status og fil, ingen datert kildelesing registrert for noen av dem.",
+      "tema": "Okonomisk sosialhjelp rettigheter og frister",
+      "maalgruppe": "Sokere til okonomisk sosialhjelp",
+      "geografi": "Nasjonalt (kommunalt gjennomfort)",
+      "tidsperiode": "Ikke datomerket i fil 57",
+      "kildetype": "UKJENT",
+      "kilde": "UKJENT",
+      "evidens": {
+        "type": "TEKST_SITERT_I_FIL",
+        "referanse": "Fil 57:23; ingen datert kildelesing registrert"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Statuttkritisk tekst uten registerdekning eller datert lesing; folger klassens begrensning (P11).",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Kontroller mot Lovdata (sosialtjenesteloven §§ 17-19) og registrer forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-020",
+      "parent_claim_id": null,
+      "d_class": "P11",
+      "v_refs": [],
+      "observed_text": "5. Har du fatt oppsigelse, sjekk formkravene i husleieloven § 9-7 (skriftlighet, begrunnelse, opplysning om protestrett), protestretten i § 9-8 (skriftlig protest innen en maned) og varselsadgangen i § 9-11 (utleier kan, nar det er grunn til det, sende skriftlig varsel til sosialtjenesten om mislighold; en begjaering om tvangsfravikelse bor tidligst fremsettes to uker etter varslet; leier far kopi av varslet og kan reservere seg skriftlig mot det) (Lovdata, lest 30.08.2026). Kontakt Nav-kontoret med det samme; varslet gir dem lovpalagt anledning til a fatte seg i saken.",
+      "occurrences": [
+        {
+          "fil": "57-nodhjelp-og-akutte-situasjoner.md",
+          "sha256": "cbbfc047a390cbe091294f841ed7240f08faaddd6ac618a83d720014f96038c8",
+          "lokator": "linje 41"
+        },
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 36, 37"
+        }
+      ],
+      "context": "Fil 57 oppgir Lovdata lest 30.08.2026; legal-index har tilsvarende notater for husleieloven §§ 9-7/9-8/9-11.",
+      "tema": "Husleie oppsigelse, protest og utkastelse",
+      "maalgruppe": "Leietakere i okonomisk vanskelighet",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Lovdata lest 30.08.2026 ifolge fil 57",
+      "kildetype": "STATUTE",
+      "kilde": "Lovdata (husleieloven §§ 9-7, 9-8, 9-11), dokumentert lest 30.08.2026 ifolge fil 57 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Dokumentert Lovdata-lesing 30.08.2026 registrert i fil 57 og legal-index (hul)"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Dokumentert Lovdata-lesing registrert i fil 57; ikke registerfort i V-registeret",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Dokumentert lesing, men ikke registerfort; kan ikke brukes handlingsstoettende for dennne utgaven.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Registrer i V-registeret forut for handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-021",
+      "parent_claim_id": null,
+      "d_class": "P11",
+      "v_refs": [],
+      "observed_text": "2. Kommunen er forpliktet til a finne midlertidig botilbud hvis du ikke har et sted a sove og oppholde deg det neste dognet (nav.no/midlertidig-botilbud, lest 30.08.2026; stl. § 27). Det gjelder ogsa nar du midlertidig bor hos venner eller familie.",
+      "occurrences": [
+        {
+          "fil": "57-nodhjelp-og-akutte-situasjoner.md",
+          "sha256": "cbbfc047a390cbe091294f841ed7240f08faaddd6ac618a83d720014f96038c8",
+          "lokator": "linje 47"
+        },
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 39"
+        }
+      ],
+      "context": "Fil 57 oppgir nav.no lest 30.08.2026; legal-index har tilsvarende notat for sosialtjenesteloven § 27.",
+      "tema": "Midlertidig botilbud",
+      "maalgruppe": "Personer uten bolig i natt",
+      "geografi": "Nasjonalt (kommunalt gjennomfort)",
+      "tidsperiode": "nav.no lest 30.08.2026 ifolge fil 57",
+      "kildetype": "STATUTE",
+      "kilde": "nav.no midlertidig botilbud og stl. § 27, dokumentert lest 30.08.2026 ifolge fil 57 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Dokumentert nav.no-lesing 30.08.2026 registrert i fil 57 og legal-index (sotjl)"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Dokumentert nav.no-lesing registrert i fil 57; ikke registerfort i V-registeret",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Dokumentert lesing 30.08.2026 og kjerneankre; greier BEHOLD-regelen.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved lov- eller kildeendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-022",
+      "parent_claim_id": null,
+      "d_class": "P12",
+      "v_refs": [
+        "V-004",
+        "V-005",
+        "V-006"
+      ],
+      "observed_text": "§ 51: samboere med felles barn under 16 år skal møte til mekling ved samlivsbrudd. | 15-7: 2,25 G; 15-9: fri under 0,5 G, 45 prosent reduksjon utover; 15-10: nytt barnetilsyn 64 prosent, inntektsgrense 6 G",
+      "occurrences": [
+        {
+          "fil": "data/legal-index.json",
+          "sha256": "4ea7461fd22b3270e5565cb06ad8a2b24fee3b474b37a43b736b43eeb94b1cf6",
+          "lokator": "laws[bnl].notater (§ 51, § 55)"
+        },
+        {
+          "fil": "data/legal-index.json",
+          "sha256": "4ea7461fd22b3270e5565cb06ad8a2b24fee3b474b37a43b736b43eeb94b1cf6",
+          "lokator": "laws[ftl15].notater (ny 15-5, 15-7, 15-9/15-10, AAP-samspill)"
+        }
+      ],
+      "context": "legal-index metadata: statusnotater gjelder 30.08.2026; verified_against lister Lovdata-lesinger 29.08. og 30.08.2026.",
+      "tema": "Legal-anchor notater i eksportens datafiler",
+      "maalgruppe": "Utviklere og etterkontroll",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Statusnotater gjelder 30.08.2026",
+      "kildetype": "STATUTE",
+      "kilde": "legal-index.json over lovstoff med Lovdata-referanser; metadata verified_against",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "data/legal-index.json i eksportpakken, status 30.08.2026"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Statusnotater i legal-index gjelder 30.08.2026; ikke alle notater er registrert i V-registeret",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "Registeret dekker V-004/V-005/V-006-kjerneankrene som legal-anker.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": "Ikke-registrerte notater i legal-index er ikke selvstendig bevis; dekker ikke alle lovnotater.",
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny kontroll ved lovendring eller forut for publisering."
+      }
+    },
+    {
+      "claim_id": "PC-023",
+      "parent_claim_id": null,
+      "d_class": "P13",
+      "v_refs": [
+        "V-008"
+      ],
+      "observed_text": "70/02:24: ## Rask psykisk helsehjelp (RPH, voksne 18+) | 70/02:26: - Tilbud: kurs/gruppebehandling, nettbasert veiledet selvhjelp, individuell behandling. Gratis for alle over 18 ar som bor i Trondheim kommune.",
+      "occurrences": [
+        {
+          "fil": "70-lokalt/trondheim/02-psykisk-helse.md",
+          "sha256": "124a0f28557febe443aac6cc9104561dfaa47cb8b7632c0c79466682b8e553c0",
+          "lokator": "linje 24, 26, 35"
+        }
+      ],
+      "context": "Linje 35 er NASJONAL BEMERKNING (konfliktmarkering): nasjonal RPH-dokumentasjon beskriver ofte tilbudet for voksne; Trondheim oppgir eksplisitt 18+.",
+      "tema": "RPH Trondheim",
+      "maalgruppe": "Voksne 18+ i Trondheim",
+      "geografi": "Trondheim kommune",
+      "tidsperiode": "Datert bakgrunn; kontroll 30.08.2026",
+      "kildetype": "LOCAL_SERVICE_FACT",
+      "kilde": "trondheim.kommune.no (URL i fil 02:33), lest 30.08.2026 ifolge filen",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 (Trondheim-etappe) registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (Trondheim-etappe, lagret); ingen faglig kontrollor attestert",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Datert bakgrunn; ikke aktuell handlingsstoette for lokal bruk uten ny kontroll.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Ny lokal kontroll mot trondheim.kommune.no forut for lokal handlingsstoette."
+      }
+    },
+    {
+      "claim_id": "PC-024",
+      "parent_claim_id": null,
+      "d_class": "P13",
+      "v_refs": [],
+      "observed_text": "| Poliklinikk Klostergata / Elgeseter | 72 82 22 50 | ordinaer utredning og behandling |",
+      "occurrences": [
+        {
+          "fil": "70-lokalt/trondheim/04-bup-habu.md",
+          "sha256": "5574bfac4fdf2c05a866efbe5744a675925b75d908592eb2b5608d2582bd9660",
+          "lokator": "linje 19"
+        }
+      ],
+      "context": "Tabellrad i fil 04:19; del av lokal Trondheim-fil, ikke frosset utvalg.",
+      "tema": "BUP kontaktinfo Trondheim",
+      "maalgruppe": "Barn, unge og foresatte i Trondheim",
+      "geografi": "Trondheim",
+      "tidsperiode": "Datert bakgrunn; kontroll 30.08.2026",
+      "kildetype": "LOCAL_SERVICE_FACT",
+      "kilde": "St. Olavs/lokale kilder oppgitt i fil 04; lest 30.08.2026 ifolge filen",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 (Trondheim-etappe) registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (Trondheim-etappe, lagret)",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEGRENS",
+      "disponering_begrunnelse": "Lokal kontaktinfo kan endres; ikke nygodkjent lokal handlingsstoette.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Ny lokal kontroll forut for lokal bruk."
+      }
+    },
+    {
+      "claim_id": "PC-025",
+      "parent_claim_id": null,
+      "d_class": "P14",
+      "v_refs": [],
+      "observed_text": "| Gjeld ute av kontroll | Kommunens okonomiradgiving / NAV (sosialtjenesteloven § 17) | Startlan ved etableringsbehov; gjeldsordning via namsmann/tingrett (detaljer ikke verifisert) | 60 |",
+      "occurrences": [
+        {
+          "fil": "00-BESLUTNINGSTRE.md",
+          "sha256": "00fd76ab7b772731f883e073462b6a8e35863db92a64e3017f51b2e3bf624093",
+          "lokator": "linje 40"
+        }
+      ],
+      "context": "Fil 00 sier eksplisitt at detaljene ikke er verifisert.",
+      "tema": "Gjeld og okonomiradgiving",
+      "maalgruppe": "Personer med gjeldsproblemer",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Ikke datomerket i fil 00",
+      "kildetype": "UKJENT",
+      "kilde": "UKJENT",
+      "evidens": {
+        "type": "OBSERVERT_APEN_PUNKT",
+        "referanse": "Fil 00:40 med eksplisitt (detaljer ikke verifisert)"
+      },
+      "kontroll": {
+        "niva": "IKKE_GJENNOMFORT",
+        "kontrollor": "UKJENT",
+        "dato": "UKJENT"
+      },
+      "disponering": "UTELAT_FRA_HANDLINGSSTOTTE",
+      "disponering_begrunnelse": "Detaljpåstanden mangler underbygging og skal ikke stotte handlinger i denne utgaven.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": "Utelatelse løser ikke gjeldssporsmaalet; generell ruting (okonomiradgiving/NAV) kan beholdes uten detaljpåstanden.",
+      "nykontroll": {
+        "type": "foreslaatt",
+        "regel": "Verifiser detaljene (gjeldsordning via namsmann/tingrett) mot Lovdata/nav.no dersom raden skal tas inn igjen."
+      }
+    },
+    {
+      "claim_id": "PC-026",
+      "parent_claim_id": null,
+      "d_class": "P15",
+      "v_refs": [
+        "V-006"
+      ],
+      "observed_text": "1. LUKKET: Barnetilsynssatser fra 01.01.2026 er verifisert fra NAVs side: 1 barn 4 895 kr/mnd (58 740/ar), 2 barn 6 385 (76 620), 3+ 7 237 (86 844); 64 prosent dekning; 6 G-grense 819 294 kr; AAP, dagpenger, sykepenger m.m. teller i 6 G-vurderingen.",
+      "occurrences": [
+        {
+          "fil": "66-barnetilsyn-og-samspill-andre-ytelser.md",
+          "sha256": "ced319b25be8fc910a0edc9f0b3d1153d18643445d29d39d28cec492ee12fd58",
+          "lokator": "linje 82"
+        }
+      ],
+      "context": "LUKKET-punkt i fil 66:82; AAP-delen er bekreftet i legal-index (AAP-samspill verifisert: § 15-13 utelukker ikke AAP; § 11-27 valgrett; NAVs avkortingsliste inkluderer AAP).",
+      "tema": "Barnetilsyn og samspill andre ytelser",
+      "maalgruppe": "Familier med barnetilsyn",
+      "geografi": "Nasjonalt",
+      "tidsperiode": "Satser fra 01.01.2026; kontroll 30.08.2026",
+      "kildetype": "NATIONAL_GUIDANCE",
+      "kilde": "nav.no barnetilsyn og AAP-samspill, verifisert 30.08.2026 ifolge fil 66 og legal-index",
+      "evidens": {
+        "type": "LAGRET_KILDELESING",
+        "referanse": "Etappekontroll 30.08.2026 registrert i kilde-repoets V-register"
+      },
+      "kontroll": {
+        "niva": "LAGRET_KONTROLL",
+        "kontrollor": "Etappekontroll 30.08.2026 (lagret), ikke resertifisert",
+        "dato": "2026-08-30"
+      },
+      "disponering": "BEHOLD_SOM_KANDIDAT",
+      "disponering_begrunnelse": "LUKKET-punkt med NAV-kilde og lagret kontroll; AAP-delen stottet av legal-index.",
+      "foreslaatt_ny_ordlyd": null,
+      "manglende_bevis": null,
+      "konsekvens": null,
+      "nykontroll": {
+        "type": "eksisterende",
+        "regel": "Ny satskontroll ved utgivelse eller satsendring."
+      }
+    }
+  ],
+  "non_claims": [
+    "Ingen paastand i V2 er faglig godkjent. Ingen faglig kontrollor er dokumentert utpekt i overleveringen, og agentkrysskontroll erstatter ikke fagkontroll.",
+    "V2 er et UTKAST koblet til eksportkandidat v1 revisjon1; ingen publikasjonsprofil eller runtime-peker er endret.",
+    "BEHOLD_SOM_KANDIDAT er et disponeringsforslag, ikke godkjenning for angitt anvendelse.",
+    "UTELAT_FRA_HANDLINGSSTOTTE (PC-025) betyr ikke at gjeldssporsmaalet er loset; det mangler fortsatt underbygging.",
+    "Lokale Trondheim-opplysninger (PC-023, PC-024) er datert bakgrunn og ikke nygodkjent lokal handlingsstoette.",
+    "Kontrolldatoer arvet fra filer og V-registeret er uendret; ingen kontrolldato er generert eller fremstilt som ny kontroll."
+  ]
+}
