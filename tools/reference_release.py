@@ -25,7 +25,7 @@ def select_sections(text,selectors):
 def check_links(documents,domains):
  for name,text in documents.items():
   if re.search(r'<\s*(?:script|iframe|a|img)\b',text,re.I):raise ValueError('Embedded HTML is outside this reference profile')
-  links=re.findall(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+[^)]*)?\)',text)+re.findall(r'^\s*\[[^\]]+\]:\s*(\S+)',text,re.M)
+  links=re.findall(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+[^)]*)?\)',text)+re.findall(r'^\s*\[[^\]]+\]:\s*(\S+)',text,re.M)+re.findall(r'<([^<>\s]+:[^<>\s]*)>',text)
   for link in links:
    link=unquote(link.strip('<>'));parsed=urlparse(link)
    if parsed.scheme or parsed.netloc:

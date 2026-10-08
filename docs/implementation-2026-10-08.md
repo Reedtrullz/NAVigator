@@ -26,3 +26,11 @@ Arbeidsgren: codex/navigator-contact-pilot. Original checkout og pakker bevares.
 - G3: matrise med 26 historiske påstander PENDING/ikke tatt inn, pluss 4 begrensede kontaktkilder. Ingen faglig godkjenning arvet. Kvalifisert kontroll gjenstår.
 - Ruling: Sikkerhetsgrunnlaget får ingen agentbesluttet overgang fra tidligere akutt-sperre til ordinære råd; eksplisitt reset og import beholder sperren i samme side. Kostnad: brukeren kan bli stående i hjelpeskjermen frem til et separat, kvalifisert vurdert overgangsdesign finnes.
 - Ruling: Rå situasjonstekst lagres heller ikke i privat arbeidsfil. Dette begrenser privat datamengde, og forklares ved tekstfelt og filkontroll. Kostnad: teksten må skrives inn igjen ved gjenåpning.
+
+- Final review: én fersk lesende GPT-6 Luna på 43b4c04. Ingen kritiske funn; 4 viktige funn rettet i én RED → GREEN-runde. V2-svarvokabular omgradert til viktig og rettet. Resultat og gjenstående minor: docs/code-review-2026-10-08.md.
+- Final: fixed fremdriftsbasis-tekst, gammel bekreftelse, historikktap og autolenker — navngitte negativ-/regresjonsprøver RED → GREEN; samlet 43 Node + 3 bygg + 6 referanseprøver består, samt generert schema-kontrakt.
+- Final: minor (deferred): referanseprofil med filnavnet manifest.json kan kollidere med kontrollmetadata og gi delvis output ved feil. Nåværende positiv profil bruker kontaktgrunnlag.md.
+- Final: Ruling: kontrollørens avståelse fra kilde-/klinisk/personvern-/menneskelig vurdering opprettholdes — kandidatens nye tekst er nøytral kontaktinformasjon, men teknikk erstatter ingen slik kontroll — kostnad: distribusjon forblir BLOCKED.
+- Final: Ruling: v2-importvokabular ble viktig fremfor minor — eldre filversjon må ikke endre betydning på svar — kostnad: filer med verdier som aldri tilhørte den versjonen avvises uten å endre state.
+- G4: faktiske browserprøver, kopiert/nedlastet tekst og arbeidsfil samt én-sides print-PDF kontrollert med fiktive svar. Delvise tilgjengelighetsresultater er ført; VoiceOver, faktisk zoom og menneskelige brukerprøver er NOT_RUN.
+- G5: identifisert lokal reviewleveranse forberedes med egne hashes og vedlikeholds-/prøveprotokoll. Primær HEAD fortsatt f778090; 172 valgte originalfiler er byteidentiske. Ingen deploy, motoraktivering eller GitHub-mutasjon.

@@ -45,4 +45,9 @@ class ReferenceBoundary(unittest.TestCase):
    root,p,out=self.fixture(temp,'# General\nSafe.\n\n# Derived\nPRIVATE CANARY\n')
    v=json.loads(p.read_text());v['documents'][0]['selectors']=['General'];p.write_text(json.dumps(v))
    result=self.build(root,p,out);self.assertTrue(result['ok']);self.assertNotIn('PRIVATE CANARY',(out/'public.md').read_text())
+ def test_angle_autolinks_obey_external_domain_policy(self):
+  with tempdir() as temp:
+   root,p,out=self.fixture(temp,'See <https://outside.example/private>.\n')
+   with self.assertRaises(ValueError):self.build(root,p,out)
+   self.assertFalse(out.exists())
 if __name__=='__main__':unittest.main()

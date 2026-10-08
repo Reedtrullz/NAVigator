@@ -11,7 +11,7 @@ function renderContactCard(item,sources){
  '<p class="access-note">Lokal åpningstid og tilgang er ikke kontrollert. Kontakt utenfor åpningstid er ikke avklart her; se den offisielle kontaktoversikten.</p><h3>Dette kan du si eller forberede</h3><ul>'+(item.prepare||[]).slice(0,3).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul><p class="muted">NAV vurderer behov og rettigheter individuelt. Dette er et kontaktforslag.</p>'+
  (!item.currentBasis?'<p class="notice">Grunnlaget for dette kortet er endret. Bekreft svarene før du bruker det videre.</p>':'')+
  '<label for="progress-'+esc(item.id)+'">Din fremdrift</label><select id="progress-'+esc(item.id)+'" data-progress="'+esc(item.id)+'"'+(!item.currentBasis?' disabled':'')+'>'+[['IKKE_STARTET','Ikke startet'],['KONTAKTET','Jeg har tatt kontakt'],['VENTER','Jeg venter på svar'],['GJORT','Ferdig med dette steget']].map(([v,t])=>'<option value="'+v+'"'+(progress.status===v?' selected':'')+'>'+t+'</option>').join('')+'</select>'+
- (progress.history?'<p class="muted">Tidligere fremdrift er bevart i arbeidsfilen. Den gjaldt et annet grunnlag.</p>':'')+sourceDetails(item,sources)+'</article>';
+ (progress.history&&(!Array.isArray(progress.history)||progress.history.length)?'<p class="muted">Tidligere fremdrift er bevart i arbeidsfilen. Den gjaldt et annet grunnlag.</p>':'')+sourceDetails(item,sources)+'</article>';
 }
 function initPilot(){
  const byId=id=>document.getElementById(id);const actions=DATA.content.actions,contacts=DATA.content.contacts;
@@ -83,7 +83,7 @@ function initPilot(){
  });
  byId('updatePlan').addEventListener('click',()=>showStage('needs'));
  byId('takeNext').addEventListener('click',()=>{renderSelection();showStage('take');announce('Velg hva notatet skal inneholde.');});
- byId('planActions').addEventListener('change',event=>{const id=event.target.dataset.progress;if(!id)return;const item=model().actions.find(a=>a.id===id);if(!item||!item.currentBasis||!PROGRESS_STATUSES.includes(event.target.value))return;saveChange();state().progressByAction[id]={status:event.target.value,basis:item.basis,contentVersion:state().contentVersion};announce('Din fremdrift er oppdatert.');});
+ byId('planActions').addEventListener('change',event=>{const id=event.target.dataset.progress;if(!id)return;const item=model().actions.find(a=>a.id===id);if(!item||!item.currentBasis||!PROGRESS_STATUSES.includes(event.target.value))return;if(!recordProgress(state(),item,event.target.value)){event.target.value=state().progressByAction[id].status;announce('Historikken er full. Tidligere fremdrift er beholdt.');return;}saveChange();announce('Din fremdrift er oppdatert.');});
  byId('takeSection').addEventListener('change',event=>{
   const el=event.target;const kind=el.dataset.factSelection?'factKeys':el.dataset.actionSelection?'actionIds':el.dataset.explicitSelection?'explicitActionIds':null;if(!kind)return;
   saveChange();const id=el.dataset.factSelection||el.dataset.actionSelection||el.dataset.explicitSelection;

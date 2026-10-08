@@ -38,6 +38,7 @@ function factAnswerState(state,key){
 function updateFact(state,key,value){
  if(!Object.hasOwn(FACT_VALUES,key)||!FACT_VALUES[key].includes(value))throw new Error('Ugyldig svar.');
  if(state.facts[key]!==value){state.facts[key]=value;state.factsRevision++;
+ state.acknowledgements.facts=false;
  state.legacyUnknownKeys=(state.legacyUnknownKeys||[]).filter(k=>k!==key);}
  return state;
 }
@@ -77,7 +78,7 @@ function confirmState(state,actions,contacts){
 function derivePlan(state,actions,contacts){
  let status=gateForState(state);
  const changedActionIds=actions.filter(a=>state.planBasis&&state.planBasis[a.id]&&state.planBasis[a.id]!==actionBasis(a,state)).map(a=>a.id);
- if(['CURRENT','CONTACT_ONLY'].includes(status)&&(changedActionIds.length||state.confirmedRevision!==state.factsRevision||state.confirmedContextRevision!==state.contextRevision))status='NEEDS_UPDATE';
+ if(['CURRENT','CONTACT_ONLY','BLOCKED','EMPTY'].includes(status)&&state.policyReady===true&&state.confirmedRevision!==null&&(changedActionIds.length||state.confirmedRevision!==state.factsRevision||state.confirmedContextRevision!==state.contextRevision))status='NEEDS_UPDATE';
  const active=['CURRENT','CONTACT_ONLY','NEEDS_UPDATE'].includes(status);
  const matching=actions.filter(a=>!(a.conditions||[]).length||(a.conditions||[]).some(c=>state.facts[c.key]===c.value));
  const hasSpecific=matching.some(a=>!a.fallback);
@@ -112,25 +113,41 @@ function onlyKeys(x,keys){return isRecord(x)&&Object.keys(x).every(k=>keys.inclu
 function validLocation(x){return onlyKeys(x,['area','bydel'])&&['','Trondheim','Annen kommune'].includes(x.area)&&['','Ukjent','Lerkendal','Heimdal','Ostbyen','Midtbyen'].includes(x.bydel);}
 function validFacts(x,keys){return onlyKeys(x,keys)&&keys.every(k=>Object.hasOwn(x,k)&&FACT_VALUES[k].includes(x[k]));}
 function validSelection(x){return onlyKeys(x,['factKeys','actionIds','explicitActionIds'])&&['factKeys','actionIds','explicitActionIds'].every(k=>Array.isArray(x[k])&&x[k].length<=50&&x[k].every(v=>typeof v==='string'&&(k==='factKeys'?Object.keys(FACT_VALUES):ACTION_IDS).includes(v))&&new Set(x[k]).size===x[k].length);}
-function validProgress(x){
- if(!isRecord(x)||Object.keys(x).length>20)return false;
- return Object.entries(x).every(([id,row])=>ACTION_IDS.includes(id)&&onlyKeys(row,['status','contentVersion','basis','markedAt','invalidatedAt','history'])&&PROGRESS_STATUSES.includes(row.status)
- &&(row.contentVersion===undefined||typeof row.contentVersion==='string'&&row.contentVersion.length<=128)
- &&['markedAt','invalidatedAt'].every(k=>row[k]===undefined||typeof row[k]==='string'&&row[k].length<=64)
- &&(row.history===undefined||row.history===null)
- &&(row.basis===undefined||typeof row.basis==='string'&&row.basis.length<=8192||validLegacyBasis(row.basis)));
+const LEGACY_CONTENT_VERSIONS=['navigator-pilot3-content-2026-09-22','navigator-pilot3-household-income-2026-09-23'];
+const BASIS_SOURCE_IDS=['nav-housing','nav-expenses','nav-office','health-help'];
+function validBasis(basis,id,currentVersion){
+ if(!isRecord(basis))return false;
+ const versionOK=v=>v===currentVersion||LEGACY_CONTENT_VERSIONS.includes(v);
+ const factSubset=x=>isRecord(x)&&Object.entries(x).every(([key,value])=>Object.hasOwn(FACT_VALUES,key)&&FACT_VALUES[key].includes(value));
+ if(Object.hasOwn(basis,'sourceIds'))return onlyKeys(basis,['actionId','contentVersion','sourceIds','relevantFacts','locationContext'])
+  &&basis.actionId===id&&versionOK(basis.contentVersion)&&Array.isArray(basis.sourceIds)&&basis.sourceIds.length<=4&&basis.sourceIds.every(x=>BASIS_SOURCE_IDS.includes(x))
+  &&factSubset(basis.relevantFacts)&&(basis.locationContext===null||validLocation(basis.locationContext));
+ if(Object.hasOwn(basis,'facts'))return onlyKeys(basis,['facts','locationContext'])&&factSubset(basis.facts)&&validLocation(basis.locationContext);
+ return onlyKeys(basis,['actionId','contentVersion','relevantFacts','locationContext'])&&basis.actionId===id&&versionOK(basis.contentVersion)&&factSubset(basis.relevantFacts)&&validLocation(basis.locationContext);
 }
-function validLegacyBasis(basis){
- return onlyKeys(basis,['facts','locationContext','actionId','contentVersion','relevantFacts'])
- &&(basis.locationContext===undefined||validLocation(basis.locationContext))
- &&['facts','relevantFacts'].every(k=>basis[k]===undefined||onlyKeys(basis[k],Object.keys(FACT_VALUES))&&Object.entries(basis[k]).every(([key,value])=>FACT_VALUES[key].includes(value)))
- &&(basis.actionId===undefined||ACTION_IDS.includes(basis.actionId))
- &&(basis.contentVersion===undefined||typeof basis.contentVersion==='string'&&basis.contentVersion.length<=128);
+function validProgressRow(row,id,currentVersion,allowHistory){
+ return onlyKeys(row,['status','contentVersion','basis','markedAt','invalidatedAt',...(allowHistory?['history']:[])])&&PROGRESS_STATUSES.includes(row.status)
+  &&(row.contentVersion===undefined||row.contentVersion===currentVersion||LEGACY_CONTENT_VERSIONS.includes(row.contentVersion))
+  &&['markedAt','invalidatedAt'].every(k=>row[k]===undefined||typeof row[k]==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(row[k]))
+  &&(row.basis===undefined||validBasis(row.basis,id,currentVersion))
+  &&(row.history===undefined||allowHistory&&Array.isArray(row.history)&&row.history.length<=20&&row.history.every(h=>validProgressRow(h,id,currentVersion,false)));
+}
+function validProgress(x,currentVersion){return isRecord(x)&&Object.keys(x).length<=20&&Object.entries(x).every(([id,row])=>ACTION_IDS.includes(id)&&validProgressRow(row,id,currentVersion,true));}
+function encodeProgress(rows){
+ const encode=row=>({...row,...(row.basis?{basis:typeof row.basis==='string'?JSON.parse(row.basis):cloneJson(row.basis)}:{})});
+ return Object.fromEntries(Object.entries(rows).map(([id,row])=>[id,{...encode(row),...(row.history?{history:row.history.map(encode)}:{})}]));
 }
 function exportSession(state){return JSON.stringify({formatVersion:SESSION_FORMAT_VERSION,contentVersion:state.contentVersion,
  facts:state.facts,legacyUnknownKeys:state.legacyUnknownKeys||[],locationContext:state.locationContext,
- progressByAction:state.progressByAction,selection:state.selection,
+ progressByAction:encodeProgress(state.progressByAction),selection:state.selection,
  acuteLatched:!!(state.acuteLatched||state.safety.suppressed),migration:state.migration||null},null,2);}
+function recordProgress(state,item,status){
+ if(!item.currentBasis||!PROGRESS_STATUSES.includes(status))return false;
+ const old=state.progressByAction[item.id];const history=old&&old.history?cloneJson(old.history):[];
+ if(old&&old.basis!==item.basis){const previous=cloneJson(old);delete previous.history;history.push(previous);}
+ if(history.length>20)return false; // Never silently discard history.
+ state.progressByAction[item.id]={status,basis:item.basis,contentVersion:state.contentVersion,...(history.length?{history}:{})};return true;
+}
 function importSession(text,currentState,contentVersion){
  const fail=()=>({ok:false,error:'Filen er ugyldig, for stor eller har et format som ikke støttes. Ingen svar er endret.'});
  try{
@@ -141,11 +158,12 @@ function importSession(text,currentState,contentVersion){
   const keys=legacy?['formatVersion','contentVersion','facts','locationContext','progressByAction']:['formatVersion','contentVersion','facts','legacyUnknownKeys','locationContext','progressByAction','selection','acuteLatched','migration'];
   if(!onlyKeys(raw,keys)||!keys.every(k=>Object.hasOwn(raw,k))||typeof raw.contentVersion!=='string'||!raw.contentVersion||raw.contentVersion.length>128)return fail();
   const factKeys=version.endsWith('v1')?LEGACY_FACT_KEYS:legacy?[...LEGACY_FACT_KEYS,'andre_voksne_i_husstand','barn_i_husstand','brutto_husstandsinntekt']:Object.keys(FACT_VALUES);
-  if(!validFacts(raw.facts,factKeys)||!validLocation(raw.locationContext)||!validProgress(raw.progressByAction))return fail();
+  if(legacy&&LEGACY_FACT_KEYS.some(k=>raw.facts[k]==='vil_ikke_oppgi'))return fail();
+  if(!validFacts(raw.facts,factKeys)||!validLocation(raw.locationContext)||!validProgress(raw.progressByAction,contentVersion))return fail();
   if(!legacy&&(!validSelection(raw.selection)||typeof raw.acuteLatched!=='boolean'||!Array.isArray(raw.legacyUnknownKeys)||raw.legacyUnknownKeys.length>factKeys.length||!raw.legacyUnknownKeys.every(k=>factKeys.includes(k)&&raw.facts[k]==='ukjent')))return fail();
   if(!legacy&&raw.migration!==null&&(!onlyKeys(raw.migration,['fromFormat','legacyPaymentAnswer'])||raw.migration.fromFormat!=='navigator-pilot3-session-v1'||!FACT_VALUES.betalingsvansker.includes(raw.migration.legacyPaymentAnswer)))return fail();
   const next=initialState(contentVersion);Object.assign(next.facts,raw.facts);next.locationContext=cloneJson(raw.locationContext);next.progressByAction=cloneJson(raw.progressByAction);
-  for(const row of Object.values(next.progressByAction))if(isRecord(row.basis))row.basis=stableJson(row.basis);
+  for(const row of Object.values(next.progressByAction)){if(isRecord(row.basis))row.basis=stableJson(row.basis);for(const h of row.history||[])if(isRecord(h.basis))h.basis=stableJson(h.basis);}
   next.legacyUnknownKeys=legacy?LEGACY_FACT_KEYS.filter(k=>raw.facts[k]==='ukjent'):cloneJson(raw.legacyUnknownKeys);
   if(version.endsWith('v1')){next.migration={fromFormat:version,legacyPaymentAnswer:raw.facts.betalingsvansker};next.facts.betalingsvansker='';next.legacyUnknownKeys=next.legacyUnknownKeys.filter(k=>k!=='betalingsvansker');}
   if(!legacy){next.selection=cloneJson(raw.selection);next.migration=cloneJson(raw.migration);}
