@@ -1,0 +1,153 @@
+{
+  "artifact": "safety-triage-rules-v2",
+  "purpose": "Phase 2 deterministic S2 triage vocabulary. Extends (never mutates) the frozen safety-triage-rules-v1. Evaluates the internal 12-value safety_class taxonomy, then collapses to the canonical 3-value output enum per the frozen Phase 2 design-lock collapse table. Matching is word-boundary based; raw substring matching is prohibited (substring 'vold' inside 'voldsomt' is the canonical false-positive example).",
+  "derived_from": "safety-triage-rules-v1 (frozen, sha 58b473d440f7662848f86b5a60457c23b25c448d6c67879c2a68950de1d2aab2)",
+  "seeded_from": [
+    "evaluation/dev-corpus-v1/cases/safety_cases.json signal shapes (BURNED_DEVELOPMENT_ONLY, generalized phrases only, no case IDs)",
+    "26-beslutningsstotte-hvor-henvende-seg.md",
+    "42-vold-trusler-og-sikkerhet.md",
+    "45-beslutningstre-hvem-ringer-jeg.md",
+    "57-nodhjelp-og-akutte-situasjoner.md"
+  ],
+  "precedence": "first matching class in class_precedence wins; within a class all matched signals are recorded verbatim; SYSTEM_SAFETY_PRECEDENCE dominates because a system-precedence question about acute danger must be answered by the safety-first doctrine itself",
+  "class_precedence": [
+    "SYSTEM_SAFETY_PRECEDENCE",
+    "ABUSE_DISCLOSURE_REPORTING",
+    "ACUTE_RISK_NOW",
+    "ACUTE_SOMATIC_MEDICAL",
+    "ACUTE_RISK_HIGH",
+    "ACUTE_RISK_HIGH_THIRD_PARTY",
+    "URGENT_PSYCHOSIS_SUSPECT",
+    "ACUTE_RISK_UNSURE_TRIAGE",
+    "URGENT_CARE_CAPACITY",
+    "SAFETY_CONCERN_NO_ACUTE_VIOLENCE",
+    "SAFETY_CONCERN_REPORTING",
+    "NON_ACUTE_ROUTINE"
+  ],
+  "class_signals": {
+    "SYSTEM_SAFETY_PRECEDENCE": [
+      "umiddelbar livsfare"
+    ],
+    "ACUTE_RISK_NOW": [
+      "ta livet mitt",
+      "ta livet sitt",
+      "ta livet sitt naa",
+      "orker aa leve",
+      "orkar aa leve",
+      "kuttet seg",
+      "bevisstloes",
+      "livsfare",
+      "akutt fare",
+      "akutt krise",
+      "rusforgiftning",
+      "traume",
+      "dodsulykke",
+      "trussel",
+      "vold"
+    ],
+    "ACUTE_SOMATIC_MEDICAL": [
+      "panikkanfall",
+      "bloer mye",
+      "blor mye",
+      "beruset",
+      "vanskelig aa vekke",
+      "plutselig forvirret",
+      "forvirret",
+      "vanskelig aa faa kontakt",
+      "sluttet helt aa spise",
+      "svimmel"
+    ],
+    "ACUTE_RISK_HIGH": [
+      "selvmordstanker",
+      "selvmord"
+    ],
+    "ACUTE_RISK_HIGH_THIRD_PARTY": [
+      "avskjedsmeldinger"
+    ],
+    "ABUSE_DISCLOSURE_REPORTING": [
+      "slaatt",
+      "slaat",
+      "overgrep",
+      "utsatt for vold",
+      "utsett for vold"
+    ],
+    "URGENT_PSYCHOSIS_SUSPECT": [
+      "hore ting",
+      "horer ting",
+      "hoerer ting"
+    ],
+    "ACUTE_RISK_UNSURE_TRIAGE": [
+      "aggressiv",
+      "er dette akutt",
+      "skal jeg ringe 113"
+    ],
+    "URGENT_CARE_CAPACITY": [
+      "holder paa aa kollapse",
+      "ikke klarer aa passe"
+    ],
+    "SAFETY_CONCERN_NO_ACUTE_VIOLENCE": [
+      "utrygg hjemme",
+      "foler seg utrygg",
+      "foler meg utrygg"
+    ],
+    "SAFETY_CONCERN_REPORTING": [
+      "krangler voldsomt",
+      "vil snakke med noen"
+    ],
+    "NON_ACUTE_ROUTINE": [
+      "angst i flere maneder",
+      "angst i fleire manader",
+      "ingenting er akutt",
+      "ikke akutt"
+    ]
+  },
+  "negation_guard": {
+    "purpose": "An acute-class signal occurrence is discarded when a negation pattern directly negates that occurrence. The guard is an allowlist of negated phrases, not a general negation parser: affirmative idioms that contain a negation word (for example 'ikke orker aa leve') are NOT guarded and still classify acute.",
+    "match_window_chars_before": 30,
+    "negation_patterns": [
+      "ikke vold",
+      "ingen vold",
+      "ikke akutt",
+      "ingen akutt",
+      "ikke farlig",
+      "ikke livsfare",
+      "ikke trussel",
+      "ikke krise",
+      "ingen krise"
+    ],
+    "non_negated_affirmative_idioms": [
+      "ikke orker aa leve",
+      "ikke orkar aa leve"
+    ],
+    "limit": "The guard cannot catch arbitrary Norwegian negation syntax or long-distance scope; unmatched negation handling remains a documented known limit."
+  },
+  "class_collapse": {
+    "ACUTE_RISK_NOW": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "ACUTE_RISK_HIGH": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "ACUTE_SOMATIC_MEDICAL": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "ACUTE_RISK_UNSURE_TRIAGE": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "ACUTE_RISK_HIGH_THIRD_PARTY": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "URGENT_PSYCHOSIS_SUSPECT": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "ABUSE_DISCLOSURE_REPORTING": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "SYSTEM_SAFETY_PRECEDENCE": {"priority": "ACUTE_RISK_NOW", "suppressed_routing": true},
+    "URGENT_CARE_CAPACITY": {"priority": "URGENT_NOT_ACUTE", "suppressed_routing": false},
+    "SAFETY_CONCERN_NO_ACUTE_VIOLENCE": {"priority": "URGENT_NOT_ACUTE", "suppressed_routing": false},
+    "SAFETY_CONCERN_REPORTING": {"priority": "URGENT_NOT_ACUTE", "suppressed_routing": false},
+    "NON_ACUTE_ROUTINE": {"priority": "NOT_ACUTE", "suppressed_routing": false}
+  },
+  "collapse_rationale": "Any unresolved, high-risk, abuse, or psychosis-suspect state fails closed to the acute path. Only bounded urgent-care, safety-concern, and routine states route to ordinary handling; safety never degrades because decomposition found other domains.",
+  "emergency_route_vocabulary": [
+    {"label": "113", "when": "akutt fare for liv/helse inkl. akutt selvmordsfare"},
+    {"label": "116 117", "when": "legevakt, dognapen, haster men ikke livsfare"},
+    {"label": "116 123", "when": "Mental Helse-hjelpelinjen, samtalestoette"},
+    {"label": "116 111", "when": "Alarmtelefonen for barn og unge / barnevernvakt naar ingen trygg omsorgsperson finnes"},
+    {"label": "116 006", "when": "krisesenterlinjen"},
+    {"label": "112", "when": "politiet ved umiddelbar fare"}
+  ],
+  "known_limits": [
+    "Word-boundary phrase matching cannot resolve arbitrary negation scope or long-distance syntax; the allowlist guard covers known shapes only.",
+    "The vocabulary is a floor for the deterministic layer on burned development data; it is not a clinical classifier.",
+    "Phrase variants use the corpus transliteration (aa = a-ring); matching is case-insensitive."
+  ],
+  "frozen": "2026-09-14"
+}

@@ -1,0 +1,6 @@
+const assert=require('node:assert/strict');const {test}=require('node:test');const {load,state,actions,contacts}=require('./helpers');const p=load('safety.js','state-plan.js','summary.js','ui.js');
+function card(){assert.equal(typeof p.renderContactCard,'function');return p.renderContactCard(p.derivePlan(state(),actions,contacts).primaryAction,[]);}
+test('contact_before_provenance and first_action_visible_without_details',()=>{const html=card();assert.ok(html.indexOf('https://www.nav.no/sok-nav-kontor')<html.indexOf('<details'));assert.ok(html.indexOf('Beskriv behovet ditt.')<html.indexOf('<details'));});
+test('uncertain_access_is_visible and closed_contact_has_verified_alternative_or_unknown',()=>{const html=card();assert.ok(html.indexOf('ikke kontrollert')<html.indexOf('<details'));assert.ok(html.includes('utenfor åpningstid'));});
+test('no_entitlement_from_screening',()=>{const html=card();assert.ok(!html.includes('har rett'));assert.ok(html.includes('individuelt'));});
+test('only_action_relevant_questions_precede_contact',()=>{assert.equal(typeof p.renderQuestion,'function');const s=p.initialState('test');const qs=p.questionDefinitions(s);const html=p.renderQuestion(qs[0],s);assert.equal((html.match(/type="radio"/g)||[]).length,4);assert.ok(!html.includes(' checked'));assert.ok(html.includes('<fieldset'));assert.ok(html.includes('<legend'));});

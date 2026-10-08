@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://navigator.invalid/pilot3/session.schema.json",
+  "title": "NAVigator Pilot 3 local draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formatVersion", "contentVersion", "facts", "locationContext", "progressByAction"],
+  "properties": {
+    "formatVersion": { "const": "navigator-pilot3-session-v2" },
+    "contentVersion": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inntektssituasjon", "betalingsvansker", "gjeld", "flyttebehov", "bolignod", "varsel", "andre_voksne_i_husstand", "barn_i_husstand", "brutto_husstandsinntekt"],
+      "properties": {
+        "inntektssituasjon": { "enum": ["", "lav", "ordinar", "ukjent"] },
+        "betalingsvansker": { "enum": ["", "ja", "nei", "ukjent"] },
+        "gjeld": { "enum": ["", "ja", "nei", "ukjent"] },
+        "flyttebehov": { "enum": ["", "ja", "nei", "ukjent"] },
+        "bolignod": { "enum": ["", "ja", "nei", "ukjent"] },
+        "varsel": { "enum": ["", "ja", "nei", "ukjent"] },
+        "andre_voksne_i_husstand": { "enum": ["", "ja", "nei", "ukjent", "vil_ikke_oppgi"] },
+        "barn_i_husstand": { "enum": ["", "ja", "nei", "ukjent", "vil_ikke_oppgi"] },
+        "brutto_husstandsinntekt": { "enum": ["", "under_20000", "20000_35000", "35000_50000", "50000_70000", "over_70000", "ukjent", "vil_ikke_oppgi"] }
+      }
+    },
+    "locationContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["area", "bydel"],
+      "properties": {
+        "area": { "enum": ["", "Trondheim", "Annen kommune"] },
+        "bydel": { "enum": ["", "Ukjent", "Lerkendal", "Heimdal", "Ostbyen", "Midtbyen"] }
+      }
+    },
+    "progressByAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z0-9-]{1,64}$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "contentVersion"],
+          "properties": {
+            "status": { "enum": ["IKKE_STARTET", "KONTAKTET", "VENTER", "GJORT"] },
+            "contentVersion": { "type": "string", "minLength": 1, "maxLength": 128 },
+            "markedAt": { "type": "string", "maxLength": 64 },
+            "invalidatedAt": { "type": "string", "maxLength": 64 },
+            "basis": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["actionId", "contentVersion", "relevantFacts", "locationContext"],
+              "properties": {
+                "actionId": { "type": "string", "minLength": 1, "maxLength": 64 },
+                "contentVersion": { "type": "string", "minLength": 1, "maxLength": 128 },
+                "relevantFacts": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "inntektssituasjon": { "enum": ["", "lav", "ordinar", "ukjent"] },
+                    "betalingsvansker": { "enum": ["", "ja", "nei", "ukjent"] },
+                    "gjeld": { "enum": ["", "ja", "nei", "ukjent"] },
+                    "flyttebehov": { "enum": ["", "ja", "nei", "ukjent"] },
+                    "bolignod": { "enum": ["", "ja", "nei", "ukjent"] },
+                    "varsel": { "enum": ["", "ja", "nei", "ukjent"] },
+                    "andre_voksne_i_husstand": { "enum": ["", "ja", "nei", "ukjent", "vil_ikke_oppgi"] },
+                    "barn_i_husstand": { "enum": ["", "ja", "nei", "ukjent", "vil_ikke_oppgi"] },
+                    "brutto_husstandsinntekt": { "enum": ["", "under_20000", "20000_35000", "35000_50000", "50000_70000", "over_70000", "ukjent", "vil_ikke_oppgi"] }
+                  }
+                },
+                "locationContext": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["area", "bydel"],
+                  "properties": {
+                    "area": { "enum": ["", "Trondheim", "Annen kommune"] },
+                    "bydel": { "enum": ["", "Ukjent", "Lerkendal", "Heimdal", "Ostbyen", "Midtbyen"] }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

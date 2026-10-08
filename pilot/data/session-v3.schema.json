@@ -1,0 +1,333 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatVersion",
+    "contentVersion",
+    "facts",
+    "legacyUnknownKeys",
+    "locationContext",
+    "progressByAction",
+    "selection",
+    "acuteLatched",
+    "migration"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": "navigator-pilot3-session-v3"
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inntektssituasjon",
+        "betalingsvansker",
+        "gjeld",
+        "flyttebehov",
+        "bolignod",
+        "varsel",
+        "andre_voksne_i_husstand",
+        "barn_i_husstand",
+        "brutto_husstandsinntekt",
+        "boligstabilitet",
+        "behovstid"
+      ],
+      "properties": {
+        "inntektssituasjon": {
+          "enum": [
+            "",
+            "lav",
+            "ordinar",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "betalingsvansker": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "gjeld": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "flyttebehov": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "bolignod": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "varsel": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "andre_voksne_i_husstand": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "barn_i_husstand": {
+          "enum": [
+            "",
+            "ja",
+            "nei",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "brutto_husstandsinntekt": {
+          "enum": [
+            "",
+            "under_20000",
+            "20000_35000",
+            "35000_50000",
+            "50000_70000",
+            "over_70000",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "boligstabilitet": {
+          "enum": [
+            "",
+            "stabil",
+            "midlertidig",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        },
+        "behovstid": {
+          "enum": [
+            "",
+            "i_dag",
+            "snart",
+            "ukjent",
+            "vil_ikke_oppgi"
+          ]
+        }
+      }
+    },
+    "legacyUnknownKeys": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "inntektssituasjon",
+          "betalingsvansker",
+          "gjeld",
+          "flyttebehov",
+          "bolignod",
+          "varsel",
+          "andre_voksne_i_husstand",
+          "barn_i_husstand",
+          "brutto_husstandsinntekt",
+          "boligstabilitet",
+          "behovstid"
+        ]
+      }
+    },
+    "locationContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "area",
+        "bydel"
+      ],
+      "properties": {
+        "area": {
+          "enum": [
+            "",
+            "Trondheim",
+            "Annen kommune"
+          ]
+        },
+        "bydel": {
+          "enum": [
+            "",
+            "Ukjent",
+            "Lerkendal",
+            "Heimdal",
+            "Ostbyen",
+            "Midtbyen"
+          ]
+        }
+      }
+    },
+    "progressByAction": {
+      "type": "object",
+      "maxProperties": 20,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(housing|expenses|general|midlertidig-botilbud|varsel-avklaring|bostotte|sosialhjelp|gjeldsradgivning|boligformidling|depositum)$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "IKKE_STARTET",
+                "KONTAKTET",
+                "VENTER",
+                "GJORT"
+              ]
+            },
+            "basis": {
+              "type": "string",
+              "maxLength": 8192
+            },
+            "contentVersion": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "markedAt": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "invalidatedAt": {
+              "type": "string",
+              "maxLength": 64
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "factKeys",
+        "actionIds",
+        "explicitActionIds"
+      ],
+      "properties": {
+        "factKeys": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 50,
+          "items": {
+            "enum": [
+              "inntektssituasjon",
+              "betalingsvansker",
+              "gjeld",
+              "flyttebehov",
+              "bolignod",
+              "varsel",
+              "andre_voksne_i_husstand",
+              "barn_i_husstand",
+              "brutto_husstandsinntekt",
+              "boligstabilitet",
+              "behovstid"
+            ]
+          }
+        },
+        "actionIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 50,
+          "items": {
+            "enum": [
+              "housing",
+              "expenses",
+              "general",
+              "midlertidig-botilbud",
+              "varsel-avklaring",
+              "bostotte",
+              "sosialhjelp",
+              "gjeldsradgivning",
+              "boligformidling",
+              "depositum"
+            ]
+          }
+        },
+        "explicitActionIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 50,
+          "items": {
+            "enum": [
+              "housing",
+              "expenses",
+              "general",
+              "midlertidig-botilbud",
+              "varsel-avklaring",
+              "bostotte",
+              "sosialhjelp",
+              "gjeldsradgivning",
+              "boligformidling",
+              "depositum"
+            ]
+          }
+        }
+      }
+    },
+    "acuteLatched": {
+      "type": "boolean"
+    },
+    "migration": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "fromFormat",
+            "legacyPaymentAnswer"
+          ],
+          "properties": {
+            "fromFormat": {
+              "const": "navigator-pilot3-session-v1"
+            },
+            "legacyPaymentAnswer": {
+              "enum": [
+                "",
+                "ja",
+                "nei",
+                "ukjent"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

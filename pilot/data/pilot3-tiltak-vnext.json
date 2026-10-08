@@ -1,0 +1,122 @@
+{
+  "content_version": "navigator-contact-content-2026-10-08-v1",
+  "status": "UTKAST",
+  "distribution_gate": "BLOCKED",
+  "scope": "Limited housing/economy contact information, not an eligibility or clinical product",
+  "actions": [
+    {
+      "id": "housing",
+      "title": "Spør NAV om et sted å være",
+      "priority": 0,
+      "relevantFacts": [
+        "bolignod",
+        "boligstabilitet"
+      ],
+      "conditions": [
+        {
+          "key": "bolignod",
+          "value": "nei"
+        },
+        {
+          "key": "boligstabilitet",
+          "value": "midlertidig"
+        }
+      ],
+      "contactId": "nav",
+      "sourceIds": [
+        "nav-housing",
+        "nav-office"
+      ],
+      "statement": "Forklar NAV-kontoret der du oppholder deg at du trenger å avklare et sted å være. NAVs side beskriver også midlertidig opphold hos venner eller familie.",
+      "prepare": [
+        "Fortell om du har et sted å sove det neste døgnet.",
+        "Spør hvilken hjelp og kontaktvei som passer situasjonen din."
+      ]
+    },
+    {
+      "id": "expenses",
+      "title": "Spør NAV om nødvendige utgifter",
+      "priority": 1,
+      "relevantFacts": [
+        "betalingsvansker",
+        "behovstid"
+      ],
+      "conditions": [
+        {
+          "key": "betalingsvansker",
+          "value": "ja"
+        }
+      ],
+      "contactId": "nav",
+      "sourceIds": [
+        "nav-expenses",
+        "nav-office"
+      ],
+      "statement": "Forklar hva du mangler og når du trenger det. NAVs side beskriver hjelp til nødvendige utgifter og hvordan du kan ta kontakt.",
+      "prepare": [
+        "Fortell hvilke nødvendige utgifter du ikke får dekket.",
+        "Hvis det gjelder i dag, si det først. Du trenger ikke full oversikt for å spørre om kontaktveien."
+      ]
+    },
+    {
+      "id": "general",
+      "title": "Finn en kontakt å spørre",
+      "priority": 2,
+      "relevantFacts": [],
+      "conditions": [],
+      "contactId": "nav",
+      "sourceIds": [
+        "nav-office"
+      ],
+      "statement": "Bruk NAVs kontaktoversikt når du vil spørre om bolig eller økonomi. Du trenger ikke velge et ordningsnavn her.",
+      "prepare": [
+        "Si hva du ønsker hjelp til å avklare."
+      ],
+      "fallback": true
+    }
+  ],
+  "contacts": {
+    "nav": {
+      "id": "nav",
+      "label": "NAV-kontoret",
+      "url": "https://www.nav.no/sok-nav-kontor",
+      "access": "UNKNOWN",
+      "hours": null,
+      "alternative": null
+    }
+  },
+  "sources": [
+    {
+      "id": "nav-housing",
+      "title": "NAV – midlertidig botilbud",
+      "url": "https://www.nav.no/midlertidig-botilbud",
+      "retrievedAt": "2026-10-08",
+      "reviewedAt": null,
+      "scope": "General contact entry only; local access and eligibility not confirmed"
+    },
+    {
+      "id": "nav-expenses",
+      "title": "NAV – økonomisk sosialhjelp",
+      "url": "https://www.nav.no/okonomisk-sosialhjelp",
+      "retrievedAt": "2026-10-08",
+      "reviewedAt": null,
+      "scope": "General contact entry only; no benefit decision"
+    },
+    {
+      "id": "nav-office",
+      "title": "NAV – finn NAV-kontor",
+      "url": "https://www.nav.no/sok-nav-kontor",
+      "retrievedAt": "2026-10-08",
+      "reviewedAt": null,
+      "scope": "Directory link; local opening hours unverified"
+    },
+    {
+      "id": "health-help",
+      "title": "Helsenorge – legevakt",
+      "url": "https://www.helsenorge.no/hjelpetilbud-i-kommunene/legevakt/",
+      "retrievedAt": "2026-10-08",
+      "reviewedAt": null,
+      "scope": "General emergency signposting; not a clinical assessment"
+    }
+  ]
+}
