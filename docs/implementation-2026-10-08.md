@@ -34,3 +34,14 @@ Arbeidsgren: codex/navigator-contact-pilot. Original checkout og pakker bevares.
 - Final: Ruling: v2-importvokabular ble viktig fremfor minor — eldre filversjon må ikke endre betydning på svar — kostnad: filer med verdier som aldri tilhørte den versjonen avvises uten å endre state.
 - G4: faktiske browserprøver, kopiert/nedlastet tekst og arbeidsfil samt én-sides print-PDF kontrollert med fiktive svar. Delvise tilgjengelighetsresultater er ført; VoiceOver, faktisk zoom og menneskelige brukerprøver er NOT_RUN.
 - G5: identifisert lokal reviewleveranse forberedes med egne hashes og vedlikeholds-/prøveprotokoll. Primær HEAD fortsatt f778090; 172 valgte originalfiler er byteidentiske. Ingen deploy, motoraktivering eller GitHub-mutasjon.
+
+## Lokal reviewleveranse
+
+- Kilde og tekniske rettinger: commit 1031e768d5abc4b78c7f93cb99573928e953021b. Dokumentasjonens siste commit identifiseres separat i pakkekvitteringen.
+- HTML: outputs/navigator-contact-review-2026-10-08/NAVigator-pilot.html. SHA-256: 056c87a636b91d4cfd3502ae89d44faa4ecf5d0b01333c43b48c28250f5eb00c.
+- Reviewpakke: outputs/navigator-contact-review-2026-10-08.zip. Positiv filliste, filhashes og kilde-commit følger i PACKAGE_MANIFEST.json inne i pakken; ZIP-hash og kontrollresultat ligger i tilhørende package-receipt.json.
+- Pakken inneholder kandidat, kilde, bygg-/schema-prøver, kontrollplan og avgrensede kvitteringer. Historisk/private korpus, globale AGENTS-instruksjoner, node_modules og eldre skjermbilder er utelatt. Nettleserarbeidsfiler og notater i pakken er utelukkende fiktive testdata.
+- G4 teknikk: endelig HTML prøvd med faktisk v3-import og gjenåpnet VENTER-status, bevart eldre KONTAKTET-historikk, tømt akutt-tekst, deaktivert JavaScript og redusert bevegelse. Eldre nettleserresultater er merket med sin egen HTML-hash; de blandes ikke med den siste kandidatens kvittering.
+- G5 lokal pakking er ferdig når filene og hashene i pakkekvitteringen er kontrollert. Faglig gjennomgang, menneskelig personvernkontroll, VoiceOver, faktisk zoom og 5–8 modererte brukerprøver står fortsatt NOT_RUN. Kandidaten er UTKAST, distribusjon BLOCKED og runtime frakoblet.
+
+Neste arbeid følger kontrollveiledningen i releases/next/REVIEW.md: tildel faglig/vedlikeholdsansvar, vurder eksakt kandidat og utfør de beskrevne menneskelige prøvene. Hele referansebasen og R1–R7 forblir egne gjenstående løp. Lokal kodeleveranse betyr ikke at hele produktplanen er fullført.
