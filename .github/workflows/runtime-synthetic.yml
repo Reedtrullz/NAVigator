@@ -1,0 +1,55 @@
+name: Runtime synthetic
+
+"on":
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic:
+    name: Synthetic runtime (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.14"]
+    env:
+      PYTHONPATH: runtime
+      RUNTIME_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha }}
+      RUNTIME_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    steps:
+      - name: Check out the exact PR head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify the head and protected diff
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$RUNTIME_CANDIDATE_SHA"
+          git diff --exit-code "$RUNTIME_BASE_SHA"...HEAD -- pilot evaluation data runtime/sut/schemas runtime/sut/context.py runtime/sut/schemas.py runtime/sut/pipeline.py
+          git diff --check "$RUNTIME_BASE_SHA"...HEAD
+      - name: Run only the guarded synthetic suite
+        shell: bash
+        run: python -m tools.runtime_synthetic > "$RUNNER_TEMP/runtime-synthetic.json"
+      - name: Check protected files after the tests
+        if: always()
+        shell: bash
+        run: git diff --exit-code -- pilot evaluation data runtime/sut/schemas runtime/sut/context.py runtime/sut/schemas.py runtime/sut/pipeline.py
+      - name: Upload the synthetic receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: runtime-synthetic-python-${{ matrix.python-version }}-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/runtime-synthetic.json
+          if-no-files-found: error
+          retention-days: 14

@@ -1,89 +1,20 @@
-"""Render-aware fetch layer for runtime V2.3 (site-direct-only).
-
-V2.3 removes external search dependencies but keeps the bounded render
-fallback required by SPA-hosted municipal sites. The provider contract
-stays (status_code, body): render.py wraps an existing fetch_fn and
-converts SPA-shell responses (200, "") into rendered DOM through bounded
-headless Chrome. Fail closed: render failure stays an empty shell, never
-fabricated content. Render security reuses runtime.discovery.security
-validate_url; no credentials, no external search hosts.
+"""Render adapters; default browser rendering is blocked until its entire
+network surface can enforce the pinned HTTP boundary. Injected callbacks
+are synthetic fixture seams, not approved live render transports.
 """
 
 import hashlib
-import os
-import shutil
-import subprocess
-import tempfile
 
 from runtime.discovery.providers import FetchResult, HttpFetchProvider, ReplayFetchProvider
 from runtime.discovery.security import InvalidUrlError, validate_url
 from runtime.discovery_v2.sitemap_fetch import MAX_SIZE
 
-CHROME_CANDIDATES = [
-    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    "google-chrome",
-    "chromium",
-]
 RENDER_TIMEOUT_S = 45
-VIRTUAL_TIME_BUDGET_MS = 12000
-
-
-def _chrome_binary():
-    for candidate in CHROME_CANDIDATES:
-        if candidate.startswith("/"):
-            if os.path.exists(candidate):
-                return candidate
-        else:
-            path = shutil.which(candidate)
-            if path:
-                return path
-    return None
 
 
 def render_url(url, timeout=RENDER_TIMEOUT_S):
-    """Render one URL with bounded headless Chrome.
-
-    Returns (status_code, body) with the same semantics as
-    sitemap_fetch.bounded_fetch: (0, "") on any failure. The URL must pass
-    validate_url (SSRF/private/scheme rules) before Chrome is launched.
-    """
     validate_url(url)
-    binary = _chrome_binary()
-    if binary is None:
-        return (0, "")
-    with tempfile.TemporaryDirectory(prefix="v23render-") as user_data_dir:
-        try:
-            proc = subprocess.Popen(
-                [binary, "--headless=new", "--disable-gpu", "--no-first-run",
-                 "--user-data-dir=" + user_data_dir,
-                 "--virtual-time-budget=%d" % VIRTUAL_TIME_BUDGET_MS,
-                 "--timeout=%d" % int(timeout * 1000),
-                 "--dump-dom", url],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
-                # Own process group so a hung renderer can be killed
-                # reliably on timeout (macOS does not kill grandchildren
-                # on its own).
-                start_new_session=True,
-            )
-        except OSError:
-            return (0, "")
-        try:
-            # Chrome enforces its own --timeout; allow a small grace so
-            # its DOM dump lands before we kill the process group.
-            stdout, _stderr = proc.communicate(timeout=timeout + 5)
-        except subprocess.TimeoutExpired:
-            try:
-                os.killpg(os.getpgid(proc.pid), 9)
-            except (ProcessLookupError, PermissionError, OSError):
-                pass
-            proc.communicate()
-            return (0, "")
-    dom = stdout or ""
-    if not dom.strip():
-        return (0, "")
-    if len(dom) > MAX_SIZE:
-        dom = dom[:MAX_SIZE]
-    return (200, dom)
+    return (0, "")
 
 
 class RenderFetchFn:
@@ -105,6 +36,10 @@ class RenderFetchFn:
         self.rendered_urls = []
 
     def __call__(self, url):
+        try:
+            validate_url(url)
+        except InvalidUrlError:
+            return (0, "")
         self.audit.append(("http", url))
         status_code, body = self.inner(url)
         if status_code != 200 or body != "":

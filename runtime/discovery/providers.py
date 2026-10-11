@@ -36,13 +36,13 @@ class FetchResult:
 
 class SearchProvider(ABC):
     @abstractmethod
-    def search(self, query):
+    def search(self, query) -> SearchResult:
         """Return SearchResult for the query."""
 
 
 class FetchProvider(ABC):
     @abstractmethod
-    def fetch(self, url):
+    def fetch(self, url) -> FetchResult:
         """Return FetchResult for the URL."""
 
 
@@ -81,11 +81,6 @@ class ReplayFetchProvider(FetchProvider):
 
 
 class HttpSearchProvider(SearchProvider):
-    """Live search using the system 'curl' binary (no extra dependency).
-
-    The search backend is pluggable; this default uses a public HTML endpoint.
-    Results are parsed minimally: URLs and titles extracted from HTML.
-    """
 
     SEARCH_URL = "https://html.duckduckgo.com/html/?q={q}"
 
@@ -93,20 +88,16 @@ class HttpSearchProvider(SearchProvider):
         self.user_agent = user_agent
 
     def search(self, query):
-        import shlex
-        import subprocess
+        from .security import fetch_public
         from urllib.parse import quote_plus
         url = self.SEARCH_URL.format(q=quote_plus(query))
         try:
-            proc = subprocess.run(
-                ["curl", "-s", "-L", "--max-time", "15", "-A", self.user_agent, url],
-                capture_output=True, text=True, timeout=20,
-            )
-            if proc.returncode != 0:
+            status, body, _final_url = fetch_public(url, user_agent=self.user_agent)
+            if status != 200:
                 return SearchResult(query=query, results=[], provider_id="http_search")
-            results = self._parse_results(proc.stdout)
+            results = self._parse_results(body)
             return SearchResult(query=query, results=results, provider_id="http_search")
-        except (subprocess.TimeoutExpired, OSError):
+        except (OSError, ValueError):
             return SearchResult(query=query, results=[], provider_id="http_search")
 
     @staticmethod
@@ -133,32 +124,15 @@ class HttpFetchProvider(FetchProvider):
         self.timeout = timeout
 
     def fetch(self, url):
-        import subprocess
+        from .security import fetch_public
         try:
-            proc = subprocess.run(
-                ["curl", "-s", "-L", "--max-time", str(self.timeout),
-                 "-A", self.user_agent, "-w", "\n%{http_code}\t%{url_effective}",
-                 url],
-                capture_output=True, text=True, timeout=self.timeout + 5,
-            )
-        except (subprocess.TimeoutExpired, OSError) as exc:
+            status_code, body, effective_url = fetch_public(
+                url, timeout=self.timeout, max_size=self.MAX_SIZE, user_agent=self.user_agent)
+        except (OSError, ValueError) as exc:
             return FetchResult(url=url, status="failed", content=None, content_hash=None,
                                fetch_method="http_get", retrieved_at=None,
-                               error="FETCH_FAILED: %s" % exc)
-
-        # The trailing line carries status code + effective URL
-        parts = proc.stdout.rsplit("\n", 2)
-        body = parts[0] if len(parts) >= 2 else proc.stdout
-        trailer = parts[-1] if len(parts) >= 2 else ""
-        status_code_str = trailer.split("\t")[0] if "\t" in trailer else ""
-        effective_url = trailer.split("\t")[1] if "\t" in trailer else url
-
-        if not status_code_str.isdigit():
-            return FetchResult(url=url, status="failed", content=None, content_hash=None,
-                               fetch_method="http_get", retrieved_at=None,
-                               error="FETCH_FAILED: no status code")
-        status_code = int(status_code_str)
-        if status_code >= 400:
+                               error="FETCH_FAILED: %s" % type(exc).__name__)
+        if not 200 <= status_code < 300:
             return FetchResult(url=url, status="failed", content=None, content_hash=None,
                                fetch_method="http_get", retrieved_at=None,
                                error="SOURCE_UNAVAILABLE: HTTP %d" % status_code)

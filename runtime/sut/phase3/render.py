@@ -7,7 +7,7 @@ same function everywhere so claim/route substrings stay exact.
 
 import json
 
-from sut.phase3.planner import (
+from .planner import (
     CONFLICT_WORDING,
     DISCOVERY_INCOMPLETE_WORDING,
     NO_ROUTE_WORDING,
@@ -38,7 +38,7 @@ NEGATIVE_EXISTENCE_PHRASES = (
     "finnes ikke",
 )
 
-_TRANSLIT = {
+_TRANSLIT: dict[str, str] = {
     "\u00e6": "ae", "\u00f8": "oe", "\u00e5": "aa",
     "\u00c6": "Ae", "\u00d8": "Oe", "\u00c5": "Aa",
     "\u00e9": "e", "\u00c9": "E", "\u00e8": "e", "\u00c8": "E",
@@ -47,7 +47,7 @@ _TRANSLIT = {
 }
 
 
-def ascii_text(text):
+def ascii_text(text: str) -> str:
     return "".join(_TRANSLIT.get(ch, ch) for ch in text)
 
 
@@ -107,13 +107,23 @@ def _info_lines(ctx, block, by_evidence_id):
         rec = by_evidence_id.get(ref)
         if rec is None:
             continue
-        lines.append("Nasjonal informasjon: " + ascii_text(rec["claim"]))
+        if rec.get("gap_state") or rec.get("source_type") == "GAP":
+            label = "Registrert kunnskapshull: "
+        elif rec.get("historical_research") or rec.get("freshness") != "CURRENT":
+            label = "Historisk eller uavklart kildeinformasjon: "
+        elif not rec.get("provenance", {}).get("verified_date"):
+            label = "Kildeinformasjon med ukjent verifikasjonsdato: "
+        else:
+            label = "Nasjonal informasjon: "
+        lines.append(label + ascii_text(rec["claim"]))
     return lines
 
 
 def _uncertainty_lines(ctx, block):
     refs = block["span_refs"]
     lines = []
+    if "source_admission_incomplete" in refs:
+        lines.append("Kildegrunnlaget er ufullstendig eller avvist. Dette sier ikke om en tjeneste finnes.")
     if "discovery_incomplete" in refs:
         lines.append("Lokalt oppslag for minst ett omraade "
                      + DISCOVERY_INCOMPLETE_WORDING + ".")
@@ -128,7 +138,7 @@ def _uncertainty_lines(ctx, block):
 
 
 def _provenance_lines(ctx, block):
-    from sut.phase2.pipeline import _provenance_records
+    from ..phase2.pipeline import _provenance_records
     records = _provenance_records(ctx)
     by_id = {p["id"]: p for p in records}
     lines = []
@@ -136,8 +146,8 @@ def _provenance_lines(ctx, block):
         p = by_id.get(ref)
         if p is None:
             continue
-        lines.append("Kilde %s: %s (verifisert %s)" % (
-            p["id"], ascii_text(p["source_ref"]), p["verified_at"]))
+        date_note = "verifisert " + p["verified_at"] if p["verified_at"] else "kontrolldato ukjent"
+        lines.append("Kilde %s: %s (%s)" % (p["id"], ascii_text(p["source_ref"]), date_note))
     if not lines:
         lines = [NO_PROVENANCE_WORDING]
     return lines
