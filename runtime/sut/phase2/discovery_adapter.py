@@ -72,7 +72,7 @@ def run_discovery_step(track, location_context=None, age=None, urgency=None):
             "self_referral": None,
             "evidence": [],
             "provenance_states": ["ERROR_STATE"],
-            "failures": [{"error": "DISCOVERY_RUNTIME_ERROR", "detail": str(exc)}],
+            "failures": [{"error": "DISCOVERY_RUNTIME_ERROR", "detail": type(exc).__name__}],
         }
     incomplete = raw.get("execution_status") == "DISCOVERY_INCOMPLETE"
     return {
@@ -81,6 +81,8 @@ def run_discovery_step(track, location_context=None, age=None, urgency=None):
         "municipality": municipality,
         "services": [
             {
+                **{key: s[key] for key in ("service_id", "domain", "content_hash", "age_bounds", "verified_date")
+                   if key in s},
                 "name": s["name"],
                 "source_url": s["source_url"],
                 "state": s["state"],
@@ -103,7 +105,8 @@ def run_discovery_step(track, location_context=None, age=None, urgency=None):
         "access_methods": raw.get("access_methods", []),
         "self_referral": raw.get("self_referral"),
         "evidence": [
-            {"field": e.get("field"), "value": e.get("value"), "source_url": e.get("source_url")}
+            {key: e[key] for key in ("field", "value", "source_url", "service_id", "content_hash",
+                                    "dimension", "locator", "supporting_span", "verified_date") if key in e}
             for e in raw.get("evidence", [])
         ],
         "provenance_states": ["ERROR_STATE"] if (raw.get("errors") or incomplete)

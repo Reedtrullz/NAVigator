@@ -10,7 +10,7 @@ order:
   -> UNCERTAINTY -> PROVENANCE_LIST
 """
 
-from sut.phase2.pipeline import _provenance_records
+from ..phase2.pipeline import _provenance_records
 
 _DOMAIN_PRIORITY = (
     "child_safety", "mental_health", "housing", "financial_support",
@@ -127,9 +127,11 @@ def plan(ctx):
 
     # 6. Uncertainty caveats in fixed precedence.
     uncertainty_refs = []
+    if ctx.get("_s4_incomplete"):
+        uncertainty_refs.append("source_admission_incomplete")
     if ctx.get("_s5_incomplete"):
         uncertainty_refs.append("discovery_incomplete")
-    if not evaluable and not ctx.get("_s5_incomplete"):
+    if not evaluable and not ctx.get("_s5_incomplete") and not ctx.get("_s4_incomplete"):
         uncertainty_refs.append("no_route_found")
     for route in evaluable:
         if route.get("route_state") in ("ACCESS_PARTIAL", "EXISTENCE_ONLY"):
@@ -146,10 +148,11 @@ def plan(ctx):
 
     presented_as_complete = (
         not any(f["state"] == "TERMINAL" for f in failures)
+        and not ctx.get("_s4_incomplete")
         and not ctx.get("_s5_incomplete")
         and not ctx.get("_s3_skipped")
         and bool(ctx.get("_s5_steps"))
-        and all(t in _EVALUABLE_STATES
+        and all(t == "FULLY_VERIFIED"
                 for t in ctx["epistemic_states"]["per_track"].values())
     )
     return {

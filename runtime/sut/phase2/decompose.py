@@ -5,6 +5,9 @@ Conjunctions alone never create tracks; only distinct recognized domains do.
 """
 
 
+from .text_normalization import normalize_match_text
+
+
 DOMAIN_SIGNALS = {
     "mental_health": (
         "psykisk", "psykiske", "angst", "depresjon", "psykolog",
@@ -47,11 +50,11 @@ LOCAL_DISCOVERY_DOMAINS = {"mental_health", "housing", "child_safety"}
 
 
 def _match_domains(text):
-    hay = text.lower()
+    hay = normalize_match_text(text)
     matched = []
     for domain in DOMAIN_ORDER:
         for signal in DOMAIN_SIGNALS[domain]:
-            if signal in hay:
+            if normalize_match_text(signal) in hay:
                 matched.append((domain, signal))
                 break
     return matched

@@ -9,6 +9,13 @@ import hashlib
 import json
 import os
 import re
+import stat
+from pathlib import Path
+from dataclasses import dataclass
+from datetime import date
+from typing import Any
+
+from .text_normalization import normalize_match_text
 
 
 REPO_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
@@ -30,14 +37,32 @@ STOPWORDS = frozenset(
 )
 
 MAX_RECORDS = 5
+PUBLIC_CLASSES = frozenset({"DECISION_SUPPORT", "SOURCE_DOCUMENTATION", "GAP_REGISTRY"})
 
 
 class KnowledgeError(Exception):
     pass
 
 
+@dataclass
+class RetrievalResult:
+    records: list[dict[str, Any]]
+    failures: list[dict[str, Any]]
+    coverage: dict[str, Any]
+
+
+def verified_date(value):
+    if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+        return None
+    try:
+        date.fromisoformat(value)
+    except ValueError:
+        return None
+    return value
+
+
 def _keywords(query):
-    tokens = re.findall(r"[a-z0-9]+", query.lower())
+    tokens = re.findall(r"[a-z0-9]+", normalize_match_text(query))
     return [t for t in tokens if len(t) >= 2 and t not in STOPWORDS]
 
 
@@ -60,29 +85,79 @@ def _iter_spans(content):
 
 
 def _score_span(span, keywords):
-        hay = span.lower()
-        return sum(1 for k in keywords if k in hay)
+    hay = normalize_match_text(span)
+    return sum(1 for k in keywords if k in hay)
 
 
-def load_knowledge(index_path=DEFAULT_INDEX, repo_root=REPO_ROOT):
-    """Return (verified docs, failures). Fail-closed on sha/missing files."""
+def _source_bytes(repo_root, relative):
+    root = Path(repo_root).absolute()
+    rel = Path(relative)
+    if rel.is_absolute() or not rel.parts or ".." in rel.parts:
+        raise KnowledgeError("PATH_REJECTED")
+    current = root
+    for part in rel.parts:
+        current /= part
+        if current.is_symlink():
+            raise KnowledgeError("PATH_REJECTED")
+
+    def opener(_path, flags):
+        fds = []
+        try:
+            fd = os.open(root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+            fds.append(fd)
+            for part in rel.parts[:-1]:
+                fd = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
+                fds.append(fd)
+            result = os.open(rel.name, flags | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=fd)
+            if not stat.S_ISREG(os.fstat(result).st_mode):
+                os.close(result)
+                raise KnowledgeError("PATH_REJECTED")
+            return result
+        finally:
+            for fd in reversed(fds):
+                os.close(fd)
+
+    with open(current, "rb", opener=opener) as fh:
+        return fh.read()
+
+
+def load_knowledge(index_path=DEFAULT_INDEX, repo_root=REPO_ROOT, *, access_profile=None, domain=None):
+    if (not isinstance(access_profile, dict)
+            or access_profile.get("version") != "knowledge-access/v1"
+            or not isinstance(access_profile.get("documents"), dict)):
+        return [], [{"reason": "ACCESS_PROFILE_REQUIRED"}]
     try:
-        with open(index_path, encoding="utf-8") as fh:
-            index = json.load(fh)
-    except (OSError, ValueError) as exc:
-        raise KnowledgeError("knowledge index unreadable: %s" % exc) from exc
+        relative = Path(index_path).absolute().relative_to(Path(repo_root).absolute())
+        index = json.loads(_source_bytes(repo_root, str(relative)))
+        if not isinstance(index, dict) or not isinstance(index.get("docs"), list):
+            raise KnowledgeError("INDEX_INVALID")
+    except (OSError, ValueError, KnowledgeError) as exc:
+        raise KnowledgeError("INDEX_UNAVAILABLE") from exc
     docs, failures = [], []
     for entry in index.get("docs", []):
-        path = os.path.join(repo_root, entry["path"])
+        permit = access_profile["documents"].get(entry.get("id")) if isinstance(entry, dict) else None
+        if (isinstance(entry, dict) and isinstance(permit, dict) and domain is not None
+                and domain not in (entry.get("domains") or ["general"])
+                and domain not in (permit.get("domains") or ["general"])):
+            continue
+        if (not isinstance(permit, dict) or permit.get("permission") != "GENERAL_APPROVED"
+                or entry.get("class") not in PUBLIC_CLASSES
+                or any(permit.get(k) != entry.get(k) for k in (
+                    "path", "class", "sha256", "domains", "freshness_class", "verified_date"))
+                or not isinstance(entry.get("path"), str)):
+            failures.append({"reason": "SOURCE_NOT_ADMITTED"})
+            continue
         try:
-            with open(path, "rb") as fh:
-                raw = fh.read()
+            raw = _source_bytes(repo_root, entry["path"])
+        except KnowledgeError:
+            failures.append({"reason": "PATH_REJECTED"})
+            continue
         except OSError:
-            failures.append({"doc_id": entry["id"], "reason": "FILE_MISSING"})
+            failures.append({"reason": "FILE_MISSING"})
             continue
         digest = hashlib.sha256(raw).hexdigest()
         if digest != entry.get("sha256"):
-            failures.append({"doc_id": entry["id"], "reason": "SHA_MISMATCH"})
+            failures.append({"reason": "SHA_MISMATCH"})
             continue
         docs.append({
             "doc_id": entry["id"],
@@ -91,17 +166,33 @@ def load_knowledge(index_path=DEFAULT_INDEX, repo_root=REPO_ROOT):
             "class": entry.get("class", "UNKNOWN"),
             "freshness_class": entry.get("freshness_class", "UNKNOWN"),
             "domains": entry.get("domains", ["general"]),
+            "verified_date": verified_date(entry.get("verified_date")),
             "content": raw.decode("utf-8", errors="replace"),
         })
     return docs, failures
 
 
-def _load_rules(rules_path=DEFAULT_RULES):
+def _load_rules(rules_path=DEFAULT_RULES, repo_root=REPO_ROOT, access_profile=None):
+    if (not isinstance(access_profile, dict)
+            or access_profile.get("version") != "knowledge-access/v1"
+            or not isinstance(access_profile.get("documents"), dict)):
+        return []
+    permit = access_profile.get("rules") if isinstance(access_profile, dict) else None
+    if not isinstance(permit, dict) or permit.get("permission") != "GENERAL_APPROVED":
+        return []
     try:
-        with open(rules_path, encoding="utf-8") as fh:
-            return json.load(fh).get("rules", [])
+        relative = Path(rules_path).absolute().relative_to(Path(repo_root).absolute())
+        if str(relative) != permit.get("path"):
+            raise KnowledgeError("RULES_NOT_ADMITTED")
+        raw = _source_bytes(repo_root, str(relative))
+        if hashlib.sha256(raw).hexdigest() != permit.get("sha256"):
+            raise KnowledgeError("RULES_SHA_MISMATCH")
+        parsed = json.loads(raw)
+        if not isinstance(parsed, dict) or not isinstance(parsed.get("rules"), list):
+            raise KnowledgeError("RULES_INVALID")
+        return parsed["rules"]
     except (OSError, ValueError) as exc:
-        raise KnowledgeError("rules registry unreadable: %s" % exc) from exc
+        raise KnowledgeError("RULES_UNAVAILABLE") from exc
 
 
 def _rule_record(rule, n):
@@ -113,12 +204,12 @@ def _rule_record(rule, n):
         "claim": "%s: %s" % (rule["name"], rule.get("deadline_meaning", rule["name"])),
         "source_reference": {"kind": src["kind"], "ref": src["ref"], "url": src["url"]},
         "authority": "LAW",
-        "freshness": "CURRENT",
+        "freshness": "CURRENT" if verified_date(rule.get("verified_date")) else "UNKNOWN",
         "evidence_id": "E-R%03d" % n,
         "provenance": {
             "artifact": "rules-v1",
             "rule_id": rule["rule_id"],
-            "verified_date": rule.get("verified_date"),
+            "verified_date": verified_date(rule.get("verified_date")),
         },
         "gap_state": None,
         "historical_research": False,
@@ -126,7 +217,7 @@ def _rule_record(rule, n):
 
 
 def _doc_record(doc, claim, n):
-    is_gap = doc["doc_id"] in GAP_DOC_IDS
+    is_gap = doc["doc_id"] in GAP_DOC_IDS or doc.get("class") == "GAP_REGISTRY"
     domains = doc.get("domains") or ["general"]
     return {
         "record_id": "K-D%03d" % n,
@@ -134,6 +225,7 @@ def _doc_record(doc, claim, n):
         "domain": domains[0],
         "domains": domains,
         "claim": claim,
+        "source_lines": doc["content"].splitlines(),
         "source_reference": {"kind": "REPO_DOC", "path": doc["path"]},
         "authority": "INTERNAL_DOC",
         "freshness": doc["freshness_class"],
@@ -144,6 +236,7 @@ def _doc_record(doc, claim, n):
             "sha256": doc["sha256"],
             "class": doc["class"],
             "freshness_class": doc["freshness_class"],
+            "verified_date": doc.get("verified_date"),
         },
         "gap_state": "REGISTERED_GAP" if is_gap else None,
         "historical_research": is_gap or doc["freshness_class"] == "POINT_IN_TIME",
@@ -151,14 +244,22 @@ def _doc_record(doc, claim, n):
 
 
 def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
-             rules_path=DEFAULT_RULES):
-    """Deterministic retrieval for a track domain. Max 5 records."""
+             rules_path=DEFAULT_RULES, *, access_profile=None):
+    failures = []
+    try:
+        docs, failures = load_knowledge(index_path, repo_root, access_profile=access_profile, domain=domain)
+    except KnowledgeError as exc:
+        docs = []
+        failures = [{"reason": str(exc)}]
     keywords = _keywords(query)
-    if not keywords:
-        return []
     records = []
     n = 1
-    for rule in _load_rules(rules_path):
+    try:
+        rules = _load_rules(rules_path, repo_root, access_profile)
+    except KnowledgeError as exc:
+        rules = []
+        failures.append({"reason": str(exc)})
+    for rule in rules:
         if RULE_DOMAINS.get(rule["rule_id"]) != domain:
             continue
         rule_text = " ".join(str(rule.get(k, "")) for k in
@@ -167,7 +268,6 @@ def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
         if _score_span((rule_text + " " + applies).lower(), keywords) >= 1:
             records.append(_rule_record(rule, n))
             n += 1
-    docs, _failures = load_knowledge(index_path, repo_root)
     scored = []
     for doc in docs:
         # RC-08: lexical scoring runs only over docs scoped to the track
@@ -198,4 +298,8 @@ def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
     for _score, doc, claim in chosen:
         records.append(_doc_record(doc, claim, n))
         n += 1
-    return records[:MAX_RECORDS]
+    records = records[:MAX_RECORDS]
+    return RetrievalResult(records, failures, {
+        "state": "INCOMPLETE" if failures else "COMPLETE",
+        "scope": "PROFILE_AND_DOMAIN", "admitted_documents": len(docs),
+        "matched_records": len(records)})

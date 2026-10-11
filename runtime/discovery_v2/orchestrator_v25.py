@@ -1,25 +1,15 @@
-"""V2.5 orchestrator: frozen V2 run_v2 with exactly two behavioral deltas:
-
-1. RouteEvaluatorV25 replaces RouteEvaluator, capping ROUTE_FULLY_VERIFIED
-   when provenance is section-level (service-specific provenance gate).
-2. The candidate URL is passed to the evaluator so the gate can apply.
-
-The frozen runtime/discovery_v2/orchestrator.py is untouched. This module
-is a verbatim copy of run_v2 (frozen SHA
-1c9545b16357ab413baf0b36bbcb3617a6a35baa67a81b99a56902208db62b95) with the
-two marked V2.5 lines; any further drift must be justified in the task
-report. No case IDs, no municipality names, no expected labels.
+"""Experimental V2.5 with source-specific route gates and explicit execution
+accounting. Historical V1/V2 orchestrators and evaluations stay frozen.
 """
 
-import re
-import unicodedata
 from datetime import datetime, timezone
-from urllib.parse import urlparse
+from typing import Any
 
 from runtime.discovery.classification import (
     AccessClassifier, EvidenceLedger, ProvenanceGraph,
 )
 from runtime.discovery.engine import DiscoveryPlanner, ServiceExtractor
+from runtime.discovery.eligibility import age_in_bounds
 from runtime.discovery.orchestrator import EXPECTED_PROTOCOL_SHA
 from runtime.discovery.security import InvalidUrlError, is_official_domain, validate_url
 
@@ -30,25 +20,13 @@ def _now_iso():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def _fold(name):
-    s = unicodedata.normalize("NFKD", name.strip().lower())
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    s = s.replace("\u00e6", "ae").replace("\u00f8", "o").replace("\u00e5", "a")
-    return s
-
-
-def _official(url, municipality):
+def _official(url):
     """Retain a candidate only when it is plausibly an official source."""
     try:
         validate_url(url)
     except InvalidUrlError:
         return False
-    cls = is_official_domain(url)
-    if cls in ("municipal", "intermunicipal", "helsenorge", "health_enterprise"):
-        return True
-    host = (urlparse(url).hostname or "").lower()
-    name = _fold(municipality)
-    return bool(name) and (name in host or name.replace("ae", "a") in host)
+    return is_official_domain(url) in ("municipal", "helsenorge", "health_enterprise")
 
 
 ROUTE_ORDER = [
@@ -75,14 +53,19 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
     graph = ProvenanceGraph()
 
     plan = DiscoveryPlanner(protocol).plan(municipality)
-    planner_queries = [q for step in plan if step["level"] in (1, 2)
-                       for q in step["queries"]]
+    planner_queries = list(dict.fromkeys(q for step in plan if step["level"] in (1, 2)
+                                        for q in step["queries"]))
+    unsupported_levels = [step["level"] for step in plan if step["level"] not in (1, 2)]
 
     query_reports = []
-    chosen = None
+    candidates = []
     for query in planner_queries:
-        resp = providers.discover(query)
-        d = resp.to_dict()
+        try:
+            resp = providers.discover(query)
+        except Exception as exc:
+            from .providers import ProviderResponse
+            resp = ProviderResponse(query, "TIMEOUT" if isinstance(exc, TimeoutError) else "INTERNAL_ERROR")
+        d: dict[str, Any] = resp.to_dict()
         query_reports.append({
             "query": query,
             "status": d["status"],
@@ -92,32 +75,30 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
             "fallback_log": d["fallback_log"],
             "attempts": d["attempts"],
         })
-        if chosen is None:
-            chosen = resp
         if resp.status == "SUCCESS" and resp.results:
-            chosen = resp
-            break
+            candidates.extend((result, resp) for result in resp.results)
 
     # Candidate filtering: official/plausibly-municipal URLs only.
     selected = []
     seen = set()
-    for r in (chosen.results if chosen else []):
+    candidate_sources = {}
+    for r, resp in candidates:
         url = r.get("url", "")
         if not url or url in seen:
             continue
-        if _official(url, municipality):
+        if _official(url):
             seen.add(url)
             selected.append(url)
-        if len(selected) >= 20:
-            break
+            candidate_sources[url] = resp
 
     # Provenance edges: provider result -> candidate URL (discovery evidence).
     for url in selected:
+        source = candidate_sources[url]
         graph.add_edge(
-            from_node=chosen.provider if chosen else "DISCOVERY",
+            from_node=source.provider,
             to_node=url,
-            discovery_method=(chosen.discovery_method if chosen else None) or "QUERY_SEARCH",
-            query_family=chosen.query if chosen else None,
+            discovery_method=source.discovery_method or "QUERY_SEARCH",
+            query_family=source.query,
             level=2,
         )
 
@@ -126,6 +107,7 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
     services = []
     best_route = "ROUTE_UNVERIFIED"
     pages_fetched = 0
+    attempted_fetches = 0
 
     for url in selected[:10]:
         try:
@@ -134,8 +116,12 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
             fetch_errors.append({"url": url, "error": "INVALID_URL",
                                  "detail": str(exc)})
             continue
-        fr = fetch_provider.fetch(url)
-        pages_fetched += 1
+        attempted_fetches += 1
+        try:
+            fr = fetch_provider.fetch(url)
+        except Exception as exc:
+            fetch_errors.append({"url": url, "error": "FETCH_FAILED", "detail": type(exc).__name__})
+            continue
         if fr.status == "render_required":
             render_fallbacks += 1
             fetch_errors.append({"url": url, "error": "RENDER_REQUIRED",
@@ -145,15 +131,22 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
             fetch_errors.append({"url": url, "error": "FETCH_FAILED",
                                  "detail": fr.error})
             continue
-        extract = extractor.extract(fr.content, url)
+        pages_fetched += 1
+        if not _official(fr.final_url):
+            fetch_errors.append({"url": url, "error": "SOURCE_AUTHORITY_REJECTED"})
+            continue
+        source_url = fr.final_url
+        if not extractor._html_to_text(fr.content).strip():
+            continue
+        extract: dict[str, Any] | None = extractor.extract(fr.content, source_url)
         if not extract:
             continue
         for span_entry in extract.get("text_spans", []):
             ledger.add(
                 field=span_entry["label"],
                 value=span_entry["span"][:200],
-                source_url=url,
-                source_title=extract.get("title", url),
+                source_url=source_url,
+                source_title=extract.get("title", source_url),
                 span=span_entry["span"],
                 retrieved_at=fr.retrieved_at or _now_iso(),
                 fetch_method=fr.fetch_method,
@@ -169,8 +162,8 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
             or "DIRECT_DROPIN" in methods
             or "DIRECT_EMAIL" in methods
         )
-        eligibility = bool(extract.get("age_text") or extract.get("age_universal")
-                           or extract.get("target_group"))
+        age_eligible = age_in_bounds(extract.get("age_bounds"), input_data.get("age"), extract.get("age_text"))
+        eligibility = age_eligible is True
         route_state = evaluator.evaluate(
             service_verified=True,
             eligibility_verified=eligibility,
@@ -180,15 +173,17 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
                 extract.get("access_markers", {}).get("contact_invitation")
                 or access_clear),
             strong_access=strong_access,
-            url=url,  # V2.5 delta: provenance gate input
+            url=source_url,
         )
         services.append({
-            "url": url,
+            "url": source_url,
             "title": extract.get("title"),
             "access_methods": methods,
             "self_referral": classification["self_referral"],
             "route_state": route_state,
             "age_text": extract.get("age_text"),
+            "age_bounds": extract.get("age_bounds"),
+            "age_input_eligible": age_eligible,
             "target_group": extract.get("target_group"),
             "evidence_spans": extract.get("text_spans", []),
         })
@@ -204,8 +199,9 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
 
     provider_failures = [q for q in query_reports
                          if q["status"] not in ("SUCCESS", "NO_RESULTS")]
-    execution_status = ("COMPLETE" if pages_fetched > 0
-                        else "DISCOVERY_INCOMPLETE")
+    protocol_completed = bool(planner_queries) and not (
+        provider_failures or fetch_errors or unsupported_levels or len(selected) > 10)
+    execution_status = "COMPLETE" if protocol_completed else "DISCOVERY_INCOMPLETE"
 
     uncertainty = protocol["uncertainty_outputs"]
     if best_route == "ROUTE_FULLY_VERIFIED":
@@ -229,6 +225,10 @@ def run_v25(protocol, input_data, providers, fetch_provider=None):
         "fallback_log": [f for q in query_reports for f in q["fallback_log"]],
         "selected_candidates": selected,
         "pages_fetched": pages_fetched,
+        "execution": {"revision": "discovery-execution/v1", "attempted_fetches": attempted_fetches,
+                      "successful_fetches": pages_fetched, "protocol_completed": protocol_completed,
+                      "services_found": len(services), "unsupported_levels": unsupported_levels,
+                      "unfetched_candidates": max(0, len(selected) - 10)},
         "render_fallbacks": render_fallbacks,
         "services": services,
         "route_state": best_route,

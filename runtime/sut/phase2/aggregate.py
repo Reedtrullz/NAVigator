@@ -11,7 +11,7 @@ UNVERIFIED).
 STATE_ORDER = ("UNVERIFIED", "EXISTENCE_ONLY", "ACCESS_PARTIAL", "FULLY_VERIFIED")
 
 
-def _dimension_claims(route):
+def _dimension_claims():
     dims = ("service_exists", "age_eligible", "scenario_relevant",
             "access_verified", "contact_verified")
     return dims
@@ -22,8 +22,11 @@ def build_claims(routes, knowledge_records):
     claims = []
     n = 1
     for route in routes:
-        for dim in _dimension_claims(route):
+        for dim in _dimension_claims():
             value = route[dim]
+            refs = route.get("dimension_evidence", {}).get(dim, [])
+            if value in ("VERIFIED", "PARTIAL") and not refs:
+                value = "UNRESOLVED"
             state = "VERIFIED" if value == "VERIFIED" else (
                 "FAILED" if value == "FAILED" else "UNRESOLVED")
             claims.append({
@@ -33,20 +36,23 @@ def build_claims(routes, knowledge_records):
                 "value": value,
                 "state": state,
                 "authority": "DISCOVERY" if route["evidence_refs"] else "NONE",
-                "evidence_ids": list(route["evidence_refs"]) if state == "VERIFIED" else [],
+                "evidence_ids": list(refs) if state == "VERIFIED" else [],
                 "provenance_ids": list(route["provenance_refs"]) if state == "VERIFIED" else [],
             })
             n += 1
     for rec in knowledge_records:
+        factual = (not rec.get("gap_state") and rec.get("source_type") != "GAP"
+                   and not rec.get("historical_research") and rec.get("freshness") == "CURRENT"
+                   and bool(rec.get("provenance", {}).get("verified_date")))
         claims.append({
             "claim_id": "C-%03d" % n,
             "subject": rec["record_id"],
             "dimension": "knowledge_fact",
             "value": rec["claim"],
-            "state": "VERIFIED",
+            "state": "VERIFIED" if factual else "UNRESOLVED",
             "authority": rec["authority"],
-            "evidence_ids": [rec["evidence_id"]],
-            "provenance_ids": [rec["record_id"]],
+            "evidence_ids": [rec["evidence_id"]] if factual else [],
+            "provenance_ids": [rec["record_id"]] if factual else [],
         })
         n += 1
     return claims
@@ -83,7 +89,7 @@ def derive_track_state(routes, knowledge_records, discovery):
     for route in routes:
         rs = route.get("route_state")
         if rs == "FULLY_VERIFIED" and all(
-                route[d] == "VERIFIED" for d in _dimension_claims(route)):
+                route[d] == "VERIFIED" for d in _dimension_claims()):
             states.append("FULLY_VERIFIED")
         elif rs in ("FULLY_VERIFIED", "ACCESS_PARTIAL"):
             states.append("ACCESS_PARTIAL")
@@ -91,7 +97,7 @@ def derive_track_state(routes, knowledge_records, discovery):
             states.append("EXISTENCE_ONLY")
         else:
             states.append("UNVERIFIED")
-    if not states and knowledge_records:
+    if not states and any(c["state"] == "VERIFIED" for c in build_claims([], knowledge_records)):
         # S4 alone can only ever justify EXISTENCE_ONLY.
         return "EXISTENCE_ONLY"
     if not states:

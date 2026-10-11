@@ -114,10 +114,6 @@ class SiteDirectProviderV25(SiteDirectProvider):
         self._cache[slug] = resp
         return resp
 
-    def _sitemap_urls(self, xml):
-        # Reuse the frozen extractor (keyword filter + validation + cap).
-        return SiteDirectProvider._sitemap_urls(xml)
-
     def _index_children(self, root):
         sm_url = urljoin(root, "sitemap.xml")
         sm_status, sm_body = self._get(sm_url)
@@ -149,6 +145,10 @@ class SiteDirectProviderV25(SiteDirectProvider):
         return results
 
     def _rendered_nav_links(self, root):
+        try:
+            validate_url(root)
+        except InvalidUrlError:
+            return []
         if self._url_budget <= 0:
             return []
         self._url_budget -= 1
@@ -159,6 +159,3 @@ class SiteDirectProviderV25(SiteDirectProvider):
         if status != 200 or not dom:
             return []
         return self._nav_links(dom, root)
-
-    def _nav_links(self, html, base_url):
-        return SiteDirectProvider._nav_links(html, base_url)
