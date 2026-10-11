@@ -1,8 +1,10 @@
 # NAVigator runtime repairs - 2026-10-11
 
-Plan: docs/superpowers/plans/2026-10-08-navigator-runtime-plan.md
+Plan: https://github.com/Reedtrullz/NAVigator/blob/a09cb28864bbc45ef48cbdb0afa92f6b12ac1a79/docs/superpowers/plans/2026-10-08-navigator-runtime-plan.md
 Base: a09cb28864bbc45ef48cbdb0afa92f6b12ac1a79
 Worktree: /Users/reidar/.codex/worktrees/navigator-contact-pilot/NAVigator
+
+These entries record the original reviewed candidate. Subsequent PR #67 main-base preparation, dependency disposition and synthetic CI are recorded in [the integration receipt](runtime-main-integration-2026-10-11.md); the original worktree and pilot evidence remain preserved.
 
 ## Pre-flight interfaces
 

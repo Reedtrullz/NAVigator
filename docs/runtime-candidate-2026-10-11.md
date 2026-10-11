@@ -7,10 +7,12 @@ Branch: codex/navigator-contact-pilot
 Runtime change base: a09cb28864bbc45ef48cbdb0afa92f6b12ac1a79
 The owner explicitly authorized one local commit of the verified runtime candidate, review report and test evidence on 2026-10-11. The commit containing this receipt identifies that candidate. The primary checkout is preserved; push, PR, deployment and pilot rebuild remain outside this authorization.
 
-Plan: [R1-R7](superpowers/plans/2026-10-08-navigator-runtime-plan.md).
+Plan: [original R1-R7](https://github.com/Reedtrullz/NAVigator/blob/a09cb28864bbc45ef48cbdb0afa92f6b12ac1a79/docs/superpowers/plans/2026-10-08-navigator-runtime-plan.md).
 Execution decisions, failures before repair and review: [ledger](runtime-implementation-2026-10-11.md).
 Independent reviewer findings, repairs and scope: [review receipt](runtime-independent-review-2026-10-11.md).
 Fresh commit-stage test results, explicit source hashes and preservation baseline: [machine-readable evidence](runtime-commit-evidence-2026-10-11.json).
+
+PR #67 main preparation: [base, dependencies and synthetic CI](runtime-main-integration-2026-10-11.md). The original worktree/base and preservation receipt above describe the reviewed 3a1ea78 lineage. Main preparation replays only the runtime commit onto 55eac73; the same runtime bytes pass without a pilot directory. Original pilot work remains preserved separately; no pilot dependency or activation is introduced.
 
 ## Observed verification
 
