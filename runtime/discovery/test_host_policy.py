@@ -84,6 +84,15 @@ class HostPolicyTests(unittest.TestCase):
         self.assertEqual(result, (200, "ok", "http://other.example/a"))
         self.assertEqual(resolve.call_count, 2)
         self.assertEqual(connect.call_count, 2)
+        for origin, target in (("https://public.example/", "https://other.example/a"),
+                               ("https://public.example/", "/a"),
+                               ("http://public.example/", "https://other.example/a")):
+            with self.subTest(origin=origin, target=target):
+                result, resolve, connect, _tls, _conns = self.fetch(
+                    origin, responses=[(302, b"", target), (200, b"ok", None)])
+                self.assertEqual(result, (200, "ok", security.urljoin(origin, target)))
+                self.assertEqual(resolve.call_count, 2)
+                self.assertEqual(connect.call_count, 2)
         conn = Mock()
         conn.getresponse.return_value = SimpleNamespace(status=200, read=lambda size: b"oversize")
         with patch.object(security.socket, "getaddrinfo", return_value=[(2, 1, 6, "", ("93.184.216.34", 80))]), \
@@ -104,6 +113,17 @@ class HostPolicyTests(unittest.TestCase):
             with self.assertRaises(security.InvalidUrlError):
                 fetch("http://public.example/")
             self.assertEqual(connect.call_count, 1)
+
+        for target in ("http://other.example/a", "HTTP://other.example/a"):
+            with self.subTest(target=target):
+                initial.getresponse.return_value = SimpleNamespace(status=302, getheader=lambda name: target)
+                with patch.object(security.socket, "getaddrinfo", return_value=[(2, 1, 6, "", ("93.184.216.34", 443))]), \
+                        patch.object(security.socket, "create_connection") as connect, \
+                        patch.object(security.http.client, "HTTPConnection", return_value=initial), \
+                        patch.object(security.ssl, "create_default_context"):
+                    with self.assertRaisesRegex(security.InvalidUrlError, "HTTPS redirect downgrade"):
+                        fetch("https://public.example/")
+                    self.assertEqual(connect.call_count, 1)
 
     def test_providers_share_transport_and_render_cannot_bypass_it(self):
         with patch("runtime.discovery.security.fetch_public", create=True, side_effect=security.InvalidUrlError("PRIVATE_ADDRESS")) as fetch, \

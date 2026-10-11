@@ -26,7 +26,7 @@ def main():
     candidate_sha = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     assert candidate_sha == os.environ.get("RUNTIME_CANDIDATE_SHA", candidate_sha)
-    evidence = json.loads((ROOT / "docs/runtime-commit-evidence-2026-10-11.json").read_text())
+    evidence = json.loads((ROOT / "docs/runtime-final-review-evidence-2026-10-12.json").read_text())
     hashes = {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
               for path in evidence["runtime_source_hashes"]}
     manifest = hashlib.sha256(json.dumps(hashes, sort_keys=True,

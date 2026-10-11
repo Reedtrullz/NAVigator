@@ -130,7 +130,10 @@ def fetch_public(url, timeout=15, max_size=2 * 1024 * 1024,
                 location = response.getheader("Location")
                 if not location or hop == 4:
                     raise InvalidUrlError("Redirect rejected")
-                url = urljoin(url, location)
+                target = urljoin(url, location)
+                if parsed.scheme == "https" and urlparse(target).scheme != "https":
+                    raise InvalidUrlError("HTTPS redirect downgrade rejected")
+                url = target
                 continue
             if not 200 <= response.status <= 599:
                 raise InvalidUrlError("HTTP status rejected")
