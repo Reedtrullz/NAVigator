@@ -13,6 +13,8 @@ import hashlib
 import json
 import re
 
+from .text_normalization import normalize_match_text
+
 
 REQUIRED_KEYS = (
     "class_precedence",
@@ -65,29 +67,22 @@ def _overlaps(span_a, span_b):
 
 
 def _is_guarded(text, signal, span, guard, is_acute_class):
-    """Negation guard: discard an acute-class signal occurrence when a
-    negation pattern overlaps it or sits within the window before it.
-    Occurrences inside a listed affirmative idiom are never guarded.
-    """
     if not is_acute_class:
         return False
     for idiom in guard.get("non_negated_affirmative_idioms", []):
-        for m in re.finditer(r"\b" + re.escape(idiom) + r"\b", text):
+        for m in re.finditer(r"\b" + re.escape(normalize_match_text(idiom)) + r"\b", text):
             if m.start() <= span[0] and span[1] <= m.end():
                 return False
-    window = int(guard.get("match_window_chars_before", 30))
     for pattern in guard.get("negation_patterns", []):
-        for m in re.finditer(r"\b" + re.escape(pattern) + r"\b", text):
+        for m in re.finditer(r"\b" + re.escape(normalize_match_text(pattern)) + r"\b", text):
             pat_span = (m.start(), m.end())
             if _overlaps(pat_span, span):
-                return True
-            if 0 < span[0] - pat_span[1] <= window:
                 return True
     return False
 
 
 def classify(text, rules):
-    hay = text.lower()
+    hay = normalize_match_text(text)
     guard = rules.get("negation_guard", {})
     matched_by_class = {}
     guarded = []
@@ -96,7 +91,7 @@ def classify(text, rules):
             rules["class_collapse"].get(cls, {}).get("priority") == "ACUTE_RISK_NOW"
         )
         for signal in rules["class_signals"].get(cls, []):
-            for m in re.finditer(r"\b" + re.escape(signal) + r"\b", hay):
+            for m in re.finditer(r"\b" + re.escape(normalize_match_text(signal)) + r"\b", hay):
                 if _is_guarded(hay, signal, (m.start(), m.end()), guard, is_acute_class):
                     if signal not in guarded:
                         guarded.append(signal)

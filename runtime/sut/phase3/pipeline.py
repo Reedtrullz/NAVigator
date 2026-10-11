@@ -1,18 +1,13 @@
-"""Phase 3 full SUT pipeline: S1-S11 end to end, deterministic.
+from typing import Any
 
-S1-S8 are imported unmodified from the frozen Phase 2 pipeline (new lineage,
-no edits to phase1/phase2 files). S9-S11 are the Phase 3 answer-planning,
-rendering, and finalization stages.
-"""
+from ..context import make_context, normalize_input
+from ..schemas import SchemaError, validate_input
 
-import time
-
-from sut.context import StageState, make_context, mark_stage, normalize_input
-from sut.schemas import SchemaError, validate_input
-
-from sut.phase2.pipeline import (
+from ..phase2.pipeline import (
     _default_config,
     _failed_output,
+    _with_state,
+    _stage_state,
     s1_input_normalization,
     s2_safety_triage,
     s3_decomposition,
@@ -22,9 +17,9 @@ from sut.phase2.pipeline import (
     s7_evidence_aggregation,
     s8_epistemic_assignment,
 )
-from sut.phase3.planner import s9_answer_planning
-from sut.phase3.render import s10_answer_rendering
-from sut.phase3.finalize import s11_output_emission
+from .planner import s9_answer_planning
+from .render import s10_answer_rendering
+from .finalize import s11_output_emission, _failed_render_output
 
 _STAGE_ORDER = (
     "input_normalization", "safety_triage", "decomposition",
@@ -48,43 +43,29 @@ STAGES = {
 }
 
 
-def _with_state(stage, fn, ctx):
-    start = time.perf_counter()
-    try:
-        fn(ctx)
-    except Exception as exc:  # fail closed: any stage crash becomes RECOVERABLE
-        mark_stage(ctx, stage, StageState.RECOVERABLE, "stage error: %s" % exc)
-    return {"stage": stage, "latency_ms": round((time.perf_counter() - start) * 1000, 3)}
-
-
-def _stage_state(ctx, stage):
-    for failure in ctx["failures"]:
-        if failure["stage"] == stage:
-            return failure["state"]
-    return "SUCCESS"
-
-
-def run_with_trace(input_dict, config=None):
+def run_with_trace(input_dict, config=None) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     """Execute S1-S11 once; return (sut_output/v1 dict, stage trace list)."""
     cfg = dict(_default_config())
     if config:
         cfg.update(config)
+    if not isinstance(input_dict, dict):
+        return _failed_output("INPUT_REJECTED"), [{"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}]
     normalized = normalize_input(input_dict)
     try:
         validate_input(normalized)
-    except SchemaError as exc:
-        return _failed_output(str(exc)), [
+    except SchemaError:
+        return _failed_output("INPUT_REJECTED"), [
             {"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}
         ]
 
-    ctx = make_context(normalized)
+    ctx: dict[str, Any] = make_context(normalized)
     ctx["_config"] = cfg
     trace = []
     for stage in _STAGE_ORDER:
         mark = _with_state(stage, STAGES[stage], ctx)
         mark["state"] = _stage_state(ctx, stage)
         trace.append(mark)
-    return ctx.get("_output") or _failed_output("output emission did not run"), trace
+    return ctx.get("_output") or _failed_render_output("output emission did not run"), trace
 
 
 def run(input_dict, config=None):

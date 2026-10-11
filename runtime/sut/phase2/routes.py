@@ -4,8 +4,12 @@ RouteCandidate carries five separate claim dimensions. Each dimension is
 evidence-backed or explicitly unresolved; states only ever downgrade.
 """
 
-import os
 import re
+
+from runtime.discovery.eligibility import age_in_bounds
+from runtime.discovery.engine import ServiceExtractor
+from .text_normalization import normalize_match_text
+from .decompose import DOMAIN_SIGNALS
 
 
 FULLY_VERIFIED = "ROUTE_FULLY_VERIFIED"
@@ -13,16 +17,12 @@ ACCESS_PARTIAL = "ROUTE_ACCESS_PARTIAL"
 EXISTENCE_ONLY = "ROUTE_EXISTENCE_ONLY"
 UNVERIFIED = "ROUTE_UNVERIFIED"
 
-_REPO_ROOT = os.path.normpath(
-    os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-
-
 def _service_dimensions(service, track_domain, age):
     """Map one discovery service to the five claim dimensions."""
     dims = {
         "service_exists": "VERIFIED",
         "age_eligible": "UNRESOLVED",
-        "scenario_relevant": "VERIFIED",
+        "scenario_relevant": "VERIFIED" if service.get("domain") == track_domain else "UNRESOLVED",
         "access_verified": "UNRESOLVED",
         "contact_verified": "UNRESOLVED",
     }
@@ -36,12 +36,11 @@ def _service_dimensions(service, track_domain, age):
     elif methods and methods != ["UNCLEAR"]:
         dims["access_verified"] = "PARTIAL"
         dims["contact_verified"] = "PARTIAL"
-    if service.get("age_eligible") is True:
+    age_ok = age_in_bounds(service.get("age_bounds"), age, service.get("age_text"))
+    if age_ok is True:
         dims["age_eligible"] = "VERIFIED"
-    elif service.get("age_eligible") is False:
+    elif age_ok is False:
         dims["age_eligible"] = "FAILED"
-    if service.get("target_group"):
-        dims["scenario_relevant"] = "VERIFIED"
     return dims, methods
 
 
@@ -70,14 +69,23 @@ def build_route_candidates(discovery, track_domain, age=None):
     routes = []
     for i, service in enumerate(discovery.get("services", []), start=1):
         dims, methods = _service_dimensions(service, track_domain, age)
-        # Route-level access may inherit run-level partial evidence.
-        if dims["access_verified"] == "UNRESOLVED" and discovery.get("route_state") == ACCESS_PARTIAL:
-            dims["access_verified"] = "PARTIAL"
-        evidence_refs = _bind_discovery_evidence(service, discovery)
+        dimension_evidence = {}
+        for dimension in dims:
+            bound = _bind_discovery_evidence(service, discovery, track_domain, dimension)
+            if not bound:
+                dims[dimension] = "UNRESOLVED"
+            dimension_evidence[dimension] = bound
+        evidence_refs = list(dict.fromkeys(ref for refs in dimension_evidence.values() for ref in refs))
+        evidence_records = {"E-DISC-%s-%03d" % (track_domain.upper(), j): {
+            key: ev[key] for key in ("service_id", "source_url", "content_hash", "dimension", "locator",
+                                    "supporting_span", "value", "verified_date") if key in ev}
+            for j, ev in enumerate(discovery.get("evidence", []), 1)
+            if "E-DISC-%s-%03d" % (track_domain.upper(), j) in evidence_refs}
         state = _route_state(dims)
         routes.append({
             "route_id": "R-%s-%02d" % (track_domain.upper(), i),
             "service_type": service["name"],
+            "service_id": service.get("service_id"),
             "track_domain": track_domain,
             "target_population": service.get("target_group") or "UNRESOLVED",
             "service_exists": dims["service_exists"],
@@ -90,7 +98,9 @@ def build_route_candidates(discovery, track_domain, age=None):
             "scope": "MUNICIPAL",
             "route_state": state,
             "evidence_refs": evidence_refs,
-            "provenance_refs": [service["source_url"]],
+            "dimension_evidence": dimension_evidence,
+            "evidence_records": evidence_records,
+            "provenance_refs": [service["source_url"]] if evidence_refs else [],
             "failures": [],
         })
     return routes
@@ -216,18 +226,8 @@ def _heading_marker_free(name):
     return not any(m in name.lower() for m in _HEADING_MARKERS)
 
 
-def _heading_context_service_name(claim, source_path):
-    """Verbatim claim line's nearest heading, fail-closed (W4-RC-A R0).
-
-    Single-match requirement: an ambiguous claim span never mints a
-    route target. The heading itself must pass identity gates.
-    """
-    if not source_path:
-        return None
-    try:
-        with open(os.path.join(_REPO_ROOT, source_path), encoding="utf-8") as fh:
-            lines = fh.read().splitlines()
-    except OSError:
+def _heading_context_service_name(claim, lines):
+    if not isinstance(lines, list):
         return None
     norm = claim.strip()
     if not norm:
@@ -248,18 +248,51 @@ def _heading_context_service_name(claim, source_path):
     return None
 
 
-def _bind_discovery_evidence(service, discovery):
-    """Bind a route to the evidence rows of its own source URL.
-
-    ponytail: fall back to all refs when the URL is missing — per-service
-    provenance partitioning needs a first-class evidence id on the
-    service record if discovery ever emits split sources.
-    """
-    refs = ["E-DISC-%02d" % j
-            for j in range(1, len(discovery.get("evidence", [])) + 1)]
-    matched = [ref for ref, ev in zip(refs, discovery.get("evidence", []))
-               if ev.get("source_url") == service.get("source_url")]
-    return matched or refs
+def _bind_discovery_evidence(service, discovery, track_domain, dimension):
+    refs = []
+    for j, ev in enumerate(discovery.get("evidence", []), 1):
+        if (not service.get("service_id") or ev.get("service_id") != service["service_id"]
+                or not service.get("source_url") or ev.get("source_url") != service["source_url"]
+                or not re.fullmatch(r"[0-9a-f]{64}", str(service.get("content_hash", "")))
+                or ev.get("content_hash") != service["content_hash"]
+                or ev.get("dimension") != dimension
+                or not isinstance(ev.get("supporting_span"), str) or not ev["supporting_span"].strip()
+                or not isinstance(ev.get("locator"), str) or not ev["locator"].strip()):
+            continue
+        value = ev.get("value")
+        span = ev["supporting_span"]
+        if not re.search(r"(?<!\w)" + re.escape(normalize_match_text(service["name"])) + r"(?!\w)", normalize_match_text(span)):
+            continue
+        if dimension == "service_exists" and (value != service["name"] or value not in ev["supporting_span"]):
+            continue
+        if dimension == "age_eligible" and (not service.get("age_bounds") or value != service["age_bounds"]):
+            continue
+        if dimension == "age_eligible":
+            match = ServiceExtractor.AGE_RE.search(span)
+            if (match is None or ServiceExtractor._parse_age_bounds(match) != value
+                    or normalize_match_text(match.group(0)) != normalize_match_text(service.get("age_text") or "")):
+                continue
+        if dimension == "scenario_relevant":
+            signals = (*DOMAIN_SIGNALS.get(track_domain, ()), track_domain.replace("_", " "))
+            if value != track_domain or not any(normalize_match_text(s) in normalize_match_text(span) for s in signals):
+                continue
+        if dimension in ("access_verified", "contact_verified"):
+            markers = {
+                "DIRECT_DROPIN": bool(ServiceExtractor.DROPIN_RE.search(span)),
+                "APPLICATION_FORM": bool(ServiceExtractor.FORM_RE.search(span)),
+                "DIRECT_DIGITAL": bool(ServiceExtractor.FORM_RE.search(span)),
+                "DIRECT_PHONE": bool(ServiceExtractor.SELF_CONTACT_RE.search(span)
+                                      or (ServiceExtractor.PHONE_RE.search(span) and ServiceExtractor.PHONE_INTAKE_CONTEXT_RE.search(span))),
+                "DIRECT_EMAIL": bool(ServiceExtractor.EMAIL_RE.search(span)
+                                      and (ServiceExtractor.EMAIL_CONNECTED_RE.search(span) or ServiceExtractor.CONTACT_RE.search(span))),
+                "GP_REFERRAL": bool(ServiceExtractor.REFERRAL_RE.search(span)
+                                     and not ServiceExtractor.REFERRAL_NEGATED_RE.search(span)
+                                     and not ServiceExtractor.REFERRAL_SOFT_RE.search(span)),
+            }
+            if value not in (service.get("access_methods") or []) or not markers.get(value):
+                continue
+        refs.append("E-DISC-%s-%03d" % (track_domain.upper(), j))
+    return refs
 
 
 def _valid_label(name):
@@ -275,22 +308,9 @@ def _header_cell_service(header):
     return any(cell in _SERVICE_IDENTITY_HEADERS for cell in cells)
 
 
-def _structured_service_name(claim, source_path):
-    """First-column service name from an identity table row.
-
-    The claim is a verbatim (possibly truncated) span of a source-doc
-    line. The governing table header is read from the frozen source
-    document (repo-root-relative path from source_reference) and must
-    declare a service-identity column. Fail-closed: unreadable source,
-    ambiguous claim location, or a non-identity table yields no
-    structured route target.
-    """
-    if not source_path or not _TABLE_ROW_RE.match(claim.strip()):
-        return None
-    try:
-        with open(os.path.join(_REPO_ROOT, source_path), encoding="utf-8") as fh:
-            lines = fh.read().splitlines()
-    except OSError:
+def _structured_service_name(claim, lines):
+    row_match = _TABLE_ROW_RE.match(claim.strip())
+    if not isinstance(lines, list) or row_match is None:
         return None
     norm = claim.strip()
     row_idxs = [i for i, ln in enumerate(lines) if norm and norm in ln]
@@ -309,7 +329,7 @@ def _structured_service_name(claim, source_path):
     header_match = _HEADER_ROW_RE.match(lines[sep_idx - 1].strip())
     if header_match is None or not _header_cell_service(header_match.group(1)):
         return None
-    name = _TABLE_ROW_RE.match(norm).group(1).strip()
+    name = row_match.group(1).strip()
     if not _valid_label(name):
         return None
     return name
@@ -343,12 +363,14 @@ def build_national_route_candidates(records, discovery_service_count=0):
             continue
         if rec.get("gap_state") is not None or rec.get("historical_research"):
             continue
+        if rec.get("freshness") != "CURRENT" or not rec.get("provenance", {}).get("verified_date"):
+            continue
         domain = rec.get("track_domain") or rec.get("domain")
         if not domain:
             continue
         claim = rec.get("claim", "")
         name = _structured_service_name(
-            claim, (rec.get("source_reference") or {}).get("path"))
+            claim, rec.get("source_lines"))
         self_referral = None
         if name is not None:
             self_referral = _self_referral_from_row(claim)
@@ -358,7 +380,7 @@ def build_national_route_candidates(records, discovery_service_count=0):
         # (W3-RC-A); heading rescue is for prose claims only.
         if name is None and not _TABLE_ROW_RE.match(claim.strip()):
             heading_name = _heading_context_service_name(
-                claim, (rec.get("source_reference") or {}).get("path"))
+                claim, rec.get("source_lines"))
             if heading_name is not None and _heading_marker_free(heading_name):
                 name = heading_name
         if not name:
@@ -389,6 +411,8 @@ def build_national_route_candidates(records, discovery_service_count=0):
             "scope": "NATIONAL",
             "route_state": _route_state(dims),
             "evidence_refs": [rec["evidence_id"]],
+            "dimension_evidence": {"service_exists": [rec["evidence_id"]],
+                                   "scenario_relevant": [rec["evidence_id"]]},
             "provenance_refs": ["P-K%03d" % (discovery_service_count + idx + 1)],
             "failures": [],
         })

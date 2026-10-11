@@ -6,16 +6,17 @@ Phase 1 files are byte-identical; this is a new lineage.
 
 import os
 import time
+from typing import Any
 
 _REPO_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 
-from sut.context import StageState, make_context, mark_stage, normalize_input
-from sut.schemas import SchemaError, validate_input, validate_output
+from ..context import StageState, make_context, mark_stage, normalize_input
+from ..schemas import SchemaError, validate_input, validate_output
 
-from sut.phase2.safety import TriageError, evaluate_safety, load_rules
-from sut.phase2.decompose import decompose
-from sut.phase2.knowledge import KnowledgeError, retrieve
-from sut.phase2.discovery_adapter import run_discovery_step
+from .safety import TriageError, evaluate_safety, load_rules
+from .decompose import decompose
+from .knowledge import KnowledgeError, retrieve, verified_date
+from .discovery_adapter import run_discovery_step
 
 # RC-02: top-level safety_priority carries the frozen 12-class triage
 # vocabulary plus the two collapse priorities. Unknown/failed states are
@@ -25,8 +26,8 @@ SAFETY_PRIORITY_OUTPUT_VALUES = (
     "URGENT_NOT_ACUTE",
     "NOT_ACUTE",
 )
-from sut.phase2.routes import build_national_route_candidates, build_route_candidates
-from sut.phase2.aggregate import build_claims, collapse, derive_track_state, detect_conflicts
+from .routes import build_national_route_candidates, build_route_candidates
+from .aggregate import build_claims, collapse, derive_track_state, detect_conflicts
 
 
 _STAGE_ORDER = (
@@ -43,16 +44,15 @@ PHASE_2_ANSWER = (
     "listet nedenfor."
 )
 
-DEFAULT_VERIFIED_AT = "2026-09-09"
-
-
-def _default_config():
+def _default_config() -> dict[str, Any]:
     # Paths anchored to the repo root so the pipeline is cwd-independent.
     return {
         "mode": "replay",
         "safety_rules_path": os.path.join(_REPO_ROOT, "data", "safety-triage-rules-v2.json"),
         "knowledge_index_path": os.path.join(_REPO_ROOT, "data", "knowledge-index-v1.json"),
         "rules_registry_path": os.path.join(_REPO_ROOT, "data", "rules-v1.json"),
+        "knowledge_access_profile": None,
+        "knowledge_repo_root": _REPO_ROOT,
     }
 
 
@@ -60,8 +60,22 @@ def _with_state(stage, fn, ctx):
     start = time.perf_counter()
     try:
         fn(ctx)
-    except Exception as exc:  # fail closed: any stage crash becomes RECOVERABLE
-        mark_stage(ctx, stage, StageState.RECOVERABLE, "stage error: %s" % exc)
+    except Exception as exc:
+        recoverable = stage in ("knowledge_retrieval", "local_discovery")
+        mark_stage(ctx, stage, StageState.RECOVERABLE if recoverable else StageState.TERMINAL,
+                   "stage error: %s" % type(exc).__name__)
+        if not recoverable:
+            ctx.pop("_output", None)
+        if stage == "knowledge_retrieval":
+            ctx["_s4_incomplete"] = True
+            ctx["_s4_records"] = []
+            ctx["_s4_admission"] = {t["track_id"]: {"coverage": {"state": "INCOMPLETE"},
+                "failures": [{"reason": "KNOWLEDGE_STAGE_FAILED"}]} for t in ctx["tracks"]}
+        elif stage == "local_discovery":
+            ctx["_s5_incomplete"] = True
+            ctx["_s5_steps"] = [{"track_id": t["track_id"], "domain": t["domain"],
+                                "step": {"state": "DISCOVERY_INCOMPLETE", "services": [], "evidence": []}}
+                               for t in ctx["tracks"]]
     return {"stage": stage, "latency_ms": round((time.perf_counter() - start) * 1000, 3)}
 
 
@@ -88,12 +102,23 @@ def s3_decomposition(ctx):
 
 def s4_knowledge_retrieval(ctx):
     records = []
+    ctx["_s4_admission"] = {}
+    ctx["_s4_incomplete"] = False
     for track in ctx["tracks"]:
         try:
-            track_records = retrieve(
+            result = retrieve(
                 ctx["input"]["user_query"], track["domain"],
                 index_path=ctx["_config"]["knowledge_index_path"],
-                rules_path=ctx["_config"]["rules_registry_path"])
+                rules_path=ctx["_config"]["rules_registry_path"],
+                repo_root=ctx["_config"]["knowledge_repo_root"],
+                access_profile=ctx["_config"]["knowledge_access_profile"])
+            track_records = result.records
+            ctx["_s4_admission"][track["track_id"]] = {
+                "coverage": result.coverage, "failures": result.failures}
+            if result.failures:
+                ctx["_s4_incomplete"] = True
+                mark_stage(ctx, "knowledge_retrieval", StageState.RECOVERABLE,
+                           "source admission incomplete: " + ",".join(f["reason"] for f in result.failures))
             # RC-08: retrieval-domain binding, not a claim overwrite.
             # retrieve() already scopes records to the track domain; the
             # per-track copy is evidence binding for S8.
@@ -175,6 +200,8 @@ def s8_epistemic_assignment(ctx):
         knowledge = [k for k in ctx.get("_s4_records", [])
                      if k.get("track_domain", k.get("domain")) == entry["domain"]]
         state = derive_track_state(routes, knowledge, entry["step"])
+        if ctx.get("_s4_admission", {}).get(entry["track_id"], {}).get("failures"):
+            state = "UNVERIFIED"
         track_states.append(state)
         per_track[entry["track_id"]] = state
     if not track_states and ctx.get("_s4_records"):
@@ -221,7 +248,7 @@ def _provenance_records(ctx):
                 "source_type": "LOCAL_DISCOVERY",
                 "source_ref": service["source_url"],
                 "retrieved_at": None,
-                "verified_at": DEFAULT_VERIFIED_AT,
+                "verified_at": verified_date(service.get("verified_date")) or "",
                 "claim_supported": "service existence and access info",
                 "evidence_span": None,
                 "authority_level": "MUNICIPAL",
@@ -238,7 +265,7 @@ def _provenance_records(ctx):
             "source_type": rec["source_type"],
             "source_ref": source_ref,
             "retrieved_at": None,
-            "verified_at": DEFAULT_VERIFIED_AT,
+            "verified_at": verified_date(rec.get("provenance", {}).get("verified_date")) or "",
             "claim_supported": rec["claim"][:200],
             "evidence_span": rec["claim"][:200],
             "authority_level": rec["authority"],
@@ -314,8 +341,9 @@ def _claim_evidence(ctx):
             continue
         pids = []
         for pid in c.get("provenance_ids") or []:
-            if pid in prov_ids_all and pid not in pids:
-                pids.append(pid)
+            resolved = pid if pid in prov_ids_all else prov_by_source.get(pid)
+            if resolved and resolved not in pids:
+                pids.append(resolved)
         for eid in c.get("evidence_ids") or []:
             rec = rec_by_eid.get(eid)
             if not rec:
@@ -332,8 +360,21 @@ def _claim_evidence(ctx):
     return out
 
 
+def _retrieval_evidence(ctx):
+    return {"revision": "source-admission/v2", "per_track": ctx.get("_s4_admission", {}),
+            "source_dates": {p["id"]: p["verified_at"] or None for p in _provenance_records(ctx)},
+            "safety_assessment": "LEXICAL_MATCH_ONLY" if ctx["safety"]["signals"] else "NO_SIGNAL_UNKNOWN"}
+
+
+def _dimension_sources(ctx):
+    return {eid: source for route in ctx.get("_s6_routes", [])
+            for eid, source in route.get("evidence_records", {}).items()}
+
+
 def _uncertainty_list(ctx):
     items = []
+    if ctx.get("_s4_incomplete"):
+        items.append("source_admission_incomplete")
     if ctx.get("_s5_incomplete"):
         items.append("local_availability_unverified")
     elif not ctx.get("_s5_steps"):
@@ -346,8 +387,10 @@ def _uncertainty_list(ctx):
 def s11_output_emission(ctx):
     failures = ctx["failures"]
     if any(f["state"] == "TERMINAL" for f in failures):
-        execution_status = "EXECUTION_FAILED"
-    elif ctx.get("_s5_incomplete"):
+        ctx["_output"] = _failed_output("terminal stage failure", stage="output_emission")
+        mark_stage(ctx, "output_emission", StageState.TERMINAL, "terminal stage failure")
+        return
+    if ctx.get("_s5_incomplete"):
         execution_status = "DISCOVERY_INCOMPLETE"
     else:
         execution_status = "SUCCESS"
@@ -372,7 +415,7 @@ def s11_output_emission(ctx):
     route_evidence = {}
     for r in evaluable:
         source_url, evidence_ids, prov_ids = _route_evidence(ctx, r)
-        entry = {"evidence_ids": evidence_ids, "provenance_ids": prov_ids}
+        entry: dict[str, object] = {"evidence_ids": evidence_ids, "provenance_ids": prov_ids}
         if source_url:
             entry["source_url"] = source_url
         route_evidence[r["route_id"]] = entry
@@ -396,6 +439,8 @@ def s11_output_emission(ctx):
         "claims": claims,
         "uncertainty_expressed": _uncertainty_list(ctx),
         "evidence": {
+            "dimension_sources": _dimension_sources(ctx),
+            "source_admission": _retrieval_evidence(ctx),
             "conflicts": [c["subject"] for c in ctx.get("_s7_conflicts", [])],
             "per_track_epistemic": ctx["epistemic_states"]["per_track"],
             "route_evidence": route_evidence,
@@ -414,11 +459,12 @@ def s11_output_emission(ctx):
     ctx["_output"] = output
 
 
-def _failed_output(message):
+def _failed_output(message, stage="input_normalization") -> dict[str, Any]:
     priority = "ACUTE_RISK_NOW"  # fail-closed placeholder, see INTERFACE_GAP-001
     output = {
-        "answer": "Kan ikke svare: input ble avvist av S1-valideringen.",
-        "safety": {"priority": priority, "signals": [], "suppressed_routing": True},
+        "answer": ("Kan ikke svare: input ble avvist av S1-valideringen." if stage == "input_normalization"
+                   else "Svaret kunne ikke fullfores. Ingen anbefaling vises."),
+        "safety": {"priority": priority, "safety_class": None, "signals": [], "suppressed_routing": True},
         "tracks": [],
         "routes": [],
         "claims": [],
@@ -427,7 +473,7 @@ def _failed_output(message):
         "provenance": [],
         "epistemic_state": "UNVERIFIED",
         "failures": [
-            {"stage": "input_normalization", "state": "TERMINAL", "message": message}
+            {"stage": stage, "state": "TERMINAL", "message": message}
         ],
         "execution_status": "EXECUTION_FAILED",
         "no_route_asserted": True,
@@ -454,33 +500,36 @@ STAGES = {
 
 
 def _stage_state(ctx, stage):
-    for failure in ctx["failures"]:
-        if failure["stage"] == stage:
-            return failure["state"]
+    states = {failure["state"] for failure in ctx["failures"] if failure["stage"] == stage}
+    for state in ("TERMINAL", "RECOVERABLE", "PARTIAL"):
+        if state in states:
+            return state
     return "SUCCESS"
 
 
-def run_with_trace(input_dict, config=None):
+def run_with_trace(input_dict, config=None) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     """Execute S1-S11 once; return (sut_output/v1 dict, stage trace list)."""
     cfg = dict(_default_config())
     if config:
         cfg.update(config)
+    if not isinstance(input_dict, dict):
+        return _failed_output("INPUT_REJECTED"), [{"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}]
     normalized = normalize_input(input_dict)
     try:
         validate_input(normalized)
-    except SchemaError as exc:
-        return _failed_output(str(exc)), [
+    except SchemaError:
+        return _failed_output("INPUT_REJECTED"), [
             {"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}
         ]
 
-    ctx = make_context(normalized)
+    ctx: dict[str, Any] = make_context(normalized)
     ctx["_config"] = cfg
     trace = []
     for stage in _STAGE_ORDER:
         mark = _with_state(stage, STAGES[stage], ctx)
         mark["state"] = _stage_state(ctx, stage)
         trace.append(mark)
-    return ctx["_output"], trace
+    return ctx.get("_output") or _failed_output("output emission did not run", stage="output_emission"), trace
 
 
 def run(input_dict, config=None):
