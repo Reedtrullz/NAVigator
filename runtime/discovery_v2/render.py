@@ -4,16 +4,19 @@ are synthetic fixture seams, not approved live render transports.
 """
 
 import hashlib
+from .contracts import FetchFn
+from runtime.type_support import override
 
-from runtime.discovery.providers import FetchResult, HttpFetchProvider, ReplayFetchProvider
+from runtime.discovery.providers import FetchResult, HttpFetchProvider, ReplayFetchProvider, ReplayPage
 from runtime.discovery.security import InvalidUrlError, validate_url
 from runtime.discovery_v2.sitemap_fetch import MAX_SIZE
 
 RENDER_TIMEOUT_S = 45
 
 
-def render_url(url, timeout=RENDER_TIMEOUT_S):
-    validate_url(url)
+def render_url(url: str, timeout: float = RENDER_TIMEOUT_S) -> tuple[int, str]:
+    del timeout
+    _ = validate_url(url)
     return (0, "")
 
 
@@ -26,18 +29,18 @@ class RenderFetchFn:
     apart from SiteDirectProvider's own URL budget.
     """
 
-    def __init__(self, inner_fetch_fn, render_fn=render_url,
-                 max_renders=None, audit=None):
-        self.inner = inner_fetch_fn
-        self.render_fn = render_fn
-        self.max_renders = max_renders
-        self.audit = audit if audit is not None else []
-        self.render_count = 0
-        self.rendered_urls = []
+    def __init__(self, inner_fetch_fn: FetchFn, render_fn: FetchFn = render_url,
+                 max_renders: int | None = None, audit: list[tuple[str, str]] | None = None) -> None:
+        self.inner: FetchFn = inner_fetch_fn
+        self.render_fn: FetchFn = render_fn
+        self.max_renders: int | None = max_renders
+        self.audit: list[tuple[str, str]] = audit if audit is not None else []
+        self.render_count: int = 0
+        self.rendered_urls: list[str] = []
 
-    def __call__(self, url):
+    def __call__(self, url: str) -> tuple[int, str]:
         try:
-            validate_url(url)
+            _ = validate_url(url)
         except InvalidUrlError:
             return (0, "")
         self.audit.append(("http", url))
@@ -46,7 +49,7 @@ class RenderFetchFn:
             return (status_code, body)
         # SPA shell per the frozen bounded_fetch contract: (200, "").
         try:
-            validate_url(url)
+            _ = validate_url(url)
         except InvalidUrlError:
             return (200, "")
         if self.max_renders is not None and self.render_count >= self.max_renders:
@@ -70,18 +73,21 @@ class RenderAwareFetchProvider(HttpFetchProvider):
     path, which the orchestrator treats as a fetch error (fail closed).
     """
 
-    def __init__(self, render_fn=render_url, **kwargs):
-        super().__init__(**kwargs)
-        self.render_fn = render_fn
-        self.render_count = 0
-        self.rendered_urls = []
+    def __init__(self, render_fn: FetchFn = render_url, *,
+                 user_agent: str = "Mozilla/5.0 (compatible; NAVExploreDiscovery/1.0; research)",
+                 timeout: float = 15) -> None:
+        super().__init__(user_agent=user_agent, timeout=timeout)
+        self.render_fn: FetchFn = render_fn
+        self.render_count: int = 0
+        self.rendered_urls: list[str] = []
 
-    def fetch(self, url):
+    @override
+    def fetch(self, url: str) -> FetchResult:
         fr = super().fetch(url)
         if fr.status != "render_required":
             return fr
         try:
-            validate_url(url)
+            _ = validate_url(url)
         except InvalidUrlError:
             return fr
         status, dom = self.render_fn(url)
@@ -108,13 +114,14 @@ class RenderReplayFetchProvider(ReplayFetchProvider):
     regression so SPA coverage is explicit, never a silent bypass.
     """
 
-    def __init__(self, manifest, render_manifest=None):
+    def __init__(self, manifest: dict[str, ReplayPage], render_manifest: dict[str, str] | None = None) -> None:
         super().__init__(manifest)
-        self.render_manifest = render_manifest or {}
-        self.render_count = 0
-        self.rendered_urls = []
+        self.render_manifest: dict[str, str] = render_manifest or {}
+        self.render_count: int = 0
+        self.rendered_urls: list[str] = []
 
-    def fetch(self, url):
+    @override
+    def fetch(self, url: str) -> FetchResult:
         fr = super().fetch(url)
         if fr.status == "failed" and url in self.render_manifest:
             dom = self.render_manifest[url]

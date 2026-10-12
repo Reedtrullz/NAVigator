@@ -4,6 +4,8 @@ RouteCandidate carries five separate claim dimensions. Each dimension is
 evidence-backed or explicitly unresolved; states only ever downgrade.
 """
 
+from .contracts import DiscoveryStep, KnowledgeRecord, Route, Service
+
 import re
 
 from runtime.discovery.eligibility import age_in_bounds
@@ -17,7 +19,7 @@ ACCESS_PARTIAL = "ROUTE_ACCESS_PARTIAL"
 EXISTENCE_ONLY = "ROUTE_EXISTENCE_ONLY"
 UNVERIFIED = "ROUTE_UNVERIFIED"
 
-def _service_dimensions(service, track_domain, age):
+def _service_dimensions(service: Service, track_domain: str, age: int | None) -> tuple[dict[str, str], list[str]]:
     """Map one discovery service to the five claim dimensions."""
     dims = {
         "service_exists": "VERIFIED",
@@ -47,7 +49,7 @@ def _service_dimensions(service, track_domain, age):
 WORST_FIRST = {"FAILED": 0, "UNRESOLVED": 1, "PARTIAL": 2, "VERIFIED": 3}
 
 
-def _route_state(dims):
+def _route_state(dims: dict[str, str]) -> str:
     required = ("service_exists", "age_eligible", "scenario_relevant",
                 "access_verified", "contact_verified")
     vals = [dims[d] for d in required]
@@ -62,14 +64,14 @@ def _route_state(dims):
     return "UNVERIFIED"
 
 
-def build_route_candidates(discovery, track_domain, age=None):
+def build_route_candidates(discovery: DiscoveryStep, track_domain: str, age: int | None = None) -> list[Route]:
     """Build RouteCandidates from one discovery step output."""
     if discovery["state"] != "COMPLETED":
         return []
-    routes = []
+    routes: list[Route] = []
     for i, service in enumerate(discovery.get("services", []), start=1):
         dims, methods = _service_dimensions(service, track_domain, age)
-        dimension_evidence = {}
+        dimension_evidence: dict[str, list[str]] = {}
         for dimension in dims:
             bound = _bind_discovery_evidence(service, discovery, track_domain, dimension)
             if not bound:
@@ -140,7 +142,7 @@ _SENTENCE_END_RE = re.compile(r"[.!?]$")
 # service identity ("Barn kan motta samtaler"). ponytail: small closed
 # lists; a wider grammar needs a real parser if fragments ever slip past.
 _SUBJECT_VERB_RE = re.compile(
-    r"^(barn|foreldre|ungdom|familier|pasienter) "
+    r"^(barn|foreldre|ungdom|familier|pasienter) " +
     r"(kan|skal|har|er|mottar|far|ma|bor)\b")
 
 # W4-RC-A (B4): all-caps labels are rejected unless they resolve to a
@@ -165,12 +167,12 @@ _TABLE_ROW_RE = re.compile(r"^\|\s*([^|]+?)\s*\|")
 _HEADER_ROW_RE = re.compile(r"^\|(.+)\|$")
 _SEPARATOR_ROW_RE = re.compile(r"^\|\s*:?-{3,}")
 _SELF_CONTACT_RE = re.compile(
-    r"uten henvisning|ingen henvisning|ikke nodvendig|direkte kontakt|"
+    r"uten henvisning|ingen henvisning|ikke nodvendig|direkte kontakt|" +
     r"drop-?in|selv ta kontakt|direkte|soknad", re.IGNORECASE)
 _REFERRAL_RE = re.compile(r"henvisning|henvises|henviser", re.IGNORECASE)
 
 
-def _national_service_name(claim):
+def _national_service_name(claim: str) -> str | None:
     """Grounded service-name extraction: quoted or bold segments only.
 
     RC-07: a route target is a service concept. Numeric/temporal facts,
@@ -188,19 +190,19 @@ def _national_service_name(claim):
     return None
 
 
-def _valid_service_name(name):
+def _valid_service_name(name: str) -> bool:
     """Shared identity gate: meaningful label, no fragments/facts.
 
     Digits stay rejected on the quoted/bold path (RC-07 numeric-fact
     risk lives there); header-gated table identities may contain them
     because names like 'Helsestasjon 0-5 ar' are legitimate targets.
     """
-    return (_valid_label(name) and not _DIGIT_RE.search(name)
+    return (_valid_label(name) and _DIGIT_RE.search(name) is None
             and not _is_sentence_fragment(name)
             and _resolves_service_acronym(name))
 
 
-def _is_sentence_fragment(name):
+def _is_sentence_fragment(name: str) -> bool:
     """W4-RC-A (B4): generic sentence-fragment signature gate."""
     low = name.strip().lower()
     return (low.startswith(_SENTENCE_STARTERS)
@@ -208,25 +210,25 @@ def _is_sentence_fragment(name):
             or bool(_SENTENCE_END_RE.search(low)))
 
 
-def _resolves_service_acronym(name):
+def _resolves_service_acronym(name: str) -> bool:
     """W4-RC-A (B4): all-caps labels need resolved service identity."""
     if not _ALL_CAPS_RE.match(name.strip()):
         return True  # not acronym-shaped; other gates decide
     return name.strip().lower() in _SERVICE_ACRONYMS
 
 
-def _valid_heading_label(name):
+def _valid_heading_label(name: str) -> bool:
     """Heading path allows digits ('0-5 ar'); sentence fragments stay out."""
     return (_valid_label(name)
             and not _is_sentence_fragment(name)
             and _resolves_service_acronym(name))
 
 
-def _heading_marker_free(name):
+def _heading_marker_free(name: str) -> bool:
     return not any(m in name.lower() for m in _HEADING_MARKERS)
 
 
-def _heading_context_service_name(claim, lines):
+def _heading_context_service_name(claim: str, lines: list[str] | None) -> str | None:
     if not isinstance(lines, list):
         return None
     norm = claim.strip()
@@ -248,28 +250,32 @@ def _heading_context_service_name(claim, lines):
     return None
 
 
-def _bind_discovery_evidence(service, discovery, track_domain, dimension):
-    refs = []
+def _bind_discovery_evidence(service: Service, discovery: DiscoveryStep, track_domain: str, dimension: str) -> list[str]:
+    refs: list[str] = []
     for j, ev in enumerate(discovery.get("evidence", []), 1):
-        if (not service.get("service_id") or ev.get("service_id") != service["service_id"]
+        service_id = service.get("service_id")
+        content_hash = service.get("content_hash")
+        bounds = service.get("age_bounds")
+        span = ev.get("supporting_span")
+        locator = ev.get("locator")
+        if (not service_id or ev.get("service_id") != service_id
                 or not service.get("source_url") or ev.get("source_url") != service["source_url"]
-                or not re.fullmatch(r"[0-9a-f]{64}", str(service.get("content_hash", "")))
-                or ev.get("content_hash") != service["content_hash"]
+                or not re.fullmatch(r"[0-9a-f]{64}", content_hash or "")
+                or ev.get("content_hash") != content_hash
                 or ev.get("dimension") != dimension
-                or not isinstance(ev.get("supporting_span"), str) or not ev["supporting_span"].strip()
-                or not isinstance(ev.get("locator"), str) or not ev["locator"].strip()):
+                or not isinstance(span, str) or not span.strip()
+                or not isinstance(locator, str) or not locator.strip()):
             continue
         value = ev.get("value")
-        span = ev["supporting_span"]
         if not re.search(r"(?<!\w)" + re.escape(normalize_match_text(service["name"])) + r"(?!\w)", normalize_match_text(span)):
             continue
-        if dimension == "service_exists" and (value != service["name"] or value not in ev["supporting_span"]):
+        if dimension == "service_exists" and (not isinstance(value, str) or value != service["name"] or value not in span):
             continue
-        if dimension == "age_eligible" and (not service.get("age_bounds") or value != service["age_bounds"]):
+        if dimension == "age_eligible" and (not bounds or value != bounds):
             continue
         if dimension == "age_eligible":
             match = ServiceExtractor.AGE_RE.search(span)
-            if (match is None or ServiceExtractor._parse_age_bounds(match) != value
+            if (match is None or ServiceExtractor.parse_age_bounds(match) != value
                     or normalize_match_text(match.group(0)) != normalize_match_text(service.get("age_text") or "")):
                 continue
         if dimension == "scenario_relevant":
@@ -289,26 +295,26 @@ def _bind_discovery_evidence(service, discovery, track_domain, dimension):
                                      and not ServiceExtractor.REFERRAL_NEGATED_RE.search(span)
                                      and not ServiceExtractor.REFERRAL_SOFT_RE.search(span)),
             }
-            if value not in (service.get("access_methods") or []) or not markers.get(value):
+            if not isinstance(value, str) or value not in (service.get("access_methods") or []) or not markers.get(value):
                 continue
         refs.append("E-DISC-%s-%03d" % (track_domain.upper(), j))
     return refs
 
 
-def _valid_label(name):
+def _valid_label(name: str) -> bool:
     return (3 <= len(name) <= 80
             and "|" not in name
             and "#" not in name
             and name.strip(" :-").lower() not in _METADATA_LABELS)
 
 
-def _header_cell_service(header):
+def _header_cell_service(header: str) -> bool:
     """True when any header cell declares a service-identity column."""
     cells = [c.strip().strip("*").lower() for c in header.split("|")]
     return any(cell in _SERVICE_IDENTITY_HEADERS for cell in cells)
 
 
-def _structured_service_name(claim, lines):
+def _structured_service_name(claim: str, lines: list[str] | None) -> str | None:
     row_match = _TABLE_ROW_RE.match(claim.strip())
     if not isinstance(lines, list) or row_match is None:
         return None
@@ -335,7 +341,7 @@ def _structured_service_name(claim, lines):
     return name
 
 
-def _self_referral_from_row(claim):
+def _self_referral_from_row(claim: str) -> bool | None:
     """Lexical access hint from the claim row itself (documented ceiling).
 
     Negative/positive self-contact markers outrank a bare 'henvisning'
@@ -349,15 +355,15 @@ def _self_referral_from_row(claim):
     return None
 
 
-def build_national_route_candidates(records, discovery_service_count=0):
+def build_national_route_candidates(records: list[KnowledgeRecord], discovery_service_count: int = 0) -> list[Route]:
     """Build EXISTENCE_ONLY national routes from current research docs.
 
     FROZEN_RULE, GAP and historical records stay uncertainty-only.
-    Provenance ids follow _provenance_records numbering: P-K ids continue
+    Provenance ids follow provenance_records numbering: P-K ids continue
     after discovery services over the full record-list order.
     """
-    routes = []
-    seen = set()
+    routes: list[Route] = []
+    seen: set[tuple[str, str]] = set()
     for idx, rec in enumerate(records):
         if rec.get("source_type") != "PROJECT_RESEARCH":
             continue

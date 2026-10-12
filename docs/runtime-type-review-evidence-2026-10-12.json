@@ -1,0 +1,854 @@
+{
+  "schema_version": "navigator-runtime-type-independent-review/v1",
+  "verified_at_utc": "2026-10-12T00:38:17Z",
+  "base_commit": "08d51d4feadfe03695ca2af87370949b44cafa6b",
+  "branch": "codex/runtime-type-cleanup",
+  "source_revision_mode": "local-uncommitted-source-hashes",
+  "runtime_source_manifest_sha256": "1db6cfd0bf67e4753a6ca14a09c6ed39a8d73d071121d451898b7c4fb0b34419",
+  "runtime_source_receipt": "docs/runtime-type-evidence-2026-10-12.json",
+  "independent_review": {
+    "tool": "Anti",
+    "requested_model": "gemini-3.1-pro",
+    "actual_model": "gemini-3.1-pro",
+    "actual_provider": "google-antigravity",
+    "run_id": "20261012T003458Z-0a12fd3e",
+    "run_status": "success",
+    "scope_status": "complete",
+    "result_path": "/Users/reidar/.codex/anti-runs/20261012T003458Z-0a12fd3e/revisions/e5425bb4a82a4012a002962c7c4447d5/result.json",
+    "result_sha256": "306b04194c41535050ecafbb98d280f1b1df6127c4c371554c8b2da1c93236e6",
+    "prompt_sha256": "3d4f48ccff0f9320e05bcc487a7451b0701e4577b7714589383c3ef6c03cc6a7",
+    "user_approved_exact_prompt": true,
+    "policy_path": "docs/runtime-type-review-submission-policy-2026-10-12.json",
+    "policy_sha256": "37a17d2aa3413011ca02b33f653d12b512d2edd54e06006453f4c200858c2b25",
+    "helper": {
+      "bundleTreeHash": "e1ea342af57a8a7d299e486824c50866fa6d4e15a119ea58130d8618a2e3fd62",
+      "parityStatus": "match",
+      "path": "/Users/reidar/.codex/skills/anti/scripts/anti.py",
+      "treeHash": "e1ea342af57a8a7d299e486824c50866fa6d4e15a119ea58130d8618a2e3fd62",
+      "version": "2.4.3"
+    },
+    "files_declared": 54,
+    "files_sent": 54,
+    "omitted_files": 0,
+    "omitted_chunks": 0,
+    "attempts": 1,
+    "fallback": false,
+    "output_status": "success",
+    "upstream_status": "completed",
+    "usage": {
+      "input_tokens": 156091,
+      "output_tokens": 408,
+      "total_tokens": 187953
+    },
+    "context_preflight": {
+      "declared_comparison": "estimate_within_declaration",
+      "input": {
+        "component_bytes": {
+          "controls": 67,
+          "format": 0,
+          "input": 549842,
+          "instructions": 0,
+          "tools": 0
+        },
+        "estimate_basis": "one_unit_per_serialized_utf8_byte_plus_2048_framing_units",
+        "estimate_is_upper_bound": false,
+        "estimated_tokens": 551956,
+        "exact_tokens": null,
+        "serialized_utf8_bytes": 549908
+      },
+      "limit": {
+        "basis": "none",
+        "declared_tokens": 1048576,
+        "verified_tokens": null
+      },
+      "measurement_boundary": "validated_responses_without_gateway_metadata",
+      "output": {
+        "includes_reasoning": false,
+        "requested_tokens": 32768
+      },
+      "reason": "insufficient_verified_evidence",
+      "request_unchanged": true,
+      "status": "unknown",
+      "unknown_components": [
+        "adapter_framing",
+        "compatible_tokenizer",
+        "reasoning_reservation",
+        "verified_context_limit"
+      ],
+      "version": 1
+    },
+    "coverage": [
+      {
+        "bytesDeclared": 2544,
+        "bytesSent": 2544,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": ".github/workflows/runtime-synthetic.yml",
+        "reason": null,
+        "sha256": "ccdd2f276789c15a69f90ce6ce4f6a55e9ffa96e768d9d9aca9207834256fc73",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 7375,
+        "bytesSent": 7375,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "docs/runtime-type-evidence-2026-10-12.json",
+        "reason": null,
+        "sha256": "f5c690912c1875629b2c5c6c277f3503449a94d263fc6c7df0b601a948d11c65",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 5282,
+        "bytesSent": 5282,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "docs/runtime-type-test-proof-2026-10-12.json",
+        "reason": null,
+        "sha256": "c2e43b574a097de91a5a564fb1d1e32619fd6994e4f19583de8a817aa1a23edd",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 5357,
+        "bytesSent": 5357,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "docs/runtime-types-2026-10-12.md",
+        "reason": null,
+        "sha256": "78d3971629f23032a9d76238cef0d96ea0ac5c0fae5681b23480c0d074112673",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 6480,
+        "bytesSent": 6480,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/classification.py",
+        "reason": null,
+        "sha256": "5f0cb3a22dfc5e9aee463af80abd2d1aa76698cf687c31723a54443a6fcc2ec2",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 1208,
+        "bytesSent": 1208,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/classification.pyi",
+        "reason": null,
+        "sha256": "617874e3ba500e7315462e3dd5e3aa709f5352d13e0033b44dae2c5560954f0a",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 1575,
+        "bytesSent": 1575,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/contracts.py",
+        "reason": null,
+        "sha256": "56c92a4dad9330523fb7a6f7f18a83dc73f95002f4bff5c0b2443bcac8dfa2e2",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 1118,
+        "bytesSent": 1118,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/eligibility.py",
+        "reason": null,
+        "sha256": "de96249873180e5799162a4468a2440fa889a7508b8f71cf782ca92f77ed928b",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 16043,
+        "bytesSent": 16043,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/engine.py",
+        "reason": null,
+        "sha256": "cc0bbcff62cf1e9d9f5b148f6243009eae109d6aa21441d81c95034910a95311",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 12305,
+        "bytesSent": 12305,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/orchestrator.py",
+        "reason": null,
+        "sha256": "4205e6100c8e933d3e1ec524594698c10073a63a2d718fa40b2b82d4221f6a43",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 326,
+        "bytesSent": 326,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/orchestrator.pyi",
+        "reason": null,
+        "sha256": "e27c910aa50a7948f8c066f9f32d6b58c58f6ef990a7f378bb08db692fdb8ba8",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 3094,
+        "bytesSent": 3094,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/protocol.py",
+        "reason": null,
+        "sha256": "daacc9da795942bb507cd048c0238f755f6413f0f7479303a1f5b0f13f399c51",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 828,
+        "bytesSent": 828,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/protocol.pyi",
+        "reason": null,
+        "sha256": "6e8e74de9395ef8a0560c2cd369f1337ac3303bffc001ce9a917afa9e41e6ff3",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 7484,
+        "bytesSent": 7484,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/providers.py",
+        "reason": null,
+        "sha256": "26cea44157ee391d80e738146625bbaaf6b8d259fe65b3ba4dea986851f85457",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 5920,
+        "bytesSent": 5920,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/security.py",
+        "reason": null,
+        "sha256": "72e986279b207f245d51043c41c9024ac94dd4e45af2f3c98097a41d6acf180a",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 9940,
+        "bytesSent": 9940,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery/test_host_policy.py",
+        "reason": null,
+        "sha256": "3d74a9b58171400c32a213db61f9dcc7612e7fb344dda63ea5f507d354df8f0a",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 1665,
+        "bytesSent": 1665,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/classification_v25.py",
+        "reason": null,
+        "sha256": "b79a29ca43f63ad3f1cd63bcb671279ecd11000fbbe456e59e327ef089f81c8e",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 412,
+        "bytesSent": 412,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/classification_v25.pyi",
+        "reason": null,
+        "sha256": "a79de00e6c7d2f3eff6fe000e94077163352e12b07d2059336569c86496c8b67",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 1964,
+        "bytesSent": 1964,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/contracts.py",
+        "reason": null,
+        "sha256": "84caea964df7b98c83d2421fea9a27d723a1a2f64b90eba12bb6385ea155ae25",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 10336,
+        "bytesSent": 10336,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/orchestrator_v25.py",
+        "reason": null,
+        "sha256": "517b1d362316231e18bb2166232b6fb21a327eb9ca9807a1c67b7169a6eddb1a",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 15056,
+        "bytesSent": 15056,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/providers.py",
+        "reason": null,
+        "sha256": "54b38921b02736763d3baef25e7bb860f1bf1b9f8d3b0fb3ac58b0808083806a",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 3456,
+        "bytesSent": 3456,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/providers.pyi",
+        "reason": null,
+        "sha256": "38e0a6429a8f8a0cda346d8eb14255afbd88337862b43991060705eec3191cf5",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 6972,
+        "bytesSent": 6972,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/providers_v25.py",
+        "reason": null,
+        "sha256": "ecf40772b180fdcd34fbdf0c7772aa9fe04fa7e6574acb4aa5eb4c8ade2ad23f",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 5363,
+        "bytesSent": 5363,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/render.py",
+        "reason": null,
+        "sha256": "bf983c38e9ff33f0c57bd46dbcb66e7868f38e4f77055e9494a737e8655c0822",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 618,
+        "bytesSent": 618,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/sitemap_fetch.py",
+        "reason": null,
+        "sha256": "f6b9f664fc6633da2b3ea7557087203c16ef8a24cf791aa4b02c74fb000fb87d",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 6365,
+        "bytesSent": 6365,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/discovery_v2/test_fetch_accounting.py",
+        "reason": null,
+        "sha256": "3570468c1e8641cb1dcf90f228620bf1a64a0d35d0bce11568573754cac237ea",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 3866,
+        "bytesSent": 3866,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/context.py",
+        "reason": null,
+        "sha256": "078bcf3fb566e3f02a05a23e69835d88e863b1ef4a3c69a6df240537835fa0a3",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 420,
+        "bytesSent": 420,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/context.pyi",
+        "reason": null,
+        "sha256": "0183252aec0dab81df27923e982c4a4ef4d218ab301bead74f453652bc494d13",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 4956,
+        "bytesSent": 4956,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/aggregate.py",
+        "reason": null,
+        "sha256": "c1468869b0d4fe53394dcbb3702d15767675a95278f6802fb94ce5760bdd110f",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 8036,
+        "bytesSent": 8036,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/contracts.py",
+        "reason": null,
+        "sha256": "2477ae08134e8ea664f6398d419adb653280f4f77fe07ced52e2ace7983b555c",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 3527,
+        "bytesSent": 3527,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/decompose.py",
+        "reason": null,
+        "sha256": "29ea5bd0ee080963fe4b642730671c2c7e066562eb6022723af5f4865929eb19",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 7075,
+        "bytesSent": 7075,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/discovery_adapter.py",
+        "reason": null,
+        "sha256": "a113a48cb747d662b6b189494c94dad908f66d5b62e490b49de7e516bc222009",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 13318,
+        "bytesSent": 13318,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/knowledge.py",
+        "reason": null,
+        "sha256": "6f76f314475ae7f0ab3bf17f1a65c81ca40cce33b2ea6b52b581616919ee94d5",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 23096,
+        "bytesSent": 23096,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/pipeline.py",
+        "reason": null,
+        "sha256": "da6a812cf0f6b232143e703a12d0eb2c0cc5d7434d43602afb9a0bd135a9c628",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 18844,
+        "bytesSent": 18844,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/routes.py",
+        "reason": null,
+        "sha256": "a5c7e5c7bcd120f7a3268247b8e9c1524503e476c431d983d57f1edfcf8c57b0",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 6729,
+        "bytesSent": 6729,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/safety.py",
+        "reason": null,
+        "sha256": "13bbba8ffad9a32f8277df0a7184b28cf873d68729394904838c2dc02657a3b3",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 2734,
+        "bytesSent": 2734,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/synthetic_fixtures.py",
+        "reason": null,
+        "sha256": "4b22519dd2a071f7f5b30a8f13883e653c07944ca11397c6718338609f66bbb4",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 8963,
+        "bytesSent": 8963,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/test_evidence_integrity.py",
+        "reason": null,
+        "sha256": "e3e0a846dfa86f479177673ef567ce788fb6307bbd4b821225d195a88a6020b9",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 5108,
+        "bytesSent": 5108,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/test_privacy_scope.py",
+        "reason": null,
+        "sha256": "9f1832e3d6cbd234bc9754ae8eb86d0122d05135fdd2be1a7c62eef20eb0fd94",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 2675,
+        "bytesSent": 2675,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/test_semantic_normalization.py",
+        "reason": null,
+        "sha256": "5627f090fc26c673ecae9a23c2c967c04c27b93c26c3a3b77936b601e4082dac",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 4785,
+        "bytesSent": 4785,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/test_source_admission.py",
+        "reason": null,
+        "sha256": "6534b6db4cdddc6e832ed6ca8fa5c1b0e6fb2e3a8ef66d708d731cb5858644ff",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 5638,
+        "bytesSent": 5638,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/test_type_boundaries.py",
+        "reason": null,
+        "sha256": "daf3fe671dd37a89f6435c3ba6075b5d66048bf94333ca8adeffb0abda1bafe8",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 318,
+        "bytesSent": 318,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase2/text_normalization.py",
+        "reason": null,
+        "sha256": "c0072cb849be163295eb4103022c7299d957f793632906b04d71712c13f4d6ce",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 12830,
+        "bytesSent": 12830,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase3/finalize.py",
+        "reason": null,
+        "sha256": "49294f77b45a65605f15a5f6aacbde23bf96c833d15533ff1d43e0d6a35f77f8",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 2633,
+        "bytesSent": 2633,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase3/pipeline.py",
+        "reason": null,
+        "sha256": "21d0927bd193f9e85d47fb9ca1ebbf5955422896bb5985085f10dd63438a797c",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 6387,
+        "bytesSent": 6387,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase3/planner.py",
+        "reason": null,
+        "sha256": "3cff3b9090f1caa84e3c53a973dd243f95140486de75aa21fff0f80431e34f67",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 6876,
+        "bytesSent": 6876,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase3/render.py",
+        "reason": null,
+        "sha256": "795a16f032dfad70fb439614ff64864b7e72cfdf1f9e0451caf3bb26ba59644d",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 2386,
+        "bytesSent": 2386,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase3/test_rejection_synthetic.py",
+        "reason": null,
+        "sha256": "b843c269b41c7a4d1afe1bc788c4cc11c72dc527c2e68610270a8a74a2a21f55",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 14461,
+        "bytesSent": 14461,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/phase3/test_runtime_synthetic.py",
+        "reason": null,
+        "sha256": "bb28ea33380f3371a3eda76e8cbdc8d977cf674c98dd0010c74efea15fa5b119",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 4286,
+        "bytesSent": 4286,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/schemas.py",
+        "reason": null,
+        "sha256": "16503b9d8ebdf353a04e81678f7bc291b1ea005b752cfbeca1cc55993d591b00",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 175,
+        "bytesSent": 175,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/sut/schemas.pyi",
+        "reason": null,
+        "sha256": "f641f70e10773691e9b2e0ecced7a7f1f6df5c1c864cc460b4cb4b59f4aeebfa",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 1039,
+        "bytesSent": 1039,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "runtime/type_support.py",
+        "reason": null,
+        "sha256": "1611d3584a79d23d1416afed5d97f1e52a7178f022b07c7266d33fbdc04565bd",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 3724,
+        "bytesSent": 3724,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "tools/runtime_synthetic.py",
+        "reason": null,
+        "sha256": "3c257068a10e726b2d927b99d8f85820c062c801c0ec5a1d384bbf372fb2d2fa",
+        "sourceKind": "file"
+      },
+      {
+        "bytesDeclared": 202814,
+        "bytesSent": 202814,
+        "chunksExpected": 1,
+        "chunksSent": 1,
+        "contentStatus": "complete",
+        "path": "docs/.runtime-type-review-input-2026-10-12.md",
+        "reason": null,
+        "sha256": "84d6e6043c1f189f47b471842eb171b6ee96f430cf98e909bcfa102b96cf5795",
+        "sourceKind": "file"
+      }
+    ],
+    "output_text": "### Defects, Regressions, and Usability Problems\n\nNo concrete defects, regressions, security vulnerabilities, API breaks, or test failures were identified in this increment.\n\nThe typing declarations accurately reflect the underlying runtime semantics, fail-closed boundaries remain intact, input validation and privacy scoping execute prior to source admission/opening, and backward-compatible aliases for refactored helpers and interfaces are preserved.\n\n### Verification and Scope Caveats\n\n1. **Unchecked Legacy/Protected Implementations Behind Stubs**:\n   - As documented in `docs/runtime-type-evidence-2026-10-12.json` and `docs/runtime-types-2026-10-12.md`, seven modules (`runtime/discovery/classification.py`, `runtime/discovery/orchestrator.py`, `runtime/discovery/protocol.py`, `runtime/discovery_v2/classification_v25.py`, `runtime/discovery_v2/providers.py`, `runtime/sut/context.py`, and `runtime/sut/schemas.py`) are shadowed by `.pyi` stub interfaces in the type-check manifest and are not checked directly for type diagnostics.\n   - Protected files (`runtime/sut/context.py`, `runtime/sut/schemas.py`, `runtime/sut/pipeline.py`, schemas, and evaluation data) remained untouched as required by the CI guard check.\n\n2. **Execution Environment and Provider Boundaries**:\n   - Discovery remains confined to synthetic/replay fixtures (`mode=\"replay\"`). Live network operations, browser launches, DNS lookups, and subprocess execution are explicitly guarded and asserted as 0 in `tools/runtime_synthetic.py`.\n   - The test suite verifies 68 synthetic test cases across the isolated runtime candidate; this does not constitute live provider verification, clinical or legal validation, rescoring of frozen evaluation sets, or pilot release approval.",
+    "actionable_findings": [],
+    "repair_required": false,
+    "caveat_dispositions": [
+      {
+        "topic": "Legacy implementations behind seven stubs",
+        "disposition": "Interfaces are checked; underlying legacy .py implementations are not claimed warning-free. Their public code was supplied for API comparison; protected implementations remain unchanged."
+      },
+      {
+        "topic": "Live/provider/domain/pilot acceptance",
+        "disposition": "Only explicit guarded synthetic modules executed. Phase-3 replay remains disconnected; separate experimental live-capable V2.5 code is not activated. No release/legal/clinical/live acceptance is inferred."
+      }
+    ]
+  },
+  "local_verification": {
+    "typing": {
+      "filesAnalyzed": 42,
+      "errorCount": 0,
+      "warningCount": 0,
+      "informationCount": 0,
+      "timeInSec": 10.027,
+      "checker": "basedpyright",
+      "version": "1.39.3",
+      "exit_code": 0,
+      "diagnostics_sha256": "ca5c90ae15a623975e326b1b72aaaed21da45f4207fb114633606b33f3b3c61a",
+      "scope_files": 42
+    },
+    "synthetic_runs": [
+      {
+        "candidate_sha": "08d51d4feadfe03695ca2af87370949b44cafa6b",
+        "completed_at_utc": "2026-10-12T00:35:16.224948+00:00",
+        "elapsed_seconds": 0.376,
+        "errors": 0,
+        "expected_failures": 0,
+        "failure_details": [],
+        "failures": 0,
+        "guard_attempts": {
+          "browser": 0,
+          "dns": 0,
+          "socket_connection": 0,
+          "subprocess": 0
+        },
+        "module_test_counts": {
+          "runtime.discovery.test_host_policy": 8,
+          "runtime.discovery_v2.test_fetch_accounting": 7,
+          "sut.phase2.test_evidence_integrity": 11,
+          "sut.phase2.test_privacy_scope": 5,
+          "sut.phase2.test_semantic_normalization": 5,
+          "sut.phase2.test_source_admission": 8,
+          "sut.phase2.test_type_boundaries": 5,
+          "sut.phase3.test_rejection_synthetic": 3,
+          "sut.phase3.test_runtime_synthetic": 16
+        },
+        "passed": true,
+        "python_version": "3.10.4 (v3.10.4:9d38120e33, Mar 23 2022, 17:29:05) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "runtime_source_manifest_sha256": "1db6cfd0bf67e4753a6ca14a09c6ed39a8d73d071121d451898b7c4fb0b34419",
+        "schema_version": "navigator-runtime-ci/v1",
+        "skipped": 0,
+        "started_at_utc": "2026-10-12T00:35:15.848222+00:00",
+        "tests_run": 68,
+        "unexpected_successes": 0
+      },
+      {
+        "candidate_sha": "08d51d4feadfe03695ca2af87370949b44cafa6b",
+        "completed_at_utc": "2026-10-12T00:35:16.197642+00:00",
+        "elapsed_seconds": 0.349,
+        "errors": 0,
+        "expected_failures": 0,
+        "failure_details": [],
+        "failures": 0,
+        "guard_attempts": {
+          "browser": 0,
+          "dns": 0,
+          "socket_connection": 0,
+          "subprocess": 0
+        },
+        "module_test_counts": {
+          "runtime.discovery.test_host_policy": 8,
+          "runtime.discovery_v2.test_fetch_accounting": 7,
+          "sut.phase2.test_evidence_integrity": 11,
+          "sut.phase2.test_privacy_scope": 5,
+          "sut.phase2.test_semantic_normalization": 5,
+          "sut.phase2.test_source_admission": 8,
+          "sut.phase2.test_type_boundaries": 5,
+          "sut.phase3.test_rejection_synthetic": 3,
+          "sut.phase3.test_runtime_synthetic": 16
+        },
+        "passed": true,
+        "python_version": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+        "runtime_source_manifest_sha256": "1db6cfd0bf67e4753a6ca14a09c6ed39a8d73d071121d451898b7c4fb0b34419",
+        "schema_version": "navigator-runtime-ci/v1",
+        "skipped": 0,
+        "started_at_utc": "2026-10-12T00:35:15.848045+00:00",
+        "tests_run": 68,
+        "unexpected_successes": 0
+      }
+    ],
+    "all_reviewed_hashes_match": true,
+    "tracked_diff_sha256": "e562ed2e50f5acfa8a783cc8d7fd952850cb98a886b247f8f77f7e2f3fad695b",
+    "tracked_diff_matches": true,
+    "git_diff_check_exit_code": 0,
+    "runtime_source_unchanged": true,
+    "local_audit": {
+      "source_manifest_matches": true,
+      "source_files": 42,
+      "all_source_ast_parse": true,
+      "type_diagnostics": {
+        "filesAnalyzed": 42,
+        "errorCount": 0,
+        "warningCount": 0,
+        "informationCount": 0,
+        "timeInSec": 10.027
+      },
+      "type_diagnostics_sha256": "ca5c90ae15a623975e326b1b72aaaed21da45f4207fb114633606b33f3b3c61a",
+      "protected_diff": "",
+      "frozen_evaluation_tree": "dbb2c7ad8d0ddb4f9d0ae77b9d52714d532deb55",
+      "runtime_fixture_leftovers": []
+    },
+    "preservation": {
+      "checks": {
+        "runtime_source_hashes_unchanged": true,
+        "protected_files_unchanged": true,
+        "pilot_packages_unchanged": true,
+        "runtime_disconnected": true,
+        "evaluation_git_diff_empty": true,
+        "evaluation_tree_unchanged": true,
+        "evaluation_metadata_unchanged": true,
+        "historical_pilot_metadata_unchanged": true,
+        "primary_head_unchanged": true,
+        "primary_status_unchanged": true,
+        "primary_readme_unchanged": true
+      },
+      "actual_evaluation_metadata": {
+        "roots": 2,
+        "entries": 11433,
+        "sha256": "9d3888d7fe24e6ec3027c6e3e4612069b0fced78382f23da0b94c5cf01a9625d"
+      },
+      "actual_historical_pilot_metadata": {
+        "roots": 18,
+        "entries": 8473,
+        "sha256": "affaa1195f76a1b11203fbf7f5b559ac96a4e1e573efd482ac2f011403ea8f06"
+      },
+      "actual_primary_status_sha256": "541454e9ca806c29ae9c276b7e998bd8b6fcf11afc3ffbe3001d8c5c32373d16",
+      "passed": true
+    }
+  },
+  "earlier_preflight_failures": {
+    "anti": {
+      "generation_submitted": false,
+      "reason": "Credential pattern false positive within public service URL slug. Exact prompt approval obtained before the one generation."
+    },
+    "native": {
+      "spawned": false,
+      "reason": "PreToolUse hook rejected unregistered worker role. No role/policy/configuration bypass; approved manual routed options unavailable because OCX proxy is not running. Registered Sol review role prohibited by parent gate."
+    },
+    "direct_file_test_start": {
+      "exit_code": 1,
+      "reason": "ModuleNotFoundError for runtime when invoking tools/runtime_synthetic.py directly. Documented CI command uses module invocation with PYTHONPATH=runtime; both versions pass. No code repair required."
+    }
+  },
+  "ci": {
+    "executed_remotely_for_increment": false,
+    "local_invocation_matches_workflow": true
+  },
+  "changes_this_turn": {
+    "runtime_source": false,
+    "test_source": false,
+    "workflow": false,
+    "review_documents": true
+  },
+  "limits": [
+    "Independent advisory AI review, not GitHub human approval",
+    "42 explicit typed files; seven underlying implementations not directly type-checked",
+    "No private data or frozen evaluation execution/rescore",
+    "No commit, push, new PR, merge or deployment",
+    "Disk available briefly below 30GiB; no long build/test loop; bounded synthetic runs each under one second",
+    "Shared account-wide provider concurrency not independently observable; one sequential helper call"
+  ]
+}

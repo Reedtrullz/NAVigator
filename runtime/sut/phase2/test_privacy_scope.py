@@ -1,26 +1,29 @@
 import builtins
 import copy
 from pathlib import Path
+from collections.abc import Callable
+from typing import cast
 import unittest
 from unittest.mock import patch
 
+from .contracts import AdmissionFailure, Document
 from .knowledge import load_knowledge, retrieve
 from .synthetic_fixtures import SyntheticCorpus
 
 
 class PrivacyScopeTests(unittest.TestCase):
-    def load(self, corpus, profile=None):
+    def load(self, corpus: SyntheticCorpus, profile: object = None) -> tuple[list[Document], list[AdmissionFailure]]:
         return load_knowledge(str(corpus.index), str(corpus.root),
                               access_profile=corpus.profile if profile is None else profile)
 
-    def test_no_profile_opens_nothing(self):
+    def test_no_profile_opens_nothing(self) -> None:
         corpus = SyntheticCorpus(self)
         with patch("builtins.open", side_effect=AssertionError("unauthorized open")):
             docs, failures = load_knowledge(str(corpus.index), str(corpus.root))
         self.assertEqual(docs, [])
         self.assertEqual(failures, [{"reason": "ACCESS_PROFILE_REQUIRED"}])
 
-    def test_private_derived_unknown_and_denied_are_never_opened(self):
+    def test_private_derived_unknown_and_denied_are_never_opened(self) -> None:
         corpus = SyntheticCorpus(self)
         for cls, permission in [("PRIVATE", "GENERAL_APPROVED"),
                                 ("DERIVED_CASE", "GENERAL_APPROVED"),
@@ -29,16 +32,19 @@ class PrivacyScopeTests(unittest.TestCase):
             with self.subTest(cls=cls, permission=permission):
                 corpus.docs.clear()
                 corpus.profile["documents"].clear()
-                corpus.add_doc("restricted", "PRIVATE_CANARY", doc_class=cls,
+                _ = corpus.add_doc("restricted", "PRIVATE_CANARY", doc_class=cls,
                                     permission=permission)
-                opened = []
+                opened: list[str] = []
                 real_open = builtins.open
 
-                def observed_open(path, *args, **kwargs):
+                def observed_open(path: str | Path, mode: str = "r", buffering: int = -1,
+                                  encoding: str | None = None, errors: str | None = None,
+                                  newline: str | None = None, closefd: bool = True,
+                                  opener: Callable[[str, int], int] | None = None) -> object:
                     opened.append(Path(path).name)
                     if Path(path).name == "restricted.md":
                         raise AssertionError("private file opened")
-                    return real_open(path, *args, **kwargs)
+                    return real_open(path, mode, buffering, encoding, errors, newline, closefd, opener)
 
                 with patch("builtins.open", observed_open):
                     docs, failures = self.load(corpus)
@@ -47,9 +53,9 @@ class PrivacyScopeTests(unittest.TestCase):
                 self.assertNotIn("PRIVATE_CANARY", str(failures))
                 self.assertNotIn("restricted", str(failures))
 
-    def test_public_bytes_need_exact_id_path_class_and_hash_permission(self):
+    def test_public_bytes_need_exact_id_path_class_and_hash_permission(self) -> None:
         corpus = SyntheticCorpus(self)
-        corpus.add_doc()
+        _ = corpus.add_doc()
         docs, failures = self.load(corpus)
         self.assertEqual([d["doc_id"] for d in docs], ["public"])
         self.assertEqual(failures, [])
@@ -58,11 +64,11 @@ class PrivacyScopeTests(unittest.TestCase):
         with patch("builtins.open", wraps=builtins.open) as opened:
             docs, failures = self.load(corpus, profile)
         self.assertEqual(docs, [])
-        self.assertFalse(any(str(c.args[0]).endswith("public.md") for c in opened.call_args_list))
+        self.assertFalse(any(str(cast(object, c.args[0])).endswith("public.md") for c in opened.call_args_list))
 
-    def test_symlink_and_traversal_are_denied_before_document_open(self):
+    def test_symlink_and_traversal_are_denied_before_document_open(self) -> None:
         corpus = SyntheticCorpus(self)
-        corpus.add_doc("hidden", "PRIVATE_CANARY", doc_class="PRIVATE")
+        _ = corpus.add_doc("hidden", "PRIVATE_CANARY", doc_class="PRIVATE")
         (corpus.root / "link.md").symlink_to(corpus.root / "hidden.md")
         for path in ["link.md", "../outside.md", str(corpus.root / "hidden.md")]:
             corpus.docs = [{"id": "allowed", "path": path, "class": "DECISION_SUPPORT",
@@ -77,12 +83,12 @@ class PrivacyScopeTests(unittest.TestCase):
             self.assertEqual(len(opened.call_args_list), 1)
             self.assertNotIn("PRIVATE_CANARY", str(failures))
 
-    def test_empty_and_wrong_domain_queries_never_open_unapproved_document(self):
+    def test_empty_and_wrong_domain_queries_never_open_unapproved_document(self) -> None:
         corpus = SyntheticCorpus(self)
-        corpus.add_doc("hidden", "PRIVATE_CANARY bolig", doc_class="PRIVATE")
+        _ = corpus.add_doc("hidden", "PRIVATE_CANARY bolig", doc_class="PRIVATE")
         for query, domain in [("og", "general"), ("bolig", "housing"),
                               ("PRIVATE_CANARY", "mental_health")]:
             with patch("builtins.open", wraps=builtins.open) as opened:
                 result = retrieve(query, domain, **corpus.retrieval_args())
-            self.assertFalse(any(str(c.args[0]).endswith("hidden.md") for c in opened.call_args_list))
+            self.assertFalse(any(str(cast(object, c.args[0])).endswith("hidden.md") for c in opened.call_args_list))
             self.assertNotIn("PRIVATE_CANARY", str(result))

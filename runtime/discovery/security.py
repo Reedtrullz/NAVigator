@@ -9,6 +9,7 @@ import http.client
 import socket
 import ssl
 import time
+from collections.abc import Sequence
 from urllib.parse import urljoin, urlparse
 
 
@@ -24,13 +25,13 @@ BLOCKED_HOSTS = {
     "[::1]",
     "[0:0:0:0:0:0:0:1]",
 }
-def _public_ip(value):
+def _public_ip(value: str) -> bool:
     address = ipaddress.ip_address(value)
     return (address.is_global and not address.is_multicast and not address.is_reserved
             and not address.is_unspecified)
 
 
-def validate_url(url):
+def validate_url(url: object) -> str:
     """Validate a URL for safe fetching. Raises InvalidUrlError on rejection."""
     if not isinstance(url, str) or not url.strip():
         raise InvalidUrlError("URL must be a non-empty string")
@@ -71,7 +72,7 @@ def validate_url(url):
     return url
 
 
-def is_official_domain(url, municipality_domain_hints=None):
+def is_official_domain(url: str, municipality_domain_hints: Sequence[str] | None = None) -> str:
     """Classify a URL domain for the DOMAIN CONSTRAINT (spec 31).
 
     Returns one of: 'municipal', 'intermunicipal', 'helsenorge',
@@ -98,8 +99,8 @@ def is_official_domain(url, municipality_domain_hints=None):
     return "private"
 
 
-def fetch_public(url, timeout=15, max_size=2 * 1024 * 1024,
-                 user_agent="NAVExploreDiscovery/2.0"):
+def fetch_public(url: str, timeout: float = 15, max_size: int = 2 * 1024 * 1024,
+                 user_agent: str = "NAVExploreDiscovery/2.0") -> tuple[int, str, str]:
     deadline = time.monotonic() + timeout
     for hop in range(5):
         url = validate_url(url)
@@ -124,7 +125,7 @@ def fetch_public(url, timeout=15, max_size=2 * 1024 * 1024,
             path = parsed.path or "/"
             if parsed.query:
                 path += "?" + parsed.query
-            conn.request("GET", path, headers={"User-Agent": user_agent, "Accept-Encoding": "identity"})
+            _ = conn.request("GET", path, headers={"User-Agent": user_agent, "Accept-Encoding": "identity"})
             response = conn.getresponse()
             if response.status in (301, 302, 303, 307, 308):
                 location = response.getheader("Location")
@@ -137,7 +138,7 @@ def fetch_public(url, timeout=15, max_size=2 * 1024 * 1024,
                 continue
             if not 200 <= response.status <= 599:
                 raise InvalidUrlError("HTTP status rejected")
-            conn.sock.settimeout(max(0.001, deadline - time.monotonic()))
+            _ = conn.sock.settimeout(max(0.001, deadline - time.monotonic()))
             body = response.read(max_size + 1)
             if len(body) > max_size:
                 raise InvalidUrlError("Response size exceeded")

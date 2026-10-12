@@ -6,53 +6,68 @@ from a fixture manifest.
 """
 
 import hashlib
-import json
-import os
 from abc import ABC, abstractmethod
-from pathlib import Path
+from collections.abc import Callable
+from typing import TypedDict
+
+from runtime.type_support import override
+
+
+class SearchHit(TypedDict):
+    url: str
+    title: str
+    snippet: str
+
+
+class ReplayPage(TypedDict, total=False):
+    content: str
+    status: int
+    captured_at: str
+    final_url: str
 
 
 class SearchResult:
-    def __init__(self, query, results, provider_id):
-        self.query = query
-        self.results = results  # list of {"url", "title", "snippet"}
-        self.provider_id = provider_id
+    def __init__(self, query: str, results: list[SearchHit], provider_id: str) -> None:
+        self.query: str = query
+        self.results: list[SearchHit] = results  # list of {"url", "title", "snippet"}
+        self.provider_id: str = provider_id
 
 
 class FetchResult:
-    def __init__(self, url, status, content, content_hash, fetch_method,
-                 retrieved_at, error=None, rendered_fallback=False,
-                 final_url=None):
-        self.url = url
-        self.status = status  # 'success' | 'failed' | 'render_required'
-        self.content = content  # str or None
-        self.content_hash = content_hash
-        self.fetch_method = fetch_method  # 'http_get' | 'rendered_browser' | 'replay_fixture'
-        self.retrieved_at = retrieved_at
-        self.error = error
-        self.rendered_fallback = rendered_fallback
-        self.final_url = final_url or url
+    def __init__(self, url: str, status: str, content: str | None, content_hash: str | None, fetch_method: str,
+                 retrieved_at: str | None, error: str | None = None, rendered_fallback: bool = False,
+                 final_url: str | None = None) -> None:
+        self.url: str = url
+        self.status: str = status  # 'success' | 'failed' | 'render_required'
+        self.content: str | None = content  # str or None
+        self.content_hash: str | None = content_hash
+        self.fetch_method: str = fetch_method  # 'http_get' | 'rendered_browser' | 'replay_fixture'
+        self.retrieved_at: str | None = retrieved_at
+        self.error: str | None = error
+        self.rendered_fallback: bool = rendered_fallback
+        self.final_url: str = final_url or url
 
 
 class SearchProvider(ABC):
     @abstractmethod
-    def search(self, query) -> SearchResult:
+    def search(self, query: str) -> SearchResult:
         """Return SearchResult for the query."""
 
 
 class FetchProvider(ABC):
     @abstractmethod
-    def fetch(self, url) -> FetchResult:
+    def fetch(self, url: str) -> FetchResult:
         """Return FetchResult for the URL."""
 
 
 class ReplaySearchProvider(SearchProvider):
     """Deterministic search backed by a fixture mapping: query -> results."""
 
-    def __init__(self, fixture_manifest):
-        self.manifest = fixture_manifest  # dict: query -> [{"url","title","snippet"}]
+    def __init__(self, fixture_manifest: dict[str, list[SearchHit]]) -> None:
+        self.manifest: dict[str, list[SearchHit]] = fixture_manifest
 
-    def search(self, query):
+    @override
+    def search(self, query: str) -> SearchResult:
         results = self.manifest.get(query, [])
         return SearchResult(query=query, results=results, provider_id="replay_search")
 
@@ -60,10 +75,11 @@ class ReplaySearchProvider(SearchProvider):
 class ReplayFetchProvider(FetchProvider):
     """Deterministic fetch backed by a fixture manifest of captured pages."""
 
-    def __init__(self, fixture_manifest):
-        self.manifest = fixture_manifest  # dict: url -> {"content": str, "status": int}
+    def __init__(self, fixture_manifest: dict[str, ReplayPage]) -> None:
+        self.manifest: dict[str, ReplayPage] = fixture_manifest
 
-    def fetch(self, url):
+    @override
+    def fetch(self, url: str) -> FetchResult:
         entry = self.manifest.get(url)
         if entry is None:
             return FetchResult(
@@ -82,12 +98,13 @@ class ReplayFetchProvider(FetchProvider):
 
 class HttpSearchProvider(SearchProvider):
 
-    SEARCH_URL = "https://html.duckduckgo.com/html/?q={q}"
+    SEARCH_URL: str = "https://html.duckduckgo.com/html/?q={q}"
 
-    def __init__(self, user_agent="Mozilla/5.0 (compatible; NAVExploreDiscovery/1.0; research)"):
-        self.user_agent = user_agent
+    def __init__(self, user_agent: str = "Mozilla/5.0 (compatible; NAVExploreDiscovery/1.0; research)") -> None:
+        self.user_agent: str = user_agent
 
-    def search(self, query):
+    @override
+    def search(self, query: str) -> SearchResult:
         from .security import fetch_public
         from urllib.parse import quote_plus
         url = self.SEARCH_URL.format(q=quote_plus(query))
@@ -101,9 +118,9 @@ class HttpSearchProvider(SearchProvider):
             return SearchResult(query=query, results=[], provider_id="http_search")
 
     @staticmethod
-    def _parse_results(html):
+    def _parse_results(html: str) -> list[SearchHit]:
         import re
-        results = []
+        results: list[SearchHit] = []
         # DDG HTML: result links have class result__a
         pattern = re.compile(r'<a[^>]+class="result__a"[^>]*href="([^"]+)"[^>]*>(.*?)</a>', re.DOTALL)
         for m in pattern.finditer(html):
@@ -116,14 +133,15 @@ class HttpSearchProvider(SearchProvider):
 class HttpFetchProvider(FetchProvider):
     """Live HTTP fetch with timeout, size limit, and redirect tracking."""
 
-    MAX_SIZE = 2 * 1024 * 1024  # 2 MiB
+    MAX_SIZE: int = 2 * 1024 * 1024  # 2 MiB
 
-    def __init__(self, user_agent="Mozilla/5.0 (compatible; NAVExploreDiscovery/1.0; research)",
-                 timeout=15):
-        self.user_agent = user_agent
-        self.timeout = timeout
+    def __init__(self, user_agent: str = "Mozilla/5.0 (compatible; NAVExploreDiscovery/1.0; research)",
+                 timeout: float = 15) -> None:
+        self.user_agent: str = user_agent
+        self.timeout: float = timeout
 
-    def fetch(self, url):
+    @override
+    def fetch(self, url: str) -> FetchResult:
         from .security import fetch_public
         try:
             status_code, body, effective_url = fetch_public(
@@ -139,7 +157,7 @@ class HttpFetchProvider(FetchProvider):
 
         content_hash = hashlib.sha256(body.encode("utf-8")).hexdigest()
         # Heuristic SPA detection: very little body text relative to markup
-        if self._looks_like_spa_shell(body):
+        if self.looks_like_spa_shell(body):
             return FetchResult(url=url, status="render_required", content=None,
                                content_hash=content_hash, fetch_method="http_get",
                                retrieved_at=None, error="RENDER_REQUIRED",
@@ -149,7 +167,7 @@ class HttpFetchProvider(FetchProvider):
                            retrieved_at=None, final_url=effective_url)
 
     @staticmethod
-    def _looks_like_spa_shell(html):
+    def looks_like_spa_shell(html: str) -> bool:
         """Detect likely JS-rendered shell: minimal text content."""
         import re
         # Strip tags and scripts
@@ -159,3 +177,5 @@ class HttpFetchProvider(FetchProvider):
         # Collapse whitespace and measure
         words = text.split()
         return len(words) < 30
+
+    _looks_like_spa_shell: Callable[[str], bool] = looks_like_spa_shell

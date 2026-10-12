@@ -7,21 +7,22 @@ a schema-valid shape and no route content.
 """
 
 from ..schemas import SchemaError, validate_output
+from ..phase2.contracts import AnswerPlan, AttachedEvidence, Block, Context, Failure, Output, Route, StructuredRoute
 from ..context import StageState, mark_stage
 from .render import (
     NEGATIVE_EXISTENCE_PHRASES,
-    _render_sections,
+    render_sections,
     ascii_text,
     render,
 )
 from ..phase2.pipeline import (
     SAFETY_PRIORITY_OUTPUT_VALUES,
-    _claim_evidence,
-    _route_evidence,
-    _provenance_records,
-    _retrieval_evidence,
-    _dimension_sources,
-    _failed_output,
+    claim_evidence,
+    resolve_route_evidence,
+    provenance_records,
+    retrieval_evidence,
+    dimension_sources,
+    failed_output,
 )
 
 _EVALUABLE_STATES = ("FULLY_VERIFIED", "ACCESS_PARTIAL", "EXISTENCE_ONLY")
@@ -53,23 +54,23 @@ _FAILURE_STATE_ENUM = ("SUCCESS", "PARTIAL", "RECOVERABLE", "TERMINAL")
 
 
 
-def _evaluable_routes(ctx):
+def _evaluable_routes(ctx: Context) -> list[Route]:
     return [r for r in ctx.get("_s6_routes", [])
             if r.get("route_state") in _EVALUABLE_STATES]
 
 
-def _known_ref_ids(ctx):
-    ids = set(_dimension_sources(ctx))
+def _known_ref_ids(ctx: Context) -> set[str]:
+    ids = set(dimension_sources(ctx))
     for rec in ctx.get("_s4_records", []):
         ids.add(rec["evidence_id"])
         ids.add(rec["record_id"])
-    for p in _provenance_records(ctx):
+    for p in provenance_records(ctx):
         ids.add(p["id"])
     ids.add("safety-triage-rules-v2")
     return ids
 
 
-def _plan_routes_in_structured(ctx, plan_blocks):
+def _plan_routes_in_structured(ctx: Context, plan_blocks: list[Block]) -> bool:
     structured = {r["route_id"] for r in ctx.get("_s6_routes", [])}
     for b in plan_blocks:
         if b["kind"] not in ("PRIMARY_ROUTE", "SECONDARY_ROUTE"):
@@ -82,7 +83,7 @@ def _plan_routes_in_structured(ctx, plan_blocks):
     return True
 
 
-def _plan_span_refs_resolve(ctx, plan_blocks):
+def _plan_span_refs_resolve(ctx: Context, plan_blocks: list[Block]) -> bool:
     known = _known_ref_ids(ctx)
     for b in plan_blocks:
         for ref in b["span_refs"]:
@@ -102,7 +103,7 @@ def _plan_span_refs_resolve(ctx, plan_blocks):
     return True
 
 
-def _claims_substring_of_answer(answer, claims):
+def _claims_substring_of_answer(answer: str, claims: list[str]) -> bool:
     for claim in claims:
         ascii_val = ascii_text(claim)
         if ascii_val not in answer:
@@ -110,16 +111,17 @@ def _claims_substring_of_answer(answer, claims):
     return True
 
 
-def _route_labels_substring_of_answer(answer, routes):
+def _route_labels_substring_of_answer(answer: str, routes: list[str]) -> bool:
     for label in routes:
         if ascii_text(label) not in answer:
             return False
     return True
 
 
-def _consistency_errors(ctx, plan, answer, routes, claims, epistemic, failures):
-    errors = []
-    sources = _dimension_sources(ctx)
+def _consistency_errors(ctx: Context, plan: AnswerPlan, answer: str, routes: list[str], claims: list[str],
+                        epistemic: str, failures: list[Failure]) -> list[str]:
+    errors: list[str] = []
+    sources = dimension_sources(ctx)
     known_evidence = set(sources) | {rec["evidence_id"] for rec in ctx.get("_s4_records", [])}
     for claim in ctx.get("_s7_claims", []):
         if claim.get("state") != "VERIFIED":
@@ -127,7 +129,7 @@ def _consistency_errors(ctx, plan, answer, routes, claims, epistemic, failures):
         refs = claim.get("evidence_ids") or []
         if not refs or any(ref not in known_evidence for ref in refs):
             errors.append("verified claim evidence missing")
-        if any(ref in sources and sources[ref]["dimension"] != claim.get("dimension") for ref in refs):
+        if any(ref in sources and sources[ref].get("dimension") != claim.get("dimension") for ref in refs):
             errors.append("verified claim dimension mismatch")
     plan_blocks = plan["blocks"]
     if not _plan_routes_in_structured(ctx, plan_blocks):
@@ -162,7 +164,7 @@ def _consistency_errors(ctx, plan, answer, routes, claims, epistemic, failures):
     # provenance-linked national records; quoting the no-service rule
     # is not asserting local non-existence.
     authored_answer = "\n\n".join(
-        text for kind, text in _render_sections(ctx) if kind != "INFO"
+        text for kind, text in render_sections(ctx) if kind != "INFO"
     )
     lowered = authored_answer.lower()
     for phrase in NEGATIVE_EXISTENCE_PHRASES:
@@ -174,27 +176,27 @@ def _consistency_errors(ctx, plan, answer, routes, claims, epistemic, failures):
     return errors
 
 
-def _failed_render_output(message):
-    return _failed_output(message, stage="output_emission")
+def failed_render_output(message: str) -> Output:
+    return failed_output(message, stage="output_emission")
 
 
-def finalize(ctx):
+def finalize(ctx: Context) -> Output:
     """S11: render, consistency-check, validate, emit canonical output."""
     failures = ctx["failures"]
     if any(f.get("state") == "TERMINAL" for f in failures):
-        return _failed_render_output("terminal stage failure")
+        return failed_render_output("terminal stage failure")
     try:
         answer_text = render(ctx)
     except Exception as exc:
-        return _failed_render_output(
+        return failed_render_output(
             "render failed: %s" % type(exc).__name__)
 
     evaluable = _evaluable_routes(ctx)
     routes = [r["service_type"] for r in evaluable]
     claims = [c["value"] for c in ctx.get("_s7_claims", [])
               if c["state"] == "VERIFIED" and c.get("dimension") == "knowledge_fact"
-              and isinstance(c["value"], str)]
-    uncertainty = []
+              ]
+    uncertainty: list[str] = []
     for b in ctx["answer_plan"]["blocks"]:
         if b["kind"] == "UNCERTAINTY":
             uncertainty.extend(b["span_refs"])
@@ -204,7 +206,7 @@ def finalize(ctx):
         ctx, ctx["answer_plan"], answer_text, routes, claims,
         top, failures)
     if errors:
-        return _failed_render_output(
+        return failed_render_output(
             "output consistency failed: %d check(s)" % len(errors))
 
     if ctx.get("_s5_incomplete"):
@@ -228,10 +230,10 @@ def finalize(ctx):
     # RC-10: per-route/per-claim evidence attachment under the additive
     # evidence map; the routes list stays labels-only for the frozen
     # scorer contract.
-    route_evidence = {}
+    route_evidence: dict[str, AttachedEvidence] = {}
     for r in evaluable:
-        source_url, evidence_ids, prov_ids = _route_evidence(ctx, r)
-        entry: dict[str, object] = {"evidence_ids": evidence_ids, "provenance_ids": prov_ids}
+        source_url, evidence_ids, prov_ids = resolve_route_evidence(ctx, r)
+        entry: AttachedEvidence = {"evidence_ids": evidence_ids, "provenance_ids": prov_ids}
         if source_url:
             entry["source_url"] = source_url
         route_evidence[r["route_id"]] = entry
@@ -239,7 +241,7 @@ def finalize(ctx):
     # W4-RC-A (B5): route objects survive serialization in the additive
     # evidence map (additionalProperties: true, no schema change); the
     # labels-only routes list keeps the frozen scorer contract intact.
-    structured_routes = []
+    structured_routes: list[StructuredRoute] = []
     for r in evaluable:
         entry = route_evidence.get(r["route_id"], {})
         structured_routes.append({
@@ -259,10 +261,10 @@ def finalize(ctx):
                 "access_verified", "contact_verified")},
         })
 
-    track_status = {}
-    for t in ctx["epistemic_states"]["per_track"].items():
+    track_status: dict[str, str] = {}
+    for t in ctx["epistemic_states"].get("per_track", {}).items():
         track_status[t[0]] = "RESOLVED" if t[1] in _EVALUABLE_STATES else "NO_ROUTE"
-    tracks = []
+    tracks: list[dict[str, str]] = []
     for t in ctx["tracks"]:
         tracks.append({
             "track_id": t["track_id"],
@@ -270,7 +272,8 @@ def finalize(ctx):
             "status": track_status.get(t["track_id"], "NO_ROUTE"),
         })
 
-    output = {
+    output: Output = {
+        "safety_priority": top_priority,
         "answer": answer_text,
         "safety": {
             "priority": priority,
@@ -283,16 +286,16 @@ def finalize(ctx):
         "claims": claims,
         "uncertainty_expressed": uncertainty,
         "evidence": {
-            "dimension_sources": _dimension_sources(ctx),
-            "source_admission": _retrieval_evidence(ctx),
+            "dimension_sources": dimension_sources(ctx),
+            "source_admission": retrieval_evidence(ctx),
             "conflicts": [c["subject"] for c in ctx.get("_s7_conflicts", [])],
-            "per_track_epistemic": ctx["epistemic_states"]["per_track"],
+            "per_track_epistemic": ctx["epistemic_states"].get("per_track", {}),
             "route_evidence": route_evidence,
             "structured_routes": structured_routes,
-            "claim_evidence": _claim_evidence(ctx),
+            "claim_evidence": claim_evidence(ctx),
             "safety_priority": top_priority,
         },
-        "provenance": _provenance_records(ctx),
+        "provenance": provenance_records(ctx),
         "epistemic_state": top,
         "failures": failures,
         "execution_status": execution_status,
@@ -304,11 +307,14 @@ def finalize(ctx):
     try:
         validate_output(output)
     except SchemaError:
-        return _failed_render_output("output schema validation failed")
+        return failed_render_output("output schema validation failed")
     return output
 
 
-def s11_output_emission(ctx):
-    ctx["_output"] = finalize(ctx)
-    if ctx["_output"]["execution_status"] == "EXECUTION_FAILED":
+def s11_output_emission(ctx: Context) -> None:
+    output = finalize(ctx)
+    ctx["_output"] = output
+    if output["execution_status"] == "EXECUTION_FAILED":
         mark_stage(ctx, "output_emission", StageState.TERMINAL, "output rejected")
+
+_failed_render_output = failed_render_output

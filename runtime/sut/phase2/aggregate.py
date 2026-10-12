@@ -7,19 +7,22 @@ state = min over tracks (FULLY_VERIFIED > ACCESS_PARTIAL > EXISTENCE_ONLY >
 UNVERIFIED).
 """
 
+from typing import Literal
+from .contracts import Aggregate, Claim, Conflict, DiscoveryStep, KnowledgeRecord, Route
+
 
 STATE_ORDER = ("UNVERIFIED", "EXISTENCE_ONLY", "ACCESS_PARTIAL", "FULLY_VERIFIED")
 
 
-def _dimension_claims():
+def _dimension_claims() -> tuple[Literal["service_exists", "age_eligible", "scenario_relevant", "access_verified", "contact_verified"], ...]:
     dims = ("service_exists", "age_eligible", "scenario_relevant",
             "access_verified", "contact_verified")
     return dims
 
 
-def build_claims(routes, knowledge_records):
+def build_claims(routes: list[Route], knowledge_records: list[KnowledgeRecord]) -> list[Claim]:
     """Materialize per-dimension claims for each route."""
-    claims = []
+    claims: list[Claim] = []
     n = 1
     for route in routes:
         for dim in _dimension_claims():
@@ -58,13 +61,13 @@ def build_claims(routes, knowledge_records):
     return claims
 
 
-def detect_conflicts(claims):
+def detect_conflicts(claims: list[Claim]) -> Aggregate:
     """Detect same subject+dimension with disagreeing authoritative values."""
-    groups = {}
+    groups: dict[tuple[str, str], list[Claim]] = {}
     for c in claims:
         key = (c["subject"], c["dimension"])
         groups.setdefault(key, []).append(c)
-    conflicts = []
+    conflicts: list[Conflict] = []
     for (subject, dim), group in groups.items():
         values = {c["value"] for c in group if c["authority"] in ("LAW", "DISCOVERY")}
         if len(values) > 1:
@@ -80,12 +83,12 @@ def detect_conflicts(claims):
     return {"claims": claims, "conflicts": conflicts}
 
 
-def derive_track_state(routes, knowledge_records, discovery):
+def derive_track_state(routes: list[Route], knowledge_records: list[KnowledgeRecord], discovery: DiscoveryStep | None) -> str:
     """S8 per-track epistemic state; downgrades only."""
     discovery_state = discovery.get("state") if discovery else None
     if discovery_state == "DISCOVERY_INCOMPLETE":
         return "UNVERIFIED"
-    states = []
+    states: list[str] = []
     for route in routes:
         rs = route.get("route_state")
         if rs == "FULLY_VERIFIED" and all(
@@ -105,7 +108,7 @@ def derive_track_state(routes, knowledge_records, discovery):
     return states[0] if len(set(states)) == 1 else min(states, key=STATE_ORDER.index)
 
 
-def collapse(track_states):
+def collapse(track_states: list[str]) -> str:
     """Frozen S8 doctrine: top-level = min over tracks."""
     if not track_states:
         return "UNVERIFIED"

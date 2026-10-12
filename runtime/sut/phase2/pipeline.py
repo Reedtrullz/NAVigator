@@ -4,13 +4,15 @@ Same stage signature and ctx contract as Phase 1 (runtime/sut/pipeline.py).
 Phase 1 files are byte-identical; this is a new lineage.
 """
 
+from typing import cast
+from .contracts import AttachedEvidence, Config, ConfigOverrides, Context, Evidence, Input, KnowledgeRecord, Output, Provenance, RetrievalEvidence, Route, Stage, StepEntry, Trace
+
 import os
 import time
-from typing import Any
 
 _REPO_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 
-from ..context import StageState, make_context, mark_stage, normalize_input
+from ..context import StageState as StageState, make_context, mark_stage as mark_stage, normalize_input
 from ..schemas import SchemaError, validate_input, validate_output
 
 from .safety import TriageError, evaluate_safety, load_rules
@@ -44,7 +46,7 @@ PHASE_2_ANSWER = (
     "listet nedenfor."
 )
 
-def _default_config() -> dict[str, Any]:
+def default_config() -> Config:
     # Paths anchored to the repo root so the pipeline is cwd-independent.
     return {
         "mode": "replay",
@@ -56,7 +58,7 @@ def _default_config() -> dict[str, Any]:
     }
 
 
-def _with_state(stage, fn, ctx):
+def execute_stage(stage: str, fn: Stage, ctx: Context) -> Trace:
     start = time.perf_counter()
     try:
         fn(ctx)
@@ -65,7 +67,7 @@ def _with_state(stage, fn, ctx):
         mark_stage(ctx, stage, StageState.RECOVERABLE if recoverable else StageState.TERMINAL,
                    "stage error: %s" % type(exc).__name__)
         if not recoverable:
-            ctx.pop("_output", None)
+            _ = ctx.pop("_output", None)
         if stage == "knowledge_retrieval":
             ctx["_s4_incomplete"] = True
             ctx["_s4_records"] = []
@@ -79,19 +81,22 @@ def _with_state(stage, fn, ctx):
     return {"stage": stage, "latency_ms": round((time.perf_counter() - start) * 1000, 3)}
 
 
-def s1_input_normalization(ctx):
+def s1_input_normalization(ctx: Context) -> None:
     ctx["input"]["user_query"] = ctx["input"]["user_query"].strip()
 
 
-def s2_safety_triage(ctx):
+def s2_safety_triage(ctx: Context) -> None:
+    cfg = ctx.get("_config")
+    if cfg is None:
+        raise KeyError("_config")
     try:
-        rules = load_rules(ctx["_config"]["safety_rules_path"])
+        rules = load_rules(cfg["safety_rules_path"])
         evaluate_safety(ctx, rules)
     except TriageError as exc:
         mark_stage(ctx, "safety_triage", StageState.TERMINAL, "FC-01: %s" % exc)
 
 
-def s3_decomposition(ctx):
+def s3_decomposition(ctx: Context) -> None:
     if ctx["safety"]["suppressed_routing"]:
         # Safety precedence: acute input never decomposes into service tracks.
         ctx["tracks"] = []
@@ -100,18 +105,21 @@ def s3_decomposition(ctx):
     ctx["tracks"] = decompose(ctx["input"]["user_query"])
 
 
-def s4_knowledge_retrieval(ctx):
-    records = []
+def s4_knowledge_retrieval(ctx: Context) -> None:
+    cfg = ctx.get("_config")
+    if cfg is None:
+        raise KeyError("_config")
+    records: list[KnowledgeRecord] = []
     ctx["_s4_admission"] = {}
     ctx["_s4_incomplete"] = False
     for track in ctx["tracks"]:
         try:
             result = retrieve(
                 ctx["input"]["user_query"], track["domain"],
-                index_path=ctx["_config"]["knowledge_index_path"],
-                rules_path=ctx["_config"]["rules_registry_path"],
-                repo_root=ctx["_config"]["knowledge_repo_root"],
-                access_profile=ctx["_config"]["knowledge_access_profile"])
+                index_path=cfg["knowledge_index_path"],
+                rules_path=cfg["rules_registry_path"],
+                repo_root=cfg["knowledge_repo_root"],
+                access_profile=cfg["knowledge_access_profile"])
             track_records = result.records
             ctx["_s4_admission"][track["track_id"]] = {
                 "coverage": result.coverage, "failures": result.failures}
@@ -140,11 +148,11 @@ def s4_knowledge_retrieval(ctx):
         rec["evidence_id"] = "E-" + suffix
 
 
-def s5_local_discovery(ctx):
+def s5_local_discovery(ctx: Context) -> None:
     if ctx.get("_s3_skipped"):
         return
     municipality = (ctx["input"].get("location_context") or {}).get("municipality")
-    steps = []
+    steps: list[StepEntry] = []
     any_incomplete = False
     for track in ctx["tracks"]:
         step = run_discovery_step(
@@ -166,7 +174,7 @@ def s5_local_discovery(ctx):
                    "local discovery not applicable: no municipality in location_context")
 
 
-def s6_route_reasoning(ctx):
+def s6_route_reasoning(ctx: Context) -> None:
     ctx["_s6_routes"] = []
     for entry in ctx.get("_s5_steps", []):
         routes = build_route_candidates(
@@ -180,7 +188,7 @@ def s6_route_reasoning(ctx):
         ctx.get("_s4_records", []), discovery_service_count))
 
 
-def s7_evidence_aggregation(ctx):
+def s7_evidence_aggregation(ctx: Context) -> None:
     claims = build_claims(ctx.get("_s6_routes", []), ctx.get("_s4_records", []))
     result = detect_conflicts(claims)
     ctx["_s7_claims"] = result["claims"]
@@ -191,8 +199,8 @@ def s7_evidence_aggregation(ctx):
                    % len(result["conflicts"]))
 
 
-def s8_epistemic_assignment(ctx):
-    track_states = []
+def s8_epistemic_assignment(ctx: Context) -> None:
+    track_states: list[str] = []
     per_track = {}
     for entry in ctx.get("_s5_steps", []):
         routes = [r for r in ctx.get("_s6_routes", [])
@@ -217,7 +225,7 @@ def s8_epistemic_assignment(ctx):
     }
 
 
-def s9_answer_planning(ctx):
+def s9_answer_planning(ctx: Context) -> None:
     routes = ctx.get("_s6_routes", [])
     evaluable = [r for r in routes
                  if r["route_state"] in ("FULLY_VERIFIED", "ACCESS_PARTIAL",
@@ -233,16 +241,16 @@ def s9_answer_planning(ctx):
     }
 
 
-def s10_answer_rendering(ctx):
+def s10_answer_rendering(ctx: Context) -> None:
     ctx["_answer"] = PHASE_2_ANSWER
 
 
-def _provenance_records(ctx):
-    records = []
+def provenance_records(ctx: Context) -> list[Provenance]:
+    records: list[Provenance] = []
     n = 1
     for entry in ctx.get("_s5_steps", []):
         step = entry["step"]
-        for service in step["services"]:
+        for service in step.get("services", []):
             records.append({
                 "id": "P-D%03d" % n,
                 "source_type": "LOCAL_DISCOVERY",
@@ -277,7 +285,7 @@ def _provenance_records(ctx):
     return records
 
 
-def _route_evidence(ctx, route):
+def resolve_route_evidence(ctx: Context, route: Route) -> tuple[str | None, list[str], list[str]]:
     """RC-10: provenance that supports this specific route.
 
     A route's own evidence/provenance refs are ownership, not a global
@@ -288,16 +296,14 @@ def _route_evidence(ctx, route):
     """
     source_url = None
     evidence_ids = list(route.get("evidence_refs") or [])
-    prov_records = _provenance_records(ctx)
-    prov_by_source = {}
-    prov_by_id = {}
+    prov_records = provenance_records(ctx)
+    prov_by_source: dict[str | None, str] = {}
+    prov_by_id: dict[str, Provenance] = {}
     for p in prov_records:
-        prov_by_source.setdefault(p.get("source_ref"), p["id"])
+        _ = prov_by_source.setdefault(p.get("source_ref"), p["id"])
         prov_by_id[p["id"]] = p
-    prov_ids = []
+    prov_ids: list[str] = []
     for ref in route.get("provenance_refs") or []:
-        if not isinstance(ref, str):
-            continue
         if ref.startswith(("http://", "https://")):
             if source_url is None:
                 source_url = ref
@@ -322,24 +328,24 @@ def _route_evidence(ctx, route):
     return source_url, evidence_ids, prov_ids
 
 
-def _claim_evidence(ctx):
+def claim_evidence(ctx: Context) -> dict[str, AttachedEvidence]:
     """RC-10: per-claim provenance resolution keyed by claim_id.
 
     Only provenance ids that exist in the emitted provenance records are
     attached; unresolved refs are dropped, never fabricated.
     """
-    prov_records = _provenance_records(ctx)
+    prov_records = provenance_records(ctx)
     prov_ids_all = {p["id"] for p in prov_records}
-    prov_by_source = {}
+    prov_by_source: dict[str | None, str] = {}
     for p in prov_records:
-        prov_by_source.setdefault(p.get("source_ref"), p["id"])
+        _ = prov_by_source.setdefault(p.get("source_ref"), p["id"])
     rec_by_eid = {rec.get("evidence_id"): rec
                   for rec in ctx.get("_s4_records", [])}
-    out = {}
+    out: dict[str, AttachedEvidence] = {}
     for c in ctx.get("_s7_claims", []):
         if c.get("state") != "VERIFIED":
             continue
-        pids = []
+        pids: list[str] = []
         for pid in c.get("provenance_ids") or []:
             resolved = pid if pid in prov_ids_all else prov_by_source.get(pid)
             if resolved and resolved not in pids:
@@ -360,19 +366,19 @@ def _claim_evidence(ctx):
     return out
 
 
-def _retrieval_evidence(ctx):
+def retrieval_evidence(ctx: Context) -> RetrievalEvidence:
     return {"revision": "source-admission/v2", "per_track": ctx.get("_s4_admission", {}),
-            "source_dates": {p["id"]: p["verified_at"] or None for p in _provenance_records(ctx)},
+            "source_dates": {p["id"]: p["verified_at"] or None for p in provenance_records(ctx)},
             "safety_assessment": "LEXICAL_MATCH_ONLY" if ctx["safety"]["signals"] else "NO_SIGNAL_UNKNOWN"}
 
 
-def _dimension_sources(ctx):
+def dimension_sources(ctx: Context) -> dict[str, Evidence]:
     return {eid: source for route in ctx.get("_s6_routes", [])
             for eid, source in route.get("evidence_records", {}).items()}
 
 
-def _uncertainty_list(ctx):
-    items = []
+def _uncertainty_list(ctx: Context) -> list[str]:
+    items: list[str] = []
     if ctx.get("_s4_incomplete"):
         items.append("source_admission_incomplete")
     if ctx.get("_s5_incomplete"):
@@ -384,10 +390,10 @@ def _uncertainty_list(ctx):
     return items
 
 
-def s11_output_emission(ctx):
+def s11_output_emission(ctx: Context) -> None:
     failures = ctx["failures"]
     if any(f["state"] == "TERMINAL" for f in failures):
-        ctx["_output"] = _failed_output("terminal stage failure", stage="output_emission")
+        ctx["_output"] = failed_output("terminal stage failure", stage="output_emission")
         mark_stage(ctx, "output_emission", StageState.TERMINAL, "terminal stage failure")
         return
     if ctx.get("_s5_incomplete"):
@@ -412,17 +418,18 @@ def s11_output_emission(ctx):
     evaluable = [r for r in routes
                  if r["route_state"] in ("FULLY_VERIFIED", "ACCESS_PARTIAL",
                                           "EXISTENCE_ONLY")]
-    route_evidence = {}
+    route_evidence: dict[str, AttachedEvidence] = {}
     for r in evaluable:
-        source_url, evidence_ids, prov_ids = _route_evidence(ctx, r)
-        entry: dict[str, object] = {"evidence_ids": evidence_ids, "provenance_ids": prov_ids}
+        source_url, evidence_ids, prov_ids = resolve_route_evidence(ctx, r)
+        entry: AttachedEvidence = {"evidence_ids": evidence_ids, "provenance_ids": prov_ids}
         if source_url:
             entry["source_url"] = source_url
         route_evidence[r["route_id"]] = entry
     claims = [c["value"] for c in ctx.get("_s7_claims", [])
-              if c["state"] == "VERIFIED" and isinstance(c["value"], str)]
+              if c["state"] == "VERIFIED" ]
     top = ctx["epistemic_states"]["top_level"]
-    output = {
+    output: Output = {
+        "safety_priority": top_priority,
         "answer": ctx.get("_answer", PHASE_2_ANSWER),
         "safety": {
             "priority": priority,
@@ -439,15 +446,15 @@ def s11_output_emission(ctx):
         "claims": claims,
         "uncertainty_expressed": _uncertainty_list(ctx),
         "evidence": {
-            "dimension_sources": _dimension_sources(ctx),
-            "source_admission": _retrieval_evidence(ctx),
+            "dimension_sources": dimension_sources(ctx),
+            "source_admission": retrieval_evidence(ctx),
             "conflicts": [c["subject"] for c in ctx.get("_s7_conflicts", [])],
-            "per_track_epistemic": ctx["epistemic_states"]["per_track"],
+            "per_track_epistemic": ctx["epistemic_states"].get("per_track", {}),
             "route_evidence": route_evidence,
-            "claim_evidence": _claim_evidence(ctx),
+            "claim_evidence": claim_evidence(ctx),
             "safety_priority": top_priority,
         },
-        "provenance": _provenance_records(ctx),
+        "provenance": provenance_records(ctx),
         "epistemic_state": top,
         "failures": failures,
         "execution_status": execution_status,
@@ -459,9 +466,10 @@ def s11_output_emission(ctx):
     ctx["_output"] = output
 
 
-def _failed_output(message, stage="input_normalization") -> dict[str, Any]:
+def failed_output(message: str, stage: str = "input_normalization") -> Output:
     priority = "ACUTE_RISK_NOW"  # fail-closed placeholder, see INTERFACE_GAP-001
-    output = {
+    output: Output = {
+        "safety_priority": priority,
         "answer": ("Kan ikke svare: input ble avvist av S1-valideringen." if stage == "input_normalization"
                    else "Svaret kunne ikke fullfores. Ingen anbefaling vises."),
         "safety": {"priority": priority, "safety_class": None, "signals": [], "suppressed_routing": True},
@@ -499,7 +507,7 @@ STAGES = {
 }
 
 
-def _stage_state(ctx, stage):
+def stage_state(ctx: Context, stage: str) -> str:
     states = {failure["state"] for failure in ctx["failures"] if failure["stage"] == stage}
     for state in ("TERMINAL", "RECOVERABLE", "PARTIAL"):
         if state in states:
@@ -507,30 +515,40 @@ def _stage_state(ctx, stage):
     return "SUCCESS"
 
 
-def run_with_trace(input_dict, config=None) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def run_with_trace(input_dict: object, config: ConfigOverrides | None = None) -> tuple[Output, list[Trace]]:
     """Execute S1-S11 once; return (sut_output/v1 dict, stage trace list)."""
-    cfg = dict(_default_config())
+    cfg = default_config()
     if config:
         cfg.update(config)
     if not isinstance(input_dict, dict):
-        return _failed_output("INPUT_REJECTED"), [{"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}]
-    normalized = normalize_input(input_dict)
+        return failed_output("INPUT_REJECTED"), [{"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}]
+    normalized = normalize_input(cast(object, input_dict))
     try:
         validate_input(normalized)
     except SchemaError:
-        return _failed_output("INPUT_REJECTED"), [
+        return failed_output("INPUT_REJECTED"), [
             {"stage": "input_normalization", "state": "TERMINAL", "latency_ms": 0.0}
         ]
 
-    ctx: dict[str, Any] = make_context(normalized)
+    ctx = make_context(cast(Input, normalized))
     ctx["_config"] = cfg
-    trace = []
+    trace: list[Trace] = []
     for stage in _STAGE_ORDER:
-        mark = _with_state(stage, STAGES[stage], ctx)
-        mark["state"] = _stage_state(ctx, stage)
+        mark = execute_stage(stage, STAGES[stage], ctx)
+        mark["state"] = stage_state(ctx, stage)
         trace.append(mark)
-    return ctx.get("_output") or _failed_output("output emission did not run", stage="output_emission"), trace
+    return ctx.get("_output") or failed_output("output emission did not run", stage="output_emission"), trace
 
 
-def run(input_dict, config=None):
+def run(input_dict: object, config: ConfigOverrides | None = None) -> Output:
     return run_with_trace(input_dict, config)[0]
+
+_default_config = default_config
+_with_state = execute_stage
+_failed_output = failed_output
+_stage_state = stage_state
+_provenance_records = provenance_records
+_route_evidence = resolve_route_evidence
+_claim_evidence = claim_evidence
+_retrieval_evidence = retrieval_evidence
+_dimension_sources = dimension_sources

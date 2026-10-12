@@ -6,6 +6,7 @@ same function everywhere so claim/route substrings stay exact.
 """
 
 import json
+from ..phase2.contracts import Block, Context, KnowledgeRecord, Route
 
 from .planner import (
     CONFLICT_WORDING,
@@ -51,12 +52,12 @@ def ascii_text(text: str) -> str:
     return "".join(_TRANSLIT.get(ch, ch) for ch in text)
 
 
-def canonical_json(obj):
+def canonical_json(obj: object) -> str:
     return json.dumps(obj, ensure_ascii=False, sort_keys=True,
                       separators=(",", ":"))
 
 
-def _safety_lines(ctx):
+def _safety_lines(ctx: Context) -> list[str]:
     if ctx["safety"]["suppressed_routing"]:
         return list(SAFETY_INSTRUCTION_LINES)
     priority = ctx["safety"]["priority"]
@@ -67,11 +68,11 @@ def _safety_lines(ctx):
     return []
 
 
-def _routes_by_id(ctx):
+def _routes_by_id(ctx: Context) -> dict[str, Route]:
     return {r["route_id"]: r for r in ctx.get("_s6_routes", [])}
 
 
-def _route_line(ctx, block):
+def _route_line(ctx: Context, block: Block) -> list[str]:
     ref = block["span_refs"][0] if block["span_refs"] else ""
     route_id = ref.split("route:", 1)[-1]
     route = _routes_by_id(ctx).get(route_id)
@@ -90,7 +91,7 @@ def _route_line(ctx, block):
     return lines
 
 
-def _failure_lines(ctx, block):
+def _failure_lines(_ctx: Context, block: Block) -> list[str]:
     for ref in block["span_refs"]:
         if ref.startswith("terminal:"):
             return [TERMINAL_FAILURE_WORDING % ref.split("terminal:", 1)[-1]]
@@ -101,8 +102,8 @@ def _failure_lines(ctx, block):
     return []
 
 
-def _info_lines(ctx, block, by_evidence_id):
-    lines = []
+def _info_lines(_ctx: Context, block: Block, by_evidence_id: dict[str, KnowledgeRecord]) -> list[str]:
+    lines: list[str] = []
     for ref in block["span_refs"]:
         rec = by_evidence_id.get(ref)
         if rec is None:
@@ -119,9 +120,9 @@ def _info_lines(ctx, block, by_evidence_id):
     return lines
 
 
-def _uncertainty_lines(ctx, block):
+def _uncertainty_lines(ctx: Context, block: Block) -> list[str]:
     refs = block["span_refs"]
-    lines = []
+    lines: list[str] = []
     if "source_admission_incomplete" in refs:
         lines.append("Kildegrunnlaget er ufullstendig eller avvist. Dette sier ikke om en tjeneste finnes.")
     if "discovery_incomplete" in refs:
@@ -137,11 +138,11 @@ def _uncertainty_lines(ctx, block):
     return lines
 
 
-def _provenance_lines(ctx, block):
-    from ..phase2.pipeline import _provenance_records
-    records = _provenance_records(ctx)
+def _provenance_lines(ctx: Context, block: Block) -> list[str]:
+    from ..phase2.pipeline import provenance_records
+    records = provenance_records(ctx)
     by_id = {p["id"]: p for p in records}
-    lines = []
+    lines: list[str] = []
     for ref in block["span_refs"]:
         p = by_id.get(ref)
         if p is None:
@@ -153,10 +154,10 @@ def _provenance_lines(ctx, block):
     return lines
 
 
-def _render_sections(ctx):
+def render_sections(ctx: Context) -> list[tuple[str, str]]:
     """Return [(block_kind, section_text)] for the frozen plan blocks."""
     by_evidence_id = {rec["evidence_id"]: rec for rec in ctx.get("_s4_records", [])}
-    sections = []
+    sections: list[tuple[str, str]] = []
     for block in ctx["answer_plan"]["blocks"]:
         kind = block["kind"]
         if kind == "SAFETY_INSTRUCTION":
@@ -172,7 +173,7 @@ def _render_sections(ctx):
         elif kind == "PROVENANCE_LIST":
             lines = _provenance_lines(ctx, block)
         else:
-            lines = []
+            lines: list[str] = []
         if lines:
             sections.append((kind, "\n".join(lines)))
     if not sections:
@@ -180,10 +181,12 @@ def _render_sections(ctx):
     return sections
 
 
-def render(ctx):
+def render(ctx: Context) -> str:
     """Render the frozen plan blocks into the user-facing answer."""
-    return "\n\n".join(text for _kind, text in _render_sections(ctx))
+    return "\n\n".join(text for _kind, text in render_sections(ctx))
 
 
-def s10_answer_rendering(ctx):
+def s10_answer_rendering(ctx: Context) -> None:
     ctx["_answer"] = render(ctx)
+
+_render_sections = render_sections

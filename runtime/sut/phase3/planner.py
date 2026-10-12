@@ -10,7 +10,8 @@ order:
   -> UNCERTAINTY -> PROVENANCE_LIST
 """
 
-from ..phase2.pipeline import _provenance_records
+from ..phase2.pipeline import provenance_records
+from ..phase2.contracts import AnswerPlan, Block, Context, Route
 
 _DOMAIN_PRIORITY = (
     "child_safety", "mental_health", "housing", "financial_support",
@@ -49,14 +50,14 @@ CONFLICT_WORDING = "Kildene sier motstridende ting om %s; konflikten er ikke los
 URGENCY_LEAD = "Dette hoerstes alvorlig, men ikke akutt pa maaten som krever nodnummer."
 
 
-def _domain_rank(domain):
+def _domain_rank(domain: str) -> int:
     try:
         return _DOMAIN_PRIORITY.index(domain)
     except ValueError:
         return len(_DOMAIN_PRIORITY)
 
 
-def sort_routes(routes):
+def sort_routes(routes: list[Route]) -> list[Route]:
     """Deterministic ordering: domain priority, epistemic strength, scenario
     relevance, access verification, name length, input order. No weighted
     scores."""
@@ -72,22 +73,22 @@ def sort_routes(routes):
     return [r for _, r in indexed]
 
 
-def _evaluable_routes(ctx):
+def _evaluable_routes(ctx: Context) -> list[Route]:
     return [r for r in sort_routes(ctx.get("_s6_routes", []))
             if r.get("route_state") in _EVALUABLE_STATES]
 
 
-def plan(ctx):
+def plan(ctx: Context) -> AnswerPlan:
     """Build the frozen-block-order AnswerPlan from structured ctx state."""
-    blocks = []
+    blocks: list[Block] = []
     order = 0
 
-    def add(kind, **fields):
+    def add(kind: str, *, track_id: str | None = None, route_label: str | None = None,
+            span_refs: list[str] | None = None) -> None:
         nonlocal order
         order += 1
-        block = {"order": order, "kind": kind, "track_id": None,
-                 "route_label": None, "span_refs": []}
-        block.update(fields)
+        block: Block = {"order": order, "kind": kind, "track_id": track_id,
+                        "route_label": route_label, "span_refs": span_refs or []}
         blocks.append(block)
 
     # 1. Safety instruction first whenever the safety lane is active.
@@ -104,7 +105,7 @@ def plan(ctx):
     # an active track domain (RC-08). Records without matching scope never
     # render, so cross-domain lexical hits cannot leak into the answer.
     track_domains = {t["domain"] for t in ctx.get("tracks", [])}
-    seen_info = set()
+    seen_info: set[str] = set()
     for rec in ctx.get("_s4_records", []):
         if rec.get("track_domain", rec.get("domain")) not in track_domains:
             continue
@@ -126,7 +127,7 @@ def plan(ctx):
             span_refs=["route:" + route["route_id"]])
 
     # 6. Uncertainty caveats in fixed precedence.
-    uncertainty_refs = []
+    uncertainty_refs: list[str] = []
     if ctx.get("_s4_incomplete"):
         uncertainty_refs.append("source_admission_incomplete")
     if ctx.get("_s5_incomplete"):
@@ -143,7 +144,7 @@ def plan(ctx):
         add("UNCERTAINTY", span_refs=uncertainty_refs)
 
     # 7. Provenance list last.
-    prov = _provenance_records(ctx)
+    prov = provenance_records(ctx)
     add("PROVENANCE_LIST", span_refs=[p["id"] for p in prov])
 
     presented_as_complete = (
@@ -153,7 +154,7 @@ def plan(ctx):
         and not ctx.get("_s3_skipped")
         and bool(ctx.get("_s5_steps"))
         and all(t == "FULLY_VERIFIED"
-                for t in ctx["epistemic_states"]["per_track"].values())
+                for t in ctx["epistemic_states"].get("per_track", {}).values())
     )
     return {
         "blocks": blocks,
@@ -162,5 +163,5 @@ def plan(ctx):
     }
 
 
-def s9_answer_planning(ctx):
+def s9_answer_planning(ctx: Context) -> None:
     ctx["answer_plan"] = plan(ctx)
