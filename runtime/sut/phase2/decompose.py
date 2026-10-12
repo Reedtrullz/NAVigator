@@ -4,6 +4,8 @@ Conservative keyword-based split over the frozen context schema domain enum.
 Conjunctions alone never create tracks; only distinct recognized domains do.
 """
 
+from .contracts import Track
+
 
 from .text_normalization import normalize_match_text
 
@@ -49,9 +51,9 @@ DOMAIN_ORDER = (
 LOCAL_DISCOVERY_DOMAINS = {"mental_health", "housing", "child_safety"}
 
 
-def _match_domains(text):
+def _match_domains(text: str) -> list[tuple[str, str]]:
     hay = normalize_match_text(text)
-    matched = []
+    matched: list[tuple[str, str]] = []
     for domain in DOMAIN_ORDER:
         for signal in DOMAIN_SIGNALS[domain]:
             if normalize_match_text(signal) in hay:
@@ -60,11 +62,11 @@ def _match_domains(text):
     return matched
 
 
-def _split_conjuncts(text):
+def _split_conjuncts(text: str) -> list[str]:
     # Conservative conjunction split for per-conjunct domain probing only;
     # track identity is domain-based, never conjunct-based.
-    parts = []
-    current = []
+    parts: list[str] = []
+    current: list[str] = []
     for token in text.split(" "):
         low = token.lower().strip(",.?!:;")
         if low in ("og", ",", "mens", "samtidig", "plusst", "samt"):
@@ -78,20 +80,20 @@ def _split_conjuncts(text):
     return parts
 
 
-def decompose(user_query):
+def decompose(user_query: str) -> list[Track]:
     """Return ordered canonical tracks for the query."""
     conjuncts = _split_conjuncts(user_query)
-    found = {}
+    found: dict[str, str] = {}
     order = [d for d in DOMAIN_ORDER]
     for part in conjuncts:
         for domain, signal in _match_domains(part):
-            found.setdefault(domain, signal)
+            _ = found.setdefault(domain, signal)
     if not any(d in found for d in order):
         found = {}
         order = ["general"]
     else:
         order = [d for d in order if d in found]
-    tracks = []
+    tracks: list[Track] = []
     for i, domain in enumerate(order, start=1):
         tracks.append({
             "track_id": "T%d" % i,

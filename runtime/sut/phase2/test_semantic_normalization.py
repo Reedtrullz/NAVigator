@@ -1,11 +1,12 @@
 import unittest
 
 from .decompose import decompose
-from .knowledge import _keywords, _score_span
-from .safety import classify
+from .knowledge import query_keywords, score_span
+from .safety import SafetyRules, classify
 
 
-RULES = {
+RULES: SafetyRules = {
+    "_sha256": "SYNTHETIC",
     "class_precedence": ["ACUTE_SOMATIC_MEDICAL", "NON_ACUTE_ROUTINE"],
     "class_signals": {"ACUTE_SOMATIC_MEDICAL": ["blor mye"]},
     "class_collapse": {
@@ -18,24 +19,24 @@ RULES = {
 
 
 class SemanticNormalizationTests(unittest.TestCase):
-    def test_norwegian_ascii_and_unicode_composition_keep_signal(self):
+    def test_norwegian_ascii_and_unicode_composition_keep_signal(self) -> None:
         for text in ["Jeg blør mye.", "Jeg blor mye.", "JEG BLØR MYE!", "Jeg blo\u0301r mye"]:
             with self.subTest(text=text):
                 self.assertEqual(classify(text, RULES)["priority"], "ACUTE_RISK_NOW")
 
-    def test_other_sentence_and_other_signal_negation_do_not_suppress(self):
+    def test_other_sentence_and_other_signal_negation_do_not_suppress(self) -> None:
         for text in ["Det er ikke akutt. Jeg blør mye.",
                      "Ikke selvmord, men jeg blor mye.",
                      "Jeg blor ikke mye. Jeg blor mye."]:
             with self.subTest(text=text):
                 self.assertEqual(classify(text, RULES)["priority"], "ACUTE_RISK_NOW")
 
-    def test_negation_of_that_signal_and_affirmative_idiom(self):
+    def test_negation_of_that_signal_and_affirmative_idiom(self) -> None:
         self.assertEqual(classify("Jeg blør ikke mye", RULES)["signals"], [])
         self.assertEqual(classify("Jeg ikke blør mye", RULES)["signals"], [])
         self.assertEqual(classify("Jeg kan ikke slutte å blør mye", RULES)["priority"], "ACUTE_RISK_NOW")
 
-    def test_norwegian_domain_signals_match_ascii(self):
+    def test_norwegian_domain_signals_match_ascii(self) -> None:
         for text, wanted in [("økonomi", ["financial_support"]),
                              ("rådgivning", ["financial_support"]),
                              ("ra\u030adgivning", ["financial_support"]),
@@ -43,7 +44,7 @@ class SemanticNormalizationTests(unittest.TestCase):
                              ("opplæring", ["education"])]:
             self.assertEqual([t["domain"] for t in decompose(text)], wanted)
 
-    def test_matching_normalizes_keywords_and_span_without_rewriting_source(self):
+    def test_matching_normalizes_keywords_and_span_without_rewriting_source(self) -> None:
         source = "Økonomi og bostøtte"
-        self.assertEqual(_score_span(source, _keywords("okonomi bostotte")), 2)
-        self.assertEqual(_keywords("økonomi bostøtte"), ["okonomi", "bostotte"])
+        self.assertEqual(score_span(source, query_keywords("okonomi bostotte")), 2)
+        self.assertEqual(query_keywords("økonomi bostøtte"), ["okonomi", "bostotte"])

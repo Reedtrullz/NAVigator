@@ -13,7 +13,11 @@ import stat
 from pathlib import Path
 from dataclasses import dataclass
 from datetime import date
-from typing import Any
+from collections.abc import Iterator, Mapping
+from typing import cast
+
+from runtime.type_support import object_list, object_mapping, string, strings
+from .contracts import AdmissionFailure, Coverage, Document, KnowledgeRecord, SourceReference
 
 from .text_normalization import normalize_match_text
 
@@ -46,27 +50,27 @@ class KnowledgeError(Exception):
 
 @dataclass
 class RetrievalResult:
-    records: list[dict[str, Any]]
-    failures: list[dict[str, Any]]
-    coverage: dict[str, Any]
+    records: list[KnowledgeRecord]
+    failures: list[AdmissionFailure]
+    coverage: Coverage
 
 
-def verified_date(value):
+def verified_date(value: object) -> str | None:
     if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
         return None
     try:
-        date.fromisoformat(value)
+        _ = date.fromisoformat(value)
     except ValueError:
         return None
     return value
 
 
-def _keywords(query):
-    tokens = re.findall(r"[a-z0-9]+", normalize_match_text(query))
+def query_keywords(query: str) -> list[str]:
+    tokens = [match.group() for match in re.finditer(r"[a-z0-9]+", normalize_match_text(query))]
     return [t for t in tokens if len(t) >= 2 and t not in STOPWORDS]
 
 
-def _iter_spans(content):
+def _iter_spans(content: str) -> Iterator[str]:
     """Yield verbatim candidate spans (lines, then sentence-sized pieces)."""
     for line in content.splitlines():
         stripped = line.strip()
@@ -75,8 +79,8 @@ def _iter_spans(content):
         if len(stripped) <= 400:
             yield stripped
             continue
-        for sentence in re.findall(r"[^.]*\.", line):
-            s = sentence.strip()
+        for sentence in re.finditer(r"[^.]*\.", line):
+            s = sentence.group().strip()
             if not s:
                 continue
             if len(s) > 400:
@@ -84,12 +88,12 @@ def _iter_spans(content):
             yield s
 
 
-def _score_span(span, keywords):
+def score_span(span: str, keywords: list[str]) -> int:
     hay = normalize_match_text(span)
     return sum(1 for k in keywords if k in hay)
 
 
-def _source_bytes(repo_root, relative):
+def _source_bytes(repo_root: str, relative: str) -> bytes:
     root = Path(repo_root).absolute()
     rel = Path(relative)
     if rel.is_absolute() or not rel.parts or ".." in rel.parts:
@@ -100,8 +104,8 @@ def _source_bytes(repo_root, relative):
         if current.is_symlink():
             raise KnowledgeError("PATH_REJECTED")
 
-    def opener(_path, flags):
-        fds = []
+    def opener(_path: str, flags: int) -> int:
+        fds: list[int] = []
         try:
             fd = os.open(root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
             fds.append(fd)
@@ -121,34 +125,45 @@ def _source_bytes(repo_root, relative):
         return fh.read()
 
 
-def load_knowledge(index_path=DEFAULT_INDEX, repo_root=REPO_ROOT, *, access_profile=None, domain=None):
-    if (not isinstance(access_profile, dict)
-            or access_profile.get("version") != "knowledge-access/v1"
-            or not isinstance(access_profile.get("documents"), dict)):
+def load_knowledge(index_path: str = DEFAULT_INDEX, repo_root: str = REPO_ROOT, *,
+                   access_profile: object = None, domain: str | None = None) -> tuple[list[Document], list[AdmissionFailure]]:
+    try:
+        profile = object_mapping(access_profile)
+        if profile.get("version") != "knowledge-access/v1":
+            raise ValueError("Unknown access profile")
+        permits = object_mapping(profile.get("documents"))
+    except ValueError:
         return [], [{"reason": "ACCESS_PROFILE_REQUIRED"}]
     try:
         relative = Path(index_path).absolute().relative_to(Path(repo_root).absolute())
-        index = json.loads(_source_bytes(repo_root, str(relative)))
-        if not isinstance(index, dict) or not isinstance(index.get("docs"), list):
-            raise KnowledgeError("INDEX_INVALID")
+        index = object_mapping(cast(object, json.loads(_source_bytes(repo_root, str(relative)))))
+        entries = object_list(index.get("docs"))
     except (OSError, ValueError, KnowledgeError) as exc:
         raise KnowledgeError("INDEX_UNAVAILABLE") from exc
-    docs, failures = [], []
-    for entry in index.get("docs", []):
-        permit = access_profile["documents"].get(entry.get("id")) if isinstance(entry, dict) else None
-        if (isinstance(entry, dict) and isinstance(permit, dict) and domain is not None
-                and domain not in (entry.get("domains") or ["general"])
-                and domain not in (permit.get("domains") or ["general"])):
-            continue
-        if (not isinstance(permit, dict) or permit.get("permission") != "GENERAL_APPROVED"
-                or entry.get("class") not in PUBLIC_CLASSES
-                or any(permit.get(k) != entry.get(k) for k in (
-                    "path", "class", "sha256", "domains", "freshness_class", "verified_date"))
-                or not isinstance(entry.get("path"), str)):
+    docs: list[Document] = []
+    failures: list[AdmissionFailure] = []
+    for value in entries:
+        try:
+            entry = object_mapping(value)
+            doc_id = string(entry.get("id"))
+            permit = object_mapping(permits.get(doc_id))
+            domains = strings(entry.get("domains") or ["general"])
+            permit_domains = strings(permit.get("domains") or ["general"])
+            if domain is not None and domain not in domains and domain not in permit_domains:
+                continue
+            path = string(entry.get("path"))
+            source_class = string(entry.get("class"))
+            if (permit.get("permission") != "GENERAL_APPROVED"
+                    or source_class not in PUBLIC_CLASSES
+                    or any(permit.get(k) != entry.get(k) for k in (
+                        "path", "class", "sha256", "domains", "freshness_class", "verified_date"))):
+                raise ValueError("Source not admitted")
+            freshness = string(entry.get("freshness_class", "UNKNOWN"))
+        except ValueError:
             failures.append({"reason": "SOURCE_NOT_ADMITTED"})
             continue
         try:
-            raw = _source_bytes(repo_root, entry["path"])
+            raw = _source_bytes(repo_root, path)
         except KnowledgeError:
             failures.append({"reason": "PATH_REJECTED"})
             continue
@@ -160,25 +175,29 @@ def load_knowledge(index_path=DEFAULT_INDEX, repo_root=REPO_ROOT, *, access_prof
             failures.append({"reason": "SHA_MISMATCH"})
             continue
         docs.append({
-            "doc_id": entry["id"],
-            "path": entry["path"],
+            "doc_id": doc_id,
+            "path": path,
             "sha256": digest,
-            "class": entry.get("class", "UNKNOWN"),
-            "freshness_class": entry.get("freshness_class", "UNKNOWN"),
-            "domains": entry.get("domains", ["general"]),
+            "class": source_class,
+            "freshness_class": freshness,
+            "domains": domains,
             "verified_date": verified_date(entry.get("verified_date")),
             "content": raw.decode("utf-8", errors="replace"),
         })
     return docs, failures
 
 
-def _load_rules(rules_path=DEFAULT_RULES, repo_root=REPO_ROOT, access_profile=None):
-    if (not isinstance(access_profile, dict)
-            or access_profile.get("version") != "knowledge-access/v1"
-            or not isinstance(access_profile.get("documents"), dict)):
+def _load_rules(rules_path: str = DEFAULT_RULES, repo_root: str = REPO_ROOT,
+                access_profile: object = None) -> list[Mapping[str, object]]:
+    try:
+        profile = object_mapping(access_profile)
+        if profile.get("version") != "knowledge-access/v1":
+            return []
+        _ = object_mapping(profile.get("documents"))
+        permit = object_mapping(profile.get("rules"))
+    except ValueError:
         return []
-    permit = access_profile.get("rules") if isinstance(access_profile, dict) else None
-    if not isinstance(permit, dict) or permit.get("permission") != "GENERAL_APPROVED":
+    if permit.get("permission") != "GENERAL_APPROVED":
         return []
     try:
         relative = Path(rules_path).absolute().relative_to(Path(repo_root).absolute())
@@ -187,28 +206,29 @@ def _load_rules(rules_path=DEFAULT_RULES, repo_root=REPO_ROOT, access_profile=No
         raw = _source_bytes(repo_root, str(relative))
         if hashlib.sha256(raw).hexdigest() != permit.get("sha256"):
             raise KnowledgeError("RULES_SHA_MISMATCH")
-        parsed = json.loads(raw)
-        if not isinstance(parsed, dict) or not isinstance(parsed.get("rules"), list):
-            raise KnowledgeError("RULES_INVALID")
-        return parsed["rules"]
+        parsed = object_mapping(cast(object, json.loads(raw)))
+        return [object_mapping(rule) for rule in object_list(parsed.get("rules"))]
     except (OSError, ValueError) as exc:
         raise KnowledgeError("RULES_UNAVAILABLE") from exc
 
 
-def _rule_record(rule, n):
-    src = rule["source"]
+def _rule_record(rule: Mapping[str, object], n: int) -> KnowledgeRecord:
+    src = object_mapping(rule["source"])
+    reference: SourceReference = {"kind": string(src["kind"]), "ref": string(src["ref"]), "url": string(src["url"])}
+    rule_id = string(rule["rule_id"])
+    name = string(rule["name"])
     return {
         "record_id": "K-R%03d" % n,
         "source_type": "FROZEN_RULE",
-        "domain": RULE_DOMAINS.get(rule["rule_id"], "general"),
-        "claim": "%s: %s" % (rule["name"], rule.get("deadline_meaning", rule["name"])),
-        "source_reference": {"kind": src["kind"], "ref": src["ref"], "url": src["url"]},
+        "domain": RULE_DOMAINS.get(rule_id, "general"),
+        "claim": "%s: %s" % (name, rule.get("deadline_meaning", name)),
+        "source_reference": reference,
         "authority": "LAW",
         "freshness": "CURRENT" if verified_date(rule.get("verified_date")) else "UNKNOWN",
         "evidence_id": "E-R%03d" % n,
         "provenance": {
             "artifact": "rules-v1",
-            "rule_id": rule["rule_id"],
+            "rule_id": rule_id,
             "verified_date": verified_date(rule.get("verified_date")),
         },
         "gap_state": None,
@@ -216,7 +236,7 @@ def _rule_record(rule, n):
     }
 
 
-def _doc_record(doc, claim, n):
+def document_record(doc: Document, claim: str, n: int) -> KnowledgeRecord:
     is_gap = doc["doc_id"] in GAP_DOC_IDS or doc.get("class") == "GAP_REGISTRY"
     domains = doc.get("domains") or ["general"]
     return {
@@ -243,16 +263,16 @@ def _doc_record(doc, claim, n):
     }
 
 
-def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
-             rules_path=DEFAULT_RULES, *, access_profile=None):
-    failures = []
+def retrieve(query: str, domain: str, index_path: str = DEFAULT_INDEX, repo_root: str = REPO_ROOT,
+             rules_path: str = DEFAULT_RULES, *, access_profile: object = None) -> RetrievalResult:
+    failures: list[AdmissionFailure] = []
     try:
         docs, failures = load_knowledge(index_path, repo_root, access_profile=access_profile, domain=domain)
     except KnowledgeError as exc:
         docs = []
         failures = [{"reason": str(exc)}]
-    keywords = _keywords(query)
-    records = []
+    keywords = query_keywords(query)
+    records: list[KnowledgeRecord] = []
     n = 1
     try:
         rules = _load_rules(rules_path, repo_root, access_profile)
@@ -260,15 +280,15 @@ def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
         rules = []
         failures.append({"reason": str(exc)})
     for rule in rules:
-        if RULE_DOMAINS.get(rule["rule_id"]) != domain:
+        if RULE_DOMAINS.get(string(rule["rule_id"])) != domain:
             continue
         rule_text = " ".join(str(rule.get(k, "")) for k in
                              ("name", "deadline_meaning", "rule_id"))
         applies = json.dumps(rule.get("applies_to", {}), ensure_ascii=False)
-        if _score_span((rule_text + " " + applies).lower(), keywords) >= 1:
+        if score_span((rule_text + " " + applies).lower(), keywords) >= 1:
             records.append(_rule_record(rule, n))
             n += 1
-    scored = []
+    scored: list[tuple[int, Document, str]] = []
     for doc in docs:
         # RC-08: lexical scoring runs only over docs scoped to the track
         # domain; cross-domain docs are excluded before any span is scored.
@@ -276,7 +296,7 @@ def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
             continue
         best, best_score = None, 0
         for span in _iter_spans(doc["content"]):
-            score = _score_span(span.lower(), keywords)
+            score = score_span(span.lower(), keywords)
             if score > best_score:
                 best, best_score = span, score
         if best is not None and best_score >= 1:
@@ -296,10 +316,14 @@ def retrieve(query, domain, index_path=DEFAULT_INDEX, repo_root=REPO_ROOT,
     chosen = current[:research_budget] + gaps[:gap_budget]
     chosen += snapshot[: max(0, research_budget - len(current))]
     for _score, doc, claim in chosen:
-        records.append(_doc_record(doc, claim, n))
+        records.append(document_record(doc, claim, n))
         n += 1
     records = records[:MAX_RECORDS]
     return RetrievalResult(records, failures, {
         "state": "INCOMPLETE" if failures else "COMPLETE",
         "scope": "PROFILE_AND_DOMAIN", "admitted_documents": len(docs),
         "matched_records": len(records)})
+
+_keywords = query_keywords
+_score_span = score_span
+_doc_record = document_record

@@ -18,14 +18,11 @@ generalized to platform patterns, never to individual cases):
 """
 
 import re
-
-try:
-    from .sitemap_fetch import bounded_fetch as _default_sitemap_fetch
-except ImportError:  # direct-module import contexts
-    _default_sitemap_fetch = None
+from .contracts import FetchFn, Result
+from runtime.type_support import override
 
 from .providers import (
-    MAX_SITE_RESULTS, NAV_KEYWORDS, ProviderResponse, SiteDirectProvider,
+    MAX_SITE_RESULTS, ProviderResponse, SiteDirectProvider,
 )
 from urllib.parse import urljoin
 
@@ -49,18 +46,19 @@ class SiteDirectProviderV25(SiteDirectProvider):
     so every previously successful path is byte-identical in behavior.
     """
 
-    def __init__(self, fetch_fn, roots=None, provider_id="site_direct",
-                 sitemap_fetch_fn=None, render_fn=render_url):
+    def __init__(self, fetch_fn: FetchFn, roots: list[str] | None = None, provider_id: str = "site_direct",
+                 sitemap_fetch_fn: FetchFn | None = None, render_fn: FetchFn = render_url) -> None:
         super().__init__(fetch_fn, roots=roots, provider_id=provider_id,
                          sitemap_fetch_fn=sitemap_fetch_fn)
         # V23/V24 parity: several root variants per municipality are probed
         # before the working platform root; the frozen base budget (8)
         # exhausts before the live root is reached. Same raised budget as
         # SiteDirectProviderV23 (16), still bounded.
-        self._url_budget = 16
-        self._render_fn = render_fn
+        self._url_budget: int = 16
+        self._render_fn: FetchFn = render_fn
 
-    def discover(self, query):
+    @override
+    def discover(self, query: str) -> ProviderResponse:
         resp = super().discover(query)
         if resp.status == "SUCCESS" and resp.results:
             return resp
@@ -76,7 +74,7 @@ class SiteDirectProviderV25(SiteDirectProvider):
                     return self._success(query, candidates, root,
                                          "SITEMAP_INDEX_FOLLOW",
                                          [a for a in resp.attempts])
-                candidates = self._rendered_nav_links(root)
+                candidates = self.rendered_nav_links(root)
                 if candidates:
                     return self._success(query, candidates, root,
                                          "RENDERED_NAVIGATION_LINK",
@@ -87,18 +85,20 @@ class SiteDirectProviderV25(SiteDirectProvider):
 
     # -- helpers ----------------------------------------------------------
 
-    def _candidate_roots(self):
+    def _candidate_roots(self) -> list[str]:
         if self.roots:
             return list(self.roots)
         return []
 
-    def _get(self, url):
+    @override
+    def _get(self, url: str) -> tuple[str, str]:
         # Reuse the parent's bounded, validated fetch (budget-aware).
         return SiteDirectProvider._get(self, url)
 
-    def _success(self, query, candidates, root, method, attempts):
+    def _success(self, query: str, candidates: list[Result], root: str, method: str,
+                 attempts: list[dict[str, object]]) -> ProviderResponse:
         slug = _fold(query.split()[0])
-        results = [{"url": r["url"], "title": r.get("title", ""),
+        results: list[Result] = [{"url": r["url"], "title": r.get("title", ""),
                     "snippet": "", "provider": self.provider_id, "rank": i}
                    for i, r in enumerate(candidates, start=1)]
         resp = ProviderResponse(
@@ -114,7 +114,7 @@ class SiteDirectProviderV25(SiteDirectProvider):
         self._cache[slug] = resp
         return resp
 
-    def _index_children(self, root):
+    def _index_children(self, root: str) -> list[Result]:
         sm_url = urljoin(root, "sitemap.xml")
         sm_status, sm_body = self._get(sm_url)
         if sm_status != "OK" or not sm_body:
@@ -123,13 +123,14 @@ class SiteDirectProviderV25(SiteDirectProvider):
             return []
         if "<urlset" in sm_body[:4000].lower():
             return []
-        results, seen = [], set()
-        for loc in LOC_RE.findall(sm_body)[:MAX_SITEMAP_INDEX_CHILDREN]:
-            child = loc.strip()
+        results: list[Result] = []
+        seen: set[str] = set()
+        for loc in list(LOC_RE.finditer(sm_body))[:MAX_SITEMAP_INDEX_CHILDREN]:
+            child = loc.group(1).strip()
             if not child.startswith(("http://", "https://")):
                 continue
             try:
-                validate_url(child)
+                _ = validate_url(child)
             except InvalidUrlError:
                 continue
             c_status, c_body = self._get(child)
@@ -144,9 +145,9 @@ class SiteDirectProviderV25(SiteDirectProvider):
                     return results
         return results
 
-    def _rendered_nav_links(self, root):
+    def rendered_nav_links(self, root: str) -> list[Result]:
         try:
-            validate_url(root)
+            _ = validate_url(root)
         except InvalidUrlError:
             return []
         if self._url_budget <= 0:
@@ -159,3 +160,6 @@ class SiteDirectProviderV25(SiteDirectProvider):
         if status != 200 or not dom:
             return []
         return self._nav_links(dom, root)
+
+    def _rendered_nav_links(self, root: str) -> list[Result]:
+        return self.rendered_nav_links(root)

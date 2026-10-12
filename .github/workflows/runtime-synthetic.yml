@@ -41,6 +41,11 @@ jobs:
       - name: Run only the guarded synthetic suite
         shell: bash
         run: python -m tools.runtime_synthetic > "$RUNNER_TEMP/runtime-synthetic.json"
+      - name: Check the verified runtime types
+        shell: bash
+        run: |
+          python -m pip install basedpyright==1.39.3
+          python -c 'import json, subprocess; from pathlib import Path; paths = json.loads(Path("docs/runtime-type-evidence-2026-10-12.json").read_text())["runtime_source_hashes"]; raise SystemExit(subprocess.call(["basedpyright", *paths]))'
       - name: Check protected files after the tests
         if: always()
         shell: bash

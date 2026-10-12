@@ -8,6 +8,8 @@ import sys
 import time
 import unittest
 from unittest.mock import patch
+from typing import cast
+from runtime.type_support import object_mapping, string
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULES = (
@@ -19,19 +21,23 @@ MODULES = (
     "sut.phase3.test_runtime_synthetic",
     "runtime.discovery_v2.test_fetch_accounting",
     "runtime.discovery.test_host_policy",
+    "sut.phase2.test_type_boundaries",
 )
 
 
-def main():
+def main() -> int:
     candidate_sha = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     assert candidate_sha == os.environ.get("RUNTIME_CANDIDATE_SHA", candidate_sha)
-    evidence = json.loads((ROOT / "docs/runtime-final-review-evidence-2026-10-12.json").read_text())
+    evidence = object_mapping(cast(object, json.loads(
+        (ROOT / "docs/runtime-type-evidence-2026-10-12.json").read_text())))
+    source_hashes = {path: string(digest) for path, digest in
+                     object_mapping(evidence["runtime_source_hashes"]).items()}
     hashes = {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
-              for path in evidence["runtime_source_hashes"]}
+              for path in source_hashes}
     manifest = hashlib.sha256(json.dumps(hashes, sort_keys=True,
                                         separators=(",", ":")).encode()).hexdigest()
-    assert hashes == evidence["runtime_source_hashes"], "Reviewed runtime source changed"
+    assert hashes == source_hashes, "Verified runtime source changed"
     assert manifest == evidence["runtime_source_manifest_sha256"]
     started = datetime.datetime.now(datetime.timezone.utc).isoformat()
     clock = time.monotonic()
@@ -42,10 +48,10 @@ def main():
         suites = {module: unittest.defaultTestLoader.loadTestsFromName(module) for module in MODULES}
         counts = {module: suite.countTestCases() for module, suite in suites.items()}
         result = unittest.TestResult()
-        unittest.TestSuite(suites.values()).run(result)
+        _ = unittest.TestSuite(suites.values()).run(result)
         attempts = dict(zip(("dns", "socket_connection", "subprocess", "browser"),
                             (guard.call_count for guard in (dns, connect, child, browser))))
-    passed = (result.wasSuccessful() and result.testsRun == 63 and not result.skipped
+    passed = (result.wasSuccessful() and result.testsRun == 68 and not result.skipped
               and not result.expectedFailures and not any(attempts.values()))
     print(json.dumps({
         "schema_version": "navigator-runtime-ci/v1",

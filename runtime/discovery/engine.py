@@ -5,10 +5,13 @@ No municipality-specific logic lives here. All data comes from the frozen
 protocol and replay/live providers.
 """
 
-import hashlib
 import re
-from datetime import datetime, timezone
+from typing import Callable
 from urllib.parse import urljoin, urlparse
+from collections.abc import Iterator
+from .contracts import Extract, Level, PlanStep, ProtocolDefinition
+from .protocol import ProtocolLoader
+from .providers import FetchProvider, FetchResult
 
 from .security import validate_url, InvalidUrlError
 
@@ -20,23 +23,23 @@ from .security import validate_url, InvalidUrlError
 class DiscoveryPlanner:
     """Generate the allowed discovery levels and queries from the protocol."""
 
-    def __init__(self, protocol):
-        self.protocol = protocol
+    def __init__(self, protocol: ProtocolDefinition | ProtocolLoader) -> None:
+        self.protocol: ProtocolDefinition | ProtocolLoader = protocol
 
-    def _levels(self):
+    def _levels(self) -> list[Level]:
         data = self.protocol["levels"] if isinstance(self.protocol, dict) else self.protocol.levels
         return data
 
-    def _templates(self):
+    def _templates(self) -> list[str]:
         data = (self.protocol["query_family_templates"]
                 if isinstance(self.protocol, dict) else self.protocol.query_templates)
         return data
 
-    def plan(self, municipality):
+    def plan(self, municipality: str) -> list[PlanStep]:
         """Return ordered discovery steps per frozen levels 0-5."""
-        steps = []
+        steps: list[PlanStep] = []
         for level in self._levels():
-            step = {"level": level["id"], "name": level["name"], "queries": [],
+            step: PlanStep = {"level": level["id"], "name": level["name"], "queries": [],
                     "known_urls": [], "status": "PENDING"}
             if level["id"] == 1 or level["id"] in (2, 3):
                 # Query templates apply to structured/catalog levels
@@ -55,12 +58,12 @@ class DiscoveryPlanner:
 class LinkExplorer:
     """Follow discovery edges within bounds (recursion depth, max pages)."""
 
-    def __init__(self, fetch_provider, max_depth=2, max_pages=20):
-        self.fetch_provider = fetch_provider
-        self.max_depth = max_depth
-        self.max_pages = max_pages
+    def __init__(self, fetch_provider: FetchProvider, max_depth: int = 2, max_pages: int = 20) -> None:
+        self.fetch_provider: FetchProvider = fetch_provider
+        self.max_depth: int = max_depth
+        self.max_pages: int = max_pages
 
-    def explore(self, start_url, depth=0, visited=None):
+    def explore(self, start_url: str, depth: int = 0, visited: set[str] | None = None) -> Iterator[tuple[str, list[str], FetchResult]]:
         """Yield (url, links, fetch_result) tuples for the page and its links."""
         if visited is None:
             visited = set()
@@ -69,12 +72,12 @@ class LinkExplorer:
         if start_url in visited:
             return
         try:
-            validate_url(start_url)
+            _ = validate_url(start_url)
         except InvalidUrlError:
             return
         visited.add(start_url)
         result = self.fetch_provider.fetch(start_url)
-        links = []
+        links: list[str] = []
         if result.status == "success" and result.content:
             links = self._extract_links(result.content, start_url)
         yield (start_url, links, result)
@@ -84,17 +87,17 @@ class LinkExplorer:
             yield from self.explore(link, depth + 1, visited)
 
     @staticmethod
-    def _extract_links(html, base_url):
+    def _extract_links(html: str, base_url: str) -> list[str]:
         """Extract absolute URLs from <a href> tags, staying on official domains."""
         from .security import is_official_domain
-        links = []
+        links: list[str] = []
         for m in re.finditer(r'<a[^>]+href="([^"#]+)"', html, re.IGNORECASE):
             href = m.group(1).strip()
             if href.startswith("mailto:") or href.startswith("tel:"):
                 continue
             absolute = urljoin(base_url, href)
             try:
-                validate_url(absolute)
+                _ = validate_url(absolute)
             except InvalidUrlError:
                 continue
             base_domain = is_official_domain(base_url)
@@ -120,95 +123,94 @@ class ServiceExtractor:
     """
 
     # Norwegian access markers
-    PHONE_RE = re.compile(r"(?:\+47\s?)?(?:\d{2}\s?){4}\d{2}|\b\d{8}\b|\b\d{3}\s\d{2}\s\d{3}\b")
-    EMAIL_RE = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]+\b")
-    FORM_RE = re.compile(
-        r"(søknadsskjema|søk om|elektronisk skjema|digital skjema|selvhenvisning[s]?|fyll ut selvhenvisningsskjema|"
+    PHONE_RE: re.Pattern[str] = re.compile(r"(?:\+47\s?)?(?:\d{2}\s?){4}\d{2}|\b\d{8}\b|\b\d{3}\s\d{2}\s\d{3}\b")
+    EMAIL_RE: re.Pattern[str] = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]+\b")
+    FORM_RE: re.Pattern[str] = re.compile(
+        r"(søknadsskjema|søk om|elektronisk skjema|digital skjema|selvhenvisning[s]?|fyll ut selvhenvisningsskjema|" +
         r"fyll ut skjema|bruk skjema|self[- ]referral|application form)",
         re.IGNORECASE,
     )
-    DROPIN_RE = re.compile(r"(drop[- ]?in|kan komme[sr]? uten avtale|uten timebestilling)", re.IGNORECASE)
-    CONTACT_RE = re.compile(
-        r"(ta kontakt|kontakt oss|du kan kontakte|ring til|ring oss|kontakt(t)? oss på|"
+    DROPIN_RE: re.Pattern[str] = re.compile(r"(drop[- ]?in|kan komme[sr]? uten avtale|uten timebestilling)", re.IGNORECASE)
+    CONTACT_RE: re.Pattern[str] = re.compile(
+        r"(ta kontakt|kontakt oss|du kan kontakte|ring til|ring oss|kontakt(t)? oss på|" +
         r"for veiledning.*?kontakt|besøk oss)",
         re.IGNORECASE,
     )
     # selvhenvisning is self-referral, not a referral requirement
-    REFERRAL_RE = re.compile(r"(?<!selv)" + (
-        r"(henvisning|tilvising|henvises|henvisning fra (fastlege|lege|tannlege|andre)|"
+    REFERRAL_RE: re.Pattern[str] = re.compile(r"(?<!selv)" + (
+        r"(henvisning|tilvising|henvises|henvisning fra (fastlege|lege|tannlege|andre)|" +
         r"via fastlege|fastlege kan henvise|krever henvisning)"
     ), re.IGNORECASE)
     # Negated referral ("no referral needed") documents self-referral (E3)
-    REFERRAL_NEGATED_RE = re.compile(
-        r"(trenger (?:ikke|ingen) henvisning|behøver (?:ikke|ingen) henvisning|"
-        r"treng (?:ikkje|ingen) tilvising|inga tilvising|utan tilvising|"
+    REFERRAL_NEGATED_RE: re.Pattern[str] = re.compile(
+        r"(trenger (?:ikke|ingen) henvisning|behøver (?:ikke|ingen) henvisning|" +
+        r"treng (?:ikkje|ingen) tilvising|inga tilvising|utan tilvising|" +
         r"ikkje tilvising|ingen henvisning|uten henvisning)",
         re.IGNORECASE,
     )
     # Soft/optional referral: offered as an alternative, not a requirement
-    REFERRAL_SOFT_RE = re.compile(
-        r"(fortrinnsvis henvisning|ønsker vi fortrinnsvis|eller via fastlege|"
+    REFERRAL_SOFT_RE: re.Pattern[str] = re.compile(
+        r"(fortrinnsvis henvisning|ønsker vi fortrinnsvis|eller via fastlege|" +
         r"eller du kan henvises|eller henvises av|eller via henvisning)",
         re.IGNORECASE,
     )
     # Capacity closure: page states the service currently cannot accept
     # patients; contact channels may exist but there is no new-user route.
-    CLOSED_TO_PATIENTS_RE = re.compile(
-        r"(ikke kapasitet til å tilby|ikkje kapasitet til å tilby|"
-        r"ingen kapasitet til å tilby|stengt for nye pasienter|"
+    CLOSED_TO_PATIENTS_RE: re.Pattern[str] = re.compile(
+        r"(ikke kapasitet til å tilby|ikkje kapasitet til å tilby|" +
+        r"ingen kapasitet til å tilby|stengt for nye pasienter|" +
         r"tar ikke imot nye pasienter)",
         re.IGNORECASE,
     )
     # System-targeted services (guidance to staff, not patient intake)
-    SYSTEM_TARGETED_RE = re.compile(
+    SYSTEM_TARGETED_RE: re.Pattern[str] = re.compile(
         r"(veiledning av annet helsepersonell|rettleiing og fagstøtte til tilsette)",
         re.IGNORECASE,
     )
     # Service-connected email context (E2 analogue for DIRECT_EMAIL)
-    EMAIL_CONNECTED_RE = re.compile(r"(send e-post|e-post\s*:|skriv til)", re.IGNORECASE)
+    EMAIL_CONNECTED_RE: re.Pattern[str] = re.compile(r"(send e-post|e-post\s*:|skriv til)", re.IGNORECASE)
 
     # Explicit self-contact statements (E1: "ta kontakt" connected to the
     # service; E3: distinguishes unconditional self-referral from a phone
     # number that may route through assessment)
-    SELF_CONTACT_RE = re.compile(
-        r"(kan ta kontakt (?:selv|direkte)|kan selv ta kontakt|ta kontakt selv|"
+    SELF_CONTACT_RE: re.Pattern[str] = re.compile(
+        r"(kan ta kontakt (?:selv|direkte)|kan selv ta kontakt|ta kontakt selv|" +
         r"alle kan ta kontakt|du kan selv ta kontakt|selv kan ta kontakt|på egen hånd)",
         re.IGNORECASE,
     )
-    AGE_RE = re.compile(
-        r"((?:over|under) (?:fylte )?(\d{1,3}) år|mellom (\d{1,3}) og (\d{1,3}) år|"
+    AGE_RE: re.Pattern[str] = re.compile(
+        r"((?:over|under) (?:fylte )?(\d{1,3}) år|mellom (\d{1,3}) og (\d{1,3}) år|" +
         r"(\d{1,3})-(\d{1,3}) år|fra (\d{1,3}) år|tilbud til barn og unge)",
         re.IGNORECASE,
     )
-    AGE_UNIVERSAL_RE = re.compile(r"(gis til alle|tilbud til alle|tilbyr til alle)", re.IGNORECASE)
-    TARGET_GROUP_RE = re.compile(
+    AGE_UNIVERSAL_RE: re.Pattern[str] = re.compile(r"(gis til alle|tilbud til alle|tilbyr til alle)", re.IGNORECASE)
+    TARGET_GROUP_RE: re.Pattern[str] = re.compile(
         r"til (?:innbyggere|voksne|barn|unge|ungdom|elever|pårørende|familier|deg som)",
         re.IGNORECASE,
     )
     # Context phrases that connect a phone number to service intake (E2)
-    PHONE_INTAKE_CONTEXT_RE = re.compile(
-        r"(kontaktinformasjon|telefontid|timebestilling|inntak|ring oss|ring til|ringe|"
+    PHONE_INTAKE_CONTEXT_RE: re.Pattern[str] = re.compile(
+        r"(kontaktinformasjon|telefontid|timebestilling|inntak|ring oss|ring til|ringe|" +
         r"kontakt oss på|for veiledning)",
         re.IGNORECASE,
     )
-    SERVICE_KEYWORDS = re.compile(
-        r"(psykisk helse|psykisk helsehjelp|psykisk helse og rus|rask psykisk helsehjelp|"
-        r"psykisk(e)? helsetjeneste|psykisk(e)? helse|helseutfordringer|kommunepsykolog|mestring|lavterskel|helsestasjon|"
-        r"ambulant team|barne- og ungdomsteam|"
+    SERVICE_KEYWORDS: re.Pattern[str] = re.compile(
+        r"(psykisk helse|psykisk helsehjelp|psykisk helse og rus|rask psykisk helsehjelp|" +
+        r"psykisk(e)? helsetjeneste|psykisk(e)? helse|helseutfordringer|kommunepsykolog|mestring|lavterskel|helsestasjon|" +
+        r"ambulant team|barne- og ungdomsteam|" +
         r"psykolog|rus|selvhjelp)",
         re.IGNORECASE,
     )
 
-    def extract(self, html, url):
+    def extract(self, html: str, url: str) -> Extract | None:
         """Extract candidate services, access markers, and evidence spans."""
-        text = self._html_to_text(html)
+        text = self.html_to_text(html)
         if not text or not self.SERVICE_KEYWORDS.search(text):
             # A service page can also be identified by its URL slug when the
             # body text uses formulations the keyword gate does not cover.
             if not self._slug_has_service_terms(url):
                 return None
-        evidence = []
-        result = {
+        result: Extract = {
             "url": url,
             "title": None,
             "has_service_content": True,
@@ -220,8 +222,8 @@ class ServiceExtractor:
             "text_spans": [],
         }
         # Access markers
-        phones = self.PHONE_RE.findall(text)
-        emails = self.EMAIL_RE.findall(text)
+        phones = [match.group() for match in self.PHONE_RE.finditer(text)]
+        emails = [match.group() for match in self.EMAIL_RE.finditer(text)]
         has_form = bool(self.FORM_RE.search(text))
         has_dropin = bool(self.DROPIN_RE.search(text))
         has_contact = bool(self.CONTACT_RE.search(text))
@@ -261,7 +263,7 @@ class ServiceExtractor:
         age_m = self.AGE_RE.search(text)
         if age_m:
             result["age_text"] = age_m.group(0).strip()
-            result["age_bounds"] = self._parse_age_bounds(age_m)
+            result["age_bounds"] = self.parse_age_bounds(age_m)
         tg_m = self.TARGET_GROUP_RE.search(text)
         if tg_m:
             result["target_group"] = self._extract_span(text, tg_m.start(), tg_m.end())
@@ -281,7 +283,7 @@ class ServiceExtractor:
         return result
 
     @staticmethod
-    def _html_to_text(html):
+    def html_to_text(html: str | None) -> str:
         """Strip HTML to text, preserving sentence context."""
         if not html:
             return ""
@@ -299,8 +301,10 @@ class ServiceExtractor:
         text = re.sub(r"\n\s*\n+", "\n", text)
         return text.strip()
 
+    _html_to_text: Callable[[str | None], str] = html_to_text
+
     @staticmethod
-    def _extract_span(text, start, end):
+    def _extract_span(text: str, start: int, end: int) -> str:
         """Capture the sentence containing the match for verbatim provenance."""
         sent_start = text.rfind(".", 0, start)
         sent_end = text.find(".", end)
@@ -315,7 +319,7 @@ class ServiceExtractor:
         return text[sent_start:sent_end].strip()
 
     @staticmethod
-    def _parse_age_bounds(match):
+    def parse_age_bounds(match: re.Match[str]) -> dict[str, int | None] | None:
         """Parse an AGE_RE match into inclusive {min, max} bounds."""
         g = match.groups()
         text = match.group(0).lower()
@@ -330,8 +334,10 @@ class ServiceExtractor:
             return {"min": int(g[6]), "max": None}
         return None
 
+    _parse_age_bounds: Callable[[re.Match[str]], dict[str, int | None] | None] = parse_age_bounds
+
     @staticmethod
-    def _slug_has_service_terms(url):
+    def _slug_has_service_terms(url: str) -> bool:
         path = urlparse(url).path.lower()
         terms = ("psykisk-helse", "psykisk-helsetjeneste", "psykisk-helsearbeid",
                  "rask-psykisk", "helse-og-rus", "psykisk-helse-og-rus",
