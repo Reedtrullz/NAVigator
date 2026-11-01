@@ -41,6 +41,9 @@ jobs:
       - name: Run only the guarded synthetic suite
         shell: bash
         run: python -m tools.runtime_synthetic > "$RUNNER_TEMP/runtime-synthetic.json"
+      - name: Run the replay search reuse tests
+        shell: bash
+        run: python -m unittest -v sut.phase2.test_discovery_adapter.DiscoveryAdapterTests.test_replay_search_reused_within_invocation sut.phase2.test_discovery_adapter.DiscoveryAdapterTests.test_replay_search_reuse_does_not_leak_between_invocations 2>&1 | tee "$RUNNER_TEMP/runtime-replay-reuse.txt"
       - name: Check the verified runtime types
         shell: bash
         run: |
@@ -55,6 +58,8 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: runtime-synthetic-python-${{ matrix.python-version }}-${{ github.event.pull_request.head.sha }}
-          path: ${{ runner.temp }}/runtime-synthetic.json
+          path: |
+            ${{ runner.temp }}/runtime-synthetic.json
+            ${{ runner.temp }}/runtime-replay-reuse.txt
           if-no-files-found: error
           retention-days: 14
