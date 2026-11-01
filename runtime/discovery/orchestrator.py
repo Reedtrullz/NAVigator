@@ -53,6 +53,7 @@ def run_discovery(protocol, input_data, fixtures=None, mode="replay"):
     render_fallbacks = 0
     discovered_urls = set()
     searches = []
+    replay_searches = {}  # per-invocation exact-query reuse; replay mode only
 
     # --- Level 0 / 1 / 2: search-driven discovery ---
     fixture_search = fixtures.get("search_index", {}) if mode == "replay" else {}
@@ -65,7 +66,11 @@ def run_discovery(protocol, input_data, fixtures=None, mode="replay"):
         if step["level"] not in (1, 2):
             continue
         for query in step["queries"]:
-            sr = search_provider.search(query)
+            sr = replay_searches.get(query) if mode == "replay" else None
+            if sr is None:
+                sr = search_provider.search(query)
+                if mode == "replay":
+                    replay_searches[query] = sr
             if sr.results:
                 searches.append({"query": query, "level": step["level"],
                                  "results": [{"url": r["url"], "title": r.get("title", "")}

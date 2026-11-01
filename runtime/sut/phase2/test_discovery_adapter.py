@@ -7,6 +7,55 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from sut.phase2 import discovery_adapter  # noqa: E402
 from sut.phase2.discovery_adapter import run_discovery_step  # noqa: E402
+from runtime.discovery.orchestrator import run_discovery  # noqa: E402
+from runtime.discovery.providers import ReplaySearchProvider  # noqa: E402
+
+_QUERIES = ["psykisk helse <kommune>", "ungdom rad <kommune>"]
+_PROTOCOL = {
+    "protocol_id": "AUTHORED-PUBLIC-REPLAY-REUSE-PROTOCOL",
+    "levels": [{"id": 0, "name": "known"}, {"id": 1, "name": "search"},
+               {"id": 2, "name": "search-2"}],
+    "query_family_templates": _QUERIES,
+    "uncertainty_outputs": {"VERIFIED_ROUTE": "verified",
+                            "SERVICE_FOUND_ACCESS_UNCLEAR": "partial",
+                            "NO_VERIFIED_ROUTE_AFTER_PROTOCOL": "none"},
+}
+_HTML = ("<html><head><title>Psykisk helse</title></head><body>"
+         "<p>Psykisk helse for unge. Tilbud til unge mellom 16 og 25 \u00e5r.</p>"
+         "<p>Du kan ta kontakt selv. Drop-in uten timebestilling.</p></body></html>")
+_BASE = "https://fake.kommune.no/tjenester/"
+
+
+def _replay_fixtures(municipality, slugs):
+    urls = [_BASE + slug for slug in slugs]
+    queries = [q.replace("<kommune>", municipality) for q in _QUERIES]
+    return queries, urls, {
+        "search_index": {q: [{"url": u, "title": "T", "snippet": ""}]
+                         for q, u in zip(queries, urls)},
+        "pages": {u: {"content": _HTML, "captured_at": "2026-01-01T00:00:00Z"} for u in urls},
+        "known_urls": [],
+    }
+
+
+def _run_replay(fixtures):
+    # The real ReplaySearchProvider runs; the spy only counts calls. The four
+    # primitives the synthetic runner denies stay denied here too.
+    calls = []
+    real_search = ReplaySearchProvider.search
+
+    def spy(provider, query):
+        calls.append(query)
+        return real_search(provider, query)
+
+    with mock.patch.object(ReplaySearchProvider, "search", spy), \
+            mock.patch("socket.getaddrinfo", side_effect=AssertionError("NO_REAL_DNS")) as dns, \
+            mock.patch("socket.create_connection", side_effect=AssertionError("NO_REAL_CONNECTION")) as conn, \
+            mock.patch("subprocess.run", side_effect=AssertionError("NO_REAL_SUBPROCESS")) as run, \
+            mock.patch("subprocess.Popen", side_effect=AssertionError("NO_REAL_BROWSER")) as popen:
+        result = run_discovery(_PROTOCOL, {"municipality": "Fake", "age": 19},
+                               fixtures=fixtures, mode="replay")
+    assert not any(g.call_count for g in (dns, conn, run, popen))
+    return result, calls
 
 
 class DiscoveryAdapterTests(unittest.TestCase):
@@ -73,6 +122,31 @@ class DiscoveryAdapterTests(unittest.TestCase):
         b = run_discovery_step(kwargs, location_context=loc, age=19)
         self.assertEqual(a["services"], b["services"])
         self.assertEqual(a["route_state"], b["route_state"])
+
+    def test_replay_search_reused_within_invocation(self):
+        queries, urls, fixtures = _replay_fixtures("Fake", ["psykisk-helse", "ungdom-rad"])
+        result, calls = _run_replay(fixtures)
+        self.assertEqual(len(calls), len(set(calls)), "duplicate replay searches: %r" % calls)
+        self.assertEqual(sorted(calls), sorted(queries))
+        # Both levels still record every search, hit and QUERY_SEARCH edge.
+        self.assertEqual([(s["query"], s["level"], [r["url"] for r in s["results"]])
+                          for s in result["searches"]],
+                         [(q, level, [u]) for level in (1, 2) for q, u in zip(queries, urls)])
+        self.assertEqual(sorted((e["query_family"], e["level"], e["to"])
+                                for e in result["provenance_graph"]
+                                if e["discovery_method"] == "QUERY_SEARCH"),
+                         sorted((q, level, u) for level in (1, 2) for q, u in zip(queries, urls)))
+        self.assertEqual(result["execution_status"], "COMPLETE")
+
+    def test_replay_search_reuse_does_not_leak_between_invocations(self):
+        queries, urls_a, fixtures_a = _replay_fixtures("Fake", ["psykisk-helse", "ungdom-rad"])
+        _, urls_b, fixtures_b = _replay_fixtures("Fake", ["psykisk-helse-ny", "ungdom-rad-ny"])
+        result_a, calls_a = _run_replay(fixtures_a)
+        result_b, calls_b = _run_replay(fixtures_b)
+        self.assertEqual((len(calls_a), len(calls_b)), (len(queries), len(queries)))
+        self.assertEqual(result_a["discovered_urls"], sorted(urls_a))
+        self.assertEqual(result_b["discovered_urls"], sorted(urls_b))
+        self.assertFalse({r["url"] for s in result_b["searches"] for r in s["results"]} & set(urls_a))
 
 
 if __name__ == "__main__":
